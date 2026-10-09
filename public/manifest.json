@@ -1,0 +1,20 @@
+{
+  "short_name": "Dientes Sanos",
+  "name": "Dientes Sanos - Reservas",
+  "description": "Reserva tu cita en Centro Odontológico Dientes Sanos. Odontología integral en San Jacinto.",
+  "icons": [
+    {
+      "src": "/pwa-icon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#faf9f7",
+  "background_color": "#faf9f7",
+  "categories": ["health"]
+}

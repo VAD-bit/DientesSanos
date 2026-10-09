@@ -1,0 +1,20 @@
+{
+  "short_name": "Dientes Sanos",
+  "name": "Dientes Sanos - Panel Admin",
+  "description": "Panel de administración y punto de venta para Centro Odontológico Dientes Sanos",
+  "icons": [
+    {
+      "src": "/pwa-icon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "start_url": "/admin",
+  "scope": "/admin",
+  "display": "standalone",
+  "orientation": "any",
+  "theme_color": "#faf9f7",
+  "background_color": "#faf9f7",
+  "categories": ["business", "productivity"]
+}
