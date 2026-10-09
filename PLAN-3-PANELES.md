@@ -2,7 +2,8 @@
 
 > Documento de trabajo para las IAs (OpenCode / Copilot de VS Code). Leer junto a `AGENTS.md`.
 > Rama: `feature/3-paneles`. Verificación obligatoria por fase: `npm run lint` (baseline **616**)
-> + `npm run build`. Reglas de `AGENTS.md` (no renombrar claves `panda_*`, identidad Dientes Sanos).
+> + `npm run build` + smoke tests `node <temp>/test-staffroles.mjs` (60 checks).
+> Reglas de `AGENTS.md` (no renombrar claves `panda_*`, identidad Dientes Sanos).
 
 ## Decisiones del cliente (2026-10-09)
 
@@ -10,7 +11,7 @@
 |---|---|
 | Mapeo de roles | `Barbero/Tatuador → Odontologo`, `Recepcionista/Caja/Barista/Asistente de Lavado → Asistente`, `Admin → Administrador` |
 | Panel del Odontólogo | Su panel (BarberPanel) + Agenda + Clientes + Historial |
-| Panel del Asistente | Recepción + Agenda + Clientes (+ Mi Perfil) |
+| Panel del Asistente | Recepción + Agenda + Clientes + Mi Perfil + Historial |
 | Caja/Finanzas/Inventario | Solo Administrador (el Asistente NO cobra) |
 | Datos | Proyecto Supabase nuevo, **se empieza de cero** (sin migración de datos) |
 
@@ -24,34 +25,48 @@ Valor interno en `staff.role` (sin tildes) + módulos tras el `|`:
 | `Odontologo` | Odontólogo | `my-profile, barber, scheduling, clients, history` |
 | `Asistente` | Asistente | `my-profile, reception, scheduling, clients, history` |
 
-La detección en código es **por palabras clave** sobre el nombre del rol (antes del `|`) para
-tolerar valores heredados (`Barbero`, `Tatuador`, `Asistente de Lavado`, `Recepcionista`, `Caja`,
-`Barista`) sin romper.
+## Fuente única de navegación (creada en Fase 2)
+
+`src/utils/staffRoles.js` exporta `getAllowedMenuIds(userRole)` y `getRoleCategory(userRole)`:
+son la única fuente de verdad. Los consumidores son **Sidebar**, **MobileBottomNav** y el
+guardia de `handleTabChange` (App) + efecto home (App). Si cambia un preset, cambia en un
+solo sitio. `ALL_MENU_IDS` lista los 15 ids de módulos (sin `barista`).
 
 ## Fases
 
 ### ✅ Fase 0 — Preparación
-- `git init` + commit inicial en `main` (`cb955ea`).
-- Rama `feature/3-paneles`.
-- Baseline: `npm run lint` = 616 problemas, `npm run build` ✓ 19 s.
+- `git init` + commit inicial en `main` (`cb955ea`), rama `feature/3-paneles`.
+- Baseline: lint 616, build ✓.
 
-### ✅ Fase 1 — Núcleo de detección (`src/utils/staffRoles.js`)
-- Helpers nuevos: `isOdontologoRole`, `isAsistenteRole`.
-- `isBookableStaff` ya **no** exige `isAdminStaff` (bug: devolvía `false` para todo el equipo →
-  el portal público no mostraba a nadie).
-- `isOperationalReceptionStaff` = administrador **u** odontólogo **u** asistente (antes: solo admin).
-- `SERVICE_OR_OPS_KEYWORDS` += `odontolog` (si no, `isSupportStaff` metía a los odontólogos en
-  "personal de apoyo" y su menú era solo *Mi Perfil*).
-- `isBarberRole` += `odontolog` (lo usan el filtro "Odontólogos" del portal y recepción).
-- `isServiceProf` en `Sidebar.jsx` y `MobileBottomNav.jsx` += `odontolog`.
-- `ReceptionModule.getReceptionRoleGroup` += `odontolog` (aparece en el grupo de sillas).
+### ✅ Fase 1 — Núcleo de detección (`src/utils/staffRoles.js`) — commit `c0274bd`
+- Helpers `isOdontologoRole` / `isAsistenteRole` / `roleNameOf` (palabra clave antes del `|`).
+- `isBookableStaff` ya **no** exige `isAdminStaff` (el portal no listaba a nadie).
+- `isOperationalReceptionStaff` = admin u odontólogo u asistente.
+- `SERVICE_OR_OPS_KEYWORDS` / `isBarberRole` += `odontolog`; `isServiceProf` (Sidebar y
+  MobileBottomNav) += `odontolog`; `getReceptionRoleGroup` agrupa odontólogos en `barbers`
+  (etiqueta "Odontólogos DISPONIBLES" ya existente).
+- Fix condición invertida en `ReceptionModule.handleSubmit` (~460): hoy idéntica a la de
+  "Enviar a sillón" (~399) y complemento del filtro del listado (~214).
+- **Fix posterior**: `dataService.createAppointment` acepta asistentes en citas agendadas
+  (`isBookableStaff || isAsistenteRole`); antes "Agendar para después" con un asistente fallaba.
+- Revisión con subagente: 0 bloqueantes, deuda anotada abajo.
 
-### ⬜ Fase 2 — Navegación (3 sitios)
-- `Sidebar.jsx:64-79` arrays `roles` y lógica 82-125 (ramas `Admin`, `Asistente de Lavado`, `isBarista`).
-- `MobileBottomNav.jsx:43-60` y 62-105.
-- `App.jsx`: menú 338-347, home por rol 215-235, bloqueo de `handleTabChange` 751-757
-  (hoy contradice al Sidebar), notificaciones por rol 244-262.
-- Retirar ítem `barista` de ambos menús.
+### ✅ Fase 2 — Navegación (3 sitios)
+- **Sidebar**: `allMenuItems` sin arrays `roles`, sin ítem `barista`, + ítem `history`;
+  filtro por `getAllowedMenuIds` (admin oculta `my-profile`/`barber`); se eliminaron las
+  ramas `isServiceProf`/`isSupportStaff`/`isBarista`/`Custom:`/`Asistente de Lavado`.
+- **MobileBottomNav**: ítems sin `roles` ni `barista`; `MAIN_IDS_BY_CATEGORY`
+  (admin: Inicio/Clientes/Stock/Caja · odontólogo: sillón/Agenda/Mi Perfil/Clientes ·
+  asistente: Recepción/Agenda/Mi Perfil/Clientes · apoyo: Mi Perfil) + seguro de menú vacío.
+- **App**: home por rol con `getAllowedMenuIds`/`getRoleCategory` (odontólogo → `barber`,
+  asistente → `reception`, apoyo → `my-profile`, admin → `dashboard`; corrige el home
+  `barista` heredado y el aterrizaje en `dashboard` fuera de menú); guardia universal en
+  `handleTabChange` (antes solo bloqueaba mal a `Asistente de Lavado`); carga ligera
+  (`isServiceProfessionalOnly`) = categoría `odontologo` (BarberPanel autosuficiente).
+- **BarberPanel**: botón "Salir" por id (`selectedBarber.id !== user.id`) en vez de
+  `role === 'Barbero'` (el odontólogo ya no ve "Salir" en su propio panel).
+- `App.menuItems` (líneas ~337-348) quedó como código muerto a propósito (borrarlo orfila
+  imports de iconos): limpiar en Fase 7.
 
 ### ⬜ Fase 3 — Altas y etiquetas
 - `PersonnelModule.jsx:692-700` → 3 presets; `roleLabel` 703-707; iconos 1647-1650;
@@ -60,32 +75,48 @@ tolerar valores heredados (`Barbero`, `Tatuador`, `Asistente de Lavado`, `Recepc
   `StaffProfileModal.jsx:33-35`. NO renombrar la clave `panda_custom_roles`.
 
 ### ⬜ Fase 4 — Comparaciones exactas de rol (~40 sitios)
-`BarberPanel:1193`, `DashboardModule:1265`, `SchedulingModule:3258,4295`,
-`InventoryModule:240`, `HistoryModule:227,342,499`, `MobileDashboard:191`,
-`CheckoutPOS:1247,1276,1297,1374`, `SaleServiceModal:46,69`,
-`FinanceModule:364,1555-1582,2133-2139,2322,2462`, `ReportsModule:636`,
-`PersonnelModule:1297,1365-1374,2316,2760-2766,3067,4365`, `UserProfilePage:313,547-550`.
-Sustituir por helpers de `staffRoles.js`.
+`BarberPanel:1193` ya resuelto. Pendientes: `DashboardModule:1265`,
+`SchedulingModule:3258,4295`, `InventoryModule:240`, `HistoryModule:227,342,499`
+(`:499` etiqueta "Tu Comisión"), `MobileDashboard:191`,
+`CheckoutPOS:1247,1276,1297,1374` y **`CheckoutPOS:1228` comisión (pct=0 si el rol no
+casa: ahora el odontólogo no cobraría comisión en caja)**,
+`SaleServiceModal:46,69`, `FinanceModule:364,1555-1582,2133-2139,2322,2462`,
+`ReportsModule:636`, `PersonnelModule:1297,1365-1374,2316,2760-2766,3067,4365`,
+`UserProfilePage:313,547-550`, `PanelsModule` filtros (Fase 7). Sustituir por helpers.
 
 ### ⬜ Fase 5 — Push
 - `pushService.roleCategory` (20-29) → 3 categorías.
-- Emisores: `dataService.js:1538-1563,1724`, `App.jsx:244-262`, `BarberPanel:519,550`,
-  `CheckoutPOS:1532`, `BookAppointment:2430`.
-- El edge function (`edge-functions/send-push/index.ts:47`) filtra `push_subscriptions.role`,
-  así que emisor y `roleCategory` deben coincidir.
+- Emisores: `dataService.js:1538-1563,1724`, `App.jsx:244-262` (`roleName === 'Admin'`
+  no casa con `Administrador`; `recipientRole === 'Barbero'` no casa con `Odontologo`),
+  `BarberPanel:519,550`, `CheckoutPOS:1532`, `BookAppointment:2430`.
+- El edge function filtra `push_subscriptions.role`, así que emisor y `roleCategory` deben coincidir.
 
 ### ⬜ Fase 6 — Portal público
-`BookAppointment:46,90-92,1868,4731`, `QuickBookingModal:86,326`, `publicService:109`,
-`api/public/staff:17`, `BarberProfileOverlay:125`.
+- Ya en plan: `BookAppointment:46,90-92,1868,4731`, `QuickBookingModal:86,326`,
+  `publicService:109`, `api/public/staff:17`, `BarberProfileOverlay:125`.
+- **Añadidos por revisión (vacían rutas hoy)**: `Explore.jsx:33` y
+  `ClientDashboard.jsx:1009` (filtros sin keyword `odontolog`), `Home.jsx:36`.
+- Pestaña/categoría "Tatuajes" = 0 profesionales con rol `Odontologo`
+  (`BookAppointment:92,4728`): ocultarla o redirigirla a Odontólogos.
 
-### ⬜ Fase 7 — Hub de paneles
-`PanelsModule.jsx`: `ROLE_META` 14-20, filtros 72-95, dispatch 103-119 → 3 categorías
-(`BaristaPanel`/`SupportProfilePage` fuera del dispatch; archivos se conservan).
+### ⬜ Fase 7 — Hub de paneles + limpieza
+- `PanelsModule.jsx`: `ROLE_META` 14-20, filtros 72-95, dispatch 103-119 → 3 categorías
+  (`BaristaPanel`/`SupportProfilePage` fuera del dispatch; archivos se conservan).
+- Borrar `App.menuItems` muerto (~337-348) limpiando imports de iconos.
 
 ### ⬜ Fase 8 — DB y backend
 - `db/setup_dientes_sanos.sql:87` default `'Barbero'` → `'Odontologo'`.
 - `is_admin()` usa `ilike '%admin%'` → casa con `Administrador` ✓.
 - `server/auth/admin.js:3` acepta `administrador` ✓ (verificar).
+
+## Deuda explícita de la revisión de Fase 1 (no bloquea)
+1. ~~dataService cita agendada + asistente~~ — **RESUELTO en Fase 1**.
+2. Portal `Explore`/`ClientDashboard`/`Home` → movido a Fase 6.
+3. Home por rol desalineado → **RESUELTO en Fase 2**.
+4. `SaleServiceModal:156` envía `scheduled_at` con cualquier staff: con el fix de dataService
+   el asistente ya pasa; un admin como staff seguiría fallando (igual que antes).
+5. Roles legacy con módulos propios (p. ej. `Caja|checkout,...`): categoría `asistente`
+   manda sobre sus módulos en el orden del menú móvil (aceptado: se arranca de cero).
 
 ## Criterio de aceptación
 1. `npm run lint` ≤ 616 y `npm run build` ✓ tras cada fase.

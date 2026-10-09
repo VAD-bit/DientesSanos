@@ -118,3 +118,44 @@ export const isOperationalReceptionStaff = (member = {}) => (
   isActiveStaff(member) &&
   (isAdminStaff(member) || isOdontologoRole(member) || isAsistenteRole(member))
 );
+
+// ============================================================================
+// Navegación: única fuente de verdad de qué pestañas puede abrir cada rol.
+// La consumen Sidebar, MobileBottomNav y el guardia de handleTabChange (App).
+// ============================================================================
+
+export const ALL_MENU_IDS = [
+  'dashboard', 'my-profile', 'barber', 'scheduling', 'reception', 'checkout',
+  'panels', 'clients', 'services', 'personnel', 'inventory', 'reports',
+  'finance', 'history', 'settings',
+];
+
+// Categoría de rol para decisiones de presentación (home, menús, carga de datos).
+export const getRoleCategory = (userRole = '') => {
+  const member = { role: userRole };
+  const roleName = roleNameOf(member);
+  if (roleName.includes('admin')) return 'admin';
+  if (isOdontologoRole(member)) return 'odontologo';
+  if (isAsistenteRole(member)) return 'asistente';
+  if (isSupportStaff(member)) return 'support';
+  return 'custom';
+};
+
+// Ids de módulos que el rol puede abrir. Los módulos otorgados explícitamente
+// en staff.role (tras el `|`) mandan sobre los presets por palabra clave.
+export const getAllowedMenuIds = (userRole = '') => {
+  const roleStr = String(userRole || '');
+  const [roleName, customPerms] = roleStr.split('|');
+  const permissionList = customPerms ? customPerms.split(',').filter(Boolean) : [];
+  const member = { role: roleStr };
+
+  // Admin: todo (el menú oculta "Mi sillón"/"Mi Perfil"; Paneles abre sillas).
+  if (roleName.toLowerCase().includes('admin')) return ALL_MENU_IDS;
+
+  if (permissionList.length > 0) return Array.from(new Set(['my-profile', ...permissionList]));
+  if (roleName.startsWith('Custom:')) return roleName.slice('Custom:'.length).split(',').filter(Boolean);
+  if (isOdontologoRole(member)) return ['my-profile', 'barber', 'scheduling', 'clients', 'history'];
+  if (isAsistenteRole(member)) return ['my-profile', 'reception', 'scheduling', 'clients', 'history'];
+  if (isSupportStaff(member)) return ['my-profile'];
+  return ['my-profile'];
+};

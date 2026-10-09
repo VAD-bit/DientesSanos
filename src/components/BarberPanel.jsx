@@ -1190,7 +1190,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
           >
             <RefreshCw size={18} className={loading ? 'animate-spin' : ''} />
           </button>
-          {!(user?.role === 'Barbero' || user?.role?.startsWith('Barbero|')) && (
+          {String(selectedBarber?.id) !== String(user?.id) && (
             <button className="barber-exit-button"
               onClick={() => {
                 setSelectedBarber(null);

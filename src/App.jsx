@@ -30,7 +30,7 @@ import usePerformanceMode from './hooks/usePerformanceMode';
 import { useModal, ModalShield } from './context/ModalContext';
 import { whatsappService } from './services/whatsappService';
 import { SkeletonGrid } from './components/Skeleton';
-import { isSupportStaff } from './utils/staffRoles';
+import { getAllowedMenuIds, getRoleCategory, isSupportStaff } from './utils/staffRoles';
 
 const safeLazy = (importFn) => lazy(async () => {
   try {
@@ -207,31 +207,26 @@ function App() {
     return () => clearInterval(interval);
   }, []);
 
-  // Set the operational home based on the staff role.
+  // Set the operational home based on the staff role (mismos módulos que el menú).
   useEffect(() => {
     if (!user) return;
     const currentTab = localStorage.getItem('panda_active_tab');
     if (currentTab === 'my-profile') return;
-    const roleName = (user.role || '').toLowerCase();
-    if (roleName.includes('barber') || roleName.includes('tatu')) {
-      setActiveTab('barista');
-      return;
-    }
-    // Personal de apoyo (Editor, Marketing…): no atiende clientes, así que su pantalla
-    // principal es su perfil (salario, pagos, consumo), no el panel de silla.
-    if (isSupportStaff({ role: user.role })) {
-      setActiveTab('my-profile');
-      localStorage.setItem('panda_active_tab', 'my-profile');
-      return;
-    }
-    const isServiceProf = (roleName.includes('barber') || roleName.includes('tatu')) && !roleName.includes('admin');
-    if (isServiceProf) {
-      const professionalTabs = new Set(['barber', 'scheduling', 'clients', 'my-profile', 'history']);
-      const nextTab = professionalTabs.has(currentTab) ? currentTab : 'barber';
-      setActiveTab(previousTab => previousTab === nextTab ? previousTab : nextTab);
-      if (currentTab !== nextTab) {
-        localStorage.setItem('panda_active_tab', nextTab);
-      }
+
+    const HOME_TAB_BY_CATEGORY = {
+      admin: 'dashboard',
+      odontologo: 'barber',
+      asistente: 'reception',
+      support: 'my-profile',
+      custom: 'dashboard',
+    };
+    const allowed = getAllowedMenuIds(user.role);
+    const homeTab = HOME_TAB_BY_CATEGORY[getRoleCategory(user.role)] || 'dashboard';
+    const nextTab = currentTab && allowed.includes(currentTab) ? currentTab : homeTab;
+
+    setActiveTab(previousTab => (previousTab === nextTab ? previousTab : nextTab));
+    if (currentTab !== nextTab) {
+      localStorage.setItem('panda_active_tab', nextTab);
     }
   }, [user]);
 
@@ -377,11 +372,9 @@ function App() {
     // Phase 1: Load only what's needed to show the UI (fast)
     // Phase 2: Load heavy data silently in background
     const initApp = async () => {
-      const roleName = (user?.role || '').split('|')[0].toLowerCase();
-      const isServiceProfessionalOnly = (roleName.includes('barber') || roleName.includes('tatu')) &&
-                                       !roleName.includes('admin') &&
-                                       !roleName.includes('recepcionista') &&
-                                       !roleName.includes('caja');
+      // El odontólogo entra a su sillón: BarberPanel carga sus propios datos
+      // (igual que hacían los barberos) y no necesita los cargos globales.
+      const isServiceProfessionalOnly = getRoleCategory(user?.role || '') === 'odontologo';
 
       // Barbers already have everything required to enter their own panel in
       // the authenticated profile. Do not hold their UI behind global CRM
@@ -533,11 +526,7 @@ function App() {
   // Phase 2: Heavy data — runs silently after loader is gone
   async function fetchSecondaryData() {
     try {
-      const roleName = (user?.role || '').split('|')[0].toLowerCase();
-      const isServiceProfessionalOnly = (roleName.includes('barber') || roleName.includes('tatu')) && 
-                                       !roleName.includes('admin') && 
-                                       !roleName.includes('recepcionista') && 
-                                       !roleName.includes('caja');
+      const isServiceProfessionalOnly = getRoleCategory(user?.role || '') === 'odontologo';
       
       // Service professionals don't need heavy admin transactions, inventory, or full financials
       if (isServiceProfessionalOnly) {
@@ -749,12 +738,9 @@ function App() {
   }
 
   const handleTabChange = (tabId, params = {}) => {
-    // Permission check for non-admins
-    const userRole = user?.role || '';
-    const roleName = userRole.split('|')[0];
-    if (roleName === 'Asistente de Lavado' && !['settings', 'finance', 'reports', 'personnel'].includes(tabId)) {
-      return;
-    }
+    // Blindado de navegación: cada rol solo puede abrir sus módulos
+    // (mismos ids que getAllowedMenuIds → Sidebar y MobileBottomNav).
+    if (!getAllowedMenuIds(user?.role || '').includes(tabId)) return;
 
     if (tabId === 'my-profile') {
       setTabParams(params);

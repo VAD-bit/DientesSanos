@@ -20,15 +20,14 @@ import {
   Settings,
   History,
   Bell,
-  CheckCircle,
-  Coffee
+  CheckCircle
 } from 'lucide-react';
 import logo from '../assets/logo.png';
 import sidebarLogo from '../assets/sidebar_logo.png';
 import { useAuth } from '../context/AuthContext';
 import { useModal } from '../context/ModalContext';
 import { notificationService } from '../services/notificationService';
-import { isSupportStaff } from '../utils/staffRoles';
+import { getAllowedMenuIds, roleNameOf } from '../utils/staffRoles';
 
 // Tooltip de íconos del sidebar: se porta al body con posición fija calculada
 // a partir del botón, para que el overflow del sidebar no lo corte.
@@ -61,66 +60,33 @@ const Sidebar = ({ activeTab, setActiveTab, isMobile, rates, isCollapsed, setIsC
   };
 
   const allMenuItems = [
-    { id: 'my-profile', label: 'Mi Perfil', icon: UserCircle, roles: ['Admin', 'Recepcionista', 'Caja', 'Asistente de Lavado'] },
-    { id: 'dashboard', label: 'Inicio', icon: BarChart3, roles: ['Admin', 'Recepcionista', 'Caja', 'Asistente de Lavado'] },
-    { id: 'scheduling', label: 'Agenda', icon: Calendar, roles: ['Admin', 'Barbero', 'Recepcionista'] },
-    { id: 'reception', label: 'Recepción', icon: ClipboardList, roles: ['Admin', 'Recepcionista'] },
-    { id: 'checkout', label: 'Caja', icon: CreditCard, roles: ['Admin', 'Caja'] },
-    { id: 'panels', label: 'Paneles', icon: Scissors, roles: ['Admin'] },
-    // Legacy direct routes remain available to staff accounts; admins use the unified Paneles entry.
-    { id: 'barber', label: 'Mi sillón', icon: Scissors, roles: ['Barbero'] },
-    { id: 'barista', label: 'Panel de Barista', icon: Coffee, roles: ['Barista'] },
-    { id: 'clients', label: 'Clientes', icon: Users, roles: ['Admin', 'Recepcionista', 'Barbero', 'Caja'] },
-    { id: 'services', label: 'Servicios', icon: Star, roles: ['Admin'] },
-    { id: 'personnel', label: 'Equipo', icon: UserCheck, roles: ['Admin'] },
-    { id: 'inventory', label: 'Inventario', icon: Package, roles: ['Admin', 'Caja'] },
-    { id: 'reports', label: 'Reportes', icon: PieChart, roles: ['Admin'] },
-    { id: 'finance', label: 'Finanzas', icon: Wallet, roles: ['Admin', 'Caja'] },
-    { id: 'settings', label: 'Ajustes', icon: Settings, roles: ['Admin'] },
+    { id: 'my-profile', label: 'Mi Perfil', icon: UserCircle },
+    { id: 'dashboard', label: 'Inicio', icon: BarChart3 },
+    { id: 'barber', label: 'Mi sillón', icon: Scissors },
+    { id: 'scheduling', label: 'Agenda', icon: Calendar },
+    { id: 'reception', label: 'Recepción', icon: ClipboardList },
+    { id: 'checkout', label: 'Caja', icon: CreditCard },
+    { id: 'panels', label: 'Paneles', icon: Scissors },
+    { id: 'clients', label: 'Clientes', icon: Users },
+    { id: 'services', label: 'Servicios', icon: Star },
+    { id: 'personnel', label: 'Equipo', icon: UserCheck },
+    { id: 'inventory', label: 'Inventario', icon: Package },
+    { id: 'reports', label: 'Reportes', icon: PieChart },
+    { id: 'finance', label: 'Finanzas', icon: Wallet },
+    { id: 'history', label: 'Historial', icon: History },
+    { id: 'settings', label: 'Ajustes', icon: Settings },
   ];
 
   const menuItems = (() => {
     const userRole = user?.role || '';
-    const [roleName, customPerms] = userRole.split('|');
-    const isBarista = roleName.toLowerCase().includes('barista') || roleName.toLowerCase().includes('cafeter');
-    const permissionList = customPerms ? customPerms.split(',') : [];
-    const legacyFullAccess = ['dashboard', 'scheduling', 'reception', 'checkout', 'barber', 'clients', 'personnel', 'services', 'inventory', 'finance', 'history'].every(id => permissionList.includes(id));
-    const normalizedRole = roleName.toLowerCase();
-    const isServiceProf = (normalizedRole.includes('odontolog') || normalizedRole.includes('barber') || normalizedRole.includes('barbero') || normalizedRole.includes('tatu')) && normalizedRole !== 'admin';
-
-    if (isServiceProf) {
-      const barberOrder = ['barber', 'scheduling', 'clients'];
-      return barberOrder
-        .map(id => allMenuItems.find(m => m.id === id))
-        .filter(Boolean);
-    }
-
-    // Personal de apoyo (Editor, Marketing…): sin panel de silla; su menú es su perfil,
-    // donde ve salario, pagos y consumo.
-    if (isSupportStaff({ role: userRole })) {
-      return ['my-profile'].map(id => allMenuItems.find(m => m.id === id)).filter(Boolean);
-    }
+    const allowedIds = getAllowedMenuIds(userRole);
+    const isAdminRole = roleNameOf({ role: userRole }).includes('admin');
 
     return allMenuItems.filter(item => {
-      if (item.id === 'my-profile') return false; // Hides "Mi Perfil" from admin menu since bottom profile card is used
-      if (roleName === 'Admin') return !['barber', 'barista'].includes(item.id);
-      if (isBarista && legacyFullAccess) return true;
-      if (item.id === 'barista' && isBarista) return true;
-      
-      if (roleName === 'Asistente de Lavado') {
-        return ['dashboard', 'history', 'barber'].includes(item.id);
-      }
-
-      if (customPerms) {
-        return permissionList.includes(item.id);
-      }
-
-      if (roleName.startsWith('Custom:')) {
-        const perms = roleName.split(':')[1].split(',');
-        return perms.includes(item.id);
-      }
-
-      return item.roles.some(role => role.toLowerCase() === roleName.toLowerCase());
+      if (!allowedIds.includes(item.id)) return false;
+      // El admin usa la tarjeta de perfil inferior y entra a sillas desde Paneles.
+      if (isAdminRole && (item.id === 'my-profile' || item.id === 'barber')) return false;
+      return true;
     });
   })();
 

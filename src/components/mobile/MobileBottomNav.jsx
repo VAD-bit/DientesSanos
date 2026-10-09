@@ -17,14 +17,13 @@ import {
   X,
   Bell,
   CheckCircle,
-  Coffee,
   Settings
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 import { useAuth } from '../../context/AuthContext';
 import { notificationService } from '../../services/notificationService';
-import { isSupportStaff } from '../../utils/staffRoles';
+import { getAllowedMenuIds, getRoleCategory } from '../../utils/staffRoles';
 
 const MobileBottomNav = ({ activeTab, setActiveTab }) => {
   const { user } = useAuth();
@@ -41,69 +40,46 @@ const MobileBottomNav = ({ activeTab, setActiveTab }) => {
   };
 
   const allMasterItems = [
-    { id: 'panels', label: 'Paneles', icon: Scissors, roles: ['Admin'] },
-    { id: 'barber', label: 'Mi sillón', icon: Scissors, roles: ['Admin', 'Barbero', 'Asistente de Lavado'] },
-    { id: 'barista', label: 'Panel Barista', icon: Coffee, roles: ['Admin', 'Barista'] },
-    { id: 'scheduling', label: 'Agenda', icon: Calendar, roles: ['Admin', 'Barbero', 'Recepcionista'] },
-    { id: 'my-profile', label: 'Mi Perfil', icon: UserCircle, roles: ['Admin', 'Recepcionista', 'Caja', 'Asistente de Lavado'] },
-    { id: 'clients', label: 'Clientes', icon: Users, roles: ['Admin', 'Barbero', 'Recepcionista', 'Caja'] },
-    { id: 'dashboard', label: 'Inicio', icon: BarChart3, roles: ['Admin', 'Asistente de Lavado'] },
-    { id: 'inventory', label: 'Stock', icon: Package, roles: ['Admin', 'Caja'] },
-    { id: 'checkout', label: 'Caja', icon: CreditCard, roles: ['Admin', 'Caja'] },
-    { id: 'reception', label: 'Recepción', icon: ClipboardList, roles: ['Admin', 'Recepcionista'] },
-    { id: 'finance', label: 'Finanzas', icon: Wallet, roles: ['Admin', 'Caja'] },
-    { id: 'personnel', label: 'Equipo', icon: UserCheck, roles: ['Admin'] },
-    { id: 'reports', label: 'Reportes', icon: PieChart, roles: ['Admin'] },
-    { id: 'services', label: 'Servicios', icon: Star, roles: ['Admin'] },
-    { id: 'history', label: 'Historial', icon: History, roles: ['Admin', 'Barbero', 'Recepcionista', 'Caja', 'Asistente de Lavado'] },
-    { id: 'settings', label: 'Ajustes', icon: Settings, roles: ['Admin'] },
+    { id: 'panels', label: 'Paneles', icon: Scissors },
+    { id: 'barber', label: 'Mi sillón', icon: Scissors },
+    { id: 'scheduling', label: 'Agenda', icon: Calendar },
+    { id: 'my-profile', label: 'Mi Perfil', icon: UserCircle },
+    { id: 'clients', label: 'Clientes', icon: Users },
+    { id: 'dashboard', label: 'Inicio', icon: BarChart3 },
+    { id: 'inventory', label: 'Stock', icon: Package },
+    { id: 'checkout', label: 'Caja', icon: CreditCard },
+    { id: 'reception', label: 'Recepción', icon: ClipboardList },
+    { id: 'finance', label: 'Finanzas', icon: Wallet },
+    { id: 'personnel', label: 'Equipo', icon: UserCheck },
+    { id: 'reports', label: 'Reportes', icon: PieChart },
+    { id: 'services', label: 'Servicios', icon: Star },
+    { id: 'history', label: 'Historial', icon: History },
+    { id: 'settings', label: 'Ajustes', icon: Settings },
   ];
 
   const userRole = user?.role || '';
-  const [roleName, customPermsRaw = ''] = userRole.split('|');
-  const customPerms = customPermsRaw.split(',').filter(Boolean);
-  const isServiceProf = (roleName.toLowerCase().includes('odontolog') || roleName.toLowerCase().includes('barber') || roleName.toLowerCase().includes('tatu')) && roleName !== 'Admin';
-  const isBarista = roleName.toLowerCase().includes('barista') || roleName.toLowerCase().includes('cafeter');
-  const legacyFullAccess = ['dashboard', 'scheduling', 'reception', 'checkout', 'barber', 'clients', 'personnel', 'services', 'inventory', 'finance', 'history'].every(id => customPerms.includes(id));
+  const allowedIds = getAllowedMenuIds(userRole);
+  const isAdminRole = getRoleCategory(userRole) === 'admin';
 
-  let mainItems = [];
-  let secondaryItems = [];
+  // Pestañas principales (máx. 4) según categoría; el resto va a "más".
+  const MAIN_IDS_BY_CATEGORY = {
+    admin: ['dashboard', 'clients', 'inventory', 'checkout'],
+    odontologo: ['barber', 'scheduling', 'my-profile', 'clients'],
+    asistente: ['reception', 'scheduling', 'my-profile', 'clients'],
+    support: ['my-profile'],
+    custom: ['dashboard', 'clients', 'inventory', 'checkout'],
+  };
+  const mainIds = MAIN_IDS_BY_CATEGORY[getRoleCategory(userRole)] || MAIN_IDS_BY_CATEGORY.custom;
 
-  if (isBarista) {
-    const allowed = item => item && (legacyFullAccess || item.id === 'barista' || customPerms.includes(item.id));
-    const mainIds = ['barista', 'dashboard', 'checkout', 'inventory'];
-    mainItems = mainIds.map(id => allMasterItems.find(i => i.id === id)).filter(allowed);
-    secondaryItems = allMasterItems.filter(item => !mainIds.includes(item.id) && allowed(item));
-  } else if (isServiceProf) {
-    const mainIds = ['barber', 'scheduling', 'my-profile', 'clients'];
-    mainItems = mainIds.map(id => allMasterItems.find(i => i.id === id)).filter(Boolean);
-    secondaryItems = [allMasterItems.find(i => i.id === 'history')].filter(Boolean);
-  } else if (isSupportStaff({ role: userRole })) {
-    // Personal de apoyo (Editor, Marketing…): sin silla; su pantalla es su perfil.
-    mainItems = [allMasterItems.find(i => i.id === 'my-profile')].filter(Boolean);
-    secondaryItems = [];
-  } else {
-    const filterByPerms = (items) => items.filter(item => {
-      if (roleName === 'Admin') return !['barber', 'barista'].includes(item.id);
-      if (roleName === 'Asistente de Lavado') {
-        return ['dashboard', 'history', 'barber', 'my-profile'].includes(item.id);
-      }
-      if (customPerms.length > 0) return customPerms.includes(item.id);
-      return item.roles.includes(roleName);
-    });
+  const canShowItem = (item) => item
+    && allowedIds.includes(item.id)
+    // El admin usa la tarjeta de perfil y entra a sillas desde Paneles.
+    && !(isAdminRole && (item.id === 'my-profile' || item.id === 'barber'));
 
-    const defaultMain = [
-      allMasterItems.find(i => i.id === 'dashboard'),
-      allMasterItems.find(i => i.id === 'clients'),
-      allMasterItems.find(i => i.id === 'inventory'),
-      allMasterItems.find(i => i.id === 'checkout'),
-    ].filter(Boolean);
-
-    const defaultSecondary = allMasterItems.filter(i => !['dashboard', 'clients', 'inventory', 'checkout'].includes(i.id));
-
-    mainItems = filterByPerms(defaultMain);
-    secondaryItems = filterByPerms(defaultSecondary);
-  }
+  let mainItems = mainIds.map(id => allMasterItems.find(i => i.id === id)).filter(canShowItem);
+  // Seguro: nunca dejar la barra principal vacía (roles atípicos).
+  if (mainItems.length === 0) mainItems = allMasterItems.filter(canShowItem).slice(0, 4);
+  const secondaryItems = allMasterItems.filter(item => canShowItem(item) && !mainItems.includes(item));
 
   const handleSelect = (id) => {
     setActiveTab(id);
