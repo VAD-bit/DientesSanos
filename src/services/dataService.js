@@ -2,7 +2,7 @@ import { supabase as anonClient } from '../lib/supabase';
 const supabase = anonClient;
 import { notificationService } from './notificationService';
 import { pushService } from './pushService';
-import { isBookableStaff, isOperationalReceptionStaff } from '../utils/staffRoles';
+import { isBookableStaff, isOperationalReceptionStaff, isAsistenteRole } from '../utils/staffRoles';
 import { formatName, formatProductName, formatServiceName } from '../utils/stringUtils';
 
 // ─── Smart In-Memory Cache ────────────────────────────────────────────────────
@@ -1587,8 +1587,10 @@ export const dataService = {
         .maybeSingle();
       if (staffError) throw staffError;
       const isScheduledAppointment = appointment.scheduled_at || ['Agendado', 'Confirmado'].includes(appointment.status);
+      // Cita agendada: odontólogos (sillón) o asistentes (turno asignado).
+      // Sin horario ("En Silla"/"Por Pagar" desde recepción): cualquier operativo.
       const canReceiveAppointment = isScheduledAppointment
-        ? isBookableStaff(staffMember)
+        ? (isBookableStaff(staffMember) || isAsistenteRole(staffMember))
         : isOperationalReceptionStaff(staffMember);
 
       if (!canReceiveAppointment) {
