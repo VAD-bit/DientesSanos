@@ -222,7 +222,11 @@ function App() {
     };
     const allowed = getAllowedMenuIds(user.role);
     const homeTab = HOME_TAB_BY_CATEGORY[getRoleCategory(user.role)] || 'dashboard';
-    const nextTab = currentTab && allowed.includes(currentTab) ? currentTab : homeTab;
+    // La home siempre debe ser un módulo permitido (roles atípicos/permisos
+    // explícitos pueden no incluir la home de su categoría).
+    const nextTab = currentTab && allowed.includes(currentTab)
+      ? currentTab
+      : (allowed.includes(homeTab) ? homeTab : (allowed[0] || 'my-profile'));
 
     setActiveTab(previousTab => (previousTab === nextTab ? previousTab : nextTab));
     if (currentTab !== nextTab) {

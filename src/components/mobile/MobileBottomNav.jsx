@@ -73,8 +73,8 @@ const MobileBottomNav = ({ activeTab, setActiveTab }) => {
 
   const canShowItem = (item) => item
     && allowedIds.includes(item.id)
-    // El admin usa la tarjeta de perfil y entra a sillas desde Paneles.
-    && !(isAdminRole && (item.id === 'my-profile' || item.id === 'barber'));
+    // En móvil el admin sí ve "Mi Perfil" (como antes); "Mi sillón" entra desde Paneles.
+    && !(isAdminRole && item.id === 'barber');
 
   let mainItems = mainIds.map(id => allMasterItems.find(i => i.id === id)).filter(canShowItem);
   // Seguro: nunca dejar la barra principal vacía (roles atípicos).
