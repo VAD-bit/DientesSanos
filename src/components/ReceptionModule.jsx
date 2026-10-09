@@ -41,7 +41,7 @@ const getReceptionRoleGroup = (member) => {
   const role = getStaffSearchText(member);
   if (role.includes('asistente') || role.includes('lavado') || role.includes('barista') || role.includes('cafeter')) return 'assistants';
   if (role.includes('tatu')) return 'tattoo';
-  if (role.includes('barber') || role.includes('barbero') || role.includes('estilista') || role.includes('socio') || role.includes('lider')) return 'barbers';
+  if (role.includes('odontolog') || role.includes('barber') || role.includes('barbero') || role.includes('estilista') || role.includes('socio') || role.includes('lider')) return 'barbers';
   return null;
 };
 
@@ -457,7 +457,7 @@ const ReceptionModule = ({ isMobile, rates }) => {
     }
     if (hasStaffRequired) {
       const selectedStaff = staff.find(member => String(member.id) === String(formData.staffId));
-      if (isOperationalReceptionStaff(selectedStaff) || !getReceptionRoleGroup(selectedStaff)) {
+      if (!isOperationalReceptionStaff(selectedStaff) || !getReceptionRoleGroup(selectedStaff)) {
         showToast("Ese miembro del equipo no puede recibir clientes.", "error");
         return;
       }

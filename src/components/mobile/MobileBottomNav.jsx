@@ -62,7 +62,7 @@ const MobileBottomNav = ({ activeTab, setActiveTab }) => {
   const userRole = user?.role || '';
   const [roleName, customPermsRaw = ''] = userRole.split('|');
   const customPerms = customPermsRaw.split(',').filter(Boolean);
-  const isServiceProf = (roleName.toLowerCase().includes('barber') || roleName.toLowerCase().includes('tatu')) && roleName !== 'Admin';
+  const isServiceProf = (roleName.toLowerCase().includes('odontolog') || roleName.toLowerCase().includes('barber') || roleName.toLowerCase().includes('tatu')) && roleName !== 'Admin';
   const isBarista = roleName.toLowerCase().includes('barista') || roleName.toLowerCase().includes('cafeter');
   const legacyFullAccess = ['dashboard', 'scheduling', 'reception', 'checkout', 'barber', 'clients', 'personnel', 'services', 'inventory', 'finance', 'history'].every(id => customPerms.includes(id));
 

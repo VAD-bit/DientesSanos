@@ -86,7 +86,7 @@ const Sidebar = ({ activeTab, setActiveTab, isMobile, rates, isCollapsed, setIsC
     const permissionList = customPerms ? customPerms.split(',') : [];
     const legacyFullAccess = ['dashboard', 'scheduling', 'reception', 'checkout', 'barber', 'clients', 'personnel', 'services', 'inventory', 'finance', 'history'].every(id => permissionList.includes(id));
     const normalizedRole = roleName.toLowerCase();
-    const isServiceProf = (normalizedRole.includes('barber') || normalizedRole.includes('barbero') || normalizedRole.includes('tatu')) && normalizedRole !== 'admin';
+    const isServiceProf = (normalizedRole.includes('odontolog') || normalizedRole.includes('barber') || normalizedRole.includes('barbero') || normalizedRole.includes('tatu')) && normalizedRole !== 'admin';
 
     if (isServiceProf) {
       const barberOrder = ['barber', 'scheduling', 'clients'];
