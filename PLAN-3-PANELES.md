@@ -1,8 +1,8 @@
 # PLAN — Migración a 3 paneles: Odontólogo · Asistente · Administrador
 
 > Documento de trabajo para las IAs (OpenCode / Copilot de VS Code). Leer junto a `AGENTS.md`.
-> Rama: `feature/3-paneles`. Verificación obligatoria por fase: `npm run lint` (baseline **616**)
-> + `npm run build` + smoke tests `node <temp>/test-staffroles.mjs` (60 checks).
+> Rama: `feature/3-paneles`. Verificación obligatoria por fase: `npm run lint` (baseline **615**
+> tras Fase 7) + `npm run build` + smoke tests `node <temp>/test-staffroles.mjs` (60 checks).
 > Reglas de `AGENTS.md` (no renombrar claves `panda_*`, identidad Dientes Sanos).
 
 ## Decisiones del cliente (2026-10-09)
@@ -91,23 +91,28 @@ casa: ahora el odontólogo no cobraría comisión en caja)**,
   `BarberPanel:519,550`, `CheckoutPOS:1532`, `BookAppointment:2430`.
 - El edge function filtra `push_subscriptions.role`, así que emisor y `roleCategory` deben coincidir.
 
-### ⬜ Fase 6 — Portal público
-- Ya en plan: `BookAppointment:46,90-92,1868,4731`, `QuickBookingModal:86,326`,
-  `publicService:109`, `api/public/staff:17`, `BarberProfileOverlay:125`.
-- **Añadidos por revisión (vacían rutas hoy)**: `Explore.jsx:33` y
-  `ClientDashboard.jsx:1009` (filtros sin keyword `odontolog`), `Home.jsx:36`.
-- Pestaña/categoría "Tatuajes" = 0 profesionales con rol `Odontologo`
-  (`BookAppointment:92,4728`): ocultarla o redirigirla a Odontólogos.
+### ✅ Fase 6 — Portal público — incluida en commit `3900107`
+- `BookAppointment` importa `roleLabel` (fallback de especialidad, línea ~3110).
+- `Explore.jsx:34` / `ClientDashboard.jsx:1010` / `Home.jsx:36`: keyword `odontolog` añadida.
+- Pestaña "Tatuajes" oculta para roles Odontologo (sin barberos reales con ese rol).
+- Extras no planificados (pedido del cliente, mismo commit): config única
+  `src/public-site/config/clinic.js` (WhatsApp/IG/Maps/ubicación), confirmación de cita
+  con fallback a WhatsApp clínica, servicio `instagramFeed.js` + 4 imágenes placeholder
+  del feed de Instagram (`src/assets/instagram/`), `scripts/fetch-instagram.mjs`.
 
-### ⬜ Fase 7 — Hub de paneles + limpieza
-- `PanelsModule.jsx`: `ROLE_META` 14-20, filtros 72-95, dispatch 103-119 → 3 categorías
-  (`BaristaPanel`/`SupportProfilePage` fuera del dispatch; archivos se conservan).
-- Borrar `App.menuItems` muerto (~337-348) limpiando imports de iconos.
+### ✅ Fase 7 — Hub de paneles + limpieza — incluida en commit `3900107`
+- `PanelsModule.jsx`: `ROLE_META` 3 categorías (odontologo/asistente/support), filtros
+  por `getRoleCategory`, dispatch sin `BaristaPanel`.
+- `App.jsx`: case `barista` + lazy import borrados; `menuItems` muerto eliminado.
+- Lint cayó a **615** (se limpió import `Calendar` preexistente en ReportsModule).
 
-### ⬜ Fase 8 — DB y backend
-- `db/setup_dientes_sanos.sql:87` default `'Barbero'` → `'Odontologo'`.
-- `is_admin()` usa `ilike '%admin%'` → casa con `Administrador` ✓.
-- `server/auth/admin.js:3` acepta `administrador` ✓ (verificar).
+### ✅ Fase 8 — DB y backend — commit `4bd0752`
+- `db/setup_dientes_sanos.sql`: reset seguro de tablas vacías con esquema viejo
+  (DO block solo borra si DB vacía Y `staff` sin `auth_user_id`), default de rol
+  `'Odontologo'`, bootstrap del admin (`administrador@dientessanos.com` /
+  `DientesSanos2026!`) idempotente al final del script.
+- `Login.jsx`: shortcut de desarrollo (doble click en el título) usa la password nueva.
+- `is_admin()` ya casa con `Administrador` por `ilike '%admin%'`.
 
 ## Deuda explícita de la revisión de Fase 1 (no bloquea)
 1. ~~dataService cita agendada + asistente~~ — **RESUELTO en Fase 1**.
@@ -119,8 +124,23 @@ casa: ahora el odontólogo no cobraría comisión en caja)**,
    manda sobre sus módulos en el orden del menú móvil (aceptado: se arranca de cero).
 
 ## Criterio de aceptación
-1. `npm run lint` ≤ 616 y `npm run build` ✓ tras cada fase.
+1. `npm run lint` ≤ 615 y `npm run build` ✓ tras cada fase.
 2. Login de los 3 roles muestra exactamente sus módulos (desktop y móvil).
 3. Portal público lista odontólogos en "Odontólogos" y permite reservar.
 4. Recepción muestra los grupos Odontólogos y Asistentes.
 5. Alta de personal solo ofrece los 3 presets.
+
+## ✅ ENTREGA FINAL (2026-10-10) — todas las fases completas
+
+Commits en `feature/3-paneles`: `3c44592` (F3) → `9f27682` (F4) → `8a331dc` (F5)
+→ `3900107` (F6+F7+contacto/IG) → `4bd0752` (F8 SQL+login+imágenes).
+Lint **615** ✓, build ✓, tests 60/60 ✓.
+
+**Acciones manuales del usuario (una sola vez, ~5 min):**
+1. Supabase Dashboard → SQL Editor → pegar y ejecutar **todo** `db/setup_dientes_sanos.sql`
+   (resetea tablas vacías con esquema viejo + crea tablas nuevas + crea el admin).
+2. Project Settings → API → en "Exposed schemas" incluir el esquema `odontosonrisa`.
+3. Entrar al CRM: usuario `administrador@dientessanos.com` / password `DientesSanos2026!`
+   (o doble-click en el título de Login para el shortcut de desarrollo).
+4. Opcional (fotos reales del IG): desde la red doméstica del cliente,
+   `node scripts/fetch-instagram.mjs dientes_sanos 8` reemplaza los placeholders.
