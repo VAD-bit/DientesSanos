@@ -36,11 +36,18 @@ const MATERIAL_LABELS = {
 
 function toothSize(num) {
   const pos = num % 10;
-  if (pos >= 1 && pos <= 3) return { w: 30, h: 32 }; // molares
-  if (pos === 4 || pos === 5) return { w: 26, h: 30 }; // premolares
-  if (pos === 6) return { w: 22, h: 32 }; // canino
-  return { w: 20, h: 30 }; // incisivos
+  if (pos >= 1 && pos <= 3) return { w: 32, h: 34 }; // molares
+  if (pos === 4 || pos === 5) return { w: 28, h: 32 }; // premolares
+  if (pos === 6) return { w: 24, h: 34 }; // canino
+  return { w: 22, h: 32 }; // incisivos
 }
+
+// Slot fijo por pieza: evita que los molares del final se amontonen
+// (antes cada diente usaba su propio ancho con el índice y se desplazaba).
+const TOOTH_SLOT = 38;
+const ARCH_GAP = 6;
+const VIEW_W = 16 * TOOTH_SLOT + ARCH_GAP + 16;
+const MID_X = 8 * TOOTH_SLOT + ARCH_GAP / 2;
 
 export default function Odontograma({ value, onChange }) {
   const marks = useMemo(() => (Array.isArray(value?.marks) ? value.marks : []), [value]);
@@ -134,7 +141,7 @@ export default function Odontograma({ value, onChange }) {
 
       return (
         <g key={key} style={{ cursor: 'pointer' }} onClick={(e) => { e.stopPropagation(); handleSurfaceClick(num, key); }}>
-          <rect x={x} y={y} width={sw} height={sh} fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.12)" strokeWidth="0.6" />
+          <rect x={x} y={y} width={sw} height={sh} fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.18)" strokeWidth="0.7" />
           {isFill && (
             <rect x={x + 1.5} y={y + 1.5} width={sw - 3} height={sh - 3} rx="2" fill={color} opacity="0.85" />
           )}
@@ -180,11 +187,11 @@ export default function Odontograma({ value, onChange }) {
         {/* número FDI */}
         <text
           x={bx + w / 2}
-          y={isUpper ? by - 3 : by + h + 11}
+          y={isUpper ? by - 3 : by + h + 12}
           textAnchor="middle"
-          fontSize="8"
-          fontWeight="700"
-          fill="rgba(255,255,255,0.45)"
+          fontSize="9"
+          fontWeight="800"
+          fill="rgba(255,255,255,0.55)"
           style={{ userSelect: 'none' }}
         >
           {num}
@@ -206,10 +213,10 @@ export default function Odontograma({ value, onChange }) {
         )}
         {ringMat && (
           <text
-            x={bx + w + 1}
-            y={by + h / 2}
-            textAnchor="start"
-            fontSize="6"
+            x={bx + w / 2}
+            y={isUpper ? by + h + 11 : by - 3}
+            textAnchor="middle"
+            fontSize="7"
             fontWeight="800"
             fill={ringColor}
             style={{ pointerEvents: 'none', userSelect: 'none' }}
@@ -308,15 +315,27 @@ export default function Odontograma({ value, onChange }) {
 
       {/* Odontograma */}
       <div style={styles.chartBox} className="panda-scrollbar">
-        <svg viewBox="0 0 560 210" width="100%" style={{ maxWidth: '560px', display: 'block', margin: '0 auto' }}>
-          {/* línea media */}
-          <line x1="280" y1="8" x2="280" y2="200" stroke="rgba(232,212,176,0.25)" strokeDasharray="3 3" strokeWidth="1" />
+        <svg
+          viewBox={`0 0 ${VIEW_W} 230`}
+          width="100%"
+          style={{ maxWidth: `${VIEW_W}px`, minWidth: '520px', display: 'block', margin: '0 auto' }}
+        >
+          {/* línea media (entre 11 y 21 / 41 y 31) */}
+          <line
+            x1={MID_X}
+            y1="6"
+            x2={MID_X}
+            y2="214"
+            stroke="rgba(232,212,176,0.28)"
+            strokeDasharray="4 3"
+            strokeWidth="1"
+          />
 
-          {/* Superior */}
-          <g transform="translate(8, 8)">
+          {/* Superior — slot fijo, diente centrado en su slot */}
+          <g transform="translate(8, 10)">
             {UPPER_TEETH.map((n, i) => {
               const { w } = toothSize(n);
-              const x = i * (w + 8 + 2);
+              const x = i * TOOTH_SLOT + (TOOTH_SLOT - w) / 2 + (i >= 8 ? ARCH_GAP : 0);
               return (
                 <g key={n} transform={`translate(${x}, 0)`}>
                   {renderTooth(n, true)}
@@ -326,10 +345,10 @@ export default function Odontograma({ value, onChange }) {
           </g>
 
           {/* Inferior */}
-          <g transform="translate(8, 108)">
+          <g transform="translate(8, 122)">
             {LOWER_TEETH.map((n, i) => {
               const { w } = toothSize(n);
-              const x = i * (w + 8 + 2);
+              const x = i * TOOTH_SLOT + (TOOTH_SLOT - w) / 2 + (i >= 8 ? ARCH_GAP : 0);
               return (
                 <g key={n} transform={`translate(${x}, 0)`}>
                   {renderTooth(n, false)}
@@ -339,8 +358,12 @@ export default function Odontograma({ value, onChange }) {
           </g>
 
           {/* etiquetas de cuadrante */}
-          <text x="90" y="205" fontSize="8" fill="rgba(255,255,255,0.30)" fontWeight="700">SUP · DER 18–11 | IZQ 21–28</text>
-          <text x="340" y="205" fontSize="8" fill="rgba(255,255,255,0.30)" fontWeight="700">INF · IZQ 31–38 | DER 41–48</text>
+          <text x={MID_X / 2} y="226" textAnchor="middle" fontSize="9" fill="rgba(255,255,255,0.32)" fontWeight="700">
+            SUP · DER 18–11 | IZQ 21–28
+          </text>
+          <text x={MID_X + (VIEW_W - MID_X) / 2} y="226" textAnchor="middle" fontSize="9" fill="rgba(255,255,255,0.32)" fontWeight="700">
+            INF · DER 48–41 | IZQ 31–38
+          </text>
         </svg>
       </div>
 
