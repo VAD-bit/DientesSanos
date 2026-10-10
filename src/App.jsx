@@ -683,8 +683,8 @@ function App() {
         datasets: [{
           label: 'Ventas ($)',
           data: weekDays.map(({ start, end }) => incomeInRange(start, end)),
-          borderColor: '#111111',
-          backgroundColor: 'rgba(17, 17, 17, 0.12)',
+          borderColor: '#e8d4b0',
+          backgroundColor: 'rgba(232, 212, 176, 0.12)',
           fill: true,
           tension: 0.4
         }]
@@ -703,8 +703,8 @@ function App() {
         datasets: [{
           label: 'Ventas ($)',
           data: monthDays.map(({ start, end }) => incomeInRange(start, end)),
-          borderColor: '#111111',
-          backgroundColor: 'rgba(17, 17, 17, 0.12)',
+          borderColor: '#e8d4b0',
+          backgroundColor: 'rgba(232, 212, 176, 0.12)',
           fill: true,
           tension: 0.4
         }]

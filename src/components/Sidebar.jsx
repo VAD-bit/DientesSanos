@@ -220,8 +220,8 @@ const Sidebar = ({ activeTab, setActiveTab, isMobile, rates, isCollapsed, setIsC
             position: 'absolute',
             left: 0,
             width: '100%',
-            background: 'linear-gradient(135deg, rgba(17, 17, 17, 0.10) 0%, rgba(17, 17, 17, 0.02) 100%)',
-            border: '1px solid rgba(17, 17, 17, 0.18)',
+            background: 'linear-gradient(135deg, rgba(232, 212, 176, 0.14) 0%, rgba(232, 212, 176, 0.04) 100%)',
+            border: '1px solid rgba(232, 212, 176, 0.22)',
             borderRadius: '9px',
             transition: 'transform 0.22s cubic-bezier(0.25, 1, 0.5, 1), height 0.22s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.2s ease',
             pointerEvents: 'none',
@@ -254,9 +254,9 @@ const Sidebar = ({ activeTab, setActiveTab, isMobile, rates, isCollapsed, setIsC
               }}
             >
               <div style={{
-                color: isActive ? 'var(--champagne)' : isHovered ? 'rgba(17, 17, 17,0.75)' : 'rgba(17, 17, 17,0.4)',
+                color: isActive ? 'var(--champagne)' : isHovered ? 'rgba(245, 245, 245, 0.85)' : 'rgba(245, 245, 245, 0.45)',
                 display: 'flex', alignItems: 'center',
-                filter: isActive ? 'drop-shadow(0 0 7px rgba(17, 17, 17,0.65))' : isHovered ? 'drop-shadow(0 0 5px rgba(17, 17, 17,0.35))' : 'none',
+                filter: isActive ? 'drop-shadow(0 0 7px rgba(232, 212, 176, 0.55))' : isHovered ? 'drop-shadow(0 0 5px rgba(255, 255, 255, 0.25))' : 'none',
                 transition: 'all 0.25s ease',
               }}>
                 <Icon size={17} strokeWidth={isActive ? 2.2 : 1.7} />
@@ -304,10 +304,10 @@ const Sidebar = ({ activeTab, setActiveTab, isMobile, rates, isCollapsed, setIsC
               justifyContent: isCollapsed ? 'center' : 'flex-start',
               gap: '8px',
               padding: isCollapsed ? '8px 0' : '8px 10px',
-              background: notifPermission === 'granted' ? 'rgba(48, 209, 88, 0.08)' : 'rgba(17, 17, 17, 0.05)',
-              border: notifPermission === 'granted' ? '1px solid rgba(48, 209, 88, 0.25)' : '1px solid rgba(17, 17, 17, 0.12)',
+              background: notifPermission === 'granted' ? 'rgba(48, 209, 88, 0.08)' : 'rgba(255, 255, 255, 0.04)',
+              border: notifPermission === 'granted' ? '1px solid rgba(48, 209, 88, 0.25)' : '1px solid rgba(255, 255, 255, 0.08)',
               borderRadius: '9px',
-              color: notifPermission === 'granted' ? '#30d158' : 'rgba(17, 17, 17, 0.6)',
+              color: notifPermission === 'granted' ? '#30d158' : 'rgba(245, 245, 245, 0.55)',
               cursor: notifPermission === 'granted' ? 'default' : 'pointer',
               fontSize: '12px',
               fontWeight: '600',
@@ -335,7 +335,7 @@ const Sidebar = ({ activeTab, setActiveTab, isMobile, rates, isCollapsed, setIsC
               }}
               onMouseEnter={e => {
                 e.currentTarget.style.background = 'rgba(255,255,255,0.055)';
-                e.currentTarget.style.borderColor = 'rgba(17, 17, 17,0.22)';
+                e.currentTarget.style.borderColor = 'rgba(232, 212, 176, 0.25)';
               }}
               onMouseLeave={e => {
                 e.currentTarget.style.background = 'rgba(255,255,255,0.03)';
@@ -345,11 +345,11 @@ const Sidebar = ({ activeTab, setActiveTab, isMobile, rates, isCollapsed, setIsC
               {/* Avatar with gold ring */}
               <div className="sidebar-profile-avatar" style={{ 
                 width: '32px', height: '32px', borderRadius: '50%', 
-                background: 'linear-gradient(135deg, rgba(17, 17, 17,0.25) 0%, rgba(100,80,50,0.15) 100%)',
+                background: 'linear-gradient(135deg, rgba(232, 212, 176, 0.25) 0%, rgba(217, 192, 143, 0.12) 100%)',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
                 overflow: 'hidden',
-                border: '1.5px solid rgba(17, 17, 17,0.28)',
-                boxShadow: '0 0 12px rgba(17, 17, 17,0.12)',
+                border: '1.5px solid rgba(232, 212, 176, 0.35)',
+                boxShadow: '0 0 12px rgba(232, 212, 176, 0.12)',
                 flexShrink: 0,
               }}>
                 {user?.image_url ? (

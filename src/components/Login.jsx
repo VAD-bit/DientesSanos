@@ -278,7 +278,7 @@ const mobFeaturesSecureGap = ${mobFeaturesSecureGap};`;
           display: flex;
           align-items: center;
           justify-content: center;
-          background-color: #f4f5f3;
+          background-color: #16161a;
           padding: 24px;
           padding-top: calc(24px + env(safe-area-inset-top, 0px));
         }
@@ -1615,12 +1615,12 @@ const mobFeaturesSecureGap = ${mobFeaturesSecureGap};`;
                 <style>{`
                   .panda-passkey-btn {
                     width: 100%; min-height: 44px; border-radius: 12px;
-                    border: 1px solid rgba(17, 17, 17,.38); color: #ead9bb;
+                    border: 1px solid rgba(232, 212, 176, 0.30); color: #ead9bb;
                     background: rgba(17, 17, 17,.07); display: flex; align-items: center;
                     justify-content: center; gap: 9px; font-size: 12px; font-weight: 800;
                     letter-spacing: .45px; cursor: pointer; transition: .2s ease;
                   }
-                  .panda-passkey-btn:hover:not(:disabled) { background: rgba(17, 17, 17,.14); border-color: #111111; }
+                  .panda-passkey-btn:hover:not(:disabled) { background: rgba(232, 212, 176, 0.12); border-color: #e8d4b0; }
                   .panda-passkey-btn:disabled { opacity: .55; cursor: wait; }
                 `}</style>
                 <PasskeyLoginButton

@@ -593,10 +593,10 @@ const ClientModule = ({ isMobile, clients, onRefresh, initialClientId }) => {
                 const tier = visits === 0 ? 0 : visits < 5 ? 1 : visits < 15 ? 2 : 3;
                 // All gold — just different intensities. No rainbow.
                 const tierColors = [
-                  { bg: 'rgba(17, 17, 17,0.04)', accent: 'rgba(17, 17, 17,0.25)', label: 'Nuevo',   strip: 'rgba(17, 17, 17,0.15)' },
-                  { bg: 'rgba(17, 17, 17,0.07)', accent: 'rgba(17, 17, 17,0.50)', label: 'Regular', strip: 'rgba(17, 17, 17,0.30)' },
-                  { bg: 'rgba(17, 17, 17,0.12)', accent: '#111111',                label: 'Fiel',    strip: '#111111' },
-                  { bg: 'rgba(17, 17, 17,0.18)', accent: '#111111',                label: 'VIP',     strip: '#111111' },
+                  { bg: 'rgba(232, 212, 176, 0.05)', accent: 'rgba(232, 212, 176, 0.30)', label: 'Nuevo',   strip: 'rgba(232, 212, 176, 0.18)' },
+                  { bg: 'rgba(232, 212, 176, 0.08)', accent: 'rgba(232, 212, 176, 0.55)', label: 'Regular', strip: 'rgba(232, 212, 176, 0.35)' },
+                  { bg: 'rgba(232, 212, 176, 0.14)', accent: '#e8d4b0',                    label: 'Fiel',    strip: '#e8d4b0' },
+                  { bg: 'rgba(232, 212, 176, 0.20)', accent: '#e8d4b0',                    label: 'VIP',     strip: '#e8d4b0' },
                 ];
                 const tc = tierColors[tier];
                 // Warm dark avatar gradients — all complement gold

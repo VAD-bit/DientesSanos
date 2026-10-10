@@ -713,14 +713,14 @@ const DashboardModule = ({
     datasets: [
       {
         data: chartData?.datasets?.[0]?.data || [0, 0, 0, 0, 0, 0, 0],
-        borderColor: '#111111',
+        borderColor: '#e8d4b0',
         borderWidth: 2.5,
-        pointBackgroundColor: '#111111',
-        pointBorderColor: '#e9eae8',
+        pointBackgroundColor: '#e8d4b0',
+        pointBorderColor: '#1e1e22',
         pointBorderWidth: 2,
         pointRadius: 4,
         pointHoverRadius: 7,
-        pointHoverBackgroundColor: '#111111',
+        pointHoverBackgroundColor: '#e8d4b0',
         tension: 0.45,
         fill: true,
         backgroundColor: (context) => {
@@ -728,9 +728,9 @@ const DashboardModule = ({
           const { ctx, chartArea } = chart;
           if (!chartArea) return null;
           const gradient = ctx.createLinearGradient(0, chartArea.top, 0, chartArea.bottom);
-          gradient.addColorStop(0, 'rgba(17, 17, 17, 0.18)');
-          gradient.addColorStop(0.6, 'rgba(17, 17, 17, 0.04)');
-          gradient.addColorStop(1, 'rgba(17, 17, 17, 0.0)');
+          gradient.addColorStop(0, 'rgba(232, 212, 176, 0.22)');
+          gradient.addColorStop(0.6, 'rgba(232, 212, 176, 0.05)');
+          gradient.addColorStop(1, 'rgba(232, 212, 176, 0.0)');
           return gradient;
         },
       }
@@ -743,14 +743,14 @@ const DashboardModule = ({
     datasets: [
       {
         data: monthlyChartData?.datasets?.[0]?.data || [],
-        borderColor: '#111111',
+        borderColor: '#e8d4b0',
         borderWidth: 2.5,
-        pointBackgroundColor: '#111111',
-        pointBorderColor: '#e9eae8',
+        pointBackgroundColor: '#e8d4b0',
+        pointBorderColor: '#1e1e22',
         pointBorderWidth: 2,
         pointRadius: 0,
         pointHoverRadius: 6,
-        pointHoverBackgroundColor: '#111111',
+        pointHoverBackgroundColor: '#e8d4b0',
         tension: 0.35,
         fill: true,
         backgroundColor: (context) => {
@@ -758,9 +758,9 @@ const DashboardModule = ({
           const { ctx, chartArea } = chart;
           if (!chartArea) return null;
           const gradient = ctx.createLinearGradient(0, chartArea.top, 0, chartArea.bottom);
-          gradient.addColorStop(0, 'rgba(17, 17, 17, 0.18)');
-          gradient.addColorStop(0.6, 'rgba(17, 17, 17, 0.04)');
-          gradient.addColorStop(1, 'rgba(17, 17, 17, 0.0)');
+          gradient.addColorStop(0, 'rgba(232, 212, 176, 0.22)');
+          gradient.addColorStop(0.6, 'rgba(232, 212, 176, 0.05)');
+          gradient.addColorStop(1, 'rgba(232, 212, 176, 0.0)');
           return gradient;
         },
       }
@@ -785,8 +785,8 @@ const DashboardModule = ({
       tooltip: {
         backgroundColor: 'var(--bg-secondary)',
         titleColor: '#f8f8f8',
-        bodyColor: '#111111',
-        borderColor: 'rgba(17, 17, 17,0.15)',
+        bodyColor: '#e8d4b0',
+        borderColor: 'rgba(232, 212, 176, 0.25)',
         borderWidth: 1,
         padding: 10,
         cornerRadius: 10,
@@ -970,7 +970,7 @@ const DashboardModule = ({
                 onFocus={(e) => {
                   setIsSearchOpen(true);
                   e.target.style.backgroundColor = 'rgba(255,255,255,0.07)';
-                  e.target.style.borderColor = 'rgba(17, 17, 17, 0.3)';
+                  e.target.style.borderColor = 'rgba(232, 212, 176, 0.35)';
                 }}
                 onBlur={(e) => {
                   e.target.style.backgroundColor = 'rgba(255,255,255,0.04)';
@@ -1007,7 +1007,7 @@ const DashboardModule = ({
                     padding: '6px',
                     borderRadius: '12px',
                     background: 'var(--bg-secondary)',
-                    border: '1px solid rgba(17, 17, 17, 0.2)',
+                    border: '1px solid rgba(232, 212, 176, 0.18)',
                     boxShadow: '0 18px 45px rgba(0,0,0,0.55)',
                     maxHeight: '340px',
                     overflowY: 'auto',
@@ -1045,7 +1045,7 @@ const DashboardModule = ({
                           padding: '9px 10px',
                           border: 'none',
                           borderRadius: '9px',
-                          background: isActive ? 'rgba(17, 17, 17, 0.12)' : 'transparent',
+                          background: isActive ? 'rgba(232, 212, 176, 0.12)' : 'transparent',
                           color: 'white',
                           cursor: 'pointer',
                           textAlign: 'left'
@@ -1059,8 +1059,8 @@ const DashboardModule = ({
                           placeItems: 'center',
                           borderRadius: '8px',
                           color: 'var(--champagne)',
-                          background: 'rgba(17, 17, 17, 0.09)',
-                          border: '1px solid rgba(17, 17, 17, 0.14)'
+                          background: 'rgba(232, 212, 176, 0.08)',
+                          border: '1px solid rgba(232, 212, 176, 0.14)'
                         }}>
                           <ResultIcon size={15} />
                         </span>
@@ -1093,7 +1093,7 @@ const DashboardModule = ({
                           fontWeight: 800,
                           letterSpacing: '0.5px',
                           textTransform: 'uppercase',
-                          color: 'rgba(17, 17, 17, 0.7)'
+                          color: 'rgba(232, 212, 176, 0.65)'
                         }}>
                           {typeLabel}
                         </span>
@@ -1661,7 +1661,7 @@ const DashboardModule = ({
                   <Crown size={14} color="var(--champagne)" fill="var(--champagne)" />
                   <span style={{ fontSize: '10px', fontWeight: '800', color: 'white', letterSpacing: '0.5px', textTransform: 'uppercase' }}>Top Odontólogos</span>
                 </div>
-                <span style={{ fontSize: '8.5px', fontWeight: '700', color: 'var(--champagne)', backgroundColor: 'rgba(17, 17, 17, 0.1)', padding: '2px 8px', borderRadius: '100px', border: '1px solid rgba(17, 17, 17, 0.2)' }}>
+                <span style={{ fontSize: '8.5px', fontWeight: '700', color: 'var(--champagne)', backgroundColor: 'rgba(232, 212, 176, 0.1)', padding: '2px 8px', borderRadius: '100px', border: '1px solid rgba(232, 212, 176, 0.2)' }}>
                   MES EN CURSO
                 </span>
               </div>
@@ -1699,7 +1699,7 @@ const DashboardModule = ({
                     const elevateY = '0px';
 
                     const bgGradient = isTop1
-                      ? 'linear-gradient(to bottom, rgba(17, 17, 17, 0.4), rgba(17, 17, 17, 0.05))'
+                      ? 'linear-gradient(to bottom, rgba(232, 212, 176, 0.25), rgba(232, 212, 176, 0.04))'
                       : isTop2
                       ? 'linear-gradient(to bottom, rgba(161, 161, 170, 0.28), rgba(161, 161, 170, 0.03))'
                       : isTop3
@@ -1731,12 +1731,12 @@ const DashboardModule = ({
                             height: avatarSize,
                             borderRadius: '12px',
                             border: isTop1 ? '2.5px solid var(--champagne)' : `2px solid ${borderColor}`,
-                            boxShadow: isTop1 ? '0 0 16px rgba(17, 17, 17, 0.65)' : '0 2px 6px rgba(0,0,0,0.3)',
+                            boxShadow: isTop1 ? '0 0 16px rgba(232, 212, 176, 0.45)' : '0 2px 6px rgba(0,0,0,0.3)',
                             padding: '2px',
                             display: 'flex',
                             alignItems: 'center',
                             justifyContent: 'center',
-                            backgroundColor: isTop1 ? 'rgba(17, 17, 17, 0.1)' : 'rgba(0,0,0,0.3)'
+                            backgroundColor: isTop1 ? 'rgba(232, 212, 176, 0.1)' : 'rgba(0,0,0,0.3)'
                           }}>
                             {barber.image_url ? (
                                <img loading="lazy" src={barber.image_url} alt={barber.name} style={{ width: '100%', height: '100%', borderRadius: '8px', objectFit: 'cover' }} />
@@ -1917,8 +1917,8 @@ const DashboardModule = ({
                         }}>{item.service} · {item.barber}</span>
                         {item.beverage && (
                           <span style={{
-                            fontSize: '10px', fontWeight: '800', color: '#111111',
-                            background: 'rgba(17, 17, 17,0.1)', border: '1px solid rgba(17, 17, 17,0.2)',
+                            fontSize: '10px', fontWeight: '800', color: '#e8d4b0',
+                            background: 'rgba(232, 212, 176, 0.1)', border: '1px solid rgba(232, 212, 176, 0.2)',
                             borderRadius: '6px', padding: '3px 8px', whiteSpace: 'nowrap', flexShrink: 0,
                             textTransform: 'capitalize'
                           }}>☕ {item.beverage}</span>
@@ -1975,11 +1975,11 @@ const DashboardModule = ({
                       transition: 'all 0.25s cubic-bezier(0.4, 0, 0.2, 1)',
                     }}
                     onMouseEnter={e => {
-                      e.currentTarget.style.backgroundColor = 'rgba(17, 17, 17, 0.08)';
-                      e.currentTarget.style.borderColor = 'rgba(17, 17, 17, 0.3)';
+                      e.currentTarget.style.backgroundColor = 'rgba(232, 212, 176, 0.08)';
+                      e.currentTarget.style.borderColor = 'rgba(232, 212, 176, 0.3)';
                       e.currentTarget.style.color = 'var(--champagne)';
                       e.currentTarget.style.transform = 'translateY(-1.5px)';
-                      e.currentTarget.style.boxShadow = '0 4px 10px rgba(17, 17, 17, 0.1)';
+                      e.currentTarget.style.boxShadow = '0 4px 10px rgba(0, 0, 0, 0.3)';
                       const icon = e.currentTarget.querySelector('svg');
                       if (icon) icon.style.color = 'var(--champagne)';
                     }}
@@ -2061,7 +2061,7 @@ const DashboardModule = ({
                           fontSize: '10px',
                           fontWeight: '700',
                           color: opt.id === incomePeriod ? 'var(--champagne)' : 'rgba(255,255,255,0.8)',
-                          backgroundColor: opt.id === incomePeriod ? 'rgba(17, 17, 17, 0.1)' : 'transparent',
+                          backgroundColor: opt.id === incomePeriod ? 'rgba(232, 212, 176, 0.1)' : 'transparent',
                           border: 'none',
                           cursor: 'pointer'
                         }}
@@ -2835,8 +2835,8 @@ const DashboardModule = ({
         .l-orb-1 {
           width: 600px;
           height: 600px;
-          background: radial-gradient(circle, rgba(17, 17, 17,0.55) 0%, rgba(180,140,90,0.2) 40%, transparent 70%);
-          opacity: 0.07;
+          background: radial-gradient(circle, rgba(232, 212, 176, 0.35) 0%, rgba(217, 192, 143, 0.15) 40%, transparent 70%);
+          opacity: 0.08;
           top: -15%;
           right: -12%;
           animation-duration: 28s;
@@ -2854,8 +2854,8 @@ const DashboardModule = ({
         .l-orb-3 {
           width: 400px;
           height: 400px;
-          background: radial-gradient(circle, rgba(17, 17, 17,0.4) 0%, transparent 70%);
-          opacity: 0.04;
+          background: radial-gradient(circle, rgba(232, 212, 176, 0.25) 0%, transparent 70%);
+          opacity: 0.05;
           top: 40%;
           left: 45%;
           animation-duration: 20s;
@@ -2884,8 +2884,8 @@ const DashboardModule = ({
                       box-shadow 0.35s ease !important;
         }
         .glass-card:hover {
-          border-color: rgba(17, 17, 17, 0.15) !important;
-          box-shadow: 0 16px 40px rgba(0, 0, 0, 0.7), 0 0 20px rgba(17, 17, 17,0.04) !important;
+          border-color: rgba(232, 212, 176, 0.25) !important;
+          box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6), 0 0 20px rgba(232, 212, 176, 0.06) !important;
         }
       `}</style>
     </div>

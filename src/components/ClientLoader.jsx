@@ -111,7 +111,7 @@ const ClientLoader = ({ visible, onFinish }) => {
         justifyContent: isMobile ? 'flex-end' : 'flex-start',
         padding: isMobile ? '0 24px 12vh 24px' : '0 10vw',
         overflow: 'hidden',
-        backgroundColor: '#f4f5f3'
+        backgroundColor: '#16161a'
       }}
     >
       {/* High-priority image element so the loader never paints the background
