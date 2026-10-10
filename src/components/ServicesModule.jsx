@@ -63,7 +63,7 @@ const AVAILABLE_ICONS = [
   { name: 'Droplets',    label: 'Limpieza / Hidratación' },
   { name: 'Palette',     label: 'Colorimetría / Tintes' },
   { name: 'Wind',        label: 'Secado / Blower' },
-  { name: 'Coffee',      label: 'Barista / Bebidas' },
+  { name: 'Coffee',      label: 'Bebidas' },
   { name: 'Zap',         label: 'Máquina / Express' },
   { name: 'Crosshair',   label: 'Precisión / Cejas' },
   { name: 'Waves',       label: 'Keratina / Alisado' },

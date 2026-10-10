@@ -43,12 +43,14 @@ import {
 import { publicService } from '../services/publicService';
 import { clearGoogleAuthIntent, GOOGLE_AUTH_DESTINATIONS, setGoogleAuthIntent } from '../utils/googleAuthIntent';
 import { formatDuration } from '../../utils/formatDuration';
-import { isBookableStaff, isBarberBookableStaff, isTattooBookableStaff, isTattooRole } from '../../utils/staffRoles';
+import { isBookableStaff, isBarberBookableStaff, isTattooBookableStaff, isTattooRole, roleLabel } from '../../utils/staffRoles';
 import PandaLoader from '../../components/PandaLoader';
 import PandaDatePicker from '../../components/PandaDatePicker';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import HorizontalScrollGallery from '../components/HorizontalScrollGallery';
 import { pushService } from '../../services/pushService';
+import { CLINIC } from '../config/clinic';
+import { getInstagramPosts } from '../services/instagramFeed';
 
 // Import background images and logo
 import logo from '../../assets/logo_full.png';
@@ -455,8 +457,9 @@ function useLazyMount(rootMargin = '600px 0px') {
 
 // Instagram reel card: extracted so each card gets its own lazy-mount observer
 // (can't call hooks per-item inside a plain .map callback in the parent).
-function InstagramReelCard({ post, idx, onDoubleClick }) {
+function InstagramReelCard({ post, idx, onOpen }) {
   const [ref, ready] = useLazyMount('600px 0px');
+  const hasImage = Boolean(post?.image);
   return (
     <motion.div
       ref={ref}
@@ -464,11 +467,18 @@ function InstagramReelCard({ post, idx, onDoubleClick }) {
       whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.8, delay: idx * 0.15, type: "spring", damping: 12, stiffness: 100 }}
-      onDoubleClick={onDoubleClick}
+      onClick={onOpen}
       className="group relative aspect-[9/16] rounded-2xl overflow-hidden border border-[#d9c08f]/15 bg-white cursor-pointer select-none"
-      title="Próximamente"
+      title={post?.caption || 'Ver en Instagram'}
     >
-      {post.video ? (
+      {hasImage ? (
+        <img
+          src={post.image}
+          alt={post.caption || 'Publicación de Dientes Sanos en Instagram'}
+          loading="lazy"
+          className="w-full h-full object-cover block transition-transform duration-500 md:group-hover:scale-105"
+        />
+      ) : post?.video ? (
         ready && (
           <video
             autoPlay
@@ -481,14 +491,25 @@ function InstagramReelCard({ post, idx, onDoubleClick }) {
           </video>
         )
       ) : (
-        <div className="w-full h-full transition-transform duration-500 md:group-hover:scale-105" style={{ background: 'linear-gradient(135deg,#f7f4ee 0%,#efe6d5 50%,#e8d4b0 100%)' }} />
+        <div className="w-full h-full flex flex-col items-center justify-center gap-2.5" style={{ background: 'linear-gradient(135deg,#f7f4ee 0%,#efe6d5 50%,#e8d4b0 100%)' }}>
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#111111" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+          </svg>
+          <span className="text-[9px] font-black text-[#111111] uppercase tracking-widest">@{CLINIC.instagramHandle}</span>
+        </div>
       )}
       {/* Hover Overlay */}
-      <div className="absolute inset-0 bg-black/50 opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center gap-1.5 text-white text-[10px] font-extrabold z-10 pointer-events-none">
+      <div className="absolute inset-0 bg-black/0 md:bg-black/0 md:group-hover:bg-black/50 opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center gap-1.5 text-white text-[10px] font-extrabold z-10 pointer-events-none">
         <span className="bg-[#111111] text-white py-1.5 px-3.5 rounded-lg uppercase tracking-wider scale-90 md:group-hover:scale-100 transition-transform duration-300">
-          PRÓXIMAMENTE
+          {hasImage ? 'VER EN INSTAGRAM' : 'PRÓXIMAMENTE'}
         </span>
-        <span className="text-[7.5px] text-[#d9c08f]/105 uppercase tracking-widest mt-1">Contenido pendiente</span>
+        {hasImage && post?.likes ? (
+          <span className="text-[8px] text-[#d9c08f] uppercase tracking-widest mt-1">♥ {post.likes}</span>
+        ) : (
+          <span className="text-[7.5px] text-[#d9c08f]/105 uppercase tracking-widest mt-1">Contenido del perfil</span>
+        )}
       </div>
     </motion.div>
   );
@@ -3107,7 +3128,7 @@ const videoRef = useRef(null);
                        
                        const specialtyText = (barber.specialty || '').trim() 
                           ? barber.specialty.trim().toUpperCase() 
-                          : (isAbraham ? 'MASTER DENTAL' : isAlejandro ? 'ODONTÓLOGO' : isAngel ? 'ODONTÓLOGO' : isJose ? 'ESTÉTICA' : isMarko ? 'ESTÉTICA' : (isBarista ? 'BARISTA' : isAsistente ? 'ASISTENTE CLÍNICO' : (isRawRolePermissions ? 'ASISTENTE' : rawRole.toUpperCase())));
+                          : (isAbraham ? 'MASTER DENTAL' : isAlejandro ? 'ODONTÓLOGO' : isAngel ? 'ODONTÓLOGO' : isJose ? 'ESTÉTICA' : isMarko ? 'ESTÉTICA' : (isBarista ? 'BARISTA' : isAsistente ? 'ASISTENTE CLÍNICO' : (isRawRolePermissions ? 'ASISTENTE' : roleLabel(rawRole).toUpperCase())));
                        const cleanTags = (barber.role?.split('|')[1] || '').trim();
                        const isRawPermissions = cleanTags.includes(',') || cleanTags.includes('barber') || cleanTags.includes('schedule') || !cleanTags;
                        const defaultTags = isBarista ? 'Café • Bebidas • Experiencia' : (isAsistente ? 'Higiene • Confort • Cuidado' : (specialtyText.includes('TATUA') || rawRole.toLowerCase().includes('tatu') ? 'Estética • Blanqueamiento • Sonrisa' : (specialtyText.includes('MANICUR') || specialtyText.includes('UÑA') ? 'Estética • Diseño • Sonrisa' : 'Prevención • Estética • Confort')));
@@ -3941,7 +3962,7 @@ const videoRef = useRef(null);
                         </div>
                         <div>
                           <h4 className="text-sm font-extrabold text-[#0f172a] uppercase tracking-wider">SEDE ÚNICA</h4>
-                          <span className="text-[10px] text-[#111111] font-bold uppercase tracking-wider">Maracay, Venezuela</span>
+                          <span className="text-[10px] text-[#111111] font-bold uppercase tracking-wider">{CLINIC.addressShort}</span>
                         </div>
                       </div>
                       <span className={`bg-[#f7f7f5] border px-2.5 py-1 rounded text-[10px] font-bold uppercase ${storeStatus.isOpen ? 'border-emerald-500/20 text-emerald-600' : 'border-red-500/20 text-red-400'}`}>
@@ -3954,8 +3975,7 @@ const videoRef = useRef(null);
                       <div className="flex items-start gap-3">
                         <MapPin size={16} className="text-[#111111] shrink-0 mt-0.5" />
                         <p className="text-[#334155] text-[13px] sm:text-[14px] leading-relaxed">
-                          {/* TODO(contacto): pendiente dirección física del cliente */}
-                          Por confirmar
+                          {CLINIC.address}
                         </p>
                       </div>
 
@@ -3981,17 +4001,18 @@ const videoRef = useRef(null);
                       <div className="flex items-center gap-2">
                         <Phone size={14} className="text-[#111111]" />
                         <a
-                          href="#"
-                          onClick={e => { e.preventDefault(); e.stopPropagation(); }}
+                          href={`tel:${CLINIC.phoneTel}`}
+                          onClick={e => { e.stopPropagation(); }}
                           className="text-[#334155] text-sm font-extrabold hover:text-[#111111] transition-colors"
                         >
-                          {/* TODO(contacto): pendiente teléfono del cliente */}
-                          Por confirmar
+                          {CLINIC.phoneDisplay}
                         </a>
                       </div>
                       <a
-                        href="#"
-                        onClick={e => { e.preventDefault(); e.stopPropagation(); }}
+                        href={CLINIC.instagramUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={e => { e.stopPropagation(); }}
                         className="flex items-center gap-1.5 text-[#475569] hover:text-[#111111] transition-colors cursor-pointer"
                         aria-label="Instagram"
                       >
@@ -4000,19 +4021,20 @@ const videoRef = useRef(null);
                           <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
                           <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
                         </svg>
-                        {/* TODO(contacto): pendiente Instagram del cliente */}
-                        <span className="text-[11px] font-bold">Por confirmar</span>
+                        <span className="text-[11px] font-bold">@{CLINIC.instagramHandle}</span>
                       </a>
                     </div>
 
-                    <button
+                    <a
+                      href={CLINIC.mapsUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       onClick={e => { e.stopPropagation(); }}
-                      className="btn-gold py-2.5 px-6 rounded-xl text-[11px] uppercase tracking-wider font-extrabold flex items-center gap-1.5 cursor-pointer"
+                      className="btn-gold py-2.5 px-6 rounded-xl text-[11px] uppercase tracking-wider font-extrabold flex items-center gap-1.5 cursor-pointer no-underline"
                       style={{ borderRadius: '10px' }}
                     >
-                      {/* TODO(contacto): pendiente enlace de Google Maps del cliente */}
                       <Compass size={13} /> VER EN GOOGLE MAPS
-                    </button>
+                    </a>
                   </div>
                 </div>
               </div>
@@ -4024,8 +4046,9 @@ const videoRef = useRef(null);
                 <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-[#111111] block mb-2">SÍGUENOS EN REDES</span>
                 <h2 className="text-3xl lg:text-4xl font-extrabold text-[#111111] tracking-tight uppercase font-sans mb-3 title-loop-pulse">INSTAGRAM <span className="text-[#d9c08f]">FEED</span></h2>
                 <a 
-                  href="#" 
-                  onClick={e => e.preventDefault()}
+                  href={CLINIC.instagramUrl} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
                   className="text-[#64748b] hover:text-[#111111] text-sm font-bold transition-colors inline-flex items-center gap-1.5 cursor-pointer"
                 >
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -4033,28 +4056,21 @@ const videoRef = useRef(null);
                     <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
                     <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
                   </svg>
-                  {/* TODO(contacto): pendiente Instagram del cliente */}
-                  Por confirmar
+                  @{CLINIC.instagramHandle}
                 </a>
               </div>
 
-              {/* Grid of 4 Videos */}
+              {/* Grid of 4 posts — fotos locales descargadas del Instagram real; fallback a cards con link */}
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-[1200px] mx-auto">
-                {[
-                  { video: null, url: null, likes: '284', comments: '24' },
-                  { video: null, url: null, likes: '342', comments: '31' },
-                  { video: null, url: null, likes: '198', comments: '16' },
-                  { video: null, url: null, likes: '412', comments: '39' }
-                ].map((post, idx) => (
+                {(getInstagramPosts(4).length > 0
+                  ? getInstagramPosts(4)
+                  : Array.from({ length: 4 }, (_, i) => ({ id: `ig-fallback-${i}` }))
+                ).map((post, idx) => (
                   <InstagramReelCard
-                    key={idx}
+                    key={post.id || post.shortcode || idx}
                     post={post}
                     idx={idx}
-                    onDoubleClick={(e) => {
-                      e.preventDefault();
-                      if (!post.url) return;
-                      window.open(post.url, '_blank', 'noopener,noreferrer');
-                    }}
+                    onOpen={() => window.open(post.permalink || CLINIC.instagramUrl, '_blank', 'noopener,noreferrer')}
                   />
                 ))}
               </div>
@@ -4062,9 +4078,10 @@ const videoRef = useRef(null);
               {/* Follow Button */}
               <div className="pt-8">
                 <a
-                  href="#"
-                  onClick={e => e.preventDefault()}
-                  className="btn-gold py-3.5 px-8 rounded-xl text-[11px] uppercase tracking-wider font-extrabold flex items-center gap-2 inline-flex cursor-pointer"
+                  href={CLINIC.instagramUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-gold py-3.5 px-8 rounded-xl text-[11px] uppercase tracking-wider font-extrabold flex items-center gap-2 inline-flex cursor-pointer no-underline"
                   style={{ borderRadius: '10px' }}
                 >
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -4086,9 +4103,9 @@ const videoRef = useRef(null);
               <div className="max-w-[1240px] mx-auto w-full hidden md:flex flex-row justify-between items-center gap-8 mb-10">
                 {/* Left links */}
                 <div className="flex flex-wrap justify-start gap-5 text-[10px] font-black tracking-[0.25em] text-[#94a3b8] uppercase">
-                  <a href="#" onClick={(e) => e.preventDefault()} className="hover:text-[#111111] transition-colors no-underline">{/* TODO(contacto): pendiente Instagram del cliente */}Por confirmar</a>
+                  <a href={CLINIC.instagramUrl} target="_blank" rel="noopener noreferrer" className="hover:text-[#111111] transition-colors no-underline">@{CLINIC.instagramHandle}</a>
                   <span className="text-[#cbd5e1] select-none">•</span>
-                  <a href="#" onClick={(e) => e.preventDefault()} className="hover:text-[#111111] transition-colors no-underline">{/* TODO(contacto): pendiente WhatsApp del cliente */}WhatsApp</a>
+                  <a href={CLINIC.whatsappUrl} target="_blank" rel="noopener noreferrer" className="hover:text-[#111111] transition-colors no-underline">WhatsApp</a>
                 </div>
 
                 {/* Logo Center */}
@@ -4118,8 +4135,8 @@ const videoRef = useRef(null);
                 {/* Connect Section */}
                 <div className="flex flex-col items-center gap-2.5">
                   <span className="text-[11px] font-black text-[#475569] uppercase tracking-[0.2em]">Conecta</span>
-                  <a href="#" onClick={(e) => e.preventDefault()} className="text-[12px] text-[#94a3b8] hover:text-[#111111] transition-colors no-underline">{/* TODO(contacto): pendiente Instagram del cliente */}Por confirmar</a>
-                  <a href="#" onClick={(e) => e.preventDefault()} className="text-[12px] text-[#94a3b8] hover:text-[#111111] transition-colors no-underline">{/* TODO(contacto): pendiente WhatsApp del cliente */}WhatsApp</a>
+                  <a href={CLINIC.instagramUrl} target="_blank" rel="noopener noreferrer" className="text-[12px] text-[#94a3b8] hover:text-[#111111] transition-colors no-underline">@{CLINIC.instagramHandle}</a>
+                  <a href={CLINIC.whatsappUrl} target="_blank" rel="noopener noreferrer" className="text-[12px] text-[#94a3b8] hover:text-[#111111] transition-colors no-underline">WhatsApp</a>
                 </div>
 
                 {/* More Section */}
@@ -4323,7 +4340,7 @@ const videoRef = useRef(null);
           
           const whatsappUrl = barberPhone 
             ? `https://wa.me/${barberPhone}?text=${encodeURIComponent(whatsappMsg)}`
-            : null;
+            : `https://wa.me/584243679576?text=${encodeURIComponent(whatsappMsg)}`;
 
           return (
           <div className="w-full flex-1 flex items-center justify-center p-4">

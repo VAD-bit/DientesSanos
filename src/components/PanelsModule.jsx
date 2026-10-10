@@ -1,9 +1,8 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import { User, ArrowLeft, Scissors, Coffee, Droplets, PenTool, Megaphone } from 'lucide-react';
+import { User, ArrowLeft, Scissors, Droplets, Megaphone } from 'lucide-react';
 import { dataService } from '../services/dataService';
-import { isSupportStaff } from '../utils/staffRoles';
+import { isSupportStaff, getRoleCategory, roleLabel } from '../utils/staffRoles';
 import BarberPanel from './BarberPanel';
-import BaristaPanel from './BaristaPanel';
 import SupportProfilePage from './SupportProfilePage';
 
 const RECENTS_KEY = 'panda_recent_panels';
@@ -12,20 +11,16 @@ const MAX_RECENTS = 4;
 const roleOf = staff => String(staff?.role || '').split('|')[0].toLowerCase();
 
 const ROLE_META = {
-  barista: { label: 'Barista', color: '#d99a5b', Icon: Coffee, filter: 'barista' },
-  asistente: { label: 'Asistente dental', color: '#6fb8e0', Icon: Droplets, filter: 'asistente' },
-  tatuador: { label: 'Especialista', color: '#b98ce0', Icon: PenTool, filter: 'tatuador' },
-  support: { label: 'Personal de apoyo', color: '#e0a36f', Icon: Megaphone, filter: 'apoyo' },
-  default: { label: 'Odontólogo', color: 'var(--gold-primary)', Icon: Scissors, filter: 'barbero' }
+  odontologo: { label: 'Odontólogo', color: 'var(--gold-primary)', Icon: Scissors, filter: 'odontologo' },
+  asistente: { label: 'Asistente', color: '#6fb8e0', Icon: Droplets, filter: 'asistente' },
+  support: { label: 'Personal de apoyo', color: '#e0a36f', Icon: Megaphone, filter: 'apoyo' }
 };
 
 const metaFor = member => {
-  const role = roleOf(member);
-  if (role.includes('barista') || role.includes('cafeter')) return ROLE_META.barista;
-  if (role.includes('asistente') || role.includes('lavado')) return ROLE_META.asistente;
-  if (role.includes('tatuad')) return ROLE_META.tatuador;
-  if (isSupportStaff(member)) return { ...ROLE_META.support, label: String(member.role || '').split('|')[0] || 'Personal de apoyo' };
-  return { ...ROLE_META.default, label: String(member.role || 'Odontólogo').split('|')[0] };
+  const cat = getRoleCategory(member?.role || '');
+  if (cat === 'asistente') return { ...ROLE_META.asistente, label: roleLabel(roleOf(member)) };
+  if (isSupportStaff(member)) return { ...ROLE_META.support, label: roleLabel(roleOf(member)) };
+  return { ...ROLE_META.odontologo, label: roleLabel(roleOf(member)) };
 };
 
 const initials = name => String(name || '')
@@ -71,7 +66,7 @@ export default function PanelsModule({ isMobile, rates }) {
     let mounted = true;
     dataService.getStaff().then(rows => mounted && setStaff((rows || []).filter(s => {
       const role = roleOf(s);
-      return !role.includes('admin') && !role.includes('recepcion') && !role.includes('caja');
+      return !role.includes('admin');
     }))).catch(error => console.error('Error cargando paneles:', error));
     return () => { mounted = false; };
   }, []);
@@ -86,10 +81,8 @@ export default function PanelsModule({ isMobile, rates }) {
     const present = new Set(staff.map(member => metaFor(member).filter));
     return [
       { key: 'all', label: 'Todos' },
-      present.has('barbero') && { key: 'barbero', label: 'Odontólogos' },
-      present.has('asistente') && { key: 'asistente', label: 'Limpiezas' },
-      present.has('tatuador') && { key: 'tatuador', label: 'Especialista' },
-      present.has('barista') && { key: 'barista', label: 'Café de cortesía' },
+      present.has('odontologo') && { key: 'odontologo', label: 'Odontólogos' },
+      present.has('asistente') && { key: 'asistente', label: 'Asistentes' },
       present.has('apoyo') && { key: 'apoyo', label: 'Apoyo' }
     ].filter(Boolean);
   }, [staff]);
@@ -101,8 +94,6 @@ export default function PanelsModule({ isMobile, rates }) {
     .filter(Boolean);
 
   if (selected) {
-    const role = roleOf(selected);
-    const isBarista = role.includes('barista') || role.includes('cafeter');
     const isSupport = isSupportStaff(selected);
     return (
       <section style={{ width: '100%' }}>
@@ -111,9 +102,7 @@ export default function PanelsModule({ isMobile, rates }) {
         </button>
         {isSupport
           ? <SupportProfilePage key={selected.id} isMobile={isMobile} staffMember={selected} />
-          : isBarista
-            ? <BaristaPanel isMobile={isMobile} />
-            : <BarberPanel key={selected.id} isMobile={isMobile} rates={rates} initialStaff={selected} />}
+          : <BarberPanel key={selected.id} isMobile={isMobile} rates={rates} initialStaff={selected} />}
       </section>
     );
   }

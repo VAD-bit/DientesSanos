@@ -1,15 +1,8 @@
 import React, { lazy, Suspense, useState, useEffect, useRef } from 'react';
 import Sidebar from './components/Sidebar';
 import { 
-  BarChart3, 
-  UserCircle, 
-  Users, 
-  Scissors, 
   Star, 
-  Package, 
-  Wallet, 
   Settings,
-  Calendar,
   X,
   History
 } from 'lucide-react';
@@ -64,7 +57,6 @@ const ReportsModule = safeLazy(() => import('./components/ReportsModule'));
 const ReceptionModule = safeLazy(() => import('./components/ReceptionModule'));
 const CheckoutPOS = safeLazy(() => import('./components/CheckoutPOS'));
 const BarberPanel = safeLazy(() => import('./components/BarberPanel'));
-const BaristaPanel = safeLazy(() => import('./components/BaristaPanel'));
 const PanelsModule = safeLazy(() => import('./components/PanelsModule'));
 const SchedulingModule = safeLazy(() => import('./components/SchedulingModule'));
 const SettingsModule = safeLazy(() => import('./components/SettingsModule'));
@@ -332,18 +324,6 @@ function App() {
     }]
   });
 
-  const menuItems = [
-    { id: 'dashboard', label: 'Dashboard', icon: BarChart3 },
-    { id: 'my-profile', label: 'Mi Perfil', icon: UserCircle },
-    { id: 'reception', label: 'Recepción (Padre)', icon: UserCircle },
-    { id: 'clients', label: 'Clientes', icon: Users },
-    { id: 'personnel', label: 'Equipo', icon: Scissors },
-    { id: 'services', label: 'Servicios', icon: Star },
-    { id: 'inventory', label: 'Inventario', icon: Package, roles: ['Admin', 'Caja'] },
-    { id: 'finance', label: 'Finanzas', icon: Wallet, roles: ['Admin', 'Caja'] },
-    { id: 'reports', label: 'Reportes', icon: BarChart3, roles: ['Admin'] },
-    { id: 'history', label: 'Historial', icon: History, roles: ['Admin', 'Barbero', 'Recepcionista', 'Caja', 'Asistente'] },
-  ];
 
   useEffect(() => {
     if (!user) return;
@@ -844,7 +824,6 @@ function App() {
       case 'reception': return <div className="p-container"><ReceptionModule isMobile={isMobile} /></div>;
       case 'checkout': return <div className="p-container"><CheckoutPOS isMobile={isMobile} rates={effectiveRates} onOpenSale={() => setIsSaleModalOpen(true)} onNavigate={handleTabChange} /></div>;
       case 'barber': return <div className="p-container"><BarberPanel isMobile={isMobile} rates={effectiveRates} /></div>;
-      case 'barista': return <div className="p-container"><BaristaPanel isMobile={isMobile} /></div>;
       case 'panels': return <div className="p-container"><PanelsModule isMobile={isMobile} rates={effectiveRates} /></div>;
       case 'scheduling': return <div className="p-container" style={{ height: 'auto', minHeight: '100%' }}><SchedulingModule isMobile={isMobile} rates={effectiveRates} openAddModal={openScheduleAddModal} onCloseAddModal={() => setOpenScheduleAddModal(false)} /></div>;
       case 'services': return <div className="p-container"><ServicesModule isMobile={isMobile} currency={currency} rates={effectiveRates} /></div>;

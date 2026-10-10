@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Settings, User, Award, Calendar as CalendarIcon, Scissors, Coffee, Gamepad2, Compass, ArrowUpRight, MapPin, X, ChevronLeft, Star, Heart } from 'lucide-react';
 import { publicService } from '../services/publicService';
+import { CLINIC } from '../config/clinic';
 import { roleLabel } from '../../utils/staffRoles';
 import { getNormalizedSpecialty, getBarberBiography, getBarberStats } from './BookAppointment';
 import BarberProfileView from '../components/BarberProfileView';
@@ -81,8 +82,7 @@ export default function Explore() {
           <h2 className="explore-hero-title">Experiencia Dientes Sanos</h2>
           <div className="explore-hero-meta">
             <MapPin size={12} />
-            {/* TODO(contacto): pendiente datos del cliente */}
-            <span>Por confirmar</span>
+            <span>{CLINIC.addressShort}</span>
           </div>
         </div>
       </div>

@@ -3,6 +3,7 @@ import { useState, useEffect, useRef, Suspense } from 'react';
 import { Menu, X, Scissors, Phone, MapPin, Calendar, User, ChevronRight, Check, ArrowRight, Star, Gift } from 'lucide-react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { publicService } from '../services/publicService';
+import { CLINIC } from '../config/clinic';
 import { clearGoogleAuthIntent, shouldReturnToBookingAfterGoogle } from '../utils/googleAuthIntent';
 import logo from '../../assets/panda_menu_logo.png';
 import PandaLoader from '../../components/PandaLoader';
@@ -484,11 +485,11 @@ export default function PublicLayout() {
       )}
 
       {/* ── Floating WhatsApp Button ── */}
-      {/* TODO(contacto): pendiente datos del cliente — el botón flotante de WhatsApp
-          queda inerte (href="#") hasta que se carguen los datos reales. */}
       {!showOnboarding && !menuOpen && location.pathname === '/' && (
         <a
-          href="#"
+          href={CLINIC.whatsappUrl}
+          target="_blank"
+          rel="noopener noreferrer"
           className="whatsapp-float-btn fixed bottom-6 left-6 md:left-8 z-[9999] bg-[#f4f5f3] border border-[#111111]/30 text-[#111111] p-3 md:p-4 rounded-full shadow-[0_4px_20px_rgba(17, 17, 17,0.15)] hover:border-[#111111] hover:bg-[#111111]/10 hover:scale-110 active:scale-95 transition-all duration-300 flex items-center justify-center group"
           aria-label="Contactar por WhatsApp"
         >
