@@ -1748,7 +1748,7 @@ export const dataService = {
       .eq('appointment_id', appointmentId);
 
     if (staffList) {
-      const toDelete = staffList.filter(s => s.staff?.role?.includes('Asistente de Lavado')).map(s => s.id);
+      const toDelete = staffList.filter(s => isAsistenteRole({ role: s.staff?.role })).map(s => s.id);
       if (toDelete.length > 0) {
         await supabase.from('appointment_staff').delete().in('id', toDelete);
       }
@@ -2885,7 +2885,7 @@ export const dataService = {
 
     const roleLower = staffMember.role?.toLowerCase() || '';
     const isAssistant = roleLower.includes('asistente') || roleLower.includes('lavado') || roleLower.includes('operaciones');
-    const isBarber = !isAssistant && (roleLower.includes('barbero') || roleLower.includes('barber') || roleLower.includes('socio') || roleLower.includes('estilista') || roleLower.includes('lider'));
+    const isBarber = !isAssistant && (roleLower.includes('barbero') || roleLower.includes('barber') || roleLower.includes('odontolog') || roleLower.includes('socio') || roleLower.includes('estilista') || roleLower.includes('lider'));
 
     const { data: txs, error: txsErr } = await supabase
       .from('transactions')

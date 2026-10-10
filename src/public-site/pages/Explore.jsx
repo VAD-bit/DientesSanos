@@ -31,7 +31,7 @@ export default function Explore() {
           if (!s.active) return false;
           if (s.show_on_landing === false) return false;
           const role = (s.role || '').toLowerCase();
-          return role.includes('barbero') || role.includes('tatuador') || role.includes('estilista') || role.includes('barber') || role.includes('tatu');
+          return role.includes('barbero') || role.includes('odontolog') || role.includes('tatuador') || role.includes('estilista') || role.includes('barber') || role.includes('tatu');
         });
         setStaff(filtered);
       } catch (e) {

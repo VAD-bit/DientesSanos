@@ -1225,7 +1225,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
               appliedWashes++;
             }
 
-            const isServiceProfessional = role.includes('barber') || role.includes('tatu');
+            const isServiceProfessional = role.includes('barber') || role.includes('tatu') || role.includes('odontolog');
             const pct = isServiceProfessional ? Number(app.staff?.commission_pct ?? 60) : 0;
 
             const comm = grossBase * (pct / 100);
@@ -1244,7 +1244,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
               involved.push({
                 staffId: app.staff_id,
                 name: app.staff?.name || 'Odontólogo',
-                role: app.staff?.role || 'Barbero',
+                role: app.staff?.role || 'Odontologo',
                 commissionPct: pct,
                 commissionEarned: comm,
                 commissionBs: comm * fixedRate,
@@ -1273,7 +1273,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
               involved.push({
                 staffId: selectedWasherId,
                 name: washer?.name || 'Asistente',
-                role: washer?.role || 'Asistente de Lavado',
+                role: washer?.role || 'Asistente',
                 commissionPct: WASH_ASSISTANT_SHARE * 100,
                 commissionEarned: washCommission,
                 commissionBs: washCommission * fixedRate,
@@ -1294,7 +1294,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
               involved.push({
                 staffId: t.staffId,
                 name: staffObj?.name || 'Staff',
-                role: staffObj?.role || 'Barbero',
+                role: staffObj?.role || 'Odontologo',
                 commissionEarned: 0,
                 productCommissionEarned: 0,
                 tip: tipValT,
@@ -1371,7 +1371,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
 
       paymentData.serviceStaff = totalAppsInCheckout
         .filter(app => app.staff_id)
-        .map(app => ({ staffId: app.staff_id, name: app.staff?.name || 'Profesional', role: app.staff?.role || 'Barbero' }));
+        .map(app => ({ staffId: app.staff_id, name: app.staff?.name || 'Profesional', role: app.staff?.role || 'Odontologo' }));
       paymentData.pendingStaffInvolved = paymentData.staffInvolved;
 
       // Desglose por-cita para la tabla appointment_staff. `staffInvolved` (arriba)
@@ -1410,7 +1410,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
               grossBase = Math.max(0, grossBase - washRate);
               appliedWashes++;
             }
-            const isServiceProfessional = role.includes('barber') || role.includes('tatu');
+            const isServiceProfessional = role.includes('barber') || role.includes('tatu') || role.includes('odontolog');
             const pct = isServiceProfessional ? Number(app.staff?.commission_pct ?? 60) : 0;
             const comm = grossBase * (pct / 100);
             const row = getRow(app.id, app.staff_id);
@@ -3085,7 +3085,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                       onChange={setExchangeStaffId}
                       options={allStaff.filter(member => {
                         const role = String(member.role || '').toLowerCase();
-                        return role.includes('barber') || role.includes('tatu') || role.includes('estilista');
+                        return role.includes('barber') || role.includes('odontolog') || role.includes('tatu') || role.includes('estilista');
                       }).map(member => ({ value: member.id, label: member.name, imageUrl: member.image_url || member.avatar_url || '', avatarFallback: (member.name || '?').trim().charAt(0).toUpperCase(), subtitle: (member.role || 'Profesional').split('|')[0] }))}
                     />
                     <p style={{ margin: '8px 0 0', color: '#ffcc80', fontSize: '10px', lineHeight: 1.4 }}>El cliente paga $0. No se genera comisión del odontólogo; se le carga la parte de la clínica y la profilaxis completa.</p>

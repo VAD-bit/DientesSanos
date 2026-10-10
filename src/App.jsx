@@ -792,7 +792,7 @@ function App() {
   const handleSeedData = async () => {
     if (!await confirm('¿Quieres cargar datos de prueba para ver el CRM funcionando?')) return;
     try {
-      await dataService.addStaff({ name: 'Marco Silva', role: 'Barbero Principal', commission_pct: 60 });
+      await dataService.addStaff({ name: 'Marco Silva', role: 'Odontologo', commission_pct: 60 });
       await dataService.addService({ name: 'Blanqueamiento Premium', price: 80, category: 'Estética' });
       await dataService.addClient({ name: 'Carlos Demo', phone: '555-0123', hair_type: 'Normal' });
       await alert('Datos de demo cargados!');

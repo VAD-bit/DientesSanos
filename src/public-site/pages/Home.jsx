@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Scissors, Star, Clock, ChevronRight, Sparkles, Users } from 'lucide-react';
 import { publicService } from '../services/publicService';
 import { formatDuration } from '../../utils/formatDuration';
+import { roleLabel } from '../../utils/staffRoles';
 
 export default function Home() {
   const [services, setServices] = useState([]);
@@ -33,7 +34,7 @@ export default function Home() {
         setBarbers(staffData.filter(s => {
           if (s.show_on_landing === false) return false;
           const r = (s.role || '').toLowerCase();
-          return r.includes('barber') || r.includes('barba') || r.includes('artista') || r.includes('tatu');
+          return r.includes('barber') || r.includes('barba') || r.includes('artista') || r.includes('odontolog') || r.includes('tatu');
         }).slice(0, 3));
         setReviews(reviewsData || []);
         if (googleData.length) {
@@ -271,7 +272,7 @@ export default function Home() {
                         )}
                       </div>
                       <h3 style={{ fontWeight: 700, fontSize: 18, marginBottom: 4 }}>{barber.name}</h3>
-                      <p style={{ color: 'var(--champagne)', fontSize: 14, margin: 0 }}>{barber.role?.split('|')[0]}</p>
+                      <p style={{ color: 'var(--champagne)', fontSize: 14, margin: 0 }}>{roleLabel(barber.role?.split('|')[0])}</p>
                       
                       {avgRating && (
                         <div style={{ display: 'inline-flex', alignItems: 'center', gap: 4, marginTop: 8, color: 'var(--gold-primary)', fontSize: 13, fontWeight: '700' }}>

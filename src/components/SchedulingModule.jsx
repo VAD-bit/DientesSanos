@@ -44,7 +44,7 @@ import ScheduleModal from './ScheduleModal';
 import { useAuth } from '../context/AuthContext';
 import { ModalShield } from '../context/ModalContext';
 import AnimatedModal from './AnimatedModal';
-import { isBarberBookableStaff, roleLabel } from '../utils/staffRoles';
+import { isBarberBookableStaff, roleLabel, getRoleCategory } from '../utils/staffRoles';
 
 const DEFAULT_DAY_TIMELINE_START = 8;
 const DEFAULT_DAY_TIMELINE_END = 24;
@@ -3255,7 +3255,7 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
               menuStyle={{ background: 'var(--bg-secondary)', border: '1px solid rgba(17, 17, 17,0.22)', borderRadius: '14px', padding: '6px', boxShadow: '0 18px 48px rgba(0,0,0,0.7), 0 0 0 1px rgba(255,255,255,0.025)' }}
             />
           </div>
-          {!(user?.role === 'Barbero' || user?.role?.startsWith('Barbero|') || user?.role === 'Tatuador' || user?.role?.startsWith('Tatuador|')) && (
+          {getRoleCategory(user?.role || '') !== 'odontologo' && (
             <button className="btn-gold agenda-create-button" style={{ boxShadow: '0 5px 15px rgba(255, 255, 255, 0.25)' }} onClick={() => {
                 setEditingApp(null);
                 setNewApp({ clientId: '', serviceId: '', staffId: '', time: '10:00', extras: [], products: [] });
@@ -4292,7 +4292,7 @@ return (
                       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, 60px)', gap: '12px', justifyItems: 'center' }}>
                         {staff.filter(isBarberBookableStaff).map(s => {
                           const isSel = newApp.staffId === s.id;
-                          const locked = user?.role === 'Barbero' || user?.role?.startsWith('Barbero|');
+                          const locked = getRoleCategory(user?.role || '') === 'odontologo';
                           return (
                             <div key={s.id} onClick={() => { if (!locked) setNewApp({...newApp, staffId: s.id}); }} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '6px', cursor: locked ? 'not-allowed' : 'pointer', opacity: locked && !isSel ? 0.3 : 1 }}>
                               <div style={{ width: '52px', height: '52px', borderRadius: '26px', padding: '2px', background: isSel ? 'linear-gradient(135deg, var(--champagne-dark), var(--champagne-light))' : 'rgba(255,255,255,0.08)', transition: 'all 0.25s', transform: isSel ? 'scale(1.08)' : 'scale(1)' }}>

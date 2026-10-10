@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNotifs } from '../context/NotificationContext';
+import { roleLabel } from '../utils/staffRoles';
 import { 
   X, 
   User, 
@@ -43,7 +44,7 @@ const SaleServiceModal = ({ isOpen, onClose, clients, services, staff, extras, i
   
   // Form Data
   const [selectedService, setSelectedService] = useState(null);
-  const [involvedStaff, setInvolvedStaff] = useState([{ staffId: '', role: 'Barbero' }]);
+  const [involvedStaff, setInvolvedStaff] = useState([{ staffId: '', role: 'Odontologo' }]);
   const [selectedExtras, setSelectedExtras] = useState([]);
   const [selectedProducts, setSelectedProducts] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
@@ -66,7 +67,7 @@ const SaleServiceModal = ({ isOpen, onClose, clients, services, staff, extras, i
       setSelectedClient(null);
       setIdSearch('');
       setSelectedService(null);
-      setInvolvedStaff([{ staffId: '', role: 'Barbero' }]);
+      setInvolvedStaff([{ staffId: '', role: 'Odontologo' }]);
       setSelectedExtras([]);
       setSelectedProducts([]);
       setTotalPrice(0);
@@ -329,7 +330,7 @@ const SaleServiceModal = ({ isOpen, onClose, clients, services, staff, extras, i
                   label="Atendido por"
                   value={involvedStaff[0].staffId}
                   onChange={val => setInvolvedStaff([{ ...involvedStaff[0], staffId: val }])}
-                  options={staff.map(s => ({ label: s.name, value: s.id, imageUrl: s.image_url || s.avatar_url || '', avatarFallback: (s.name || '?').trim().charAt(0).toUpperCase(), subtitle: (s.role || 'Profesional').split('|')[0] }))}
+                  options={staff.map(s => ({ label: s.name, value: s.id, imageUrl: s.image_url || s.avatar_url || '', avatarFallback: (s.name || '?').trim().charAt(0).toUpperCase(), subtitle: roleLabel((s.role || 'Profesional').split('|')[0]) }))}
                   icon={<Scissors size={18} color="var(--gold-primary)" />}
                 />
               </div>

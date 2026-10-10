@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { getRoleCategory } from '../utils/staffRoles';
 import { 
   History, 
   Search, 
@@ -224,7 +225,7 @@ const HistoryModule = ({ isMobile, rates, onNavigate }) => {
                   <span style={{ fontSize: '10px', fontWeight: '800', color: 'var(--text-muted)', textTransform: 'uppercase', display: 'block', marginBottom: '2px' }}>Servicio Principal</span>
                   <span style={{ fontSize: '14px', fontWeight: '800', color: 'white' }}>{item.services?.name}</span>
                 </div>
-                {user.role !== 'Asistente de Lavado' && (
+                {getRoleCategory(user.role || '') !== 'asistente' && (
                   <div style={{ textAlign: isMobile ? 'left' : 'right' }}>
                     <span style={{ fontSize: '14px', fontWeight: '900', color: 'var(--gold-primary)', whiteSpace: 'nowrap' }}>
                       {formatCurrency((item.services?.price || 0) * Number(item.exchange_rate || rates?.bcv || rates?.usd || 550))} Bs.
@@ -496,7 +497,7 @@ const HistoryModule = ({ isMobile, rates, onNavigate }) => {
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'rgba(255,255,255,0.02)', padding: '10px 14px', borderRadius: '12px' }}>
                     <span style={{ fontSize: '13px', color: 'var(--text-secondary)', fontWeight: '700' }}>
-                      {user.role === 'Asistente de Lavado' ? 'Tarifa de Limpieza' : 'Tu Comisión'}
+                      {getRoleCategory(user.role || '') === 'asistente' ? 'Tarifa de Limpieza' : 'Tu Comisión'}
                     </span>
                     <div style={{ textAlign: 'right' }}>
                       <span style={{ fontSize: '14px', fontWeight: '800', color: 'white', whiteSpace: 'nowrap' }}>

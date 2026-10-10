@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef, lazy, Suspense } from 'react';
+import { getRoleCategory } from '../utils/staffRoles';
 import { createPortal } from 'react-dom';
 import CheckoutPOS from './CheckoutPOS';
 import NewClientModal from './NewClientModal';
@@ -372,7 +373,7 @@ const DashboardModule = ({
     const role = String(member.role || '').toLowerCase();
     return member.active !== false
       && !role.includes('archived')
-      && (role.includes('barbero') || role.includes('barber'));
+      && (role.includes('barbero') || role.includes('barber') || role.includes('odontolog'));
   });
   const checkedInBarberIds = new Set(
     attendanceQueue
@@ -1262,7 +1263,7 @@ const DashboardModule = ({
             </button>
 
             {/* + Nueva cita gold button */}
-            {!(user?.role === 'Barbero' || user?.role?.startsWith('Barbero|')) && (
+            {getRoleCategory(user?.role || '') !== 'odontologo' && (
             <button
               onClick={() => setShowSchedulePopup(true)}
               style={{

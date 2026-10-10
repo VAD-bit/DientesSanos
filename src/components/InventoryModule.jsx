@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react';
+import { getRoleCategory } from '../utils/staffRoles';
 import { 
   Package, 
   Plus, 
@@ -237,7 +238,7 @@ const InventoryModule = ({ isMobile, currency, rates }) => {
     if (!searchMatch) return false;
 
     // Filter for barbers: They see everything EXCEPT other barbers' tools
-    const isBarber = user?.role === 'Barbero' || user?.role?.startsWith('Barbero|');
+    const isBarber = getRoleCategory(user?.role || '') === 'odontologo';
     if (isBarber) {
       // If it's a tool, it MUST be mine or have no owner
       if (item.category === 'Herramienta') {

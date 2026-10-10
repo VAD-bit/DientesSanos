@@ -107,7 +107,7 @@ const ClientModule = ({ isMobile, clients, onRefresh, initialClientId }) => {
   const { user } = useAuth();
   const roleName = String(user?.role || '').split('|')[0].toLowerCase();
   const isAssistant = roleName.includes('asistente') || roleName.includes('barista') || roleName.includes('recep') || roleName.includes('admin') || roleName.includes('caja');
-  const isServiceProfessional = !isAssistant && (roleName.includes('barbero') || roleName.includes('tatuador'));
+  const isServiceProfessional = !isAssistant && (roleName.includes('barbero') || roleName.includes('odontolog') || roleName.includes('tatuador'));
   const canManageClientAdminActions = !isServiceProfessional;
 
   const [localClients, setLocalClients] = useState(clients || []);
@@ -1173,7 +1173,7 @@ const ClientDetail = ({ isMobile, client, onBack, onDelete, onUpdate }) => {
   const { user } = useAuth();
   const roleName = String(user?.role || '').split('|')[0].toLowerCase();
   const isAssistant = roleName.includes('asistente') || roleName.includes('barista') || roleName.includes('recep') || roleName.includes('admin') || roleName.includes('caja');
-  const isServiceProfessional = !isAssistant && (roleName.includes('barbero') || roleName.includes('tatuador'));
+  const isServiceProfessional = !isAssistant && (roleName.includes('barbero') || roleName.includes('odontolog') || roleName.includes('tatuador'));
 
   useEffect(() => {
     const loadHistory = async () => {

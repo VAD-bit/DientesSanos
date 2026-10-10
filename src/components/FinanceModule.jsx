@@ -356,7 +356,7 @@ const EditTransactionContent = ({ transaction: t, rates, staff = [], onSave, onC
                       label: b.name,
                       imageUrl: b.image_url || b.avatar_url || '',
                       avatarFallback: (b.name || '?').trim().charAt(0).toUpperCase(),
-                      subtitle: `${roleLabel((b.role || 'Barbero').split('|')[0])}${b.commission_pct != null ? ` · ${b.commission_pct}%` : ''}`
+                      subtitle: `${roleLabel((b.role || 'Odontologo').split('|')[0])}${b.commission_pct != null ? ` · ${b.commission_pct}%` : ''}`
                     }))
                   ]}
                   triggerStyle={{ minHeight: '44px' }}
@@ -1041,7 +1041,7 @@ const FinanceModule = ({ isMobile, currency, rates, staff = [] }) => {
 
   const eligibleBarbers = staff.filter(s => {
     const role = s.role?.toLowerCase() || '';
-    return (role.includes('barbero') || role.includes('barber')) && !role.includes('archived') && !role.includes('admin');
+    return (role.includes('barbero') || role.includes('barber') || role.includes('odontolog')) && !role.includes('archived') && !role.includes('admin');
   });
 
   const handleWeeklyTotalChange = (val) => {
@@ -1277,7 +1277,7 @@ const FinanceModule = ({ isMobile, currency, rates, staff = [] }) => {
         const newWasherId = meta.didWash ? (updates.washerId || soleAssistantId || '') : '';
         if (newWasherId && newWashDeduct > 0) {
           const e = touch(newWasherId);
-          if (e) { e.commissionEarned = Number(e.commissionEarned || 0) + newWashDeduct * WASH_SHARE; applyComm(e); if (!e.role) e.role = 'Asistente de lavado'; }
+          if (e) { e.commissionEarned = Number(e.commissionEarned || 0) + newWashDeduct * WASH_SHARE; applyComm(e); if (!e.role) e.role = 'Asistente'; }
         }
 
         // 3) Extras: los de LAVADO → asistente al 60%; los demás → barbero primario a su %
@@ -1289,7 +1289,7 @@ const FinanceModule = ({ isMobile, currency, rates, staff = [] }) => {
           if (isWashExtra(ex)) {
             if (!fallbackAssistantId) return;
             const e = touch(fallbackAssistantId);
-            if (e) { e.commissionEarned = Number(e.commissionEarned || 0) + price * WASH_SHARE; applyComm(e); if (!e.role) e.role = 'Asistente de lavado'; }
+            if (e) { e.commissionEarned = Number(e.commissionEarned || 0) + price * WASH_SHARE; applyComm(e); if (!e.role) e.role = 'Asistente'; }
           } else if (primaryBarberId) {
             const e = touch(primaryBarberId);
             if (e) { e.commissionEarned = Number(e.commissionEarned || 0) + price * (pctOf(primaryBarberId) / 100); applyComm(e); }
@@ -1547,9 +1547,9 @@ const FinanceModule = ({ isMobile, currency, rates, staff = [] }) => {
     
     let clientName = meta.clientName || desc.split(' - Cliente: ')[1]?.split(' - ')[0] || "S/N";
     let serviceName = meta.serviceName || desc.split(' - Servi: ')[1] || (t.category === 'Ventas Panda' || t.category === 'Ventas Pro' ? "Servicio" : t.description);
-    let barbero = meta.staffInvolved?.find(s => s.role?.includes('Barbero'))?.name ||
-                  meta.pendingStaffInvolved?.find(s => s.role?.includes('Barbero'))?.name ||
-                  meta.serviceStaff?.find(s => s.role?.includes('Barbero'))?.name ||
+    let barbero = meta.staffInvolved?.find(s => (s.role?.includes('Odontologo') || s.role?.includes('Barbero')))?.name ||
+                  meta.pendingStaffInvolved?.find(s => (s.role?.includes('Odontologo') || s.role?.includes('Barbero')))?.name ||
+                  meta.serviceStaff?.find(s => (s.role?.includes('Odontologo') || s.role?.includes('Barbero')))?.name ||
                   meta.serviceStaff?.[0]?.name ||
                   meta.staffInvolved?.[0]?.name ||
                   "N/A";
@@ -1574,7 +1574,7 @@ const FinanceModule = ({ isMobile, currency, rates, staff = [] }) => {
     
     // Lavado: check if any staff member is involved with washing logic or if it's in meta
     let didWash = meta.didWash ? 'Si' : 'No';
-    if (didWash === 'No' && meta.staffInvolved?.some(s => s.role?.includes('Asistente de Lavado'))) {
+    if (didWash === 'No' && meta.staffInvolved?.some(s => (s.role?.includes('Asistente') || s.role?.includes('Lavado')))) {
       didWash = 'Si';
     }
 
@@ -2128,7 +2128,7 @@ const FinanceModule = ({ isMobile, currency, rates, staff = [] }) => {
     const roleLower = st.role?.toLowerCase() || '';
     const isAssistant = roleLower.includes('asistente') || roleLower.includes('lavado') || roleLower.includes('operaciones');
     const isBarista = roleLower.includes('barista');
-    const isBarber = !isAssistant && (roleLower.includes('barbero') || roleLower.includes('barber') || roleLower.includes('tatu') || roleLower.includes('socio') || roleLower.includes('estilista') || roleLower.includes('lider'));
+    const isBarber = !isAssistant && (roleLower.includes('barbero') || roleLower.includes('barber') || roleLower.includes('odontolog') || roleLower.includes('tatu') || roleLower.includes('socio') || roleLower.includes('estilista') || roleLower.includes('lider'));
     // Personal de apoyo (editor, marketing, etc.): sueldo fijo. No acumula comisiones —
     // solo toma vales y se le registran pagos manualmente.
     const isSupportStaff = !isBarber && !isAssistant && !isBarista && !roleLower.startsWith('admin');
@@ -2314,7 +2314,7 @@ const FinanceModule = ({ isMobile, currency, rates, staff = [] }) => {
   }), [staff, weeklyTransactions, operationalTransactions, dateFilterStart, dateFilterEnd, rates, assistantConfig, salaryOverrides])
     .filter(s => (s.isBarber || s.isAssistant || s.isBarista || s.isSupportStaff) && s.active !== false && !String(s.role || '').startsWith('ARCHIVED|'));
 
-  const isAdminStaff = (st) => String(st?.role || '').split('|')[0].trim().toLowerCase() === 'admin';
+  const isAdminStaff = (st) => (String(st?.role || '').split('|')[0].trim().toLowerCase()).includes('admin');
 
   // Helpers reutilizables sobre un conjunto de transacciones.
   const productCostBsOf = (txs) => (txs || []).filter(t => t.type === 'income').reduce((sum, t) => {

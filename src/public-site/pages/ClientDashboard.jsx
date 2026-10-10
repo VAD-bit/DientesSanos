@@ -1007,7 +1007,7 @@ export default function ClientDashboard() {
                 (() => {
                   const filteredStaff = allStaff.filter(staff => {
                     const role = (staff.role || '').toLowerCase();
-                    return role.includes('barbero') || role.includes('tatuador') || role.includes('estilista');
+                    return role.includes('barbero') || role.includes('odontolog') || role.includes('tatuador') || role.includes('estilista');
                   });
                   
                   if (filteredStaff.length === 0) {

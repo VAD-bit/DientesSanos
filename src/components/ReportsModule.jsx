@@ -615,7 +615,7 @@ const ReportsModule = ({ isMobile, rates, staff = [] }) => {
   const isBarberRole = (role = '') => {
     const normalizedRole = role.toLowerCase();
     const isExcluded = normalizedRole.includes('admin') || normalizedRole.includes('asistente') || normalizedRole.includes('lavado') || normalizedRole.includes('caja') || normalizedRole.includes('recepcion');
-    return !isExcluded && (normalizedRole.includes('barber') || normalizedRole.includes('barbero'));
+    return !isExcluded && (normalizedRole.includes('barber') || normalizedRole.includes('barbero') || normalizedRole.includes('odontolog'));
   };
 
   const isAssistantRole = (role = '') => {
@@ -627,7 +627,7 @@ const ReportsModule = ({ isMobile, rates, staff = [] }) => {
     return staff
       .filter((s) => isBarberRole(s.role))
       .sort((a, b) => a.name.localeCompare(b.name))
-      .map((s) => ({ value: s.id, label: s.name, imageUrl: s.image_url || s.avatar_url || '', avatarFallback: (s.name || '?').trim().charAt(0).toUpperCase(), subtitle: roleLabel((s.role || 'Barbero').split('|')[0]) }));
+      .map((s) => ({ value: s.id, label: s.name, imageUrl: s.image_url || s.avatar_url || '', avatarFallback: (s.name || '?').trim().charAt(0).toUpperCase(), subtitle: roleLabel((s.role || 'Odontologo').split('|')[0]) }));
   })();
 
   const assistantOptions = (() => {

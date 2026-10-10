@@ -1,4 +1,5 @@
 import React, { useState, useEffect, lazy, Suspense } from 'react';
+import { getRoleCategory } from '../../utils/staffRoles';
 import { createPortal } from 'react-dom';
 import { 
   Zap,
@@ -188,9 +189,10 @@ const MobileDashboard = ({ onOpenSale, stats, chartData, dbData, onNavigate, onO
     setWhatsappModalData(null);
   };
 
-  const isBarber = user?.role === 'Barbero' || user?.role?.includes('Barbero|');
-  const isAssistant = user?.role?.includes('Asistente de Lavado');
-  const isAdmin = user?.role === 'Admin' || user?.role?.includes('Admin|');
+  const userCategory = getRoleCategory(user?.role || '');
+  const isBarber = userCategory === 'odontologo';
+  const isAssistant = userCategory === 'asistente';
+  const isAdmin = userCategory === 'admin';
 
   const myStats = ((isBarber || isAssistant) && dbData?.staff) 
     ? (dbData.staff.find(s => s.id === user.id)?.stats || { income: 0, appointments: 0 }) 
@@ -201,7 +203,7 @@ const MobileDashboard = ({ onOpenSale, stats, chartData, dbData, onNavigate, onO
     if (!dbData?.staff || dbData.staff.length === 0) return { name: "Marco Silva", count: 12 };
     const barbers = dbData.staff.filter(s => {
       const r = s.role?.toLowerCase() || '';
-      return (r.includes('barbero') || r.includes('barber')) && !r.includes('admin');
+      return (r.includes('barbero') || r.includes('barber') || r.includes('odontolog')) && !r.includes('admin');
     });
     if (barbers.length === 0) return { name: "Marco Silva", count: 12 };
     const sorted = [...barbers].sort((a, b) => (b.stats?.income || 0) - (a.stats?.income || 0));
@@ -218,7 +220,7 @@ const MobileDashboard = ({ onOpenSale, stats, chartData, dbData, onNavigate, onO
   const teamOverview = (dbData?.staff || [])
     .filter(s => {
       const r = s.role?.toLowerCase() || '';
-      return (r.includes('barbero') || r.includes('barber')) && !r.includes('archived') && !r.includes('admin');
+      return (r.includes('barbero') || r.includes('barber') || r.includes('odontolog')) && !r.includes('archived') && !r.includes('admin');
     })
     .sort((a, b) => (b.stats?.monthlyIncome || 0) - (a.stats?.monthlyIncome || 0));
 
