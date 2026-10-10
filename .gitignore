@@ -30,6 +30,24 @@ dist-ssr
 .env.*
 !/.env.example
 scratch/
+
+# Limpieza: scripts one-off y backups locales no van al repo
+backups/
+fix*.cjs
+*fix*.cjs
+git_diff.txt
+git_log.txt
+applyCouponActions.cjs
+find_emojis.cjs
+fetch_staff.js
+*_migration.sql
+check_policies.sql
+fix_rls.sql
+fix_storage.sql
+*.pem
+id_rsa*
+*.key
+
 # Solo las migraciones SQL forman parte del repositorio. El resto de la
 # carpeta puede contener llaves SSH y archivos locales del operador.
 supabase/*
@@ -37,3 +55,7 @@ supabase/*
 supabase/migrations/*
 !supabase/migrations/*.sql
 !src/lib/supabase.js
+
+# WhatsApp bot local (no forma parte del deploy Vercel del CRM)
+pandabarber-whatsapp-bot/
+
