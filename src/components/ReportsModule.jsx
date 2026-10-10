@@ -1890,7 +1890,7 @@ const ReportsModule = ({ isMobile, rates, staff = [] }) => {
         }}>
           {[
             { label: 'Limpiezas', value: Math.round(assistantReport.totalLavados).toString() },
-            { label: 'Clientes asistidos', value: Math.round(assistantReport.totalClientes).toString() },
+            { label: 'Pacientes asistidos', value: Math.round(assistantReport.totalClientes).toString() },
             { label: 'Tarifa Ref. $', value: `$${assistantReport.totalComision.toLocaleString('es-VE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}` },
             { label: 'Propinas Ref. $', value: `$${assistantReport.totalPropinas.toLocaleString('es-VE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}` },
             { label: 'Sin asignar', value: Math.round(assistantReport.unassignedWashes).toString() }

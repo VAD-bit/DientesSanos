@@ -587,7 +587,7 @@ const UserProfilePage = ({ staffMember, inventory = [], onUpdate, isMobile }) =>
       'RECEPTION': 'Recepción',
       'CHECKOUT': 'Caja Chica',
       'BARBER': 'Panel Odontólogo',
-      'CLIENTS': 'Clientes',
+      'CLIENTS': 'Pacientes',
       'PERSONNEL': 'Equipo de Personal',
       'SERVICES': 'Servicios',
       'INVENTORY': 'Inventario',

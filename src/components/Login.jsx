@@ -10,7 +10,7 @@ import PasskeyLoginButton from './PasskeyLoginButton';
 
 const features = [
   { icon: Calendar, title: 'Citas', desc: 'Gestiona tus reservas\ncon facilidad' },
-  { icon: Users, title: 'Clientes', desc: 'Crea relaciones\nmás fuertes' },
+  { icon: Users, title: 'Pacientes', desc: 'Crea relaciones\nmás fuertes' },
   { icon: DollarSign, title: 'Finanzas', desc: 'Controla tus ingresos\nen tiempo real' },
   { icon: BarChart2, title: 'Reportes', desc: 'Monitorea tu rendimiento\ny crecimiento' }
 ];

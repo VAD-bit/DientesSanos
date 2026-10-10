@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef, lazy, Suspense } from 'react';
 import { getRoleCategory } from '../utils/staffRoles';
 import { createPortal } from 'react-dom';
+import dentalChairImg from '../assets/dental-chair.png';
 import CheckoutPOS from './CheckoutPOS';
 import NewClientModal from './NewClientModal';
 import NewAppointmentModal from './NewAppointmentModal';
@@ -366,8 +367,8 @@ const DashboardModule = ({
   }, [facturadoHoyAmount]);
 
   const occupiedChairsCount = (realtimeAppointments || []).filter(a => a.status === 'En Silla').length;
-  const totalChairs = 7;
-  const ocupacionPercent = Math.round((occupiedChairsCount / totalChairs) * 100);
+  const totalChairs = 1;
+  const ocupacionPercent = Math.min(100, Math.round((occupiedChairsCount / totalChairs) * 100));
 
   const activeBarbers = staffList.filter(member => {
     const role = String(member.role || '').toLowerCase();
@@ -604,9 +605,9 @@ const DashboardModule = ({
     const activeInChair = realtimeAppointments.filter(a => a.status === 'En Silla');
     const result = [];
 
-    for (let i = 1; i <= 7; i++) {
+    for (let i = 1; i <= 1; i++) {
       const chairId = String(i).padStart(2, '0');
-      const activeApp = activeInChair[i - 1];
+      const activeApp = activeInChair[0];
 
       if (activeApp) {
         const elapsedStr = formatElapsedTime(activeApp.started_at || activeApp.created_at);
@@ -1405,7 +1406,7 @@ const DashboardModule = ({
           }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px', flexShrink: 0 }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <h3 style={{ fontSize: '13px', fontWeight: '800', color: 'white', margin: 0, textTransform: 'uppercase', letterSpacing: '0.5px' }}>Estado de sillones</h3>
+                <h3 style={{ fontSize: '13px', fontWeight: '800', color: 'white', margin: 0, textTransform: 'uppercase', letterSpacing: '0.5px' }}>Estado del sillón</h3>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '4px', backgroundColor: 'rgba(255,255,255,0.03)', padding: '2px 8px', borderRadius: '4px', border: '1px solid rgba(255,255,255,0.06)' }}>
                   <div style={{ width: '4px', height: '4px', borderRadius: '50%', backgroundColor: 'var(--champagne)' }} />
                   <span style={{ fontSize: '10px', color: 'rgba(255,255,255,0.5)', fontWeight: '600' }}>En tiempo real</span>
@@ -1541,8 +1542,8 @@ const DashboardModule = ({
                     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flex: 1, minHeight: 0, position: 'relative', zIndex: 2, margin: '4px 0' }}>
                        <img 
                         loading="lazy"
-                        src="/barber-chair.png" 
-                        alt="Sillón" 
+                        src={dentalChairImg} 
+                        alt="Sillón odontológico" 
                         style={{ 
                           maxHeight: '100%', 
                           maxWidth: '100%',

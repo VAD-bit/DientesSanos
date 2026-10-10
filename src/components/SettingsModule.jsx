@@ -465,7 +465,7 @@ const SettingsModule = ({ isMobile, clients, onRefresh }) => {
           </div>
 
           <div>
-            <h4 style={{ color: 'white', fontSize: '18px', fontWeight: '700', marginBottom: '16px' }}>Cupones Asignados a Clientes</h4>
+            <h4 style={{ color: 'white', fontSize: '18px', fontWeight: '700', marginBottom: '16px' }}>Cupones Asignados a Pacientes</h4>
             <div className="animate-slide-up" style={{ background: 'var(--bg-secondary)', padding: '0', borderRadius: '24px', overflow: 'hidden', border: '1px solid rgba(255, 255, 255, 0.15)' }}>
               <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', tableLayout: 'auto' }}>
                 <thead>

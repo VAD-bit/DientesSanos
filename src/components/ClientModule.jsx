@@ -24,7 +24,8 @@ import {
   LayoutGrid,
   Table as TableIcon,
   MessageCircle,
-  Receipt
+  Receipt,
+  ClipboardPlus
 } from 'lucide-react';
 import { dataService } from '../services/dataService';
 import { SkeletonList } from './Skeleton';
@@ -34,6 +35,7 @@ import PandaCamera from './PandaCamera';
 import PandaDatePicker from './PandaDatePicker';
 import PandaDialog from './PandaDialog';
 import AnimatedModal from './AnimatedModal';
+import ClinicalHistoryModal from './ClinicalHistoryModal';
 
 import { formatName, normalizeForSearch } from '../utils/stringUtils';
 import { useDialog } from '../context/DialogContext';
@@ -290,7 +292,7 @@ const ClientModule = ({ isMobile, clients, onRefresh, initialClientId }) => {
             marginBottom: isMobile ? '24px' : '40px'
           }}>
             <div>
-              <h2 style={{ fontSize: isMobile ? '26px' : '28px', fontWeight: '800', letterSpacing: '-0.5px', lineHeight: '1.2' }}>Archivo de <span className="text-gold">Clientes</span></h2>
+              <h2 style={{ fontSize: isMobile ? '26px' : '28px', fontWeight: '800', letterSpacing: '-0.5px', lineHeight: '1.2' }}>Archivo de <span className="text-gold">Pacientes</span></h2>
               <p style={{ color: 'var(--text-secondary)', marginTop: '6px', fontSize: isMobile ? '13px' : '15px' }}>Fichas técnicas y galería de evolución.</p>
             </div>
             <div style={{ display: 'flex', gap: '10px', alignItems: 'center', flexWrap: 'wrap', width: isMobile ? '100%' : 'auto' }}>
@@ -1142,6 +1144,9 @@ const ClientDetail = ({ isMobile, client, onBack, onDelete, onUpdate }) => {
   const [photoMeta, setPhotoMeta] = useState({ type: 'Normal', serviceId: null });
 
   const [clientCoupons, setClientCoupons] = useState([]);
+  const [showClinical, setShowClinical] = useState(false);
+  const [treatments, setTreatments] = useState([]);
+  const [loadingTreatments, setLoadingTreatments] = useState(true);
 
 
   // work_gallery (base64 photos) is intentionally NOT part of the clients list query
@@ -1158,6 +1163,15 @@ const ClientDetail = ({ isMobile, client, onBack, onDelete, onUpdate }) => {
       .catch(() => { if (alive) setGallery([]); });
     return () => { alive = false; };
   }, [client.id, client.work_gallery]);
+
+  useEffect(() => {
+    let alive = true;
+    dataService.getClientTreatments(client.id)
+      .then(list => { if (alive) setTreatments(Array.isArray(list) ? list : []); })
+      .catch(e => { console.error('Error loading treatments', e); if (alive) setTreatments([]); })
+      .finally(() => { if (alive) setLoadingTreatments(false); });
+    return () => { alive = false; };
+  }, [client.id]);
 
   const fileInputRef = useRef(null);
   const [editData, setEditData] = useState({ 
@@ -1349,21 +1363,41 @@ const ClientDetail = ({ isMobile, client, onBack, onDelete, onUpdate }) => {
         <button onClick={onBack} style={{ color: 'var(--text-secondary)', background: 'none', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '8px' }}>
           &larr; Volver al Listado
         </button>
-        <button 
-          onClick={onDelete}
-          style={{ 
-            color: '#ff453a', 
-            background: 'rgba(255, 69, 58, 0.1)', 
-            border: 'none', 
-            padding: '8px 16px', 
-            borderRadius: '8px', 
-            cursor: 'pointer',
-            fontSize: '13px',
-            fontWeight: '600'
-          }}
-        >
-          Eliminar Ficha
-        </button>
+        <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
+          <button
+            onClick={() => setShowClinical(true)}
+            style={{
+              color: '#111',
+              background: 'linear-gradient(135deg, #e8d4b0, #d9c08f)',
+              border: 'none',
+              padding: '8px 16px',
+              borderRadius: '8px',
+              cursor: 'pointer',
+              fontSize: '13px',
+              fontWeight: '800',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '6px'
+            }}
+          >
+            <ClipboardPlus size={15} /> Historial Clínico
+          </button>
+          <button
+            onClick={onDelete}
+            style={{
+              color: '#ff453a',
+              background: 'rgba(255, 69, 58, 0.1)',
+              border: 'none',
+              padding: '8px 16px',
+              borderRadius: '8px',
+              cursor: 'pointer',
+              fontSize: '13px',
+              fontWeight: '600'
+            }}
+          >
+            Eliminar Ficha
+          </button>
+        </div>
       </div>
       
       {isMobile ? (
@@ -2239,6 +2273,48 @@ const ClientDetail = ({ isMobile, client, onBack, onDelete, onUpdate }) => {
         </div>
       </div>
       )}
+
+      {/* Tratamientos e intervenciones del paciente */}
+      <div className="glass-card" style={{ marginTop: '20px' }}>
+        <h4 style={{ marginBottom: '16px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+          <Scissors size={18} color="var(--gold-primary)" /> Tratamientos e Intervenciones
+        </h4>
+        {loadingTreatments ? (
+          <SkeletonList rows={3} rowHeight={40} gap={8} />
+        ) : treatments.length === 0 ? (
+          <p style={{ color: 'var(--text-muted)', fontSize: '14px' }}>Sin tratamientos registrados todavía.</p>
+        ) : (
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+            {treatments.map(t => {
+              const when = t.completed_at || t.started_at || t.scheduled_at || t.created_at;
+              return (
+                <div key={t.id} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '10px', background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)', padding: '12px 14px', borderRadius: '12px' }}>
+                  <div style={{ minWidth: 0 }}>
+                    <div style={{ fontWeight: '800', color: 'white', fontSize: '13.5px' }}>{t.services?.name || 'Servicio'}</div>
+                    <div style={{ fontSize: '11.5px', color: 'var(--text-muted)', marginTop: '2px' }}>
+                      {when ? new Date(when).toLocaleString('es-VE', { day: 'numeric', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit', hour12: true }) : '—'}
+                      {t.staff?.name ? ` · ${t.staff.name}` : ''}
+                      {t.services?.category ? ` · ${t.services.category}` : ''}
+                    </div>
+                  </div>
+                  <div style={{ textAlign: 'right', flexShrink: 0 }}>
+                    <div style={{ fontWeight: '800', color: 'var(--gold-primary)', fontSize: '13px' }}>${Number(t.total_price || 0).toFixed(2)}</div>
+                    <div style={{ fontSize: '10px', fontWeight: '800', color: t.status === 'Completado' || t.status === 'Pagado' ? '#32d74b' : 'var(--text-muted)', textTransform: 'uppercase' }}>{t.status}</div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        )}
+      </div>
+
+      <ClinicalHistoryModal
+        key={client.id}
+        isOpen={showClinical}
+        client={client}
+        onClose={() => setShowClinical(false)}
+        onSaved={() => showToast('Historial clínico guardado')}
+      />
 
       <AnimatedModal isOpen={showCamera}>
         {(overlayClass, cardClass) => (

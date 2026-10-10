@@ -37,6 +37,7 @@ import {
 import { FaChild } from 'react-icons/fa';
 import { MdWorkspacePremium, MdFace3 } from 'react-icons/md';
 import { TbEar } from 'react-icons/tb';
+import ClinicalHistoryModal from './ClinicalHistoryModal';
 
 import { dataService } from '../services/dataService';
 import { SkeletonList } from './Skeleton';
@@ -423,6 +424,8 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
   const [showServiceModal, setShowServiceModal] = useState(false);
   const [showBarberModal, setShowBarberModal] = useState(false);
   const [selectedServiceForBarber, setSelectedServiceForBarber] = useState(null);
+  const [customServicePrice, setCustomServicePrice] = useState('');
+  const [clinicalAfterPay, setClinicalAfterPay] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
   const debouncedProductSearch = useDebounce(searchTerm, 300);
   const [productGroup, setProductGroup] = useState('all');
@@ -1505,7 +1508,16 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
       }
 
       await enqueuePayment(paymentData);
-      
+
+      // Historial clínico OBLIGATORIO tras cobro exitoso (solo servicios/pagos reales)
+      if (settlementType === 'paid') {
+        const payClientId = selectedClient?.id || selectedApp?.client_id || paymentData.clientId;
+        const payClientName = selectedClient?.name || selectedApp?.clients?.name || paymentData.clientName;
+        if (payClientId) {
+          setClinicalAfterPay({ id: payClientId, name: payClientName || 'Paciente' });
+        }
+      }
+
       // Enviar notificación Push y agregar a historial local
       let paymentDetail = '';
       if (paymentMode === 'full_usd') {
@@ -1641,12 +1653,19 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
       return;
     }
     setSelectedServiceForBarber(service);
+    setCustomServicePrice(Number(service?.price || 0) > 0 ? String(service.price) : '');
     setShowServiceModal(false);
     setShowBarberModal(true);
   };
 
   const handleConfirmServiceBarber = async (barberId) => {
     if (confirmServiceBarberRef.current) return;
+    const catalogPrice = Number(selectedServiceForBarber?.price || 0);
+    const unitPrice = catalogPrice > 0 ? catalogPrice : Number(String(customServicePrice).replace(',', '.'));
+    if (!(unitPrice > 0)) {
+      showToast("Este servicio no tiene precio fijo. Ingresa el precio acordado con el odontólogo.", "warning");
+      return;
+    }
     confirmServiceBarberRef.current = true;
     try {
       setLoading(true);
@@ -1665,7 +1684,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
       // esa misma cita (como hace el panel de barbero) en vez de crear otra — si creáramos
       // una nueva, la de $0 quedaría colada y se cobraría duplicada.
       if (selectedApp && !selectedApp.service_id && !selectedApp.services?.name) {
-        const addedPrice = parseUsdAmount(selectedServiceForBarber.price);
+        const addedPrice = parseUsdAmount(unitPrice);
         await dataService.updateAppointment(selectedApp.id, {
           service_id: selectedServiceForBarber.id,
           staff_id: barberId,
@@ -1693,7 +1712,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
             service_id: selectedServiceForBarber.id,
             staff_id: barberId,
             status: 'En Silla',
-            total_price: parseUsdAmount(selectedServiceForBarber.price)
+            total_price: parseUsdAmount(unitPrice)
           });
 
           // MIGRAR ITEMS EN CART (Extras o Productos) A LA NUEVA CITA
@@ -3699,6 +3718,25 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                   )}
                 </p>
 
+                {Number(selectedServiceForBarber?.price || 0) <= 0 && !isChangingBarber && (
+                  <div style={{ marginBottom: '18px', padding: '14px', borderRadius: '14px', border: '1px solid rgba(232, 212, 176, 0.35)', background: 'rgba(232, 212, 176, 0.08)' }}>
+                    <label style={{ display: 'block', fontSize: '11px', fontWeight: '800', color: 'var(--gold-primary)', textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '8px' }}>
+                      Precio a convenir (USD)
+                    </label>
+                    <input
+                      type="number"
+                      min="0"
+                      step="0.01"
+                      inputMode="decimal"
+                      value={customServicePrice}
+                      onChange={e => setCustomServicePrice(e.target.value)}
+                      placeholder="Ej: 150"
+                      autoFocus
+                      style={{ width: '100%', padding: '12px 14px', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.15)', background: 'rgba(0,0,0,0.35)', color: 'white', fontSize: '16px', fontWeight: '700', outline: 'none' }}
+                    />
+                  </div>
+                )}
+
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', maxHeight: '320px', overflowY: 'auto', paddingRight: '8px' }} className="panda-scrollbar">
                   {allStaff.filter(s => {
                     const roleName = (s.role?.split('|')[0] || '').toLowerCase();
@@ -4050,6 +4088,18 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
           </div>
         </div>
       )}
+
+      <ClinicalHistoryModal
+        key={clinicalAfterPay?.id || 'none'}
+        isOpen={!!clinicalAfterPay}
+        client={clinicalAfterPay}
+        mandatory
+        onClose={() => setClinicalAfterPay(null)}
+        onSaved={() => {
+          showToast('Historial clínico registrado. Servicio concluido.', 'success');
+          setClinicalAfterPay(null);
+        }}
+      />
     </div>
   );
 };

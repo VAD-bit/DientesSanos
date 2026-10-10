@@ -1,6 +1,7 @@
 import React, { useState, useEffect, lazy, Suspense } from 'react';
 import { getRoleCategory } from '../../utils/staffRoles';
 import { createPortal } from 'react-dom';
+import dentalChairImg from '../../assets/dental-chair.png';
 import { 
   Zap,
   TrendingUp,
@@ -95,8 +96,8 @@ const MobileDashboard = ({ onOpenSale, stats, chartData, dbData, onNavigate, onO
   const chairs = React.useMemo(() => {
     const active = (chairApps || []).filter(a => a.status === 'En Silla');
     const out = [];
-    for (let i = 1; i <= 7; i++) {
-      const app = active[i - 1];
+    for (let i = 1; i <= 1; i++) {
+      const app = active[0];
       if (!app) { out.push({ id: String(i).padStart(2, '0'), occupied: false }); continue; }
       const startedAt = app.started_at || app.created_at;
       let elapsed = '';
@@ -422,7 +423,7 @@ const MobileDashboard = ({ onOpenSale, stats, chartData, dbData, onNavigate, onO
                   )}
                 </div>
                 <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '6px', textAlign: 'right' }}>
-                  <span style={{ fontSize: '15px', fontWeight: '900', color: 'white', lineHeight: '1.1' }}>{chair.occupied ? chair.barber : `Sillón ${chair.id}`}</span>
+                  <span style={{ fontSize: '15px', fontWeight: '900', color: 'white', lineHeight: '1.1' }}>{chair.occupied ? chair.barber : 'Sillón'}</span>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '6px', background: chair.occupied ? 'rgba(239, 68, 68, 0.1)' : 'rgba(34, 197, 94, 0.1)', padding: '4px 8px', borderRadius: '8px' }}>
                     <div style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: chair.occupied ? '#ef4444' : '#22c55e', boxShadow: chair.occupied ? '0 0 8px #ef4444' : '0 0 8px #22c55e' }} />
                     <span style={{ fontSize: '10px', fontWeight: '900', color: chair.occupied ? '#ef4444' : '#22c55e', textTransform: 'uppercase', letterSpacing: '0.5px' }}>{chair.occupied ? 'En tratamiento' : 'Disponible'}</span>
@@ -433,8 +434,8 @@ const MobileDashboard = ({ onOpenSale, stats, chartData, dbData, onNavigate, onO
               {/* Silla */}
               <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center', pointerEvents: 'none', zIndex: 1 }}>
                 <img
-                  src="/barber-chair.png"
-                  alt="Sillón"
+                  src={dentalChairImg}
+                  alt="Sillón odontológico"
                   style={{
                     height: '180px', width: 'auto', objectFit: 'contain',
                     transform: chair.occupied ? 'scale(1.15)' : 'scale(1.0)',
@@ -599,7 +600,7 @@ const MobileDashboard = ({ onOpenSale, stats, chartData, dbData, onNavigate, onO
       {/* Visual Podium Section for Top Clients (Identical to Desktop) */}
       {isAdmin && topClients.length >= 2 && (
         <PodiumWidget 
-          title="Top Clientes" 
+          title="Top Pacientes" 
           icon={<Users size={16} />}
           data={topClients}
           labelKey="name"

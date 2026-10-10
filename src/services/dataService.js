@@ -315,6 +315,56 @@ export const dataService = {
     return _asArray(data).length > 0 ? null : data[0];
   },
 
+  async getClinicalRecord(clientId) {
+    if (!clientId) return null;
+    const { data, error } = await supabase
+      .from('clinical_records')
+      .select('*')
+      .eq('client_id', clientId)
+      .maybeSingle();
+    if (error && error.code !== 'PGRST116') throw error;
+    return data || null;
+  },
+
+  async saveClinicalRecord(clientId, payload = {}, { completed = false } = {}) {
+    if (!clientId) throw new Error('clientId requerido');
+    const row = {
+      client_id: clientId,
+      motivo_consulta: payload.motivo_consulta ?? null,
+      antecedentes: payload.antecedentes ?? null,
+      alergias: payload.alergias ?? null,
+      medicacion_actual: payload.medicacion_actual ?? null,
+      antecedentes_fam: payload.antecedentes_fam ?? null,
+      habitos: payload.habitos ?? null,
+      exploracion: payload.exploracion ?? null,
+      diagnostico: payload.diagnostico ?? null,
+      plan_tratamiento: payload.plan_tratamiento ?? null,
+      notas: payload.notas ?? null,
+      imagenes: Array.isArray(payload.imagenes) ? payload.imagenes : [],
+      updated_at: new Date().toISOString()
+    };
+    if (completed) row.completed_at = new Date().toISOString();
+    const { data, error } = await supabase
+      .from('clinical_records')
+      .upsert(row, { onConflict: 'client_id' })
+      .select()
+      .single();
+    if (error) throw error;
+    return data;
+  },
+
+  async getClientTreatments(clientId) {
+    if (!clientId) return [];
+    const { data, error } = await supabase
+      .from('appointments')
+      .select('id, status, total_price, created_at, started_at, completed_at, scheduled_at, notes, services(name, price, duration, category), staff(name, role)')
+      .eq('client_id', clientId)
+      .order('created_at', { ascending: false })
+      .limit(60);
+    if (error) throw error;
+    return _asArray(data);
+  },
+
   async updateClient(id, updates) {
     _cacheInvalidate('clients', 'gallery_' + id);
     _cacheInvalidateAppts();
@@ -621,7 +671,7 @@ export const dataService = {
       .order('name');
 
     if (error) throw error;
-    const result = _asArray(data).filter(s => s.name?.startsWith('ARCHIVED|'));
+    const result = _asArray(data).filter(s => s.active !== false && !String(s.name || '').startsWith('ARCHIVED|'));
     _cacheSet('services', result, 45000);
     return result;
   },
@@ -646,6 +696,28 @@ export const dataService = {
       .single();
     if (error) throw error;
     return data;
+  },
+
+  // Catálogo base odontológico. Precio 0 = "a convenir con el odontólogo".
+  DENTAL_SERVICES_SEED: [
+    { name: 'Limpieza dental', price: 30, duration: 30, category: 'Prevención', description: 'Profilaxis y eliminación de placa y sarro.' },
+    { name: 'Examen y diagnóstico', price: 15, duration: 20, category: 'Diagnóstico', description: 'Evaluación clínica completa y diagnóstico.' },
+    { name: 'Blanqueamiento dental', price: 80, duration: 45, category: 'Estética', description: 'Blanqueamiento profesional de consultorio.' },
+    { name: 'Diseño de sonrisa', price: 0, duration: 60, category: 'Estética', description: 'Diseño personalizado de sonrisa. Precio a convenir con el odontólogo.' },
+    { name: 'Ortodoncia', price: 120, duration: 60, category: 'Ortodoncia', description: 'Consulta y control de ortodoncia. Precio según plan de tratamiento.' },
+    { name: 'Prótesis e implantes', price: 0, duration: 90, category: 'Prótesis', description: 'Prótesis dentales e implantes. Precio a convenir con el odontólogo.' },
+    { name: 'Endodoncia', price: 70, duration: 60, category: 'Endodoncia', description: 'Tratamiento de conducto.' },
+    { name: 'Empastes u obturaciones', price: 40, duration: 30, category: 'Restauración', description: 'Obturaciones con resina composite.' },
+    { name: 'Extracciones dentales', price: 50, duration: 40, category: 'Cirugía', description: 'Extracción simple de pieza dental.' }
+  ],
+
+  async ensureDentalServices() {
+    const list = await this.getServices();
+    if (Array.isArray(list) && list.length > 0) return list;
+    for (const svc of this.DENTAL_SERVICES_SEED) {
+      try { await this.addService(svc); } catch (e) { console.error('Seed servicio', svc.name, e); }
+    }
+    return this.getServices();
   },
 
   async updateService(id, updates) {

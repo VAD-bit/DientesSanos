@@ -609,7 +609,7 @@ const StaffProfileModal = ({ isOpen, onClose, staffMember, inventory = [], onUpd
                 }}
               >
                 <h4 style={{ color: 'white', fontSize: '14px', fontWeight: '900', margin: 0, display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  <Star size={16} color="var(--gold-primary)" fill="var(--gold-primary)" /> Valoraciones y Reseñas de Clientes
+                  <Star size={16} color="var(--gold-primary)" fill="var(--gold-primary)" /> Valoraciones y Reseñas de Pacientes
                 </h4>
                 
                 {reviews.length > 0 ? (

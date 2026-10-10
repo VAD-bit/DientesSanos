@@ -152,7 +152,10 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
 
   const fetchServices = async () => {
     try {
-      const data = await dataService.getServices();
+      let data = await dataService.getServices();
+      if ((!data || data.length === 0) && typeof dataService.ensureDentalServices === 'function') {
+        data = await dataService.ensureDentalServices();
+      }
       setServices(data || []);
     } catch (e) {
       showToast('Error al cargar servicios.', 'error');

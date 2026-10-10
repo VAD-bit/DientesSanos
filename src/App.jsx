@@ -162,17 +162,17 @@ function App() {
   const [currency, setCurrency] = useState('USD');
   const [rates, setRates] = useState({ bcv: 0, euro: 0, updated_at: null });
   
-  // Active Rate Toggle (EURO or BCV) - persisted
+  // Active Rate Toggle - persisted (default: Dolar BCV)
   const [activeRateType, setActiveRateType] = useState(() => {
-    return localStorage.getItem('panda_active_rate') || 'euro';
+    return localStorage.getItem('panda_active_rate') || 'bcv';
   });
 
   // Calculate Exchange Gap
   const exchangeGap = rates.bcv > 0 ? ((rates.euro - rates.bcv) / rates.bcv) * 100 : 0;
 
-  // Effective Rates Logic - Use selected rate for all Bs calculations
+  // Effective Rates Logic - cobros SIEMPRE en Dolar BCV (no Euro)
   const effectiveRates = { 
-    usd: activeRateType === 'euro' ? rates.bcv : rates.euro, 
+    usd: rates.bcv, 
     bcv: rates.bcv,
     euro: rates.euro,
     gap: exchangeGap,
@@ -425,7 +425,7 @@ function App() {
       if (birthdayClients.length > 0) {
         const names = birthdayClients.map(c => c.name).join(', ');
         notificationService.sendNotification(
-          '🎉 ¡Cumpleaños de Clientes hoy! 🎂',
+          '🎉 ¡Cumpleaños de Pacientes hoy! 🎂',
           `Hoy cumplen años: ${names}. ¡Recuerda felicitarlos o enviarles una promoción especial!`
         );
         whatsappService.sendBirthdayReminders().catch(console.error);

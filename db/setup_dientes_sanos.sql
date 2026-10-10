@@ -997,6 +997,36 @@ end $$;
 -- 6. SEEDS
 -- ============================================================================
 
+-- 6.0 Tabla de historial clínico (una ficha activa por paciente, historial completo)
+create table if not exists odontosonrisa.clinical_records (
+  id                  uuid primary key default gen_random_uuid(),
+  client_id           uuid not null references odontosonrisa.clients(id) on delete cascade,
+  motivo_consulta     text,
+  antecedentes        text,
+  alergias            text,
+  medicacion_actual   text,
+  antecedentes_fam    text,
+  habitos             text,
+  exploracion         text,
+  diagnostico         text,
+  plan_tratamiento    text,
+  notas               text,
+  imagenes            jsonb default '[]'::jsonb,
+  completed_at        timestamptz,
+  created_by          uuid,
+  updated_by          uuid,
+  created_at          timestamptz default now(),
+  updated_at          timestamptz default now(),
+  unique (client_id)
+);
+create index if not exists clinical_records_client_idx on odontosonrisa.clinical_records (client_id);
+alter table odontosonrisa.clinical_records enable row level security;
+drop policy if exists clinical_records_staff on odontosonrisa.clinical_records;
+create policy clinical_records_staff on odontosonrisa.clinical_records
+  for all to authenticated
+  using (odontosonrisa.is_staff())
+  with check (odontosonrisa.is_staff());
+
 -- 6.1 Categorías dentales (formato SYSTEM_CATEGORY:<Nombre>|<Icono lucide>)
 insert into odontosonrisa.service_extras (name, price, cost)
 select v.name, 0, 0
@@ -1004,9 +1034,32 @@ from (values
   ('SYSTEM_CATEGORY:Estética|Sparkles'),
   ('SYSTEM_CATEGORY:Ortodoncia|Activity'),
   ('SYSTEM_CATEGORY:Endodoncia|HeartPulse'),
-  ('SYSTEM_CATEGORY:Odontopediatría|Baby')
+  ('SYSTEM_CATEGORY:Odontopediatría|Baby'),
+  ('SYSTEM_CATEGORY:Prevención|ShieldCheck'),
+  ('SYSTEM_CATEGORY:Diagnóstico|Stethoscope'),
+  ('SYSTEM_CATEGORY:Restauración|Wrench'),
+  ('SYSTEM_CATEGORY:Cirugía|Scissors'),
+  ('SYSTEM_CATEGORY:Prótesis|Anchor')
 ) as v(name)
 where not exists (select 1 from odontosonrisa.service_extras e where e.name = v.name);
+
+-- 6.1b Servicios odontológicos base (idempotente). Precio 0 = "a convenir con el odontólogo".
+insert into odontosonrisa.services (name, price, duration, category, description)
+select v.name, v.price, v.duration, v.category, v.description
+from (values
+  ('Limpieza dental', 30, 30, 'Prevención', 'Profilaxis y eliminación de placa y sarro.'),
+  ('Examen y diagnóstico', 15, 20, 'Diagnóstico', 'Evaluación clínica completa y diagnóstico.'),
+  ('Blanqueamiento dental', 80, 45, 'Estética', 'Blanqueamiento profesional de consultorio.'),
+  ('Diseño de sonrisa', 0, 60, 'Estética', 'Diseño personalizado de sonrisa. Precio a convenir con el odontólogo.'),
+  ('Ortodoncia', 120, 60, 'Ortodoncia', 'Consulta y control de ortodoncia. Precio según plan de tratamiento.'),
+  ('Prótesis e implantes', 0, 90, 'Prótesis', 'Prótesis dentales e implantes. Precio a convenir con el odontólogo.'),
+  ('Endodoncia', 70, 60, 'Endodoncia', 'Tratamiento de conducto.'),
+  ('Empastes u obturaciones', 40, 30, 'Restauración', 'Obturaciones con resina composite.'),
+  ('Extracciones dentales', 50, 40, 'Cirugía', 'Extracción simple de pieza dental.')
+) as v(name, price, duration, category, description)
+where not exists (
+  select 1 from odontosonrisa.services s where lower(s.name) = lower(v.name)
+);
 
 -- 6.2 Ajustes del sistema
 insert into odontosonrisa.system_settings (key, value, updated_at)
@@ -1060,6 +1113,6 @@ end $$;
 -- FIN — verificar con:
 --   select count(*) from information_schema.tables
 --    where table_schema = 'odontosonrisa' and table_type = 'BASE TABLE';
---   (debe ser 24)
+--   (debe ser 25, incluyendo clinical_records)
 --   Usuario admin: administrador@dientessanos.com / DientesSanos2026!
 -- ============================================================================

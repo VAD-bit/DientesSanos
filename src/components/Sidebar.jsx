@@ -67,7 +67,7 @@ const Sidebar = ({ activeTab, setActiveTab, isMobile, rates, isCollapsed, setIsC
     { id: 'reception', label: 'Recepción', icon: ClipboardList },
     { id: 'checkout', label: 'Caja', icon: CreditCard },
     { id: 'panels', label: 'Paneles', icon: Scissors },
-    { id: 'clients', label: 'Clientes', icon: Users },
+    { id: 'clients', label: 'Pacientes', icon: Users },
     { id: 'services', label: 'Servicios', icon: Star },
     { id: 'personnel', label: 'Equipo', icon: UserCheck },
     { id: 'inventory', label: 'Inventario', icon: Package },
@@ -202,7 +202,7 @@ const Sidebar = ({ activeTab, setActiveTab, isMobile, rates, isCollapsed, setIsC
               className="sidebar-logo-img"
               style={{
                 width: '85%', height: 'auto', maxWidth: '185px', marginTop: '8px',
-                filter: 'drop-shadow(0 0 12px rgba(17, 17, 17,0.12)) brightness(1.05)'
+                filter: 'brightness(0) invert(1) drop-shadow(0 0 8px rgba(255,255,255,0.25))'
               }}
             />
           )}

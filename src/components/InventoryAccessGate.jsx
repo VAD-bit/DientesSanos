@@ -3,7 +3,7 @@ import { LockKeyhole, Unlock, Delete } from 'lucide-react';
 import { notificationService } from '../services/notificationService';
 import { supabase } from '../lib/supabase';
 
-const INVENTORY_PIN = '5082';
+const INVENTORY_PIN = '1111';
 const MAX_ATTEMPTS = 5;
 const LOCKOUT_MS = 5 * 60 * 1000; // 5 minutes
 const STORAGE_KEY = 'panda_inventory_pin_attempts';

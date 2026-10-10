@@ -105,7 +105,7 @@ const availableModules = [
   { id: 'reception', label: 'Recepción' },
   { id: 'checkout', label: 'Caja' },
   { id: 'barber', label: 'Mi sillón' },
-  { id: 'clients', label: 'Clientes' },
+  { id: 'clients', label: 'Pacientes' },
   { id: 'personnel', label: 'Equipo' },
   { id: 'services', label: 'Servicios' },
   { id: 'inventory', label: 'Inventario' },
@@ -2847,7 +2847,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
               whiteSpace: 'nowrap'
             }}
           >
-            <Star size={isMobile ? 14 : 16} /> {isMobile ? 'Reseñas' : 'Reseñas de Clientes'}
+            <Star size={isMobile ? 14 : 16} /> {isMobile ? 'Reseñas' : 'Reseñas de Pacientes'}
           </button>
           <button
             onClick={() => { setActiveTab('performance'); handleCloseForm(); }}

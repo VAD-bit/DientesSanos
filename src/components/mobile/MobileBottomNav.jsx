@@ -44,7 +44,7 @@ const MobileBottomNav = ({ activeTab, setActiveTab }) => {
     { id: 'barber', label: 'Mi sillón', icon: Scissors },
     { id: 'scheduling', label: 'Agenda', icon: Calendar },
     { id: 'my-profile', label: 'Mi Perfil', icon: UserCircle },
-    { id: 'clients', label: 'Clientes', icon: Users },
+    { id: 'clients', label: 'Pacientes', icon: Users },
     { id: 'dashboard', label: 'Inicio', icon: BarChart3 },
     { id: 'inventory', label: 'Stock', icon: Package },
     { id: 'checkout', label: 'Caja', icon: CreditCard },

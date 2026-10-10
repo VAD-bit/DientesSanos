@@ -1227,7 +1227,7 @@ const ReceptionModule = ({ isMobile, rates }) => {
                   <div className="radar-glow" />
                   <Search size={28} color="var(--gold-primary)" style={{ position: 'relative', zIndex: 2 }} />
                 </div>
-                <h3 style={{ color: 'white', fontWeight: '800', fontSize: '18px' }}>Escaneando Clientes</h3>
+                <h3 style={{ color: 'white', fontWeight: '800', fontSize: '18px' }}>Escaneando Pacientes</h3>
                 <p style={{ fontSize: '13px', color: 'var(--text-secondary)', marginTop: '8px', maxWidth: '280px', lineHeight: '1.5' }}>
                   Ingresa la cédula o nombre en el buscador para cargar la ficha y comenzar la atención.
                 </p>
