@@ -159,3 +159,16 @@ export const getAllowedMenuIds = (userRole = '') => {
   if (isSupportStaff(member)) return ['my-profile'];
   return ['my-profile'];
 };
+
+// Etiqueta VISIBLE de rol para la UI. Los valores internos de staff.role no
+// cambian; acepta el valor con o sin módulos ('Odontologo|barber,...').
+export const roleLabel = (value) => {
+  const raw = String(value ?? '').split('|')[0].trim();
+  const lower = raw.toLowerCase();
+  if (!raw) return '';
+  if (lower.includes('admin')) return 'Administrador';
+  if (lower.startsWith('odontologos')) return 'Odontólogos';
+  if (lower.includes('odontolog') || lower.includes('barbero') || lower.includes('barber') || lower.includes('tatu') || lower.includes('estilista')) return 'Odontólogo';
+  if (lower.includes('asistente') || lower.includes('lavado') || lower.includes('recepcion') || lower.includes('recepción') || lower.includes('caja') || lower.includes('barista') || lower.includes('cafeter')) return 'Asistente';
+  return raw;
+};

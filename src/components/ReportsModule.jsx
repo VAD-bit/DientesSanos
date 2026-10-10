@@ -18,16 +18,10 @@ import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 import logo from '../assets/logo.png';
 import coverBg from '../assets/panda-barbershop-interior.png';
+import { roleLabel } from '../utils/staffRoles';
 
 const DEFAULT_WASHING_RATE_USD = 1;
 const WASH_ASSISTANT_SHARE = 0.60;
-
-// Etiquetas visibles de rol (los valores/keys internos NO cambian).
-const roleLabel = (value) => String(value ?? '')
-  .replace(/Asistente de Lavado/gi, 'Asistente Dental')
-  .replace(/Barbero/gi, 'Odontólogo')
-  .replace(/Tatuador/gi, 'Especialista')
-  .replace(/Odontologos/gi, 'Odontólogos');
 
 const ReportsModule = ({ isMobile, rates, staff = [] }) => {
   const [transactions, setTransactions] = useState([]);

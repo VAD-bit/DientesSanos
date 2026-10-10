@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { useNotifs } from '../context/NotificationContext';
+import { roleLabel } from '../utils/staffRoles';
 import { supabase } from '../lib/supabase';
 import { 
   Scissors, 
@@ -99,17 +100,16 @@ const formatSettlementBs = value => Number(value || 0).toLocaleString('es-VE', {
 
 const availableModules = [
   { id: 'my-profile', label: 'Mi Perfil' },
-  { id: 'dashboard', label: 'Dashboard' },
+  { id: 'dashboard', label: 'Inicio' },
   { id: 'scheduling', label: 'Agenda' },
-  { id: 'reception', label: 'Recepción (Padre)' },
-  { id: 'checkout', label: 'Caja (Pro)' },
-  { id: 'barber', label: 'Panel Odontólogo (Hijo)' },
-  { id: 'barista', label: 'Panel de Barista' },
+  { id: 'reception', label: 'Recepción' },
+  { id: 'checkout', label: 'Caja' },
+  { id: 'barber', label: 'Mi sillón' },
   { id: 'clients', label: 'Clientes' },
-  { id: 'personnel', label: 'Personal' },
+  { id: 'personnel', label: 'Equipo' },
   { id: 'services', label: 'Servicios' },
   { id: 'inventory', label: 'Inventario' },
-  { id: 'finance', label: 'Caja Chica' },
+  { id: 'finance', label: 'Finanzas' },
   { id: 'reports', label: 'Reportes' },
   { id: 'settings', label: 'Ajustes' },
   { id: 'history', label: 'Historial' },
@@ -689,22 +689,12 @@ const InfoTooltip = ({ text }) => {
   );
 };
 
+// Presets de módulos de los 3 roles canónicos (sin tildes en el valor interno).
 const rolePresets = {
-  'Admin': availableModules.map(m => m.id),
-  'Barbero': ['my-profile', 'scheduling', 'barber', 'clients', 'history'],
-  'Tatuador': ['my-profile', 'scheduling', 'barber', 'clients', 'history'],
-  'Recepcionista': ['reception', 'scheduling', 'clients', 'history'],
-  'Caja': ['checkout', 'finance', 'inventory', 'clients', 'history'],
-  'Barista': availableModules.map(m => m.id),
-  'Asistente de Lavado': ['dashboard', 'history']
+  'Administrador': availableModules.map(m => m.id),
+  'Odontologo': ['my-profile', 'barber', 'scheduling', 'clients', 'history'],
+  'Asistente': ['my-profile', 'reception', 'scheduling', 'clients', 'history'],
 };
-
-// Etiquetas visibles de rol (los valores/keys internos NO cambian).
-const roleLabel = (value) => String(value ?? '')
-  .replace(/Asistente de Lavado/gi, 'Asistente Dental')
-  .replace(/Barbero/gi, 'Odontólogo')
-  .replace(/Tatuador/gi, 'Especialista')
-  .replace(/Odontologos/gi, 'Odontólogos');
 
 const StaffSettlementPanel = ({ modal, setModal, isMobile, loading, onPay, onSkip, onVoid, onCancel }) => {
   const settlement = modal.earnings;
@@ -922,13 +912,13 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
   const [editingId, setEditingId] = useState(null);
   const [formData, setFormData] = useState({ 
     name: '', 
-    roles: ['Barbero'], 
+    roles: ['Odontologo'], 
     image_url: '',
     phone: '',
     address: '',
     email: '',
     username: '',
-    permissions: rolePresets['Barbero'],
+    permissions: rolePresets['Odontologo'],
     commission_pct: 60,
     washing_rate: 0,
     birth_date: '',
@@ -1294,7 +1284,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
   };
 
   const handleEditClick = (person) => {
-    let rolePart = person.role || 'Barbero';
+    let rolePart = person.role || 'Odontologo';
     let perms = allRolePresets[rolePart] || [];
     let rolesArray = [rolePart];
     
@@ -1362,16 +1352,16 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
       setIsFormExiting(false);
       setFormData({ 
         name: '', 
-        role: 'Barbero', 
+        role: 'Odontologo', 
         image_url: '',
         phone: '',
         address: '',
         email: '',
         username: '',
-        permissions: rolePresets['Barbero'],
+        permissions: rolePresets['Odontologo'],
         commission_pct: 60,
         washing_rate: 0,
-        roles: ['Barbero'],
+        roles: ['Odontologo'],
         birth_date: '',
         password: '',
         specialty: '',
@@ -1643,13 +1633,12 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
 
   const getRoleIcon = (role) => {
     const iconStyle = { flexShrink: 0 };
-    switch(role) {
-      case 'Barbero': return <Scissors size={16} style={iconStyle} />;
-      case 'Recepcionista': return <Headset size={16} style={iconStyle} />;
-      case 'Caja': return <CreditCard size={16} style={iconStyle} />;
-      case 'Asistente de Lavado': return <Droplets size={16} style={iconStyle} />;
-      default: return <User size={16} style={iconStyle} />;
-    }
+    const r = String(role || '').toLowerCase().split('|')[0];
+    if (r.includes('odontolog') || r.includes('barbero') || r.includes('tatu') || r.includes('estilista')) return <Scissors size={16} style={iconStyle} />;
+    if (r.includes('asistente') || r.includes('lavado')) return <Droplets size={16} style={iconStyle} />;
+    if (r.includes('recepcion')) return <Headset size={16} style={iconStyle} />;
+    if (r.includes('caja')) return <CreditCard size={16} style={iconStyle} />;
+    return <User size={16} style={iconStyle} />;
   };
 
   const handleCheckIn = async (staffId, staffName) => {
@@ -1971,7 +1960,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
 
       const Odontologos = staff.filter(m => {
         const r = (m.role?.split('|')[0] || '').toLowerCase();
-        return r.includes('barbero') || r.includes('tatuador') || r.includes('asistente');
+        return r.includes('barbero') || r.includes('odontolog') || r.includes('tatuador') || r.includes('asistente');
       });
 
       const totalServicesThis = appsThis.length;
@@ -2313,7 +2302,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                             onClick={() => { 
                               setIsCreatingNewRole(false); 
                               setNewRoleName(''); 
-                              setFormData({ ...formData, roles: ['Barbero'], permissions: allRolePresets['Barbero'] || [] });
+                              setFormData({ ...formData, roles: ['Odontologo'], permissions: allRolePresets['Odontologo'] || [] });
                             }}
                             style={{ background: 'transparent', border: 'none', color: 'var(--text-muted)', fontSize: '10px', cursor: 'pointer', fontWeight: '800' }}
                           >
@@ -2369,7 +2358,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                       </div>
                     </div>
                   )}
-                  {formData.roles.includes('Asistente de Lavado') && (
+                  {(formData.roles.includes('Asistente') || formData.roles.includes('Asistente de Lavado')) && (
                     <div className="form-group animate-slide-right">
                       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
                         <label style={{ fontSize: '11px', fontWeight: '900', color: 'var(--gold-primary)', letterSpacing: '1px' }}>TARIFA POR LIMPIEZA ($)</label>
@@ -2757,13 +2746,13 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
               } else {
                 setFormData({ 
                   name: '', 
-                  roles: ['Barbero'], 
+                  roles: ['Odontologo'], 
                   image_url: '',
                   phone: '',
                   address: '',
                   email: '',
                   username: '',
-                  permissions: rolePresets['Barbero'],
+                  permissions: rolePresets['Odontologo'],
                   commission_pct: 60,
                   washing_rate: 0,
                   birth_date: '',
@@ -3064,7 +3053,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                           onClick={() => { 
                             setIsCreatingNewRole(false); 
                             setNewRoleName(''); 
-                            setFormData({ ...formData, roles: ['Barbero'], permissions: allRolePresets['Barbero'] || [] });
+                            setFormData({ ...formData, roles: ['Odontologo'], permissions: allRolePresets['Odontologo'] || [] });
                           }}
                           style={{ background: 'transparent', border: 'none', color: 'var(--text-muted)', fontSize: '10px', cursor: 'pointer', fontWeight: '800' }}
                         >
@@ -3121,7 +3110,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                   </div>
                 )}
 
-                {formData.roles.includes('Asistente de Lavado') && (
+                {(formData.roles.includes('Asistente') || formData.roles.includes('Asistente de Lavado')) && (
                   <div className="form-group animate-slide-right">
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
                       <label style={{ fontSize: '11px', fontWeight: '900', color: 'var(--gold-primary)', letterSpacing: '1px' }}>TARIFA POR LIMPIEZA ($)</label>
@@ -3732,7 +3721,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
 
       {activeTab === 'attendance' && (() => {
         const eligibleStaff = staff.filter(member => {
-          const roleName = (member.role?.split('|')[0] || 'Barbero').toLowerCase();
+          const roleName = (member.role?.split('|')[0] || 'Odontologo').toLowerCase();
           return !roleName.includes('admin') &&
                  !roleName.includes('recepcionista') &&
                  !roleName.includes('caja');
@@ -3770,12 +3759,10 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
         // Agrupa por categoría de rol, conservando el orden de llegada real dentro de cada grupo
         const getCategory = (roleName) => {
           const r = (roleName || '').toLowerCase();
-          if (r.includes('tatuador')) return '';
-          if (r.includes('barbero')) return 'Odontólogos';
-          if (r.includes('barista')) return 'Barista';
+          if (r.includes('odontolog') || r.includes('barbero') || r.includes('barber') || r.includes('tatu') || r.includes('estilista')) return 'Odontólogos';
           return 'Asistentes';
         };
-        const categoryOrder = ['Odontólogos', '', 'Barista', 'Asistentes'];
+        const categoryOrder = ['Odontólogos', 'Asistentes'];
         const grouped = categoryOrder
           .map(category => ({
             category,
@@ -4084,7 +4071,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
             const staffAverages = staff
               .filter(member => {
                 const roleName = (member.role?.split('|')[0] || '').toLowerCase();
-                return roleName.includes('barbero');
+                return roleName.includes('barbero') || roleName.includes('odontolog');
               })
               .map(member => {
                 const memberReviews = reviewsFilteredByPeriod.filter(r => r.staff_id === member.id);
@@ -4356,13 +4343,13 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                           { value: 'all', label: 'Todos', imageUrl: '/panda-team-avatar.png', avatarFallback: 'EQ', subtitle: 'Todos los Odontólogos' },
                           ...staff.filter(member => {
                             const roleName = (member.role?.split('|')[0] || '').toLowerCase();
-                            return roleName.includes('barbero');
+                            return roleName.includes('barbero') || roleName.includes('odontolog');
                           }).map(member => ({
                             value: member.id,
                             label: member.name,
                             imageUrl: member.image_url || member.avatar_url || '',
                             avatarFallback: (member.name || '?').trim().charAt(0).toUpperCase(),
-                            subtitle: roleLabel((member.role || 'Barbero').split('|')[0])
+                            subtitle: roleLabel((member.role || 'Odontologo').split('|')[0])
                           }))
                         ]}
                         value={filterStaffId}

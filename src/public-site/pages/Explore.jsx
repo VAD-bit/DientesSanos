@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Settings, User, Award, Calendar as CalendarIcon, Scissors, Coffee, Gamepad2, Compass, ArrowUpRight, MapPin, X, ChevronLeft, Star, Heart } from 'lucide-react';
 import { publicService } from '../services/publicService';
+import { roleLabel } from '../../utils/staffRoles';
 import { getNormalizedSpecialty, getBarberBiography, getBarberStats } from './BookAppointment';
 import BarberProfileView from '../components/BarberProfileView';
 
@@ -104,7 +105,7 @@ export default function Explore() {
         ) : (
           <div className="explore-team-row">
             {staff.map((member) => {
-              const roleLabel = (member.role || 'Especialista').split('|')[0];
+              const memberRole = roleLabel(member.role) || 'Especialista';
               return (
                 <div key={member.id} className="explore-team-card" onClick={() => openBarberProfile(member)}>
                   <div className="explore-team-photo">
@@ -116,7 +117,7 @@ export default function Explore() {
                     <div className="explore-team-photo-overlay" />
                     <div className="explore-team-photo-info">
                       <span className="explore-team-name">{member.name}</span>
-                      <span className="explore-team-role">{roleLabel}</span>
+                      <span className="explore-team-role">{memberRole}</span>
                     </div>
                     <div className="explore-team-cta"><ArrowUpRight size={13} /></div>
                   </div>

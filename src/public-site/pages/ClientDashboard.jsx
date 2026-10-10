@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { publicService } from '../services/publicService';
+import { roleLabel } from '../../utils/staffRoles';
 import { Calendar, Clock, Scissors, ChevronRight, Crown, User, Wallet, X, Sparkles, TrendingUp, ArrowUpRight, RotateCw, Settings, Check, Star, Loader2, Zap, Droplet, Gem, ThumbsUp, Smile, Frown, AlertCircle, MessageSquare } from 'lucide-react';
 import pandaLogo from '../../assets/panda_logo_black.png';
 import pandaIcon from '../../assets/panda_logo_nobg.png';
@@ -1020,8 +1021,7 @@ export default function ClientDashboard() {
 
                   return filteredStaff.map(staff => {
                 const isFav = favoriteStaff.some(s => s.id === staff.id);
-                const roleParts = staff.role?.split('|') || [];
-                const roleLabel = roleParts[0] || 'Especialista';
+                const memberRole = roleLabel(staff.role) || 'Especialista';
                 return (
                   <div key={staff.id} className={`relative rounded-3xl overflow-hidden cursor-pointer group transition-all duration-300 ${isFav ? 'ring-2 ring-[#111111] shadow-[0_0_20px_rgba(17,17,17,0.15)] scale-[1.02]' : 'ring-1 ring-[#d9c08f]/15 hover:ring-[#d9c08f]/40'} h-56`} onClick={() => toggleFavorite(staff)}>
                     
@@ -1039,7 +1039,7 @@ export default function ClientDashboard() {
                     {/* Content */}
                     <div className="absolute bottom-0 left-0 right-0 p-5 pointer-events-none">
                       <span className="block text-white font-black text-[15px] leading-tight drop-shadow-md mb-1">{staff.name}</span>
-                      <span className={`text-[9px] uppercase tracking-widest font-black inline-block ${isFav ? 'text-[#111111]' : 'text-white/50'}`}>{roleLabel}</span>
+                      <span className={`text-[9px] uppercase tracking-widest font-black inline-block ${isFav ? 'text-[#111111]' : 'text-white/50'}`}>{memberRole}</span>
                     </div>
 
                     {/* Favorite Toggle Button */}

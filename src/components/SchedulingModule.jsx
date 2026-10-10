@@ -44,7 +44,7 @@ import ScheduleModal from './ScheduleModal';
 import { useAuth } from '../context/AuthContext';
 import { ModalShield } from '../context/ModalContext';
 import AnimatedModal from './AnimatedModal';
-import { isBarberBookableStaff } from '../utils/staffRoles';
+import { isBarberBookableStaff, roleLabel } from '../utils/staffRoles';
 
 const DEFAULT_DAY_TIMELINE_START = 8;
 const DEFAULT_DAY_TIMELINE_END = 24;
@@ -3760,7 +3760,7 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
                           <div className="admin-resource-corner">Hora</div>
                           {visibleResourceStaff.map(member => {
                             const memberAppointments = resourceTimelineItems[String(member.id)] || [];
-                            const roleLabel = (member.role || 'Profesional').split('|')[0];
+                            const memberRole = roleLabel(member.role) || 'Profesional';
                             return (
                               <header key={`header-${member.id}`} className="admin-resource-person">
                                 <span className="admin-resource-avatar">
@@ -3770,7 +3770,7 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
                                 </span>
                                 <span className="admin-resource-person-copy">
                                   <strong>{member.name || 'Sin nombre'}</strong>
-                                  <span>{roleLabel}</span>
+                                  <span>{memberRole}</span>
                                 </span>
                                 <span className="admin-resource-count">{memberAppointments.length}</span>
                               </header>

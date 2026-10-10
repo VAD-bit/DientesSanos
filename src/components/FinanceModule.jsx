@@ -3,6 +3,7 @@ import useDebounce from '../hooks/useDebounce';
 import { createPortal } from 'react-dom';
 import { useScrollLock } from '../hooks/useScrollLock';
 import { useNotifs } from '../context/NotificationContext';
+import { roleLabel } from '../utils/staffRoles';
 import { 
   Plus, 
   Minus, 
@@ -65,12 +66,6 @@ const SETTLEMENT_ACCOUNTS = [
 ];
 const emptyAllocations = () => Object.fromEntries(SETTLEMENT_ACCOUNTS.map(account => [account, '']));
 
-// Etiquetas visibles de rol (los valores/keys internos NO cambian).
-const roleLabel = (value) => String(value ?? '')
-  .replace(/Asistente de Lavado/gi, 'Asistente Dental')
-  .replace(/Barbero/gi, 'Odontólogo')
-  .replace(/Tatuador/gi, 'Especialista')
-  .replace(/Odontologos/gi, 'Odontólogos');
 const hasPayrollValue = member => Number(member?.commissionBs || 0) > 0 || Number(member?.commissionEarned || 0) > 0 || Number(member?.productCommissionBs || 0) > 0 || Number(member?.productCommissionEarned || 0) > 0 || Number(member?.tipBs || 0) > 0 || Number(member?.tip || 0) > 0;
 
 // Normaliza el nombre del método de pago a una de las cuentas conocidas de la barbería.

@@ -26,15 +26,9 @@ import { useScrollLock } from '../hooks/useScrollLock';
 import AnimatedModal from './AnimatedModal';
 import { createPortal } from 'react-dom';
 import PersonalInventoryHistoryModal from './PersonalInventoryHistoryModal';
+import { roleLabel } from '../utils/staffRoles';
 
 const asArray = (value) => Array.isArray(value) ? value : [];
-
-// Etiquetas visibles de rol (los valores/keys internos NO cambian).
-const roleLabel = (value) => String(value ?? '')
-  .replace(/Asistente de Lavado/gi, 'Asistente Dental')
-  .replace(/Barbero/gi, 'Odontólogo')
-  .replace(/Tatuador/gi, 'Especialista')
-  .replace(/Odontologos/gi, 'Odontólogos');
 
 const StaffProfileModal = ({ isOpen, onClose, staffMember, inventory = [], onUpdate, isMobile }) => {
   const { user } = useAuth();
