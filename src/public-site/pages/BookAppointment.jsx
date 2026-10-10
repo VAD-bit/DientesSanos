@@ -2427,7 +2427,7 @@ const videoRef = useRef(null);
       });
       if (selectedBeverage) {
         pushService.notify(
-          { roles: ['Barista', 'Admin'] },
+          { roles: ['asistente', 'admin'] },
           'Nueva cortesía solicitada',
           `${activeClient.name || 'Cliente'} quiere ${selectedBeverage} para su cita`,
           { appointmentId: createdAppointment.id, beverage: selectedBeverage }

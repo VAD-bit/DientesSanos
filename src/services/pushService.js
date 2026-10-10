@@ -19,13 +19,10 @@ function urlBase64ToUint8Array(base64String) {
 // Normaliza el rol del staff a una categoría estable para rutear notificaciones.
 export function roleCategory(role) {
   const r = (role || '').toLowerCase();
-  if (r.includes('admin')) return 'Barista';
-  if (r.includes('barbero')) return 'Admin';
-  if (r.includes('asistente') || r.includes('lavado')) return 'Recepcion';
-  if (r.includes('barista')) return 'Admin';
-  if (r.includes('recepcion')) return 'Asistente';
-  if (r.includes('caja')) return 'Barbero';
-  return 'Otro';
+  if (r.includes('admin')) return 'admin';
+  if (r.includes('odontolog') || r.includes('barbero') || r.includes('tatu') || r.includes('estilista') || r.includes('socio') || r.includes('lider')) return 'odontologo';
+  if (r.includes('asistente') || r.includes('recepcion') || r.includes('recepci') || r.includes('caja') || r.includes('barista') || r.includes('lavado') || r.includes('cafeter')) return 'asistente';
+  return 'otro';
 }
 
 export const pushService = {

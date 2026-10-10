@@ -241,22 +241,21 @@ function App() {
     const channel = dataService.supabase.channel('panda-notifications')
       .on('broadcast', { event: 'crm-notification' }, ({ payload }) => {
         const userRole = user?.role || '';
-        const roleName = userRole.split('|')[0];
+        const notifyCategory = getRoleCategory(userRole);
+        const recipientRole = String(payload.recipientRole || '').toLowerCase();
         
         let shouldShow = false;
 
         // 1. Admins see all notifications
-        if (roleName === 'Admin') {
+        if (notifyCategory === 'admin') {
           shouldShow = true;
         } 
         // 2. Filter by recipient ID or role
         else if (payload.recipientId && String(payload.recipientId) === String(user.id)) {
           shouldShow = true;
-        } else if (payload.recipientRole === 'Barbero' && (roleName === 'Barbero' || userRole.startsWith('Barbero|'))) {
+        } else if (recipientRole === 'barbero' && notifyCategory === 'odontologo') {
           shouldShow = true;
-        } else if (payload.recipientRole === 'Asistente' && roleName.includes('Asistente')) {
-          shouldShow = true;
-        } else if (payload.recipientRole === 'Barista' && roleName.toLowerCase().includes('barista')) {
+        } else if ((recipientRole === 'asistente' || recipientRole === 'barista') && notifyCategory === 'asistente') {
           shouldShow = true;
         }
 

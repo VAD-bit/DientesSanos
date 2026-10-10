@@ -1535,14 +1535,14 @@ export const dataService = {
         pushService.notify({ staffId: app.staff_id }, '💈 Cliente en tu silla',
           `${clientName} está en tu silla${svc ? ' • ' + svc : ''}${priceStr}`, { appId, kind });
         if (app.beverage_selection) {
-          pushService.notify({ roles: ['Barista', 'Admin'] }, 'Preparar bebida',
+          pushService.notify({ roles: ['asistente', 'admin'] }, 'Preparar bebida',
             `${clientName} ya llegó y quiere ${formatProductName(app.beverage_selection) || app.beverage_selection}`, { appId, kind, beverage: app.beverage_selection });
         }
       } else if (kind === 'caja') {
-        pushService.notify({ roles: ['Admin'] }, '💳 Cobrar cliente',
+        pushService.notify({ roles: ['admin'] }, '💳 Cobrar cliente',
           `${clientName}${svc ? ' • ' + svc : ''}${priceStr} — listo para cobrar`, { appId, kind });
       } else if (kind === 'lavado') {
-        pushService.notify({ roles: ['Asistente'] }, '💧 Nuevo lavado',
+        pushService.notify({ roles: ['asistente'] }, '💧 Nuevo lavado',
           `${clientName} está listo para lavado`, { appId, kind });
       }
     } catch (e) {
@@ -1560,7 +1560,7 @@ export const dataService = {
       const prodName = formatProductName(prodRes.data?.name) || 'Producto';
       const clientName = formatName(appRes.data?.clients?.name) || 'Cliente';
       const qty = quantity && quantity > 1 ? ` x${quantity}` : '';
-      pushService.notify({ roles: ['Barista', 'Asistente', 'Admin'] }, '🥤 Venta de producto',
+      pushService.notify({ roles: ['asistente', 'admin'] }, '🥤 Venta de producto',
         `${prodName}${qty} para ${clientName}`, { appointmentId, productId });
     } catch (e) {
       console.error('push product error', e);
