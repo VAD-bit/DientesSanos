@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { X, ClipboardPlus, Camera, Save, Loader2, FileText, Trash2, AlertTriangle } from 'lucide-react';
 import { dataService } from '../services/dataService';
+import Odontograma from './Odontograma';
 
 const EMPTY_FORM = {
   motivo_consulta: '',
@@ -74,6 +75,7 @@ export default function ClinicalHistoryModal({ isOpen, client, onClose, mandator
   const [tab, setTab] = useState('manual');
   const [form, setForm] = useState(EMPTY_FORM);
   const [imagenes, setImagenes] = useState([]);
+  const [odontograma, setOdontograma] = useState({ marks: [] });
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState('');
@@ -103,9 +105,12 @@ export default function ClinicalHistoryModal({ isOpen, client, onClose, mandator
             notas: rec.notas || ''
           });
           setImagenes(Array.isArray(rec.imagenes) ? rec.imagenes : []);
+          const od = rec.odontograma;
+          setOdontograma(od && Array.isArray(od.marks) ? od : { marks: [] });
         } else {
           setForm(EMPTY_FORM);
           setImagenes([]);
+          setOdontograma({ marks: [] });
         }
       })
       .catch(e => {
@@ -143,7 +148,8 @@ export default function ClinicalHistoryModal({ isOpen, client, onClose, mandator
 
   const canSave = () => {
     if (mandatory) {
-      const hasContent = form.motivo_consulta.trim() || form.diagnostico.trim() || form.exploracion.trim() || imagenes.length > 0;
+      const hasOdonto = Array.isArray(odontograma?.marks) && odontograma.marks.length > 0;
+      const hasContent = form.motivo_consulta.trim() || form.diagnostico.trim() || form.exploracion.trim() || imagenes.length > 0 || hasOdonto;
       return hasContent;
     }
     return true;
@@ -152,14 +158,18 @@ export default function ClinicalHistoryModal({ isOpen, client, onClose, mandator
   const handleSave = async () => {
     if (!clientId) return;
     if (!canSave()) {
-      setError('Completa al menos el motivo de consulta, el diagnóstico o adjunta una foto del historial.');
+      setError('Completa al menos el motivo de consulta, el diagnóstico, el odontograma o adjunta una foto.');
       return;
     }
     setSaving(true);
     setError('');
     try {
-      await dataService.saveClinicalRecord(clientId, { ...form, imagenes }, { completed: true });
-      if (typeof onSaved === 'function') onSaved({ clientId, form, imagenes });
+      await dataService.saveClinicalRecord(clientId, {
+        ...form,
+        imagenes,
+        odontograma: { marks: Array.isArray(odontograma?.marks) ? odontograma.marks : [] }
+      }, { completed: true });
+      if (typeof onSaved === 'function') onSaved({ clientId, form, imagenes, odontograma });
       if (!mandatory && typeof onClose === 'function') onClose();
     } catch (e) {
       console.error('Error guardando historial clínico', e);
@@ -203,6 +213,13 @@ export default function ClinicalHistoryModal({ isOpen, client, onClose, mandator
             <FileText size={14} /> Manual
           </button>
           <button
+            style={{ ...styles.tab, ...(tab === 'odontograma' ? styles.tabActive : {}) }}
+            onClick={() => setTab('odontograma')}
+            type="button"
+          >
+            Odontograma
+          </button>
+          <button
             style={{ ...styles.tab, ...(tab === 'fotos' ? styles.tabActive : {}) }}
             onClick={() => setTab('fotos')}
             type="button"
@@ -225,11 +242,16 @@ export default function ClinicalHistoryModal({ isOpen, client, onClose, mandator
               <Field label="Medicación actual" value={form.medicacion_actual} onChange={v => set('medicacion_actual', v)} placeholder="Anticoagulantes, antibióticos…" rows={2} />
               <Field label="Antecedentes familiares" value={form.antecedentes_fam} onChange={v => set('antecedentes_fam', v)} placeholder="Diabetes, hemofilia…" rows={2} />
               <Field label="Hábitos" value={form.habitos} onChange={v => set('habitos', v)} placeholder="Bruxismo, tabaquismo, higiene…" rows={2} />
-              <Field label="Exploración clínica" value={form.exploracion} onChange={v => set('exploracion', v)} placeholder="Hallazgos, piezas afectadas,radiografías…" rows={3} />
-              <Field label="Diagnóstico *" value={form.diagnostico} onChange={v => set('diagnostico', v)} placeholder="Caries oclusal pieza 26…" rows={3} />
+              <Field label="Exploración clínica" value={form.exploracion} onChange={v => set('exploracion', v)} placeholder="Hallazgos generales, encías, radiografías…" rows={3} />
+              <Field label="Diagnóstico *" value={form.diagnostico} onChange={v => set('diagnostico', v)} placeholder="Caries oclusal pieza 26 (marcar en odontograma)…" rows={3} />
               <Field label="Plan de tratamiento" value={form.plan_tratamiento} onChange={v => set('plan_tratamiento', v)} placeholder="Obturación + control en 15 días…" rows={3} />
               <Field label="Notas adicionales" value={form.notas} onChange={v => set('notas', v)} placeholder="Indicaciones post-operatorias…" rows={2} />
+              <p style={{ fontSize: '11.5px', color: 'rgba(255,255,255,0.4)', margin: 0, lineHeight: 1.4 }}>
+                Para marcar dientes usa la pestaña <strong>Odontograma</strong> en vez de escribirlo a mano.
+              </p>
             </div>
+          ) : tab === 'odontograma' ? (
+            <Odontograma value={odontograma} onChange={setOdontograma} />
           ) : (
             <div>
               <p style={{ color: 'var(--text-secondary)', fontSize: '13px', marginBottom: '14px', lineHeight: 1.5 }}>

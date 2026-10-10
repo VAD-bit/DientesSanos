@@ -341,6 +341,9 @@ export const dataService = {
       plan_tratamiento: payload.plan_tratamiento ?? null,
       notas: payload.notas ?? null,
       imagenes: Array.isArray(payload.imagenes) ? payload.imagenes : [],
+      odontograma: payload.odontograma && typeof payload.odontograma === 'object'
+        ? payload.odontograma
+        : { marks: [] },
       updated_at: new Date().toISOString()
     };
     if (completed) row.completed_at = new Date().toISOString();

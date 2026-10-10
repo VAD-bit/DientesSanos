@@ -1012,6 +1012,7 @@ create table if not exists odontosonrisa.clinical_records (
   plan_tratamiento    text,
   notas               text,
   imagenes            jsonb default '[]'::jsonb,
+  odontograma         jsonb default '{"marks":[]}'::jsonb,
   completed_at        timestamptz,
   created_by          uuid,
   updated_by          uuid,
@@ -1020,6 +1021,9 @@ create table if not exists odontosonrisa.clinical_records (
   unique (client_id)
 );
 create index if not exists clinical_records_client_idx on odontosonrisa.clinical_records (client_id);
+-- Migración suave para instalaciones previas sin odontograma
+alter table odontosonrisa.clinical_records
+  add column if not exists odontograma jsonb default '{"marks":[]}'::jsonb;
 alter table odontosonrisa.clinical_records enable row level security;
 drop policy if exists clinical_records_staff on odontosonrisa.clinical_records;
 create policy clinical_records_staff on odontosonrisa.clinical_records
