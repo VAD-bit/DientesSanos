@@ -217,7 +217,7 @@ const mobFeaturesSecureGap = ${mobFeaturesSecureGap};`;
   const handleLogoDoubleClick = async () => {
     if (!import.meta.env.DEV) return;
     const devEmail = 'administrador@dientessanos.com';
-    const devPassword = 'Panda2024!';
+    const devPassword = 'DientesSanos2026!';
     setEmail(devEmail);
     setPassword(devPassword);
     setError('');

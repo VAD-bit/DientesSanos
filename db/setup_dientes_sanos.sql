@@ -30,6 +30,38 @@ create extension if not exists pgcrypto with schema extensions;
 -- ── Esquema propio del proyecto ─────────────────────────────────────────────
 create schema if not exists odontosonrisa;
 
+-- ── Reset seguro para DB vacía con esquema viejo ────────────────────────────
+-- Si TODA la data está vacía y la tabla staff no tiene auth_user_id (esquema
+-- heredado de la versión anterior), se borran las tablas para recrearlas con
+-- el esquema nuevo. Si hay datos o el esquema ya es el correcto, no hace nada.
+do $$
+declare
+  has_data boolean;
+  r record;
+begin
+  select exists(select 1 from odontosonrisa.staff limit 1)
+      or exists(select 1 from odontosonrisa.clients limit 1)
+      or exists(select 1 from odontosonrisa.appointments limit 1)
+      or exists(select 1 from odontosonrisa.transactions limit 1)
+      or exists(select 1 from odontosonrisa.services limit 1)
+    into has_data;
+  if has_data then
+    return;
+  end if;
+  if exists (
+    select 1 from information_schema.columns
+    where table_schema = 'odontosonrisa'
+      and table_name = 'staff'
+      and column_name = 'auth_user_id'
+  ) then
+    return;
+  end if;
+  raise notice 'DB vacía con esquema viejo: recreando tablas de odontosonrisa…';
+  for r in select tablename from pg_tables where schemaname = 'odontosonrisa' loop
+    execute format('drop table odontosonrisa.%I cascade', r.tablename);
+  end loop;
+end $$;
+
 -- ── Grants base (los objetos nuevos los crea el rol `postgres`) ──────────────
 grant usage on schema odontosonrisa to anon, authenticated, service_role;
 grant select, insert, update, delete on all tables in schema odontosonrisa to anon, authenticated, service_role;
@@ -84,7 +116,7 @@ create table if not exists odontosonrisa.staff (
   auth_user_id      uuid references auth.users(id) on delete set null,
   email             text,
   name              text not null,
-  role              text not null default 'Barbero',
+    role              text not null default 'Odontologo',
   commission_pct    numeric default 0,
   active            boolean default true,
   created_at        timestamptz default now(),
@@ -985,12 +1017,49 @@ on conflict (key) do nothing;
 -- 6.3 google_reviews queda vacía a propósito: se llena con las reseñas reales
 --     del consultorio (Google Places API o carga manual desde el panel).
 
--- 6.4 No se crean usuarios aquí a propósito: el usuario admin se crea con la
---     Admin API de Supabase y su fila staff se vincula después (lo hace el agente).
+-- 6.4 Usuario administrador (auth.users + staff vinculado) — idempotente:
+--     si ya existe el email, no se duplica. Este bloque corre como `postgres`
+--     en el SQL Editor, que sí puede insertar en auth.users.
+do $$
+declare
+  admin_email text := 'administrador@dientessanos.com';
+  admin_pass  text := 'DientesSanos2026!';
+  new_uid     uuid;
+begin
+  select id into new_uid from auth.users where email = admin_email;
+  if new_uid is null then
+    new_uid := gen_random_uuid();
+    insert into auth.users (
+      instance_id, id, aud, role, email, encrypted_password,
+      email_confirmed_at, raw_app_meta_data, raw_user_meta_data,
+      created_at, updated_at, confirmation_token, email_change,
+      email_change_token_new, recovery_token
+    ) values (
+      '00000000-0000-0000-0000-000000000000', new_uid, 'authenticated', 'authenticated',
+      admin_email, crypt(admin_pass, gen_salt('bf')),
+      now(), '{"provider":"email","providers":["email"]}', '{}',
+      now(), now(), '', '', '', ''
+    );
+    insert into auth.identities (
+      id, user_id, identity_data, provider, provider_id,
+      last_sign_in_at, created_at, updated_at
+    ) values (
+      gen_random_uuid(), new_uid,
+      jsonb_build_object('sub', new_uid::text, 'email', admin_email, 'email_verified', true),
+      'email', admin_email, now(), now(), now()
+    );
+  end if;
+  insert into odontosonrisa.staff (name, email, role, active, auth_user_id, commission_pct)
+  select 'Administrador', admin_email, 'Administrador', true, new_uid, 100
+  where not exists (
+    select 1 from odontosonrisa.staff s where lower(s.email) = admin_email
+  );
+end $$;
 
 -- ============================================================================
 -- FIN — verificar con:
 --   select count(*) from information_schema.tables
 --    where table_schema = 'odontosonrisa' and table_type = 'BASE TABLE';
 --   (debe ser 24)
+--   Usuario admin: administrador@dientessanos.com / DientesSanos2026!
 -- ============================================================================
