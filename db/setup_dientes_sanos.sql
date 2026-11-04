@@ -92,8 +92,8 @@ create table if not exists odontosonrisa.clients (
   id_card          text,
   cedula           text,
   birth_date       date,
-  hair_type        text,
-  scalp_type       text,
+  smile_type       text,
+  gum_type         text,
   last_product_used text,
   total_visits     int default 0,
   origin           text,
@@ -110,6 +110,30 @@ create index if not exists clients_auth_user_idx on odontosonrisa.clients (auth_
 create index if not exists clients_email_idx on odontosonrisa.clients (lower(trim(email)));
 create index if not exists clients_phone_idx on odontosonrisa.clients (phone);
 create index if not exists clients_id_card_idx on odontosonrisa.clients (id_card);
+create index if not exists clients_name_search_idx on odontosonrisa.clients (lower(name));
+alter table odontosonrisa.clients add column if not exists smile_type text;
+alter table odontosonrisa.clients add column if not exists gum_type text;
+do $$
+begin
+  if not exists (
+    select 1 from pg_constraint
+    where conrelid = 'odontosonrisa.clients'::regclass
+      and conname = 'clients_smile_type_check'
+  ) then
+    alter table odontosonrisa.clients
+      add constraint clients_smile_type_check
+      check (smile_type is null or smile_type = '' or smile_type in ('Alta', 'Media', 'Baja', 'Invertida'));
+  end if;
+  if not exists (
+    select 1 from pg_constraint
+    where conrelid = 'odontosonrisa.clients'::regclass
+      and conname = 'clients_gum_type_check'
+  ) then
+    alter table odontosonrisa.clients
+      add constraint clients_gum_type_check
+      check (gum_type is null or gum_type = '' or gum_type in ('Sana', 'Inflamada', 'Sangrante', 'Retracción'));
+  end if;
+end $$;
 
 create table if not exists odontosonrisa.staff (
   id                uuid primary key default gen_random_uuid(),
@@ -145,7 +169,7 @@ create table if not exists odontosonrisa.services (
   price           numeric not null default 0,
   duration        int not null default 30,
   active          boolean default true,
-  category        text default 'Barbería',
+  category        text default 'Prevención',
   included_items  jsonb default '[]'::jsonb,
   strategy_type   text,
   insumo_cost     numeric,
@@ -188,13 +212,14 @@ create table if not exists odontosonrisa.inventory (
   is_for_sale     boolean default true,
   item_type       text,
   image_url       text,
-  inventory_type  text not null default 'barbershop',
+  inventory_type  text not null default 'dental',
   owner_staff_id  uuid references odontosonrisa.staff(id) on delete set null,
   created_at      timestamptz default now(),
   updated_at      timestamptz default now()
 );
 create index if not exists inventory_type_idx on odontosonrisa.inventory (inventory_type);
 create index if not exists inventory_owner_idx on odontosonrisa.inventory (owner_staff_id);
+alter table odontosonrisa.inventory alter column inventory_type set default 'dental';
 
 create table if not exists odontosonrisa.inventory_movements (
   id          uuid primary key default gen_random_uuid(),

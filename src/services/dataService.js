@@ -217,7 +217,7 @@ export const dataService = {
     // they don't belong in the list. Keep every other column; only work_gallery is dropped.
     const { data, error } = await supabase
       .from('clients')
-      .select('id, name, phone, hair_type, scalp_type, last_product_used, total_visits, created_at, id_card, birth_date, email, status, points, last_visit, cedula, auth_user_id, origin, appointments(status, total_price, staff_id, created_at, scheduled_at, completed_at, appointment_staff(staff_id))')
+      .select('id, name, phone, smile_type, gum_type, last_product_used, total_visits, created_at, id_card, birth_date, email, status, points, last_visit, cedula, auth_user_id, origin, notes, appointments(status, total_price, staff_id, created_at, scheduled_at, completed_at, appointment_staff(staff_id))')
       .order('name');
 
     if (error) throw error;
@@ -261,7 +261,7 @@ export const dataService = {
       // Keep galleries out of the startup request. A single work_gallery can
       // contain several base64 photos and made this supposedly-lite query one
       // of the heaviest requests in the application.
-      .select('id, name, phone, hair_type, scalp_type, last_product_used, total_visits, created_at, id_card, birth_date, email, status, points, last_visit, cedula, auth_user_id, origin')
+      .select('id, name, phone, smile_type, gum_type, last_product_used, total_visits, created_at, id_card, birth_date, email, status, points, last_visit, cedula, auth_user_id, origin, notes')
       .order('name');
     if (error) throw error;
     const result = _asArray(data).map(c => ({ ...c, total_visits: 0, total_spent: 0 }));
@@ -272,8 +272,8 @@ export const dataService = {
   async addClient(client) {
     _cacheInvalidate('clients');
     const allowedColumns = [
-      'name', 'phone', 'email', 'birth_date', 'hair_type', 'scalp_type',
-      'origin', 'status', 'points', 'last_visit', 'work_gallery', 'created_at'
+      'name', 'phone', 'email', 'id_card', 'cedula', 'birth_date', 'smile_type', 'gum_type',
+      'origin', 'status', 'points', 'last_visit', 'work_gallery', 'notes', 'created_at'
     ];
     const filtered = {};
     allowedColumns.forEach(col => {
@@ -373,7 +373,7 @@ export const dataService = {
     _cacheInvalidateAppts();
     const allowedColumns = [
       'name', 'phone', 'email', 'status', 'points', 'last_visit', 'work_gallery',
-      'birth_date', 'hair_type', 'scalp_type', 'origin'
+      'birth_date', 'smile_type', 'gum_type', 'id_card', 'cedula', 'notes', 'origin'
     ];
     const filtered = {};
     allowedColumns.forEach(col => {
@@ -682,8 +682,8 @@ export const dataService = {
   async addService(service) {
     _cacheInvalidate('services');
     const allowedColumns = [
-      'name', 'price', 'duration', 'active', 'category',
-      'included_items'
+      'name', 'price', 'duration', 'active', 'category', 'description',
+      'included_items', 'strategy_type', 'insumo_cost', 'variable_cost', 'is_tattoo'
     ];
     const filtered = {};
     allowedColumns.forEach(col => {
@@ -726,8 +726,8 @@ export const dataService = {
   async updateService(id, updates) {
     _cacheInvalidate('services');
     const allowedColumns = [
-      'name', 'price', 'duration', 'active', 'category',
-      'included_items'
+      'name', 'price', 'duration', 'active', 'category', 'description',
+      'included_items', 'strategy_type', 'insumo_cost', 'variable_cost', 'is_tattoo'
     ];
     const filtered = {};
     allowedColumns.forEach(col => {
@@ -1328,7 +1328,7 @@ export const dataService = {
   },
 
   // Inventory
-  async getInventory(type = 'barbershop', staffId = null) {
+  async getInventory(type = 'dental', staffId = null) {
     const cacheKey = `inventory_${type}_${staffId || 'all'}`;
     const cached = _cacheGet(cacheKey);
     if (cached) return cached;
@@ -1353,8 +1353,7 @@ export const dataService = {
     return result;
   },
 
-  // Products that can be added to a customer order. Cafe items are sellable
-  // products too, but remain separated inside the inventory module.
+  // Products and supplies available to dental appointments.
   async getSellableInventory() {
     const cacheKey = 'inventory_sellable';
     const cached = _cacheGet(cacheKey);
@@ -1369,8 +1368,8 @@ export const dataService = {
       .filter(item => {
         const type = (item.inventory_type || '').toLowerCase();
         const cat = (item.category || '').toLowerCase();
-        const isToolOrSupply = type === 'tools' || cat.includes('herramienta') || cat.includes('uso interno') || cat.includes('accesorios');
-        return !isToolOrSupply;
+        const isToolOrSupply = type === 'tools' || cat.includes('herramienta') || cat.includes('uso clínico') || cat.includes('accesorios');
+        return type !== 'cafe' && !isToolOrSupply;
       })
       .map(i => ({ ...i, image_url: images[i.id] ?? null }));
     _cacheSet(cacheKey, result, 45000);
@@ -1384,7 +1383,7 @@ export const dataService = {
     const inventoryItem = {
       ...cleanItem,
       owner_staff_id: cleanItem.owner_staff_id ?? staff_id ?? null,
-      inventory_type: cleanItem.inventory_type || 'barbershop'
+      inventory_type: cleanItem.inventory_type || 'dental'
     };
     
     const { data, error } = await supabase

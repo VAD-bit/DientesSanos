@@ -19,15 +19,11 @@ import {
   X,
   Camera,
   ShoppingBag,
-  Coffee,
   Wrench,
   ShoppingCart,
   Scissors,
   Store,
-  Croissant,
-  GlassWater,
-  Beer,
-  CupSoda,
+  Smile,
   ArrowDownLeft,
   ArrowUpRight,
   CalendarDays,
@@ -48,23 +44,18 @@ import { formatProductName } from '../utils/stringUtils';
 import FieldLabel from './FieldLabel';
 
 const INVENTORY_TABS = [
-  { id: 'cafe', label: 'Café', shortLabel: 'Café', inventoryType: 'cafe', defaultCategory: 'Bebidas', icon: Coffee },
-  { id: 'retail', label: 'Productos para venta', shortLabel: 'Productos', inventoryType: 'barbershop', defaultCategory: 'Venta', icon: ShoppingBag },
+  { id: 'retail', label: 'Productos e insumos dentales', shortLabel: 'Productos', inventoryType: 'dental', defaultCategory: 'Insumos dentales', icon: ShoppingBag },
   { id: 'tools', label: 'Herramientas y accesorios', shortLabel: 'Herramientas', inventoryType: 'tools', defaultCategory: 'Herramienta', icon: Wrench }
 ];
 
 const belongsToInventory = (item, inventoryId) => {
-  const type = item?.inventory_type || 'barbershop';
-  const category = item?.category || '';
+  const type = item?.inventory_type || 'dental';
 
-  if (inventoryId === 'cafe') return type === 'cafe';
   if (inventoryId === 'tools') {
-    return type === 'tools'
-      || (type === 'barbershop' && ['Herramienta', 'Accesorios', 'Uso Interno'].includes(category));
+    return type === 'tools';
   }
 
-  return type === 'barbershop'
-    && !['Herramienta', 'Accesorios', 'Uso Interno'].includes(category);
+  return type === 'dental';
 };
 
 const InventoryModule = ({ isMobile, currency, rates }) => {
@@ -76,7 +67,7 @@ const InventoryModule = ({ isMobile, currency, rates }) => {
   const [staff, setStaff] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
-  const [activeInventory, setActiveInventory] = useState('cafe');
+  const [activeInventory, setActiveInventory] = useState('retail');
   const [showAddForm, setShowAddForm] = useState(false);
   const [isFormExiting, setIsFormExiting] = useState(false);
   const [showCamera, setShowCamera] = useState(false);
@@ -86,7 +77,7 @@ const InventoryModule = ({ isMobile, currency, rates }) => {
     price: 0, 
     cost_price: 0,
     commission_pct: 10,
-    category: 'Bebidas',
+    category: 'Insumos dentales',
     image_url: '',
     owner_staff_id: null,
     cost_price_dirty: false,
@@ -113,13 +104,12 @@ const InventoryModule = ({ isMobile, currency, rates }) => {
   const fetchInventory = async () => {
     try {
       setLoading(true);
-      const [retailData, cafeData, toolsData, staffData] = await Promise.all([
-        dataService.getInventory('barbershop'),
-        dataService.getInventory('cafe'),
+      const [retailData, toolsData, staffData] = await Promise.all([
+        dataService.getInventory('dental'),
         dataService.getInventory('tools'),
         dataService.getStaff()
       ]);
-      const mergedInventory = [...retailData, ...cafeData, ...toolsData]
+      const mergedInventory = [...retailData, ...toolsData]
         .filter((item, index, items) => items.findIndex(candidate => candidate.id === item.id) === index);
       setInventory(mergedInventory);
       setStaff(staffData);
@@ -352,7 +342,7 @@ const InventoryModule = ({ isMobile, currency, rates }) => {
         aria-label="Seleccionar inventario"
         style={{
           display: 'grid',
-          gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, minmax(180px, 1fr))',
+          gridTemplateColumns: isMobile ? '1fr' : `repeat(${INVENTORY_TABS.length}, minmax(180px, 1fr))`,
           gap: isMobile ? '8px' : '12px',
           marginBottom: isMobile ? '24px' : '32px'
         }}
@@ -433,17 +423,13 @@ const InventoryModule = ({ isMobile, currency, rates }) => {
               onChange={(val) => setNewItem({...newItem, category: val})}
               options={[
                 ...(activeInventory === 'retail' ? [
-                  { label: <div style={{display: 'flex', alignItems: 'center', gap: '8px'}}><ShoppingCart size={14} color="var(--gold-primary)"/> Para Venta</div>, value: 'Venta' }
-                ] : []),
-                ...(activeInventory === 'cafe' ? [
-                  { label: <div style={{display: 'flex', alignItems: 'center', gap: '8px'}}><Coffee size={14} color="#111111"/> Bebidas</div>, value: 'Bebidas' },
-                  { label: <div style={{display: 'flex', alignItems: 'center', gap: '8px'}}><Croissant size={14} color="#ff9f0a"/> Alimentos</div>, value: 'Alimentos' },
-                  { label: <div style={{display: 'flex', alignItems: 'center', gap: '8px'}}><Package size={14} color="var(--text-muted)"/> Insumos de Café</div>, value: 'Insumos Café' }
+                  { label: <div style={{display: 'flex', alignItems: 'center', gap: '8px'}}><ShoppingCart size={14} color="var(--gold-primary)"/> Para venta</div>, value: 'Venta' },
+                  { label: <div style={{display: 'flex', alignItems: 'center', gap: '8px'}}><Package size={14} color="var(--text-muted)"/> Insumos odontológicos</div>, value: 'Insumos dentales' }
                 ] : []),
                 ...(activeInventory === 'tools' ? [
                   { label: <div style={{display: 'flex', alignItems: 'center', gap: '8px'}}><Wrench size={14} color="#007aff"/> Herramienta</div>, value: 'Herramienta' },
                   { label: <div style={{display: 'flex', alignItems: 'center', gap: '8px'}}><Scissors size={14} color="#ff3b30"/> Accesorio</div>, value: 'Accesorios' },
-                  { label: <div style={{display: 'flex', alignItems: 'center', gap: '8px'}}><Coffee size={14} color="#111111"/> Uso Interno</div>, value: 'Uso Interno' }
+                  { label: <div style={{display: 'flex', alignItems: 'center', gap: '8px'}}><Smile size={14} color="var(--gold-primary)"/> Uso clínico</div>, value: 'Uso Clínico' }
                 ] : [])
               ]}
             />
@@ -512,7 +498,7 @@ const InventoryModule = ({ isMobile, currency, rates }) => {
               />
             </div>
 
-            {(activeInventory === 'retail' || activeInventory === 'cafe') && (
+            {activeInventory === 'retail' && (
               <div>
                 <FieldLabel required>Precio Venta</FieldLabel>
                 <input 
@@ -815,11 +801,6 @@ const InventoryModule = ({ isMobile, currency, rates }) => {
                       (() => {
                         const n = (item.name || '').toLowerCase();
                         const c = (item.category || '').toLowerCase();
-                        if (n.includes('café') || n.includes('cafe') || n.includes('frapuchino') || n.includes('latte') || n.includes('capuccino') || n.includes('americano') || n.includes('espresso') || n.includes('guayoyo') || c.includes('café')) return <Coffee size={24} color="var(--gold-primary)" style={{ opacity: 0.6 }} />;
-                        if (n.includes('agua')) return <GlassWater size={24} color="var(--gold-primary)" style={{ opacity: 0.6 }} />;
-                        if (n.includes('polar') || n.includes('solera') || n.includes('malta')) return <Beer size={24} color="var(--gold-primary)" style={{ opacity: 0.6 }} />;
-                        if (n.includes('refresco') || n.includes('gatorade') || n.includes('yukery') || n.includes('soda')) return <CupSoda size={24} color="var(--gold-primary)" style={{ opacity: 0.6 }} />;
-                        if (c.includes('bebida')) return <CupSoda size={24} color="var(--gold-primary)" style={{ opacity: 0.6 }} />;
                         if (c.includes('herramienta') || n.includes('maquina') || n.includes('clipper') || n.includes('trimmer')) return <Wrench size={24} color="var(--gold-primary)" style={{ opacity: 0.6 }} />;
                         if (c.includes('accesorios') || n.includes('tijera') || n.includes('navaja') || n.includes('capa')) return <Scissors size={24} color="var(--gold-primary)" style={{ opacity: 0.6 }} />;
                         if (c.includes('venta')) return <ShoppingBag size={24} color="var(--gold-primary)" style={{ opacity: 0.6 }} />;
@@ -1220,7 +1201,8 @@ const EditInventoryModal = ({ isOpen, item, staff = [], onClose, onSave }) => {
                 onChange={(val) => setFormData({...formData, category: val})}
                 options={[
                   { label: <div style={{display: 'flex', alignItems: 'center', gap: '8px'}}><ShoppingCart size={14} color="var(--gold-primary)"/> Para Venta</div>, value: 'Venta' },
-                  { label: <div style={{display: 'flex', alignItems: 'center', gap: '8px'}}><Coffee size={14} color="#111111"/> Uso Interno</div>, value: 'Uso Interno' },
+                  { label: <div style={{display: 'flex', alignItems: 'center', gap: '8px'}}><Package size={14} color="var(--gold-primary)"/> Insumos dentales</div>, value: 'Insumos dentales' },
+                  { label: <div style={{display: 'flex', alignItems: 'center', gap: '8px'}}><Smile size={14} color="var(--gold-primary)"/> Uso clínico</div>, value: 'Uso Clínico' },
                   { label: <div style={{display: 'flex', alignItems: 'center', gap: '8px'}}><Scissors size={14} color="#ff3b30"/> Accesorios</div>, value: 'Accesorios' },
                   { label: <div style={{display: 'flex', alignItems: 'center', gap: '8px'}}><Wrench size={14} color="#007aff"/> Herramienta</div>, value: 'Herramienta' }
                 ]}

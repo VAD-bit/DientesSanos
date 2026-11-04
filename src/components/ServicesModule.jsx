@@ -6,7 +6,8 @@ import {
   LayoutGrid, Table, Eye, Info, Pencil,
   Sparkles, Smile, Heart, Wind, Palette,
   Brush, Flower2, UserRound, Waves, Feather,
-  PenTool, Flame, Coffee, Gem, Shield, Crosshair
+  PenTool, Flame, Gem, Shield, Crosshair, Stethoscope,
+  Activity, Baby, HeartPulse, Anchor
 } from 'lucide-react';
 import { dataService } from '../services/dataService';
 import { SkeletonGrid } from './Skeleton';
@@ -55,27 +56,24 @@ const CorteYBarbaIcon = ({ size = 20 }) => (
 );
 
 const AVAILABLE_ICONS = [
-  { name: 'Scissors',        label: 'Corte / Clínica' },
-  { name: 'BeardIcon',       label: 'Barba / Perfilado' },
-  { name: 'CorteYBarbaIcon', label: 'Corte + Barba' },
-  { name: 'PenTool',         label: 'Tatuaje / Piercing' },
-  { name: 'Flame',       label: 'Toalla Caliente / Spa' },
-  { name: 'Droplets',    label: 'Limpieza / Hidratación' },
-  { name: 'Palette',     label: 'Colorimetría / Tintes' },
-  { name: 'Wind',        label: 'Secado / Blower' },
-  { name: 'Coffee',      label: 'Bebidas' },
-  { name: 'Zap',         label: 'Máquina / Express' },
-  { name: 'Crosshair',   label: 'Precisión / Cejas' },
-  { name: 'Waves',       label: 'Keratina / Alisado' },
-  { name: 'Shield',      label: 'Protección / Cuidado' },
-  { name: 'Crown',       label: 'VIP / Dientes Sanos Elite' },
-  { name: 'Gem',         label: 'Premium / Exclusivo' },
-  { name: 'Star',        label: 'Tendencias / Extras' }
+  { name: 'Stethoscope', label: 'Diagnóstico' },
+  { name: 'Smile',       label: 'Diseño de sonrisa' },
+  { name: 'Droplets',    label: 'Limpieza dental' },
+  { name: 'Activity',    label: 'Ortodoncia' },
+  { name: 'HeartPulse',  label: 'Endodoncia' },
+  { name: 'Baby',        label: 'Odontopediatría' },
+  { name: 'Anchor',      label: 'Prótesis e implantes' },
+  { name: 'Scissors',    label: 'Cirugía dental' },
+  { name: 'Shield',      label: 'Prevención' },
+  { name: 'Zap',         label: 'Tratamiento express' },
+  { name: 'Crown',       label: 'Atención premium' },
+  { name: 'Gem',         label: 'Servicio especializado' },
+  { name: 'Star',        label: 'Otros servicios' }
 ];
 
 const getIconComponent = (iconName, size = 20) => {
-  // Auto-replace old girly icons with barber equivalents for rendering fallback
-  if (['Flower2', 'Heart', 'Feather', 'Smile'].includes(iconName)) iconName = 'Flame';
+  // Keep old saved service icons renderable while new choices stay dental-focused.
+  if (['Flower2', 'Feather'].includes(iconName)) iconName = 'Flame';
   if (iconName === 'NailPolish') iconName = 'Droplets';
   if (iconName === 'Brush') iconName = 'PenTool';
   if (iconName === 'Sparkles') iconName = 'Star';
@@ -90,11 +88,16 @@ const getIconComponent = (iconName, size = 20) => {
     case 'Droplets':    return <Droplets size={size} />;
     case 'Palette':     return <Palette size={size} />;
     case 'Wind':        return <Wind size={size} />;
-    case 'Coffee':      return <Coffee size={size} />;
     case 'Zap':         return <Zap size={size} />;
     case 'Crosshair':   return <Crosshair size={size} />;
     case 'Waves':       return <Waves size={size} />;
     case 'Shield':      return <Shield size={size} />;
+    case 'Stethoscope': return <Stethoscope size={size} />;
+    case 'Smile':       return <Smile size={size} />;
+    case 'Activity':    return <Activity size={size} />;
+    case 'Baby':        return <Baby size={size} />;
+    case 'HeartPulse':  return <HeartPulse size={size} />;
+    case 'Anchor':      return <Anchor size={size} />;
     case 'Crown':       return <Crown size={size} />;
     case 'Gem':         return <Gem size={size} />;
     case 'Star':        return <Star size={size} />;
@@ -380,8 +383,8 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
   const [newService, setNewService] = useState({ 
     name: '', 
     price: '', 
-    icon: 'Scissors',
-    category: 'Barbería',
+    icon: 'Stethoscope',
+    category: 'Prevención',
     strategy_type: 'MVP',
     duration: 30,
     insumo_cost: 0,
@@ -423,7 +426,7 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
       setNewService({ 
         name: '', 
         price: '', 
-        category: 'Barbería',
+        category: 'Prevención',
         strategy_type: 'MVP',
         duration: 30,
         insumo_cost: 0,
@@ -562,8 +565,8 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
                 setNewService({ 
                   name: '', 
                   price: '', 
-                  icon: 'Scissors',
-                  category: 'Barbería',
+                  icon: 'Stethoscope',
+                  category: 'Prevención',
                   strategy_type: 'MVP',
                   duration: 30,
                   insumo_cost: 0,

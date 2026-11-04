@@ -10,7 +10,7 @@ import {
   User, 
   Phone, 
   Calendar, 
-  Scissors, 
+  Smile,
   Camera,
   Image as ImageIcon,
   ChevronRight,
@@ -94,11 +94,11 @@ const BirthdayInput = ({ value, onChange, style = {}, className = '' }) => {
 
 // ── Demo data: shown only when the DB has no real clients ────────────────────
 const DEMO_CLIENTS = [
-  { id: 'demo-1', name: 'Carlos Mendoza', phone: '+58 412-555-1234', id_card: '28.123.456', birth_date: '1995-03-15', origin: 'Instagram', hair_type: 'Normal', scalp_type: 'Sano', total_visits: 12, created_at: '2025-01-10T10:00:00Z', status: 'Activo', points: 120 },
-  { id: 'demo-2', name: 'Andrés Rivas', phone: '+58 414-777-8899', id_card: '29.876.543', birth_date: '1992-07-22', origin: 'Referido', hair_type: 'Graso', scalp_type: 'Sano', total_visits: 8, created_at: '2025-02-05T10:00:00Z', status: 'Activo', points: 80 },
-  { id: 'demo-3', name: 'Luis Fernández', phone: '+58 424-333-4455', id_card: '30.555.111', birth_date: '1998-11-03', origin: 'Google', hair_type: 'Seco', scalp_type: 'Sensible', total_visits: 5, created_at: '2025-03-20T10:00:00Z', status: 'Activo', points: 50 },
-  { id: 'demo-4', name: 'Marcos Pérez', phone: '+58 416-222-3344', id_card: '27.444.777', birth_date: '1990-05-18', origin: 'TikTok', hair_type: 'Mixto', scalp_type: 'Normal', total_visits: 15, created_at: '2024-11-15T10:00:00Z', status: 'Activo', points: 150 },
-  { id: 'demo-5', name: 'Daniel Torres', phone: '+58 412-999-0011', id_card: '31.222.888', birth_date: '2000-01-30', origin: 'Presencial', hair_type: 'Normal', scalp_type: 'Caspa', total_visits: 3, created_at: '2025-06-01T10:00:00Z', status: 'Activo', points: 30 },
+  { id: 'demo-1', name: 'Carlos Mendoza', phone: '+58 412-555-1234', id_card: '28.123.456', birth_date: '1995-03-15', origin: 'Instagram', smile_type: 'Alta', gum_type: 'Sana', total_visits: 12, created_at: '2025-01-10T10:00:00Z', status: 'Activo', points: 120 },
+  { id: 'demo-2', name: 'Andrés Rivas', phone: '+58 414-777-8899', id_card: '29.876.543', birth_date: '1992-07-22', origin: 'Referido', smile_type: 'Media', gum_type: 'Sana', total_visits: 8, created_at: '2025-02-05T10:00:00Z', status: 'Activo', points: 80 },
+  { id: 'demo-3', name: 'Luis Fernández', phone: '+58 424-333-4455', id_card: '30.555.111', birth_date: '1998-11-03', origin: 'Google', smile_type: 'Baja', gum_type: 'Sana', total_visits: 5, created_at: '2025-03-20T10:00:00Z', status: 'Activo', points: 50 },
+  { id: 'demo-4', name: 'Marcos Pérez', phone: '+58 416-222-3344', id_card: '27.444.777', birth_date: '1990-05-18', origin: 'TikTok', smile_type: 'Invertida', gum_type: 'Sana', total_visits: 15, created_at: '2024-11-15T10:00:00Z', status: 'Activo', points: 150 },
+  { id: 'demo-5', name: 'Daniel Torres', phone: '+58 412-999-0011', id_card: '31.222.888', birth_date: '2000-01-30', origin: 'Presencial', smile_type: 'Media', gum_type: 'Sangrante', total_visits: 3, created_at: '2025-06-01T10:00:00Z', status: 'Activo', points: 30 },
 ];
 // ─────────────────────────────────────────────────────────────────────────────
 
@@ -196,8 +196,8 @@ const ClientModule = ({ isMobile, clients, onRefresh, initialClientId }) => {
     id_card: '',
     birth_date: '',
     origin: '',
-    hair_type: 'Normal', 
-    scalp_type: 'Normal' 
+    smile_type: '',
+    gum_type: ''
   });
   const [viewMode, setViewMode] = useState('table');
   const [allCoupons, setAllCoupons] = useState([]);
@@ -265,8 +265,8 @@ const ClientModule = ({ isMobile, clients, onRefresh, initialClientId }) => {
         id_card: '',
         birth_date: '',
         origin: '',
-        hair_type: 'Normal', 
-        scalp_type: 'Normal' 
+        smile_type: '',
+        gum_type: ''
       });
       setShowAddForm(false);
       await onRefresh();
@@ -444,26 +444,26 @@ const ClientModule = ({ isMobile, clients, onRefresh, initialClientId }) => {
                     { label: 'Otro', value: 'Otro' }
                   ]}
                 />
-                <PandaSelect 
-                  label="Tipo de Cabello"
-                  value={newClient.hair_type}
-                  onChange={(val) => setNewClient({...newClient, hair_type: val})}
+                <PandaSelect
+                  label="Tipo de sonrisa"
+                  value={newClient.smile_type}
+                  onChange={(val) => setNewClient({...newClient, smile_type: val})}
                   options={[
-                    { label: 'Normal', value: 'Normal' },
-                    { label: 'Graso', value: 'Graso' },
-                    { label: 'Seco', value: 'Seco' },
-                    { label: 'Mixto', value: 'Mixto' }
+                    { label: 'Alta', value: 'Alta' },
+                    { label: 'Media', value: 'Media' },
+                    { label: 'Baja', value: 'Baja' },
+                    { label: 'Invertida', value: 'Invertida' }
                   ]}
                 />
-                <PandaSelect 
-                  label="Cuero Cabelludo"
-                  value={newClient.scalp_type}
-                  onChange={(val) => setNewClient({...newClient, scalp_type: val})}
+                <PandaSelect
+                  label="Tipo de encía"
+                  value={newClient.gum_type}
+                  onChange={(val) => setNewClient({...newClient, gum_type: val})}
                   options={[
-                    { label: 'Sano / Normal', value: 'Sano' },
-                    { label: 'Sensible', value: 'Sensible' },
-                    { label: 'Irritado', value: 'Irritado' },
-                    { label: 'Caspa / Seborrea', value: 'Caspa' }
+                    { label: 'Sana', value: 'Sana' },
+                    { label: 'Inflamada', value: 'Inflamada' },
+                    { label: 'Sangrante', value: 'Sangrante' },
+                    { label: 'Retracción', value: 'Retracción' }
                   ]}
                 />
                 <div style={{ display: 'flex', alignItems: 'flex-end' }}>
@@ -1179,8 +1179,8 @@ const ClientDetail = ({ isMobile, client, onBack, onDelete, onUpdate }) => {
     phone: client.phone,
     id_card: client.id_card,
     birth_date: client.birth_date || '',
-    hair_type: client.hair_type,
-    scalp_type: client.scalp_type,
+    smile_type: client.smile_type || '',
+    gum_type: client.gum_type || '',
     notes: client.notes || ''
   });
 
@@ -1432,10 +1432,10 @@ const ClientDetail = ({ isMobile, client, onBack, onDelete, onUpdate }) => {
               </div>
               {/* Ficha Técnica Column */}
               <div>
-                <h4 style={{ marginBottom: '10px', fontSize: '13px', fontWeight: '800' }}>Ficha Técnica Capilar</h4>
+                <h4 style={{ marginBottom: '10px', fontSize: '13px', fontWeight: '800' }}>Ficha Técnica Dental</h4>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                  <DetailItem label="Cabello" value={client.hair_type || 'Normal'} />
-                  <DetailItem label="Cuero" value={client.scalp_type || 'Normal'} />
+                  <DetailItem label="Tipo de sonrisa" value={client.smile_type || 'N/A'} />
+                  <DetailItem label="Tipo de encía" value={client.gum_type || 'N/A'} />
                   <DetailItem label="Cumple" value={client.birth_date ? new Date(client.birth_date + 'T00:00:00').toLocaleDateString([], {day: '2-digit', month: 'short'}) : 'N/A'} />
                   <DetailItem label="Registro" value={client.created_at ? new Date(client.created_at).toLocaleDateString() : 'N/A'} />
                 </div>
@@ -1453,26 +1453,26 @@ const ClientDetail = ({ isMobile, client, onBack, onDelete, onUpdate }) => {
               <div style={{ marginTop: '16px', paddingTop: '16px', borderTop: '1px solid var(--border-color)', display: 'flex', flexDirection: 'column', gap: '8px' }}>
                 <input className="form-input" value={editData.id_card} onChange={e => setEditData({...editData, id_card: e.target.value})} placeholder="Cédula" style={{ width: '100%', fontSize: '12px', padding: '8px' }} />
                 <BirthdayInput value={editData.birth_date} onChange={(v) => setEditData({...editData, birth_date: v})} style={{ width: '100%' }} />
-                <PandaSelect 
-                  label="Tipo de Cabello"
-                  value={editData.hair_type}
-                  onChange={(val) => setEditData({...editData, hair_type: val})}
+                <PandaSelect
+                  label="Tipo de sonrisa"
+                  value={editData.smile_type}
+                  onChange={(val) => setEditData({...editData, smile_type: val})}
                   options={[
-                    { label: 'Normal', value: 'Normal' },
-                    { label: 'Graso', value: 'Graso' },
-                    { label: 'Seco', value: 'Seco' },
-                    { label: 'Mixto', value: 'Mixto' }
+                    { label: 'Alta', value: 'Alta' },
+                    { label: 'Media', value: 'Media' },
+                    { label: 'Baja', value: 'Baja' },
+                    { label: 'Invertida', value: 'Invertida' }
                   ]}
                 />
-                <PandaSelect 
-                  label="Cuero Cabelludo"
-                  value={editData.scalp_type}
-                  onChange={(val) => setEditData({...editData, scalp_type: val})}
+                <PandaSelect
+                  label="Tipo de encía"
+                  value={editData.gum_type}
+                  onChange={(val) => setEditData({...editData, gum_type: val})}
                   options={[
-                    { label: 'Sano', value: 'Sano' },
-                    { label: 'Sensible', value: 'Sensible' },
-                    { label: 'Irritado', value: 'Irritado' },
-                    { label: 'Caspa', value: 'Caspa' }
+                    { label: 'Sana', value: 'Sana' },
+                    { label: 'Inflamada', value: 'Inflamada' },
+                    { label: 'Sangrante', value: 'Sangrante' },
+                    { label: 'Retracción', value: 'Retracción' }
                   ]}
                 />
               </div>
@@ -1827,12 +1827,12 @@ const ClientDetail = ({ isMobile, client, onBack, onDelete, onUpdate }) => {
                     <label style={{ fontSize: '10px', color: 'var(--text-muted)', fontWeight: '800', textTransform: 'uppercase' }}>Cumpleaños</label>
                     <BirthdayInput value={editData.birth_date} onChange={(v) => setEditData({...editData, birth_date: v})} style={{ width: '100%' }} />
                   </div>
-                  <PandaSelect label="Tipo de Cabello" value={editData.hair_type} onChange={(val) => setEditData({...editData, hair_type: val})}
-                    options={[{label:'Normal',value:'Normal'},{label:'Graso',value:'Graso'},{label:'Seco',value:'Seco'},{label:'Mixto',value:'Mixto'}]}
+                  <PandaSelect label="Tipo de sonrisa" value={editData.smile_type} onChange={(val) => setEditData({...editData, smile_type: val})}
+                    options={[{label:'Alta',value:'Alta'},{label:'Media',value:'Media'},{label:'Baja',value:'Baja'},{label:'Invertida',value:'Invertida'}]}
                     style={{ marginBottom: '4px' }}
                   />
-                  <PandaSelect label="Cuero Cabelludo" value={editData.scalp_type} onChange={(val) => setEditData({...editData, scalp_type: val})}
-                    options={[{label:'Sano',value:'Sano'},{label:'Sensible',value:'Sensible'},{label:'Irritado',value:'Irritado'},{label:'Caspa',value:'Caspa'}]}
+                  <PandaSelect label="Tipo de encía" value={editData.gum_type} onChange={(val) => setEditData({...editData, gum_type: val})}
+                    options={[{label:'Sana',value:'Sana'},{label:'Inflamada',value:'Inflamada'},{label:'Sangrante',value:'Sangrante'},{label:'Retracción',value:'Retracción'}]}
                     style={{ marginBottom: '4px' }}
                   />
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
@@ -1841,7 +1841,7 @@ const ClientDetail = ({ isMobile, client, onBack, onDelete, onUpdate }) => {
                       className="form-input" 
                       value={editData.notes} 
                       onChange={e => setEditData({...editData, notes: e.target.value})} 
-                      placeholder="Alergias, café preferido, etc..." 
+                      placeholder="Alergias, tratamientos y preferencias dentales..."
                       style={{ width: '100%', minHeight: '60px', resize: 'vertical' }} 
                     />
                   </div>
@@ -1915,34 +1915,34 @@ const ClientDetail = ({ isMobile, client, onBack, onDelete, onUpdate }) => {
             )}
           </div>
 
-          {/* HAIR PROFILE CARD */}
-          {!isEditing && (client.hair_type || client.scalp_type) && (
+          {/* DENTAL PROFILE CARD */}
+          {!isEditing && (client.smile_type || client.gum_type) && (
             <div style={{
               background: 'rgba(255,255,255,0.03)',
               border: '1px solid rgba(255,255,255,0.07)',
               borderRadius: '20px',
               padding: '20px 22px'
             }}>
-              <p style={{ fontSize: '10px', fontWeight: '800', textTransform: 'uppercase', letterSpacing: '2px', color: 'var(--text-muted)', margin: '0 0 14px' }}>Perfil Capilar</p>
+              <p style={{ fontSize: '10px', fontWeight: '800', textTransform: 'uppercase', letterSpacing: '2px', color: 'var(--text-muted)', margin: '0 0 14px' }}>Perfil Dental</p>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
-                {client.hair_type && (
+                {client.smile_type && (
                   <span style={{
                     display: 'inline-flex', alignItems: 'center', gap: '6px',
                     background: 'rgba(17, 17, 17,0.1)', border: '1px solid rgba(17, 17, 17,0.2)',
                     color: '#111111', borderRadius: '100px', padding: '5px 14px',
                     fontSize: '12px', fontWeight: '700'
                   }}>
-                    <Scissors size={11} /> Cabello {client.hair_type}
+                    <Smile size={11} /> Sonrisa {client.smile_type}
                   </span>
                 )}
-                {client.scalp_type && (
+                {client.gum_type && (
                   <span style={{
                     display: 'inline-flex', alignItems: 'center', gap: '6px',
                     background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)',
                     color: 'var(--text-secondary)', borderRadius: '100px', padding: '5px 14px',
                     fontSize: '12px', fontWeight: '700'
                   }}>
-                    Cuero {client.scalp_type}
+                    Encía {client.gum_type}
                   </span>
                 )}
               </div>
