@@ -2354,6 +2354,59 @@ body.in-booking-flow .whatsapp-float-btn { display: none !important; }
 }
 
 /* ════════════════════════════════════════════════════════════════════════
+   MÓVIL — Forzar tema claro mármol en MobileLayout y componentes hijos
+   Sobreescribe estilos inline oscuros hardcodeados en componentes móviles
+   ════════════════════════════════════════════════════════════════════════ */
+.admin-light-theme .mobile-header,
+.admin-light-theme [style*="backgroundColor: 'var(--bg-primary)'"],
+.admin-light-theme [style*="backgroundColor:var(--bg-primary)"],
+.admin-light-theme [style*="background-color: var(--bg-primary)"],
+.admin-light-theme [style*="background-color:var(--bg-primary)"],
+.admin-light-theme [style*="color: 'white'"],
+.admin-light-theme [style*="color:'white'"],
+.admin-light-theme [style*="color:white"],
+.admin-light-theme [style*="color: #fff"],
+.admin-light-theme [style*="color:#fff"],
+.admin-light-theme [style*="color:#ffffff"] {
+  background: #ffffff !important;
+  background-color: #ffffff !important;
+  color: #111827 !important;
+}
+
+.admin-light-theme [style*="background: 'var(--bg-primary)'"],
+.admin-light-theme [style*="background:var(--bg-primary)"] {
+  background: #ffffff !important;
+  background-color: #ffffff !important;
+}
+
+/* MobileBottomNav y elementos de navegación móvil claros */
+.admin-light-theme .mobile-bottom-nav,
+.admin-light-theme [class*="MobileBottomNav"],
+.admin-light-theme [class*="mobile-bottom-nav"] {
+  background: #ffffff !important;
+  border-top: 1px solid rgba(0, 0, 0, 0.06) !important;
+  color: #374151 !important;
+}
+
+/* Enlaces y acentos en móvil */
+.admin-light-theme .mobile-nav-link,
+.admin-light-theme [class*="mobile-nav-link"] {
+  color: #374151 !important;
+}
+.admin-light-theme .mobile-nav-link.active,
+.admin-light-theme [class*="mobile-nav-link"].active {
+  color: #e8d4b0 !important;
+}
+
+/* Tarjetas y módulos móviles claros */
+.admin-light-theme .mobile-card,
+.admin-light-theme [class*="mobile-card"] {
+  background: #ffffff !important;
+  border: 1px solid rgba(0, 0, 0, 0.05) !important;
+  color: #111827 !important;
+}
+
+/* ════════════════════════════════════════════════════════════════════════
    MENÚS DESPLEGABLES — Estética mármol claro
    Selects, dropdowns, opciones, tooltips y popovers sobre fondo mármol
    ════════════════════════════════════════════════════════════════════════ */

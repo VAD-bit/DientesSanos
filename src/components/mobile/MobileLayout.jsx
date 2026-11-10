@@ -16,9 +16,10 @@ const MobileLayout = ({ children, activeTab, setActiveTab, onOpenSale }) => {
       minHeight: '100dvh',
       display: 'flex',
       flexDirection: 'column',
-      backgroundColor: 'var(--bg-primary)',
-      color: 'white',
+      backgroundColor: '#ffffff',
+      color: '#111827',
       position: 'relative',
+      className: 'admin-light-theme'
     }}>
       {/* Sticky Brand Header */}
       <header style={{ 
@@ -29,19 +30,20 @@ const MobileLayout = ({ children, activeTab, setActiveTab, onOpenSale }) => {
         justifyContent: 'space-between',
         padding: 'max(env(safe-area-inset-top, 0px), 10px) 20px 8px',
         boxSizing: 'content-box',
-        backgroundColor: 'var(--bg-primary)',
+        backgroundColor: '#ffffff',
+        borderBottom: '1px solid rgba(0,0,0,0.06)',
         zIndex: 100,
         position: 'sticky',
         top: 0,
       }}>
         <div style={{ width: '40px' }} /> {/* Spacer */}
-        <img src={logo} alt="Centro Odontológico Dientes Sanos" style={{ height: '34px', width: 'auto', filter: 'brightness(1.05)' }} />
+        <img src={logo} alt="Centro Odontológico Dientes Sanos" style={{ height: '34px', width: 'auto', filter: 'brightness(0) invert(0) drop-shadow(0 0 8px rgba(0,0,0,0.15))' }} />
         <button 
           onClick={logout}
           type="button"
           aria-label="Cerrar sesión"
           title="Cerrar sesión"
-          style={{ background: 'rgba(255,69,58,0.08)', border: '1px solid rgba(255,69,58,0.18)', borderRadius: '12px', color: '#ff453a', padding: '11px', minWidth: '44px', minHeight: '44px', display: 'grid', placeItems: 'center', position: 'relative', zIndex: 102, cursor: 'pointer' }}
+          style={{ background: 'rgba(232, 212, 176, 0.12)', border: '1px solid rgba(232, 212, 176, 0.3)', borderRadius: '12px', color: '#92400e', padding: '11px', minWidth: '44px', minHeight: '44px', display: 'grid', placeItems: 'center', position: 'relative', zIndex: 102, cursor: 'pointer' }}
         >
           <LogOut size={20} />
         </button>
@@ -52,6 +54,7 @@ const MobileLayout = ({ children, activeTab, setActiveTab, onOpenSale }) => {
         flex: 1,
         padding: '10px 20px 100px 20px',
         minWidth: 0,
+        backgroundColor: '#ffffff',
       }}>
         {children}
       </div>
@@ -64,7 +67,7 @@ const MobileLayout = ({ children, activeTab, setActiveTab, onOpenSale }) => {
 
       <style>{`
         body {
-          background-color: var(--bg-primary);
+          background-color: #ffffff;
         }
         * {
           -webkit-tap-highlight-color: transparent;
