@@ -25,7 +25,8 @@ import {
   Table as TableIcon,
   MessageCircle,
   Receipt,
-  ClipboardPlus
+  ClipboardPlus,
+  Scissors
 } from 'lucide-react';
 import { dataService } from '../services/dataService';
 import { SkeletonList } from './Skeleton';
