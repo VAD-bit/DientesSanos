@@ -12,6 +12,7 @@ import { dataService } from './services/dataService';
 import MobileLayout from './components/mobile/MobileLayout';
 import ParticleBackground from './components/ParticleBackground';
 import PandaLoader from './components/PandaLoader';
+import MarbleBackground from './components/MarbleBackground';
 import Login from './components/Login';
 import { useAuth } from './context/AuthContext';
 import NotificationsDrawer from './components/NotificationsDrawer';
@@ -902,7 +903,7 @@ function App() {
   }
 
   return (
-    <div className="app-container no-scrollbar" style={{ 
+    <div className="app-container no-scrollbar admin-light-theme" style={{ 
       display: 'flex', 
       minHeight: '100vh', 
       height: activeTab === 'dashboard' && !isMobile ? '100vh' : 'auto',
@@ -911,6 +912,7 @@ function App() {
       position: 'relative', 
       overflowX: 'hidden' 
     }}>
+      <MarbleBackground />
       <PandaLoader visible={!hasCompletedStartup} />
       <Sidebar 
         activeTab={activeTab} 

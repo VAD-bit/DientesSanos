@@ -2142,3 +2142,140 @@ body.in-booking-flow .whatsapp-float-btn { display: none !important; }
 .step-message-bar {
   animation: slideDownEntry 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
+
+/* ════════════════════════════════════════════════════════════════════════
+   TEMA CLARO MÁRMOL — Panel de Administración
+   Se aplica sobre .admin-light-theme (fondos blancos, vetas grises,
+   texto oscuro). Coherente con identidad: blanco/negro/gris + acento
+   arena #E8D4B0. Sin teal ni púrpura.
+   ════════════════════════════════════════════════════════════════════════ */
+.admin-light-theme {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f5f7fa;
+  --bg-tertiary: #eef2f6;
+  --color-surface: #ffffff;
+
+  --text-primary: #111827;
+  --text-secondary: #4b5563;
+  --text-muted: #6b7280;
+
+  --border-color: rgba(0, 0, 0, 0.07);
+  --accent-color: #e8d4b0;
+
+  --glass-bg: rgba(255, 255, 255, 0.85);
+  --glass-border: 1px solid rgba(0, 0, 0, 0.06);
+  --shadow-apple: 0 8px 40px 0 rgba(0, 0, 0, 0.08);
+  --shadow-glow-gold: 0 0 20px rgba(232, 212, 176, 0.15);
+
+  --gold-glow: 0 0 24px rgba(232, 212, 176, 0.25);
+}
+
+/* Fondo de mármol detrás de la app admin */
+.admin-marble-bg {
+  /* El SVG ya trae su propio fondo; esta clase ancla el z-index. */
+}
+
+/* Cuando el tema claro está activo, el cuerpo y la app dejan de ser oscuros */
+.admin-light-theme body,
+.admin-light-theme #root,
+.admin-light-theme .app-container,
+.admin-light-theme .main-content,
+.admin-light-theme html {
+  background: transparent !important;
+  color: var(--text-primary) !important;
+}
+
+/* Sidebar claro (mármol) */
+.admin-light-theme .sidebar {
+  background: rgba(255, 255, 255, 0.82) !important;
+  border-right: 1px solid rgba(0, 0, 0, 0.06) !important;
+  box-shadow: 4px 0 30px rgba(0, 0, 0, 0.06) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+}
+.admin-light-theme .sidebar button {
+  color: #374151 !important;
+}
+.admin-light-theme .sidebar .sidebar-nav-text {
+  color: #4b5563 !important;
+}
+.admin-light-theme .sidebar .sidebar-profile-card {
+  background: rgba(255, 255, 255, 0.5) !important;
+  border-color: rgba(232, 212, 176, 0.25) !important;
+}
+.admin-light-theme .sidebar .sidebar-profile-name {
+  color: #111827 !important;
+}
+.admin-light-theme .sidebar .sidebar-profile-role {
+  color: #e8d4b0 !important;
+}
+.admin-light-theme .sidebar-logo-img {
+  filter: brightness(0) invert(0) drop-shadow(0 0 8px rgba(0,0,0,0.15)) !important;
+}
+
+/* Tarjetas y módulos claros sobre mármol */
+.admin-light-theme .glass-card {
+  background: rgba(255, 255, 255, 0.75) !important;
+  border: 1px solid rgba(0, 0, 0, 0.05) !important;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06) !important;
+}
+.admin-light-theme .glass-card:hover {
+  background: #ffffff !important;
+  border-color: rgba(232, 212, 176, 0.35) !important;
+}
+
+/* Inputs y selects claros */
+.admin-light-theme input,
+.admin-light-theme select,
+.admin-light-theme textarea {
+  background: #ffffff !important;
+  border: 1px solid rgba(0, 0, 0, 0.10) !important;
+  color: #111827 !important;
+}
+.admin-light-theme input::placeholder,
+.admin-light-theme textarea::placeholder {
+  color: #9ca3af !important;
+}
+.admin-light-theme input:focus,
+.admin-light-theme select:focus,
+.admin-light-theme textarea:focus {
+  border-color: #e8d4b0 !important;
+  background: #ffffff !important;
+}
+.admin-light-theme select option {
+  background-color: #ffffff !important;
+  color: #111827 !important;
+}
+
+/* Botones de acción claros */
+.admin-light-theme .action-btn {
+  background: #f5f7fa !important;
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
+  color: #374151 !important;
+}
+.admin-light-theme .action-btn:hover {
+  border-color: #e8d4b0 !important;
+  color: #e8d4b0 !important;
+  background: #f0e2c8 !important;
+}
+
+/* Evitar que el overlay de recepción oscurezca el mármol */
+.admin-light-theme .global-modal-overlay {
+  background-color: rgba(255, 255, 255, 0.35) !important;
+}
+
+/* Botón dorado sigue oscuro sobre mármol (contraste WCAG) */
+.admin-light-theme .btn-gold,
+.admin-light-theme .premium-btn-gold {
+  color: #111111 !important;
+}
+
+/* Scrollbars claros sobre mármol */
+.admin-light-theme .panda-scrollbar::-webkit-scrollbar-thumb,
+.admin-light-theme .glass-card::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.15) !important;
+}
+.admin-light-theme .panda-scrollbar::-webkit-scrollbar-thumb:hover,
+.admin-light-theme .glass-card::-webkit-scrollbar-thumb:hover {
+  background: #e8d4b0 !important;
+}
