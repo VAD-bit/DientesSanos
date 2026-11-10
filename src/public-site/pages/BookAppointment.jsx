@@ -1441,25 +1441,25 @@ const videoRef = useRef(null);
     return saved ? JSON.parse(saved).selectedBeverage : '';
   });
   // Menú de bebidas de cortesía para la reserva (reemplaza las 4 bebidas fijas).
-  const [cafeMenu, setCafeMenu] = useState([]);
+  const [aguaMenu, setAguaMenu] = useState([]);
   const [cafeTab, setCafeTab] = useState('cafe');
   useEffect(() => {
     let alive = true;
-    publicService.getCafeMenu().then(items => { if (alive) setCafeMenu(items || []); });
+    publicService.getAguaMenu().then(items => { if (alive) setAguaMenu(items || []); });
     return () => { alive = false; };
   }, []);
   // Todos vienen con categoría "Bebidas" en la DB, así que se agrupan por nombre en 3
   // secciones (Café / Infusiones / Bebidas frías) para no mostrar 17 opciones de golpe.
   const cafeGroups = useMemo(() => {
     const groups = { cafe: [], infusion: [], fria: [] };
-    (cafeMenu || []).forEach(item => {
+    (aguaMenu || []).forEach(item => {
       const n = (item.name || '').toLowerCase();
       if (n.includes('café') || n.includes('cafe') || n.includes('espresso') || n.includes('expreso') || n.includes('cappuccino') || n.includes('latte')) groups.cafe.push(item);
       else if (n.includes('té') || n.includes('infus') || n.includes('manzanilla') || n.includes('hierbabuena') || n.includes('chai')) groups.infusion.push(item);
       else groups.fria.push(item);
     });
     return groups;
-  }, [cafeMenu]);
+  }, [aguaMenu]);
   const [notes, setNotes] = useState(() => {
     const saved = localStorage.getItem('bookingState');
     return saved ? JSON.parse(saved).notes || '' : '';
@@ -5202,7 +5202,7 @@ const videoRef = useRef(null);
                       <p className="text-[10px] text-[#94a3b8] -mt-1 text-left">
                         Cortesía de la casa · opcional — estará lista cuando llegues.
                       </p>
-                      {cafeMenu.length === 0 ? (
+                      {aguaMenu.length === 0 ? (
                         <div className="grid grid-cols-2 lg:grid-cols-3 gap-2.5">
                           {[0, 1, 2, 3, 4, 5].map(i => (
                             <div key={i} className="animate-pulse h-[64px] rounded-xl bg-white border border-[#d9c08f]/15" />
