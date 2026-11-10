@@ -137,6 +137,13 @@ function App() {
   const { isModalOpen } = useModal();
   const { reduceMotion, isLowEnd } = usePerformanceMode();
 
+  // Fondo transparente en body/html para que se vea el mármol del tema claro
+  useEffect(() => {
+    document.body.style.background = 'transparent';
+    document.documentElement.style.background = 'transparent';
+    document.body.style.color = '#111827';
+  }, []);
+
   useScrollLock(isReceptionModalOpen);
 
   useEffect(() => {

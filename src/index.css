@@ -2279,3 +2279,76 @@ body.in-booking-flow .whatsapp-float-btn { display: none !important; }
 .admin-light-theme .glass-card::-webkit-scrollbar-thumb:hover {
   background: #e8d4b0 !important;
 }
+
+/* ════════════════════════════════════════════════════════════════════════
+   TEXTO GRIS — Forzar todos los textos a gris sobre el tema claro
+   Sobreescribe estilos inline oscuros hardcodeados en componentes.
+   ════════════════════════════════════════════════════════════════════════ */
+.admin-light-theme * {
+  color: var(--text-primary) !important;
+}
+.admin-light-theme h1,
+.admin-light-theme h2,
+.admin-light-theme h3,
+.admin-light-theme h4,
+.admin-light-theme h5,
+.admin-light-theme h6 {
+  color: #111827 !important;
+}
+.admin-light-theme p,
+.admin-light-theme span,
+.admin-light-theme div,
+.admin-light-theme li,
+.admin-light-theme td,
+.admin-light-theme th,
+.admin-light-theme label {
+  color: #4b5563 !important;
+}
+.admin-light-theme .text-muted,
+.admin-light-theme [style*="color:#f5f5f5"],
+.admin-light-theme [style*="color: #f5f5f5"],
+.admin-light-theme [style*="color:#ffffff"],
+.admin-light-theme [style*="color: #ffffff"],
+.admin-light-theme [style*="color:white"],
+.admin-light-theme [style*="color: #fff"] {
+  color: #6b7280 !important;
+}
+
+/* Fondos claros — forzar fondo blanco/mármol en lugar de oscuros */
+.admin-light-theme * {
+  background-color: transparent !important;
+}
+.admin-light-theme .glass-card,
+.admin-light-theme [style*="background-color: '#1e1e22'"],
+.admin-light-theme [style*="background-color:#1e1e22"],
+.admin-light-theme [style*="background-color: #1e1e22"],
+.admin-light-theme [style*="background: '#1e1e22'"],
+.admin-light-theme [style*="background:#1e1e22"],
+.admin-light-theme [style*="background: #1e1e22"],
+.admin-light-theme [style*="background-color: '#242428'"],
+.admin-light-theme [style*="background-color:#242428"],
+.admin-light-theme [style*="background-color: #242428"],
+.admin-light-theme [style*="background: '#242428'"],
+.admin-light-theme [style*="background:#242428"],
+.admin-light-theme [style*="background: #242428"],
+.admin-light-theme [style*="background-color: '#222226'"],
+.admin-light-theme [style*="background-color:#222226"],
+.admin-light-theme [style*="background-color: #222226"],
+.admin-light-theme [style*="background: '#222226'"],
+.admin-light-theme [style*="background:#222226"],
+.admin-light-theme [style*="background: #222226"] {
+  background: #ffffff !important;
+  background-color: #ffffff !important;
+}
+
+/* Tarjetas sobre mármol */
+.admin-light-theme .glass-card {
+  background: #ffffff !important;
+  border: 1px solid rgba(0, 0, 0, 0.05) !important;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06) !important;
+}
+
+/* Enlaces y acentos */
+.admin-light-theme a {
+  color: #e8d4b0 !important;
+}
