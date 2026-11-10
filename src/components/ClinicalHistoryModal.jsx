@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { X, ClipboardPlus, Camera, Save, Loader2, FileText, Trash2, AlertTriangle } from 'lucide-react';
 import { dataService } from '../services/dataService';
 import Odontograma from './Odontograma';
+import ClinicalHistoryFicha from './ClinicalHistoryFicha';
 
 const EMPTY_FORM = {
   motivo_consulta: '',
@@ -184,7 +185,7 @@ export default function ClinicalHistoryModal({ isOpen, client, onClose, mandator
   return (
     <div style={styles.overlay} onClick={mandatory ? undefined : onClose}>
       <div style={styles.card} onClick={e => e.stopPropagation()}>
-        <div style={styles.header}>
+        <div style={styles.header} className="ch-no-print">
           <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
             <div style={styles.iconBox}><ClipboardPlus size={20} color="#111" /></div>
             <div>
@@ -204,7 +205,7 @@ export default function ClinicalHistoryModal({ isOpen, client, onClose, mandator
           </div>
         )}
 
-        <div style={styles.tabs}>
+        <div style={styles.tabs} className="ch-no-print">
           <button
             style={{ ...styles.tab, ...(tab === 'manual' ? styles.tabActive : {}) }}
             onClick={() => setTab('manual')}
@@ -218,6 +219,13 @@ export default function ClinicalHistoryModal({ isOpen, client, onClose, mandator
             type="button"
           >
             Odontograma
+          </button>
+          <button
+            style={{ ...styles.tab, ...(tab === 'ficha' ? styles.tabActive : {}) }}
+            onClick={() => setTab('ficha')}
+            type="button"
+          >
+            Ficha
           </button>
           <button
             style={{ ...styles.tab, ...(tab === 'fotos' ? styles.tabActive : {}) }}
@@ -252,6 +260,16 @@ export default function ClinicalHistoryModal({ isOpen, client, onClose, mandator
             </div>
           ) : tab === 'odontograma' ? (
             <Odontograma value={odontograma} onChange={setOdontograma} />
+          ) : tab === 'ficha' ? (
+            <div className="ch-ficha-print" style={{ padding: '0', background: '#ffffff', color: '#111827', minHeight: '0' }}>
+              <ClinicalHistoryFicha
+                client={client}
+                record={form}
+                odontograma={odontograma}
+                onPrint={() => window.print()}
+                onClose={mandatory ? undefined : onClose}
+              />
+            </div>
           ) : (
             <div>
               <p style={{ color: 'var(--text-secondary)', fontSize: '13px', marginBottom: '14px', lineHeight: 1.5 }}>
@@ -287,7 +305,7 @@ export default function ClinicalHistoryModal({ isOpen, client, onClose, mandator
           {error && <div style={styles.error}>{error}</div>}
         </div>
 
-        <div style={styles.footer}>
+        <div style={styles.footer} className="ch-no-print">
           <button type="button" onClick={mandatory ? undefined : onClose} style={styles.cancelBtn} disabled={saving}>
             {mandatory ? 'Cancelar no disponible' : 'Cerrar'}
           </button>
@@ -301,6 +319,16 @@ export default function ClinicalHistoryModal({ isOpen, client, onClose, mandator
             Guardar historial
           </button>
         </div>
+
+        <style>
+          {'@media print {'}
+          {`.ch-ficha-print * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }`}
+          {`.ch-ficha-print { background: #ffffff !important; color: #111827 !important; }`}
+          {`.ch-no-print { display: none !important; }`}
+          {`@page { margin: 12mm; }`}
+          {'}'}
+        </style>
+
       </div>
     </div>
   );
