@@ -2,7 +2,6 @@ import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { X, ClipboardPlus, Camera, Save, Loader2, FileText, Trash2, AlertTriangle } from 'lucide-react';
 import { dataService } from '../services/dataService';
 import Odontograma from './Odontograma';
-import ClinicalHistoryFicha from './ClinicalHistoryFicha';
 
 const EMPTY_FORM = {
   motivo_consulta: '',
@@ -221,13 +220,6 @@ export default function ClinicalHistoryModal({ isOpen, client, onClose, mandator
             Odontograma
           </button>
           <button
-            style={{ ...styles.tab, ...(tab === 'ficha' ? styles.tabActive : {}) }}
-            onClick={() => setTab('ficha')}
-            type="button"
-          >
-            Ficha
-          </button>
-          <button
             style={{ ...styles.tab, ...(tab === 'fotos' ? styles.tabActive : {}) }}
             onClick={() => setTab('fotos')}
             type="button"
@@ -260,16 +252,6 @@ export default function ClinicalHistoryModal({ isOpen, client, onClose, mandator
             </div>
           ) : tab === 'odontograma' ? (
             <Odontograma value={odontograma} onChange={setOdontograma} />
-          ) : tab === 'ficha' ? (
-            <div className="ch-ficha-print" style={{ padding: '0', background: '#ffffff', color: '#111827', minHeight: '0' }}>
-              <ClinicalHistoryFicha
-                client={client}
-                record={form}
-                odontograma={odontograma}
-                onPrint={() => window.print()}
-                onClose={mandatory ? undefined : onClose}
-              />
-            </div>
           ) : (
             <div>
               <p style={{ color: 'var(--text-secondary)', fontSize: '13px', marginBottom: '14px', lineHeight: 1.5 }}>
@@ -319,16 +301,6 @@ export default function ClinicalHistoryModal({ isOpen, client, onClose, mandator
             Guardar historial
           </button>
         </div>
-
-        <style>
-          {'@media print {'}
-          {`.ch-ficha-print * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }`}
-          {`.ch-ficha-print { background: #ffffff !important; color: #111827 !important; }`}
-          {`.ch-no-print { display: none !important; }`}
-          {`@page { margin: 12mm; }`}
-          {'}'}
-        </style>
-
       </div>
     </div>
   );
