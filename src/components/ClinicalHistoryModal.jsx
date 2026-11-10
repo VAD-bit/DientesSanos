@@ -314,78 +314,78 @@ const styles = {
   },
   card: {
     width: '100%', maxWidth: '560px', maxHeight: '92vh',
-    background: '#1e1e22', borderRadius: '22px',
-    border: '1px solid rgba(255,255,255,0.10)',
-    boxShadow: '0 30px 60px rgba(0,0,0,0.55)',
+    background: '#ffffff', borderRadius: '22px',
+    border: '1px solid rgba(0,0,0,0.08)',
+    boxShadow: '0 30px 60px rgba(0,0,0,0.10)',
     display: 'flex', flexDirection: 'column', overflow: 'hidden'
   },
   header: {
     display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between',
-    padding: '18px 20px 12px', borderBottom: '1px solid rgba(255,255,255,0.06)'
+    padding: '18px 20px 12px', borderBottom: '1px solid rgba(0,0,0,0.06)'
   },
   iconBox: {
     width: '40px', height: '40px', borderRadius: '12px',
     background: 'linear-gradient(135deg, #e8d4b0, #d9c08f)',
     display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0
   },
-  title: { fontSize: '18px', fontWeight: '800', color: '#f5f5f5', margin: 0 },
-  subtitle: { fontSize: '12px', color: 'rgba(255,255,255,0.55)', fontWeight: '600' },
+  title: { fontSize: '18px', fontWeight: '800', color: '#111827', margin: 0 },
+  subtitle: { fontSize: '12px', color: '#6b7280', fontWeight: '600' },
   closeBtn: {
     width: '36px', height: '36px', borderRadius: '50%', border: 'none',
-    background: 'rgba(255,255,255,0.06)', color: 'rgba(255,255,255,0.65)',
+    background: '#f5f7fa', color: '#374151',
     cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center'
   },
   mandatoryBanner: {
     margin: '12px 20px 0', padding: '10px 14px', borderRadius: '12px',
-    background: 'rgba(232, 212, 176, 0.15)', border: '1px solid rgba(232,212,176,0.4)',
-    color: '#e8d4b0', fontSize: '12.5px', fontWeight: '700',
+    background: '#f0e2c8', border: '1px solid #e8d4b0',
+    color: '#92400e', fontSize: '12.5px', fontWeight: '700',
     display: 'flex', alignItems: 'center', gap: '8px'
   },
   tabs: { display: 'flex', gap: '6px', padding: '12px 20px 0' },
   tab: {
     flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px',
-    padding: '9px 12px', borderRadius: '10px', border: '1px solid rgba(255,255,255,0.08)',
-    background: 'rgba(255,255,255,0.03)', color: 'rgba(255,255,255,0.65)',
+    padding: '9px 12px', borderRadius: '10px', border: '1px solid rgba(0,0,0,0.08)',
+    background: '#f5f7fa', color: '#374151',
     fontSize: '12.5px', fontWeight: '700', cursor: 'pointer'
   },
   tabActive: {
-    background: 'rgba(232,212,176,0.14)', borderColor: 'rgba(232,212,176,0.45)', color: '#e8d4b0'
+    background: '#f0e2c8', borderColor: '#e8d4b0', color: '#92400e'
   },
   body: { padding: '16px 20px', overflowY: 'auto', flex: 1 },
   label: {
     display: 'block', fontSize: '11px', fontWeight: '800', textTransform: 'uppercase',
-    letterSpacing: '0.4px', color: 'rgba(255,255,255,0.5)', marginBottom: '6px'
+    letterSpacing: '0.4px', color: '#6b7280', marginBottom: '6px'
   },
   input: {
     width: '100%', padding: '10px 12px', borderRadius: '10px',
-    border: '1px solid rgba(255,255,255,0.10)', background: 'rgba(0,0,0,0.30)',
-    color: '#f5f5f5', fontSize: '13.5px', outline: 'none', boxSizing: 'border-box', fontFamily: 'inherit'
+    border: '1px solid rgba(0,0,0,0.10)', background: '#ffffff',
+    color: '#111827', fontSize: '13.5px', outline: 'none', boxSizing: 'border-box', fontFamily: 'inherit'
   },
   uploadBtn: {
     width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px',
-    padding: '14px', borderRadius: '14px', border: '1.5px dashed rgba(232,212,176,0.5)',
-    background: 'rgba(232,212,176,0.07)', color: '#e8d4b0', fontSize: '13.5px', fontWeight: '700', cursor: 'pointer'
+    padding: '14px', borderRadius: '14px', border: '1.5px dashed #e8d4b0',
+    background: '#f5f7fa', color: '#92400e', fontSize: '13.5px', fontWeight: '700', cursor: 'pointer'
   },
   grid: { display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(120px, 1fr))', gap: '10px', marginTop: '14px' },
-  thumbWrap: { position: 'relative', borderRadius: '10px', overflow: 'hidden', border: '1px solid rgba(255,255,255,0.10)', aspectRatio: '1' },
+  thumbWrap: { position: 'relative', borderRadius: '10px', overflow: 'hidden', border: '1px solid rgba(0,0,0,0.08)', aspectRatio: '1' },
   thumb: { width: '100%', height: '100%', objectFit: 'cover', display: 'block' },
   thumbDel: {
     position: 'absolute', top: '6px', right: '6px', width: '26px', height: '26px',
-    borderRadius: '50%', border: 'none', background: 'rgba(0,0,0,0.65)',
+    borderRadius: '50%', border: 'none', background: '#374151',
     display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer'
   },
   error: {
     marginTop: '12px', padding: '10px 12px', borderRadius: '10px',
-    background: 'rgba(255,69,58,0.12)', border: '1px solid rgba(255,69,58,0.35)',
-    color: '#ff8a80', fontSize: '12.5px', fontWeight: '600'
+    background: '#fef2f2', border: '1px solid #fecaca',
+    color: '#dc2626', fontSize: '12.5px', fontWeight: '600'
   },
   footer: {
     display: 'flex', gap: '10px', padding: '14px 20px 18px',
-    borderTop: '1px solid rgba(255,255,255,0.06)'
+    borderTop: '1px solid rgba(0,0,0,0.06)'
   },
   cancelBtn: {
-    flex: 1, padding: '12px', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.10)',
-    background: 'transparent', color: 'rgba(255,255,255,0.6)', fontSize: '13px', fontWeight: '700', cursor: 'pointer'
+    flex: 1, padding: '12px', borderRadius: '12px', border: '1px solid rgba(0,0,0,0.10)',
+    background: '#f5f7fa', color: '#374151', fontSize: '13px', fontWeight: '700', cursor: 'pointer'
   },
   saveBtn: {
     flex: 2, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px',
