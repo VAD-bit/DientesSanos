@@ -2352,3 +2352,163 @@ body.in-booking-flow .whatsapp-float-btn { display: none !important; }
 .admin-light-theme a {
   color: #e8d4b0 !important;
 }
+
+/* ════════════════════════════════════════════════════════════════════════
+   MENÚS DESPLEGABLES — Estética mármol claro
+   Selects, dropdowns, opciones, tooltips y popovers sobre fondo mármol
+   ════════════════════════════════════════════════════════════════════════ */
+
+/* Selects nativos (dropdowns) */
+.admin-light-theme select,
+.admin-light-theme .select-wrapper select,
+.admin-light-theme [role="listbox"],
+.admin-light-theme .dropdown-menu,
+.admin-light-theme .context-menu,
+.admin-light-theme .select-menu {
+  background: #ffffff !important;
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
+  color: #374151 !important;
+  border-radius: 8px !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06) !important;
+}
+
+/* Opciones de select */
+.admin-light-theme select option,
+.admin-light-theme [role="option"],
+.admin-light-theme .dropdown-item,
+.admin-light-theme .menu-item {
+  background: #ffffff !important;
+  color: #374151 !important;
+  padding: 10px 14px !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.04) !important;
+}
+
+.admin-light-theme select option:hover,
+.admin-light-theme [role="option"]:hover,
+.admin-light-theme .dropdown-item:hover,
+.admin-light-theme .menu-item:hover {
+  background: #f5f7fa !important;
+  color: #111827 !important;
+}
+
+.admin-light-theme select option:selected,
+.admin-light-theme [role="option"][aria-selected="true"],
+.admin-light-theme .dropdown-item.active,
+.admin-light-theme .menu-item.active {
+  background: #f0e2c8 !important;
+  color: #111827 !important;
+  font-weight: 700 !important;
+}
+
+/* Focus states para selects */
+.admin-light-theme select:focus,
+.admin-light-theme .select-wrapper select:focus {
+  border-color: #e8d4b0 !important;
+  box-shadow: 0 0 0 3px rgba(232, 212, 176, 0.15) !important;
+  outline: none !important;
+}
+
+/* Menús desplegables personalizados (div/ul basados) */
+.admin-light-theme .dropdown-content,
+.admin-light-theme .menu-content,
+.admin-light-theme .popover-content,
+.admin-light-theme .select-dropdown {
+  background: #ffffff !important;
+  border: 1px solid rgba(0, 0, 0, 0.06) !important;
+  border-radius: 10px !important;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.08) !important;
+  color: #374151 !important;
+}
+
+/* Tooltips sobre mármol */
+.admin-light-theme .tooltip,
+.admin-light-theme .tooltipster,
+.admin-light-theme [data-tooltip],
+.admin-light-theme .sidebar-tooltip-fixed {
+  background: #ffffff !important;
+  border: 1px solid rgba(232, 212, 176, 0.3) !important;
+  color: #374151 !important;
+  border-radius: 8px !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06) !important;
+}
+
+/* Inputs de búsqueda dentro de menús */
+.admin-light-theme .dropdown-search input,
+.admin-light-theme .menu-search input,
+.admin-light-theme .select-search input {
+  background: #f5f7fa !important;
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
+  color: #374151 !important;
+  border-radius: 6px !important;
+}
+
+/* Dividers dentro de menús */
+.admin-light-theme .dropdown-divider,
+.admin-light-theme .menu-divider,
+.admin-light-theme hr {
+  border: none !important;
+  border-top: 1px solid rgba(0, 0, 0, 0.06) !important;
+  margin: 6px 0 !important;
+}
+
+/* Scrollbars dentro de menús desplegables */
+.admin-light-theme .dropdown-menu::-webkit-scrollbar,
+.admin-light-theme .dropdown-content::-webkit-scrollbar,
+.admin-light-theme .menu-content::-webkit-scrollbar,
+.admin-light-theme .select-dropdown::-webkit-scrollbar {
+  width: 6px !important;
+}
+.admin-light-theme .dropdown-menu::-webkit-scrollbar-thumb,
+.admin-light-theme .dropdown-content::-webkit-scrollbar-thumb,
+.admin-light-theme .menu-content::-webkit-scrollbar-thumb,
+.admin-light-theme .select-dropdown::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.12) !important;
+  border-radius: 4px !important;
+}
+.admin-light-theme .dropdown-menu::-webkit-scrollbar-thumb:hover,
+.admin-light-theme .dropdown-content::-webkit-scrollbar-thumb:hover,
+.admin-light-theme .menu-content::-webkit-scrollbar-thumb:hover,
+.admin-light-theme .select-dropdown::-webkit-scrollbar-thumb:hover {
+  background: #e8d4b0 !important;
+}
+
+/* Botones de abrir/cerrar menús (triggers) */
+.admin-light-theme .dropdown-trigger,
+.admin-light-theme .menu-trigger,
+.admin-light-theme .select-trigger {
+  background: #f5f7fa !important;
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
+  color: #374151 !important;
+  border-radius: 8px !important;
+}
+.admin-light-theme .dropdown-trigger:hover,
+.admin-light-theme .menu-trigger:hover,
+.admin-light-theme .select-trigger:hover {
+  background: #f0e2c8 !important;
+  border-color: #e8d4b0 !important;
+}
+
+/* Flechas/indicadores de menú desplegable */
+.admin-light-theme .dropdown-arrow,
+.admin-light-theme .menu-arrow,
+.admin-light-theme .select-arrow,
+.admin-light-theme select::after {
+  color: #6b7280 !important;
+  border-color: #6b7280 !important;
+}
+
+/* Iconos dentro de menús desplegables */
+.admin-light-theme .dropdown-item svg,
+.admin-light-theme .menu-item svg,
+.admin-light-theme .dropdown-trigger svg,
+.admin-light-theme .menu-trigger svg {
+  color: #6b7280 !important;
+  fill: #6b7280 !important;
+}
+.admin-light-theme .dropdown-item:hover svg,
+.admin-light-theme .menu-item:hover svg,
+.admin-light-theme .dropdown-trigger:hover svg,
+.admin-light-theme .menu-trigger:hover svg {
+  color: #e8d4b0 !important;
+  fill: #e8d4b0 !important;
+}
