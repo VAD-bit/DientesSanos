@@ -92,21 +92,21 @@ const ScheduleModal = ({ isOpen, onClose, client, service, staff, onSchedule, de
           <style>
             {`
               .schedule-slot-btn::-webkit-scrollbar { width: 6px; }
-              .schedule-slot-btn::-webkit-scrollbar-track { background: rgba(255,255,255,0.02); border-radius: 10px; }
-              .schedule-slot-btn::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 10px; }
-              .schedule-slot-btn::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.2); }
+              .schedule-slot-btn::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.04); border-radius: 10px; }
+              .schedule-slot-btn::-webkit-scrollbar-thumb { background: rgba(0, 0, 0, 0.04); border-radius: 10px; }
+              .schedule-slot-btn::-webkit-scrollbar-thumb:hover { background: rgba(0, 0, 0, 0.04); }
               @keyframes spin { 100% { transform: rotate(360deg); } }
             `}
           </style>
-          <div className={`${cardClass.replace('global-modal-card', '')}`} style={{ maxWidth: '680px', width: '100%', borderRadius: '28px', border: '1px solid rgba(255,255,255,0.08)', background: 'var(--bg-secondary)', backdropFilter: 'blur(40px)', zIndex: 100000, position: 'relative', boxShadow: '0 30px 60px -12px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.04)', overflow: 'hidden', display: 'flex', flexDirection: 'column', maxHeight: '90vh' }}>
+          <div className={`${cardClass.replace('global-modal-card', '')}`} style={{ maxWidth: '680px', width: '100%', borderRadius: '28px', border: '1px solid rgba(0, 0, 0, 0.08)', background: 'var(--bg-secondary)', backdropFilter: 'blur(40px)', zIndex: 100000, position: 'relative', boxShadow: '0 30px 60px -12px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.04)', overflow: 'hidden', display: 'flex', flexDirection: 'column', maxHeight: '90vh' }}>
             
             {/* Header */}
-            <div style={{ padding: '28px 32px 20px', borderBottom: '1px solid rgba(255,255,255,0.06)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexShrink: 0 }}>
+            <div style={{ padding: '28px 32px 20px', borderBottom: '1px solid rgba(0, 0, 0, 0.08)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexShrink: 0 }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
                 {staff?.image_url ? (
-                   <img src={staff.image_url} alt={staff.name} style={{ width: '48px', height: '48px', borderRadius: '16px', objectFit: 'cover', border: '2px solid rgba(255,255,255,0.1)' }} />
+                   <img src={staff.image_url} alt={staff.name} style={{ width: '48px', height: '48px', borderRadius: '16px', objectFit: 'cover', border: '2px solid rgba(0, 0, 0, 0.08)' }} />
                 ) : (
-                   <div style={{ width: '48px', height: '48px', borderRadius: '16px', background: 'rgba(255,255,255,0.05)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '18px', fontWeight: 'bold', color: 'var(--gold-primary)', border: '1px solid rgba(255,255,255,0.1)' }}>
+                   <div style={{ width: '48px', height: '48px', borderRadius: '16px', background: 'rgba(0, 0, 0, 0.04)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '18px', fontWeight: 'bold', color: 'var(--gold-primary)', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
                      {staff?.name?.charAt(0) || <User size={24} />}
                    </div>
                 )}
@@ -119,19 +119,19 @@ const ScheduleModal = ({ isOpen, onClose, client, service, staff, onSchedule, de
                   </p>
                 </div>
               </div>
-              <button onClick={onClose} style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.05)', color: 'rgba(255,255,255,0.6)', width: '36px', height: '36px', borderRadius: '12px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'all 0.2s' }} onMouseEnter={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.1)'; e.currentTarget.style.color = 'white'; }} onMouseLeave={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.04)'; e.currentTarget.style.color = 'rgba(255,255,255,0.6)'; }}><X size={18} /></button>
+              <button onClick={onClose} style={{ background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', color: 'rgba(255,255,255,0.6)', width: '36px', height: '36px', borderRadius: '12px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'all 0.2s' }} onMouseEnter={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.1)'; e.currentTarget.style.color = 'white'; }} onMouseLeave={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.04)'; e.currentTarget.style.color = 'rgba(255,255,255,0.6)'; }}><X size={18} /></button>
             </div>
 
             {/* Scrollable Content */}
             <div className="custom-scrollbar" style={{ padding: '24px 32px', overflowY: 'auto', flex: 1 }}>
               
               {/* Date Selector */}
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '28px', background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.07)', padding: '16px 20px', borderRadius: '20px' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '28px', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', padding: '16px 20px', borderRadius: '20px' }}>
                 <button onClick={() => {
                   const prev = new Date(selectedDate);
                   prev.setDate(selectedDate.getDate() - 1);
                   setSelectedDate(prev);
-                }} style={{ background: 'rgba(255,255,255,0.05)', border: 'none', color: 'white', width: '36px', height: '36px', borderRadius: '12px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'all 0.2s' }} onMouseEnter={e => e.currentTarget.style.background = 'rgba(255,255,255,0.1)'} onMouseLeave={e => e.currentTarget.style.background = 'rgba(255,255,255,0.05)'}><ChevronLeft size={20} /></button>
+                }} style={{ background: 'rgba(0, 0, 0, 0.04)', border: 'none', color: 'white', width: '36px', height: '36px', borderRadius: '12px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'all 0.2s' }} onMouseEnter={e => e.currentTarget.style.background = 'rgba(255,255,255,0.1)'} onMouseLeave={e => e.currentTarget.style.background = 'rgba(255,255,255,0.05)'}><ChevronLeft size={20} /></button>
                 
                 <div style={{ textAlign: 'center', flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                   <div style={{ fontSize: '11px', color: 'var(--gold-primary)', fontWeight: '800', letterSpacing: '1px', textTransform: 'uppercase', marginBottom: '4px' }}>Fecha de Cita</div>
@@ -144,7 +144,7 @@ const ScheduleModal = ({ isOpen, onClose, client, service, staff, onSchedule, de
                   const next = new Date(selectedDate);
                   next.setDate(selectedDate.getDate() + 1);
                   setSelectedDate(next);
-                }} style={{ background: 'rgba(255,255,255,0.05)', border: 'none', color: 'white', width: '36px', height: '36px', borderRadius: '12px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'all 0.2s' }} onMouseEnter={e => e.currentTarget.style.background = 'rgba(255,255,255,0.1)'} onMouseLeave={e => e.currentTarget.style.background = 'rgba(255,255,255,0.05)'}><ChevronRight size={20} /></button>
+                }} style={{ background: 'rgba(0, 0, 0, 0.04)', border: 'none', color: 'white', width: '36px', height: '36px', borderRadius: '12px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'all 0.2s' }} onMouseEnter={e => e.currentTarget.style.background = 'rgba(255,255,255,0.1)'} onMouseLeave={e => e.currentTarget.style.background = 'rgba(255,255,255,0.05)'}><ChevronRight size={20} /></button>
               </div>
 
               {/* Slots Section */}
@@ -160,7 +160,7 @@ const ScheduleModal = ({ isOpen, onClose, client, service, staff, onSchedule, de
                 {loading ? (
                   <SkeletonGrid items={12} itemHeight={40} minWidth={80} />
                 ) : availableSlots.length === 0 ? (
-                  <div style={{ textAlign: 'center', padding: '40px 20px', background: 'rgba(255,255,255,0.02)', borderRadius: '20px', border: '1px dashed rgba(255,255,255,0.08)' }}>
+                  <div style={{ textAlign: 'center', padding: '40px 20px', background: 'rgba(0, 0, 0, 0.04)', borderRadius: '20px', border: '1px dashed rgba(0, 0, 0, 0.08)' }}>
                     <CalendarIcon size={32} color="rgba(255,255,255,0.2)" style={{ marginBottom: '12px' }} />
                     <div style={{ color: 'white', fontWeight: '800', fontSize: '15px', marginBottom: '6px' }}>No hay horarios disponibles</div>
                     <div style={{ color: 'rgba(255,255,255,0.5)', fontSize: '13px' }}>Selecciona otra fecha.</div>
@@ -187,7 +187,7 @@ const ScheduleModal = ({ isOpen, onClose, client, service, staff, onSchedule, de
                             fontWeight: '800',
                             cursor: slot.isAvailable ? 'pointer' : 'not-allowed',
                             background: isSel ? 'linear-gradient(135deg, var(--champagne-dark), var(--champagne-light))' : slot.isAvailable ? 'rgba(255,255,255,0.03)' : 'rgba(255,255,255,0.015)',
-                            border: isSel ? 'none' : slot.isAvailable ? '1px solid rgba(255,255,255,0.07)' : '1px solid rgba(255,255,255,0.03)',
+                            border: isSel ? 'none' : slot.isAvailable ? '1px solid rgba(0, 0, 0, 0.08)' : '1px solid rgba(0, 0, 0, 0.08)',
                             color: isSel ? 'black' : slot.isAvailable ? 'rgba(255,255,255,0.75)' : 'rgba(255,255,255,0.15)',
                             transition: 'all 0.25s cubic-bezier(0.4, 0, 0.2, 1)',
                             textDecoration: !slot.isAvailable ? 'line-through' : 'none',
@@ -217,7 +217,7 @@ const ScheduleModal = ({ isOpen, onClose, client, service, staff, onSchedule, de
             </div>
 
             {/* Sticky Footer */}
-            <div style={{ background: 'var(--bg-secondary)', backdropFilter: 'blur(20px)', borderTop: '1px solid rgba(255,255,255,0.06)', padding: '18px 32px', flexShrink: 0 }}>
+            <div style={{ background: 'var(--bg-secondary)', backdropFilter: 'blur(20px)', borderTop: '1px solid rgba(0, 0, 0, 0.08)', padding: '18px 32px', flexShrink: 0 }}>
               <button 
                 onClick={handleSchedule}
                 disabled={!selectedSlot}

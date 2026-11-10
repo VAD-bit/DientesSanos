@@ -313,8 +313,8 @@ const MobileDashboard = ({ onOpenSale, stats, chartData, dbData, onNavigate, onO
               width: '42px',
               height: '42px',
               borderRadius: '50%',
-              border: '1.5px solid rgba(255, 255, 255, 0.1)',
-              background: 'rgba(255, 255, 255, 0.03)',
+              border: '1.5px solid rgba(0, 0, 0, 0.08)',
+              background: 'rgba(0, 0, 0, 0.04)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
@@ -355,7 +355,7 @@ const MobileDashboard = ({ onOpenSale, stats, chartData, dbData, onNavigate, onO
             height: '42px',
             borderRadius: '50%',
             border: '1.5px solid var(--gold-primary)',
-            background: 'rgba(255, 255, 255,0.15)',
+            background: 'rgba(0, 0, 0, 0.04)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
@@ -414,7 +414,7 @@ const MobileDashboard = ({ onOpenSale, stats, chartData, dbData, onNavigate, onO
                     chair.avatar ? (
                       <img src={chair.avatar} alt={chair.barber} style={{ width: '48px', height: '48px', borderRadius: '50%', objectFit: 'cover', border: '2px solid var(--champagne)', boxShadow: '0 0 16px rgba(17, 17, 17,0.6)' }} />
                     ) : (
-                      <div style={{ width: '48px', height: '48px', borderRadius: '50%', background: 'rgba(255,255,255,0.1)', border: '2px solid var(--champagne)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '16px', fontWeight: '900', color: 'var(--champagne)' }}>
+                      <div style={{ width: '48px', height: '48px', borderRadius: '50%', background: 'rgba(0, 0, 0, 0.04)', border: '2px solid var(--champagne)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '16px', fontWeight: '900', color: 'var(--champagne)' }}>
                         {chair.barber ? chair.barber.split(' ').map(n => n[0]).join('').slice(0, 2).toUpperCase() : ''}
                       </div>
                     )
@@ -448,7 +448,7 @@ const MobileDashboard = ({ onOpenSale, stats, chartData, dbData, onNavigate, onO
               {/* Sub-widget inferior */}
               <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', zIndex: 2, marginTop: '120px' }}>
                 {chair.occupied ? (
-                  <div style={{ background: 'var(--bg-secondary)', borderRadius: '14px', padding: '12px 16px', border: '1px solid rgba(255,255,255,0.08)', display: 'flex', alignItems: 'center', gap: '12px', backdropFilter: 'blur(12px)', boxShadow: '0 8px 20px rgba(0,0,0,0.5)' }}>
+                  <div style={{ background: 'var(--bg-secondary)', borderRadius: '14px', padding: '12px 16px', border: '1px solid rgba(0, 0, 0, 0.08)', display: 'flex', alignItems: 'center', gap: '12px', backdropFilter: 'blur(12px)', boxShadow: '0 8px 20px rgba(0,0,0,0.5)' }}>
                     <div style={{ flex: 1, minWidth: 0 }}>
                       <div style={{ fontSize: '14px', fontWeight: '900', color: 'white', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', marginBottom: '4px' }}>{chair.client}</div>
                       <div style={{ fontSize: '11px', color: 'rgba(255,255,255,0.7)', fontWeight: '600', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{chair.service}</div>
@@ -474,12 +474,12 @@ const MobileDashboard = ({ onOpenSale, stats, chartData, dbData, onNavigate, onO
         {/* Tarjeta Principal: Producción */}
         <div style={{ 
           gridColumn: 'span 2', 
-          background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(17, 17, 17, 0.03) 100%)', 
+          background: 'linear-gradient(135deg, rgba(0, 0, 0, 0.04) 0%, rgba(17, 17, 17, 0.03) 100%)', 
           borderRadius: '24px', 
           padding: '24px', 
           position: 'relative',
           overflow: 'hidden',
-          border: '1px solid rgba(255,255,255,0.06)',
+          border: '1px solid rgba(0, 0, 0, 0.08)',
           boxShadow: '0 20px 40px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.1)'
         }}>
           {/* Subtle Glow Background */}
@@ -503,7 +503,7 @@ const MobileDashboard = ({ onOpenSale, stats, chartData, dbData, onNavigate, onO
           backdropFilter: 'blur(10px)',
           borderRadius: '20px', 
           padding: '16px', 
-          border: '1px solid rgba(255,255,255,0.04)',
+          border: '1px solid rgba(0, 0, 0, 0.08)',
           display: 'flex',
           flexDirection: 'column',
           gap: '8px'
@@ -523,7 +523,7 @@ const MobileDashboard = ({ onOpenSale, stats, chartData, dbData, onNavigate, onO
           backdropFilter: 'blur(10px)',
           borderRadius: '20px', 
           padding: '16px', 
-          border: '1px solid rgba(255,255,255,0.04)',
+          border: '1px solid rgba(0, 0, 0, 0.08)',
           display: 'flex',
           flexDirection: 'column',
           gap: '8px'
@@ -546,7 +546,7 @@ const MobileDashboard = ({ onOpenSale, stats, chartData, dbData, onNavigate, onO
             { id: 'weekly', title: 'Meta Semanal', current: stats?.weeklyIncome || 0, goal: goals.weekly, label: 'SEMANA ACTUAL' },
             { id: 'monthly', title: 'Objetivo Mensual', current: stats?.monthlyIncome || 0, goal: goals.monthly, label: 'MES EN CURSO' }
           ].map((m, i) => (
-            <div key={m.id} className="glass-card" style={{ padding: '18px', borderRadius: '20px', border: '1px solid rgba(255,255,255,0.04)' }}>
+            <div key={m.id} className="glass-card" style={{ padding: '18px', borderRadius: '20px', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '12px' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                   <Target size={14} color="var(--gold-primary)" />
@@ -566,12 +566,12 @@ const MobileDashboard = ({ onOpenSale, stats, chartData, dbData, onNavigate, onO
                 <div style={{ fontSize: '18px', fontWeight: '900', color: 'white' }}>
                   ${formatCurrency(m.current || 0)} <span style={{ fontSize: '11px', color: 'var(--text-muted)', fontWeight: '700' }}>/ ${formatCurrency(m.goal)}</span>
                 </div>
-                <div style={{ fontSize: '9px', fontWeight: '900', color: 'var(--gold-primary)', backgroundColor: 'rgba(255, 255, 255,0.1)', padding: '2px 6px', borderRadius: '4px' }}>
+                <div style={{ fontSize: '9px', fontWeight: '900', color: 'var(--gold-primary)', backgroundColor: 'rgba(0, 0, 0, 0.04)', padding: '2px 6px', borderRadius: '4px' }}>
                   {Math.min(Math.round(((m.current || 0) / m.goal) * 100), 100)}%
                 </div>
               </div>
 
-              <div style={{ height: '6px', backgroundColor: 'rgba(255,255,255,0.05)', borderRadius: '3px', overflow: 'hidden' }}>
+              <div style={{ height: '6px', backgroundColor: 'rgba(0, 0, 0, 0.04)', borderRadius: '3px', overflow: 'hidden' }}>
                 <div style={{ 
                   width: `${Math.min(((m.current || 0) / m.goal) * 100, 100)}%`, 
                   height: '100%', 
@@ -613,13 +613,13 @@ const MobileDashboard = ({ onOpenSale, stats, chartData, dbData, onNavigate, onO
 
       {/* Fallback list if podium data is too fresh */}
       {isAdmin && teamOverview.length < 2 && (
-        <div className="glass-card" style={{ padding: '20px', borderRadius: '24px', marginBottom: '24px', border: '1px solid rgba(255,255,255,0.04)' }}>
+        <div className="glass-card" style={{ padding: '20px', borderRadius: '24px', marginBottom: '24px', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
           <div style={{ fontWeight: '900', fontSize: '13px', color: '#ffffff', marginBottom: '16px', letterSpacing: '-0.3px', fontStyle: 'italic', display: 'flex', alignItems: 'center', gap: '8px' }}>
             <Trophy size={14} color="var(--gold-primary)" /> TOP Odontólogos (MES EN CURSO)
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
             {teamOverview.map((st, idx) => (
-              <div key={idx} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingBottom: '8px', borderBottom: idx !== teamOverview.length - 1 ? '1px solid rgba(255,255,255,0.03)' : 'none' }}>
+              <div key={idx} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingBottom: '8px', borderBottom: idx !== teamOverview.length - 1 ? '1px solid rgba(0, 0, 0, 0.08)' : 'none' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                   <span style={{ fontSize: '11px', fontWeight: '950', color: 'var(--gold-primary)', width: '16px' }}>{idx+1}.</span>
                   <span style={{ fontSize: '13px', fontWeight: '800', color: '#ffffff' }}>{st.name}</span>
@@ -658,7 +658,7 @@ const MobileDashboard = ({ onOpenSale, stats, chartData, dbData, onNavigate, onO
                       position: 'relative',
                       overflow: 'hidden',
                       padding: '20px', 
-                      background: 'linear-gradient(135deg, rgba(48,209,88,0.2) 0%, rgba(20,20,22,1) 100%)', 
+                      background: 'linear-gradient(135deg, rgba(48,209,88,0.2) 0%, rgba(255, 255, 255, 0.9) 100%)', 
                       border: '1px solid rgba(48,209,88,0.3)', 
                       borderRadius: '24px',
                       boxShadow: '0 10px 30px rgba(48,209,88,0.1)',
@@ -716,7 +716,7 @@ const MobileDashboard = ({ onOpenSale, stats, chartData, dbData, onNavigate, onO
                 <div style={{ fontSize: '10px', fontWeight: '900', color: 'var(--text-muted)', letterSpacing: '1px', textTransform: 'uppercase', marginBottom: '12px', paddingLeft: '8px' }}>
                   PRÓXIMOS DÍAS
                 </div>
-                <div className="glass-card" style={{ padding: '16px', borderRadius: '24px', border: '1px solid rgba(255,255,255,0.04)' }}>
+                <div className="glass-card" style={{ padding: '16px', borderRadius: '24px', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
                   <div style={{ display: 'flex', flexDirection: 'column' }}>
                     {upcomingBirthdays.map((c, idx) => (
                       <div 
@@ -726,13 +726,13 @@ const MobileDashboard = ({ onOpenSale, stats, chartData, dbData, onNavigate, onO
                           alignItems: 'center', 
                           justifyContent: 'space-between', 
                           padding: '12px 0', 
-                          borderBottom: idx !== upcomingBirthdays.length - 1 ? '1px solid rgba(255,255,255,0.04)' : 'none',
+                          borderBottom: idx !== upcomingBirthdays.length - 1 ? '1px solid rgba(0, 0, 0, 0.08)' : 'none',
                           cursor: 'pointer' 
                         }} 
                         onClick={() => onNavigate && onNavigate('clients', { clientId: c.id })}
                       >
                         <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                          <div style={{ width: '36px', height: '36px', borderRadius: '12px', background: 'rgba(255,255,255,0.05)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '14px', fontWeight: '800', color: 'white', border: '1px solid rgba(255,255,255,0.05)' }}>
+                          <div style={{ width: '36px', height: '36px', borderRadius: '12px', background: 'rgba(0, 0, 0, 0.04)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '14px', fontWeight: '800', color: 'white', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
                             {c.name.charAt(0).toUpperCase()}
                           </div>
                           <div>
@@ -751,7 +751,7 @@ const MobileDashboard = ({ onOpenSale, stats, chartData, dbData, onNavigate, onO
             )}
             
             {todaysBirthdays.length === 0 && upcomingBirthdays.length === 0 && (
-              <div className="glass-card" style={{ padding: '30px 20px', borderRadius: '24px', border: '1px solid rgba(255,255,255,0.04)', textAlign: 'center' }}>
+              <div className="glass-card" style={{ padding: '30px 20px', borderRadius: '24px', border: '1px solid rgba(0, 0, 0, 0.08)', textAlign: 'center' }}>
                 <Cake size={32} color="rgba(255,255,255,0.1)" style={{ marginBottom: '12px' }} />
                 <div style={{ fontSize: '13px', color: 'var(--text-muted)', fontWeight: '600' }}>
                   No hay cumpleaños cercanos
@@ -763,7 +763,7 @@ const MobileDashboard = ({ onOpenSale, stats, chartData, dbData, onNavigate, onO
       )}
 
       {/* Analytics Chart Section (Apple UX Redesign) */}
-      <div className="glass-card" style={{ padding: '28px 24px', borderRadius: '32px', border: '1px solid rgba(255,255,255,0.06)', marginBottom: '32px', background: 'var(--bg-secondary)', boxShadow: '0 20px 40px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.08)' }}>
+      <div className="glass-card" style={{ padding: '28px 24px', borderRadius: '32px', border: '1px solid rgba(0, 0, 0, 0.08)', marginBottom: '32px', background: 'var(--bg-secondary)', boxShadow: '0 20px 40px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.08)' }}>
         <div style={{ display: 'flex', flexDirection: 'column', marginBottom: '24px' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
             <span style={{ fontSize: '12px', fontWeight: '800', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '1px' }}>Tendencia de Ventas</span>
@@ -905,7 +905,7 @@ const MobileDashboard = ({ onOpenSale, stats, chartData, dbData, onNavigate, onO
                 animate={{ opacity: 1, backdropFilter: 'blur(16px)' }}
                 exit={{ opacity: 0, backdropFilter: 'blur(0px)' }}
                 onClick={() => setIsEditingGoals(false)}
-                style={{ position: 'absolute', inset: 0, backgroundColor: 'rgba(0,0,0,0.7)' }}
+                style={{ position: 'absolute', inset: 0, backgroundColor: 'rgba(255, 255, 255, 0.9)' }}
               />
               <motion.div 
                 initial={{ opacity: 0, scale: 0.95, y: 20 }}
@@ -917,7 +917,7 @@ const MobileDashboard = ({ onOpenSale, stats, chartData, dbData, onNavigate, onO
                   borderRadius: '32px', position: 'relative',
                   background: 'var(--bg-secondary)',
                   boxShadow: '0 30px 60px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.1)',
-                  border: '1px solid rgba(255,255,255,0.08)',
+                  border: '1px solid rgba(0, 0, 0, 0.08)',
                   backdropFilter: 'blur(25px)'
                 }}
               >
@@ -935,9 +935,9 @@ const MobileDashboard = ({ onOpenSale, stats, chartData, dbData, onNavigate, onO
                       type="number" 
                       value={goals.daily} 
                       onChange={e => setGoals({...goals, daily: e.target.value})}
-                      style={{ width: '100%', padding: '14px 16px', borderRadius: '14px', background: 'var(--bg-secondary)', border: '1px solid rgba(255,255,255,0.05)', color: 'white', fontSize: '16px', fontWeight: '700', outline: 'none', transition: 'border 0.2s', WebkitAppearance: 'none' }}
+                      style={{ width: '100%', padding: '14px 16px', borderRadius: '14px', background: 'var(--bg-secondary)', border: '1px solid rgba(0, 0, 0, 0.08)', color: 'white', fontSize: '16px', fontWeight: '700', outline: 'none', transition: 'border 0.2s', WebkitAppearance: 'none' }}
                       onFocus={(e) => e.target.style.border = '1px solid rgba(17, 17, 17,0.5)'}
-                      onBlur={(e) => e.target.style.border = '1px solid rgba(255,255,255,0.05)'}
+                      onBlur={(e) => e.target.style.border = '1px solid rgba(0, 0, 0, 0.08)'}
                     />
                   </div>
                   <div>
@@ -946,9 +946,9 @@ const MobileDashboard = ({ onOpenSale, stats, chartData, dbData, onNavigate, onO
                       type="number" 
                       value={goals.weekly} 
                       onChange={e => setGoals({...goals, weekly: e.target.value})}
-                      style={{ width: '100%', padding: '14px 16px', borderRadius: '14px', background: 'var(--bg-secondary)', border: '1px solid rgba(255,255,255,0.05)', color: 'white', fontSize: '16px', fontWeight: '700', outline: 'none', transition: 'border 0.2s', WebkitAppearance: 'none' }}
+                      style={{ width: '100%', padding: '14px 16px', borderRadius: '14px', background: 'var(--bg-secondary)', border: '1px solid rgba(0, 0, 0, 0.08)', color: 'white', fontSize: '16px', fontWeight: '700', outline: 'none', transition: 'border 0.2s', WebkitAppearance: 'none' }}
                       onFocus={(e) => e.target.style.border = '1px solid rgba(17, 17, 17,0.5)'}
-                      onBlur={(e) => e.target.style.border = '1px solid rgba(255,255,255,0.05)'}
+                      onBlur={(e) => e.target.style.border = '1px solid rgba(0, 0, 0, 0.08)'}
                     />
                   </div>
                   <div>
@@ -957,9 +957,9 @@ const MobileDashboard = ({ onOpenSale, stats, chartData, dbData, onNavigate, onO
                       type="number" 
                       value={goals.monthly} 
                       onChange={e => setGoals({...goals, monthly: e.target.value})}
-                      style={{ width: '100%', padding: '14px 16px', borderRadius: '14px', background: 'var(--bg-secondary)', border: '1px solid rgba(255,255,255,0.05)', color: 'white', fontSize: '16px', fontWeight: '700', outline: 'none', transition: 'border 0.2s', WebkitAppearance: 'none' }}
+                      style={{ width: '100%', padding: '14px 16px', borderRadius: '14px', background: 'var(--bg-secondary)', border: '1px solid rgba(0, 0, 0, 0.08)', color: 'white', fontSize: '16px', fontWeight: '700', outline: 'none', transition: 'border 0.2s', WebkitAppearance: 'none' }}
                       onFocus={(e) => e.target.style.border = '1px solid rgba(17, 17, 17,0.5)'}
-                      onBlur={(e) => e.target.style.border = '1px solid rgba(255,255,255,0.05)'}
+                      onBlur={(e) => e.target.style.border = '1px solid rgba(0, 0, 0, 0.08)'}
                     />
                   </div>
                 </div>
@@ -994,7 +994,7 @@ const MobileDashboard = ({ onOpenSale, stats, chartData, dbData, onNavigate, onO
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            style={{ position: 'absolute', inset: 0, backgroundColor: 'rgba(0, 0, 0, 0.75)', backdropFilter: 'blur(10px)' }}
+            style={{ position: 'absolute', inset: 0, backgroundColor: 'rgba(255, 255, 255, 0.9)', backdropFilter: 'blur(10px)' }}
           />
           <motion.div
             key="card-whatsapp-modal"
@@ -1007,7 +1007,7 @@ const MobileDashboard = ({ onOpenSale, stats, chartData, dbData, onNavigate, onO
             width: '100%',
             maxWidth: '380px',
             background: 'var(--bg-secondary)',
-            border: '1px solid rgba(255, 255, 255, 0.25)',
+            border: '1px solid rgba(0, 0, 0, 0.08)',
             borderRadius: '24px',
             padding: '20px',
             boxShadow: '0 20px 50px rgba(0, 0, 0, 0.5), 0 0 30px rgba(255, 255, 255, 0.05)',
@@ -1024,7 +1024,7 @@ const MobileDashboard = ({ onOpenSale, stats, chartData, dbData, onNavigate, onO
               <button 
                 onClick={() => setWhatsappModalData(null)}
                 style={{
-                  background: 'rgba(255,255,255,0.05)',
+                  background: 'rgba(0, 0, 0, 0.04)',
                   border: 'none',
                   borderRadius: '50%',
                   width: '28px',
@@ -1057,8 +1057,8 @@ const MobileDashboard = ({ onOpenSale, stats, chartData, dbData, onNavigate, onO
                 placeholder="Ej: +584121234567"
                 style={{
                   padding: '8px 12px',
-                  backgroundColor: 'rgba(255,255,255,0.02)',
-                  border: '1px solid rgba(255,255,255,0.08)',
+                  backgroundColor: 'rgba(0, 0, 0, 0.04)',
+                  border: '1px solid rgba(0, 0, 0, 0.08)',
                   borderRadius: '10px',
                   color: 'white',
                   fontSize: '13px',
@@ -1079,8 +1079,8 @@ const MobileDashboard = ({ onOpenSale, stats, chartData, dbData, onNavigate, onO
                 rows={5}
                 style={{
                   padding: '8px 12px',
-                  backgroundColor: 'rgba(255,255,255,0.02)',
-                  border: '1px solid rgba(255,255,255,0.08)',
+                  backgroundColor: 'rgba(0, 0, 0, 0.04)',
+                  border: '1px solid rgba(0, 0, 0, 0.08)',
                   borderRadius: '10px',
                   color: 'white',
                   fontSize: '13px',
@@ -1126,11 +1126,11 @@ const MobileDashboard = ({ onOpenSale, stats, chartData, dbData, onNavigate, onO
                   width: '100%',
                   padding: '10px',
                   borderRadius: '10px',
-                  backgroundColor: 'rgba(255, 255, 255, 0.05)',
+                  backgroundColor: 'rgba(0, 0, 0, 0.04)',
                   color: 'white',
                   fontWeight: '700',
                   fontSize: '12px',
-                  border: '1px solid rgba(255, 255, 255, 0.1)',
+                  border: '1px solid rgba(0, 0, 0, 0.08)',
                   cursor: isSaving ? 'not-allowed' : 'pointer',
                   display: 'flex',
                   alignItems: 'center',
@@ -1199,13 +1199,13 @@ const MobileDashboard = ({ onOpenSale, stats, chartData, dbData, onNavigate, onO
                 }}
               >
                 <div style={{ display: 'flex', justifyContent: 'center', paddingTop: '12px', paddingBottom: '8px' }}>
-                  <div style={{ width: '40px', height: '5px', backgroundColor: 'rgba(255,255,255,0.2)', borderRadius: '10px' }} />
+                  <div style={{ width: '40px', height: '5px', backgroundColor: 'rgba(0, 0, 0, 0.04)', borderRadius: '10px' }} />
                 </div>
-                <div style={{ padding: '0 24px 16px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+                <div style={{ padding: '0 24px 16px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid rgba(0, 0, 0, 0.08)' }}>
                   <h3 style={{ margin: 0, fontSize: '20px', fontWeight: '900', color: 'white', letterSpacing: '-0.5px' }}>
                     Cobrar Sillón {checkoutChairModal.id}
                   </h3>
-                  <button onClick={() => setCheckoutChairModal(null)} style={{ background: 'rgba(255,255,255,0.1)', border: 'none', borderRadius: '50%', width: '32px', height: '32px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', cursor: 'pointer' }}>
+                  <button onClick={() => setCheckoutChairModal(null)} style={{ background: 'rgba(0, 0, 0, 0.04)', border: 'none', borderRadius: '50%', width: '32px', height: '32px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', cursor: 'pointer' }}>
                     <X size={18} />
                   </button>
                 </div>
@@ -1259,13 +1259,13 @@ const MobileDashboard = ({ onOpenSale, stats, chartData, dbData, onNavigate, onO
                 }}
               >
                 <div style={{ display: 'flex', justifyContent: 'center', paddingTop: '12px', paddingBottom: '8px' }}>
-                  <div style={{ width: '40px', height: '5px', backgroundColor: 'rgba(255,255,255,0.2)', borderRadius: '10px' }} />
+                  <div style={{ width: '40px', height: '5px', backgroundColor: 'rgba(0, 0, 0, 0.04)', borderRadius: '10px' }} />
                 </div>
-                <div style={{ padding: '0 24px 16px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+                <div style={{ padding: '0 24px 16px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid rgba(0, 0, 0, 0.08)' }}>
                   <h3 style={{ margin: 0, fontSize: '20px', fontWeight: '900', color: 'white', letterSpacing: '-0.5px' }}>
                     Recepción
                   </h3>
-                  <button onClick={() => setShowReceptionPopup(false)} style={{ background: 'rgba(255,255,255,0.1)', border: 'none', borderRadius: '50%', width: '32px', height: '32px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', cursor: 'pointer' }}>
+                  <button onClick={() => setShowReceptionPopup(false)} style={{ background: 'rgba(0, 0, 0, 0.04)', border: 'none', borderRadius: '50%', width: '32px', height: '32px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', cursor: 'pointer' }}>
                     <X size={18} />
                   </button>
                 </div>
@@ -1305,9 +1305,9 @@ const PodiumWidget = ({ title, icon, data, labelKey, scoreKey, scoreLabel, isCli
   const others = data.slice(3); // Odontologos del 4to lugar en adelante
 
   return (
-    <div className="glass-card" style={{ padding: '20px', borderRadius: '24px', border: '1px solid rgba(255,255,255,0.04)', marginBottom: '24px' }}>
+    <div className="glass-card" style={{ padding: '20px', borderRadius: '24px', border: '1px solid rgba(0, 0, 0, 0.08)', marginBottom: '24px' }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '32px' }}>
-        <div style={{ width: '32px', height: '32px', borderRadius: '8px', backgroundColor: 'rgba(255, 255, 255,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <div style={{ width: '32px', height: '32px', borderRadius: '8px', backgroundColor: 'rgba(0, 0, 0, 0.04)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
           {icon}
         </div>
         <h3 style={{ fontSize: '14px', fontWeight: '900', color: 'white' }}>{title.split(' ')[0]} <span className="text-gold">{title.split(' ')[1]}</span></h3>
@@ -1333,7 +1333,7 @@ const PodiumWidget = ({ title, icon, data, labelKey, scoreKey, scoreLabel, isCli
                   height: isFirst ? '56px' : '44px', 
                   borderRadius: '16px', 
                   backgroundColor: 'var(--bg-tertiary)',
-                  border: isFirst ? '2.5px solid var(--gold-primary)' : '1.5px solid rgba(255,255,255,0.1)',
+                  border: isFirst ? '2.5px solid var(--gold-primary)' : '1.5px solid rgba(0, 0, 0, 0.08)',
                   overflow: 'hidden',
                   boxShadow: isFirst ? 'var(--gold-glow)' : 'none',
                   display: 'flex',
@@ -1392,10 +1392,10 @@ const PodiumWidget = ({ title, icon, data, labelKey, scoreKey, scoreLabel, isCli
                 <div style={{ 
                   width: '100%', 
                   height: isFirst ? '40px' : isSecond ? '25px' : '15px', 
-                  background: 'linear-gradient(to top, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.08))',
+                  background: 'linear-gradient(to top, rgba(0, 0, 0, 0.04), rgba(0, 0, 0, 0.04))',
                   borderRadius: '6px 6px 0 0',
                   marginTop: '8px',
-                  border: '1px solid rgba(255, 255, 255, 0.25)',
+                  border: '1px solid rgba(0, 0, 0, 0.08)',
                   borderBottom: 'none'
                 }} />
               </div>
@@ -1405,7 +1405,7 @@ const PodiumWidget = ({ title, icon, data, labelKey, scoreKey, scoreLabel, isCli
       </div>
 
       {others.length > 0 && (
-        <div style={{ marginTop: '24px', paddingTop: '16px', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
+        <div style={{ marginTop: '24px', paddingTop: '16px', borderTop: '1px solid rgba(0, 0, 0, 0.08)' }}>
           <AnimatePresence>
             {expanded && (
               <motion.div 
@@ -1415,13 +1415,13 @@ const PodiumWidget = ({ title, icon, data, labelKey, scoreKey, scoreLabel, isCli
                 style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginBottom: '16px', overflow: 'hidden' }}
               >
                 {others.map((item, idx) => (
-                  <div key={item.id || idx} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '12px 16px', background: 'rgba(255,255,255,0.03)', borderRadius: '16px', border: '1px solid rgba(255,255,255,0.02)' }}>
+                  <div key={item.id || idx} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '12px 16px', background: 'rgba(0, 0, 0, 0.04)', borderRadius: '16px', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
                       <span style={{ fontSize: '12px', fontWeight: '900', color: 'rgba(255,255,255,0.3)', width: '16px' }}>{idx + 4}</span>
                       {item.image_url ? (
                         <img src={item.image_url} alt={item[labelKey]} style={{ width: '32px', height: '32px', borderRadius: '10px', objectFit: 'cover' }} />
                       ) : (
-                        <div style={{ width: '32px', height: '32px', borderRadius: '10px', background: 'rgba(255,255,255,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                        <div style={{ width: '32px', height: '32px', borderRadius: '10px', background: 'rgba(0, 0, 0, 0.04)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                           <User size={16} color="rgba(255,255,255,0.5)" />
                         </div>
                       )}
@@ -1435,7 +1435,7 @@ const PodiumWidget = ({ title, icon, data, labelKey, scoreKey, scoreLabel, isCli
           </AnimatePresence>
           <button 
             onClick={() => setExpanded(!expanded)} 
-            style={{ width: '100%', padding: '14px', borderRadius: '16px', background: 'rgba(255,255,255,0.05)', color: 'white', fontWeight: '800', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', transition: 'background 0.2s' }}
+            style={{ width: '100%', padding: '14px', borderRadius: '16px', background: 'rgba(0, 0, 0, 0.04)', color: 'white', fontWeight: '800', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', transition: 'background 0.2s' }}
           >
             {expanded ? 'Ocultar ranking' : 'Ver ranking completo'}
             <motion.div animate={{ rotate: expanded ? 180 : 0 }}>

@@ -138,7 +138,7 @@ export default function ProviderPaymentModal({
             {/* Header */}
             <header style={{ 
               padding: 'clamp(14px, 2vw, 18px) clamp(16px, 2.5vw, 24px)', 
-              borderBottom: '1px solid rgba(255, 255, 255, 0.07)', 
+              borderBottom: '1px solid rgba(0, 0, 0, 0.08)', 
               display: 'flex', 
               alignItems: 'center', 
               justifyContent: 'space-between',
@@ -176,8 +176,8 @@ export default function ProviderPaymentModal({
                   width: '36px', 
                   height: '36px', 
                   borderRadius: '10px', 
-                  background: 'rgba(255, 255, 255, 0.05)', 
-                  border: '1px solid rgba(255, 255, 255, 0.1)', 
+                  background: 'rgba(0, 0, 0, 0.04)', 
+                  border: '1px solid rgba(0, 0, 0, 0.08)', 
                   color: '#ccc', 
                   display: 'grid', 
                   placeItems: 'center', 
@@ -235,8 +235,8 @@ export default function ProviderPaymentModal({
 
                 {/* Amount Input Section */}
                 <div style={{ 
-                  background: 'rgba(255, 255, 255, 0.025)', 
-                  border: '1px solid rgba(255, 255, 255, 0.08)', 
+                  background: 'rgba(0, 0, 0, 0.04)', 
+                  border: '1px solid rgba(0, 0, 0, 0.08)', 
                   borderRadius: '16px', 
                   padding: '14px 16px' 
                 }}>
@@ -277,7 +277,7 @@ export default function ProviderPaymentModal({
                           ? '1.5px solid #ff453a' 
                           : numericAmount > 0 
                             ? '1.5px solid rgba(17, 17, 17, 0.6)' 
-                            : '1px solid rgba(255, 255, 255, 0.12)', 
+                            : '1px solid rgba(0, 0, 0, 0.08)', 
                         color: '#fff', 
                         fontSize: '18px', 
                         fontWeight: '900', 
@@ -344,13 +344,13 @@ export default function ProviderPaymentModal({
                   padding: '12px 14px', 
                   borderRadius: '14px', 
                   background: 'var(--bg-secondary)', 
-                  border: '1px solid rgba(255, 255, 255, 0.07)' 
+                  border: '1px solid rgba(0, 0, 0, 0.08)' 
                 }}>
                   <div style={{ fontSize: '10px', fontWeight: '900', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.6px', marginBottom: '8px' }}>
                     Impacto en la deuda
                   </div>
                   <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) auto minmax(0, 1fr)', gap: '8px', alignItems: 'center', textAlign: 'center' }}>
-                    <div style={{ background: 'rgba(255,255,255,0.03)', padding: '6px 8px', borderRadius: '8px' }}>
+                    <div style={{ background: 'rgba(0, 0, 0, 0.04)', padding: '6px 8px', borderRadius: '8px' }}>
                       <span style={{ display: 'block', fontSize: '9.5px', color: 'var(--text-muted)' }}>Deuda actual</span>
                       <strong style={{ fontSize: '12.5px', color: '#ff9f0a' }}>
                         ${Number(providerDebtUsd || 0).toFixed(2)}
@@ -404,7 +404,7 @@ export default function ProviderPaymentModal({
                             : 'rgba(255, 255, 255, 0.025)',
                           border: active 
                             ? '1.5px solid var(--gold-primary)' 
-                            : '1px solid rgba(255, 255, 255, 0.08)',
+                            : '1px solid rgba(0, 0, 0, 0.08)',
                           boxShadow: active ? '0 4px 16px rgba(17, 17, 17, 0.15)' : 'none',
                           transition: 'all 0.15s ease',
                           display: 'flex',
@@ -452,8 +452,8 @@ export default function ProviderPaymentModal({
                   marginTop: '6px', 
                   padding: '10px 12px', 
                   borderRadius: '12px', 
-                  background: 'rgba(255, 255, 255, 0.02)', 
-                  border: '1px solid rgba(255, 255, 255, 0.05)',
+                  background: 'rgba(0, 0, 0, 0.04)', 
+                  border: '1px solid rgba(0, 0, 0, 0.08)',
                   fontSize: '11px',
                   color: 'var(--text-secondary)',
                   lineHeight: '1.4'
@@ -467,7 +467,7 @@ export default function ProviderPaymentModal({
             {/* Footer */}
             <footer style={{ 
               padding: '12px clamp(16px, 2.5vw, 24px)', 
-              borderTop: '1px solid rgba(255, 255, 255, 0.07)', 
+              borderTop: '1px solid rgba(0, 0, 0, 0.08)', 
               display: 'flex', 
               justifyContent: 'flex-end', 
               alignItems: 'center',
@@ -510,8 +510,8 @@ export default function ProviderPaymentModal({
 const quickBtnStyle = {
   padding: '5px 9px',
   borderRadius: '8px',
-  border: '1px solid rgba(255, 255, 255, 0.1)',
-  background: 'rgba(255, 255, 255, 0.04)',
+  border: '1px solid rgba(0, 0, 0, 0.08)',
+  background: 'rgba(0, 0, 0, 0.04)',
   color: 'rgba(255, 255, 255, 0.85)',
   fontSize: '11px',
   fontWeight: '800',

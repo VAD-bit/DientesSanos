@@ -441,25 +441,25 @@ const styles = {
   palette: {
     display: 'flex', flexDirection: 'column', gap: '8px',
     padding: '12px', borderRadius: '14px',
-    background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)'
+    background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(0, 0, 0, 0.08)'
   },
   paletteRow: { display: 'flex', flexWrap: 'wrap', gap: '6px', alignItems: 'center' },
   condBtn: {
     display: 'inline-flex', alignItems: 'center', gap: '6px',
-    padding: '6px 10px', borderRadius: '10px', border: '1.5px solid rgba(255,255,255,0.10)',
+    padding: '6px 10px', borderRadius: '10px', border: '1.5px solid rgba(0, 0, 0, 0.08)',
     background: 'rgba(255,255,255,0.03)', color: 'rgba(255,255,255,0.85)',
     fontSize: '11.5px', fontWeight: '700', cursor: 'pointer'
   },
   swatch: { width: '10px', height: '10px', display: 'inline-block', border: '1.5px solid currentColor' },
   matLabel: { fontSize: '11px', fontWeight: '800', color: 'rgba(255,255,255,0.45)', textTransform: 'uppercase', marginRight: '4px' },
   matBtn: {
-    padding: '5px 10px', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.12)',
+    padding: '5px 10px', borderRadius: '8px', border: '1px solid rgba(0, 0, 0, 0.08)',
     fontSize: '12px', fontWeight: '800', cursor: 'pointer', letterSpacing: '0.3px'
   },
   hint: { fontSize: '11.5px', color: 'rgba(255,255,255,0.5)', lineHeight: 1.45 },
   chartBox: {
     padding: '10px 6px', borderRadius: '14px',
-    background: 'rgba(0,0,0,0.25)', border: '1px solid rgba(255,255,255,0.08)',
+    background: 'rgba(0,0,0,0.25)', border: '1px solid rgba(0, 0, 0, 0.08)',
     overflowX: 'auto'
   },
   legend: {
@@ -483,12 +483,12 @@ const styles = {
   toolBtn: {
     display: 'inline-flex', alignItems: 'center', gap: '6px',
     padding: '7px 12px', borderRadius: '10px',
-    border: '1px solid rgba(255,255,255,0.12)', background: 'rgba(255,255,255,0.04)',
+    border: '1px solid rgba(0, 0, 0, 0.08)', background: 'rgba(255,255,255,0.04)',
     color: 'rgba(255,255,255,0.8)', fontSize: '12px', fontWeight: '700', cursor: 'pointer'
   },
   quadRow: { display: 'flex', flexWrap: 'wrap', gap: '8px' },
   quadBtn: {
-    padding: '6px 10px', borderRadius: '8px', border: '1px dashed rgba(255,255,255,0.15)',
+    padding: '6px 10px', borderRadius: '8px', border: '1px dashed rgba(0, 0, 0, 0.08)',
     background: 'transparent', color: 'rgba(255,255,255,0.5)', fontSize: '11px', fontWeight: '700', cursor: 'pointer'
   }
 };

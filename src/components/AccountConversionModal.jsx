@@ -164,7 +164,7 @@ export default function AccountConversionModal({
             {/* Header */}
             <header style={{ 
               padding: 'clamp(14px, 2vw, 18px) clamp(16px, 2.5vw, 24px)', 
-              borderBottom: '1px solid rgba(255, 255, 255, 0.07)', 
+              borderBottom: '1px solid rgba(0, 0, 0, 0.08)', 
               display: 'flex', 
               alignItems: 'center', 
               justifyContent: 'space-between',
@@ -204,8 +204,8 @@ export default function AccountConversionModal({
                   width: '36px', 
                   height: '36px', 
                   borderRadius: '10px', 
-                  background: 'rgba(255, 255, 255, 0.05)', 
-                  border: '1px solid rgba(255, 255, 255, 0.1)', 
+                  background: 'rgba(0, 0, 0, 0.04)', 
+                  border: '1px solid rgba(0, 0, 0, 0.08)', 
                   color: '#ccc', 
                   display: 'grid', 
                   placeItems: 'center', 
@@ -269,7 +269,7 @@ export default function AccountConversionModal({
                           style={{
                             padding: '10px 12px',
                             borderRadius: '12px',
-                            border: isSelected ? '1.5px solid #ff453a' : '1px solid rgba(255, 255, 255, 0.08)',
+                            border: isSelected ? '1.5px solid #ff453a' : '1px solid rgba(0, 0, 0, 0.08)',
                             background: isSelected ? 'rgba(255, 69, 58, 0.12)' : 'rgba(255, 255, 255, 0.02)',
                             display: 'flex',
                             flexDirection: 'column',
@@ -315,7 +315,7 @@ export default function AccountConversionModal({
                           background: 'var(--bg-secondary)',
                           border: hasInsufficientFunds 
                             ? '1.5px solid #ff453a' 
-                            : '1.5px solid rgba(255, 255, 255, 0.12)',
+                            : '1.5px solid rgba(0, 0, 0, 0.08)',
                           color: '#fff',
                           fontSize: '18px',
                           fontWeight: '900',
@@ -346,8 +346,8 @@ export default function AccountConversionModal({
                           style={{
                             padding: '6px 0',
                             borderRadius: '8px',
-                            background: 'rgba(255, 255, 255, 0.04)',
-                            border: '1px solid rgba(255, 255, 255, 0.08)',
+                            background: 'rgba(0, 0, 0, 0.04)',
+                            border: '1px solid rgba(0, 0, 0, 0.08)',
                             color: 'rgba(255, 255, 255, 0.8)',
                             fontSize: '11px',
                             fontWeight: '850',
@@ -385,8 +385,8 @@ export default function AccountConversionModal({
                       style={{
                         padding: '3px 8px',
                         borderRadius: '6px',
-                        background: 'rgba(255, 255, 255, 0.05)',
-                        border: '1px solid rgba(255, 255, 255, 0.1)',
+                        background: 'rgba(0, 0, 0, 0.04)',
+                        border: '1px solid rgba(0, 0, 0, 0.08)',
                         color: 'var(--gold-primary)',
                         fontSize: '10.5px',
                         fontWeight: '800',
@@ -420,7 +420,7 @@ export default function AccountConversionModal({
                           style={{
                             padding: '10px 12px',
                             borderRadius: '12px',
-                            border: isSelected ? '1.5px solid #32d74b' : '1px solid rgba(255, 255, 255, 0.08)',
+                            border: isSelected ? '1.5px solid #32d74b' : '1px solid rgba(0, 0, 0, 0.08)',
                             background: isSelected ? 'rgba(48, 209, 88, 0.12)' : 'rgba(255, 255, 255, 0.02)',
                             display: 'flex',
                             flexDirection: 'column',
@@ -496,8 +496,8 @@ export default function AccountConversionModal({
                     <div style={{ 
                       padding: '10px 14px', 
                       borderRadius: '14px', 
-                      background: 'rgba(255, 255, 255, 0.03)', 
-                      border: '1px solid rgba(255, 255, 255, 0.08)',
+                      background: 'rgba(0, 0, 0, 0.04)', 
+                      border: '1px solid rgba(0, 0, 0, 0.08)',
                       display: 'flex',
                       alignItems: 'center',
                       gap: '8px'
@@ -578,8 +578,8 @@ export default function AccountConversionModal({
                       marginTop: '8px', 
                       padding: '8px 12px', 
                       borderRadius: '10px', 
-                      background: 'rgba(255, 255, 255, 0.025)', 
-                      border: '1px solid rgba(255, 255, 255, 0.06)',
+                      background: 'rgba(0, 0, 0, 0.04)', 
+                      border: '1px solid rgba(0, 0, 0, 0.08)',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'space-between',
@@ -597,7 +597,7 @@ export default function AccountConversionModal({
               {/* Clean Footer - Only 1 primary CTA button, no duplicate cancel */}
               <footer style={{ 
                 padding: '14px clamp(16px, 2.5vw, 24px)', 
-                borderTop: '1px solid rgba(255, 255, 255, 0.07)', 
+                borderTop: '1px solid rgba(0, 0, 0, 0.08)', 
                 background: 'var(--bg-secondary)',
                 display: 'flex', 
                 alignItems: 'center', 

@@ -111,7 +111,7 @@ const ClientLoader = ({ visible, onFinish }) => {
         justifyContent: isMobile ? 'flex-end' : 'flex-start',
         padding: isMobile ? '0 24px 12vh 24px' : '0 10vw',
         overflow: 'hidden',
-        backgroundColor: '#16161a'
+        backgroundColor: '#ffffff'
       }}
     >
       {/* High-priority image element so the loader never paints the background
@@ -205,8 +205,8 @@ const ClientLoader = ({ visible, onFinish }) => {
             <div style={{
               flex: 1,
               height: '8px',
-              backgroundColor: 'rgba(255,255,255,0.1)',
-              border: '1px solid rgba(255,255,255,0.2)',
+              backgroundColor: 'rgba(0, 0, 0, 0.04)',
+              border: '1px solid rgba(0, 0, 0, 0.08)',
               borderRadius: '999px',
               overflow: 'hidden',
               position: 'relative'
@@ -249,7 +249,7 @@ const ClientLoader = ({ visible, onFinish }) => {
             <line x1="14.47" y1="14.48" x2="20" y2="20"></line>
             <line x1="8.12" y1="8.12" x2="12" y2="12"></line>
           </svg>
-          <div style={{ width: '1px', height: '20px', backgroundColor: 'rgba(255,255,255,0.2)', flexShrink: 0 }} />
+          <div style={{ width: '1px', height: '20px', backgroundColor: 'rgba(0, 0, 0, 0.04)', flexShrink: 0 }} />
           <div style={{ 
             fontSize: isMobile ? '12px' : '14px', 
             color: 'white', 

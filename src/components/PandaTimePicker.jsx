@@ -66,7 +66,7 @@ const PandaTimePicker = ({ value, onChange, label = "HORA" }) => {
         onClick={() => setIsOpen(!isOpen)}
         style={{
           height: '48px',
-          backgroundColor: 'rgba(255, 255, 255, 0.05)',
+          backgroundColor: 'rgba(0, 0, 0, 0.04)',
           border: isOpen ? '1.5px solid var(--gold-primary)' : '1px solid var(--border-color)',
           borderRadius: '14px',
           display: 'flex',
@@ -91,7 +91,7 @@ const PandaTimePicker = ({ value, onChange, label = "HORA" }) => {
           right: 0,
           backgroundColor: 'var(--bg-secondary)',
           backdropFilter: 'blur(20px)',
-          border: '1.5px solid rgba(255, 255, 255, 0.3)',
+          border: '1.5px solid rgba(0, 0, 0, 0.08)',
           borderRadius: '24px',
           padding: '20px',
           zIndex: 1000,
@@ -121,14 +121,14 @@ const PandaTimePicker = ({ value, onChange, label = "HORA" }) => {
           <div 
             onClick={toggleAmPm}
             style={{
-              backgroundColor: 'rgba(255, 255, 255, 0.1)',
+              backgroundColor: 'rgba(0, 0, 0, 0.04)',
               padding: '10px 14px',
               borderRadius: '12px',
               color: 'var(--gold-primary)',
               fontWeight: '900',
               fontSize: '14px',
               cursor: 'pointer',
-              border: '1px solid rgba(255, 255, 255,0.2)',
+              border: '1px solid rgba(0, 0, 0, 0.08)',
               marginLeft: '10px'
             }}
           >

@@ -1239,8 +1239,8 @@ const ReportsModule = ({ isMobile, rates, staff = [] }) => {
         display: 'grid',
         gridTemplateColumns: isMobile ? '1fr' : 'repeat(4, minmax(0, 1fr))',
         gap: '16px',
-        border: '1px solid rgba(255, 255, 255,0.15)',
-        background: 'rgba(255, 255, 255, 0.01)'
+        border: '1px solid rgba(0, 0, 0, 0.08)',
+        background: 'rgba(0, 0, 0, 0.04)'
       }}>
         {/* Date Range Selector */}
         <PandaSelect 
@@ -1334,7 +1334,7 @@ const ReportsModule = ({ isMobile, rates, staff = [] }) => {
                   fontWeight: '800',
                   whiteSpace: 'nowrap',
                   cursor: 'pointer',
-                  backgroundColor: 'rgba(255, 255, 255,0.15)',
+                  backgroundColor: 'rgba(0, 0, 0, 0.04)',
                   border: '1px solid var(--gold-primary)',
                   color: 'var(--gold-primary)',
                   display: 'flex',
@@ -1392,8 +1392,8 @@ const ReportsModule = ({ isMobile, rates, staff = [] }) => {
             <div style={{ 
               width: '100%', 
               padding: '16px 8px', 
-              background: 'rgba(255, 255, 255, 0.03)', 
-              border: '1px solid rgba(255, 255, 255, 0.08)', 
+              background: 'rgba(0, 0, 0, 0.04)', 
+              border: '1px solid rgba(0, 0, 0, 0.08)', 
               borderRadius: '12px', 
               textAlign: 'center',
               boxShadow: '0 4px 20px rgba(0,0,0,0.15)',
@@ -1663,7 +1663,7 @@ const ReportsModule = ({ isMobile, rates, staff = [] }) => {
           <div>
             <table style={{ width: '100%', borderCollapse: 'collapse' }}>
               <thead>
-                <tr style={{ background: 'rgba(255,255,255,0.04)', color: 'var(--text-secondary)', fontSize: '11px', fontWeight: '800', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
+                <tr style={{ background: 'rgba(0, 0, 0, 0.04)', color: 'var(--text-secondary)', fontSize: '11px', fontWeight: '800', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
                   <th style={{ padding: '12px 16px', textAlign: 'left', borderRadius: '4px 0 0 4px' }}>Servicio</th>
                   <th style={{ padding: '12px 16px', textAlign: 'right' }}>Ref $</th>
                   <th style={{ padding: '12px 16px', textAlign: 'right', borderRadius: '0 4px 4px 0' }}>%</th>
@@ -1671,7 +1671,7 @@ const ReportsModule = ({ isMobile, rates, staff = [] }) => {
               </thead>
               <tbody>
                 {paginatedServices.map((s, idx) => (
-                  <tr key={idx} style={{ borderBottom: '1px solid rgba(255,255,255,0.05)', fontSize: '13px', fontWeight: '800' }}>
+                  <tr key={idx} style={{ borderBottom: '1px solid rgba(0, 0, 0, 0.08)', fontSize: '13px', fontWeight: '800' }}>
                     <td style={{ padding: '14px 16px', color: '#ffffff', textAlign: 'left' }}>
                       {(currentPage - 1) * itemsPerPage + idx + 1}. {s.name}
                     </td>
@@ -1699,7 +1699,7 @@ const ReportsModule = ({ isMobile, rates, staff = [] }) => {
             alignItems: 'center', 
             gap: '16px', 
             marginTop: '20px', 
-            borderTop: '1px solid rgba(255,255,255,0.05)', 
+            borderTop: '1px solid rgba(0, 0, 0, 0.08)', 
             paddingTop: '16px' 
           }}>
             <span style={{ fontSize: '12px', fontWeight: '800', color: '#b3b3b3' }}>
@@ -1898,8 +1898,8 @@ const ReportsModule = ({ isMobile, rates, staff = [] }) => {
             <div key={idx} style={{
               padding: '14px',
               borderRadius: '12px',
-              background: 'rgba(255,255,255,0.03)',
-              border: '1px solid rgba(255,255,255,0.08)',
+              background: 'rgba(0, 0, 0, 0.04)',
+              border: '1px solid rgba(0, 0, 0, 0.08)',
               minHeight: '78px',
               display: 'flex',
               flexDirection: 'column',
@@ -1930,7 +1930,7 @@ const ReportsModule = ({ isMobile, rates, staff = [] }) => {
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
               {assistantReport.assistants.length > 0 ? assistantReport.assistants.map((assistant) => (
-                <div key={assistant.id} style={{ padding: '12px', borderRadius: '12px', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.06)' }}>
+                <div key={assistant.id} style={{ padding: '12px', borderRadius: '12px', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '12px', marginBottom: '8px' }}>
                     <span style={{ color: '#ffffff', fontWeight: '900', fontSize: '14px' }}>{assistant.name}</span>
                     <span style={{ color: 'var(--gold-primary)', fontWeight: '950', fontSize: '16px' }}>{Math.round(assistant.lavados)}</span>
@@ -1996,7 +1996,7 @@ const ReportsModule = ({ isMobile, rates, staff = [] }) => {
                 return (
                   <div key={h.label} style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
                     <span style={{ width: '48px', color: '#ffffff', fontSize: '12px', fontWeight: '850' }}>{h.label}</span>
-                    <div style={{ flex: 1, height: '20px', borderRadius: '4px', background: 'rgba(255,255,255,0.04)', overflow: 'hidden' }}>
+                    <div style={{ flex: 1, height: '20px', borderRadius: '4px', background: 'rgba(0, 0, 0, 0.04)', overflow: 'hidden' }}>
                       <div style={{
                         width: `${Math.max(width, h.count > 0 ? 6 : 0)}%`,
                         height: '100%',

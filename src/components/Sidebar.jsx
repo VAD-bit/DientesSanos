@@ -131,7 +131,7 @@ const Sidebar = ({ activeTab, setActiveTab, isMobile, rates, isCollapsed, setIsC
     width: isCollapsed ? '75px' : '245px',
     height: '100vh',
     background: 'var(--bg-secondary)',
-    borderRight: '1px solid rgba(255, 255, 255, 0.04)',
+    borderRight: '1px solid rgba(0, 0, 0, 0.08)',
     display: 'flex',
     flexDirection: 'column',
     padding: isCollapsed ? '12px 8px' : '16px 12px 14px 12px',
@@ -292,7 +292,7 @@ const Sidebar = ({ activeTab, setActiveTab, isMobile, rates, isCollapsed, setIsC
       })()}
 
       {!isMobile && (
-        <div className="sidebar-bottom-div" style={{ marginTop: 'auto', display: 'flex', flexDirection: 'column', gap: menuItems.length <= 4 ? '10px' : '8px', position: 'relative', zIndex: 2, paddingTop: menuItems.length <= 4 ? '8px' : '0', borderTop: menuItems.length <= 4 ? '1px solid rgba(255,255,255,0.04)' : 'none' }}>
+        <div className="sidebar-bottom-div" style={{ marginTop: 'auto', display: 'flex', flexDirection: 'column', gap: menuItems.length <= 4 ? '10px' : '8px', position: 'relative', zIndex: 2, paddingTop: menuItems.length <= 4 ? '8px' : '0', borderTop: menuItems.length <= 4 ? '1px solid rgba(0, 0, 0, 0.08)' : 'none' }}>
           
           <button
             onClick={handleToggleNotif}
@@ -305,7 +305,7 @@ const Sidebar = ({ activeTab, setActiveTab, isMobile, rates, isCollapsed, setIsC
               gap: '8px',
               padding: isCollapsed ? '8px 0' : '8px 10px',
               background: notifPermission === 'granted' ? 'rgba(48, 209, 88, 0.08)' : 'rgba(255, 255, 255, 0.04)',
-              border: notifPermission === 'granted' ? '1px solid rgba(48, 209, 88, 0.25)' : '1px solid rgba(255, 255, 255, 0.08)',
+              border: notifPermission === 'granted' ? '1px solid rgba(48, 209, 88, 0.25)' : '1px solid rgba(0, 0, 0, 0.08)',
               borderRadius: '9px',
               color: notifPermission === 'granted' ? '#30d158' : 'rgba(245, 245, 245, 0.55)',
               cursor: notifPermission === 'granted' ? 'default' : 'pointer',
@@ -327,9 +327,9 @@ const Sidebar = ({ activeTab, setActiveTab, isMobile, rates, isCollapsed, setIsC
                 gap: '10px', 
                 padding: '10px 12px', 
                 borderRadius: '12px',
-                background: 'rgba(255,255,255,0.03)',
+                background: 'rgba(0, 0, 0, 0.04)',
                 backdropFilter: 'blur(12px)',
-                border: '1px solid rgba(255,255,255,0.07)',
+                border: '1px solid rgba(0, 0, 0, 0.08)',
                 cursor: 'pointer',
                 transition: 'all 0.2s ease',
               }}

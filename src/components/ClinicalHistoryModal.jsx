@@ -309,7 +309,7 @@ export default function ClinicalHistoryModal({ isOpen, client, onClose, mandator
 const styles = {
   overlay: {
     position: 'fixed', inset: 0, zIndex: 25000,
-    background: 'rgba(0,0,0,0.75)', backdropFilter: 'blur(10px)',
+    background: 'rgba(255, 255, 255, 0.9)', backdropFilter: 'blur(10px)',
     display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '16px'
   },
   card: {

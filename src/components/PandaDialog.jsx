@@ -34,7 +34,7 @@ const PandaDialog = ({
           left: 0,
           right: 0,
           bottom: 0,
-          backgroundColor: 'rgba(0, 0, 0, 0.85)',
+          backgroundColor: 'rgba(255, 255, 255, 0.9)',
           backdropFilter: 'blur(10px)',
           zIndex: 99999999,
           display: 'flex',
@@ -48,7 +48,7 @@ const PandaDialog = ({
             width: '100%',
             padding: '40px 32px 32px',
             borderRadius: '28px',
-            border: danger ? '1px solid rgba(255, 59, 48, 0.3)' : '1px solid rgba(255, 255, 255, 0.2)',
+            border: danger ? '1px solid rgba(255, 59, 48, 0.3)' : '1px solid rgba(0, 0, 0, 0.08)',
             boxShadow: danger ? '0 30px 80px rgba(0,0,0,0.9), 0 0 40px rgba(255, 59, 48,0.1)' : '0 20px 60px rgba(0,0,0,0.8), 0 0 20px rgba(255, 255, 255,0.1)',
             textAlign: 'center',
             position: 'relative',
@@ -65,7 +65,7 @@ const PandaDialog = ({
                   position: 'absolute',
                   top: '20px',
                   right: '20px',
-                  background: 'rgba(255,255,255,0.04)', 
+                  background: 'rgba(0, 0, 0, 0.04)', 
                   border: 'none', 
                   color: 'rgba(255,255,255,0.5)', 
                   cursor: 'pointer', 
@@ -89,7 +89,7 @@ const PandaDialog = ({
               {danger && (
                 <div style={{ 
                   width: '64px', height: '64px', borderRadius: '20px', 
-                  background: 'linear-gradient(135deg, rgba(255,59,48,0.2), rgba(0,0,0,0.5))', 
+                  background: 'linear-gradient(135deg, rgba(255,59,48,0.2), rgba(255, 255, 255, 0.9))', 
                   border: '1px solid rgba(255,59,48,0.3)',
                   boxShadow: 'inset 0 0 20px rgba(255,59,48,0.1)',
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
@@ -127,8 +127,8 @@ const PandaDialog = ({
                       onClick={onCancel}
                       style={{ 
                         flex: 1,
-                        background: 'rgba(255, 255, 255, 0.03)', 
-                        border: '1px solid rgba(255, 255, 255, 0.08)', 
+                        background: 'rgba(0, 0, 0, 0.04)', 
+                        border: '1px solid rgba(0, 0, 0, 0.08)', 
                         color: 'rgba(255,255,255,0.7)', 
                         padding: '14px', 
                         borderRadius: '16px', 

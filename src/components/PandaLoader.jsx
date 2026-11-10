@@ -224,7 +224,7 @@ const PandaLoader = ({ visible, onFinish }) => {
             <div style={{
               flex: 1,
               height: '6px',
-              backgroundColor: 'rgba(255,255,255,0.1)',
+              backgroundColor: 'rgba(0, 0, 0, 0.04)',
               borderRadius: '999px',
               overflow: 'hidden',
               position: 'relative'
@@ -282,7 +282,7 @@ const PandaLoader = ({ visible, onFinish }) => {
               <line x1="14.47" y1="14.48" x2="20" y2="20"></line>
               <line x1="8.12" y1="8.12" x2="12" y2="12"></line>
             </svg>
-            <div style={{ width: '1px', height: '24px', backgroundColor: 'rgba(255,255,255,0.2)', flexShrink: 0 }} />
+            <div style={{ width: '1px', height: '24px', backgroundColor: 'rgba(0, 0, 0, 0.04)', flexShrink: 0 }} />
             <div style={{ 
               fontSize: '13px', 
               color: 'white', 

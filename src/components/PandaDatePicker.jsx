@@ -194,8 +194,8 @@ const PandaDatePicker = ({ value, onChange, placeholder = "Seleccionar fecha", c
           cursor: 'pointer',
           padding: '0 16px',
           height: '48px',
-          backgroundColor: 'rgba(255, 255, 255, 0.05)',
-          border: '1px solid rgba(255, 255, 255, 0.1)',
+          backgroundColor: 'rgba(0, 0, 0, 0.04)',
+          border: '1px solid rgba(0, 0, 0, 0.08)',
           borderRadius: '12px',
           color: value ? 'white' : 'rgba(255,255,255,0.4)',
           fontSize: '15px',
@@ -219,7 +219,7 @@ const PandaDatePicker = ({ value, onChange, placeholder = "Seleccionar fecha", c
             padding: '16px',
             backgroundColor: 'var(--bg-secondary)',
             backdropFilter: 'blur(20px)',
-            border: '1px solid rgba(255, 255, 255, 0.2)',
+            border: '1px solid rgba(0, 0, 0, 0.08)',
             borderRadius: '16px',
             boxShadow: '0 10px 40px rgba(0,0,0,0.8), 0 0 15px rgba(255, 255, 255, 0.15)',
             pointerEvents: closing ? 'none' : 'auto'
@@ -246,7 +246,7 @@ const PandaDatePicker = ({ value, onChange, placeholder = "Seleccionar fecha", c
               </div>
 
               {showMonthSelect && (
-                <div style={{ position: 'absolute', top: '100%', left: '-20px', marginTop: '8px', background: 'var(--bg-secondary)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '12px', padding: '8px', display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) minmax(0, 1fr)', gap: '4px', zIndex: 20, boxShadow: '0 10px 25px rgba(0,0,0,0.5)', width: '180px' }}>
+                <div style={{ position: 'absolute', top: '100%', left: '-20px', marginTop: '8px', background: 'var(--bg-secondary)', border: '1px solid rgba(0, 0, 0, 0.08)', borderRadius: '12px', padding: '8px', display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) minmax(0, 1fr)', gap: '4px', zIndex: 20, boxShadow: '0 10px 25px rgba(0,0,0,0.5)', width: '180px' }}>
                   {monthNames.map((m, idx) => (
                     <button
                       key={m}
@@ -262,7 +262,7 @@ const PandaDatePicker = ({ value, onChange, placeholder = "Seleccionar fecha", c
 
               {showYearSelect && (
                 <div 
-                  style={{ position: 'absolute', top: '100%', right: '-20px', marginTop: '8px', background: 'var(--bg-secondary)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '12px', padding: '8px', zIndex: 20, boxShadow: '0 10px 25px rgba(0,0,0,0.5)', width: '220px', display: 'flex', flexDirection: 'column' }} 
+                  style={{ position: 'absolute', top: '100%', right: '-20px', marginTop: '8px', background: 'var(--bg-secondary)', border: '1px solid rgba(0, 0, 0, 0.08)', borderRadius: '12px', padding: '8px', zIndex: 20, boxShadow: '0 10px 25px rgba(0,0,0,0.5)', width: '220px', display: 'flex', flexDirection: 'column' }} 
                 >
                   <div 
                     onClick={(e) => { e.stopPropagation(); if (yearScrollRef.current) yearScrollRef.current.scrollBy({ top: -120, behavior: 'smooth' }); }}

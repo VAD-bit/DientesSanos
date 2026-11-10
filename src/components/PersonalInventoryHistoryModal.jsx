@@ -63,7 +63,7 @@ const PersonalInventoryHistoryModal = ({ isOpen, onClose, staffId }) => {
         position: 'fixed',
         inset: 0,
         zIndex: 100000,
-        background: 'rgba(0,0,0,0.82)',
+        background: 'rgba(255, 255, 255, 0.9)',
         backdropFilter: 'blur(10px)',
         display: 'flex',
         alignItems: 'center',
@@ -81,11 +81,11 @@ const PersonalInventoryHistoryModal = ({ isOpen, onClose, staffId }) => {
           maxHeight: '78vh',
           overflow: 'hidden',
           borderRadius: '24px',
-          border: '1px solid rgba(255,255,255,0.14)',
+          border: '1px solid rgba(0, 0, 0, 0.08)',
           background: 'var(--bg-secondary)'
         }}
       >
-        <div style={{ padding: '22px 24px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
+        <div style={{ padding: '22px 24px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderBottom: '1px solid rgba(0, 0, 0, 0.08)' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
             <History size={19} color="var(--gold-primary)" />
             <div>
@@ -93,7 +93,7 @@ const PersonalInventoryHistoryModal = ({ isOpen, onClose, staffId }) => {
               <p style={{ margin: '3px 0 0', fontSize: '11px', color: 'var(--text-muted)' }}>Asignaciones, consumos y reposiciones</p>
             </div>
           </div>
-          <button onClick={onClose} style={{ width: '34px', height: '34px', borderRadius: '50%', border: '1px solid rgba(255,255,255,0.1)', background: 'rgba(255,255,255,0.04)', color: 'white', cursor: 'pointer', display: 'grid', placeItems: 'center' }}>
+          <button onClick={onClose} style={{ width: '34px', height: '34px', borderRadius: '50%', border: '1px solid rgba(0, 0, 0, 0.08)', background: 'rgba(0, 0, 0, 0.04)', color: 'white', cursor: 'pointer', display: 'grid', placeItems: 'center' }}>
             <X size={17} />
           </button>
         </div>
@@ -102,13 +102,13 @@ const PersonalInventoryHistoryModal = ({ isOpen, onClose, staffId }) => {
           {loading ? (
             <SkeletonList rows={4} rowHeight={44} gap={9} />
           ) : history.length === 0 ? (
-            <div style={{ padding: '42px 20px', textAlign: 'center', border: '1px dashed rgba(255,255,255,0.09)', borderRadius: '16px', color: 'var(--text-muted)', fontSize: '13px' }}>
+            <div style={{ padding: '42px 20px', textAlign: 'center', border: '1px dashed rgba(0, 0, 0, 0.08)', borderRadius: '16px', color: 'var(--text-muted)', fontSize: '13px' }}>
               Todavía no hay movimientos registrados.
             </div>
           ) : history.map(movement => {
             const isConsumption = movement.action === 'CONSUMO' || movement.action === 'RETIRO';
             return (
-              <div key={movement.id} style={{ display: 'flex', alignItems: 'center', gap: '12px', padding: '13px 14px', borderRadius: '14px', background: 'rgba(255,255,255,0.035)', border: '1px solid rgba(255,255,255,0.06)' }}>
+              <div key={movement.id} style={{ display: 'flex', alignItems: 'center', gap: '12px', padding: '13px 14px', borderRadius: '14px', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
                 <div style={{ width: '36px', height: '36px', borderRadius: '10px', display: 'grid', placeItems: 'center', background: isConsumption ? 'rgba(255,69,58,0.1)' : 'rgba(48,209,88,0.1)' }}>
                   <Package size={16} color={isConsumption ? '#ff6961' : '#30d158'} />
                 </div>

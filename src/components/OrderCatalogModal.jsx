@@ -65,7 +65,7 @@ const OrderCatalogModal = ({
   return (
     <AnimatedModal isOpen={isOpen}>
       {(overlayClass, cardClass) => (
-        <div className={`${overlayClass.replace('global-modal-overlay', '')} order-catalog-overlay`} style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(0,0,0,0.88)', backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)', zIndex: 22000, display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '20px', paddingTop: 'max(20px, env(safe-area-inset-top, 20px))' }}>
+        <div className={`${overlayClass.replace('global-modal-overlay', '')} order-catalog-overlay`} style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(255, 255, 255, 0.9)', backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)', zIndex: 22000, display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '20px', paddingTop: 'max(20px, env(safe-area-inset-top, 20px))' }}>
           <style>{`
             @media (max-width: 560px) {
               .order-catalog-overlay { padding: 10px !important; padding-top: max(10px, env(safe-area-inset-top, 10px)) !important; }
@@ -81,10 +81,10 @@ const OrderCatalogModal = ({
             }
           `}</style>
           <div className={`${cardClass.replace('global-modal-card', '')} order-catalog-card`} style={{ maxWidth: 'min(820px, 90vw)', width: '100%', maxHeight: '90vh', display: 'flex', flexDirection: 'column', borderRadius: '28px', border: '1px solid rgba(17, 17, 17,.28)', overflow: 'hidden', background: 'var(--bg-secondary)', boxShadow: '0 40px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.04) inset' }}>
-            <div className="order-catalog-header" style={{ padding: '28px 28px 20px', borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+            <div className="order-catalog-header" style={{ padding: '28px 28px 20px', borderBottom: '1px solid rgba(0, 0, 0, 0.08)' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                  <div style={{ width: '40px', height: '40px', borderRadius: '12px', background: 'linear-gradient(135deg, rgba(255, 255, 255,0.2), rgba(255, 255, 255,0.05))', border: '1px solid rgba(255, 255, 255,0.3)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <div style={{ width: '40px', height: '40px', borderRadius: '12px', background: 'linear-gradient(135deg, rgba(0, 0, 0, 0.04), rgba(0, 0, 0, 0.04))', border: '1px solid rgba(0, 0, 0, 0.08)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                     <HeaderIcon size={20} color="var(--gold-primary)" />
                   </div>
                   <div>
@@ -92,7 +92,7 @@ const OrderCatalogModal = ({
                     <p style={{ fontSize: '12px', color: 'var(--text-muted)' }}>{subtitle}</p>
                   </div>
                 </div>
-                <button onClick={onClose} style={{ width: '44px', height: '44px', borderRadius: '50%', background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.08)', color: 'rgba(255,255,255,0.5)', fontSize: '18px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><X size={18} /></button>
+                <button onClick={onClose} style={{ width: '44px', height: '44px', borderRadius: '50%', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', color: 'rgba(255,255,255,0.5)', fontSize: '18px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><X size={18} /></button>
               </div>
             </div>
             <div className="panda-scrollbar order-catalog-grid" style={{ padding: '16px 20px 24px', display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(180px, 100%), 1fr))', gap: '10px', overflowY: 'auto', flex: 1, minHeight: 0, alignContent: 'start' }}>
@@ -100,7 +100,7 @@ const OrderCatalogModal = ({
                 const isSelected = selectedItems.some(entry => entry.id === item.id);
                 const ItemIcon = getIcon(item.name);
                 return (
-                  <article key={item.id} className="order-catalog-item" style={{ display: 'flex', flexDirection: 'column', height: '230px', overflow: 'hidden', borderRadius: '16px', border: `1px solid ${isSelected ? 'var(--gold-primary)' : 'rgba(255,255,255,.08)'}`, background: isSelected ? 'rgba(17, 17, 17, 0.05)' : 'rgba(255,255,255,.025)', transition: 'all 0.2s' }}>
+                  <article key={item.id} className="order-catalog-item" style={{ display: 'flex', flexDirection: 'column', height: '230px', overflow: 'hidden', borderRadius: '16px', border: `1px solid ${isSelected ? 'var(--gold-primary)' : 'rgba(0, 0, 0, 0.08)'}`, background: isSelected ? 'rgba(17, 17, 17, 0.05)' : 'rgba(255,255,255,.025)', transition: 'all 0.2s' }}>
                     <button type="button" onClick={() => onToggle?.(item)} style={{ padding: 0, border: 0, background: 'transparent', color: 'inherit', cursor: 'pointer', textAlign: 'left', display: 'flex', flexDirection: 'column', height: '100%', outline: 'none' }}>
                       <div className="order-catalog-visual" style={{ height: '140px', width: '100%', position: 'relative', overflow: 'hidden', background: 'var(--bg-secondary)' }}>
                         <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--gold-primary)' }}>

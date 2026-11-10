@@ -91,7 +91,7 @@ export default function ProductHistoryModal({
             {/* Header */}
             <header style={{ 
               padding: 'clamp(14px, 2vw, 18px) clamp(16px, 2.5vw, 24px)', 
-              borderBottom: '1px solid rgba(255, 255, 255, 0.07)', 
+              borderBottom: '1px solid rgba(0, 0, 0, 0.08)', 
               display: 'flex', 
               alignItems: 'center', 
               justifyContent: 'space-between',
@@ -129,8 +129,8 @@ export default function ProductHistoryModal({
                   width: '36px', 
                   height: '36px', 
                   borderRadius: '10px', 
-                  background: 'rgba(255, 255, 255, 0.05)', 
-                  border: '1px solid rgba(255, 255, 255, 0.1)', 
+                  background: 'rgba(0, 0, 0, 0.04)', 
+                  border: '1px solid rgba(0, 0, 0, 0.08)', 
                   color: '#ccc', 
                   display: 'grid', 
                   placeItems: 'center', 
@@ -150,15 +150,15 @@ export default function ProductHistoryModal({
               display: 'grid', 
               gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', 
               gap: '12px',
-              borderBottom: '1px solid rgba(255, 255, 255, 0.06)',
+              borderBottom: '1px solid rgba(0, 0, 0, 0.08)',
               flexShrink: 0 
             }}>
               {/* Total Vendido */}
               <div style={{ 
                 padding: '12px 14px', 
                 borderRadius: '14px', 
-                background: 'rgba(255, 255, 255, 0.025)', 
-                border: '1px solid rgba(255, 255, 255, 0.07)',
+                background: 'rgba(0, 0, 0, 0.04)', 
+                border: '1px solid rgba(0, 0, 0, 0.08)',
                 display: 'flex',
                 flexDirection: 'column',
                 gap: '4px'
@@ -234,7 +234,7 @@ export default function ProductHistoryModal({
               alignItems: 'center', 
               justifyContent: 'space-between',
               gap: '10px',
-              borderBottom: '1px solid rgba(255, 255, 255, 0.05)',
+              borderBottom: '1px solid rgba(0, 0, 0, 0.08)',
               flexShrink: 0
             }}>
               {/* Search Box */}
@@ -251,7 +251,7 @@ export default function ProductHistoryModal({
                     padding: '8px 12px 8px 36px', 
                     borderRadius: '10px', 
                     background: 'var(--bg-secondary)', 
-                    border: '1px solid rgba(255, 255, 255, 0.1)', 
+                    border: '1px solid rgba(0, 0, 0, 0.08)', 
                     color: '#fff', 
                     fontSize: '12.5px', 
                     outline: 'none' 
@@ -333,7 +333,7 @@ export default function ProductHistoryModal({
                         <tr 
                           key={r.id || idx} 
                           style={{ 
-                            borderBottom: '1px solid rgba(255, 255, 255, 0.04)',
+                            borderBottom: '1px solid rgba(0, 0, 0, 0.08)',
                             transition: 'background 0.15s ease'
                           }}
                           onMouseEnter={e => e.currentTarget.style.background = 'rgba(255, 255, 255, 0.025)'}
@@ -410,8 +410,8 @@ export default function ProductHistoryModal({
                                 fontSize: '10.5px', 
                                 color: 'var(--text-muted)', 
                                 fontWeight: '700',
-                                background: 'rgba(255, 255, 255, 0.03)',
-                                border: '1px solid rgba(255, 255, 255, 0.06)',
+                                background: 'rgba(0, 0, 0, 0.04)',
+                                border: '1px solid rgba(0, 0, 0, 0.08)',
                                 padding: '3px 8px',
                                 borderRadius: '6px'
                               }}>
@@ -430,7 +430,7 @@ export default function ProductHistoryModal({
             {/* Footer Note */}
             <footer style={{ 
               padding: '10px clamp(16px, 2.5vw, 24px)', 
-              borderTop: '1px solid rgba(255, 255, 255, 0.06)', 
+              borderTop: '1px solid rgba(0, 0, 0, 0.08)', 
               background: 'var(--bg-secondary)',
               display: 'flex',
               alignItems: 'center',
@@ -470,7 +470,7 @@ const thBaseStyle = {
 const getChipStyle = (active) => ({
   padding: '6px 12px',
   borderRadius: '8px',
-  border: active ? '1px solid var(--gold-primary)' : '1px solid rgba(255, 255, 255, 0.08)',
+  border: active ? '1px solid var(--gold-primary)' : '1px solid rgba(0, 0, 0, 0.08)',
   background: active ? 'rgba(17, 17, 17, 0.15)' : 'rgba(255, 255, 255, 0.03)',
   color: active ? 'var(--gold-primary)' : 'rgba(255, 255, 255, 0.7)',
   fontSize: '11px',

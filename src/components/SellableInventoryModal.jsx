@@ -74,7 +74,7 @@ const SellableInventoryModal = ({
   return (
     <AnimatedModal isOpen={isOpen}>
       {(overlayClass, cardClass) => (
-        <div className={`${overlayClass.replace('global-modal-overlay', '')} sellable-inventory-overlay`} style={{ position: 'fixed', inset: 0, zIndex: 22000, padding: 'clamp(10px, 2vw, 20px)', paddingTop: 'max(10px, env(safe-area-inset-top, 10px))', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(0,0,0,.78)', backdropFilter: 'blur(14px)' }}>
+        <div className={`${overlayClass.replace('global-modal-overlay', '')} sellable-inventory-overlay`} style={{ position: 'fixed', inset: 0, zIndex: 22000, padding: 'clamp(10px, 2vw, 20px)', paddingTop: 'max(10px, env(safe-area-inset-top, 10px))', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(255, 255, 255, 0.9)', backdropFilter: 'blur(14px)' }}>
           <style>{`
             @media (max-width: 560px) {
               .sellable-inventory-card { max-height: 92dvh !important; }
@@ -88,7 +88,7 @@ const SellableInventoryModal = ({
             }
           `}</style>
           <section className={`${cardClass.replace('global-modal-card', '')} sellable-inventory-card`} aria-modal="true" role="dialog" aria-label={title} style={{ width: 'min(780px, 100%)', height: 'auto', maxHeight: 'min(82dvh, 700px)', display: 'flex', flexDirection: 'column', overflow: 'hidden', borderRadius: '22px', border: '1px solid rgba(17, 17, 17,.25)', background: 'var(--bg-secondary)', boxShadow: '0 28px 72px rgba(0,0,0,.62)' }}>
-            <header style={{ padding: 'clamp(16px, 2vw, 20px)', paddingBottom: '13px', borderBottom: '1px solid rgba(255,255,255,.07)', flexShrink: 0 }}>
+            <header style={{ padding: 'clamp(16px, 2vw, 20px)', paddingBottom: '13px', borderBottom: '1px solid rgba(0, 0, 0, 0.08)', flexShrink: 0 }}>
               <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: '16px' }}>
                 <div style={{ display: 'flex', gap: '13px', minWidth: 0 }}>
                   <div style={{ width: '38px', height: '38px', borderRadius: '12px', display: 'grid', placeItems: 'center', flexShrink: 0, color: 'var(--gold-primary)', background: 'rgba(17, 17, 17,.12)', border: '1px solid rgba(17, 17, 17,.25)' }}><ShoppingBag size={18} /></div>
@@ -97,17 +97,17 @@ const SellableInventoryModal = ({
                     <p style={{ margin: '3px 0 0', color: 'var(--text-secondary)', fontSize: '11px', lineHeight: 1.4 }}>{subtitle}</p>
                   </div>
                 </div>
-                <button type="button" onClick={onClose} aria-label="Cerrar catálogo" style={{ width: '40px', height: '40px', display: 'grid', placeItems: 'center', flexShrink: 0, borderRadius: '12px', border: '1px solid rgba(255,255,255,.1)', background: 'rgba(255,255,255,.05)', color: '#d8d8da', cursor: 'pointer' }}><X size={18} /></button>
+                <button type="button" onClick={onClose} aria-label="Cerrar catálogo" style={{ width: '40px', height: '40px', display: 'grid', placeItems: 'center', flexShrink: 0, borderRadius: '12px', border: '1px solid rgba(0, 0, 0, 0.08)', background: 'rgba(0, 0, 0, 0.04)', color: '#d8d8da', cursor: 'pointer' }}><X size={18} /></button>
               </div>
 
               <div style={{ marginTop: '13px', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(240px, 100%), 1fr))', gap: '8px', alignItems: 'center' }}>
                 <label style={{ position: 'relative' }}>
                   <Search size={17} style={{ position: 'absolute', left: '15px', top: '50%', transform: 'translateY(-50%)', color: 'var(--gold-primary)' }} />
-                  <input value={search} onChange={event => setSearch(event.target.value)} placeholder="Buscar productos o bebidas..." style={{ width: '100%', height: '42px', boxSizing: 'border-box', padding: '0 13px 0 42px', borderRadius: '12px', border: '1px solid rgba(255,255,255,.09)', background: 'var(--bg-secondary)', color: '#fff', outline: 'none', fontSize: '13px' }} />
+                  <input value={search} onChange={event => setSearch(event.target.value)} placeholder="Buscar productos o bebidas..." style={{ width: '100%', height: '42px', boxSizing: 'border-box', padding: '0 13px 0 42px', borderRadius: '12px', border: '1px solid rgba(0, 0, 0, 0.08)', background: 'var(--bg-secondary)', color: '#fff', outline: 'none', fontSize: '13px' }} />
                 </label>
                 <div style={{ display: 'flex', gap: '7px', overflowX: 'auto', maxWidth: '100%' }}>
                   {Object.entries(INVENTORY_SALES_GROUPS).map(([value, label]) => (
-                    <button key={value} type="button" onClick={() => setGroup(value)} style={{ minHeight: '38px', padding: '0 11px', borderRadius: '10px', whiteSpace: 'nowrap', cursor: 'pointer', fontSize: '10px', fontWeight: 900, color: group === value ? '#111' : '#d0d0d3', border: group === value ? '1px solid var(--gold-primary)' : '1px solid rgba(255,255,255,.09)', background: group === value ? 'var(--gold-primary)' : 'rgba(255,255,255,.04)' }}>{label}</button>
+                    <button key={value} type="button" onClick={() => setGroup(value)} style={{ minHeight: '38px', padding: '0 11px', borderRadius: '10px', whiteSpace: 'nowrap', cursor: 'pointer', fontSize: '10px', fontWeight: 900, color: group === value ? '#111' : '#d0d0d3', border: group === value ? '1px solid var(--gold-primary)' : '1px solid rgba(0, 0, 0, 0.08)', background: group === value ? 'var(--gold-primary)' : 'rgba(255,255,255,.04)' }}>{label}</button>
                   ))}
                 </div>
               </div>
@@ -147,7 +147,7 @@ const SellableInventoryModal = ({
                     };
                     const ProductIcon = getProductIcon(item.name, item.inventory_type);
                     return (
-                      <article key={item.id} className="pos-extra-card sellable-inventory-item" style={{ display: 'flex', flexDirection: 'column', overflow: 'hidden', borderRadius: '16px', border: `1px solid ${quantity ? 'rgba(17, 17, 17,.62)' : 'rgba(255,255,255,.08)'}`, background: quantity ? 'rgba(17, 17, 17,.08)' : 'rgba(255,255,255,.025)', opacity: out ? .55 : 1 }}>
+                      <article key={item.id} className="pos-extra-card sellable-inventory-item" style={{ display: 'flex', flexDirection: 'column', overflow: 'hidden', borderRadius: '16px', border: `1px solid ${quantity ? 'rgba(17, 17, 17,.62)' : 'rgba(0, 0, 0, 0.08)'}`, background: quantity ? 'rgba(17, 17, 17,.08)' : 'rgba(255,255,255,.025)', opacity: out ? .55 : 1 }}>
                         <button type="button" disabled={out} onClick={() => mode === 'single' ? onSelect?.(item) : changeQuantity(item, 1)} style={{ padding: 0, border: 0, background: 'transparent', color: 'inherit', cursor: out ? 'not-allowed' : 'pointer', textAlign: 'left', flex: 1, display: 'flex', flexDirection: 'column' }}>
                           <div className="sellable-inventory-visual" style={{ width: '100%', aspectRatio: '4/3', position: 'relative', overflow: 'hidden', background: 'var(--bg-secondary)' }}>
                             {item.image_url ? <img src={item.image_url} alt={item.name} loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover' }} /> : <div style={{ height: '100%', display: 'grid', placeItems: 'center', color: isCafe ? 'var(--gold-primary)' : '#54d37b' }}><ProductIcon size={35} /></div>}
@@ -161,7 +161,7 @@ const SellableInventoryModal = ({
                           </div>
                         </button>
                         {mode === 'multiple' && (
-                          <div style={{ margin: '4px 9px 9px', height: '36px', display: 'grid', gridTemplateColumns: '36px minmax(0, 1fr) 36px', alignItems: 'center', borderRadius: '10px', overflow: 'hidden', border: '1px solid rgba(255,255,255,.1)', background: 'var(--bg-secondary)' }}>
+                          <div style={{ margin: '4px 9px 9px', height: '36px', display: 'grid', gridTemplateColumns: '36px minmax(0, 1fr) 36px', alignItems: 'center', borderRadius: '10px', overflow: 'hidden', border: '1px solid rgba(0, 0, 0, 0.08)', background: 'var(--bg-secondary)' }}>
                             <button type="button" disabled={!quantity} onClick={() => changeQuantity(item, -1)} aria-label={`Quitar ${item.name}`} style={{ height: '100%', width: '100%', padding: 0, margin: 0, border: 0, background: quantity ? 'rgba(255,255,255,.08)' : 'rgba(255,255,255,.02)', color: quantity ? '#fff' : 'rgba(255,255,255,.25)', cursor: quantity ? 'pointer' : 'default', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'all 0.15s ease' }}><Minus size={15} /></button>
                             <strong style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%', color: quantity ? 'var(--gold-primary)' : 'rgba(255,255,255,0.4)', fontSize: '14px', fontWeight: '900', userSelect: 'none' }}>{quantity}</strong>
                             <button type="button" disabled={out || quantity >= stock} onClick={() => changeQuantity(item, 1)} aria-label={`Agregar ${item.name}`} style={{ height: '100%', width: '100%', padding: 0, margin: 0, border: 0, background: quantity ? 'rgba(17, 17, 17,.18)' : 'rgba(255,255,255,.05)', color: quantity ? 'var(--gold-primary)' : 'rgba(255,255,255,0.6)', cursor: out || quantity >= stock ? 'not-allowed' : 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'all 0.15s ease' }}><Plus size={15} /></button>
@@ -175,7 +175,7 @@ const SellableInventoryModal = ({
             </div>
 
             {mode === 'multiple' && (
-              <footer style={{ flexShrink: 0, padding: '11px clamp(14px, 2vw, 18px)', display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: '10px', borderTop: '1px solid rgba(255,255,255,.08)', background: 'var(--bg-secondary)' }}>
+              <footer style={{ flexShrink: 0, padding: '11px clamp(14px, 2vw, 18px)', display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: '10px', borderTop: '1px solid rgba(0, 0, 0, 0.08)', background: 'var(--bg-secondary)' }}>
                 <div><span style={{ display: 'block', color: 'var(--text-muted)', fontSize: '9px', fontWeight: 900, textTransform: 'uppercase' }}>{selection.reduce((sum, item) => sum + item.quantity, 0)} unidades</span><strong style={{ color: 'var(--gold-primary)', fontSize: '19px' }}>${money(totalUsd)}</strong>{rate > 0 && <small style={{ marginLeft: '7px', color: 'var(--text-secondary)', fontSize: '10px' }}>{money(totalUsd * rate)} Bs</small>}</div>
                 <button type="button" disabled={!selection.length || loading} onClick={() => onConfirm?.(selection)} className="btn-gold" style={{ minHeight: '42px', flex: '1 1 190px', padding: '0 17px', borderRadius: '12px', opacity: !selection.length || loading ? .45 : 1 }}>{loading ? 'REGISTRANDO...' : 'REGISTRAR CONSUMO'}</button>
               </footer>

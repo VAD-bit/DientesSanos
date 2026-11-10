@@ -74,7 +74,7 @@ export default function ValeAdvancePanel({ modal, setModal, balances, rate, acti
         <button 
           onClick={close} 
           aria-label="Cerrar" 
-          style={{ width: '38px', height: '38px', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.1)', background: 'rgba(255,255,255,0.04)', color: 'var(--text-secondary)', cursor: 'pointer', display: 'grid', placeItems: 'center', flexShrink: 0, transition: 'all 0.15s ease' }}
+          style={{ width: '38px', height: '38px', borderRadius: '12px', border: '1px solid rgba(0, 0, 0, 0.08)', background: 'rgba(0, 0, 0, 0.04)', color: 'var(--text-secondary)', cursor: 'pointer', display: 'grid', placeItems: 'center', flexShrink: 0, transition: 'all 0.15s ease' }}
           onMouseEnter={e => e.currentTarget.style.background = 'rgba(255,255,255,0.1)'}
           onMouseLeave={e => e.currentTarget.style.background = 'rgba(255,255,255,0.04)'}
         >
@@ -98,8 +98,8 @@ export default function ValeAdvancePanel({ modal, setModal, balances, rate, acti
             alignItems: 'center',
             padding: '12px 16px',
             borderRadius: '16px',
-            background: 'rgba(255,255,255,0.03)',
-            border: '1px solid rgba(255,255,255,0.08)',
+            background: 'rgba(0, 0, 0, 0.04)',
+            border: '1px solid rgba(0, 0, 0, 0.08)',
             gap: '12px',
             flexWrap: isMobile ? 'wrap' : 'nowrap'
           }}>
@@ -136,7 +136,7 @@ export default function ValeAdvancePanel({ modal, setModal, balances, rate, acti
               </div>
             </div>
 
-            <div style={{ textAlign: isMobile ? 'left' : 'right', borderTop: isMobile ? '1px solid rgba(255,255,255,0.06)' : 'none', paddingTop: isMobile ? '8px' : '0', width: isMobile ? '100%' : 'auto' }}>
+            <div style={{ textAlign: isMobile ? 'left' : 'right', borderTop: isMobile ? '1px solid rgba(0, 0, 0, 0.08)' : 'none', paddingTop: isMobile ? '8px' : '0', width: isMobile ? '100%' : 'auto' }}>
               <span style={{ fontSize: '9.5px', color: 'var(--text-muted)', textTransform: 'uppercase', fontWeight: '800', letterSpacing: '0.5px', display: 'block' }}>
                 Saldo actual
               </span>
@@ -189,8 +189,8 @@ export default function ValeAdvancePanel({ modal, setModal, balances, rate, acti
                     style={{
                       padding: '7px 12px',
                       borderRadius: '10px',
-                      background: 'rgba(255,255,255,0.04)',
-                      border: '1px solid rgba(255,255,255,0.09)',
+                      background: 'rgba(0, 0, 0, 0.04)',
+                      border: '1px solid rgba(0, 0, 0, 0.08)',
                       color: 'white',
                       fontSize: '11.5px',
                       fontWeight: '800',
@@ -239,7 +239,7 @@ export default function ValeAdvancePanel({ modal, setModal, balances, rate, acti
                 minHeight: '64px', 
                 padding: '10px 14px', 
                 borderRadius: '12px', 
-                border: '1px solid rgba(255,255,255,0.1)', 
+                border: '1px solid rgba(0, 0, 0, 0.08)', 
                 background: 'var(--bg-secondary)', 
                 color: 'white', 
                 fontFamily: 'inherit',
@@ -273,7 +273,7 @@ export default function ValeAdvancePanel({ modal, setModal, balances, rate, acti
                       padding: '10px 12px',
                       borderRadius: '12px',
                       background: active ? 'rgba(17, 17, 17,0.12)' : 'rgba(255,255,255,0.03)',
-                      border: active ? '1.5px solid var(--gold-primary)' : '1px solid rgba(255,255,255,0.08)',
+                      border: active ? '1.5px solid var(--gold-primary)' : '1px solid rgba(0, 0, 0, 0.08)',
                       color: active ? 'var(--gold-primary)' : 'white',
                       cursor: 'pointer',
                       textAlign: 'left',
@@ -312,7 +312,7 @@ export default function ValeAdvancePanel({ modal, setModal, balances, rate, acti
 
           {/* Si es Mixto: distribución manual */}
           {mixed && (
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', padding: '12px', borderRadius: '14px', background: 'var(--bg-secondary)', border: '1px solid rgba(255,255,255,0.08)' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', padding: '12px', borderRadius: '14px', background: 'var(--bg-secondary)', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
               <span style={{ fontSize: '10.5px', fontWeight: '800', color: 'var(--gold-primary)', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
                 Distribución por cuenta:
               </span>
@@ -320,7 +320,7 @@ export default function ValeAdvancePanel({ modal, setModal, balances, rate, acti
                 {VALE_METHODS.map(method => {
                   const available = Number(balances?.[method.key] || 0);
                   return (
-                    <label key={method.name} style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) 110px', alignItems: 'center', gap: '8px', padding: '6px 10px', borderRadius: '8px', background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)', fontSize: '11px' }}>
+                    <label key={method.name} style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) 110px', alignItems: 'center', gap: '8px', padding: '6px 10px', borderRadius: '8px', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', fontSize: '11px' }}>
                       <div style={{ minWidth: 0 }}>
                         <span style={{ fontWeight: '750', color: 'white', display: 'block', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{method.name}</span>
                         <small style={{ color: 'var(--text-muted)', fontSize: '9px' }}>Disp: {method.currency === 'USD' ? '$' : ''}{fmt(available)}{method.currency === 'Bs' ? ' Bs' : ''}</small>
@@ -333,7 +333,7 @@ export default function ValeAdvancePanel({ modal, setModal, balances, rate, acti
                           value={modal.allocations?.[method.name] || ''} 
                           onChange={e => setModal({ ...modal, allocations: { ...(modal.allocations || {}), [method.name]: e.target.value } })} 
                           placeholder="0.00" 
-                          style={{ width: '100%', padding: '6px 24px 6px 8px', borderRadius: '6px', border: '1px solid rgba(255,255,255,0.12)', background: 'var(--bg-secondary)', color: 'white', outline: 'none', fontSize: '12px', fontWeight: '800' }}
+                          style={{ width: '100%', padding: '6px 24px 6px 8px', borderRadius: '6px', border: '1px solid rgba(0, 0, 0, 0.08)', background: 'var(--bg-secondary)', color: 'white', outline: 'none', fontSize: '12px', fontWeight: '800' }}
                         />
                         <b style={{ position: 'absolute', right: '6px', top: '50%', transform: 'translateY(-50%)', color: 'var(--gold-primary)', fontSize: '10px' }}>
                           {method.currency === 'USD' ? '$' : 'Bs'}
@@ -351,7 +351,7 @@ export default function ValeAdvancePanel({ modal, setModal, balances, rate, acti
             padding: '14px 16px',
             borderRadius: '16px',
             background: 'var(--bg-secondary)',
-            border: resultingBalanceBs < 0 ? '1px solid rgba(255,69,58,0.25)' : '1px solid rgba(255,255,255,0.08)',
+            border: resultingBalanceBs < 0 ? '1px solid rgba(255,69,58,0.25)' : '1px solid rgba(0, 0, 0, 0.08)',
             display: 'flex',
             flexDirection: 'column',
             gap: '10px'
@@ -367,7 +367,7 @@ export default function ValeAdvancePanel({ modal, setModal, balances, rate, acti
 
             <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'minmax(0, 1fr) auto minmax(0, 1fr) auto minmax(0, 1fr)', alignItems: 'center', gap: '8px' }}>
               {/* Saldo Actual */}
-              <div style={{ background: 'rgba(255,255,255,0.03)', padding: '8px 10px', borderRadius: '10px', border: '1px solid rgba(255,255,255,0.05)' }}>
+              <div style={{ background: 'rgba(0, 0, 0, 0.04)', padding: '8px 10px', borderRadius: '10px', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
                 <span style={{ fontSize: '9px', color: 'var(--text-muted)', fontWeight: '750', display: 'block', textTransform: 'uppercase' }}>Saldo actual</span>
                 <strong style={{ fontSize: '13.5px', color: payrollBalanceBs < 0 ? '#ff453a' : 'white', display: 'block', marginTop: '1px' }}>
                   ${fmt(payrollBalanceBs / rate)}
@@ -412,7 +412,7 @@ export default function ValeAdvancePanel({ modal, setModal, balances, rate, acti
       </div>
 
       {/* Footer Actions */}
-      <footer style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center', gap: '12px', marginTop: '4px', paddingTop: '14px', borderTop: '1px solid rgba(255,255,255,0.08)' }}>
+      <footer style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center', gap: '12px', marginTop: '4px', paddingTop: '14px', borderTop: '1px solid rgba(0, 0, 0, 0.08)' }}>
         <button 
           type="button"
           disabled={invalid} 

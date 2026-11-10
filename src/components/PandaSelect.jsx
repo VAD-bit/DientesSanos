@@ -148,7 +148,7 @@ const PandaSelect = ({
         ...dropdownStyle,
         backgroundColor: 'var(--bg-secondary)',
         borderRadius: '16px',
-        border: '1px solid rgba(255, 255, 255, 0.1)',
+        border: '1px solid rgba(0, 0, 0, 0.08)',
         boxShadow: '0 10px 40px rgba(0,0,0,0.8)',
         maxHeight: '250px',
         overflowY: 'auto',
@@ -203,8 +203,8 @@ const PandaSelect = ({
           ref={triggerRef}
           onClick={() => !disabled && setIsOpen(!isOpen)}
           style={{
-            background: 'rgba(255, 255, 255, 0.05)',
-            border: isOpen ? '1px solid var(--gold-primary)' : '1px solid rgba(255, 255, 255, 0.1)',
+            background: 'rgba(0, 0, 0, 0.04)',
+            border: isOpen ? '1px solid var(--gold-primary)' : '1px solid rgba(0, 0, 0, 0.08)',
             padding: '12px 16px',
             borderRadius: '12px',
             color: selectedOption ? 'white' : 'var(--text-muted)',
@@ -233,12 +233,12 @@ const PandaSelect = ({
           {dropdown}
           <style>{`
             .panda-option:hover {
-              background-color: rgba(255, 255, 255, 0.05) !important;
+              background-color: rgba(0, 0, 0, 0.04) !important;
               transform: translateX(4px);
             }
             .panda-select-dropdown {
               border-radius: 16px !important;
-              border: 1px solid rgba(255, 255, 255, 0.1) !important;
+              border: 1px solid rgba(0, 0, 0, 0.08) !important;
             }
             .panda-option-content {
               display: flex;

@@ -97,7 +97,7 @@ export default function PasskeySettings({ showToast }) {
         {loading && <SkeletonList rows={2} rowHeight={52} />}
         {!loading && !credentials.length && <div style={{ color: 'rgba(255,255,255,.45)', padding: '14px 0' }}>Aún no tienes dispositivos registrados.</div>}
         {credentials.map(item => (
-          <div key={item.id} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '12px', padding: '14px', border: '1px solid rgba(255,255,255,.08)', borderRadius: '15px', background: 'rgba(255,255,255,.025)' }}>
+          <div key={item.id} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '12px', padding: '14px', border: '1px solid rgba(0, 0, 0, 0.08)', borderRadius: '15px', background: 'rgba(0, 0, 0, 0.04)' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px', minWidth: 0 }}>
               <KeyRound size={19} color="#d4bd94" />
               <div style={{ minWidth: 0 }}>

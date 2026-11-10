@@ -912,8 +912,8 @@ const DashboardModule = ({
                 cursor: storeToggling ? 'wait' : 'pointer',
                 fontSize: '13px', fontWeight: '600',
                 transition: 'all 0.2s ease',
-                border: '1px solid rgba(255,255,255,0.06)',
-                background: 'rgba(255,255,255,0.03)',
+                border: '1px solid rgba(0, 0, 0, 0.08)',
+                background: 'rgba(0, 0, 0, 0.04)',
                 color: 'rgba(255,255,255,0.85)',
                 opacity: storeToggling ? 0.6 : 1,
               }}
@@ -930,7 +930,7 @@ const DashboardModule = ({
                 type="button"
                 onClick={() => setSearchExpanded(true)}
                 title="Buscar citas, clientes, Odontólogos…"
-                style={{ width: '40px', height: '40px', flexShrink: 0, borderRadius: '12px', display: 'grid', placeItems: 'center', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.06)', color: 'rgba(255,255,255,0.6)', cursor: 'pointer', transition: 'all 0.2s ease' }}
+                style={{ width: '40px', height: '40px', flexShrink: 0, borderRadius: '12px', display: 'grid', placeItems: 'center', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', color: 'rgba(255,255,255,0.6)', cursor: 'pointer', transition: 'all 0.2s ease' }}
                 onMouseEnter={(e) => { e.currentTarget.style.background = 'rgba(255,255,255,0.07)'; e.currentTarget.style.color = 'var(--champagne)'; }}
                 onMouseLeave={(e) => { e.currentTarget.style.background = 'rgba(255,255,255,0.04)'; e.currentTarget.style.color = 'rgba(255,255,255,0.6)'; }}
               >
@@ -961,8 +961,8 @@ const DashboardModule = ({
                   boxSizing: 'border-box',
                   padding: '0 12px 0 36px',
                   borderRadius: '12px',
-                  backgroundColor: 'rgba(255,255,255,0.04)',
-                  border: '1px solid rgba(255,255,255,0.06)',
+                  backgroundColor: 'rgba(0, 0, 0, 0.04)',
+                  border: '1px solid rgba(0, 0, 0, 0.08)',
                   color: 'white',
                   fontSize: '13px',
                   outline: 'none',
@@ -1115,7 +1115,7 @@ const DashboardModule = ({
             </div>
 
             {/* Divider between utility zone and rates+alerts zone */}
-            {rates && <div style={{ width: '1px', height: '24px', background: 'rgba(255,255,255,0.08)', flexShrink: 0 }} />}
+            {rates && <div style={{ width: '1px', height: '24px', background: 'rgba(0, 0, 0, 0.04)', flexShrink: 0 }} />}
 
             {/* Rate Toggle Card — segmented control with soft dividers instead of boxed chips */}
             {rates && (
@@ -1126,8 +1126,8 @@ const DashboardModule = ({
                 display: 'flex',
                 alignItems: 'center',
                 borderRadius: '12px',
-                border: '1px solid rgba(255,255,255,0.06)',
-                backgroundColor: 'rgba(255, 255, 255, 0.02)'
+                border: '1px solid rgba(0, 0, 0, 0.08)',
+                backgroundColor: 'rgba(0, 0, 0, 0.04)'
               }}>
                 {/* BCV Button */}
                 <button
@@ -1165,7 +1165,7 @@ const DashboardModule = ({
                   </span>
                 </button>
 
-                <div style={{ width: '1px', height: '20px', background: 'rgba(255,255,255,0.06)' }} />
+                <div style={{ width: '1px', height: '20px', background: 'rgba(0, 0, 0, 0.04)' }} />
 
                 {/* EURO Button */}
                 <button
@@ -1203,7 +1203,7 @@ const DashboardModule = ({
                   </span>
                 </button>
 
-                <div style={{ width: '1px', height: '20px', background: 'rgba(255,255,255,0.06)' }} />
+                <div style={{ width: '1px', height: '20px', background: 'rgba(0, 0, 0, 0.04)' }} />
 
                 {/* Gap indicator */}
                 <div style={{
@@ -1234,8 +1234,8 @@ const DashboardModule = ({
                 width: '40px',
                 height: '40px',
                 borderRadius: '12px',
-                background: 'rgba(255,255,255,0.04)',
-                border: '1px solid rgba(255,255,255,0.06)',
+                background: 'rgba(0, 0, 0, 0.04)',
+                border: '1px solid rgba(0, 0, 0, 0.08)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -1330,7 +1330,7 @@ const DashboardModule = ({
             flexShrink: 0
           }}>
             {/* KPI Card 1: Citas Hoy */}
-            <div className="glass-card" style={{ padding: '8px 10px', borderRadius: '12px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', height: '76px', backgroundColor: 'var(--bg-secondary)', border: '1px solid rgba(255,255,255,0.04)' }}>
+            <div className="glass-card" style={{ padding: '8px 10px', borderRadius: '12px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', height: '76px', backgroundColor: 'var(--bg-secondary)', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', opacity: 0.7 }}>
                 <span style={{ fontSize: '9px', fontWeight: '800', color: 'rgba(255,255,255,0.7)', letterSpacing: '0.5px' }}>CITAS HOY</span>
                 <Calendar size={13} color="rgba(255,255,255,0.6)" />
@@ -1344,7 +1344,7 @@ const DashboardModule = ({
             </div>
 
             {/* KPI Card 2: Facturado Hoy */}
-            <div className="glass-card" style={{ padding: '8px 10px', borderRadius: '12px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', height: '76px', backgroundColor: 'var(--bg-secondary)', border: '1px solid rgba(255,255,255,0.04)' }}>
+            <div className="glass-card" style={{ padding: '8px 10px', borderRadius: '12px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', height: '76px', backgroundColor: 'var(--bg-secondary)', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', opacity: 0.7 }}>
                 <span style={{ fontSize: '9px', fontWeight: '800', color: 'rgba(255,255,255,0.7)', letterSpacing: '0.5px' }}>FACTURADO HOY</span>
                 <span style={{ fontSize: '11px', color: 'rgba(255,255,255,0.6)', fontWeight: '800' }}>$</span>
@@ -1358,7 +1358,7 @@ const DashboardModule = ({
             </div>
 
             {/* KPI Card 3: Clientes Nuevos */}
-            <div className="glass-card" style={{ padding: '8px 10px', borderRadius: '12px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', height: '76px', backgroundColor: 'var(--bg-secondary)', border: '1px solid rgba(255,255,255,0.04)' }}>
+            <div className="glass-card" style={{ padding: '8px 10px', borderRadius: '12px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', height: '76px', backgroundColor: 'var(--bg-secondary)', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', opacity: 0.7 }}>
                 <span style={{ fontSize: '9px', fontWeight: '800', color: 'rgba(255,255,255,0.7)', letterSpacing: '0.5px' }}>CLIENTES NUEVOS</span>
                 <Users size={13} color="rgba(255,255,255,0.6)" />
@@ -1372,7 +1372,7 @@ const DashboardModule = ({
             </div>
 
             {/* KPI Card 4: Staff pending arrival */}
-            <div className="glass-card" style={{ padding: '8px 10px', borderRadius: '12px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', height: '76px', backgroundColor: 'var(--bg-secondary)', border: '1px solid rgba(255,255,255,0.04)' }}>
+            <div className="glass-card" style={{ padding: '8px 10px', borderRadius: '12px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', height: '76px', backgroundColor: 'var(--bg-secondary)', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', opacity: 0.7 }}>
                 <span style={{ fontSize: '9px', fontWeight: '800', color: 'rgba(255,255,255,0.7)', letterSpacing: '0.5px' }}>POR LLEGAR</span>
                 <UserX size={13} color="rgba(255,255,255,0.6)" />
@@ -1396,7 +1396,7 @@ const DashboardModule = ({
           <div className="glass-card" style={{ 
             padding: '8px 12px', 
             borderRadius: '16px', 
-            border: '1px solid rgba(255, 255, 255, 0.05)', 
+            border: '1px solid rgba(0, 0, 0, 0.08)', 
             backgroundColor: 'var(--bg-secondary)',
             display: 'flex',
             flexDirection: 'column',
@@ -1406,8 +1406,8 @@ const DashboardModule = ({
           }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px', flexShrink: 0 }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <h3 style={{ fontSize: '13px', fontWeight: '800', color: 'white', margin: 0, textTransform: 'uppercase', letterSpacing: '0.5px' }}>Estado del sillón</h3>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '4px', backgroundColor: 'rgba(255,255,255,0.03)', padding: '2px 8px', borderRadius: '4px', border: '1px solid rgba(255,255,255,0.06)' }}>
+                <h3 style={{ fontSize: '13px', fontWeight: '800', color: 'white', margin: 0, textTransform: 'uppercase', letterSpacing: '0.5px' }}>Estado de los sillones</h3>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '4px', backgroundColor: 'rgba(0, 0, 0, 0.04)', padding: '2px 8px', borderRadius: '4px', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
                   <div style={{ width: '4px', height: '4px', borderRadius: '50%', backgroundColor: 'var(--champagne)' }} />
                   <span style={{ fontSize: '10px', color: 'rgba(255,255,255,0.5)', fontWeight: '600' }}>En tiempo real</span>
                 </div>
@@ -1471,7 +1471,7 @@ const DashboardModule = ({
                       maxWidth: '200px',
                       scrollSnapAlign: 'start',
                       backgroundColor: 'var(--bg-secondary)',
-                      border: `1.5px solid ${chair.statusColor || 'rgba(255,255,255,0.04)'}`,
+                      border: `1.5px solid ${chair.statusColor || 'rgba(0, 0, 0, 0.08)'}`,
                       borderRadius: '16px',
                       padding: '12px 14px',
                       display: 'flex',
@@ -1511,7 +1511,7 @@ const DashboardModule = ({
                               width: '40px',
                               height: '40px',
                               borderRadius: '50%',
-                              backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                              backgroundColor: 'rgba(0, 0, 0, 0.04)',
                               border: '2px solid var(--champagne)',
                               display: 'flex',
                               alignItems: 'center',
@@ -1563,7 +1563,7 @@ const DashboardModule = ({
                           backgroundColor: 'var(--bg-secondary)', 
                           borderRadius: '8px', 
                           padding: '4px 8px',
-                          border: '1px solid rgba(255,255,255,0.03)',
+                          border: '1px solid rgba(0, 0, 0, 0.08)',
                           display: 'flex',
                           alignItems: 'center',
                           gap: '6px',
@@ -1586,7 +1586,7 @@ const DashboardModule = ({
                           backgroundColor: 'var(--bg-secondary)', 
                           borderRadius: '8px', 
                           padding: '4px 6px',
-                          border: '1px solid rgba(255,255,255,0.03)',
+                          border: '1px solid rgba(0, 0, 0, 0.08)',
                           display: 'flex',
                           alignItems: 'center',
                           justifyContent: 'center',
@@ -1604,7 +1604,7 @@ const DashboardModule = ({
                           backgroundColor: 'var(--bg-secondary)', 
                           borderRadius: '8px', 
                           padding: '4px 6px',
-                          border: '1px solid rgba(255,255,255,0.03)',
+                          border: '1px solid rgba(0, 0, 0, 0.08)',
                           display: 'flex',
                           alignItems: 'center',
                           justifyContent: 'space-between',
@@ -1624,8 +1624,8 @@ const DashboardModule = ({
                               width: '16px',
                               height: '16px',
                               borderRadius: '4px',
-                              backgroundColor: 'rgba(255,255,255,0.06)',
-                              border: '1px solid rgba(255,255,255,0.1)',
+                              backgroundColor: 'rgba(0, 0, 0, 0.04)',
+                              border: '1px solid rgba(0, 0, 0, 0.08)',
                               color: 'white',
                               display: 'flex',
                               alignItems: 'center',
@@ -1655,7 +1655,7 @@ const DashboardModule = ({
             minHeight: 0
           }}>
             {/* 1. Top Odontólogos Card */}
-            <div className="glass-card" style={{ padding: '8px 10px', borderRadius: '16px', backgroundColor: 'var(--bg-secondary)', border: '1px solid rgba(255,255,255,0.05)', display: 'flex', flexDirection: 'column', height: '100%', minHeight: 0 }}>
+            <div className="glass-card" style={{ padding: '8px 10px', borderRadius: '16px', backgroundColor: 'var(--bg-secondary)', border: '1px solid rgba(0, 0, 0, 0.08)', display: 'flex', flexDirection: 'column', height: '100%', minHeight: 0 }}>
               {/* Header */}
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '4px', flexShrink: 0 }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
@@ -1737,7 +1737,7 @@ const DashboardModule = ({
                             display: 'flex',
                             alignItems: 'center',
                             justifyContent: 'center',
-                            backgroundColor: isTop1 ? 'rgba(232, 212, 176, 0.1)' : 'rgba(0,0,0,0.3)'
+                            backgroundColor: isTop1 ? 'rgba(232, 212, 176, 0.35)' : 'rgba(0,0,0,0.04)'
                           }}>
                             {barber.image_url ? (
                                <img loading="lazy" src={barber.image_url} alt={barber.name} style={{ width: '100%', height: '100%', borderRadius: '8px', objectFit: 'cover' }} />
@@ -1798,14 +1798,14 @@ const DashboardModule = ({
             </div>
 
             {/* 2. Servicios más vendidos */}
-            <div className="glass-card" style={{ padding: '10px 12px', borderRadius: '16px', backgroundColor: 'var(--bg-secondary)', border: '1px solid rgba(255,255,255,0.05)', display: 'flex', flexDirection: 'column', height: '100%', minHeight: 0 }}>
+            <div className="glass-card" style={{ padding: '10px 12px', borderRadius: '16px', backgroundColor: 'var(--bg-secondary)', border: '1px solid rgba(0, 0, 0, 0.08)', display: 'flex', flexDirection: 'column', height: '100%', minHeight: 0 }}>
               <div style={{ flexShrink: 0, marginBottom: '8px' }}>
                 <h4 style={{ fontSize: '10px', fontWeight: '800', color: 'white', margin: 0, textTransform: 'uppercase', letterSpacing: '0.5px' }}>Servicios más vendidos</h4>
               </div>
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', flex: 1, overflowY: 'auto' }}>
                 {finalTopServices.slice(0, 4).map((service, idx) => (
-                  <div key={service.id || idx} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '5px 8px', borderRadius: '8px', backgroundColor: 'rgba(255,255,255,0.02)' }}>
+                  <div key={service.id || idx} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '5px 8px', borderRadius: '8px', backgroundColor: 'rgba(0, 0, 0, 0.04)' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                       <span style={{ fontSize: '10px', fontWeight: '900', color: 'var(--champagne)' }}>{idx + 1}</span>
                       <span style={{ fontSize: '11px', fontWeight: '700', color: 'white' }}>{service.name}</span>
@@ -1820,8 +1820,8 @@ const DashboardModule = ({
                 style={{
                   marginTop: '8px',
                   width: '100%',
-                  background: 'rgba(255,255,255,0.03)',
-                  border: '1px solid rgba(255,255,255,0.06)',
+                  background: 'rgba(0, 0, 0, 0.04)',
+                  border: '1px solid rgba(0, 0, 0, 0.08)',
                   borderRadius: '8px',
                   padding: '6px 0',
                   color: 'white',
@@ -1857,7 +1857,7 @@ const DashboardModule = ({
             padding: '12px 14px', 
             borderRadius: '16px', 
             backgroundColor: 'var(--bg-secondary)', 
-            border: '1px solid rgba(255,255,255,0.05)', 
+            border: '1px solid rgba(0, 0, 0, 0.08)', 
             display: 'flex', 
             flexDirection: 'column', 
             flex: '1.2 1 0%', 
@@ -1886,14 +1886,14 @@ const DashboardModule = ({
                     {/* Time */}
                     <span style={{
                       fontSize: '9px', fontWeight: '800', color: 'rgba(255,255,255,0.45)',
-                      background: 'rgba(255,255,255,0.05)', borderRadius: '6px',
+                      background: 'rgba(0, 0, 0, 0.04)', borderRadius: '6px',
                       padding: '3px 6px', flexShrink: 0, whiteSpace: 'nowrap', minWidth: '56px', textAlign: 'center'
                     }}>{item.time}</span>
 
                     {/* Avatar */}
                     <div style={{
                       width: '28px', height: '28px', borderRadius: '50%', flexShrink: 0,
-                      backgroundColor: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.12)',
+                      backgroundColor: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)',
                       display: 'flex', alignItems: 'center', justifyContent: 'center',
                       fontSize: '10px', fontWeight: '800', color: 'var(--champagne)', overflow: 'hidden'
                     }}>
@@ -1944,7 +1944,7 @@ const DashboardModule = ({
             padding: '10px 12px', 
             borderRadius: '16px', 
             backgroundColor: 'var(--bg-secondary)', 
-            border: '1px solid rgba(255,255,255,0.05)', 
+            border: '1px solid rgba(0, 0, 0, 0.08)', 
             display: 'flex', 
             flexDirection: 'column', 
             flexShrink: 0
@@ -1969,8 +1969,8 @@ const DashboardModule = ({
                       gap: '4px',
                       padding: '8px 4px',
                       borderRadius: '8px',
-                      backgroundColor: 'rgba(255,255,255,0.02)',
-                      border: '1px solid rgba(255,255,255,0.04)',
+                      backgroundColor: 'rgba(0, 0, 0, 0.04)',
+                      border: '1px solid rgba(0, 0, 0, 0.08)',
                       color: 'rgba(255,255,255,0.8)',
                       cursor: 'pointer',
                       transition: 'all 0.25s cubic-bezier(0.4, 0, 0.2, 1)',
@@ -2007,7 +2007,7 @@ const DashboardModule = ({
             padding: '12px 14px',
             borderRadius: '16px',
             backgroundColor: 'var(--bg-secondary)',
-            border: '1px solid rgba(255,255,255,0.05)',
+            border: '1px solid rgba(0, 0, 0, 0.08)',
             display: 'flex',
             flexDirection: 'column',
             flexShrink: 0,
@@ -2042,7 +2042,7 @@ const DashboardModule = ({
                     right: 0,
                     marginTop: '4px',
                     backgroundColor: 'var(--bg-secondary)',
-                    border: '1px solid rgba(255,255,255,0.08)',
+                    border: '1px solid rgba(0, 0, 0, 0.08)',
                     borderRadius: '8px',
                     overflow: 'hidden',
                     zIndex: 10,
@@ -2100,7 +2100,7 @@ const DashboardModule = ({
               padding: '8px 12px', 
               borderRadius: '16px', 
               backgroundColor: 'var(--bg-secondary)', 
-              border: '1px solid rgba(255,255,255,0.05)', 
+              border: '1px solid rgba(0, 0, 0, 0.08)', 
               display: 'flex', 
               flexDirection: 'column', 
               flexShrink: 0,
@@ -2122,8 +2122,8 @@ const DashboardModule = ({
                 {monthlyProgressReal}%
               </span>
             </div>
-            <div style={{ height: '5px', backgroundColor: 'rgba(255,255,255,0.04)', borderRadius: '2.5px', overflow: 'hidden', marginBottom: '6px' }}>
-              <div style={{ width: `${Math.min(100, monthlyProgressReal)}%`, height: '100%', background: 'linear-gradient(to right, #111111, #e5d4bc)', borderRadius: '2.5px' }} />
+            <div style={{ height: '5px', backgroundColor: 'rgba(0, 0, 0, 0.04)', borderRadius: '2.5px', overflow: 'hidden', marginBottom: '6px' }}>
+              <div style={{ width: `${Math.min(100, monthlyProgressReal)}%`, height: '100%', background: 'linear-gradient(to right, #ffffff, #e5d4bc)', borderRadius: '2.5px' }} />
             </div>
             <div style={{ display: 'inline-flex', alignItems: 'center', gap: '3px', fontSize: '9px', color: '#111111', fontWeight: '700' }}>
               {renderComparison(currentMonthAmountReal, stats?.previousMonthIncome, 'vs mes anterior')}
@@ -2141,7 +2141,7 @@ const DashboardModule = ({
             <div className={`${overlayClass} global-modal-overlay`} style={{
               position: 'fixed',
               inset: 0,
-              backgroundColor: 'rgba(0, 0, 0, 0.85)',
+              backgroundColor: 'rgba(255, 255, 255, 0.9)',
               backdropFilter: 'blur(10px)',
               display: 'flex',
               alignItems: 'center',
@@ -2154,7 +2154,7 @@ const DashboardModule = ({
               width: '100%',
               maxWidth: 'min(480px, 90vw)',
               background: 'var(--bg-secondary)',
-              border: '1px solid rgba(255,255,255,0.08)',
+              border: '1px solid rgba(0, 0, 0, 0.08)',
               borderRadius: '24px',
               padding: '20px',
               display: 'flex',
@@ -2186,8 +2186,8 @@ const DashboardModule = ({
                     className="premium-modal-input"
                     style={{
                       width: '100%',
-                      backgroundColor: 'rgba(255,255,255,0.02)',
-                      border: '1px solid rgba(255,255,255,0.1)',
+                      backgroundColor: 'rgba(0, 0, 0, 0.04)',
+                      border: '1px solid rgba(0, 0, 0, 0.08)',
                       borderRadius: '12px',
                       padding: '12px 12px 12px 36px',
                       color: 'white',
@@ -2237,7 +2237,7 @@ const DashboardModule = ({
                         style={{
                           padding: '12px 10px',
                           borderRadius: '12px',
-                          border: isSelected ? `2px solid ${opt.color}` : '1px solid rgba(255,255,255,0.08)',
+                          border: isSelected ? `2px solid ${opt.color}` : '1px solid rgba(0, 0, 0, 0.08)',
                           background: isSelected ? opt.bg : 'rgba(255,255,255,0.03)',
                           color: isSelected ? 'white' : 'rgba(255,255,255,0.6)',
                           fontWeight: '800',
@@ -2276,8 +2276,8 @@ const DashboardModule = ({
                         className="premium-modal-input"
                         style={{
                           width: '100%',
-                          backgroundColor: 'rgba(255,255,255,0.02)',
-                          border: '1px solid rgba(255,255,255,0.1)',
+                          backgroundColor: 'rgba(0, 0, 0, 0.04)',
+                          border: '1px solid rgba(0, 0, 0, 0.08)',
                           borderRadius: '12px',
                           padding: '12px 12px 12px 36px',
                           color: 'white',
@@ -2304,8 +2304,8 @@ const DashboardModule = ({
                         className="premium-modal-input"
                         style={{
                           width: '100%',
-                          backgroundColor: 'rgba(255,255,255,0.02)',
-                          border: '1px solid rgba(255,255,255,0.1)',
+                          backgroundColor: 'rgba(0, 0, 0, 0.04)',
+                          border: '1px solid rgba(0, 0, 0, 0.08)',
                           borderRadius: '12px',
                           padding: '12px 12px 12px 36px',
                           color: 'white',
@@ -2333,8 +2333,8 @@ const DashboardModule = ({
                           className="premium-modal-input"
                           style={{
                             width: '100%',
-                            backgroundColor: 'rgba(255,255,255,0.02)',
-                            border: '1px solid rgba(255,255,255,0.1)',
+                            backgroundColor: 'rgba(0, 0, 0, 0.04)',
+                            border: '1px solid rgba(0, 0, 0, 0.08)',
                             borderRadius: '12px',
                             padding: '12px 12px 12px 36px',
                             color: 'white',
@@ -2360,8 +2360,8 @@ const DashboardModule = ({
                           className="premium-modal-input"
                           style={{
                             width: '100%',
-                            backgroundColor: 'rgba(255,255,255,0.02)',
-                            border: '1px solid rgba(255,255,255,0.1)',
+                            backgroundColor: 'rgba(0, 0, 0, 0.04)',
+                            border: '1px solid rgba(0, 0, 0, 0.08)',
                             borderRadius: '12px',
                             padding: '12px 12px 12px 36px',
                             color: 'white',
@@ -2392,8 +2392,8 @@ const DashboardModule = ({
                       className="premium-modal-input"
                       style={{
                         width: '100%',
-                        backgroundColor: 'rgba(255,255,255,0.02)',
-                        border: '1px solid rgba(255,255,255,0.1)',
+                        backgroundColor: 'rgba(0, 0, 0, 0.04)',
+                        border: '1px solid rgba(0, 0, 0, 0.08)',
                         borderRadius: '12px',
                         padding: '12px 12px 12px 36px',
                         color: 'white',
@@ -2414,8 +2414,8 @@ const DashboardModule = ({
                     flex: 1,
                     padding: '10px',
                     borderRadius: '8px',
-                    backgroundColor: 'rgba(255,255,255,0.04)',
-                    border: '1px solid rgba(255,255,255,0.08)',
+                    backgroundColor: 'rgba(0, 0, 0, 0.04)',
+                    border: '1px solid rgba(0, 0, 0, 0.08)',
                     color: 'white',
                     fontWeight: '700',
                     cursor: 'pointer'
@@ -2454,7 +2454,7 @@ const DashboardModule = ({
             <div className={`${overlayClass} global-modal-overlay`} style={{
               position: 'fixed',
               inset: 0,
-              backgroundColor: 'rgba(0, 0, 0, 0.85)',
+              backgroundColor: 'rgba(255, 255, 255, 0.9)',
               backdropFilter: 'blur(10px)',
               display: 'flex',
               alignItems: 'center',
@@ -2467,7 +2467,7 @@ const DashboardModule = ({
               width: '100%',
               maxWidth: 'min(420px, 90vw)',
               background: 'var(--bg-secondary)',
-              border: '1px solid rgba(255,255,255,0.08)',
+              border: '1px solid rgba(0, 0, 0, 0.08)',
               borderRadius: '24px',
               padding: '20px',
               display: 'flex',
@@ -2499,8 +2499,8 @@ const DashboardModule = ({
                     className="premium-modal-input"
                     style={{
                       width: '100%',
-                      backgroundColor: 'rgba(255,255,255,0.02)',
-                      border: '1px solid rgba(255,255,255,0.1)',
+                      backgroundColor: 'rgba(0, 0, 0, 0.04)',
+                      border: '1px solid rgba(0, 0, 0, 0.08)',
                       borderRadius: '12px',
                       padding: '12px 12px 12px 36px',
                       color: 'white',
@@ -2528,8 +2528,8 @@ const DashboardModule = ({
                     className="premium-modal-input"
                     style={{
                       width: '100%',
-                      backgroundColor: 'rgba(255,255,255,0.02)',
-                      border: '1px solid rgba(255,255,255,0.1)',
+                      backgroundColor: 'rgba(0, 0, 0, 0.04)',
+                      border: '1px solid rgba(0, 0, 0, 0.08)',
                       borderRadius: '12px',
                       padding: '12px 12px 12px 36px',
                       color: 'white',
@@ -2549,8 +2549,8 @@ const DashboardModule = ({
                     flex: 1,
                     padding: '10px',
                     borderRadius: '8px',
-                    backgroundColor: 'rgba(255,255,255,0.04)',
-                    border: '1px solid rgba(255,255,255,0.08)',
+                    backgroundColor: 'rgba(0, 0, 0, 0.04)',
+                    border: '1px solid rgba(0, 0, 0, 0.08)',
                     color: 'white',
                     fontWeight: '700',
                     cursor: 'pointer'
@@ -2588,7 +2588,7 @@ const DashboardModule = ({
         {(overlayClass, cardClass) => (
           checkoutChairModal && (
             <div className={`${overlayClass} modal-centered-overlay`}>
-              <div className={`${cardClass.replace('global-modal-card', '')} modal-popup-centered`} style={{ maxWidth: '680px', width: '100%', borderRadius: '24px', border: '1px solid rgba(255,255,255,0.08)', background: 'var(--bg-secondary)', boxShadow: '0 30px 60px -12px rgba(0,0,0,0.5)' }}>
+              <div className={`${cardClass.replace('global-modal-card', '')} modal-popup-centered`} style={{ maxWidth: '680px', width: '100%', borderRadius: '24px', border: '1px solid rgba(0, 0, 0, 0.08)', background: 'var(--bg-secondary)', boxShadow: '0 30px 60px -12px rgba(0,0,0,0.5)' }}>
                 <button 
                   onClick={() => setCheckoutChairModal(null)}
                   style={{
@@ -2596,7 +2596,7 @@ const DashboardModule = ({
                     top: '20px',
                     right: '20px',
                     backgroundColor: 'var(--bg-secondary)',
-                    border: '1px solid rgba(255,255,255,0.2)',
+                    border: '1px solid rgba(0, 0, 0, 0.08)',
                     borderRadius: '50%',
                     width: '32px',
                     height: '32px',
@@ -2649,8 +2649,8 @@ const DashboardModule = ({
       {/* Modal: Control de Asistencia */}
       <AnimatedModal isOpen={showAttendancePopup}>
         {(overlayClass, cardClass) => (
-            <div className={overlayClass} style={{ position: 'fixed', inset: 0, zIndex: 1000, display: 'flex', justifyContent: 'center', alignItems: 'center', background: 'rgba(0,0,0,0.7)', backdropFilter: 'blur(8px)', paddingTop: 'env(safe-area-inset-top, 0px)' }}>
-              <div className={`${cardClass.replace('global-modal-card', '')} glass-card`} style={{ transition: 'none', maxWidth: '1200px', width: 'calc(100% - 40px)', height: '90vh', borderRadius: '24px', border: '1px solid rgba(255,255,255,0.1)', background: 'var(--bg-secondary)', backdropFilter: 'blur(40px)', boxShadow: '0 30px 60px -12px rgba(0,0,0,0.5)', display: 'flex', flexDirection: 'column', overflow: 'auto' }}>
+            <div className={overlayClass} style={{ position: 'fixed', inset: 0, zIndex: 1000, display: 'flex', justifyContent: 'center', alignItems: 'center', background: 'rgba(255, 255, 255, 0.9)', backdropFilter: 'blur(8px)', paddingTop: 'env(safe-area-inset-top, 0px)' }}>
+              <div className={`${cardClass.replace('global-modal-card', '')} glass-card`} style={{ transition: 'none', maxWidth: '1200px', width: 'calc(100% - 40px)', height: '90vh', borderRadius: '24px', border: '1px solid rgba(0, 0, 0, 0.08)', background: 'var(--bg-secondary)', backdropFilter: 'blur(40px)', boxShadow: '0 30px 60px -12px rgba(0,0,0,0.5)', display: 'flex', flexDirection: 'column', overflow: 'auto' }}>
               <button
                 onClick={() => {
                   setShowAttendancePopup(false);
@@ -2666,7 +2666,7 @@ const DashboardModule = ({
                   top: '20px',
                   right: '20px',
                   backgroundColor: 'var(--bg-secondary)',
-                  border: '1px solid rgba(255,255,255,0.2)',
+                  border: '1px solid rgba(0, 0, 0, 0.08)',
                   borderRadius: '50%',
                   width: '32px',
                   height: '32px',
@@ -2698,8 +2698,8 @@ const DashboardModule = ({
       {/* Modal: Cobro POS Popup */}
       <AnimatedModal isOpen={showCheckoutPopup}>
         {(overlayClass, cardClass) => (
-          <div className={overlayClass} style={{ position: 'fixed', inset: 0, zIndex: 1000, display: 'flex', justifyContent: 'center', alignItems: 'center', background: 'rgba(0,0,0,0.7)', backdropFilter: 'blur(8px)', paddingTop: 'env(safe-area-inset-top, 0px)' }}>
-            <div className={`${cardClass.replace('global-modal-card', '')} glass-card`} style={{ transition: 'none', maxWidth: '1200px', width: 'calc(100% - 40px)', height: '90vh', borderRadius: '24px', border: '1px solid rgba(255,255,255,0.1)', background: 'var(--bg-secondary)', backdropFilter: 'blur(40px)', boxShadow: '0 30px 60px -12px rgba(0,0,0,0.5)', display: 'flex', flexDirection: 'column', overflow: 'auto' }}>
+          <div className={overlayClass} style={{ position: 'fixed', inset: 0, zIndex: 1000, display: 'flex', justifyContent: 'center', alignItems: 'center', background: 'rgba(255, 255, 255, 0.9)', backdropFilter: 'blur(8px)', paddingTop: 'env(safe-area-inset-top, 0px)' }}>
+            <div className={`${cardClass.replace('global-modal-card', '')} glass-card`} style={{ transition: 'none', maxWidth: '1200px', width: 'calc(100% - 40px)', height: '90vh', borderRadius: '24px', border: '1px solid rgba(0, 0, 0, 0.08)', background: 'var(--bg-secondary)', backdropFilter: 'blur(40px)', boxShadow: '0 30px 60px -12px rgba(0,0,0,0.5)', display: 'flex', flexDirection: 'column', overflow: 'auto' }}>
               <button
                 onClick={() => setShowCheckoutPopup(false)}
                 style={{
@@ -2707,7 +2707,7 @@ const DashboardModule = ({
                   top: '20px',
                   right: '20px',
                   backgroundColor: 'var(--bg-secondary)',
-                  border: '1px solid rgba(255,255,255,0.2)',
+                  border: '1px solid rgba(0, 0, 0, 0.08)',
                   borderRadius: '50%',
                   width: '32px',
                   height: '32px',
@@ -2741,8 +2741,8 @@ const DashboardModule = ({
       <AnimatedModal isOpen={showReceptionPopup}>
         {(overlayClass, cardClass) => (
           showReceptionPopup && (
-            <div className={overlayClass} style={{ position: 'fixed', inset: 0, zIndex: 1000, display: 'flex', justifyContent: 'center', alignItems: 'center', background: 'rgba(0,0,0,0.7)', backdropFilter: 'blur(8px)', paddingTop: 'env(safe-area-inset-top, 0px)' }}>
-              <div className={`${cardClass.replace('global-modal-card', '')} glass-card`} style={{ transition: 'none', maxWidth: '1200px', width: 'calc(100% - 40px)', height: '90vh', borderRadius: '24px', border: '1px solid rgba(255,255,255,0.1)', background: 'var(--bg-secondary)', backdropFilter: 'blur(40px)', boxShadow: '0 30px 60px -12px rgba(0,0,0,0.5)', display: 'flex', flexDirection: 'column', overflow: 'auto' }}>
+            <div className={overlayClass} style={{ position: 'fixed', inset: 0, zIndex: 1000, display: 'flex', justifyContent: 'center', alignItems: 'center', background: 'rgba(255, 255, 255, 0.9)', backdropFilter: 'blur(8px)', paddingTop: 'env(safe-area-inset-top, 0px)' }}>
+              <div className={`${cardClass.replace('global-modal-card', '')} glass-card`} style={{ transition: 'none', maxWidth: '1200px', width: 'calc(100% - 40px)', height: '90vh', borderRadius: '24px', border: '1px solid rgba(0, 0, 0, 0.08)', background: 'var(--bg-secondary)', backdropFilter: 'blur(40px)', boxShadow: '0 30px 60px -12px rgba(0,0,0,0.5)', display: 'flex', flexDirection: 'column', overflow: 'auto' }}>
                 <button 
                   onClick={() => setShowReceptionPopup(false)}
                   style={{
@@ -2750,7 +2750,7 @@ const DashboardModule = ({
                     top: '20px',
                     right: '20px',
                     backgroundColor: 'var(--bg-secondary)',
-                    border: '1px solid rgba(255,255,255,0.2)',
+                    border: '1px solid rgba(0, 0, 0, 0.08)',
                     borderRadius: '50%',
                     width: '32px',
                     height: '32px',
@@ -2777,8 +2777,8 @@ const DashboardModule = ({
       {/* Modal: Inventario Popup */}
       <AnimatedModal isOpen={showInventoryPopup}>
         {(overlayClass, cardClass) => (
-          <div className={overlayClass} style={{ position: 'fixed', inset: 0, zIndex: 1000, display: 'flex', justifyContent: 'center', alignItems: 'center', background: 'rgba(0,0,0,0.7)', backdropFilter: 'blur(8px)', paddingTop: 'env(safe-area-inset-top, 0px)' }}>
-              <div className={`${cardClass.replace('global-modal-card', '')} glass-card`} style={{ transition: 'none', maxWidth: '1200px', width: 'calc(100% - 40px)', height: '90vh', borderRadius: '24px', border: '1px solid rgba(255,255,255,0.1)', background: 'var(--bg-secondary)', backdropFilter: 'blur(40px)', boxShadow: '0 30px 60px -12px rgba(0,0,0,0.5)', display: 'flex', flexDirection: 'column', overflow: 'auto' }}>
+          <div className={overlayClass} style={{ position: 'fixed', inset: 0, zIndex: 1000, display: 'flex', justifyContent: 'center', alignItems: 'center', background: 'rgba(255, 255, 255, 0.9)', backdropFilter: 'blur(8px)', paddingTop: 'env(safe-area-inset-top, 0px)' }}>
+              <div className={`${cardClass.replace('global-modal-card', '')} glass-card`} style={{ transition: 'none', maxWidth: '1200px', width: 'calc(100% - 40px)', height: '90vh', borderRadius: '24px', border: '1px solid rgba(0, 0, 0, 0.08)', background: 'var(--bg-secondary)', backdropFilter: 'blur(40px)', boxShadow: '0 30px 60px -12px rgba(0,0,0,0.5)', display: 'flex', flexDirection: 'column', overflow: 'auto' }}>
               <button
                 onClick={() => setShowInventoryPopup(false)}
                 style={{
@@ -2786,7 +2786,7 @@ const DashboardModule = ({
                   top: '20px',
                   right: '20px',
                   backgroundColor: 'var(--bg-secondary)',
-                  border: '1px solid rgba(255,255,255,0.2)',
+                  border: '1px solid rgba(0, 0, 0, 0.08)',
                   borderRadius: '50%',
                   width: '32px',
                   height: '32px',

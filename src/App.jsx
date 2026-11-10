@@ -314,8 +314,8 @@ function App() {
     datasets: [{
       label: 'Ventas ($)',
       data: [0, 0, 0, 0, 0, 0, 0],
-      borderColor: '#ffffff',
-      backgroundColor: 'rgba(255, 255, 255, 0.1)',
+      borderColor: 'rgba(0, 0, 0, 0.08)',
+      backgroundColor: 'rgba(0, 0, 0, 0.04)',
       fill: true,
       tension: 0.4
     }]
@@ -325,8 +325,8 @@ function App() {
     datasets: [{
       label: 'Ventas ($)',
       data: [],
-      borderColor: '#ffffff',
-      backgroundColor: 'rgba(255, 255, 255, 0.1)',
+      borderColor: 'rgba(0, 0, 0, 0.08)',
+      backgroundColor: 'rgba(0, 0, 0, 0.04)',
       fill: true,
       tension: 0.4
     }]
@@ -958,7 +958,7 @@ function App() {
           position: 'fixed', 
           inset: 0, 
           zIndex: 3000, 
-          backgroundColor: 'rgba(0,0,0,0.9)', 
+          backgroundColor: 'rgba(255, 255, 255, 0.9)', 
           backdropFilter: isLowEnd ? 'none' : (isReceptionModalOpen ? 'blur(20px)' : 'blur(0px)'), 
           display: 'flex', 
           alignItems: 'center', 
@@ -975,7 +975,7 @@ function App() {
             height: isMobile ? '100%' : '90vh', 
             overflowY: isModalOpen ? 'hidden' : 'auto', 
             borderRadius: isMobile ? '0' : '32px', 
-            border: '1px solid rgba(255, 255, 255,0.3)', 
+            border: '1px solid rgba(0, 0, 0, 0.08)', 
             position: 'relative', 
             background: 'var(--bg-primary)',
             transform: isReceptionModalOpen ? 'scale(1) translateY(0)' : 'scale(0.96) translateY(20px)',
@@ -984,7 +984,7 @@ function App() {
           }}>
             <button 
               onClick={() => setIsReceptionModalOpen(false)}
-              style={{ position: 'absolute', right: '20px', top: 'max(20px, env(safe-area-inset-top, 20px))', zIndex: 3001, background: 'rgba(255,255,255,0.05)', border: 'none', borderRadius: '50%', width: '40px', height: '40px', color: 'white', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+              style={{ position: 'absolute', right: '20px', top: 'max(20px, env(safe-area-inset-top, 20px))', zIndex: 3001, background: 'rgba(0, 0, 0, 0.04)', border: 'none', borderRadius: '50%', width: '40px', height: '40px', color: 'white', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
             >
               <X size={20} />
             </button>

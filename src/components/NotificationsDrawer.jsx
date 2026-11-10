@@ -94,7 +94,7 @@ const NotificationsDrawer = ({ isOpen, onClose }) => {
     <div style={{
       position: 'fixed',
       inset: 0,
-      backgroundColor: 'rgba(0,0,0,0.85)',
+      backgroundColor: 'rgba(255, 255, 255, 0.9)',
       zIndex: 5000,
       display: 'flex',
       justifyContent: 'flex-end',
@@ -113,7 +113,7 @@ const NotificationsDrawer = ({ isOpen, onClose }) => {
         height: '100%',
         display: 'flex',
         flexDirection: 'column',
-        borderLeft: '1px solid rgba(255, 255, 255,0.3)',
+        borderLeft: '1px solid rgba(0, 0, 0, 0.08)',
         borderRadius: '0',
         background: 'var(--bg-secondary)',
         boxShadow: '-10px 0 30px rgba(0,0,0,0.5)',
@@ -124,7 +124,7 @@ const NotificationsDrawer = ({ isOpen, onClose }) => {
         <div style={{
           padding: '24px',
           paddingTop: 'max(24px, env(safe-area-inset-top, 24px))',
-          borderBottom: '1px solid rgba(255,255,255,0.08)',
+          borderBottom: '1px solid rgba(0, 0, 0, 0.08)',
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center'
@@ -136,7 +136,7 @@ const NotificationsDrawer = ({ isOpen, onClose }) => {
           <button 
             onClick={onClose}
             style={{
-              background: 'rgba(255,255,255,0.05)',
+              background: 'rgba(0, 0, 0, 0.04)',
               border: 'none',
               borderRadius: '50%',
               width: '36px',
@@ -157,8 +157,8 @@ const NotificationsDrawer = ({ isOpen, onClose }) => {
           <div style={{
             margin: '16px 24px 0 24px',
             borderRadius: '14px',
-            background: 'rgba(255,255,255,0.04)',
-            border: '1px solid rgba(255,255,255,0.1)',
+            background: 'rgba(0, 0, 0, 0.04)',
+            border: '1px solid rgba(0, 0, 0, 0.08)',
             overflow: 'hidden'
           }}>
             <button
@@ -216,7 +216,7 @@ const NotificationsDrawer = ({ isOpen, onClose }) => {
             padding: '12px 24px',
             fontSize: '11px',
             color: 'var(--text-muted)',
-            borderBottom: '1px solid rgba(255,255,255,0.04)'
+            borderBottom: '1px solid rgba(0, 0, 0, 0.08)'
           }}>
             <button 
               onClick={handleMarkAllRead} 
@@ -249,8 +249,8 @@ const NotificationsDrawer = ({ isOpen, onClose }) => {
                 width: '100%',
                 padding: '12px',
                 borderRadius: '12px',
-                background: 'rgba(255,255,255,0.03)',
-                border: '1px dashed rgba(255, 255, 255,0.3)',
+                background: 'rgba(0, 0, 0, 0.04)',
+                border: '1px dashed rgba(0, 0, 0, 0.08)',
                 color: 'var(--gold-primary)',
                 fontSize: '12px',
                 fontWeight: '800',
@@ -288,7 +288,7 @@ const NotificationsDrawer = ({ isOpen, onClose }) => {
                   padding: '14px 16px',
                   borderRadius: '16px',
                   background: n.read ? 'rgba(255,255,255,0.02)' : 'rgba(255, 255, 255,0.04)',
-                  border: n.read ? '1px solid rgba(255,255,255,0.05)' : '1.5px solid rgba(255, 255, 255,0.25)',
+                  border: n.read ? '1px solid rgba(0, 0, 0, 0.08)' : '1.5px solid rgba(0, 0, 0, 0.08)',
                   position: 'relative',
                   transition: 'background 0.2s',
                   display: 'flex',

@@ -300,10 +300,10 @@ const ClientModule = ({ isMobile, clients, onRefresh, initialClientId }) => {
               {/* View Toggles */}
               <div style={{ 
                 display: 'flex', 
-                backgroundColor: 'rgba(255,255,255,0.03)', 
+                backgroundColor: 'rgba(0, 0, 0, 0.04)', 
                 borderRadius: '12px', 
                 padding: '4px',
-                border: '1px solid rgba(255,255,255,0.05)',
+                border: '1px solid rgba(0, 0, 0, 0.08)',
                 marginRight: isMobile ? '0' : '12px',
                 flex: isMobile ? '1 1 100%' : 'none',
                 justifyContent: 'space-between'
@@ -378,8 +378,8 @@ const ClientModule = ({ isMobile, clients, onRefresh, initialClientId }) => {
                   display: 'flex', 
                   alignItems: 'center', 
                   gap: '8px',
-                  backgroundColor: 'rgba(255,255,255,0.05)',
-                  border: '1px solid rgba(255,255,255,0.1)',
+                  backgroundColor: 'rgba(0, 0, 0, 0.04)',
+                  border: '1px solid rgba(0, 0, 0, 0.08)',
                   color: 'white',
                   cursor: 'pointer',
                   flex: isMobile ? '1 1 45%' : 'none',
@@ -513,20 +513,20 @@ const ClientModule = ({ isMobile, clients, onRefresh, initialClientId }) => {
               justifyContent: 'center',
               padding: '100px 20px',
               background: 'radial-gradient(circle at 50% 0%, rgba(17, 17, 17, 0.05) 0%, transparent 60%)',
-              border: '1px solid rgba(255, 255, 255, 0.02)',
+              border: '1px solid rgba(0, 0, 0, 0.08)',
               borderRadius: '24px',
               position: 'relative',
               overflow: 'hidden'
             }}>
               {/* Premium Background Elements */}
-              <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '1px', background: 'linear-gradient(90deg, transparent, rgba(17, 17, 17, 0.3), transparent)' }} />
+              <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '1px', background: 'linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.9), transparent)' }} />
               
               <div style={{
                 width: '80px',
                 height: '80px',
                 borderRadius: '50%',
-                background: 'rgba(255, 255, 255, 0.02)',
-                border: '1px solid rgba(255, 255, 255, 0.05)',
+                background: 'rgba(0, 0, 0, 0.04)',
+                border: '1px solid rgba(0, 0, 0, 0.08)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -604,12 +604,12 @@ const ClientModule = ({ isMobile, clients, onRefresh, initialClientId }) => {
                 const tc = tierColors[tier];
                 // Warm dark avatar gradients — all complement gold
                 const avatarGradients = [
-                  'linear-gradient(135deg,#1a1510,#0e0c09)',
-                  'linear-gradient(135deg,#1c1408,#0e0c09)',
-                  'linear-gradient(135deg,#1a1209,#110e07)',
-                  'linear-gradient(135deg,#14100a,#1a1510)',
-                  'linear-gradient(135deg,#1a1108,#0f0c08)',
-                  'linear-gradient(135deg,#160f07,#1a1208)',
+                  'linear-gradient(135deg,#f7efe2,#e8d4b0)',
+                  'linear-gradient(135deg,#faf5ec,#e0c9a0)',
+                  'linear-gradient(135deg,#f5ead8,#dcc79c)',
+                  'linear-gradient(135deg,#fdfaf5,#e8d4b0)',
+                  'linear-gradient(135deg,#f9f2e5,#d9c08f)',
+                  'linear-gradient(135deg,#fbf7f0,#e3cfa8)',
                 ];
                 const avatarGrad = avatarGradients[client.name?.charCodeAt(0) % avatarGradients.length] || avatarGradients[0];
 
@@ -622,7 +622,7 @@ const ClientModule = ({ isMobile, clients, onRefresh, initialClientId }) => {
                       cursor: 'pointer',
                       borderRadius: '20px',
                       background: 'var(--bg-secondary)',
-                      border: '1px solid rgba(255,255,255,0.06)',
+                      border: '1px solid rgba(0, 0, 0, 0.08)',
                       padding: '0',
                       overflow: 'hidden',
                       transition: 'transform 0.22s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.22s ease, border-color 0.22s ease',
@@ -668,7 +668,7 @@ const ClientModule = ({ isMobile, clients, onRefresh, initialClientId }) => {
                             background: avatarGrad,
                             border: `2px solid ${tc.accent}30`,
                             display: 'flex', alignItems: 'center', justifyContent: 'center',
-                            fontSize: '22px', fontWeight: '800', color: tc.accent, flexShrink: 0,
+                            fontSize: '22px', fontWeight: '800', color: '#111827', flexShrink: 0,
                             boxShadow: `0 4px 16px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.08)`
                           }}>
                             {client.name?.charAt(0).toUpperCase()}
@@ -709,7 +709,7 @@ const ClientModule = ({ isMobile, clients, onRefresh, initialClientId }) => {
                       </div>
 
                       {/* Loyalty bar */}
-                      <div style={{ height: '3px', borderRadius: '100px', background: 'rgba(255,255,255,0.05)', overflow: 'hidden', marginBottom: '14px' }}>
+                      <div style={{ height: '3px', borderRadius: '100px', background: 'rgba(0, 0, 0, 0.04)', overflow: 'hidden', marginBottom: '14px' }}>
                         <div style={{
                           height: '100%',
                           width: `${Math.min((visits / 20) * 100, 100)}%`,
@@ -758,10 +758,10 @@ const ClientModule = ({ isMobile, clients, onRefresh, initialClientId }) => {
             </div>
 
           ) : (
-            <div className="animate-slide-up" style={{ background: 'var(--bg-secondary)', padding: '0', borderRadius: '24px', overflow: 'hidden', border: '1px solid rgba(255, 255, 255, 0.15)' }}>
+            <div className="animate-slide-up" style={{ background: 'var(--bg-secondary)', padding: '0', borderRadius: '24px', overflow: 'hidden', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
               <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', tableLayout: 'auto' }}>
                 <thead>
-                  <tr style={{ backgroundColor: 'rgba(255,255,255,0.02)', borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+                  <tr style={{ backgroundColor: 'rgba(0, 0, 0, 0.04)', borderBottom: '1px solid rgba(0, 0, 0, 0.08)' }}>
                     <th style={{ padding: isMobile ? '12px 12px' : '16px 24px', fontSize: '11px', fontWeight: '900', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Cliente</th>
                     {!isMobile && <th style={{ padding: '16px 24px', fontSize: '11px', fontWeight: '900', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Cédula / ID</th>}
                     <th style={{ padding: isMobile ? '12px 12px' : '16px 24px', fontSize: '11px', fontWeight: '900', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Contacto</th>
@@ -775,7 +775,7 @@ const ClientModule = ({ isMobile, clients, onRefresh, initialClientId }) => {
                       <tr 
                         key={client.id} 
                         onClick={() => setSelectedClient(client)}
-                        style={{ borderBottom: '1px solid rgba(255,255,255,0.03)', transition: 'background-color 0.2s', cursor: 'pointer' }} 
+                        style={{ borderBottom: '1px solid rgba(0, 0, 0, 0.08)', transition: 'background-color 0.2s', cursor: 'pointer' }} 
                         className="table-row-hover"
                       >
                         <td style={{ padding: isMobile ? '12px 12px' : '16px 24px' }}>
@@ -796,7 +796,7 @@ const ClientModule = ({ isMobile, clients, onRefresh, initialClientId }) => {
                           </td>
                         )}
                         <td style={{ padding: isMobile ? '12px 12px' : '16px 24px', textAlign: isMobile ? 'right' : 'left' }}>
-                          <span style={{ fontSize: '11px', fontWeight: '700', color: 'var(--gold-primary)', backgroundColor: 'rgba(255, 255, 255,0.05)', padding: '4px 8px', borderRadius: '8px', whiteSpace: 'nowrap' }}>
+                          <span style={{ fontSize: '11px', fontWeight: '700', color: 'var(--gold-primary)', backgroundColor: 'rgba(0, 0, 0, 0.04)', padding: '4px 8px', borderRadius: '8px', whiteSpace: 'nowrap' }}>
                             {client.total_visits || 0} {!isMobile && "Visitas"}
                           </span>
                         </td>
@@ -850,7 +850,7 @@ const ClientModule = ({ isMobile, clients, onRefresh, initialClientId }) => {
           left: 0,
           width: '100vw',
           height: '100vh',
-          backgroundColor: 'rgba(0, 0, 0, 0.75)',
+          backgroundColor: 'rgba(255, 255, 255, 0.9)',
           backdropFilter: showMessageModal ? 'blur(8px)' : 'blur(0px)',
           zIndex: 99999,
           display: 'flex',
@@ -867,7 +867,7 @@ const ClientModule = ({ isMobile, clients, onRefresh, initialClientId }) => {
             width: '100%',
             maxWidth: '460px',
             background: 'var(--bg-secondary)',
-            border: '1px solid rgba(255, 255, 255, 0.25)',
+            border: '1px solid rgba(0, 0, 0, 0.08)',
             borderRadius: '24px',
             padding: '24px',
             boxShadow: '0 20px 50px rgba(0, 0, 0, 0.5), 0 0 30px rgba(255, 255, 255, 0.05)',
@@ -887,7 +887,7 @@ const ClientModule = ({ isMobile, clients, onRefresh, initialClientId }) => {
               <button 
                 onClick={() => setShowMessageModal(false)}
                 style={{
-                  background: 'rgba(255,255,255,0.05)',
+                  background: 'rgba(0, 0, 0, 0.04)',
                   border: 'none',
                   borderRadius: '50%',
                   width: '28px',
@@ -909,8 +909,8 @@ const ClientModule = ({ isMobile, clients, onRefresh, initialClientId }) => {
             </p>
 
             <div style={{ 
-              backgroundColor: 'rgba(255, 255, 255, 0.1)', 
-              border: '1px solid rgba(255, 255, 255, 0.2)',
+              backgroundColor: 'rgba(0, 0, 0, 0.04)', 
+              border: '1px solid rgba(0, 0, 0, 0.08)',
               borderRadius: '12px',
               padding: '12px',
               fontSize: '12px',
@@ -929,8 +929,8 @@ const ClientModule = ({ isMobile, clients, onRefresh, initialClientId }) => {
                 rows={6}
                 style={{
                   padding: '12px 14px',
-                  backgroundColor: 'rgba(255,255,255,0.02)',
-                  border: '1px solid rgba(255,255,255,0.08)',
+                  backgroundColor: 'rgba(0, 0, 0, 0.04)',
+                  border: '1px solid rgba(0, 0, 0, 0.08)',
                   borderRadius: '12px',
                   color: 'white',
                   fontSize: '13px',
@@ -976,11 +976,11 @@ const ClientModule = ({ isMobile, clients, onRefresh, initialClientId }) => {
                   flex: 1,
                   padding: '12px',
                   borderRadius: '12px',
-                  backgroundColor: 'rgba(255, 255, 255, 0.05)',
+                  backgroundColor: 'rgba(0, 0, 0, 0.04)',
                   color: 'white',
                   fontWeight: '700',
                   fontSize: '13px',
-                  border: '1px solid rgba(255, 255, 255, 0.1)',
+                  border: '1px solid rgba(0, 0, 0, 0.08)',
                   cursor: 'pointer',
                   textAlign: 'center'
                 }}
@@ -1042,8 +1042,8 @@ const RouletteModal = ({ isOpen, onClose, onFinish, prizes }) => {
   return (
     <AnimatedModal isOpen={isOpen}>
       {(overlayClass, cardClass) => (
-    <div className={overlayClass} style={{ position: 'fixed', inset: 0, zIndex: 100000, display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: 'rgba(0,0,0,0.8)', backdropFilter: 'blur(5px)' }}>
-      <div className={`glass-card ${cardClass.replace('global-modal-card', '')}`} style={{ padding: '30px', textAlign: 'center', maxWidth: '400px', width: '90%', position: 'relative', background: 'var(--bg-secondary)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '24px' }}>
+    <div className={overlayClass} style={{ position: 'fixed', inset: 0, zIndex: 100000, display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: 'rgba(255, 255, 255, 0.9)', backdropFilter: 'blur(5px)' }}>
+      <div className={`glass-card ${cardClass.replace('global-modal-card', '')}`} style={{ padding: '30px', textAlign: 'center', maxWidth: '400px', width: '90%', position: 'relative', background: 'var(--bg-secondary)', border: '1px solid rgba(0, 0, 0, 0.08)', borderRadius: '24px' }}>
         <button onClick={onClose} disabled={spinning} style={{ position: 'absolute', top: '15px', right: '15px', background: 'none', border: 'none', color: 'white', cursor: spinning ? 'not-allowed' : 'pointer' }}>
           <X size={24} />
         </button>
@@ -1488,7 +1488,7 @@ const ClientDetail = ({ isMobile, client, onBack, onDelete, onUpdate }) => {
               {clientCoupons.length === 0 ? (
                 <div style={{ color: 'var(--text-muted)', fontSize: '13px' }}>No hay cupones ni premios disponibles.</div>
               ) : clientCoupons.map(c => (
-                <div key={c.id} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'rgba(255,255,255,0.03)', padding: '12px', borderRadius: '10px', border: c.status === 'UNUSED' ? '1px solid rgba(50, 215, 75, 0.3)' : '1px solid rgba(255,255,255,0.05)' }}>
+                <div key={c.id} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'rgba(0, 0, 0, 0.04)', padding: '12px', borderRadius: '10px', border: c.status === 'UNUSED' ? '1px solid rgba(50, 215, 75, 0.3)' : '1px solid rgba(0, 0, 0, 0.08)' }}>
                   <div>
                     <div style={{ fontWeight: '800', color: 'white', fontSize: '13px' }}>{c.prize_name}</div>
                     <div style={{ fontSize: '11px', color: 'var(--text-muted)' }}>{new Date(c.generated_at).toLocaleDateString()}</div>
@@ -1613,8 +1613,8 @@ const ClientDetail = ({ isMobile, client, onBack, onDelete, onUpdate }) => {
                       aspectRatio: '1/1', 
                       borderRadius: '16px', 
                       overflow: 'hidden', 
-                      backgroundColor: 'rgba(255,255,255,0.02)',
-                      border: selectingFor === 'A' ? '2px solid var(--gold-primary)' : '1px solid rgba(255,255,255,0.05)',
+                      backgroundColor: 'rgba(0, 0, 0, 0.04)',
+                      border: selectingFor === 'A' ? '2px solid var(--gold-primary)' : '1px solid rgba(0, 0, 0, 0.08)',
                       position: 'relative',
                       cursor: 'pointer'
                     }}
@@ -1627,7 +1627,7 @@ const ClientDetail = ({ isMobile, client, onBack, onDelete, onUpdate }) => {
                         <span style={{ fontSize: '10px', fontWeight: '800', color: 'var(--text-muted)' }}>FOTO ANTES</span>
                       </div>
                     )}
-                    <div style={{ position: 'absolute', bottom: '12px', left: '12px', backgroundColor: 'rgba(0,0,0,0.7)', padding: '4px 10px', borderRadius: '4px', fontSize: '10px', fontWeight: '900', color: 'var(--gold-primary)' }}>ANTES</div>
+                    <div style={{ position: 'absolute', bottom: '12px', left: '12px', backgroundColor: 'rgba(255, 255, 255, 0.9)', padding: '4px 10px', borderRadius: '4px', fontSize: '10px', fontWeight: '900', color: 'var(--gold-primary)' }}>ANTES</div>
                   </div>
 
                   <div 
@@ -1636,8 +1636,8 @@ const ClientDetail = ({ isMobile, client, onBack, onDelete, onUpdate }) => {
                       aspectRatio: '1/1', 
                       borderRadius: '16px', 
                       overflow: 'hidden', 
-                      backgroundColor: 'rgba(255,255,255,0.02)',
-                      border: selectingFor === 'B' ? '2px solid var(--gold-primary)' : '1px solid rgba(255,255,255,0.05)',
+                      backgroundColor: 'rgba(0, 0, 0, 0.04)',
+                      border: selectingFor === 'B' ? '2px solid var(--gold-primary)' : '1px solid rgba(0, 0, 0, 0.08)',
                       position: 'relative',
                       cursor: 'pointer'
                     }}
@@ -1650,7 +1650,7 @@ const ClientDetail = ({ isMobile, client, onBack, onDelete, onUpdate }) => {
                         <span style={{ fontSize: '10px', fontWeight: '800', color: 'var(--text-muted)' }}>FOTO DESPUÉS</span>
                       </div>
                     )}
-                    <div style={{ position: 'absolute', bottom: '12px', left: '12px', backgroundColor: 'rgba(0,0,0,0.7)', padding: '4px 10px', borderRadius: '4px', fontSize: '10px', fontWeight: '900', color: 'var(--gold-primary)' }}>DESPUÉS</div>
+                    <div style={{ position: 'absolute', bottom: '12px', left: '12px', backgroundColor: 'rgba(255, 255, 255, 0.9)', padding: '4px 10px', borderRadius: '4px', fontSize: '10px', fontWeight: '900', color: 'var(--gold-primary)' }}>DESPUÉS</div>
                   </div>
                 </div>
 
@@ -1671,15 +1671,15 @@ const ClientDetail = ({ isMobile, client, onBack, onDelete, onUpdate }) => {
                     </button>
                   </div>
                 ) : (
-                  <div style={{ padding: '12px', borderRadius: '12px', backgroundColor: 'rgba(255,255,255,0.02)', textAlign: 'center', fontSize: '11px', color: 'var(--text-muted)', fontWeight: '600' }}>
+                  <div style={{ padding: '12px', borderRadius: '12px', backgroundColor: 'rgba(0, 0, 0, 0.04)', textAlign: 'center', fontSize: '11px', color: 'var(--text-muted)', fontWeight: '600' }}>
                     Selecciona dos fotos para generar el collage
                   </div>
                 )}
 
                 <AnimatedModal isOpen={!!selectingFor}>
                   {(overlayClass, cardClass) => (
-                    <div className={overlayClass} style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(0,0,0,0.85)', backdropFilter: 'blur(10px)', zIndex: 3000, display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '20px', paddingTop: 'max(20px, env(safe-area-inset-top, 20px))' }}>
-                      <div className={`glass-card ${cardClass.replace('global-modal-card', '')}`} style={{ maxWidth: '680px', width: '100%', padding: '24px', background: 'var(--bg-secondary)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '24px', boxShadow: '0 30px 60px -12px rgba(0,0,0,0.5)' }}>
+                    <div className={overlayClass} style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(255, 255, 255, 0.9)', backdropFilter: 'blur(10px)', zIndex: 3000, display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '20px', paddingTop: 'max(20px, env(safe-area-inset-top, 20px))' }}>
+                      <div className={`glass-card ${cardClass.replace('global-modal-card', '')}`} style={{ maxWidth: '680px', width: '100%', padding: '24px', background: 'var(--bg-secondary)', border: '1px solid rgba(0, 0, 0, 0.08)', borderRadius: '24px', boxShadow: '0 30px 60px -12px rgba(0,0,0,0.5)' }}>
                         <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '20px', alignItems: 'center' }}>
                           <h4 style={{ 
                             fontWeight: '900',
@@ -1753,7 +1753,7 @@ const ClientDetail = ({ isMobile, client, onBack, onDelete, onUpdate }) => {
                 ))}
                 <div 
                   onClick={() => setShowCamera(true)}
-                  style={{ aspectRatio: '1/1', backgroundColor: 'rgba(255, 255, 255,0.02)', borderRadius: '12px', border: '2px dashed var(--gold-primary)', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', transition: '0.2s' }}
+                  style={{ aspectRatio: '1/1', backgroundColor: 'rgba(0, 0, 0, 0.04)', borderRadius: '12px', border: '2px dashed var(--gold-primary)', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', transition: '0.2s' }}
                   onMouseOver={(e) => e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255,0.05)'}
                   onMouseOut={(e) => e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255,0.02)'}
                 >
@@ -1784,7 +1784,7 @@ const ClientDetail = ({ isMobile, client, onBack, onDelete, onUpdate }) => {
             boxShadow: '0 24px 48px rgba(0,0,0,0.5)'
           }}>
             {/* Accent bar */}
-            <div style={{ height: '3px', background: 'linear-gradient(90deg, transparent, #111111 40%, transparent)' }} />
+            <div style={{ height: '3px', background: 'linear-gradient(90deg, transparent, #ffffff 40%, transparent)' }} />
 
             <div style={{ padding: '32px 28px 0' }}>
               {/* Avatar */}
@@ -1848,7 +1848,7 @@ const ClientDetail = ({ isMobile, client, onBack, onDelete, onUpdate }) => {
                   </div>
                   <div style={{ display: 'flex', gap: '8px', paddingBottom: '8px', marginTop: '8px' }}>
                     <button className="btn-gold" style={{ flex: 1 }} onClick={() => { onUpdate(editData); setIsEditing(false); }}>Guardar</button>
-                    <button onClick={() => setIsEditing(false)} style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', color: 'var(--text-muted)', borderRadius: '10px', padding: '8px 16px', cursor: 'pointer', fontSize: '13px' }}>Cancelar</button>
+                    <button onClick={() => setIsEditing(false)} style={{ background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', color: 'var(--text-muted)', borderRadius: '10px', padding: '8px 16px', cursor: 'pointer', fontSize: '13px' }}>Cancelar</button>
                   </div>
                 </div>
               ) : (
@@ -1880,12 +1880,12 @@ const ClientDetail = ({ isMobile, client, onBack, onDelete, onUpdate }) => {
                   {(client.notes || client.origin) && (
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginBottom: '24px' }}>
                       {client.origin && (
-                        <div style={{ display: 'inline-flex', alignSelf: 'flex-start', alignItems: 'center', gap: '6px', background: 'rgba(255,255,255,0.05)', padding: '6px 12px', borderRadius: '100px', fontSize: '11px', color: 'var(--text-secondary)', fontWeight: '700' }}>
+                        <div style={{ display: 'inline-flex', alignSelf: 'flex-start', alignItems: 'center', gap: '6px', background: 'rgba(0, 0, 0, 0.04)', padding: '6px 12px', borderRadius: '100px', fontSize: '11px', color: 'var(--text-secondary)', fontWeight: '700' }}>
                           Cómo nos conoció: <span style={{ color: '#111111' }}>{client.origin}</span>
                         </div>
                       )}
                       {client.notes && (
-                        <div style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.05)', padding: '16px', borderRadius: '16px' }}>
+                        <div style={{ background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', padding: '16px', borderRadius: '16px' }}>
                           <div style={{ fontSize: '10px', fontWeight: '800', textTransform: 'uppercase', letterSpacing: '1px', color: 'var(--text-muted)', marginBottom: '8px' }}>Notas y Preferencias</div>
                           <div style={{ fontSize: '13px', color: 'var(--text-primary)', lineHeight: '1.5' }}>{client.notes}</div>
                         </div>
@@ -1900,9 +1900,9 @@ const ClientDetail = ({ isMobile, client, onBack, onDelete, onUpdate }) => {
             {!isEditing && (
               <div style={{
                 display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) minmax(0, 1fr)',
-                borderTop: '1px solid rgba(255,255,255,0.05)'
+                borderTop: '1px solid rgba(0, 0, 0, 0.08)'
               }}>
-                <div style={{ padding: '20px 24px', borderRight: '1px solid rgba(255,255,255,0.05)' }}>
+                <div style={{ padding: '20px 24px', borderRight: '1px solid rgba(0, 0, 0, 0.08)' }}>
                   <div style={{ fontSize: '28px', fontWeight: '900', color: '#111111', lineHeight: 1 }}>{history.length}</div>
                   <div style={{ fontSize: '10px', color: 'var(--text-muted)', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '1px', marginTop: '4px' }}>Visitas</div>
                 </div>
@@ -1919,8 +1919,8 @@ const ClientDetail = ({ isMobile, client, onBack, onDelete, onUpdate }) => {
           {/* DENTAL PROFILE CARD */}
           {!isEditing && (client.smile_type || client.gum_type) && (
             <div style={{
-              background: 'rgba(255,255,255,0.03)',
-              border: '1px solid rgba(255,255,255,0.07)',
+              background: 'rgba(0, 0, 0, 0.04)',
+              border: '1px solid rgba(0, 0, 0, 0.08)',
               borderRadius: '20px',
               padding: '20px 22px'
             }}>
@@ -1939,7 +1939,7 @@ const ClientDetail = ({ isMobile, client, onBack, onDelete, onUpdate }) => {
                 {client.gum_type && (
                   <span style={{
                     display: 'inline-flex', alignItems: 'center', gap: '6px',
-                    background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)',
+                    background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)',
                     color: 'var(--text-secondary)', borderRadius: '100px', padding: '5px 14px',
                     fontSize: '12px', fontWeight: '700'
                   }}>
@@ -2014,8 +2014,8 @@ const ClientDetail = ({ isMobile, client, onBack, onDelete, onUpdate }) => {
                       aspectRatio: '1/1', 
                       borderRadius: '16px', 
                       overflow: 'hidden', 
-                      backgroundColor: 'rgba(255,255,255,0.02)',
-                      border: selectingFor === 'A' ? '2px solid var(--gold-primary)' : '1px solid rgba(255,255,255,0.05)',
+                      backgroundColor: 'rgba(0, 0, 0, 0.04)',
+                      border: selectingFor === 'A' ? '2px solid var(--gold-primary)' : '1px solid rgba(0, 0, 0, 0.08)',
                       position: 'relative',
                       cursor: 'pointer'
                     }}
@@ -2028,7 +2028,7 @@ const ClientDetail = ({ isMobile, client, onBack, onDelete, onUpdate }) => {
                         <span style={{ fontSize: '10px', fontWeight: '800', color: 'var(--text-muted)' }}>FOTO ANTES</span>
                       </div>
                     )}
-                    <div style={{ position: 'absolute', bottom: '12px', left: '12px', backgroundColor: 'rgba(0,0,0,0.7)', padding: '4px 10px', borderRadius: '4px', fontSize: '10px', fontWeight: '900', color: 'var(--gold-primary)' }}>ANTES</div>
+                    <div style={{ position: 'absolute', bottom: '12px', left: '12px', backgroundColor: 'rgba(255, 255, 255, 0.9)', padding: '4px 10px', borderRadius: '4px', fontSize: '10px', fontWeight: '900', color: 'var(--gold-primary)' }}>ANTES</div>
                   </div>
 
                   <div 
@@ -2037,8 +2037,8 @@ const ClientDetail = ({ isMobile, client, onBack, onDelete, onUpdate }) => {
                       aspectRatio: '1/1', 
                       borderRadius: '16px', 
                       overflow: 'hidden', 
-                      backgroundColor: 'rgba(255,255,255,0.02)',
-                      border: selectingFor === 'B' ? '2px solid var(--gold-primary)' : '1px solid rgba(255,255,255,0.05)',
+                      backgroundColor: 'rgba(0, 0, 0, 0.04)',
+                      border: selectingFor === 'B' ? '2px solid var(--gold-primary)' : '1px solid rgba(0, 0, 0, 0.08)',
                       position: 'relative',
                       cursor: 'pointer'
                     }}
@@ -2051,7 +2051,7 @@ const ClientDetail = ({ isMobile, client, onBack, onDelete, onUpdate }) => {
                         <span style={{ fontSize: '10px', fontWeight: '800', color: 'var(--text-muted)' }}>FOTO DESPUÉS</span>
                       </div>
                     )}
-                    <div style={{ position: 'absolute', bottom: '12px', left: '12px', backgroundColor: 'rgba(0,0,0,0.7)', padding: '4px 10px', borderRadius: '4px', fontSize: '10px', fontWeight: '900', color: 'var(--gold-primary)' }}>DESPUÉS</div>
+                    <div style={{ position: 'absolute', bottom: '12px', left: '12px', backgroundColor: 'rgba(255, 255, 255, 0.9)', padding: '4px 10px', borderRadius: '4px', fontSize: '10px', fontWeight: '900', color: 'var(--gold-primary)' }}>DESPUÉS</div>
                   </div>
                 </div>
 
@@ -2072,15 +2072,15 @@ const ClientDetail = ({ isMobile, client, onBack, onDelete, onUpdate }) => {
                     </button>
                   </div>
                 ) : (
-                  <div style={{ padding: '12px', borderRadius: '12px', backgroundColor: 'rgba(255,255,255,0.02)', textAlign: 'center', fontSize: '11px', color: 'var(--text-muted)', fontWeight: '600' }}>
+                  <div style={{ padding: '12px', borderRadius: '12px', backgroundColor: 'rgba(0, 0, 0, 0.04)', textAlign: 'center', fontSize: '11px', color: 'var(--text-muted)', fontWeight: '600' }}>
                     Selecciona dos fotos para generar el collage
                   </div>
                 )}
 
                 <AnimatedModal isOpen={!!selectingFor}>
                   {(overlayClass, cardClass) => (
-                    <div className={overlayClass} style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(0,0,0,0.85)', backdropFilter: 'blur(10px)', zIndex: 3000, display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '20px', paddingTop: 'max(20px, env(safe-area-inset-top, 20px))' }}>
-                      <div className={`glass-card ${cardClass.replace('global-modal-card', '')}`} style={{ maxWidth: '680px', width: '100%', padding: '24px', background: 'var(--bg-secondary)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '24px', boxShadow: '0 30px 60px -12px rgba(0,0,0,0.5)' }}>
+                    <div className={overlayClass} style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(255, 255, 255, 0.9)', backdropFilter: 'blur(10px)', zIndex: 3000, display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '20px', paddingTop: 'max(20px, env(safe-area-inset-top, 20px))' }}>
+                      <div className={`glass-card ${cardClass.replace('global-modal-card', '')}`} style={{ maxWidth: '680px', width: '100%', padding: '24px', background: 'var(--bg-secondary)', border: '1px solid rgba(0, 0, 0, 0.08)', borderRadius: '24px', boxShadow: '0 30px 60px -12px rgba(0,0,0,0.5)' }}>
                         <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '20px', alignItems: 'center' }}>
                           <h4 style={{ fontWeight: '900', color: 'var(--text-primary)' }}>Elegir Foto {selectingFor}</h4>
                           <button onClick={() => setSelectingFor(null)} style={{ background: 'var(--bg-tertiary)', border: '1px solid var(--border-color)', color: 'var(--text-primary)', cursor: 'pointer', width: '32px', height: '32px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><X size={18} /></button>
@@ -2145,7 +2145,7 @@ const ClientDetail = ({ isMobile, client, onBack, onDelete, onUpdate }) => {
                 ))}
                 <div 
                   onClick={() => setShowCamera(true)}
-                  style={{ aspectRatio: '1/1', backgroundColor: 'rgba(255, 255, 255,0.02)', borderRadius: '12px', border: '2px dashed var(--gold-primary)', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', transition: '0.2s' }}
+                  style={{ aspectRatio: '1/1', backgroundColor: 'rgba(0, 0, 0, 0.04)', borderRadius: '12px', border: '2px dashed var(--gold-primary)', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', transition: '0.2s' }}
                   onMouseOver={(e) => e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255,0.05)'}
                   onMouseOut={(e) => e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255,0.02)'}
                 >
@@ -2182,7 +2182,7 @@ const ClientDetail = ({ isMobile, client, onBack, onDelete, onUpdate }) => {
                         padding: '12px 16px', 
                         background: isRedeemed ? 'rgba(255,255,255,0.02)' : 'rgba(255,215,0,0.05)', 
                         borderRadius: '12px', 
-                        border: isRedeemed ? '1px solid rgba(255,255,255,0.05)' : '1px solid rgba(255,215,0,0.2)',
+                        border: isRedeemed ? '1px solid rgba(0, 0, 0, 0.08)' : '1px solid rgba(255,215,0,0.2)',
                         opacity: isRedeemed ? 0.5 : 1
                       }}
                     >
@@ -2289,7 +2289,7 @@ const ClientDetail = ({ isMobile, client, onBack, onDelete, onUpdate }) => {
             {treatments.map(t => {
               const when = t.completed_at || t.started_at || t.scheduled_at || t.created_at;
               return (
-                <div key={t.id} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '10px', background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)', padding: '12px 14px', borderRadius: '12px' }}>
+                <div key={t.id} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '10px', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', padding: '12px 14px', borderRadius: '12px' }}>
                   <div style={{ minWidth: 0 }}>
                     <div style={{ fontWeight: '800', color: 'white', fontSize: '13.5px' }}>{t.services?.name || 'Servicio'}</div>
                     <div style={{ fontSize: '11.5px', color: 'var(--text-muted)', marginTop: '2px' }}>
@@ -2337,8 +2337,8 @@ const ClientDetail = ({ isMobile, client, onBack, onDelete, onUpdate }) => {
 
       <AnimatedModal isOpen={!!pendingPhoto}>
         {(overlayClass, cardClass) => (
-          <div className={overlayClass} style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(0,0,0,0.8)', backdropFilter: 'blur(10px)', zIndex: 1000, display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '20px', paddingTop: 'max(20px, env(safe-area-inset-top, 20px))' }}>
-            <div className={`glass-card ${cardClass.replace('global-modal-card', '')}`} style={{ maxWidth: 'min(440px, 90vw)', width: '100%', borderRadius: '24px', padding: '24px', background: 'var(--bg-secondary)', border: '1px solid rgba(255,255,255,0.08)' }}>
+          <div className={overlayClass} style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(255, 255, 255, 0.9)', backdropFilter: 'blur(10px)', zIndex: 1000, display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '20px', paddingTop: 'max(20px, env(safe-area-inset-top, 20px))' }}>
+            <div className={`glass-card ${cardClass.replace('global-modal-card', '')}`} style={{ maxWidth: 'min(440px, 90vw)', width: '100%', borderRadius: '24px', padding: '24px', background: 'var(--bg-secondary)', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
               <h3 style={{ 
                 marginBottom: '20px', 
                 fontWeight: '900',
@@ -2403,8 +2403,8 @@ const VisitDetailModal = ({ isOpen, visit, onClose, gallery = [] }) => {
   return (
     <AnimatedModal isOpen={isOpen}>
       {(overlayClass, cardClass) => (
-        <div className={overlayClass.replace('global-modal-overlay', '')} style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(0,0,0,0.8)', backdropFilter: 'blur(8px)', zIndex: 1000, display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '20px', paddingTop: 'max(20px, env(safe-area-inset-top, 20px))' }}>
-          <div className={`glass-card ${cardClass.replace('global-modal-card', '')}`} style={{ maxWidth: '480px', width: '100%', borderRadius: '28px', padding: '32px', border: '1.5px solid rgba(255, 255, 255,0.3)', maxHeight: '90vh', overflowY: 'auto' }}>
+        <div className={overlayClass.replace('global-modal-overlay', '')} style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(255, 255, 255, 0.9)', backdropFilter: 'blur(8px)', zIndex: 1000, display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '20px', paddingTop: 'max(20px, env(safe-area-inset-top, 20px))' }}>
+          <div className={`glass-card ${cardClass.replace('global-modal-card', '')}`} style={{ maxWidth: '480px', width: '100%', borderRadius: '28px', padding: '32px', border: '1.5px solid rgba(0, 0, 0, 0.08)', maxHeight: '90vh', overflowY: 'auto' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '24px' }}>
               <h3 style={{ 
                 fontSize: '20px', 
@@ -2421,7 +2421,7 @@ const VisitDetailModal = ({ isOpen, visit, onClose, gallery = [] }) => {
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
               {/* Header Info */}
-              <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) minmax(0, 1fr)', gap: '20px', paddingBottom: '20px', borderBottom: '1px dashed rgba(255,255,255,0.1)' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) minmax(0, 1fr)', gap: '20px', paddingBottom: '20px', borderBottom: '1px dashed rgba(0, 0, 0, 0.08)' }}>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
                   <span style={{ fontSize: '10px', fontWeight: '800', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '1px' }}>Fecha y Hora</span>
                   <span style={{ fontSize: '14px', fontWeight: '800', color: 'white' }}>
@@ -2472,7 +2472,7 @@ const VisitDetailModal = ({ isOpen, visit, onClose, gallery = [] }) => {
               </div>
 
               {/* Totals Section */}
-              <div style={{ marginTop: '10px', paddingTop: '16px', borderTop: '2px solid rgba(255, 255, 255,0.2)', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end' }}>
+              <div style={{ marginTop: '10px', paddingTop: '16px', borderTop: '2px solid rgba(0, 0, 0, 0.08)', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end' }}>
                 <div>
                   <label style={{ fontSize: '10px', fontWeight: '800', color: 'var(--text-muted)', display: 'block', marginBottom: '4px' }}>TOTAL A PAGAR</label>
                   <div style={{ fontSize: '32px', fontWeight: '900', color: 'var(--gold-primary)', lineHeight: '1' }}>${visit.amount}</div>
@@ -2484,7 +2484,7 @@ const VisitDetailModal = ({ isOpen, visit, onClose, gallery = [] }) => {
               </div>
 
               {/* Payment Method */}
-              <div style={{ padding: '16px', backgroundColor: 'rgba(255, 255, 255,0.05)', borderRadius: '16px', border: '1px solid rgba(255, 255, 255,0.1)' }}>
+              <div style={{ padding: '16px', backgroundColor: 'rgba(0, 0, 0, 0.04)', borderRadius: '16px', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
                 <label style={{ display: 'block', fontSize: '10px', fontWeight: '800', color: 'var(--gold-primary)', marginBottom: '12px', letterSpacing: '1px' }}>MÉTODO DE PAGO</label>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                   <span style={{ fontWeight: '700', fontSize: '16px' }}>{visit.payment_method}</span>
@@ -2566,7 +2566,7 @@ const VisitDetailModal = ({ isOpen, visit, onClose, gallery = [] }) => {
                   <label style={{ display: 'block', fontSize: '11px', fontWeight: '800', color: 'var(--text-muted)', marginBottom: '12px', textTransform: 'uppercase' }}>Fotos de esta visita</label>
                   <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, minmax(0, 1fr))', gap: '10px' }}>
                     {servicePhotos.map((p, i) => (
-                      <div key={i} style={{ aspectRatio: '1/1', borderRadius: '12px', overflow: 'hidden', border: '1px solid rgba(255,255,255,0.1)', boxShadow: '0 4px 12px rgba(0,0,0,0.3)' }}>
+                      <div key={i} style={{ aspectRatio: '1/1', borderRadius: '12px', overflow: 'hidden', border: '1px solid rgba(0, 0, 0, 0.08)', boxShadow: '0 4px 12px rgba(0,0,0,0.3)' }}>
                         <img loading="lazy" src={p.url} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                       </div>
                     ))}
@@ -2620,7 +2620,7 @@ const HistoryItem = ({ date, service, price, barber, products, extras, onClick }
       </div>
       {(products?.length > 0 || extras?.length > 0) && (
         <div style={{ marginTop: '6px', display: 'flex', gap: '4px', flexWrap: 'wrap' }}>
-          {products?.map((p, i) => <span key={'p'+i} style={{ fontSize: '9px', padding: '2px 6px', background: 'rgba(255,255,255,0.05)', borderRadius: '4px', color: 'var(--text-secondary)', fontWeight: '600', textTransform: 'uppercase' }}>{p}</span>)}
+          {products?.map((p, i) => <span key={'p'+i} style={{ fontSize: '9px', padding: '2px 6px', background: 'rgba(0, 0, 0, 0.04)', borderRadius: '4px', color: 'var(--text-secondary)', fontWeight: '600', textTransform: 'uppercase' }}>{p}</span>)}
           {extras?.map((e, i) => <span key={'e'+i} style={{ fontSize: '9px', padding: '2px 6px', background: 'rgba(17, 17, 17,0.1)', borderRadius: '4px', color: '#111111', fontWeight: '600', textTransform: 'uppercase' }}>{e}</span>)}
         </div>
       )}
@@ -2657,8 +2657,8 @@ const BeforeAfterSlider = ({ photoA, photoB, sliderPos, setSliderPos }) => {
         borderRadius: '20px', 
         overflow: 'hidden', 
         cursor: 'ew-resize',
-        backgroundColor: 'rgba(255,255,255,0.02)',
-        border: '1px solid rgba(255,255,255,0.05)',
+        backgroundColor: 'rgba(0, 0, 0, 0.04)',
+        border: '1px solid rgba(0, 0, 0, 0.08)',
         boxShadow: '0 20px 40px rgba(0,0,0,0.4)'
       }}
     >

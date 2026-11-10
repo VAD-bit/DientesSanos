@@ -108,7 +108,7 @@ const DatePicker = ({ value, onChange, placeholder, min }) => {
   const dropdown = mounted && createPortal(
     <div ref={dropRef} className="datepicker-dropdown" style={{
       position: 'fixed', top: pos.top, left: pos.left, zIndex: 99999,
-      background: 'var(--bg-secondary)', border: '1px solid rgba(255,255,255,0.12)',
+      background: 'var(--bg-secondary)', border: '1px solid rgba(0, 0, 0, 0.08)',
       borderRadius: '18px', padding: '16px', width: '252px',
       boxShadow: '0 24px 64px rgba(0,0,0,0.9)',
       pointerEvents: closing ? 'none' : 'auto',
@@ -162,7 +162,7 @@ const DatePicker = ({ value, onChange, placeholder, min }) => {
         })}
       </div>
 
-      <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '12px', paddingTop: '10px', borderTop: '1px solid rgba(255,255,255,0.07)' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '12px', paddingTop: '10px', borderTop: '1px solid rgba(0, 0, 0, 0.08)' }}>
         <button onClick={() => { onChange(''); setOpen(false); }} style={{ background: 'none', border: 'none', color: 'var(--text-secondary)', cursor: 'pointer', fontSize: '12px', fontWeight: '700' }}>
           Borrar
         </button>
@@ -181,7 +181,7 @@ const DatePicker = ({ value, onChange, placeholder, min }) => {
         onClick={() => setOpen(o => !o)}
         style={{
           width: '100%', padding: '10px 14px', borderRadius: '10px', cursor: 'pointer',
-          background: 'var(--bg-secondary)', border: `1px solid ${open ? 'var(--gold-primary)' : 'rgba(255,255,255,0.1)'}`,
+          background: 'var(--bg-secondary)', border: `1px solid ${open ? 'var(--gold-primary)' : 'rgba(0, 0, 0, 0.08)'}`,
           color: value ? 'white' : 'var(--text-muted)', fontSize: '13px', fontWeight: '700',
           textAlign: 'left', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '8px'
         }}
@@ -235,7 +235,7 @@ const MoneyRow = ({ label, usd, transactionRate, accent = false, strong = false 
   const numUsd = Number(usd || 0);
   const numBs = Math.round(numUsd * transactionRate);
   return (
-    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', gap: '12px', marginBottom: '8px', paddingBottom: strong ? '8px' : 0, borderBottom: strong ? '1px dashed rgba(255,255,255,0.08)' : 'none' }}>
+    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', gap: '12px', marginBottom: '8px', paddingBottom: strong ? '8px' : 0, borderBottom: strong ? '1px dashed rgba(0, 0, 0, 0.08)' : 'none' }}>
       <span style={{ color: accent ? '#32d74b' : 'var(--text-secondary)', fontSize: '12px', fontWeight: accent || strong ? '850' : '650' }}>{label}</span>
       <span style={{ textAlign: 'right', color: accent ? '#32d74b' : strong ? 'var(--gold-primary)' : '#fff', fontSize: strong ? '14px' : '12px', fontWeight: '900', whiteSpace: 'nowrap' }}>
         {numBs.toLocaleString('es-VE')} Bs.
@@ -395,7 +395,7 @@ const StaffTransactionHistory = ({ staffMember, rates, isMobile }) => {
   return (
     <section className={'animate-fade-in staff-history'} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
       <style>{`
-        .staff-history-filter { display: flex; gap: 5px; padding: 3px; border-radius: 10px; background: rgba(0,0,0,.3); flex-wrap: wrap; }
+        .staff-history-filter { display: flex; gap: 5px; padding: 3px; border-radius: 10px; background: rgba(255, 255, 255, 0.9); flex-wrap: wrap; }
         .staff-history-metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
         .staff-history-date-group { display: flex; align-items: center; gap: 9px; margin: 6px 2px 1px; color: rgba(255,255,255,.7); font-size: 10px; font-weight: 900; letter-spacing: .7px; text-transform: uppercase; }
         .staff-history-date-group::after { content: ''; height: 1px; flex: 1; background: linear-gradient(90deg, rgba(17, 17, 17,.22), transparent); }
@@ -407,9 +407,9 @@ const StaffTransactionHistory = ({ staffMember, rates, isMobile }) => {
           .staff-history-title p { max-width: 220px; margin-top: 4px !important; font-size: 9px !important; line-height: 1.35; }
           .staff-history-filter { width: 100%; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 3px; margin-top: 10px; }
           .staff-history-filter button { min-width: 0; padding: 7px 2px !important; font-size: 8px !important; }
-          .staff-history-metrics { grid-template-columns: repeat(3, minmax(0, 1fr)) !important; gap: 0 !important; padding: 5px; border: 1px solid rgba(255,255,255,.065); border-radius: 16px; background: rgba(255,255,255,.022); }
+          .staff-history-metrics { grid-template-columns: repeat(3, minmax(0, 1fr)) !important; gap: 0 !important; padding: 5px; border: 1px solid rgba(0, 0, 0, 0.08); border-radius: 16px; background: rgba(0, 0, 0, 0.04); }
           .staff-history-metric { min-height: 68px; padding: 8px 3px !important; border: 0 !important; border-radius: 11px !important; background: transparent !important; box-shadow: none !important; }
-          .staff-history-metric + .staff-history-metric { border-left: 1px solid rgba(255,255,255,.065) !important; border-radius: 0 !important; }
+          .staff-history-metric + .staff-history-metric { border-left: 1px solid rgba(0, 0, 0, 0.08) !important; border-radius: 0 !important; }
           .staff-history-metric-label { min-height: 23px; justify-content: center; gap: 4px !important; text-align: center; font-size: 6.5px !important; line-height: 1.15; }
           .staff-history-metric-label svg { width: 13px; height: 13px; flex: 0 0 auto; }
           .staff-history-metric-value { margin-top: 4px !important; text-align: center; font-size: 14px !important; white-space: nowrap; }
@@ -571,7 +571,7 @@ const StaffTransactionHistory = ({ staffMember, rates, isMobile }) => {
                     padding: '15px', 
                     borderRadius: '16px', 
                     background: selected ? 'rgba(17, 17, 17,0.06)' : 'rgba(255,255,255,0.025)', 
-                    border: selected ? '1px solid rgba(17, 17, 17,0.3)' : '1px solid rgba(255,255,255,0.05)', 
+                    border: selected ? '1px solid rgba(17, 17, 17,0.3)' : '1px solid rgba(0, 0, 0, 0.08)', 
                     cursor: 'pointer',
                     transition: 'all 0.2s ease'
                   }}
@@ -613,7 +613,7 @@ const StaffTransactionHistory = ({ staffMember, rates, isMobile }) => {
                       style={{ 
                         gridColumn: '1 / -1', 
                         paddingTop: '16px', 
-                        borderTop: '1px solid rgba(255,255,255,0.08)',
+                        borderTop: '1px solid rgba(0, 0, 0, 0.08)',
                         display: 'flex',
                         flexDirection: 'column',
                         gap: '12px'
@@ -671,8 +671,8 @@ const StaffTransactionHistory = ({ staffMember, rates, isMobile }) => {
                       {/* 2 Columnas: Cliente & Cita VS Cobro y Pago */}
                       <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(2, minmax(0, 1fr))', gap: '12px' }}>
                         {/* Columna Izquierda: Cliente & Detalle del Servicio */}
-                        <div style={{ padding: '15px', borderRadius: '15px', background: 'rgba(255,255,255,0.025)', border: '1px solid rgba(255,255,255,0.07)', display: 'flex', flexDirection: 'column', gap: '10px' }}>
-                          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', borderBottom: '1px solid rgba(255,255,255,0.06)', paddingBottom: '9px' }}>
+                        <div style={{ padding: '15px', borderRadius: '15px', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', borderBottom: '1px solid rgba(0, 0, 0, 0.08)', paddingBottom: '9px' }}>
                             <User size={15} color="var(--gold-primary)" />
                             <span style={{ fontSize: '11px', fontWeight: '900', color: 'var(--gold-primary)', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
                               Cliente y Servicio
@@ -687,7 +687,7 @@ const StaffTransactionHistory = ({ staffMember, rates, isMobile }) => {
                             </div>
                           </div>
 
-                          <div style={{ background: 'var(--bg-secondary)', padding: '10px 12px', borderRadius: '11px', border: '1px solid rgba(255,255,255,0.04)', marginTop: '2px' }}>
+                          <div style={{ background: 'var(--bg-secondary)', padding: '10px 12px', borderRadius: '11px', border: '1px solid rgba(0, 0, 0, 0.08)', marginTop: '2px' }}>
                             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                               <span style={{ fontSize: '12.5px', fontWeight: '850', color: '#fff' }}>{serviceName}</span>
                             </div>
@@ -713,8 +713,8 @@ const StaffTransactionHistory = ({ staffMember, rates, isMobile }) => {
                         </div>
 
                         {/* Columna Derecha: Cobro y Pago */}
-                        <div style={{ padding: '15px', borderRadius: '15px', background: 'rgba(255,255,255,0.025)', border: '1px solid rgba(255,255,255,0.07)', display: 'flex', flexDirection: 'column', gap: '10px' }}>
-                          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', borderBottom: '1px solid rgba(255,255,255,0.06)', paddingBottom: '9px' }}>
+                        <div style={{ padding: '15px', borderRadius: '15px', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', borderBottom: '1px solid rgba(0, 0, 0, 0.08)', paddingBottom: '9px' }}>
                             <CreditCard size={15} color="#32d74b" />
                             <span style={{ fontSize: '11px', fontWeight: '900', color: '#32d74b', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
                               Cobro y Pago
@@ -738,7 +738,7 @@ const StaffTransactionHistory = ({ staffMember, rates, isMobile }) => {
                           {cashUsd > 0 && <MoneyRow label={`Parte en ${metadata.methodUsd || metadata.method_usd || 'USD'}`} usd={cashUsd} transactionRate={transactionRate} />}
                           {transferBs > 0 && <MoneyRow label={`Parte en ${metadata.methodBs || metadata.method_bs || 'Bolívares'}`} usd={transferBs / transactionRate} transactionRate={transactionRate} />}
 
-                          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '11.5px', marginTop: 'auto', paddingTop: '8px', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
+                          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '11.5px', marginTop: 'auto', paddingTop: '8px', borderTop: '1px solid rgba(0, 0, 0, 0.08)' }}>
                             <span style={{ color: 'var(--text-muted)' }}>Tasa de la operación:</span>
                             <span style={{ color: 'rgba(255,255,255,0.85)', fontWeight: '850' }}>{transactionRate.toLocaleString('es-VE')} Bs./USD</span>
                           </div>
@@ -747,7 +747,7 @@ const StaffTransactionHistory = ({ staffMember, rates, isMobile }) => {
 
                       {/* Distribución Transparente de la Transacción */}
                       {(metadata.staffInvolved && metadata.staffInvolved.length > 0) && (
-                        <div style={{ padding: '14px 16px', borderRadius: '15px', background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.06)' }}>
+                        <div style={{ padding: '14px 16px', borderRadius: '15px', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
                           <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '10px' }}>
                             <Users size={14} color="var(--gold-primary)" />
                             <span style={{ fontSize: '10.5px', fontWeight: '900', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
@@ -767,7 +767,7 @@ const StaffTransactionHistory = ({ staffMember, rates, isMobile }) => {
                               const memberBs = Math.round(memberUsd * transactionRate);
 
                               return (
-                                <div key={member.staffId || member.id || index} style={{ padding: '10px 12px', borderRadius: '12px', background: 'var(--bg-secondary)', border: '1px solid rgba(255,255,255,0.05)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '8px' }}>
+                                <div key={member.staffId || member.id || index} style={{ padding: '10px 12px', borderRadius: '12px', background: 'var(--bg-secondary)', border: '1px solid rgba(0, 0, 0, 0.08)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '8px' }}>
                                   <div style={{ minWidth: 0 }}>
                                     <div style={{ fontSize: '11.5px', fontWeight: '850', color: '#fff', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                                       {member.name || 'Personal'}

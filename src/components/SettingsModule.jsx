@@ -23,7 +23,7 @@ const PrizeRow = ({ prize, idx, onRemove, onUpdate }) => {
   };
 
   return (
-    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '16px 20px', background: 'rgba(255,255,255,0.03)', borderRadius: '16px', border: '1px solid rgba(255,255,255,0.05)' }}>
+    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '16px 20px', background: 'rgba(0, 0, 0, 0.04)', borderRadius: '16px', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flex: 1 }}>
         <div style={{ width: '32px', height: '32px', borderRadius: '50%', background: 'rgba(255,215,0,0.1)', color: 'var(--gold-primary)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: '800', fontSize: '14px', flexShrink: 0 }}>
           {idx + 1}
@@ -36,7 +36,7 @@ const PrizeRow = ({ prize, idx, onRemove, onUpdate }) => {
             onBlur={handleSave}
             onKeyDown={e => e.key === 'Enter' && handleSave()}
             autoFocus
-            style={{ flex: 1, background: 'rgba(255,255,255,0.05)', border: '1px solid var(--gold-primary)', color: 'white', borderRadius: '8px', padding: '8px 12px', fontSize: '15px', outline: 'none' }}
+            style={{ flex: 1, background: 'rgba(0, 0, 0, 0.04)', border: '1px solid var(--gold-primary)', color: 'white', borderRadius: '8px', padding: '8px 12px', fontSize: '15px', outline: 'none' }}
           />
         ) : (
           <div 
@@ -281,21 +281,21 @@ const SettingsModule = ({ isMobile, clients, onRefresh }) => {
           <button 
             className="settings-reward-tab"
             onClick={() => setActiveTab('coupons')}
-            style={{ borderRadius: '12px', padding: '10px 16px', fontSize: '13px', display: 'flex', alignItems: 'center', gap: '8px', flex: isMobile ? '1' : 'auto', justifyContent: 'center', border: activeTab === 'coupons' ? '1px solid rgba(255,255,255,0.18)' : '1px solid transparent', background: activeTab === 'coupons' ? 'var(--gold-gradient)' : 'transparent', color: activeTab === 'coupons' ? '#090909' : 'var(--text-secondary)', boxShadow: activeTab === 'coupons' ? '0 6px 18px rgba(17, 17, 17,0.18)' : 'none', fontWeight: '750', cursor: 'pointer', transition: 'background 180ms ease, border-color 180ms ease, box-shadow 180ms ease, transform 150ms ease' }}
+            style={{ borderRadius: '12px', padding: '10px 16px', fontSize: '13px', display: 'flex', alignItems: 'center', gap: '8px', flex: isMobile ? '1' : 'auto', justifyContent: 'center', border: activeTab === 'coupons' ? '1px solid rgba(0, 0, 0, 0.08)' : '1px solid transparent', background: activeTab === 'coupons' ? 'var(--gold-gradient)' : 'transparent', color: activeTab === 'coupons' ? '#090909' : 'var(--text-secondary)', boxShadow: activeTab === 'coupons' ? '0 6px 18px rgba(17, 17, 17,0.18)' : 'none', fontWeight: '750', cursor: 'pointer', transition: 'background 180ms ease, border-color 180ms ease, box-shadow 180ms ease, transform 150ms ease' }}
           >
             <Ticket size={16} /> Cupones Emitidos
           </button>
           <button 
             className="settings-reward-tab"
             onClick={() => setActiveTab('roulette')}
-            style={{ borderRadius: '12px', padding: '10px 16px', fontSize: '13px', display: 'flex', alignItems: 'center', gap: '8px', flex: isMobile ? '1' : 'auto', justifyContent: 'center', border: activeTab === 'roulette' ? '1px solid rgba(255,255,255,0.18)' : '1px solid transparent', background: activeTab === 'roulette' ? 'var(--gold-gradient)' : 'transparent', color: activeTab === 'roulette' ? '#090909' : 'var(--text-secondary)', boxShadow: activeTab === 'roulette' ? '0 6px 18px rgba(17, 17, 17,0.18)' : 'none', fontWeight: '750', cursor: 'pointer', transition: 'background 180ms ease, border-color 180ms ease, box-shadow 180ms ease, transform 150ms ease' }}
+            style={{ borderRadius: '12px', padding: '10px 16px', fontSize: '13px', display: 'flex', alignItems: 'center', gap: '8px', flex: isMobile ? '1' : 'auto', justifyContent: 'center', border: activeTab === 'roulette' ? '1px solid rgba(0, 0, 0, 0.08)' : '1px solid transparent', background: activeTab === 'roulette' ? 'var(--gold-gradient)' : 'transparent', color: activeTab === 'roulette' ? '#090909' : 'var(--text-secondary)', boxShadow: activeTab === 'roulette' ? '0 6px 18px rgba(17, 17, 17,0.18)' : 'none', fontWeight: '750', cursor: 'pointer', transition: 'background 180ms ease, border-color 180ms ease, box-shadow 180ms ease, transform 150ms ease' }}
           >
             <Gift size={16} /> Ruleta de Cumpleaños
           </button>
           <button 
             className="settings-reward-tab"
             onClick={() => setActiveTab('whatsapp')}
-            style={{ borderRadius: '12px', padding: '10px 16px', fontSize: '13px', display: 'flex', alignItems: 'center', gap: '8px', flex: isMobile ? '1' : 'auto', justifyContent: 'center', border: activeTab === 'whatsapp' ? '1px solid rgba(255,255,255,0.18)' : '1px solid transparent', background: activeTab === 'whatsapp' ? 'var(--gold-gradient)' : 'transparent', color: activeTab === 'whatsapp' ? '#090909' : 'var(--text-secondary)', boxShadow: activeTab === 'whatsapp' ? '0 6px 18px rgba(17, 17, 17,0.18)' : 'none', fontWeight: '750', cursor: 'pointer', transition: 'background 180ms ease, border-color 180ms ease, box-shadow 180ms ease, transform 150ms ease' }}
+            style={{ borderRadius: '12px', padding: '10px 16px', fontSize: '13px', display: 'flex', alignItems: 'center', gap: '8px', flex: isMobile ? '1' : 'auto', justifyContent: 'center', border: activeTab === 'whatsapp' ? '1px solid rgba(0, 0, 0, 0.08)' : '1px solid transparent', background: activeTab === 'whatsapp' ? 'var(--gold-gradient)' : 'transparent', color: activeTab === 'whatsapp' ? '#090909' : 'var(--text-secondary)', boxShadow: activeTab === 'whatsapp' ? '0 6px 18px rgba(17, 17, 17,0.18)' : 'none', fontWeight: '750', cursor: 'pointer', transition: 'background 180ms ease, border-color 180ms ease, box-shadow 180ms ease, transform 150ms ease' }}
           >
             <MessageCircle size={16} /> Bot WhatsApp
           </button>
@@ -412,10 +412,10 @@ const SettingsModule = ({ isMobile, clients, onRefresh }) => {
         <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
           <div>
             <h4 style={{ color: 'white', fontSize: '18px', fontWeight: '700', marginBottom: '16px' }}>Plantillas de Cupones (Para Asignar)</h4>
-            <div className="animate-slide-up" style={{ background: 'var(--bg-secondary)', padding: '0', borderRadius: '24px', overflow: 'hidden', border: '1px solid rgba(255, 255, 255, 0.15)' }}>
+            <div className="animate-slide-up" style={{ background: 'var(--bg-secondary)', padding: '0', borderRadius: '24px', overflow: 'hidden', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
               <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', tableLayout: 'auto' }}>
                 <thead>
-                  <tr style={{ backgroundColor: 'rgba(255,255,255,0.02)', borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+                  <tr style={{ backgroundColor: 'rgba(0, 0, 0, 0.04)', borderBottom: '1px solid rgba(0, 0, 0, 0.08)' }}>
                     <th style={{ padding: isMobile ? '12px' : '16px 24px', fontSize: '11px', fontWeight: '900', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Código / Fecha</th>
                     <th style={{ padding: isMobile ? '12px' : '16px 24px', fontSize: '11px', fontWeight: '900', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Acción</th>
                     <th style={{ padding: isMobile ? '12px' : '16px 24px', fontSize: '11px', fontWeight: '900', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Premio</th>
@@ -430,7 +430,7 @@ const SettingsModule = ({ isMobile, clients, onRefresh }) => {
                       </td>
                     </tr>
                   ) : filteredCoupons.filter(c => !c.client_id).map((coupon) => (
-                    <tr key={coupon.id} style={{ borderBottom: '1px solid rgba(255,255,255,0.03)', transition: 'background-color 0.2s' }} className="table-row-hover">
+                    <tr key={coupon.id} style={{ borderBottom: '1px solid rgba(0, 0, 0, 0.08)', transition: 'background-color 0.2s' }} className="table-row-hover">
                       <td style={{ padding: isMobile ? '12px' : '16px 24px' }}>
                         <div style={{ fontWeight: '700', color: 'var(--gold-primary)', fontSize: isMobile ? '11px' : '13px', letterSpacing: '1px' }}>
                           {coupon.id?.substring(0, 8).toUpperCase()}
@@ -449,7 +449,7 @@ const SettingsModule = ({ isMobile, clients, onRefresh }) => {
                       </td>
                       <td style={{ padding: isMobile ? '12px' : '16px 24px', textAlign: 'right' }}>
                         <div style={{ display: 'flex', gap: '8px', justifyContent: 'flex-end' }}>
-                          <button onClick={() => openEditModal(coupon)} style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', padding: '6px', borderRadius: '6px', color: 'white', cursor: 'pointer' }} title="Editar">
+                          <button onClick={() => openEditModal(coupon)} style={{ background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', padding: '6px', borderRadius: '6px', color: 'white', cursor: 'pointer' }} title="Editar">
                             <Pencil size={14} />
                           </button>
                           <button onClick={() => handleDeleteCoupon(coupon.id)} style={{ background: 'rgba(255,69,58,0.1)', border: '1px solid rgba(255,69,58,0.2)', padding: '6px', borderRadius: '6px', color: '#ff453a', cursor: 'pointer' }} title="Eliminar">
@@ -466,10 +466,10 @@ const SettingsModule = ({ isMobile, clients, onRefresh }) => {
 
           <div>
             <h4 style={{ color: 'white', fontSize: '18px', fontWeight: '700', marginBottom: '16px' }}>Cupones Asignados a Pacientes</h4>
-            <div className="animate-slide-up" style={{ background: 'var(--bg-secondary)', padding: '0', borderRadius: '24px', overflow: 'hidden', border: '1px solid rgba(255, 255, 255, 0.15)' }}>
+            <div className="animate-slide-up" style={{ background: 'var(--bg-secondary)', padding: '0', borderRadius: '24px', overflow: 'hidden', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
               <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', tableLayout: 'auto' }}>
                 <thead>
-                  <tr style={{ backgroundColor: 'rgba(255,255,255,0.02)', borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+                  <tr style={{ backgroundColor: 'rgba(0, 0, 0, 0.04)', borderBottom: '1px solid rgba(0, 0, 0, 0.08)' }}>
                     <th style={{ padding: isMobile ? '12px' : '16px 24px', fontSize: '11px', fontWeight: '900', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Código / Fecha Asign.</th>
                     <th style={{ padding: isMobile ? '12px' : '16px 24px', fontSize: '11px', fontWeight: '900', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Cliente</th>
                     <th style={{ padding: isMobile ? '12px' : '16px 24px', fontSize: '11px', fontWeight: '900', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Premio</th>
@@ -484,7 +484,7 @@ const SettingsModule = ({ isMobile, clients, onRefresh }) => {
                       </td>
                     </tr>
                   ) : filteredCoupons.filter(c => c.client_id).map((coupon) => (
-                    <tr key={coupon.id} style={{ borderBottom: '1px solid rgba(255,255,255,0.03)', transition: 'background-color 0.2s' }} className="table-row-hover">
+                    <tr key={coupon.id} style={{ borderBottom: '1px solid rgba(0, 0, 0, 0.08)', transition: 'background-color 0.2s' }} className="table-row-hover">
                       <td style={{ padding: isMobile ? '12px' : '16px 24px' }}>
                         <div style={{ fontWeight: '700', color: 'var(--gold-primary)', fontSize: isMobile ? '11px' : '13px', letterSpacing: '1px' }}>
                           {coupon.id?.substring(0, 8).toUpperCase()}
@@ -508,7 +508,7 @@ const SettingsModule = ({ isMobile, clients, onRefresh }) => {
                             </button>
                           </div>
                         ) : (
-                          <span style={{ fontSize: '10px', fontWeight: '800', color: 'var(--text-muted)', backgroundColor: 'rgba(255, 255, 255, 0.05)', padding: '4px 8px', borderRadius: '6px' }}>
+                          <span style={{ fontSize: '10px', fontWeight: '800', color: 'var(--text-muted)', backgroundColor: 'rgba(0, 0, 0, 0.04)', padding: '4px 8px', borderRadius: '6px' }}>
                             USADO ({coupon.redeemed_at ? new Date(coupon.redeemed_at).toLocaleDateString() : ''})
                           </span>
                         )}
@@ -751,8 +751,8 @@ const SettingsModule = ({ isMobile, clients, onRefresh }) => {
                 autoFocus
                 style={{
                   width: '100%',
-                  background: 'rgba(255,255,255,0.05)',
-                  border: '1px solid rgba(255,255,255,0.1)',
+                  background: 'rgba(0, 0, 0, 0.04)',
+                  border: '1px solid rgba(0, 0, 0, 0.08)',
                   borderRadius: '12px',
                   padding: '12px 12px 12px 40px',
                   color: 'white',
@@ -766,7 +766,7 @@ const SettingsModule = ({ isMobile, clients, onRefresh }) => {
               overflowY: 'auto', 
               background: 'var(--bg-secondary)', 
               borderRadius: '12px',
-              border: '1px solid rgba(255,255,255,0.05)',
+              border: '1px solid rgba(0, 0, 0, 0.08)',
               marginBottom: '20px'
             }}>
               {clients.filter(c => 
@@ -779,7 +779,7 @@ const SettingsModule = ({ isMobile, clients, onRefresh }) => {
                   onClick={() => setAssignClientId(c.id)}
                   style={{
                     padding: '12px 16px',
-                    borderBottom: '1px solid rgba(255,255,255,0.05)',
+                    borderBottom: '1px solid rgba(0, 0, 0, 0.08)',
                     cursor: 'pointer',
                     background: assignClientId === c.id ? 'rgba(17, 17, 17, 0.15)' : 'transparent',
                     borderLeft: assignClientId === c.id ? '3px solid var(--gold-primary)' : '3px solid transparent',

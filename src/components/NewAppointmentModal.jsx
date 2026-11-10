@@ -264,7 +264,7 @@ const NewAppointmentModal = ({ isOpen, onClose, onSuccess, rates }) => {
               left: 0, 
               right: 0, 
               bottom: 0, 
-              backgroundColor: 'rgba(0,0,0,0.85)', 
+              backgroundColor: 'rgba(255, 255, 255, 0.9)', 
               backdropFilter: 'blur(10px)', 
               zIndex: 10000, 
               display: 'flex', 
@@ -280,7 +280,7 @@ const NewAppointmentModal = ({ isOpen, onClose, onSuccess, rates }) => {
                 maxWidth: 'min(900px, 90vw)', 
                 width: '100%', 
                 borderRadius: '24px', 
-                border: '1px solid rgba(255,255,255,0.08)',
+                border: '1px solid rgba(0, 0, 0, 0.08)',
                 background: 'var(--bg-secondary)',
                 backdropFilter: 'blur(40px)',
                 display: 'flex',
@@ -306,7 +306,7 @@ const NewAppointmentModal = ({ isOpen, onClose, onSuccess, rates }) => {
                     </div>
                     <button 
                       onClick={onClose}
-                      style={{ background: 'rgba(255,255,255,0.1)', border: 'none', color: 'rgba(255,255,255,0.8)', cursor: 'pointer', width: '36px', height: '36px', borderRadius: '18px', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'all 0.2s', backdropFilter: 'blur(10px)' }}
+                      style={{ background: 'rgba(0, 0, 0, 0.04)', border: 'none', color: 'rgba(255,255,255,0.8)', cursor: 'pointer', width: '36px', height: '36px', borderRadius: '18px', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'all 0.2s', backdropFilter: 'blur(10px)' }}
                       onMouseEnter={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.2)'; e.currentTarget.style.transform = 'scale(1.05)'; }}
                       onMouseLeave={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.1)'; e.currentTarget.style.transform = 'scale(1)'; }}
                     >
@@ -323,9 +323,9 @@ const NewAppointmentModal = ({ isOpen, onClose, onSuccess, rates }) => {
                       <div>
                         <FieldLabel required>Cliente</FieldLabel>
                         {selectedClient ? (
-                          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', padding: '14px 16px', borderRadius: '16px' }}>
+                          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', padding: '14px 16px', borderRadius: '16px' }}>
                             <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                              <div style={{ width: '40px', height: '40px', borderRadius: '20px', background: 'linear-gradient(135deg, #3a3a40, #222)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '16px', fontWeight: '800', color: 'white', flexShrink: 0 }}>
+                              <div style={{ width: '40px', height: '40px', borderRadius: '20px', background: 'linear-gradient(135deg, #3a3a40, #ffffff)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '16px', fontWeight: '800', color: 'white', flexShrink: 0 }}>
                                 {selectedClient.name.charAt(0)}
                               </div>
                               <div style={{ minWidth: 0 }}>
@@ -341,12 +341,12 @@ const NewAppointmentModal = ({ isOpen, onClose, onSuccess, rates }) => {
                           <div style={{ position: 'relative' }}>
                             <div style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
                               <Search style={{ position: 'absolute', left: '14px', pointerEvents: 'none' }} size={18} color="rgba(255,255,255,0.35)" />
-                              <input type="text" placeholder="Cédula o nombre..." value={clientSearchTerm} onChange={(e) => handleClientSearch(e.target.value)} style={{ width: '100%', padding: '0 14px 0 42px', height: '46px', fontSize: '14px', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '14px', color: 'white', outline: 'none', fontWeight: '500', transition: 'all 0.2s' }} onFocus={e => { e.target.style.borderColor = 'rgba(17, 17, 17,0.4)'; e.target.style.background = 'rgba(255,255,255,0.08)'; }} onBlur={e => { e.target.style.borderColor = 'rgba(255,255,255,0.08)'; e.target.style.background = 'rgba(255,255,255,0.05)'; }} />
+                              <input type="text" placeholder="Cédula o nombre..." value={clientSearchTerm} onChange={(e) => handleClientSearch(e.target.value)} style={{ width: '100%', padding: '0 14px 0 42px', height: '46px', fontSize: '14px', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', borderRadius: '14px', color: 'white', outline: 'none', fontWeight: '500', transition: 'all 0.2s' }} onFocus={e => { e.target.style.borderColor = 'rgba(17, 17, 17,0.4)'; e.target.style.background = 'rgba(255,255,255,0.08)'; }} onBlur={e => { e.target.style.borderColor = 'rgba(255,255,255,0.08)'; e.target.style.background = 'rgba(255,255,255,0.05)'; }} />
                             </div>
                             {!selectedClient && clientSearchResults.length > 0 && (
-                              <div className="animate-scale-in" style={{ position: 'absolute', top: 'calc(100% + 6px)', left: 0, right: 0, background: 'var(--bg-secondary)', border: '1px solid rgba(255,255,255,0.12)', borderRadius: '14px', overflow: 'hidden', zIndex: 200, backdropFilter: 'blur(30px)', boxShadow: '0 16px 40px rgba(0,0,0,0.5)', maxHeight: '200px', overflowY: 'auto' }}>
+                              <div className="animate-scale-in" style={{ position: 'absolute', top: 'calc(100% + 6px)', left: 0, right: 0, background: 'var(--bg-secondary)', border: '1px solid rgba(0, 0, 0, 0.08)', borderRadius: '14px', overflow: 'hidden', zIndex: 200, backdropFilter: 'blur(30px)', boxShadow: '0 16px 40px rgba(0,0,0,0.5)', maxHeight: '200px', overflowY: 'auto' }}>
                                 {clientSearchResults.map(c => (
-                                  <div key={c.id} onClick={() => handleSelectClient(c)} style={{ padding: '12px 16px', cursor: 'pointer', borderBottom: '1px solid rgba(255,255,255,0.04)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }} onMouseOver={e => e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.06)'} onMouseOut={e => e.currentTarget.style.backgroundColor = 'transparent'}>
+                                  <div key={c.id} onClick={() => handleSelectClient(c)} style={{ padding: '12px 16px', cursor: 'pointer', borderBottom: '1px solid rgba(0, 0, 0, 0.08)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }} onMouseOver={e => e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.06)'} onMouseOut={e => e.currentTarget.style.backgroundColor = 'transparent'}>
                                     <div>
                                       <div style={{ fontWeight: '700', fontSize: '13px', color: 'white' }}>{c.name}</div>
                                       {c.phone && <div style={{ fontSize: '11px', color: 'rgba(255,255,255,0.4)' }}>{c.phone}</div>}
@@ -369,8 +369,8 @@ const NewAppointmentModal = ({ isOpen, onClose, onSuccess, rates }) => {
                             return (
                               <div key={s.id} onClick={() => setNewApp({...newApp, staffId: s.id})} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '6px', cursor: 'pointer' }}>
                                 <div style={{ width: '52px', height: '52px', borderRadius: '26px', padding: '2px', background: isSel ? 'linear-gradient(135deg, var(--champagne-dark), var(--champagne-light))' : 'rgba(255,255,255,0.08)', transition: 'all 0.25s', transform: isSel ? 'scale(1.08)' : 'scale(1)' }}>
-                                  <div style={{ width: '100%', height: '100%', borderRadius: '50%', overflow: 'hidden', background: 'var(--bg-secondary)', border: '2px solid rgba(26,26,30,0.95)' }}>
-                                    {s.image_url ? <img loading="lazy" src={s.image_url} alt={s.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} /> : <span style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%', fontSize: '18px', fontWeight: '800', color: 'white', background: 'linear-gradient(135deg, #444, #222)' }}>{s.name.charAt(0)}</span>}
+                                  <div style={{ width: '100%', height: '100%', borderRadius: '50%', overflow: 'hidden', background: 'var(--bg-secondary)', border: '2px solid rgba(0,0,0,0.15)' }}>
+                                    {s.image_url ? <img loading="lazy" src={s.image_url} alt={s.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} /> : <span style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%', fontSize: '18px', fontWeight: '800', color: 'white', background: 'linear-gradient(135deg, #444, #ffffff)' }}>{s.name.charAt(0)}</span>}
                                   </div>
                                 </div>
                                 <span style={{ fontSize: '11px', color: isSel ? 'white' : 'rgba(255,255,255,0.45)', fontWeight: isSel ? '700' : '500' }}>{s.name.split(' ')[0]}</span>
@@ -411,7 +411,7 @@ const NewAppointmentModal = ({ isOpen, onClose, onSuccess, rates }) => {
                   </div>
 
                   {/* Sticky Footer */}
-                  <div style={{ background: 'var(--bg-secondary)', backdropFilter: 'blur(20px)', borderTop: '1px solid rgba(255,255,255,0.06)', padding: '18px 28px', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '20px' }}>
+                  <div style={{ background: 'var(--bg-secondary)', backdropFilter: 'blur(20px)', borderTop: '1px solid rgba(0, 0, 0, 0.08)', padding: '18px 28px', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '20px' }}>
                     <div style={{ minWidth: 0 }}>
                       <div style={{ fontSize: '11px', color: 'rgba(255,255,255,0.4)', fontWeight: '700', letterSpacing: '0.5px', textTransform: 'uppercase' }}>Total Estimado</div>
                       <div style={{ fontSize: '28px', fontWeight: '800', color: 'white', lineHeight: '1.1' }}>${totalEstimated.toFixed(2)}</div>
@@ -434,7 +434,7 @@ const NewAppointmentModal = ({ isOpen, onClose, onSuccess, rates }) => {
                   <header style={{ marginBottom: '24px' }}>
                     <button 
                       onClick={() => setStep(1)}
-                      style={{ background: 'rgba(255,255,255,0.05)', border: 'none', color: 'var(--gold-primary)', padding: '6px 12px', borderRadius: '10px', display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '12px', fontWeight: '800', cursor: 'pointer', marginBottom: '12px' }}
+                      style={{ background: 'rgba(0, 0, 0, 0.04)', border: 'none', color: 'var(--gold-primary)', padding: '6px 12px', borderRadius: '10px', display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '12px', fontWeight: '800', cursor: 'pointer', marginBottom: '12px' }}
                     >
                       <ArrowLeft size={14} /> VOLVER AL FORMULARIO
                     </button>
@@ -447,7 +447,7 @@ const NewAppointmentModal = ({ isOpen, onClose, onSuccess, rates }) => {
                   </header>
 
                   {/* DATE NAVIGATOR */}
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px', backgroundColor: 'var(--bg-secondary)', padding: '10px 16px', borderRadius: '14px', border: '1px solid rgba(255,255,255,0.05)' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px', backgroundColor: 'var(--bg-secondary)', padding: '10px 16px', borderRadius: '14px', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
                     <button 
                       onClick={() => {
                         const prev = new Date(selectedDate);
@@ -508,7 +508,7 @@ const NewAppointmentModal = ({ isOpen, onClose, onSuccess, rates }) => {
                                 fontWeight: '800',
                                 cursor: slot.isAvailable ? 'pointer' : 'not-allowed',
                                 backgroundColor: isSelected ? 'var(--gold-primary)' : slot.isAvailable ? 'rgba(255,255,255,0.04)' : 'rgba(255,255,255,0.01)',
-                                border: isSelected ? 'none' : '1px solid rgba(255,255,255,0.06)',
+                                border: isSelected ? 'none' : '1px solid rgba(0, 0, 0, 0.08)',
                                 color: isSelected ? 'black' : slot.isAvailable ? 'white' : 'rgba(255,255,255,0.2)',
                                 transition: 'background-color 0.2s, color 0.2s',
                                 textDecoration: !slot.isAvailable ? 'line-through' : 'none'
@@ -530,7 +530,7 @@ const NewAppointmentModal = ({ isOpen, onClose, onSuccess, rates }) => {
                       style={{ 
                         flex: 0.8, 
                         background: 'none', 
-                        border: '1px solid rgba(255,255,255,0.1)', 
+                        border: '1px solid rgba(0, 0, 0, 0.08)', 
                         color: 'rgba(255,255,255,0.8)', 
                         height: '44px',
                         borderRadius: '12px', 

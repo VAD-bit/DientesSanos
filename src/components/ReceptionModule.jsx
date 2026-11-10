@@ -676,14 +676,14 @@ const ReceptionModule = ({ isMobile, rates }) => {
               </div>
               <button 
                 onClick={handleCreateClient}
-                style={{ background: 'rgba(255, 255, 255,0.1)', border: 'none', color: 'var(--gold-primary)', padding: '6px 12px', borderRadius: '10px', fontSize: '12px', fontWeight: '800', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '6px' }}
+                style={{ background: 'rgba(0, 0, 0, 0.04)', border: 'none', color: 'var(--gold-primary)', padding: '6px 12px', borderRadius: '10px', fontSize: '12px', fontWeight: '800', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '6px' }}
               >
                 <UserPlus size={14} /> Nuevo
               </button>
             </div>
 
             {selectedClient ? (
-              <div className="animate-scale-in" style={{ padding: '20px', backgroundColor: 'rgba(255, 255, 255, 0.02)', borderRadius: '16px', border: '1px solid rgba(255, 255, 255, 0.15)', color: '#ffffff' }}>
+              <div className="animate-scale-in" style={{ padding: '20px', backgroundColor: 'rgba(0, 0, 0, 0.04)', borderRadius: '16px', border: '1px solid rgba(0, 0, 0, 0.08)', color: '#ffffff' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                   <div>
                     <div style={{ fontWeight: '800', fontSize: '18px', color: '#ffffff' }}>{selectedClient.name}</div>
@@ -694,8 +694,8 @@ const ReceptionModule = ({ isMobile, rates }) => {
                       marginTop: '6px',
                       padding: '3px 8px', 
                       borderRadius: '6px', 
-                      backgroundColor: 'rgba(255, 255, 255, 0.08)', 
-                      border: '1px solid rgba(255, 255, 255, 0.15)',
+                      backgroundColor: 'rgba(0, 0, 0, 0.04)', 
+                      border: '1px solid rgba(0, 0, 0, 0.08)',
                       fontSize: '11px', 
                       fontWeight: '800', 
                       color: 'var(--gold-primary)',
@@ -723,8 +723,8 @@ const ReceptionModule = ({ isMobile, rates }) => {
                       paddingRight: '54px', 
                       height: '52px',
                       borderRadius: '16px',
-                      background: 'rgba(255, 255, 255, 0.03)',
-                      border: '1px solid rgba(255, 255, 255, 0.1)',
+                      background: 'rgba(0, 0, 0, 0.04)',
+                      border: '1px solid rgba(0, 0, 0, 0.08)',
                       color: 'white',
                       fontSize: '14px',
                       outline: 'none',
@@ -755,7 +755,7 @@ const ReceptionModule = ({ isMobile, rates }) => {
                   <div className="animate-scale-in" style={{ 
                     position: 'absolute', top: '100%', left: 0, right: 0, 
                     marginTop: '8px', background: 'var(--bg-secondary)', 
-                    border: '1px solid rgba(255,255,255,0.1)', borderRadius: '12px', 
+                    border: '1px solid rgba(0, 0, 0, 0.08)', borderRadius: '12px', 
                     overflow: 'hidden', zIndex: 10, backdropFilter: 'blur(10px)',
                     boxShadow: '0 10px 40px rgba(0,0,0,0.5)'
                   }}>
@@ -763,7 +763,7 @@ const ReceptionModule = ({ isMobile, rates }) => {
                       <div 
                         key={c.id} 
                         onClick={() => handleSelectClient(c)}
-                        style={{ padding: '12px 16px', cursor: 'pointer', borderBottom: '1px solid rgba(255,255,255,0.05)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
+                        style={{ padding: '12px 16px', cursor: 'pointer', borderBottom: '1px solid rgba(0, 0, 0, 0.08)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
                         onMouseOver={(e) => e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255,0.1)'}
                         onMouseOut={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
                       >
@@ -814,11 +814,11 @@ const ReceptionModule = ({ isMobile, rates }) => {
                     <span style={{ display: 'block', color: 'var(--gold-primary)', fontSize: '9px', fontWeight: 950, letterSpacing: '1px', textTransform: 'uppercase' }}>Orden en preparación</span>
                     <strong style={{ display: 'block', marginTop: '2px', color: '#fff', fontSize: '14px' }}>{orderItemCount} {orderItemCount === 1 ? 'artículo' : 'artículos'}</strong>
                   </div>
-                  <span style={{ padding: '5px 9px', borderRadius: '999px', color: '#cfcfd2', background: 'rgba(255,255,255,.055)', border: '1px solid rgba(255,255,255,.08)', fontSize: '9px', fontWeight: 850 }}>LISTA PARA ASIGNAR</span>
+                  <span style={{ padding: '5px 9px', borderRadius: '999px', color: '#cfcfd2', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', fontSize: '9px', fontWeight: 850 }}>LISTA PARA ASIGNAR</span>
                 </div>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '7px' }}>
                   {selectedServices.map(s => (
-                    <div key={s.id} className="reception-order-row" style={{ minHeight: '62px', padding: '9px 9px 9px 10px', display: 'grid', gridTemplateColumns: '38px minmax(0,1fr) auto 36px', alignItems: 'center', gap: '10px', borderRadius: '14px', background: 'rgba(255,255,255,.035)', border: '1px solid rgba(255,255,255,.065)' }}>
+                    <div key={s.id} className="reception-order-row" style={{ minHeight: '62px', padding: '9px 9px 9px 10px', display: 'grid', gridTemplateColumns: '38px minmax(0,1fr) auto 36px', alignItems: 'center', gap: '10px', borderRadius: '14px', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
                       <span style={{ width: '38px', height: '38px', display: 'grid', placeItems: 'center', borderRadius: '11px', color: 'var(--gold-primary)', background: 'rgba(17, 17, 17,.11)', border: '1px solid rgba(17, 17, 17,.2)' }}><Scissors size={17} /></span>
                       <div style={{ minWidth: 0 }}><span style={{ display: 'block', color: 'var(--gold-primary)', fontSize: '8px', fontWeight: 950, letterSpacing: '.7px' }}>SERVICIO</span><strong style={{ display: 'block', marginTop: '2px', color: '#fff', fontSize: '13px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{s.name}</strong></div>
                       <div style={{ textAlign: 'right' }}>
@@ -867,7 +867,7 @@ const ReceptionModule = ({ isMobile, rates }) => {
                   ))}
                   {selectedProducts.map(p => (
                     <div key={p.id} className="reception-order-row" style={{ minHeight: '66px', padding: '9px 9px 9px 10px', display: 'grid', gridTemplateColumns: '42px minmax(0,1fr) auto 36px', alignItems: 'center', gap: '10px', borderRadius: '14px', background: String(p.inventory_type).toLowerCase() === 'cafe' ? 'rgba(255,159,10,.035)' : 'rgba(48,209,88,.035)', border: `1px solid ${String(p.inventory_type).toLowerCase() === 'cafe' ? 'rgba(255,159,10,.13)' : 'rgba(48,209,88,.13)'}` }}>
-                      <span style={{ width: '42px', height: '42px', display: 'grid', placeItems: 'center', overflow: 'hidden', borderRadius: '12px', color: String(p.inventory_type).toLowerCase() === 'cafe' ? '#ff9f0a' : '#30d158', background: 'rgba(255,255,255,.045)', border: '1px solid rgba(255,255,255,.09)' }}>{p.image_url ? <img src={p.image_url} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} /> : <ShoppingBag size={18} />}</span>
+                      <span style={{ width: '42px', height: '42px', display: 'grid', placeItems: 'center', overflow: 'hidden', borderRadius: '12px', color: String(p.inventory_type).toLowerCase() === 'cafe' ? '#ff9f0a' : '#30d158', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)' }}>{p.image_url ? <img src={p.image_url} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} /> : <ShoppingBag size={18} />}</span>
                       <div style={{ minWidth: 0 }}><span style={{ display: 'block', color: String(p.inventory_type).toLowerCase() === 'cafe' ? '#ffad33' : '#54d37b', fontSize: '8px', fontWeight: 950, letterSpacing: '.65px' }}>{getInventorySalesLabel(p).toUpperCase()} {Number(p.quantity || 1) > 1 ? `· ×${p.quantity}` : ''}</span><strong style={{ display: 'block', marginTop: '2px', color: '#fff', fontSize: '13px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{p.name}</strong></div>
                       <div style={{ textAlign: 'right' }}>
                         <strong style={{ display: 'block', color: '#fff', fontSize: '12px' }}>{formatBs(Number(p.price) * Number(p.quantity || 1) * exchangeRate)} Bs</strong>
@@ -877,7 +877,7 @@ const ReceptionModule = ({ isMobile, rates }) => {
                     </div>
                   ))}
                 </div>
-                <div style={{ marginTop: '12px', padding: '13px 4px 2px', display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', gap: '14px', borderTop: '1px solid rgba(255,255,255,.09)' }}>
+                <div style={{ marginTop: '12px', padding: '13px 4px 2px', display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', gap: '14px', borderTop: '1px solid rgba(0, 0, 0, 0.08)' }}>
                   <div><span style={{ display: 'block', color: 'var(--text-muted)', fontSize: '8px', fontWeight: 900, letterSpacing: '.8px' }}>TOTAL DE LA ORDEN</span><small style={{ color: 'var(--text-secondary)', fontSize: '10px' }}>Incluye servicios y consumos</small></div>
                   <div style={{ textAlign: 'right' }}><strong style={{ display: 'block', color: 'var(--gold-primary)', fontSize: '19px', letterSpacing: '-.35px' }}>{formatBs(orderTotalUsd * exchangeRate)} Bs</strong><small style={{ color: 'var(--text-muted)', fontSize: '10px' }}>REF. ${formatUsd(orderTotalUsd)}</small></div>
                 </div>
@@ -937,7 +937,7 @@ const ReceptionModule = ({ isMobile, rates }) => {
                   <div key={group.id}>
                     <label style={{ display: 'block', fontSize: '11px', fontWeight: '800', color: 'var(--text-muted)', marginBottom: '12px' }}>{group.label}</label>
                     {group.members.length === 0 ? (
-                      <div style={{ padding: '14px 16px', borderRadius: '14px', border: '1px dashed rgba(255,255,255,0.08)', color: 'rgba(255,255,255,0.3)', fontSize: '11px' }}>
+                      <div style={{ padding: '14px 16px', borderRadius: '14px', border: '1px dashed rgba(0, 0, 0, 0.08)', color: 'rgba(255,255,255,0.3)', fontSize: '11px' }}>
                         No hay personal disponible en este grupo
                       </div>
                     ) : (
@@ -996,7 +996,7 @@ const ReceptionModule = ({ isMobile, rates }) => {
                           position: 'absolute', 
                           top: 0, 
                           left: 0, 
-                          backgroundColor: 'rgba(255,255,255,0.1)', 
+                          backgroundColor: 'rgba(0, 0, 0, 0.04)', 
                           color: 'var(--gold-primary)', 
                           fontSize: '9px', 
                           padding: '2px 6px', 
@@ -1074,8 +1074,8 @@ const ReceptionModule = ({ isMobile, rates }) => {
                           style={{
                             padding: '4px 6px',
                             borderRadius: '8px',
-                            backgroundColor: 'rgba(255,255,255,0.04)',
-                            border: '1px solid rgba(255,255,255,0.08)',
+                            backgroundColor: 'rgba(0, 0, 0, 0.04)',
+                            border: '1px solid rgba(0, 0, 0, 0.08)',
                             color: 'var(--text-secondary)',
                             fontSize: '9px',
                             fontWeight: '800',
@@ -1107,7 +1107,7 @@ const ReceptionModule = ({ isMobile, rates }) => {
               </div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
                 {upcomingAppointments.length === 0 ? (
-                  <div style={{ padding: '20px', textAlign: 'center', color: 'rgba(255,255,255,0.4)', fontSize: '12px', border: '1px dashed rgba(255,255,255,0.1)', borderRadius: '16px' }}>No hay más citas para hoy</div>
+                  <div style={{ padding: '20px', textAlign: 'center', color: 'rgba(255,255,255,0.4)', fontSize: '12px', border: '1px dashed rgba(0, 0, 0, 0.08)', borderRadius: '16px' }}>No hay más citas para hoy</div>
                 ) : (
                   upcomingAppointments.map((app, idx) => (
                     <div 
@@ -1116,8 +1116,8 @@ const ReceptionModule = ({ isMobile, rates }) => {
                       style={{ 
                         padding: '16px 20px', 
                         borderRadius: '20px', 
-                        background: 'rgba(255,255,255,0.02)',
-                        border: '1px solid rgba(255,255,255,0.05)',
+                        background: 'rgba(0, 0, 0, 0.04)',
+                        border: '1px solid rgba(0, 0, 0, 0.08)',
                         display: 'flex',
                         justifyContent: 'space-between',
                         alignItems: 'center',
@@ -1133,8 +1133,8 @@ const ReceptionModule = ({ isMobile, rates }) => {
                           justifyContent: 'center',
                           padding: '6px 12px',
                           borderRadius: '12px',
-                          background: 'rgba(255, 255, 255, 0.08)',
-                          border: '1px solid rgba(255, 255, 255, 0.25)',
+                          background: 'rgba(0, 0, 0, 0.04)',
+                          border: '1px solid rgba(0, 0, 0, 0.08)',
                           minWidth: '92px'
                         }}>
                           <span style={{ fontSize: '11px', fontWeight: '900', color: 'var(--gold-primary)', whiteSpace: 'nowrap' }}>
@@ -1152,7 +1152,7 @@ const ReceptionModule = ({ isMobile, rates }) => {
                         <div>
                           <div style={{ fontWeight: '800', fontSize: '14px', color: 'white' }}>{app.clients?.name}</div>
                           <div style={{ fontSize: '11px', color: 'var(--text-secondary)', marginTop: '2px', display: 'flex', alignItems: 'center', gap: '4px' }}>
-                            <span style={{ width: '4px', height: '4px', borderRadius: '50%', backgroundColor: 'rgba(255,255,255,0.3)' }} />
+                            <span style={{ width: '4px', height: '4px', borderRadius: '50%', backgroundColor: 'rgba(0, 0, 0, 0.04)' }} />
                             <span>Atendido por: <strong>{app.staff?.name}</strong></span>
                           </div>
                         </div>
@@ -1247,7 +1247,7 @@ const ReceptionModule = ({ isMobile, rates }) => {
                 </p>
 
                 {/* Detailed Summary for Confirmation */}
-                <div style={{ backgroundColor: 'rgba(255,255,255,0.03)', borderRadius: '20px', padding: '20px', marginBottom: '32px', textAlign: 'left', border: '1px solid rgba(255,255,255,0.05)' }}>
+                <div style={{ backgroundColor: 'rgba(0, 0, 0, 0.04)', borderRadius: '20px', padding: '20px', marginBottom: '32px', textAlign: 'left', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
                   <div style={{ fontSize: '10px', fontWeight: '900', color: 'var(--gold-primary)', letterSpacing: '1px', marginBottom: '12px', textTransform: 'uppercase' }}>Resumen de Atención</div>
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
                     {selectedServices.map(s => (
@@ -1264,9 +1264,9 @@ const ReceptionModule = ({ isMobile, rates }) => {
                             marginLeft: '24px', 
                             marginTop: '6px',
                             padding: '8px 12px',
-                            backgroundColor: 'rgba(255, 255, 255, 0.02)',
+                            backgroundColor: 'rgba(0, 0, 0, 0.04)',
                             borderRadius: '10px',
-                            border: '1px solid rgba(255, 255, 255, 0.04)'
+                            border: '1px solid rgba(0, 0, 0, 0.08)'
                           }}>
                             <div style={{ fontSize: '9px', fontWeight: '900', color: 'var(--gold-primary)', textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '2px' }}>Incluye:</div>
                             <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '6px' }}>
@@ -1293,7 +1293,7 @@ const ReceptionModule = ({ isMobile, rates }) => {
                         <span style={{ fontSize: '13px', color: '#32d74b' }}>{p.name}</span>
                       </div>
                     ))}
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginTop: '6px', paddingTop: '10px', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginTop: '6px', paddingTop: '10px', borderTop: '1px solid rgba(0, 0, 0, 0.08)' }}>
                       <Users size={14} color="var(--text-muted)" />
                       <span style={{ fontSize: '13px', color: 'var(--text-muted)' }}>Asignado: <span style={{ color: 'white', fontWeight: '700' }}>{staff.find(s => s.id === formData.staffId)?.name || 'No seleccionado'}</span></span>
                     </div>
@@ -1411,7 +1411,7 @@ const ReceptionModule = ({ isMobile, rates }) => {
 
       <style>{`
         .hover-item:hover {
-          background-color: rgba(255, 255, 255,0.1) !important;
+          background-color: rgba(0, 0, 0, 0.04) !important;
           transform: translateX(5px);
         }
 
@@ -1449,8 +1449,8 @@ const ReceptionModule = ({ isMobile, rates }) => {
 
         /* Frosted Actions Buttons (+ Servicio, + Extra, + Producto) */
         .action-add-btn {
-          background: rgba(255, 255, 255, 0.02) !important;
-          border: 1px dashed rgba(255, 255, 255, 0.1) !important;
+          background: rgba(0, 0, 0, 0.04) !important;
+          border: 1px dashed rgba(0, 0, 0, 0.08) !important;
           padding: 18px 12px !important;
           border-radius: 20px !important;
           font-weight: 850 !important;
@@ -1526,8 +1526,8 @@ const ReceptionModule = ({ isMobile, rates }) => {
           width: 100%;
           height: 100%;
           border-radius: 50%;
-          border: 1px solid rgba(255, 255, 255, 0.15);
-          background: radial-gradient(circle, rgba(255, 255, 255, 0.05) 0%, transparent 70%);
+          border: 1px solid rgba(0, 0, 0, 0.08);
+          background: radial-gradient(circle, rgba(0, 0, 0, 0.04) 0%, transparent 70%);
         }
         .radar-glow {
           position: absolute;
@@ -1548,8 +1548,8 @@ const ReceptionModule = ({ isMobile, rates }) => {
           gap: 6px;
           padding: 6px 14px;
           border-radius: 99px;
-          background: rgba(255, 255, 255, 0.1);
-          border: 1px solid rgba(255, 255, 255, 0.2);
+          background: rgba(0, 0, 0, 0.04);
+          border: 1px solid rgba(0, 0, 0, 0.08);
           color: var(--gold-primary);
           font-size: 11px;
           font-weight: 800;
@@ -1564,12 +1564,12 @@ const ReceptionModule = ({ isMobile, rates }) => {
         }
         .selection-modal-item:hover {
           transform: translateY(-2px) scale(1.008);
-          background: rgba(255, 255, 255, 0.04) !important;
-          border-color: rgba(255, 255, 255, 0.3) !important;
+          background: rgba(0, 0, 0, 0.04) !important;
+          border-color: rgba(0, 0, 0, 0.08) !important;
           box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
         }
         .selection-modal-item.is-selected:hover {
-          background: rgba(255, 255, 255, 0.1) !important;
+          background: rgba(0, 0, 0, 0.04) !important;
           border-color: var(--gold-primary) !important;
           box-shadow: 0 6px 20px rgba(255, 255, 255, 0.15);
         }
@@ -1595,8 +1595,8 @@ const ReceptionModule = ({ isMobile, rates }) => {
         }
         .upcoming-appointment-card:hover {
           transform: translateY(-2px);
-          background: rgba(255, 255, 255, 0.04) !important;
-          border-color: rgba(255, 255, 255, 0.25) !important;
+          background: rgba(0, 0, 0, 0.04) !important;
+          border-color: rgba(0, 0, 0, 0.08) !important;
           box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
         }
         .btn-premium-start {
@@ -1672,7 +1672,7 @@ const SelectionModal = ({ isOpen, onClose, title, icon, items, selectedItems, on
     <div style={{
       position: 'fixed', 
       inset: 0, 
-      backgroundColor: 'rgba(0,0,0,0.85)', 
+      backgroundColor: 'rgba(255, 255, 255, 0.9)', 
       backdropFilter: isOpen ? 'blur(10px)' : 'blur(0px)', 
       zIndex: 99999, 
       display: 'flex', 
@@ -1692,7 +1692,7 @@ const SelectionModal = ({ isOpen, onClose, title, icon, items, selectedItems, on
         display: 'flex', 
         flexDirection: 'column', 
         borderRadius: '32px', 
-        border: '1px solid rgba(255, 255, 255,0.2)', 
+        border: '1px solid rgba(0, 0, 0, 0.08)', 
         padding: '32px',
         transform: isOpen ? 'scale(1) translateY(0)' : 'scale(0.95) translateY(15px)',
         transition: 'transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.3s ease',
@@ -1703,7 +1703,7 @@ const SelectionModal = ({ isOpen, onClose, title, icon, items, selectedItems, on
             {icon}
             <h3 style={{ fontSize: '20px', fontWeight: '800' }}>{title}</h3>
           </div>
-          <button onClick={onClose} style={{ background: 'rgba(255,255,255,0.05)', border: 'none', borderRadius: '50%', width: '36px', height: '36px', color: 'white', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <button onClick={onClose} style={{ background: 'rgba(0, 0, 0, 0.04)', border: 'none', borderRadius: '50%', width: '36px', height: '36px', color: 'white', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
             <X size={20} />
           </button>
         </div>
@@ -1711,7 +1711,7 @@ const SelectionModal = ({ isOpen, onClose, title, icon, items, selectedItems, on
         {type === 'product' && (
           <div style={{ display: 'flex', gap: '8px', overflowX: 'auto', paddingBottom: '16px' }}>
             {Object.entries(INVENTORY_SALES_GROUPS).map(([value, label]) => (
-              <button key={value} type="button" onClick={() => setProductGroup(value)} style={{ padding: '9px 13px', borderRadius: '12px', border: productGroup === value ? '1px solid var(--gold-primary)' : '1px solid rgba(255,255,255,0.08)', background: productGroup === value ? 'rgba(17, 17, 17,0.16)' : 'rgba(255,255,255,0.03)', color: productGroup === value ? 'var(--gold-primary)' : 'rgba(255,255,255,0.7)', fontSize: '12px', fontWeight: '800', whiteSpace: 'nowrap', cursor: 'pointer' }}>{label}</button>
+              <button key={value} type="button" onClick={() => setProductGroup(value)} style={{ padding: '9px 13px', borderRadius: '12px', border: productGroup === value ? '1px solid var(--gold-primary)' : '1px solid rgba(0, 0, 0, 0.08)', background: productGroup === value ? 'rgba(17, 17, 17,0.16)' : 'rgba(255,255,255,0.03)', color: productGroup === value ? 'var(--gold-primary)' : 'rgba(255,255,255,0.7)', fontSize: '12px', fontWeight: '800', whiteSpace: 'nowrap', cursor: 'pointer' }}>{label}</button>
             ))}
           </div>
         )}
@@ -1730,7 +1730,7 @@ const SelectionModal = ({ isOpen, onClose, title, icon, items, selectedItems, on
                   style={{
                     padding: '16px 20px',
                     borderRadius: '20px',
-                    border: isSelected ? '1px solid var(--gold-primary)' : '1px solid rgba(255,255,255,0.05)',
+                    border: isSelected ? '1px solid var(--gold-primary)' : '1px solid rgba(0, 0, 0, 0.08)',
                     background: isSelected ? 'rgba(255, 255, 255,0.06)' : 'rgba(255,255,255,0.02)',
                     textAlign: 'left',
                     cursor: isOutOfStock ? 'not-allowed' : 'pointer',
@@ -1790,7 +1790,7 @@ const SelectionModal = ({ isOpen, onClose, title, icon, items, selectedItems, on
                             backgroundColor: isSelected ? 'rgba(255, 255, 255,0.1)' : 'rgba(255,255,255,0.04)',
                             padding: '4px 10px',
                             borderRadius: '8px',
-                            border: isSelected ? '1px solid rgba(255, 255, 255,0.25)' : '1px solid rgba(255,255,255,0.05)',
+                            border: isSelected ? '1px solid rgba(0, 0, 0, 0.08)' : '1px solid rgba(0, 0, 0, 0.08)',
                             whiteSpace: 'nowrap',
                             letterSpacing: '0.3px'
                           }}>

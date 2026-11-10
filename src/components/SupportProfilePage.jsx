@@ -90,17 +90,17 @@ const SupportProfilePage = ({ staffMember, isMobile }) => {
   return (
     <div className="animate-fade-in" style={{ display: 'flex', flexDirection: 'column', gap: 18, maxWidth: 920, margin: '0 auto', width: '100%', padding: isMobile ? '4px 0 90px' : '8px 0 40px' }}>
       {/* Header */}
-      <div className="glass-card" style={{ borderRadius: 24, padding: isMobile ? 20 : 26, border: '1px solid rgba(255,255,255,0.07)' }}>
+      <div className="glass-card" style={{ borderRadius: 24, padding: isMobile ? 20 : 26, border: '1px solid rgba(0, 0, 0, 0.08)' }}>
         <div style={{ display: 'flex', flexDirection: isMobile ? 'column' : 'row', alignItems: 'center', gap: isMobile ? 14 : 22, textAlign: isMobile ? 'center' : 'left' }}>
           <div style={{ position: 'relative', flexShrink: 0 }}>
-            <div style={{ width: 84, height: 84, borderRadius: '50%', overflow: 'hidden', display: 'grid', placeItems: 'center', background: 'var(--bg-secondary)', border: '2px solid rgba(17, 17, 17,.4)' }}>
+            <div style={{ width: 84, height: 84, borderRadius: '50%', overflow: 'hidden', display: 'grid', placeItems: 'center', background: 'var(--bg-secondary)', border: '2px solid rgba(0, 0, 0, 0.15)' }}>
               {staffMember?.image_url ? (
                 <img src={staffMember.image_url} alt={staffMember.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
               ) : (
                 <span style={{ fontSize: 38, fontWeight: 950, color: 'white', fontFamily: 'Outfit, var(--font-sans), system-ui' }}>{initial}</span>
               )}
             </div>
-            <span style={{ position: 'absolute', bottom: 4, right: 4, width: 16, height: 16, borderRadius: '50%', background: '#30d158', border: '3px solid #161616' }} />
+            <span style={{ position: 'absolute', bottom: 4, right: 4, width: 16, height: 16, borderRadius: '50%', background: '#30d158', border: '3px solid rgba(0, 0, 0, 0.15)' }} />
           </div>
           <div style={{ flex: 1 }}>
             <h2 style={{ fontSize: isMobile ? 26 : 30, fontWeight: 950, color: 'white', letterSpacing: '-0.6px', margin: '0 0 8px', fontFamily: 'Outfit, var(--font-sans), system-ui' }}>{staffMember?.name}</h2>
@@ -109,12 +109,12 @@ const SupportProfilePage = ({ staffMember, isMobile }) => {
                 <Shield size={12} /> {roleName}
               </span>
               {staffMember?.id_card && (
-                <span style={{ fontSize: 11, color: 'rgba(255,255,255,0.5)', fontWeight: 700, background: 'rgba(255,255,255,0.05)', padding: '4px 10px', borderRadius: 8, display: 'inline-flex', alignItems: 'center', gap: 4 }}>
+                <span style={{ fontSize: 11, color: 'rgba(255,255,255,0.5)', fontWeight: 700, background: 'rgba(0, 0, 0, 0.04)', padding: '4px 10px', borderRadius: 8, display: 'inline-flex', alignItems: 'center', gap: 4 }}>
                   <Tag size={10} /> ID: {staffMember.id_card}
                 </span>
               )}
               {staffMember?.phone && (
-                <span style={{ fontSize: 11, color: 'rgba(255,255,255,0.5)', fontWeight: 700, background: 'rgba(255,255,255,0.05)', padding: '4px 10px', borderRadius: 8, display: 'inline-flex', alignItems: 'center', gap: 4 }}>
+                <span style={{ fontSize: 11, color: 'rgba(255,255,255,0.5)', fontWeight: 700, background: 'rgba(0, 0, 0, 0.04)', padding: '4px 10px', borderRadius: 8, display: 'inline-flex', alignItems: 'center', gap: 4 }}>
                   <Smartphone size={10} /> {staffMember.phone}
                 </span>
               )}
@@ -128,14 +128,14 @@ const SupportProfilePage = ({ staffMember, isMobile }) => {
         <SkeletonGrid items={3} itemHeight={110} minWidth={200} />
       ) : (
         <>
-          <div className="glass-card" style={{ padding: isMobile ? 20 : 24, borderRadius: 22, border: '1px solid rgba(17, 17, 17,.2)', background: 'linear-gradient(135deg, rgba(17, 17, 17,.1), rgba(255,255,255,.02))' }}>
+          <div className="glass-card" style={{ padding: isMobile ? 20 : 24, borderRadius: 22, border: '1px solid rgba(17, 17, 17,.2)', background: 'linear-gradient(135deg, rgba(17, 17, 17,.1), rgba(0, 0, 0, 0.04))' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 12, flexWrap: 'wrap' }}>
               <div>
                 <span style={{ color: 'var(--gold-primary)', fontSize: 11, fontWeight: 900, letterSpacing: 0.8, textTransform: 'uppercase' }}>Salario mensual asignado</span>
                 <h3 style={{ margin: '6px 0 2px', fontSize: isMobile ? 30 : 36, color: 'white', fontFamily: 'Outfit, var(--font-sans), system-ui', fontWeight: 950 }}>{fmtUsd(monthlySalaryUsd)}</h3>
                 <span style={{ color: 'var(--text-secondary)', fontSize: 12, textTransform: 'capitalize' }}>{monthLabel()}</span>
               </div>
-              <div style={{ width: 46, height: 46, borderRadius: 14, background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.15)', display: 'grid', placeItems: 'center', flexShrink: 0 }}>
+              <div style={{ width: 46, height: 46, borderRadius: 14, background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', display: 'grid', placeItems: 'center', flexShrink: 0 }}>
                 <Wallet size={20} color="var(--gold-primary)" />
               </div>
             </div>
@@ -146,8 +146,8 @@ const SupportProfilePage = ({ staffMember, isMobile }) => {
                   <span style={{ color: 'var(--text-secondary)' }}>Pagado este mes: <strong style={{ color: '#30d158' }}>{fmtUsd(paidMonthUsd)}</strong></span>
                   <span style={{ color: 'var(--text-secondary)' }}>Pendiente: <strong style={{ color: pendingSalaryUsd > 0.01 ? '#ff9f0a' : '#30d158' }}>{fmtUsd(pendingSalaryUsd)}</strong></span>
                 </div>
-                <div style={{ height: 10, borderRadius: 999, background: 'rgba(255,255,255,0.08)', overflow: 'hidden' }}>
-                  <div style={{ width: `${salaryPct}%`, height: '100%', borderRadius: 999, background: salaryPct >= 100 ? '#30d158' : 'var(--gold-gradient, linear-gradient(90deg,#111111,#e8cfa0))', transition: 'width .5s ease' }} />
+                <div style={{ height: 10, borderRadius: 999, background: 'rgba(0, 0, 0, 0.04)', overflow: 'hidden' }}>
+                  <div style={{ width: `${salaryPct}%`, height: '100%', borderRadius: 999, background: salaryPct >= 100 ? '#30d158' : 'var(--gold-gradient, linear-gradient(90deg,#e8d4b0,#f5e9d5))', transition: 'width .5s ease' }} />
                 </div>
                 <div style={{ marginTop: 6, fontSize: 11, color: 'var(--text-muted)' }}>{salaryPct}% del salario cubierto · {fmtBs(paidMonthBs)} Bs pagados este mes</div>
               </div>
@@ -184,7 +184,7 @@ const SupportProfilePage = ({ staffMember, isMobile }) => {
           </div>
 
           {/* Historial de pagos y consumo */}
-          <div className="glass-card" style={{ padding: isMobile ? 18 : 20, borderRadius: 20, border: '1px solid rgba(255,255,255,.06)' }}>
+          <div className="glass-card" style={{ padding: isMobile ? 18 : 20, borderRadius: 20, border: '1px solid rgba(0, 0, 0, 0.08)' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 16, flexWrap: 'wrap' }}>
               <div>
                 <span style={{ color: 'var(--gold-primary)', fontSize: 11, fontWeight: 900, letterSpacing: 0.8, textTransform: 'uppercase' }}>Historial</span>
@@ -197,14 +197,14 @@ const SupportProfilePage = ({ staffMember, isMobile }) => {
             </div>
 
             {showHistory && (
-              <div className="animate-fade-in" style={{ marginTop: 16, paddingTop: 14, borderTop: '1px solid rgba(255,255,255,.08)', display: 'grid', gap: 8 }}>
+              <div className="animate-fade-in" style={{ marginTop: 16, paddingTop: 14, borderTop: '1px solid rgba(0, 0, 0, 0.08)', display: 'grid', gap: 8 }}>
                 {history.length === 0 ? (
                   <div style={{ padding: 18, textAlign: 'center', color: 'var(--text-muted)', fontSize: 12 }}>Aún no hay pagos ni consumo registrados.</div>
                 ) : (
                   history.map((item) => {
                     const isDebit = item.type === 'Consumo' || item.type === 'Adelanto';
                     return (
-                      <div key={item.id} style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr auto' : '110px 1fr 140px auto', gap: 10, alignItems: 'center', padding: isMobile ? 12 : '11px 12px', borderRadius: 12, background: 'rgba(255,255,255,.035)' }}>
+                      <div key={item.id} style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr auto' : '110px 1fr 140px auto', gap: 10, alignItems: 'center', padding: isMobile ? 12 : '11px 12px', borderRadius: 12, background: 'rgba(0, 0, 0, 0.04)' }}>
                         <div>
                           <span style={{ display: 'block', color: 'var(--text-muted)', fontSize: 11 }}>{new Date(item.date).toLocaleDateString('es-VE')}</span>
                           {isMobile && <span style={{ display: 'block', marginTop: 3, color: 'var(--text-secondary)', fontSize: 10 }}>{item.paymentMethod}</span>}

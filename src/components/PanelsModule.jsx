@@ -97,7 +97,7 @@ export default function PanelsModule({ isMobile, rates }) {
     const isSupport = isSupportStaff(selected);
     return (
       <section style={{ width: '100%' }}>
-        <button type="button" onClick={() => setSelected(null)} style={{ display: 'inline-flex', alignItems: 'center', gap: 8, marginBottom: 18, padding: '10px 14px', borderRadius: 12, border: '1px solid var(--border-color)', background: 'rgba(255,255,255,.04)', color: 'white', cursor: 'pointer', fontWeight: 800 }}>
+        <button type="button" onClick={() => setSelected(null)} style={{ display: 'inline-flex', alignItems: 'center', gap: 8, marginBottom: 18, padding: '10px 14px', borderRadius: 12, border: '1px solid var(--border-color)', background: 'rgba(0, 0, 0, 0.04)', color: 'white', cursor: 'pointer', fontWeight: 800 }}>
           <ArrowLeft size={17} /> Volver a Paneles
         </button>
         {isSupport
@@ -117,7 +117,7 @@ export default function PanelsModule({ isMobile, rates }) {
         </div>
 
         {availableFilters.length > 1 && (
-          <div className="panels-filters" style={{ display: 'flex', gap: 6, padding: 5, background: 'rgba(255,255,255,.03)', border: '1px solid var(--border-color)', borderRadius: 14, width: 'fit-content', marginBottom: 24, overflowX: 'auto', maxWidth: '100%' }}>
+          <div className="panels-filters" style={{ display: 'flex', gap: 6, padding: 5, background: 'rgba(0, 0, 0, 0.04)', border: '1px solid var(--border-color)', borderRadius: 14, width: 'fit-content', marginBottom: 24, overflowX: 'auto', maxWidth: '100%' }}>
             {availableFilters.map(item => (
               <button
                 key={item.key}
@@ -154,7 +154,7 @@ export default function PanelsModule({ isMobile, rates }) {
                     type="button"
                     onClick={() => openPanel(member)}
                     className="panel-recent-chip"
-                    style={{ flexShrink: 0, display: 'flex', alignItems: 'center', gap: 10, padding: '8px 16px 8px 8px', background: 'rgba(255,255,255,.03)', border: '1px solid var(--border-color)', borderRadius: 999, cursor: 'pointer' }}
+                    style={{ flexShrink: 0, display: 'flex', alignItems: 'center', gap: 10, padding: '8px 16px 8px 8px', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid var(--border-color)', borderRadius: 999, cursor: 'pointer' }}
                   >
                     <span style={{ width: 30, height: 30, borderRadius: '50%', display: 'grid', placeItems: 'center', fontSize: 12, fontWeight: 800, color: '#17140d', background: meta.color, overflow: 'hidden', flexShrink: 0 }}>
                       {member.image_url ? <img src={member.image_url} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} /> : initials(member.name)}
@@ -223,7 +223,7 @@ export default function PanelsModule({ isMobile, rates }) {
           aspect-ratio: 3 / 4;
           border-radius: 22px;
           border: 1px solid var(--border-color);
-          background: linear-gradient(155deg, #232327 0%, #131315 100%);
+          background: linear-gradient(155deg, #ffffff 0%, #ffffff 100%);
           overflow: hidden;
           cursor: pointer;
           padding: 0;
@@ -266,7 +266,7 @@ export default function PanelsModule({ isMobile, rates }) {
           display: flex;
           flex-direction: column;
           gap: 5px;
-          background: linear-gradient(to top, rgba(6,6,7,0.92) 10%, rgba(6,6,7,0.55) 60%, transparent 100%);
+          background: linear-gradient(to top, rgba(255, 255, 255, 0.9) 10%, rgba(255, 255, 255, 0.9) 60%, transparent 100%);
         }
         .panel-tile-plate strong { font-size: 15px; font-weight: 700; color: white; letter-spacing: -0.01em; }
         .panel-role-pill { display: inline-flex; align-items: center; gap: 5px; font-size: 10px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: var(--role-color); }

@@ -121,7 +121,7 @@ export default function BaristaPanel({ isMobile }) {
           alignItems: 'center',
           padding: '14px',
           borderRadius: '16px',
-          border: `1px solid ${served ? 'rgba(255,255,255,.08)' : urgent ? 'rgba(48,209,88,.35)' : 'rgba(17, 17, 17,.16)'}`,
+          border: `1px solid ${served ? 'rgba(0, 0, 0, 0.08)' : urgent ? 'rgba(48,209,88,.35)' : 'rgba(17, 17, 17,.16)'}`,
           background: served ? 'rgba(255,255,255,.015)' : urgent ? 'rgba(48,209,88,.06)' : 'rgba(255,255,255,.025)',
           opacity: served ? 0.5 : 1,
           transition: 'opacity 0.25s ease, border-color 0.25s ease, background 0.25s ease'
@@ -155,7 +155,7 @@ export default function BaristaPanel({ isMobile }) {
               display: 'grid',
               placeItems: 'center',
               cursor: 'pointer',
-              border: served ? '1px solid rgba(48,209,88,.5)' : '1px solid rgba(255,255,255,.14)',
+              border: served ? '1px solid rgba(48,209,88,.5)' : '1px solid rgba(0, 0, 0, 0.08)',
               background: served ? 'rgba(48,209,88,.18)' : 'rgba(255,255,255,.04)',
               color: served ? '#30d158' : 'var(--text-muted)',
               transition: 'all 0.2s ease'
@@ -170,7 +170,7 @@ export default function BaristaPanel({ isMobile }) {
 
   return <section style={{ width: '100%', maxWidth: '1180px', margin: '0 auto', paddingBottom: isMobile ? '100px' : '30px' }}>    <header style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '16px', marginBottom: '22px' }}>
       <div><div style={{ display: 'flex', alignItems: 'center', gap: '9px', color: 'var(--gold-primary)', fontSize: '11px', fontWeight: 900, letterSpacing: '1px' }}><Coffee size={17} /> CAFÉ DE CORTESÍA</div><h1 style={{ margin: '7px 0 4px', fontSize: isMobile ? '28px' : '36px', lineHeight: 1 }}>Panel de Barista</h1><p style={{ margin: 0, color: 'var(--text-secondary)', fontSize: '13px' }}>Solicitudes de bebidas de los clientes de hoy.</p></div>
-      <button type="button" onClick={() => loadRequests()} aria-label="Actualizar solicitudes" style={{ width: '44px', height: '44px', borderRadius: '13px', display: 'grid', placeItems: 'center', color: 'white', background: 'rgba(255,255,255,.04)', border: '1px solid rgba(255,255,255,.1)', cursor: 'pointer' }}><RefreshCw size={18} className={loading ? 'animate-spin' : ''} /></button>
+      <button type="button" onClick={() => loadRequests()} aria-label="Actualizar solicitudes" style={{ width: '44px', height: '44px', borderRadius: '13px', display: 'grid', placeItems: 'center', color: 'white', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', cursor: 'pointer' }}><RefreshCw size={18} className={loading ? 'animate-spin' : ''} /></button>
     </header>
     <div style={{ display: 'grid', gridTemplateColumns: isMobile ? 'minmax(0, 1fr) minmax(0, 1fr)' : 'repeat(3, minmax(0, 1fr))', gap: '12px', marginBottom: '20px' }}>
       {[{ label: 'Solicitudes de hoy', value: appointments.length, icon: <BellRing size={19} />, color: '#111111' }, { label: 'Pendientes', value: pending.length - servedIds.size, icon: <Clock3 size={19} />, color: '#ff9f0a' }, { label: 'Pacientes en sillón', value: active.length, icon: <CheckCircle2 size={19} />, color: '#30d158' }].map(({ label, value, icon, color }, index) => <article key={label} className="glass-card" style={{ padding: isMobile ? '15px' : '20px', borderRadius: '18px', gridColumn: isMobile && index === 2 ? '1 / -1' : 'auto' }}><span style={{ color }}>{icon}</span><strong style={{ display: 'block', marginTop: '9px', fontSize: '25px', color }}>{Math.max(0, value)}</strong><span style={{ color: 'var(--text-muted)', fontSize: '11px', fontWeight: 800 }}>{label}</span></article>)}

@@ -120,7 +120,7 @@ const CartSellerSelect = ({ value, onChange, options }) => {
         onClick={() => setIsOpen(!isOpen)}
         style={{
           background: isOpen ? 'rgba(255, 255, 255, 0.15)' : 'rgba(255, 255, 255, 0.08)',
-          border: '1px solid rgba(255, 255, 255, 0.3)',
+          border: '1px solid rgba(0, 0, 0, 0.08)',
           color: 'var(--gold-primary)',
           fontSize: '11px',
           fontWeight: '800',
@@ -150,7 +150,7 @@ const CartSellerSelect = ({ value, onChange, options }) => {
           top: 'calc(100% + 6px)',
           right: 0,
           background: 'var(--bg-secondary)',
-          border: '1px solid rgba(255,255,255,0.1)',
+          border: '1px solid rgba(0, 0, 0, 0.08)',
           borderRadius: '12px',
           boxShadow: '0 10px 40px rgba(0,0,0,0.8)',
           zIndex: 9999,
@@ -211,7 +211,7 @@ const PortaledDropdown = ({ isOpen, onClose, triggerRef, children, menuStyle }) 
         width: Math.max(pos.width, 200),
         background: 'var(--bg-secondary)',
         backdropFilter: 'blur(30px)',
-        border: '1.5px solid rgba(255, 255, 255, 0.25)',
+        border: '1.5px solid rgba(0, 0, 0, 0.08)',
         borderRadius: '14px',
         overflowY: 'auto',
         maxHeight: '220px',
@@ -289,16 +289,16 @@ const CartWrapper = ({ isMobile, showMobileCart, onClose, isModalView, children 
 
   if (isMobile) {
     const modalContent = (
-      <div style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.85)', zIndex: 99999, display: 'flex', alignItems: 'flex-end', animation: isExiting ? 'fadeOut 0.3s forwards' : 'fadeIn 0.2s' }}>
+      <div style={{ position: 'fixed', inset: 0, background: 'rgba(255, 255, 255, 0.9)', zIndex: 99999, display: 'flex', alignItems: 'flex-end', animation: isExiting ? 'fadeOut 0.3s forwards' : 'fadeIn 0.2s' }}>
         <div style={{ position: 'absolute', inset: 0 }} onClick={onClose} />
         <div style={{ width: '100%', maxHeight: '90vh', background: 'var(--bg-secondary)', borderRadius: '24px 24px 0 0', position: 'relative', animation: isExiting ? 'slideDownFadeOut 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards' : 'slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1)', display: 'flex', flexDirection: 'column' }}>
           {/* Header Fijo */}
-          <div style={{ padding: '16px 16px 10px 16px', borderBottom: '1px solid rgba(255,255,255,0.05)', flexShrink: 0 }}>
+          <div style={{ padding: '16px 16px 10px 16px', borderBottom: '1px solid rgba(0, 0, 0, 0.08)', flexShrink: 0 }}>
             {/* Drag Handle (Apple Style) */}
-            <div style={{ width: '40px', height: '4px', background: 'rgba(255,255,255,0.2)', borderRadius: '2px', margin: '0 auto 12px auto' }} />
+            <div style={{ width: '40px', height: '4px', background: 'rgba(0, 0, 0, 0.04)', borderRadius: '2px', margin: '0 auto 12px auto' }} />
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
               <h3 style={{ margin: 0, fontSize: '20px', fontWeight: '900' }}>Carrito</h3>
-              <button onClick={onClose} style={{ background: 'rgba(255,255,255,0.1)', border: 'none', borderRadius: '50%', padding: '6px', color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><X size={20} /></button>
+              <button onClick={onClose} style={{ background: 'rgba(0, 0, 0, 0.04)', border: 'none', borderRadius: '50%', padding: '6px', color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><X size={20} /></button>
             </div>
           </div>
           {/* Contenido Scrolleable */}
@@ -2003,7 +2003,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                     });
                   }
                 }}
-                style={{ width: '100%', paddingLeft: '48px', backgroundColor: 'rgba(255, 255, 255,0.05)', border: '1px solid rgba(255, 255, 255,0.2)', height: '48px', borderRadius: '14px', boxSizing: 'border-box' }}
+                style={{ width: '100%', paddingLeft: '48px', backgroundColor: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', height: '48px', borderRadius: '14px', boxSizing: 'border-box' }}
               />
             </div>
 
@@ -2085,7 +2085,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
               <label style={{ display: 'block', fontSize: '11px', fontWeight: '900', color: 'var(--gold-primary)', marginBottom: '16px', letterSpacing: '1px' }}>PRÓXIMAS CITAS (AGENDA HOY)</label>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
                 {groupedScheduledServices.length === 0 ? (
-                  <div style={{ padding: '20px', textAlign: 'center', color: 'rgba(255,255,255,0.1)', fontSize: '12px', border: '1px dashed rgba(255,255,255,0.1)', borderRadius: '16px' }}>No hay más citas para hoy</div>
+                  <div style={{ padding: '20px', textAlign: 'center', color: 'rgba(255,255,255,0.1)', fontSize: '12px', border: '1px dashed rgba(0, 0, 0, 0.08)', borderRadius: '16px' }}>No hay más citas para hoy</div>
                 ) : (
                   groupedScheduledServices.map(group => {
                     const firstApp = group.apps[0];
@@ -2147,7 +2147,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
               
               <button 
                 onClick={() => setShowProductModal(true)}
-                style={{ flex: 1, padding: isMobile ? '18px 8px' : '24px', borderRadius: isMobile ? '18px' : '24px', border: '1px solid rgba(255, 255, 255, 0.05)', background: 'rgba(255, 255, 255, 0.02)', backdropFilter: 'blur(10px)', WebkitBackdropFilter: 'blur(10px)', color: 'white', cursor: 'pointer', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '12px', transition: 'all 0.3s ease' }}
+                style={{ flex: 1, padding: isMobile ? '18px 8px' : '24px', borderRadius: isMobile ? '18px' : '24px', border: '1px solid rgba(0, 0, 0, 0.08)', background: 'rgba(0, 0, 0, 0.04)', backdropFilter: 'blur(10px)', WebkitBackdropFilter: 'blur(10px)', color: 'white', cursor: 'pointer', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '12px', transition: 'all 0.3s ease' }}
                 onMouseEnter={e => { e.currentTarget.style.background = 'rgba(255, 255, 255, 0.05)'; }}
                 onMouseLeave={e => { e.currentTarget.style.background = 'rgba(255, 255, 255, 0.02)'; }}
                 onPointerDown={e => { e.currentTarget.style.transform = 'scale(0.97)'; }}
@@ -2160,7 +2160,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
 
               <button 
                 onClick={() => setShowExtraModal(true)}
-                style={{ flex: 1, padding: isMobile ? '18px 8px' : '24px', borderRadius: isMobile ? '18px' : '24px', border: '1px solid rgba(255, 255, 255, 0.05)', background: 'rgba(255, 255, 255, 0.02)', backdropFilter: 'blur(10px)', WebkitBackdropFilter: 'blur(10px)', color: 'white', cursor: 'pointer', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '12px', transition: 'all 0.3s ease' }}
+                style={{ flex: 1, padding: isMobile ? '18px 8px' : '24px', borderRadius: isMobile ? '18px' : '24px', border: '1px solid rgba(0, 0, 0, 0.08)', background: 'rgba(0, 0, 0, 0.04)', backdropFilter: 'blur(10px)', WebkitBackdropFilter: 'blur(10px)', color: 'white', cursor: 'pointer', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '12px', transition: 'all 0.3s ease' }}
                 onMouseEnter={e => { e.currentTarget.style.background = 'rgba(255, 255, 255, 0.05)'; }}
                 onMouseLeave={e => { e.currentTarget.style.background = 'rgba(255, 255, 255, 0.02)'; }}
                 onPointerDown={e => { e.currentTarget.style.transform = 'scale(0.97)'; }}
@@ -2173,7 +2173,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
 
               <button 
                 onClick={() => setShowServiceModal(true)}
-                style={{ flex: 1, padding: isMobile ? '18px 8px' : '24px', borderRadius: isMobile ? '18px' : '24px', border: '1px solid rgba(255, 255, 255, 0.05)', background: 'rgba(255, 255, 255, 0.02)', backdropFilter: 'blur(10px)', WebkitBackdropFilter: 'blur(10px)', color: 'white', cursor: 'pointer', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '12px', transition: 'all 0.3s ease' }}
+                style={{ flex: 1, padding: isMobile ? '18px 8px' : '24px', borderRadius: isMobile ? '18px' : '24px', border: '1px solid rgba(0, 0, 0, 0.08)', background: 'rgba(0, 0, 0, 0.04)', backdropFilter: 'blur(10px)', WebkitBackdropFilter: 'blur(10px)', color: 'white', cursor: 'pointer', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '12px', transition: 'all 0.3s ease' }}
                 onMouseEnter={e => { e.currentTarget.style.background = 'rgba(255, 255, 255, 0.05)'; }}
                 onMouseLeave={e => { e.currentTarget.style.background = 'rgba(255, 255, 255, 0.02)'; }}
                 onPointerDown={e => { e.currentTarget.style.transform = 'scale(0.97)'; }}
@@ -2200,7 +2200,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                   <div style={{ fontSize: '28px', fontWeight: '900', color: 'var(--gold-primary)' }}>{groupedActiveServices.length}</div>
                   <div style={{ fontSize: '10px', color: 'var(--text-muted)', fontWeight: '700', letterSpacing: '0.5px', marginTop: '4px' }}>POR COBRAR</div>
                 </div>
-                <div style={{ padding: '16px', borderRadius: '16px', background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)', textAlign: 'center' }}>
+                <div style={{ padding: '16px', borderRadius: '16px', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', textAlign: 'center' }}>
                   <div style={{ fontSize: '28px', fontWeight: '900', color: 'white' }}>{groupedScheduledServices.length}</div>
                   <div style={{ fontSize: '10px', color: 'var(--text-muted)', fontWeight: '700', letterSpacing: '0.5px', marginTop: '4px' }}>EN COLA</div>
                 </div>
@@ -2238,7 +2238,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                     ) : (
                       <>
                         {selectedClient ? (
-                          <div className="animate-scale-in" style={{ padding: '12px 16px', background: 'rgba(255, 255, 255,0.1)', borderRadius: '12px', border: '1px solid rgba(255, 255, 255,0.2)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                          <div className="animate-scale-in" style={{ padding: '12px 16px', background: 'rgba(0, 0, 0, 0.04)', borderRadius: '12px', border: '1px solid rgba(0, 0, 0, 0.08)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                             <div>
                               <div style={{ fontWeight: '800', fontSize: isMobile ? '14px' : '16px' }}>{selectedClient.name}</div>
                               <div style={{ fontSize: '11px', color: 'var(--text-muted)' }}>V-{selectedClient.id_card}</div>
@@ -2271,7 +2271,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                               </button>
                               <button 
                                 onClick={() => setShowNewClientModal(true)} 
-                                style={{ padding: '0 10px', height: '40px', borderRadius: '12px', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', color: 'white', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '6px', flexShrink: 0 }}
+                                style={{ padding: '0 10px', height: '40px', borderRadius: '12px', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', color: 'white', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '6px', flexShrink: 0 }}
                               >
                                 <UserPlus size={16} />
                               </button>
@@ -2282,7 +2282,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                               <div className="animate-scale-in" style={{ 
                                 position: 'absolute', top: '100%', left: 0, right: 0, 
                                 marginTop: '8px', background: 'var(--bg-secondary)', 
-                                border: '1px solid rgba(255,255,255,0.1)', borderRadius: '12px', 
+                                border: '1px solid rgba(0, 0, 0, 0.08)', borderRadius: '12px', 
                                 overflow: 'hidden', zIndex: 10, backdropFilter: 'blur(10px)',
                                 boxShadow: '0 10px 40px rgba(0,0,0,0.5)'
                               }}>
@@ -2290,7 +2290,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                                   <div 
                                     key={c.id} 
                                     onClick={() => handleSelectDirectSaleClient(c)}
-                                    style={{ padding: '10px 16px', cursor: 'pointer', borderBottom: '1px solid rgba(255,255,255,0.05)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
+                                    style={{ padding: '10px 16px', cursor: 'pointer', borderBottom: '1px solid rgba(0, 0, 0, 0.08)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
                                     onMouseOver={(e) => e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255,0.1)'}
                                     onMouseOut={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
                                   >
@@ -2318,7 +2318,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                         setFixedRate(Number(Number(fixedRate).toFixed(2)));
                       }
                     }}
-                    style={{ width: isMobile ? '90px' : '100px', textAlign: 'right', fontWeight: '900', color: 'var(--gold-primary)', background: 'none', border: '1px solid rgba(255, 255, 255,0.3)', marginLeft: isMobile ? '0' : '10px' }}
+                    style={{ width: isMobile ? '90px' : '100px', textAlign: 'right', fontWeight: '900', color: 'var(--gold-primary)', background: 'none', border: '1px solid rgba(0, 0, 0, 0.08)', marginLeft: isMobile ? '0' : '10px' }}
                   />
                 </div>
               </div>
@@ -2328,7 +2328,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                   const sPrice = app.total_price !== undefined && app.total_price !== null && Number(app.total_price) > 0 ? Number(app.total_price) : (app.services?.price || 0);
                   const isLinked = app.client_id !== selectedApp?.client_id;
                   return (
-                    <div key={app.id} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '8px', borderBottom: '1px solid rgba(255,255,255,0.03)', paddingBottom: '8px' }}>
+                    <div key={app.id} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '8px', borderBottom: '1px solid rgba(0, 0, 0, 0.08)', paddingBottom: '8px' }}>
                       <span style={{ display: 'flex', alignItems: 'center', gap: '4px', fontSize: isMobile ? '11px' : '13px', flex: 1, minWidth: 0 }}>
                         {isLinked ? (
                           <button 
@@ -2473,7 +2473,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                       padding: '8px', 
                       borderRadius: '10px', 
                       border: '1px dashed var(--gold-primary)', 
-                      background: 'rgba(255, 255, 255,0.05)', 
+                      background: 'rgba(0, 0, 0, 0.04)', 
                       color: 'var(--gold-primary)', 
                       fontWeight: '800', 
                       fontSize: '10px', 
@@ -2490,13 +2490,13 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                   </button>
                 )}
                  {cart.map(p => (
-                  <div key={p.id} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '8px', borderBottom: '1px solid rgba(255,255,255,0.03)', paddingBottom: '8px' }}>
+                  <div key={p.id} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '8px', borderBottom: '1px solid rgba(0, 0, 0, 0.08)', paddingBottom: '8px' }}>
                     <span style={{ display: 'flex', alignItems: 'center', gap: '4px', fontSize: isMobile ? '11px' : '13px', flex: 1, minWidth: 0 }}>
                       <button onClick={() => handleRemoveProduct(p)} style={{ background: 'rgba(255,69,58,0.15)', border: 'none', color: '#ff453a', cursor: 'pointer', padding: isMobile ? '8px' : '4px', display: 'inline-flex', alignItems: 'center', flexShrink: 0, borderRadius: '50%', margin: isMobile ? '-4px' : '0' }}>
                         <XCircle size={14} style={{ opacity: 0.9 }} />
                       </button>
                       <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', color: 'rgba(255,255,255,0.9)' }}>{p.name}</span>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '2px', background: 'rgba(255,255,255,0.05)', padding: '1px 4px', borderRadius: '4px', flexShrink: 0 }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '2px', background: 'rgba(0, 0, 0, 0.04)', padding: '1px 4px', borderRadius: '4px', flexShrink: 0 }}>
                         <button 
                           onClick={() => handleDecrementProduct(p)}
                           style={{ background: 'none', border: 'none', color: 'var(--gold-primary)', cursor: 'pointer', padding: '1px', display: 'flex', alignItems: 'center' }}
@@ -2556,7 +2556,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                     appId: app.id
                   })) || []
                 ).map(extra => (
-                  <div key={extra.id} style={{ display: 'flex', justifyContent: 'space-between', color: 'var(--gold-primary)', alignItems: 'center', gap: '8px', borderBottom: '1px solid rgba(255,255,255,0.03)', paddingBottom: '8px' }}>
+                  <div key={extra.id} style={{ display: 'flex', justifyContent: 'space-between', color: 'var(--gold-primary)', alignItems: 'center', gap: '8px', borderBottom: '1px solid rgba(0, 0, 0, 0.08)', paddingBottom: '8px' }}>
                     <span style={{ display: 'flex', alignItems: 'center', gap: '4px', fontSize: isMobile ? '11px' : '13px', flex: 1, minWidth: 0 }}>
                       <button onClick={() => handleRemoveExtra(extra.id)} style={{ background: 'none', border: 'none', color: '#ff453a', cursor: 'pointer', padding: '2px', display: 'inline-flex', alignItems: 'center', flexShrink: 0 }}>
                         <XCircle size={isMobile ? 12 : 14} style={{ opacity: 0.8 }} />
@@ -2651,8 +2651,8 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                             width: '100%',
                             padding: isMobile ? '10px 12px' : '14px 16px',
                             borderRadius: '12px',
-                            background: 'rgba(255, 255, 255, 0.04)',
-                            border: '1px solid rgba(255, 255, 255, 0.25)',
+                            background: 'rgba(0, 0, 0, 0.04)',
+                            border: '1px solid rgba(0, 0, 0, 0.08)',
                             color: 'white',
                             fontSize: isMobile ? '12px' : '14px',
                             cursor: 'pointer',
@@ -2697,7 +2697,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                               cursor: 'pointer',
                               fontSize: isMobile ? '12px' : '14px',
                               color: 'rgba(255, 255, 255, 0.5)',
-                              borderBottom: '1px solid rgba(255, 255, 255, 0.03)',
+                              borderBottom: '1px solid rgba(0, 0, 0, 0.08)',
                               transition: 'background-color 0.2s'
                             }}
                             onMouseEnter={e => e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.03)'}
@@ -2720,7 +2720,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                                   cursor: 'pointer',
                                   fontSize: isMobile ? '12px' : '14px',
                                   color: 'white',
-                                  borderBottom: '1px solid rgba(255, 255, 255, 0.03)',
+                                  borderBottom: '1px solid rgba(0, 0, 0, 0.08)',
                                   display: 'flex',
                                   justifyContent: 'space-between',
                                   alignItems: 'center',
@@ -2747,14 +2747,14 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                 )}
 
                 {/* Dynamic Tips Section */}
-                <div style={{ paddingTop: '6px', borderTop: '1px dashed rgba(255,255,255,0.1)', marginBottom: '8px' }}>
+                <div style={{ paddingTop: '6px', borderTop: '1px dashed rgba(0, 0, 0, 0.08)', marginBottom: '8px' }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '6px' }}>
                     <span style={{ color: 'var(--text-secondary)', display: 'flex', alignItems: 'center', gap: '6px', fontSize: '11px', fontWeight: '800' }}>
                       <TrendingUp size={12} color="var(--gold-primary)" /> PROPINAS
                     </span>
                     <button 
                       onClick={() => setTips([...tips, { id: Date.now().toString(), staffId: allStaff[0]?.id || '', amount: 0, currency: 'USD' }])}
-                      style={{ background: 'rgba(255, 255, 255,0.1)', border: 'none', color: 'var(--gold-primary)', borderRadius: '8px', padding: '4px 8px', fontSize: '10px', fontWeight: '900', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '4px' }}
+                      style={{ background: 'rgba(0, 0, 0, 0.04)', border: 'none', color: 'var(--gold-primary)', borderRadius: '8px', padding: '4px 8px', fontSize: '10px', fontWeight: '900', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '4px' }}
                     >
                       <Plus size={12} /> AGREGAR PROPINA
                     </button>
@@ -2770,10 +2770,10 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                             onClick={() => setOpenTipDropdownId(openTipDropdownId === t.id ? null : t.id)}
                             style={{
                               height: '36px',
-                              background: 'rgba(255, 255, 255, 0.05)',
+                              background: 'rgba(0, 0, 0, 0.04)',
                               borderRadius: '10px',
                               fontSize: '12px',
-                              border: '1px solid rgba(255, 255, 255, 0.1)',
+                              border: '1px solid rgba(0, 0, 0, 0.08)',
                               color: 'white',
                               padding: '0 12px',
                               display: 'flex',
@@ -2818,7 +2818,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                                 cursor: 'pointer',
                                 fontSize: '12px',
                                 color: 'rgba(255, 255, 255, 0.5)',
-                                borderBottom: '1px solid rgba(255, 255, 255, 0.03)',
+                                borderBottom: '1px solid rgba(0, 0, 0, 0.08)',
                                 transition: 'background-color 0.2s'
                               }}
                               onMouseEnter={e => e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.03)'}
@@ -2840,7 +2840,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                                   cursor: 'pointer',
                                   fontSize: '12px',
                                   color: 'white',
-                                  borderBottom: '1px solid rgba(255, 255, 255, 0.03)',
+                                  borderBottom: '1px solid rgba(0, 0, 0, 0.08)',
                                   transition: 'background-color 0.2s',
                                   backgroundColor: t.staffId === s.id ? 'rgba(255, 255, 255, 0.1)' : 'transparent'
                                 }}
@@ -2865,7 +2865,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                             width: '44px', 
                             height: '36px', 
                             background: t.currency === 'BS' ? 'rgba(255,255,255,0.05)' : 'rgba(255, 255, 255,0.15)', 
-                            border: '1px solid rgba(255,255,255,0.1)', 
+                            border: '1px solid rgba(0, 0, 0, 0.08)', 
                             borderRadius: '10px', 
                             color: t.currency === 'BS' ? '#ffffff' : 'var(--gold-primary)', 
                             fontWeight: '900', 
@@ -2890,7 +2890,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                               newTips[idx].amount = parseFloat(e.target.value) || 0;
                               setTips(newTips);
                             }}
-                            style={{ width: '100%', height: '36px', textAlign: 'right', background: 'rgba(255, 255, 255,0.1)', border: 'none', borderRadius: '10px', color: 'var(--gold-primary)', fontWeight: '800', paddingRight: '12px' }} 
+                            style={{ width: '100%', height: '36px', textAlign: 'right', background: 'rgba(0, 0, 0, 0.04)', border: 'none', borderRadius: '10px', color: 'var(--gold-primary)', fontWeight: '800', paddingRight: '12px' }} 
                           />
                         </div>
                         <button 
@@ -2907,7 +2907,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                 
                 {/* WhatsApp Reminder Section */}
                 {selectedApp && (
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', marginTop: '6px', padding: '6px 10px', background: 'rgba(255, 255, 255, 0.03)', border: '1px solid rgba(255, 255, 255, 0.1)', borderRadius: '10px', marginBottom: '6px' }}>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', marginTop: '6px', padding: '6px 10px', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', borderRadius: '10px', marginBottom: '6px' }}>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                       <span style={{ fontSize: '11px', fontWeight: '800', color: 'var(--text-secondary)', display: 'flex', alignItems: 'center', gap: '5px' }}><Bell size={12} /> Recordatorio para su siguiente visita</span>
                     </div>
@@ -2956,7 +2956,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
 
                 {/* Coupon Section */}
                 {selectedApp && (
-                  <div style={{ padding: '6px 10px', background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '10px', marginBottom: '8px' }}>
+                  <div style={{ padding: '6px 10px', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', borderRadius: '10px', marginBottom: '8px' }}>
                     <div style={{ fontSize: '10px', fontWeight: '900', color: 'var(--gold-primary)', marginBottom: '4px', letterSpacing: '0.5px', display: 'flex', alignItems: 'center', gap: '5px' }}><Gift size={12} /> CANJEAR CUPÓN DE REGALO</div>
                     
                     {!activeCoupon ? (
@@ -3006,7 +3006,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                             placeholder="O ingresa código manual..."
                             value={couponCode}
                             onChange={(e) => setCouponCode(e.target.value)}
-                            style={{ flex: 1, height: '36px', fontSize: '12px', background: 'var(--bg-secondary)', border: '1px solid rgba(255,255,255,0.2)', borderRadius: '8px', color: 'white', paddingLeft: '8px' }}
+                            style={{ flex: 1, height: '36px', fontSize: '12px', background: 'var(--bg-secondary)', border: '1px solid rgba(0, 0, 0, 0.08)', borderRadius: '8px', color: 'white', paddingLeft: '8px' }}
                           />
                           <button 
                             onClick={async () => {
@@ -3086,7 +3086,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                       }}
                       style={{ 
                         height: isMobile ? '46px' : '40px', borderRadius: '10px', 
-                        border: settlementType === option.value ? '1px solid var(--gold-primary)' : '1px solid rgba(255,255,255,0.05)', 
+                        border: settlementType === option.value ? '1px solid var(--gold-primary)' : '1px solid rgba(0, 0, 0, 0.08)', 
                         background: settlementType === option.value ? 'rgba(17, 17, 17,0.08)' : 'rgba(255,255,255,0.02)', 
                         color: settlementType === option.value ? 'var(--gold-primary)' : 'var(--text-muted)', 
                         fontSize: '10px', fontWeight: 900, cursor: 'pointer', transition: 'all 0.2s',
@@ -3123,7 +3123,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                     onClick={() => { setPaymentMode('full_usd'); setCashUsd(totalUsd); }}
                     style={{ 
                       flex: 1, height: isMobile ? '46px' : '38px', borderRadius: '10px', 
-                      border: paymentMode === 'full_usd' ? '1px solid var(--gold-primary)' : '1px solid rgba(255,255,255,0.05)', 
+                      border: paymentMode === 'full_usd' ? '1px solid var(--gold-primary)' : '1px solid rgba(0, 0, 0, 0.08)', 
                       background: paymentMode === 'full_usd' ? 'rgba(17, 17, 17,0.08)' : 'rgba(255,255,255,0.02)', 
                       color: paymentMode === 'full_usd' ? 'var(--gold-primary)' : 'var(--text-muted)', 
                       fontWeight: '800', cursor: 'pointer', fontSize: '10px', transition: 'all 0.2s',
@@ -3134,7 +3134,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                     onClick={() => { setPaymentMode('full_bs'); setCashUsd(0); }}
                     style={{ 
                       flex: 1, height: isMobile ? '46px' : '38px', borderRadius: '10px', 
-                      border: paymentMode === 'full_bs' ? '1px solid var(--gold-primary)' : '1px solid rgba(255,255,255,0.05)', 
+                      border: paymentMode === 'full_bs' ? '1px solid var(--gold-primary)' : '1px solid rgba(0, 0, 0, 0.08)', 
                       background: paymentMode === 'full_bs' ? 'rgba(17, 17, 17,0.08)' : 'rgba(255,255,255,0.02)', 
                       color: paymentMode === 'full_bs' ? 'var(--gold-primary)' : 'var(--text-muted)', 
                       fontWeight: '800', cursor: 'pointer', fontSize: '10px', transition: 'all 0.2s',
@@ -3145,7 +3145,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                     onClick={() => setPaymentMode('mixed')}
                     style={{ 
                       flex: 1, height: isMobile ? '46px' : '38px', borderRadius: '10px', 
-                      border: paymentMode === 'mixed' ? '1px solid var(--gold-primary)' : '1px solid rgba(255,255,255,0.05)', 
+                      border: paymentMode === 'mixed' ? '1px solid var(--gold-primary)' : '1px solid rgba(0, 0, 0, 0.08)', 
                       background: paymentMode === 'mixed' ? 'rgba(17, 17, 17,0.08)' : 'rgba(255,255,255,0.02)', 
                       color: paymentMode === 'mixed' ? 'var(--gold-primary)' : 'var(--text-muted)', 
                       fontWeight: '800', cursor: 'pointer', fontSize: '10px', transition: 'all 0.2s',
@@ -3164,7 +3164,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                           onClick={() => setMethodUsd(m)}
                           style={{ 
                             flex: 1, padding: '8px', borderRadius: '10px', 
-                            border: methodUsd === m ? '1px solid var(--gold-primary)' : '1px solid rgba(255,255,255,0.05)', 
+                            border: methodUsd === m ? '1px solid var(--gold-primary)' : '1px solid rgba(0, 0, 0, 0.08)', 
                             background: methodUsd === m ? 'rgba(17, 17, 17,0.08)' : 'rgba(255,255,255,0.02)', 
                             color: methodUsd === m ? 'var(--gold-primary)' : 'var(--text-muted)', 
                             fontSize: '10px', fontWeight: '700', cursor: 'pointer', transition: 'all 0.2s',
@@ -3193,7 +3193,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                           }}
                           style={{ 
                             flex: 1, padding: '8px', borderRadius: '10px', 
-                            border: methodBs === m ? '1px solid var(--gold-primary)' : '1px solid rgba(255,255,255,0.05)', 
+                            border: methodBs === m ? '1px solid var(--gold-primary)' : '1px solid rgba(0, 0, 0, 0.08)', 
                             background: methodBs === m ? 'rgba(17, 17, 17,0.08)' : 'rgba(255,255,255,0.02)', 
                             color: methodBs === m ? 'var(--gold-primary)' : 'var(--text-muted)', 
                             fontSize: '10px', fontWeight: '700', cursor: 'pointer', transition: 'all 0.2s',
@@ -3219,7 +3219,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                             setPaymentReferenceBs(value);
                           }}
                           placeholder={methodBs === 'Pago Móvil' ? 'Ej. 4821' : 'Ej. 00123456'}
-                          style={{ width: '100%', height: '40px', padding: '0 12px', borderRadius: '10px', border: '1px solid rgba(255,255,255,0.15)', background: 'rgba(255,255,255,0.05)', color: 'white', fontSize: '12px', fontWeight: '700', boxSizing: 'border-box' }}
+                          style={{ width: '100%', height: '40px', padding: '0 12px', borderRadius: '10px', border: '1px solid rgba(0, 0, 0, 0.08)', background: 'rgba(0, 0, 0, 0.04)', color: 'white', fontSize: '12px', fontWeight: '700', boxSizing: 'border-box' }}
                         />
                       </div>
                     )}
@@ -3235,7 +3235,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                           type="number" 
                           value={cashUsd} 
                           onChange={(e) => setCashUsd(e.target.value)}
-                          style={{ flex: 1, height: '36px', background: 'rgba(255,255,255,0.05)', borderRadius: '8px', textAlign: 'right', paddingRight: '10px', fontSize: '12px' }} 
+                          style={{ flex: 1, height: '36px', background: 'rgba(0, 0, 0, 0.04)', borderRadius: '8px', textAlign: 'right', paddingRight: '10px', fontSize: '12px' }} 
                         />
                         <div style={{ display: 'flex', flex: 2, gap: '4px', flexWrap: 'wrap' }}>
                           {['Efectivo', 'Zelle', 'Binance', 'Zinli'].map(m => (
@@ -3244,7 +3244,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                               onClick={() => setMethodUsd(m)}
                               style={{ 
                                 flex: '1 0 45%', padding: '8px', borderRadius: '8px', 
-                                border: methodUsd === m ? '1px solid var(--gold-primary)' : '1px solid rgba(255,255,255,0.05)', 
+                                border: methodUsd === m ? '1px solid var(--gold-primary)' : '1px solid rgba(0, 0, 0, 0.08)', 
                                 background: methodUsd === m ? 'rgba(17, 17, 17,0.08)' : 'rgba(255,255,255,0.02)', 
                                 color: methodUsd === m ? 'var(--gold-primary)' : 'var(--text-muted)', 
                                 fontSize: '10px', fontWeight: '700', cursor: 'pointer', transition: 'all 0.2s',
@@ -3256,7 +3256,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                       </div>
                     </div>
 
-                    <div style={{ borderTop: '1px solid rgba(255,255,255,0.05)', paddingTop: '12px' }}>
+                    <div style={{ borderTop: '1px solid rgba(0, 0, 0, 0.08)', paddingTop: '12px' }}>
                       <label style={{ fontSize: '9px', fontWeight: '900', color: 'var(--text-muted)', marginBottom: '8px', display: 'block' }}>2. RESTANTE EN BOLÍVARES (BS)</label>
                       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
                         <div style={{ fontWeight: '900', color: 'var(--gold-primary)', fontSize: '16px' }}>{formatCurrency(remainingBs)} BS</div>
@@ -3270,7 +3270,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                               }}
                               style={{ 
                                 flex: '1 0 45%', padding: '8px', borderRadius: '8px', 
-                                border: methodBs === m ? '1px solid var(--gold-primary)' : '1px solid rgba(255,255,255,0.05)', 
+                                border: methodBs === m ? '1px solid var(--gold-primary)' : '1px solid rgba(0, 0, 0, 0.08)', 
                                 background: methodBs === m ? 'rgba(17, 17, 17,0.08)' : 'rgba(255,255,255,0.02)', 
                                 color: methodBs === m ? 'var(--gold-primary)' : 'var(--text-muted)', 
                                 fontSize: '10px', fontWeight: '700', cursor: 'pointer', transition: 'all 0.2s',
@@ -3297,7 +3297,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                               setPaymentReferenceBs(value);
                             }}
                             placeholder={methodBs === 'Pago Móvil' ? 'Ej. 4821' : 'Ej. 00123456'}
-                            style={{ width: '100%', height: '40px', padding: '0 12px', borderRadius: '10px', border: '1px solid rgba(255,255,255,0.15)', background: 'rgba(255,255,255,0.05)', color: 'white', fontSize: '12px', fontWeight: '700', boxSizing: 'border-box' }}
+                            style={{ width: '100%', height: '40px', padding: '0 12px', borderRadius: '10px', border: '1px solid rgba(0, 0, 0, 0.08)', background: 'rgba(0, 0, 0, 0.04)', color: 'white', fontSize: '12px', fontWeight: '700', boxSizing: 'border-box' }}
                           />
                         </div>
                       )}
@@ -3343,7 +3343,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                   style={{ 
                     flex: '2', height: isMobile ? '46px' : '52px', borderRadius: '14px', fontSize: isMobile ? '13px' : '15px', fontWeight: '900', gap: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center',
                     background: loading ? 'rgba(255,255,255,0.05)' : 'linear-gradient(135deg, rgba(17, 17, 17,0.2) 0%, rgba(17, 17, 17,0.05) 100%)',
-                    border: loading ? '1px solid rgba(255,255,255,0.1)' : '1px solid rgba(17, 17, 17,0.4)', 
+                    border: loading ? '1px solid rgba(0, 0, 0, 0.08)' : '1px solid rgba(17, 17, 17,0.4)', 
                     color: loading ? 'var(--text-muted)' : 'var(--gold-primary)', 
                     cursor: loading ? 'not-allowed' : 'pointer',
                     boxShadow: loading ? 'none' : '0 8px 24px -8px rgba(17, 17, 17,0.4)',
@@ -3379,15 +3379,15 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
       {/* Product Selection Modal */}
       <AnimatedModal isOpen={false}>
         {(overlayClass, cardClass) => (
-          <div className={overlayClass} style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(0,0,0,0.88)', backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)', zIndex: 1000, display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '20px', paddingTop: 'max(20px, env(safe-area-inset-top, 20px))' }}>
-            <div className={`${cardClass.replace('global-modal-card', '')}`} style={{ maxWidth: 'min(780px, 90vw)', width: '100%', borderRadius: '24px', border: '1px solid rgba(255,255,255,0.08)', maxHeight: '90vh', display: 'flex', flexDirection: 'column', overflow: 'hidden', background: 'var(--bg-secondary)', boxShadow: '0 30px 60px -12px rgba(0,0,0,0.5)' }}>
+          <div className={overlayClass} style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(255, 255, 255, 0.9)', backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)', zIndex: 1000, display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '20px', paddingTop: 'max(20px, env(safe-area-inset-top, 20px))' }}>
+            <div className={`${cardClass.replace('global-modal-card', '')}`} style={{ maxWidth: 'min(780px, 90vw)', width: '100%', borderRadius: '24px', border: '1px solid rgba(0, 0, 0, 0.08)', maxHeight: '90vh', display: 'flex', flexDirection: 'column', overflow: 'hidden', background: 'var(--bg-secondary)', boxShadow: '0 30px 60px -12px rgba(0,0,0,0.5)' }}>
               
               {/* Header */}
               <div style={{ padding: '28px 28px 0', flexShrink: 0 }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '20px' }}>
                   <div>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '4px' }}>
-                      <div style={{ width: '36px', height: '36px', borderRadius: '10px', background: 'linear-gradient(135deg, rgba(255, 255, 255,0.2), rgba(255, 255, 255,0.05))', border: '1px solid rgba(255, 255, 255,0.3)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                      <div style={{ width: '36px', height: '36px', borderRadius: '10px', background: 'linear-gradient(135deg, rgba(0, 0, 0, 0.04), rgba(0, 0, 0, 0.04))', border: '1px solid rgba(0, 0, 0, 0.08)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                         <ShoppingBag size={18} color="var(--gold-primary)" />
                       </div>
                       <h2 style={{ fontWeight: '900', fontSize: '22px', letterSpacing: '-0.3px', color: 'white' }}>Productos y Cortesías</h2>
@@ -3396,7 +3396,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                       {inventory.filter(i => matchesInventorySalesGroup(i, productGroup) && i.name.toLowerCase().includes(debouncedProductSearch.toLowerCase())).length} opciones disponibles
                     </p>
                   </div>
-                   <button onClick={() => {setShowProductModal(false); setSearchTerm(''); setProductGroup('all');}} style={{ width: '44px', height: '44px', borderRadius: '50%', background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.08)', color: 'rgba(255,255,255,0.6)', fontSize: '20px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'all 0.2s', flexShrink: 0 }}>×</button>
+                   <button onClick={() => {setShowProductModal(false); setSearchTerm(''); setProductGroup('all');}} style={{ width: '44px', height: '44px', borderRadius: '50%', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', color: 'rgba(255,255,255,0.6)', fontSize: '20px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'all 0.2s', flexShrink: 0 }}>×</button>
                 </div>
 
                 {/* Search */}
@@ -3408,7 +3408,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                     placeholder="Buscar por nombre..."
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
-                    style={{ width: '100%', height: '44px', padding: '0 44px', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '14px', color: 'white', fontSize: '14px', outline: 'none', boxSizing: 'border-box' }}
+                    style={{ width: '100%', height: '44px', padding: '0 44px', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', borderRadius: '14px', color: 'white', fontSize: '14px', outline: 'none', boxSizing: 'border-box' }}
                   />
                 </div>
                 <div style={{ display: 'flex', gap: '8px', overflowX: 'auto', padding: '4px 4px 16px 4px', margin: '-4px -4px 0 -4px' }}>
@@ -3419,7 +3419,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                       onClick={() => setProductGroup(value)} 
                       style={{ 
                         padding: '9px 16px', borderRadius: '12px', 
-                        border: productGroup === value ? '1px solid var(--gold-primary)' : '1px solid rgba(255,255,255,0.08)', 
+                        border: productGroup === value ? '1px solid var(--gold-primary)' : '1px solid rgba(0, 0, 0, 0.08)', 
                         background: productGroup === value ? 'rgba(17, 17, 17,0.08)' : 'rgba(255,255,255,0.02)', 
                         color: productGroup === value ? 'var(--gold-primary)' : 'rgba(255,255,255,0.7)', 
                         fontSize: '12px', fontWeight: '800', whiteSpace: 'nowrap', cursor: 'pointer', transition: 'all 0.2s',
@@ -3452,7 +3452,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                           style={{
                             padding: '0',
                             borderRadius: '20px',
-                            border: isOutOfStock ? '1px solid rgba(255,59,48,0.2)' : '1px solid rgba(255,255,255,0.07)',
+                            border: isOutOfStock ? '1px solid rgba(255,59,48,0.2)' : '1px solid rgba(0, 0, 0, 0.08)',
                             background: isOutOfStock ? 'rgba(255,59,48,0.03)' : 'rgba(255,255,255,0.03)',
                             textAlign: 'left',
                             cursor: isOutOfStock ? 'not-allowed' : 'pointer',
@@ -3461,7 +3461,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                           }}
                         >
                           {/* Image area */}
-                          <div style={{ width: '100%', height: '110px', background: 'rgba(255,255,255,0.02)', position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                          <div style={{ width: '100%', height: '110px', background: 'rgba(0, 0, 0, 0.04)', position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                             {item.image_url
                               ? <img loading="lazy" src={item.image_url} style={{ width: '100%', height: '100%', objectFit: 'contain', padding: '12px', boxSizing: 'border-box', filter: isOutOfStock ? 'grayscale(80%)' : 'none', transition: 'transform 0.3s' }} alt="" />
                               : <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
@@ -3505,13 +3505,13 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
       {/* Extras Selection Modal */}
       <AnimatedModal isOpen={showExtraModal}>
         {(overlayClass, cardClass) => (
-          <div className={overlayClass.replace('global-modal-overlay', '')} style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(0,0,0,0.88)', backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)', zIndex: 1000, display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '20px', paddingTop: 'max(20px, env(safe-area-inset-top, 20px))' }}>
+          <div className={overlayClass.replace('global-modal-overlay', '')} style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(255, 255, 255, 0.9)', backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)', zIndex: 1000, display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '20px', paddingTop: 'max(20px, env(safe-area-inset-top, 20px))' }}>
             <div className={`${cardClass.replace('global-modal-card', '')}`} style={{ maxWidth: 'min(820px, 90vw)', width: '100%', maxHeight: '90vh', display: 'flex', flexDirection: 'column', borderRadius: '28px', border: '1px solid rgba(17, 17, 17,.28)', overflow: 'hidden', background: 'var(--bg-secondary)', boxShadow: '0 40px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.04) inset' }}>
               {/* Header */}
-              <div style={{ padding: '28px 28px 20px', borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+              <div style={{ padding: '28px 28px 20px', borderBottom: '1px solid rgba(0, 0, 0, 0.08)' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                    <div style={{ width: '40px', height: '40px', borderRadius: '12px', background: 'linear-gradient(135deg, rgba(255, 255, 255,0.2), rgba(255, 255, 255,0.05))', border: '1px solid rgba(255, 255, 255,0.3)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <div style={{ width: '40px', height: '40px', borderRadius: '12px', background: 'linear-gradient(135deg, rgba(0, 0, 0, 0.04), rgba(0, 0, 0, 0.04))', border: '1px solid rgba(0, 0, 0, 0.08)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                       <Zap size={20} color="var(--gold-primary)" />
                     </div>
                     <div>
@@ -3519,7 +3519,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                       <p style={{ fontSize: '12px', color: 'var(--text-muted)' }}>{allExtras.length} extras disponibles</p>
                     </div>
 </div>
-                   <button onClick={() => setShowExtraModal(false)} style={{ width: '44px', height: '44px', borderRadius: '50%', background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.08)', color: 'rgba(255,255,255,0.5)', fontSize: '18px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>×</button>
+                   <button onClick={() => setShowExtraModal(false)} style={{ width: '44px', height: '44px', borderRadius: '50%', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', color: 'rgba(255,255,255,0.5)', fontSize: '18px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>×</button>
                 </div>
               </div>
               {/* Items in a grid */}
@@ -3578,7 +3578,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                   };
 
                   return (
-                    <article key={extra.id} className="pos-extra-card" style={{ display: 'flex', flexDirection: 'column', height: '230px', overflow: 'hidden', borderRadius: '16px', border: `1px solid ${isSelected ? 'var(--gold-primary)' : 'rgba(255,255,255,.08)'}`, background: isSelected ? 'rgba(17, 17, 17, 0.05)' : 'rgba(255,255,255,.025)', transition: 'all 0.2s' }}>
+                    <article key={extra.id} className="pos-extra-card" style={{ display: 'flex', flexDirection: 'column', height: '230px', overflow: 'hidden', borderRadius: '16px', border: `1px solid ${isSelected ? 'var(--gold-primary)' : 'rgba(0, 0, 0, 0.08)'}`, background: isSelected ? 'rgba(17, 17, 17, 0.05)' : 'rgba(255,255,255,.025)', transition: 'all 0.2s' }}>
                       <div role="button" tabIndex={0} onClick={() => isSelected ? toggleExtra() : handleAddExtra(extra)} onKeyDown={(e) => { if(e.key==='Enter'||e.key===' ') isSelected ? toggleExtra() : handleAddExtra(extra); }} style={{ padding: 0, border: 0, background: 'transparent', color: 'inherit', cursor: 'pointer', textAlign: 'left', display: 'flex', flexDirection: 'column', height: '100%', outline: 'none' }}>
                         <div style={{ height: '140px', width: '100%', position: 'relative', overflow: 'hidden', background: 'var(--bg-secondary)' }}>
                           <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--gold-primary)' }}>
@@ -3609,13 +3609,13 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
       {/* Service Modal */}
       <AnimatedModal isOpen={showServiceModal}>
         {(overlayClass, cardClass) => (
-          <div className={overlayClass.replace('global-modal-overlay', '')} style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(0,0,0,0.85)', backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)', zIndex: 20000, display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '20px', paddingTop: 'max(20px, env(safe-area-inset-top, 20px))' }}>
+          <div className={overlayClass.replace('global-modal-overlay', '')} style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(255, 255, 255, 0.9)', backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)', zIndex: 20000, display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '20px', paddingTop: 'max(20px, env(safe-area-inset-top, 20px))' }}>
             <div className={`${cardClass.replace('global-modal-card', '')}`} style={{ maxWidth: 'min(820px, 90vw)', width: '100%', maxHeight: '90vh', display: 'flex', flexDirection: 'column', borderRadius: '28px', border: '1px solid rgba(17, 17, 17,.28)', overflow: 'hidden', background: 'var(--bg-secondary)', boxShadow: '0 40px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.04) inset' }}>
               {/* Header */}
-              <div style={{ padding: '28px 28px 20px', borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+              <div style={{ padding: '28px 28px 20px', borderBottom: '1px solid rgba(0, 0, 0, 0.08)' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                    <div style={{ width: '40px', height: '40px', borderRadius: '12px', background: 'linear-gradient(135deg, rgba(255, 255, 255,0.25), rgba(255, 255, 255,0.05))', border: '1px solid rgba(255, 255, 255,0.4)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <div style={{ width: '40px', height: '40px', borderRadius: '12px', background: 'linear-gradient(135deg, rgba(0, 0, 0, 0.04), rgba(0, 0, 0, 0.04))', border: '1px solid rgba(0, 0, 0, 0.08)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                       <Scissors size={20} color="var(--gold-primary)" />
                     </div>
                     <div>
@@ -3623,7 +3623,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                       <p style={{ fontSize: '12px', color: 'var(--text-muted)' }}>{allServices.length} servicios disponibles</p>
                     </div>
                   </div>
-                   <button onClick={() => setShowServiceModal(false)} style={{ width: '44px', height: '44px', borderRadius: '50%', background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.08)', color: 'rgba(255,255,255,0.5)', fontSize: '18px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>×</button>
+                   <button onClick={() => setShowServiceModal(false)} style={{ width: '44px', height: '44px', borderRadius: '50%', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', color: 'rgba(255,255,255,0.5)', fontSize: '18px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>×</button>
                 </div>
               </div>
               {/* Items grid */}
@@ -3660,7 +3660,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                   const ServiceIcon = getServiceIcon(service.name);
 
                   return (
-                  <article key={service.id} className="pos-extra-card" style={{ display: 'flex', flexDirection: 'column', height: '230px', overflow: 'hidden', borderRadius: '16px', border: `1px solid ${isSelected ? 'var(--gold-primary)' : 'rgba(255,255,255,.08)'}`, background: isSelected ? 'rgba(17, 17, 17, 0.05)' : 'rgba(255,255,255,.025)', transition: 'all 0.2s' }}>
+                  <article key={service.id} className="pos-extra-card" style={{ display: 'flex', flexDirection: 'column', height: '230px', overflow: 'hidden', borderRadius: '16px', border: `1px solid ${isSelected ? 'var(--gold-primary)' : 'rgba(0, 0, 0, 0.08)'}`, background: isSelected ? 'rgba(17, 17, 17, 0.05)' : 'rgba(255,255,255,.025)', transition: 'all 0.2s' }}>
                     <div role="button" tabIndex={0} onClick={() => isSelected ? toggleService() : handleAddService(service)} onKeyDown={(e) => { if(e.key==='Enter'||e.key===' ') isSelected ? toggleService() : handleAddService(service); }} style={{ padding: 0, border: 0, background: 'transparent', color: 'inherit', cursor: 'pointer', textAlign: 'left', display: 'flex', flexDirection: 'column', height: '100%', outline: 'none' }}>
                       <div style={{ height: '140px', width: '100%', position: 'relative', overflow: 'hidden', background: 'var(--bg-secondary)' }}>
                         <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--gold-primary)' }}>
@@ -3691,15 +3691,15 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
       {/* Barber Select Modal */}
       <AnimatedModal isOpen={showBarberModal}>
         {(overlayClass, cardClass) => (
-          <div className={overlayClass.replace('global-modal-overlay', '')} style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(0,0,0,0.85)', backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)', zIndex: 20000, display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '20px', paddingTop: 'max(20px, env(safe-area-inset-top, 20px))' }}>
-            <div className={cardClass.replace('global-modal-card', '')} style={{ width: '100%', maxWidth: '380px', borderRadius: '28px', border: '1px solid rgba(255, 255, 255, 0.25)', background: 'var(--bg-secondary)', boxShadow: '0 40px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.04) inset', overflow: 'hidden' }}>
+          <div className={overlayClass.replace('global-modal-overlay', '')} style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(255, 255, 255, 0.9)', backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)', zIndex: 20000, display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '20px', paddingTop: 'max(20px, env(safe-area-inset-top, 20px))' }}>
+            <div className={cardClass.replace('global-modal-card', '')} style={{ width: '100%', maxWidth: '380px', borderRadius: '28px', border: '1px solid rgba(0, 0, 0, 0.08)', background: 'var(--bg-secondary)', boxShadow: '0 40px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.04) inset', overflow: 'hidden' }}>
               {/* Gradient Accent Bar */}
-              <div style={{ height: '5px', background: 'linear-gradient(90deg, #ffffff 0%, #111111 50%, #ffffff 100%)', width: '100%' }}></div>
+              <div style={{ height: '5px', background: 'linear-gradient(90deg, #ffffff 0%, #ffffff 50%, #ffffff 100%)', width: '100%' }}></div>
               
               <div style={{ padding: '24px' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '20px' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                    <div style={{ width: '40px', height: '40px', borderRadius: '12px', background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.05))', border: '1px solid rgba(255, 255, 255, 0.3)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <div style={{ width: '40px', height: '40px', borderRadius: '12px', background: 'linear-gradient(135deg, rgba(0, 0, 0, 0.04), rgba(0, 0, 0, 0.04))', border: '1px solid rgba(0, 0, 0, 0.08)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                       <Scissors size={20} color="var(--gold-primary)" />
                     </div>
                     <div>
@@ -3707,7 +3707,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                       <span style={{ fontSize: '11px', color: 'var(--text-muted)', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Seleccionar Odontólogo o Asistente</span>
                     </div>
                   </div>
-                   <button onClick={() => { setShowBarberModal(false); setIsChangingBarber(false); }} style={{ width: '44px', height: '44px', borderRadius: '50%', background: 'rgba(255,255,255,0.06)', border: 'none', color: 'rgba(255,255,255,0.6)', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'all 0.2s' }} onMouseEnter={e => e.currentTarget.style.color = '#ff453a'} onMouseLeave={e => e.currentTarget.style.color = 'rgba(255,255,255,0.6)'}>&times;</button>
+                   <button onClick={() => { setShowBarberModal(false); setIsChangingBarber(false); }} style={{ width: '44px', height: '44px', borderRadius: '50%', background: 'rgba(0, 0, 0, 0.04)', border: 'none', color: 'rgba(255,255,255,0.6)', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'all 0.2s' }} onMouseEnter={e => e.currentTarget.style.color = '#ff453a'} onMouseLeave={e => e.currentTarget.style.color = 'rgba(255,255,255,0.6)'}>&times;</button>
                 </div>
 
                 <p style={{ color: 'var(--text-secondary)', marginBottom: '24px', fontSize: '13px', lineHeight: '1.4' }}>
@@ -3732,7 +3732,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                       onChange={e => setCustomServicePrice(e.target.value)}
                       placeholder="Ej: 150"
                       autoFocus
-                      style={{ width: '100%', padding: '12px 14px', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.15)', background: 'rgba(0,0,0,0.35)', color: 'white', fontSize: '16px', fontWeight: '700', outline: 'none' }}
+                      style={{ width: '100%', padding: '12px 14px', borderRadius: '12px', border: '1px solid rgba(0, 0, 0, 0.08)', background: 'rgba(255, 255, 255, 0.9)', color: 'white', fontSize: '16px', fontWeight: '700', outline: 'none' }}
                     />
                   </div>
                 )}
@@ -3753,8 +3753,8 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                         pointerEvents: loading ? 'none' : 'auto',
                         padding: '14px 16px', 
                         borderRadius: '18px', 
-                        border: '1px solid rgba(255,255,255,0.08)', 
-                        background: 'rgba(255,255,255,0.03)', 
+                        border: '1px solid rgba(0, 0, 0, 0.08)', 
+                        background: 'rgba(0, 0, 0, 0.04)', 
                         textAlign: 'left', 
                         cursor: 'pointer', 
                         display: 'flex', 
@@ -3802,8 +3802,8 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
       {/* Link Citas Modal (Pago Grupal) */}
       <AnimatedModal isOpen={showLinkModal}>
         {(overlayClass, cardClass) => (
-          <div className={overlayClass} style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(0,0,0,0.85)', backdropFilter: 'blur(10px)', zIndex: 1000, display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '20px', paddingTop: 'max(20px, env(safe-area-inset-top, 20px))' }}>
-            <div className={`${cardClass.replace('global-modal-card', '')} glass-card`} style={{ maxWidth: 'min(560px, 90vw)', width: '100%', borderRadius: '24px', border: '1px solid rgba(255,255,255,0.08)', padding: '28px', background: 'var(--bg-secondary)', boxShadow: '0 30px 60px -12px rgba(0,0,0,0.5)' }}>
+          <div className={overlayClass} style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(255, 255, 255, 0.9)', backdropFilter: 'blur(10px)', zIndex: 1000, display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '20px', paddingTop: 'max(20px, env(safe-area-inset-top, 20px))' }}>
+            <div className={`${cardClass.replace('global-modal-card', '')} glass-card`} style={{ maxWidth: 'min(560px, 90vw)', width: '100%', borderRadius: '24px', border: '1px solid rgba(0, 0, 0, 0.08)', padding: '28px', background: 'var(--bg-secondary)', boxShadow: '0 30px 60px -12px rgba(0,0,0,0.5)' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '24px' }}>
                 <h2 style={{ fontWeight: '900', fontSize: '20px' }}>Enlazar Citas en Espera</h2>
                 <button onClick={() => setShowLinkModal(false)} style={{ background: 'none', border: 'none', color: 'white', fontSize: '24px', cursor: 'pointer' }}>&times;</button>
@@ -3827,7 +3827,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                       return (
                         <div 
                           key={group.client_id}
-                          style={{ padding: '14px 16px', borderRadius: '16px', border: '1px solid rgba(255,255,255,0.05)', background: 'rgba(255,255,255,0.02)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
+                          style={{ padding: '14px 16px', borderRadius: '16px', border: '1px solid rgba(0, 0, 0, 0.08)', background: 'rgba(0, 0, 0, 0.04)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
                         >
                           <div>
                             <div style={{ fontWeight: '800', fontSize: '14px', color: 'white' }}>{group.client_name}</div>
@@ -3879,8 +3879,8 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
       {/* ── Pagos pendientes offline ── */}
       <AnimatedModal isOpen={showOfflineModal}>
         {(overlayClass, cardClass) => (
-          <div className={`${overlayClass} modal-centered-overlay`} style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(0,0,0,0.82)', backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)', zIndex: 1000, display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '20px', paddingTop: 'max(20px, env(safe-area-inset-top, 20px))' }}>
-            <div className={`${cardClass.replace('global-modal-card', '')} modal-popup-centered`} style={{ maxWidth: 'min(620px, 90vw)', width: '100%', borderRadius: '24px', border: '1px solid rgba(255,255,255,0.08)', background: 'var(--bg-secondary)', padding: '24px', maxHeight: '90vh', overflowY: 'auto', boxShadow: '0 30px 60px -12px rgba(0,0,0,0.5)' }}>
+          <div className={`${overlayClass} modal-centered-overlay`} style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(255, 255, 255, 0.9)', backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)', zIndex: 1000, display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '20px', paddingTop: 'max(20px, env(safe-area-inset-top, 20px))' }}>
+            <div className={`${cardClass.replace('global-modal-card', '')} modal-popup-centered`} style={{ maxWidth: 'min(620px, 90vw)', width: '100%', borderRadius: '24px', border: '1px solid rgba(0, 0, 0, 0.08)', background: 'var(--bg-secondary)', padding: '24px', maxHeight: '90vh', overflowY: 'auto', boxShadow: '0 30px 60px -12px rgba(0,0,0,0.5)' }}>
               <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: '12px', marginBottom: '6px' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '12px', minWidth: 0 }}>
                   <div style={{ width: '40px', height: '40px', borderRadius: '12px', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(255,149,0,0.12)', border: '1px solid rgba(255,149,0,0.35)', color: '#ff9500' }}>
@@ -3891,7 +3891,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                     <span style={{ fontSize: '11px', color: 'var(--text-muted)', fontWeight: '700' }}>{offlineItems.length} en cola</span>
                   </div>
                 </div>
-                <button onClick={() => setShowOfflineModal(false)} style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.1)', color: 'rgba(255,255,255,0.7)', width: '44px', height: '44px', borderRadius: '12px', fontSize: '20px', lineHeight: 1, cursor: 'pointer', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>&times;</button>
+                <button onClick={() => setShowOfflineModal(false)} style={{ background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', color: 'rgba(255,255,255,0.7)', width: '44px', height: '44px', borderRadius: '12px', fontSize: '20px', lineHeight: 1, cursor: 'pointer', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>&times;</button>
               </div>
               <p style={{ color: 'var(--text-secondary)', margin: '10px 0 18px', fontSize: '12.5px', lineHeight: 1.5 }}>
                 Cobros que aún no se sincronizaron con el servidor. Cuando vuelva la conexión se reintentan solos; también puedes forzar el reintento o descartar los que hayan quedado atascados.
@@ -3910,7 +3910,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                     let when = '';
                     try { when = new Date(item.createdAt).toLocaleString('es-VE', { day: '2-digit', month: 'short', hour: '2-digit', minute: '2-digit' }); } catch { when = ''; }
                     return (
-                      <div key={item.id} style={{ padding: '14px 16px', borderRadius: '16px', border: '1px solid rgba(255,255,255,0.05)', background: 'rgba(255,255,255,0.02)' }}>
+                      <div key={item.id} style={{ padding: '14px 16px', borderRadius: '16px', border: '1px solid rgba(0, 0, 0, 0.08)', background: 'rgba(0, 0, 0, 0.04)' }}>
                         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '12px' }}>
                           <div style={{ minWidth: 0 }}>
                             <div style={{ fontWeight: '800', fontSize: '14px', color: 'white' }}>{p.clientName || 'Cliente'}</div>
@@ -3956,7 +3956,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                 </button>
                 <button
                   onClick={() => setShowOfflineModal(false)}
-                  style={{ padding: '10px 24px', borderRadius: '12px', fontWeight: '800', background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.12)', color: 'white', cursor: 'pointer' }}
+                  style={{ padding: '10px 24px', borderRadius: '12px', fontWeight: '800', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', color: 'white', cursor: 'pointer' }}
                 >
                   Cerrar
                 </button>
@@ -3978,7 +3978,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
               background: 'var(--bg-secondary)', 
               backdropFilter: 'blur(20px)', 
               WebkitBackdropFilter: 'blur(20px)',
-              border: '1px solid rgba(255, 255, 255, 0.08)', 
+              border: '1px solid rgba(0, 0, 0, 0.08)', 
               boxShadow: '0 10px 30px rgba(0,0,0,0.3)', 
               display: 'flex', 
               justifyContent: 'space-between', 
@@ -3991,7 +3991,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
             onPointerCancel={e => e.currentTarget.style.transform = 'scale(1)'}
           >
             <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-              <div style={{ background: 'rgba(255,255,255,0.05)', width: '32px', height: '32px', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <div style={{ background: 'rgba(0, 0, 0, 0.04)', width: '32px', height: '32px', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 <ShoppingBag size={18} color="white" strokeWidth={1.5} />
               </div>
               <span style={{ color: 'rgba(255,255,255,0.9)', fontWeight: '600', fontSize: '15px' }}>Ver Carrito</span>
@@ -4009,14 +4009,14 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
       <style>{`
         .hover-item:hover {
           border-color: var(--gold-primary) !important;
-          background-color: rgba(255, 255, 255,0.05) !important;
+          background-color: rgba(0, 0, 0, 0.04) !important;
           transform: translateY(-2px);
         }
       `}</style>
 
       {/* VISTA PREVIA DE LA FACTURA (antes de cobrar) */}
       {previewReceipt && createPortal(
-        <div onClick={() => setPreviewReceipt(null)} style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.85)', backdropFilter: 'blur(10px)', zIndex: 99999, display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', padding: '20px', paddingTop: 'max(20px, env(safe-area-inset-top, 20px))', boxSizing: 'border-box' }}>
+        <div onClick={() => setPreviewReceipt(null)} style={{ position: 'fixed', inset: 0, background: 'rgba(255, 255, 255, 0.9)', backdropFilter: 'blur(10px)', zIndex: 99999, display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', padding: '20px', paddingTop: 'max(20px, env(safe-area-inset-top, 20px))', boxSizing: 'border-box' }}>
           <div onClick={(e) => e.stopPropagation()} style={{ background: 'white', borderRadius: '10px', maxHeight: '82vh', overflowY: 'auto', boxShadow: '0 20px 60px rgba(0,0,0,0.6)' }}>
             <ReceiptTicket transaction={previewReceipt} />
           </div>
@@ -4036,7 +4036,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
         <div style={{
           position: 'fixed',
           top: 0, left: 0, right: 0, bottom: 0,
-          background: 'rgba(0,0,0,0.85)',
+          background: 'rgba(255, 255, 255, 0.9)',
           backdropFilter: 'blur(10px)',
           zIndex: 99999,
           display: 'flex',
@@ -4076,7 +4076,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                   setMethodBs('Pago Móvil');
                   setPaymentReferenceBs('');
                 }}
-                style={{ width: '100%', padding: '16px', borderRadius: '14px', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', color: 'white', fontWeight: '800', cursor: 'pointer' }}
+                style={{ width: '100%', padding: '16px', borderRadius: '14px', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', color: 'white', fontWeight: '800', cursor: 'pointer' }}
               >
                 Cerrar y Continuar
               </button>

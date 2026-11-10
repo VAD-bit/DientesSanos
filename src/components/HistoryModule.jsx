@@ -159,13 +159,13 @@ const HistoryModule = ({ isMobile, rates, onNavigate }) => {
           <div className="glass-card animate-card-1" style={{
             padding: isMobile ? '16px' : '24px',
             borderRadius: '20px',
-            background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)',
-            border: '1px solid rgba(255,255,255,0.05)',
+            background: 'linear-gradient(135deg, rgba(0, 0, 0, 0.04) 0%, rgba(0, 0, 0, 0.04) 100%)',
+            border: '1px solid rgba(0, 0, 0, 0.08)',
             borderLeft: '4px solid var(--gold-primary)',
             boxShadow: '0 4px 24px rgba(0,0,0,0.15)'
           }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: isMobile ? '14px' : '20px' }}>
-              <div style={{ padding: '8px', borderRadius: '10px', background: 'rgba(255, 255, 255,0.1)', color: 'var(--gold-primary)', display: 'flex' }}>
+              <div style={{ padding: '8px', borderRadius: '10px', background: 'rgba(0, 0, 0, 0.04)', color: 'var(--gold-primary)', display: 'flex' }}>
                 <User size={16} />
               </div>
               <span style={{ fontSize: '12px', fontWeight: '900', color: 'white', letterSpacing: '1px', textTransform: 'uppercase' }}>
@@ -197,13 +197,13 @@ const HistoryModule = ({ isMobile, rates, onNavigate }) => {
           <div className="glass-card animate-card-2" style={{
             padding: isMobile ? '16px' : '24px',
             borderRadius: '20px',
-            background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)',
-            border: '1px solid rgba(255,255,255,0.05)',
+            background: 'linear-gradient(135deg, rgba(0, 0, 0, 0.04) 0%, rgba(0, 0, 0, 0.04) 100%)',
+            border: '1px solid rgba(0, 0, 0, 0.08)',
             borderLeft: '4px solid var(--gold-primary)',
             boxShadow: '0 4px 24px rgba(0,0,0,0.15)'
           }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: isMobile ? '14px' : '20px' }}>
-              <div style={{ padding: '8px', borderRadius: '10px', background: 'rgba(255, 255, 255,0.1)', color: 'var(--gold-primary)', display: 'flex' }}>
+              <div style={{ padding: '8px', borderRadius: '10px', background: 'rgba(0, 0, 0, 0.04)', color: 'var(--gold-primary)', display: 'flex' }}>
                 <Scissors size={16} />
               </div>
               <span style={{ fontSize: '12px', fontWeight: '900', color: 'white', letterSpacing: '1px', textTransform: 'uppercase' }}>
@@ -219,7 +219,7 @@ const HistoryModule = ({ isMobile, rates, onNavigate }) => {
                 alignItems: isMobile ? 'flex-start' : 'center', 
                 gap: '8px',
                 paddingBottom: '12px', 
-                borderBottom: '1px dashed rgba(255,255,255,0.08)' 
+                borderBottom: '1px dashed rgba(0, 0, 0, 0.08)' 
               }}>
                 <div>
                   <span style={{ fontSize: '10px', fontWeight: '800', color: 'var(--text-muted)', textTransform: 'uppercase', display: 'block', marginBottom: '2px' }}>Servicio Principal</span>
@@ -248,13 +248,13 @@ const HistoryModule = ({ isMobile, rates, onNavigate }) => {
                       alignItems: isMobile ? 'flex-start' : 'center', 
                       gap: isMobile ? '4px' : '12px',
                       fontSize: '13px', 
-                      background: 'rgba(255,255,255,0.01)', 
+                      background: 'rgba(0, 0, 0, 0.04)', 
                       padding: '8px 12px', 
                       borderRadius: '10px', 
-                      border: '1px solid rgba(255,255,255,0.04)' 
+                      border: '1px solid rgba(0, 0, 0, 0.08)' 
                     }}>
                       <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                        <span style={{ fontSize: '8px', fontWeight: '900', color: 'var(--gold-primary)', background: 'rgba(255, 255, 255,0.1)', borderRadius: '4px', padding: '2px 4px' }}>EXTRA</span>
+                        <span style={{ fontSize: '8px', fontWeight: '900', color: 'var(--gold-primary)', background: 'rgba(0, 0, 0, 0.04)', borderRadius: '4px', padding: '2px 4px' }}>EXTRA</span>
                         <span style={{ color: 'white', fontWeight: '700' }}>{ex.service_extras?.name}</span>
                       </div>
                       <span style={{ fontWeight: '800', color: 'var(--gold-primary)', whiteSpace: 'nowrap' }}>
@@ -270,10 +270,10 @@ const HistoryModule = ({ isMobile, rates, onNavigate }) => {
                       alignItems: isMobile ? 'flex-start' : 'center', 
                       gap: isMobile ? '4px' : '12px',
                       fontSize: '13px', 
-                      background: 'rgba(255,255,255,0.01)', 
+                      background: 'rgba(0, 0, 0, 0.04)', 
                       padding: '8px 12px', 
                       borderRadius: '10px', 
-                      border: '1px solid rgba(255,255,255,0.04)' 
+                      border: '1px solid rgba(0, 0, 0, 0.08)' 
                     }}>
                       <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
                         <span style={{ fontSize: '8px', fontWeight: '900', color: '#60a5fa', background: 'rgba(96,165,250,0.1)', borderRadius: '4px', padding: '2px 4px' }}>PRODUCTO</span>
@@ -296,7 +296,7 @@ const HistoryModule = ({ isMobile, rates, onNavigate }) => {
                 if (totalTips > 0) {
                   const rate = Number(item.exchange_rate || rates?.bcv || rates?.usd || 550);
                   return (
-                    <div style={{ marginTop: '12px', borderTop: '1px dashed rgba(255,255,255,0.08)', paddingTop: '12px' }}>
+                    <div style={{ marginTop: '12px', borderTop: '1px dashed rgba(0, 0, 0, 0.08)', paddingTop: '12px' }}>
                       <span style={{ fontSize: '10px', fontWeight: '800', color: 'var(--text-muted)', textTransform: 'uppercase', marginBottom: '8px', display: 'block' }}>Propinas Recibidas</span>
                       <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '13px', marginBottom: '4px' }}>
                         <span>Total Propinas ({item.appointment_staff?.filter(s => Number(s.tip_amount) > 0).length} pers.)</span>
@@ -321,12 +321,12 @@ const HistoryModule = ({ isMobile, rates, onNavigate }) => {
             padding: isMobile ? '16px' : '24px',
             borderRadius: '24px',
             background: 'var(--bg-secondary)',
-            border: '1px solid rgba(255, 255, 255,0.15)',
+            border: '1px solid rgba(0, 0, 0, 0.08)',
             boxShadow: '0 8px 32px 0 rgba(0,0,0,0.4)'
           }}>
             {/* Ticket Header */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '20px', borderBottom: '1px solid rgba(255,255,255,0.08)', paddingBottom: '16px' }}>
-              <div style={{ padding: '8px', borderRadius: '10px', background: 'rgba(255, 255, 255,0.1)', color: 'var(--gold-primary)', display: 'flex' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '20px', borderBottom: '1px solid rgba(0, 0, 0, 0.08)', paddingBottom: '16px' }}>
+              <div style={{ padding: '8px', borderRadius: '10px', background: 'rgba(0, 0, 0, 0.04)', color: 'var(--gold-primary)', display: 'flex' }}>
                 <TrendingUp size={16} />
               </div>
               <div>
@@ -387,7 +387,7 @@ const HistoryModule = ({ isMobile, rates, onNavigate }) => {
                           ))}
                         </div>
                         
-                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '16px', paddingTop: '16px', borderTop: '2px solid rgba(255,255,255,0.08)' }}>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '16px', paddingTop: '16px', borderTop: '2px solid rgba(0, 0, 0, 0.08)' }}>
                           <span style={{ fontSize: '12px', color: 'white', fontWeight: '900', letterSpacing: '0.5px' }}>TOTAL COBRADO</span>
                           <div style={{ textAlign: 'right' }}>
                             <div style={{ fontSize: '18px', fontWeight: '950', color: 'var(--gold-primary)', whiteSpace: 'nowrap' }}>
@@ -407,7 +407,7 @@ const HistoryModule = ({ isMobile, rates, onNavigate }) => {
 
             {/* Totales de Liquidacion */}
             {isAdmin ? (
-              <div style={{ borderTop: '1px solid rgba(255,255,255,0.08)', paddingTop: '16px' }}>
+              <div style={{ borderTop: '1px solid rgba(0, 0, 0, 0.08)', paddingTop: '16px' }}>
                 <span style={{ fontSize: '9px', fontWeight: '800', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '12px', display: 'block' }}>Distribución de Fondos</span>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
                   {item.appointment_staff?.length > 0 ? item.appointment_staff.map((st, sidx) => {
@@ -417,7 +417,7 @@ const HistoryModule = ({ isMobile, rates, onNavigate }) => {
                     const staffTotal = commission + tip;
                     const firstName = (st.staff?.name || 'Personal').split(' ')[0];
                     return (
-                      <div key={sidx} style={{ padding: '12px', borderRadius: '14px', background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.04)' }}>
+                      <div key={sidx} style={{ padding: '12px', borderRadius: '14px', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
                         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                           <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                             <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#10b981' }} />
@@ -433,7 +433,7 @@ const HistoryModule = ({ isMobile, rates, onNavigate }) => {
                           </div>
                         </div>
                         
-                        <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) minmax(0, 1fr)', gap: '8px', marginTop: '10px', borderTop: '1px solid rgba(255,255,255,0.05)', paddingTop: '8px' }}>
+                        <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) minmax(0, 1fr)', gap: '8px', marginTop: '10px', borderTop: '1px solid rgba(0, 0, 0, 0.08)', paddingTop: '8px' }}>
                           <div style={{ background: 'var(--bg-secondary)', borderRadius: '8px', padding: '6px' }}>
                             <div style={{ fontSize: '8px', color: 'var(--text-muted)', fontWeight: '800', textTransform: 'uppercase' }}>Comisión</div>
                             <div style={{ fontSize: '10.5px', color: 'white', fontWeight: '800', marginTop: '2px', whiteSpace: 'nowrap' }}>
@@ -464,7 +464,7 @@ const HistoryModule = ({ isMobile, rates, onNavigate }) => {
                     const rate = Number(item.exchange_rate || rates?.bcv || rates?.usd || 550);
 
                     return (
-                      <div style={{ marginTop: '8px', padding: '14px', borderRadius: '16px', background: 'rgba(255, 255, 255,0.08)', border: '1px solid rgba(255, 255, 255,0.18)', boxShadow: 'inset 0 0 12px rgba(255, 255, 255,0.05)' }}>
+                      <div style={{ marginTop: '8px', padding: '14px', borderRadius: '16px', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', boxShadow: 'inset 0 0 12px rgba(255, 255, 255,0.05)' }}>
                         <div style={{ 
                           display: 'flex', 
                           flexDirection: isMobile ? 'column' : 'row', 
@@ -492,10 +492,10 @@ const HistoryModule = ({ isMobile, rates, onNavigate }) => {
               </div>
             ) : (
               /* Staff view */
-              <div style={{ borderTop: '1px solid rgba(255,255,255,0.08)', paddingTop: '16px' }}>
+              <div style={{ borderTop: '1px solid rgba(0, 0, 0, 0.08)', paddingTop: '16px' }}>
                 <span style={{ fontSize: '9px', fontWeight: '800', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '12px', display: 'block' }}>Tu Liquidación</span>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'rgba(255,255,255,0.02)', padding: '10px 14px', borderRadius: '12px' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'rgba(0, 0, 0, 0.04)', padding: '10px 14px', borderRadius: '12px' }}>
                     <span style={{ fontSize: '13px', color: 'var(--text-secondary)', fontWeight: '700' }}>
                       {getRoleCategory(user.role || '') === 'asistente' ? 'Tarifa de Limpieza' : 'Tu Comisión'}
                     </span>
@@ -517,7 +517,7 @@ const HistoryModule = ({ isMobile, rates, onNavigate }) => {
                       </div>
                     </div>
                   )}
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'rgba(255, 255, 255,0.05)', padding: '10px 14px', borderRadius: '12px', border: '1px solid rgba(255, 255, 255,0.1)' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'rgba(0, 0, 0, 0.04)', padding: '10px 14px', borderRadius: '12px', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
                     <span style={{ fontSize: '13px', color: 'var(--gold-primary)', fontWeight: '900' }}>Tu Propina</span>
                     <div style={{ textAlign: 'right' }}>
                       <span style={{ fontSize: '14px', fontWeight: '900', color: 'var(--gold-primary)', whiteSpace: 'nowrap' }}>
@@ -538,12 +538,12 @@ const HistoryModule = ({ isMobile, rates, onNavigate }) => {
             <div className="glass-card animate-card-4" style={{
               padding: isMobile ? '16px' : '24px',
               borderRadius: '20px',
-              background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)',
-              border: '1px solid rgba(255,255,255,0.05)',
+              background: 'linear-gradient(135deg, rgba(0, 0, 0, 0.04) 0%, rgba(0, 0, 0, 0.04) 100%)',
+              border: '1px solid rgba(0, 0, 0, 0.08)',
               borderLeft: '4px solid var(--gold-primary)'
             }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '20px' }}>
-                <div style={{ padding: '8px', borderRadius: '10px', background: 'rgba(255, 255, 255,0.1)', color: 'var(--gold-primary)', display: 'flex' }}>
+                <div style={{ padding: '8px', borderRadius: '10px', background: 'rgba(0, 0, 0, 0.04)', color: 'var(--gold-primary)', display: 'flex' }}>
                   <Camera size={16} />
                 </div>
                 <span style={{ fontSize: '12px', fontWeight: '900', color: 'white', letterSpacing: '1px', textTransform: 'uppercase' }}>
@@ -554,7 +554,7 @@ const HistoryModule = ({ isMobile, rates, onNavigate }) => {
                 {item.clients.work_gallery
                   .filter(p => p.service_id === item.id)
                   .map((photo, pidx) => (
-                    <div key={pidx} style={{ position: 'relative', aspectRatio: '1/1', borderRadius: '14px', overflow: 'hidden', border: '1px solid rgba(255,255,255,0.08)', boxShadow: '0 4px 12px rgba(0,0,0,0.2)' }}>
+                    <div key={pidx} style={{ position: 'relative', aspectRatio: '1/1', borderRadius: '14px', overflow: 'hidden', border: '1px solid rgba(0, 0, 0, 0.08)', boxShadow: '0 4px 12px rgba(0,0,0,0.2)' }}>
                       <img src={photo.url} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                       <div style={{ position: 'absolute', bottom: '0', left: '0', right: '0', background: 'var(--bg-secondary)', padding: '8px 4px 4px 4px', fontSize: '9px', fontWeight: '900', textAlign: 'center', color: 'var(--gold-primary)', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
                         {photo.type}
@@ -667,9 +667,9 @@ const HistoryModule = ({ isMobile, rates, onNavigate }) => {
                 style={{
                   padding: '16px',
                   borderRadius: '20px',
-                  background: isSelected ? 'linear-gradient(135deg, rgba(255, 255, 255,0.06) 0%, rgba(28,28,30,0.98) 100%)' : 'rgba(28, 28, 30, 0.98)',
-                  border: isSelected ? '1px solid rgba(255, 255, 255,0.25)' : '1px solid rgba(255,255,255,0.05)',
-                  boxShadow: isSelected ? '0 8px 32px 0 rgba(255, 255, 255,0.05)' : '0 4px 16px 0 rgba(0,0,0,0.25)'
+                  background: isSelected ? 'linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(232,212,176,0.4) 100%)' : 'rgba(255, 255, 255, 0.92)',
+                  border: isSelected ? '1px solid rgba(0,0,0,0.16)' : '1px solid rgba(0,0,0,0.07)',
+                  boxShadow: isSelected ? '0 8px 32px 0 rgba(232, 212, 176, 0.35)' : '0 4px 16px 0 rgba(0,0,0,0.12)'
                 }}
               >
                 {/* Clickable Header Area */}
@@ -679,7 +679,7 @@ const HistoryModule = ({ isMobile, rates, onNavigate }) => {
                 >
                   <div style={{ flex: 1, minWidth: 0, paddingRight: '12px' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '6px', flexWrap: 'wrap' }}>
-                      <span style={{ fontSize: '10px', fontWeight: '900', color: 'var(--text-muted)', background: 'rgba(255,255,255,0.04)', padding: '3px 7px', borderRadius: '6px' }}>
+                      <span style={{ fontSize: '10px', fontWeight: '900', color: 'var(--text-muted)', background: 'rgba(0, 0, 0, 0.04)', padding: '3px 7px', borderRadius: '6px' }}>
                         {new Date(item.created_at).toLocaleDateString([], {day: '2-digit', month: 'numeric'})}
                       </span>
                       <span 
@@ -714,7 +714,7 @@ const HistoryModule = ({ isMobile, rates, onNavigate }) => {
 
                 {/* Expanded Details Area */}
                 {isSelected && (
-                  <div className="animate-history-expand" style={{ marginTop: '16px', borderTop: '1px solid rgba(255,255,255,0.06)', paddingTop: '16px' }}>
+                  <div className="animate-history-expand" style={{ marginTop: '16px', borderTop: '1px solid rgba(0, 0, 0, 0.08)', paddingTop: '16px' }}>
                     {renderExpandedDetails(item)}
                   </div>
                 )}
@@ -724,11 +724,11 @@ const HistoryModule = ({ isMobile, rates, onNavigate }) => {
         </div>
       ) : (
         /* Desktop Table View */
-        <div className="glass-card animate-slide-up" style={{ borderRadius: '24px', overflow: 'hidden', border: '1px solid rgba(255,255,255,0.05)' }}>
+        <div className="glass-card animate-slide-up" style={{ borderRadius: '24px', overflow: 'hidden', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
           <div style={{ overflowX: 'auto' }}>
             <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left' }}>
               <thead>
-                <tr style={{ backgroundColor: 'rgba(255,255,255,0.02)', borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+                <tr style={{ backgroundColor: 'rgba(0, 0, 0, 0.04)', borderBottom: '1px solid rgba(0, 0, 0, 0.08)' }}>
                   <th style={{ padding: '20px 24px', fontSize: '11px', fontWeight: '900', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '1px' }}>Fecha</th>
                   <th style={{ padding: '20px 24px', fontSize: '11px', fontWeight: '900', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '1px' }}>Cliente</th>
                   <th style={{ padding: '20px 24px', fontSize: '11px', fontWeight: '900', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '1px' }}>Servicio</th>
@@ -759,7 +759,7 @@ const HistoryModule = ({ isMobile, rates, onNavigate }) => {
                         onClick={() => setSelectedId(isSelected ? null : item.id)}
                         className="history-table-row"
                         style={{ 
-                          borderBottom: '1px solid rgba(255,255,255,0.03)', 
+                          borderBottom: '1px solid rgba(0, 0, 0, 0.08)', 
                           cursor: 'pointer',
                           backgroundColor: isSelected ? 'rgba(255, 255, 255,0.05)' : 'transparent'
                         }}
@@ -817,7 +817,7 @@ const HistoryModule = ({ isMobile, rates, onNavigate }) => {
 
       <style>{`
         .history-table-row:hover {
-          background-color: rgba(255,255,255,0.03) !important;
+          background-color: rgba(0, 0, 0, 0.04) !important;
         }
         .client-link:hover {
           color: var(--gold-primary) !important;
@@ -893,7 +893,7 @@ const MiniBreakdown = ({ label, amount, rate, formatCurrency }) => (
 );
 
 const ReceiptLine = ({ line, rate, formatCurrency }) => (
-  <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) auto', gap: '12px', alignItems: 'center', padding: '9px 0', borderBottom: '1px dashed rgba(255,255,255,0.07)' }}>
+  <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) auto', gap: '12px', alignItems: 'center', padding: '9px 0', borderBottom: '1px dashed rgba(0, 0, 0, 0.08)' }}>
     <div style={{ minWidth: 0 }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: '6px', minWidth: 0 }}>
         <span style={{ fontSize: '9px', fontWeight: '900', color: line.isTip ? 'var(--gold-primary)' : 'var(--text-muted)', textTransform: 'uppercase', background: line.isTip ? 'rgba(255, 255, 255,0.1)' : 'rgba(255,255,255,0.04)', borderRadius: '6px', padding: '3px 6px', flexShrink: 0 }}>

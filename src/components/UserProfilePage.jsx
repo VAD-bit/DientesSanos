@@ -611,12 +611,12 @@ const UserProfilePage = ({ staffMember, inventory = [], onUpdate, isMobile }) =>
       {/* Premium UI Styles injection */}
       <style>{`
         .premium-profile-card {
-          border: 1px solid rgba(255, 255, 255, 0.2);
+          border: 1px solid rgba(0, 0, 0, 0.08);
           box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), 0 0 30px rgba(255, 255, 255, 0.03);
           transition: border-color 0.3s ease, box-shadow 0.3s ease;
         }
         .premium-profile-card:hover {
-          border-color: rgba(255, 255, 255, 0.4);
+          border-color: rgba(0, 0, 0, 0.08);
           box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 40px rgba(255, 255, 255, 0.08);
         }
         .glow-avatar-border {
@@ -634,8 +634,8 @@ const UserProfilePage = ({ staffMember, inventory = [], onUpdate, isMobile }) =>
           font-size: 11px;
           font-weight: 700;
           color: rgba(255, 255, 255, 0.85);
-          background-color: rgba(255, 255, 255, 0.05);
-          border: 1px solid rgba(255, 255, 255, 0.08);
+          background-color: rgba(0, 0, 0, 0.04);
+          border: 1px solid rgba(0, 0, 0, 0.08);
           padding: 4px 10px;
           border-radius: 8px;
           display: inline-flex;
@@ -644,8 +644,8 @@ const UserProfilePage = ({ staffMember, inventory = [], onUpdate, isMobile }) =>
           transition: all 0.2s ease;
         }
         .permission-badge-tag:hover {
-          background-color: rgba(255, 255, 255, 0.08);
-          border-color: rgba(255, 255, 255, 0.3);
+          background-color: rgba(0, 0, 0, 0.04);
+          border-color: rgba(0, 0, 0, 0.08);
           color: var(--gold-primary);
           transform: translateY(-2px);
         }
@@ -655,11 +655,11 @@ const UserProfilePage = ({ staffMember, inventory = [], onUpdate, isMobile }) =>
           position: relative;
           overflow: hidden;
           transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-          border: 1px solid rgba(255, 255, 255, 0.04);
+          border: 1px solid rgba(0, 0, 0, 0.08);
         }
         .stat-glow-card:hover {
           transform: translateY(-5px);
-          border-color: rgba(255, 255, 255, 0.25);
+          border-color: rgba(0, 0, 0, 0.08);
           box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), 0 0 25px rgba(255, 255, 255, 0.05);
         }
         .stat-indicator-bar {
@@ -673,15 +673,15 @@ const UserProfilePage = ({ staffMember, inventory = [], onUpdate, isMobile }) =>
           width: 80px;
         }
         .rank-row {
-          background-color: rgba(255, 255, 255, 0.01);
-          border: 1px solid rgba(255, 255, 255, 0.02);
+          background-color: rgba(0, 0, 0, 0.04);
+          border: 1px solid rgba(0, 0, 0, 0.08);
           border-radius: 12px;
           padding: 10px 14px;
           transition: all 0.2s ease;
         }
         .rank-row:hover {
-          background-color: rgba(255, 255, 255, 0.03);
-          border-color: rgba(255, 255, 255, 0.15);
+          background-color: rgba(0, 0, 0, 0.04);
+          border-color: rgba(0, 0, 0, 0.08);
           transform: translateX(4px);
         }
         .custom-form-input {
@@ -689,8 +689,8 @@ const UserProfilePage = ({ staffMember, inventory = [], onUpdate, isMobile }) =>
           padding: 0 14px;
           font-size: 13px;
           border-radius: 10px;
-          background-color: rgba(0, 0, 0, 0.3);
-          border: 1px solid rgba(255, 255, 255, 0.08);
+          background-color: rgba(255, 255, 255, 0.9);
+          border: 1px solid rgba(0, 0, 0, 0.08);
           color: white;
           width: 100%;
           outline: none;
@@ -699,27 +699,27 @@ const UserProfilePage = ({ staffMember, inventory = [], onUpdate, isMobile }) =>
         .custom-form-input:focus {
           border-color: var(--gold-primary);
           box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
-          background-color: rgba(0, 0, 0, 0.5);
+          background-color: rgba(255, 255, 255, 0.9);
         }
         .inventory-tool-row {
           padding: 12px 16px;
           background-color: rgba(0,0,0,0.15);
           border-radius: 16px;
-          border: 1px solid rgba(255,255,255,0.03);
+          border: 1px solid rgba(0, 0, 0, 0.08);
           display: flex;
           justify-content: space-between;
           align-items: center;
           transition: all 0.2s ease;
         }
         .inventory-tool-row:hover {
-          border-color: rgba(255, 255, 255, 0.08);
-          background-color: rgba(255, 255, 255, 0.02);
+          border-color: rgba(0, 0, 0, 0.08);
+          background-color: rgba(0, 0, 0, 0.04);
           transform: translateY(-1px);
         }
         .animated-aurora {
           position: absolute;
           inset: 0;
-          background: linear-gradient(135deg, rgba(20, 20, 20, 0.95) 0%, rgba(42, 34, 15, 0.8) 50%, rgba(20, 20, 20, 0.95) 100%);
+          background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.9) 50%, rgba(255, 255, 255, 0.9) 100%);
           background-size: 200% 200%;
           animation: auroraBg 15s ease infinite;
         }
@@ -769,7 +769,7 @@ const UserProfilePage = ({ staffMember, inventory = [], onUpdate, isMobile }) =>
         }
         .kpi-hero-shine {
           position: absolute; inset: -50% -50%; pointer-events: none;
-          background: linear-gradient(115deg, transparent 42%, rgba(255,255,255,.10) 50%, transparent 58%);
+          background: linear-gradient(115deg, transparent 42%, rgba(0, 0, 0, 0.04) 50%, transparent 58%);
           animation: bdaySweep 4.5s ease-in-out infinite;
         }
         .kpi-hero-top { position: relative; z-index: 1; display: flex; align-items: center; justify-content: space-between; gap: 10px; }
@@ -781,26 +781,26 @@ const UserProfilePage = ({ staffMember, inventory = [], onUpdate, isMobile }) =>
         }
         .kpi-hero-chip {
           font-size: 10px; font-weight: 850; letter-spacing: .5px; text-transform: uppercase; color: #f2e2c4;
-          background: rgba(0,0,0,.30); border: 1px solid rgba(17, 17, 17,.3);
+          background: rgba(255, 255, 255, 0.9); border: 1px solid rgba(17, 17, 17,.3);
           padding: 6px 11px; border-radius: 999px; white-space: nowrap;
         }
         .kpi-hero-value {
           position: relative; z-index: 1; margin-top: 16px;
           font-family: Outfit, var(--font-sans), system-ui; font-size: 46px; font-weight: 950;
           letter-spacing: -1.6px; line-height: 1; font-variant-numeric: tabular-nums;
-          background: linear-gradient(90deg, #fff7e6, #111111 72%);
+          background: linear-gradient(90deg, #fff7e6, #ffffff 72%);
           -webkit-background-clip: text; background-clip: text; color: transparent;
         }
         .kpi-hero-label { position: relative; z-index: 1; margin-top: 9px; font-size: 11px; font-weight: 800; letter-spacing: .9px; text-transform: uppercase; color: rgba(255,255,255,.5); }
         .kpi-tiles { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
         .kpi-tile {
           position: relative; overflow: hidden; border-radius: 20px; padding: 18px 16px;
-          background: linear-gradient(160deg, rgba(255,255,255,.05), rgba(255,255,255,.015));
-          border: 1px solid rgba(255,255,255,.06);
+          background: linear-gradient(160deg, rgba(0, 0, 0, 0.04), rgba(0, 0, 0, 0.04));
+          border: 1px solid rgba(0, 0, 0, 0.08);
           transition: transform .28s cubic-bezier(.22,1,.36,1), border-color .28s ease, box-shadow .28s ease;
         }
         .kpi-tile-bar { position: absolute; left: 0; top: 0; bottom: 0; width: 3px; opacity: .9; }
-        .kpi-tile:hover { transform: translateY(-4px); border-color: rgba(255,255,255,.16); box-shadow: 0 14px 30px rgba(0,0,0,.42); }
+        .kpi-tile:hover { transform: translateY(-4px); border-color: rgba(0, 0, 0, 0.08); box-shadow: 0 14px 30px rgba(0,0,0,.42); }
         .kpi-tile-icon { width: 34px; height: 34px; border-radius: 11px; display: flex; align-items: center; justify-content: center; border: 1px solid transparent; margin-bottom: 14px; }
         .kpi-tile-value { font-family: Outfit, var(--font-sans), system-ui; font-size: 26px; font-weight: 950; color: #fff; letter-spacing: -.5px; line-height: 1; font-variant-numeric: tabular-nums; }
         .kpi-unit { font-size: 13px; font-weight: 800; color: rgba(255,255,255,.4); margin-left: 4px; }
@@ -808,8 +808,8 @@ const UserProfilePage = ({ staffMember, inventory = [], onUpdate, isMobile }) =>
         /* ===== Ganancias (finanzas) Apple-style, dorado de marca ===== */
         .fin-card {
           position: relative; overflow: hidden; border-radius: 20px; padding: 20px 18px;
-          background: linear-gradient(160deg, rgba(17, 17, 17,.06), rgba(255,255,255,.012));
-          border: 1px solid rgba(255,255,255,.06);
+          background: linear-gradient(160deg, rgba(17, 17, 17,.06), rgba(0, 0, 0, 0.04));
+          border: 1px solid rgba(0, 0, 0, 0.08);
           transition: transform .28s cubic-bezier(.22,1,.36,1), border-color .28s ease, box-shadow .28s ease;
         }
         .fin-card:hover { transform: translateY(-4px); border-color: rgba(17, 17, 17,.28); box-shadow: 0 16px 34px rgba(0,0,0,.45); }
@@ -861,8 +861,8 @@ const UserProfilePage = ({ staffMember, inventory = [], onUpdate, isMobile }) =>
           min-height: 36px;
           padding: 0 13px;
           border-radius: 12px;
-          border: 1px solid rgba(255,255,255,0.1);
-          background: rgba(255,255,255,0.045);
+          border: 1px solid rgba(0, 0, 0, 0.08);
+          background: rgba(0, 0, 0, 0.04);
           color: rgba(255,255,255,0.82);
           display: inline-flex;
           align-items: center;
@@ -907,7 +907,7 @@ const UserProfilePage = ({ staffMember, inventory = [], onUpdate, isMobile }) =>
         .profile-empty-state {
           grid-column: 1 / -1;
           padding: 28px;
-          border: 1px dashed rgba(255,255,255,0.09);
+          border: 1px dashed rgba(0, 0, 0, 0.08);
           border-radius: 16px;
           text-align: center;
         }
@@ -934,8 +934,8 @@ const UserProfilePage = ({ staffMember, inventory = [], onUpdate, isMobile }) =>
           }
           .profile-kpis > div {
             min-width: 0 !important;
-            border-right: 1px solid rgba(255,255,255,0.05) !important;
-            border-bottom: 1px solid rgba(255,255,255,0.05) !important;
+            border-right: 1px solid rgba(0, 0, 0, 0.08) !important;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important;
           }
           .profile-kpis > div:nth-child(2n) { border-right: none !important; }
           .profile-kpis > div:nth-child(5) { grid-column: 1 / -1; border-right: none !important; }
@@ -960,7 +960,7 @@ const UserProfilePage = ({ staffMember, inventory = [], onUpdate, isMobile }) =>
         /* ===== Cumpleaños: hero fusionado en una sola tarjeta ===== */
         .profile-hero--bday {
           background:
-            radial-gradient(circle at 26% -15%, rgba(17, 17, 17,.32), transparent 55%),
+            radial-gradient(circle at 26% -15%, rgba(255, 255, 255, 0.9), transparent 55%),
             radial-gradient(circle at 90% 130%, rgba(17, 17, 17,.20), transparent 52%),
             linear-gradient(160deg, #17140d 0%, #0a0906 100%) !important;
           border: 1px solid rgba(17, 17, 17,.42) !important;
@@ -968,7 +968,7 @@ const UserProfilePage = ({ staffMember, inventory = [], onUpdate, isMobile }) =>
         }
         .bday-shine {
           position: absolute; inset: -50% -50%; z-index: 0; pointer-events: none;
-          background: linear-gradient(115deg, transparent 40%, rgba(255,255,255,.12) 50%, transparent 60%);
+          background: linear-gradient(115deg, transparent 40%, rgba(0, 0, 0, 0.04) 50%, transparent 60%);
           animation: bdaySweep 3.5s ease-in-out infinite;
         }
         @keyframes bdaySweep {
@@ -990,7 +990,7 @@ const UserProfilePage = ({ staffMember, inventory = [], onUpdate, isMobile }) =>
           100% { transform: translateY(-280px) translateX(10px) rotate(22deg); opacity: 0; }
         }
         .profile-avatar-shell.is-bday {
-          background: conic-gradient(from 0deg, #111111, #fff2cd, #111111, #a67c1e, #111111) !important;
+          background: conic-gradient(from 0deg, #ffffff, #fff2cd, #ffffff, #a67c1e, #ffffff) !important;
           animation: bdaySpin 5s linear infinite;
           box-shadow: 0 0 26px rgba(17, 17, 17,.55), 0 0 55px rgba(17, 17, 17,.22) !important;
         }
@@ -1014,7 +1014,7 @@ const UserProfilePage = ({ staffMember, inventory = [], onUpdate, isMobile }) =>
         }
         .bday-inline-title .bday-cake-icon { color: #111111; flex-shrink: 0; filter: drop-shadow(0 0 8px rgba(17, 17, 17,.6)); }
         .bday-inline-title .bday-title-text {
-          background: linear-gradient(90deg, #fff2cd, #111111 55%, #fff2cd);
+          background: linear-gradient(90deg, #fff2cd, #ffffff 55%, #fff2cd);
           -webkit-background-clip: text; background-clip: text; color: transparent;
           text-shadow: 0 0 40px rgba(17, 17, 17,.35);
         }
@@ -1075,7 +1075,7 @@ const UserProfilePage = ({ staffMember, inventory = [], onUpdate, isMobile }) =>
           <div style={{
             position: 'absolute',
             inset: 0,
-            background: 'radial-gradient(circle at 80% 30%, rgba(255, 255, 255, 0.2) 0%, transparent 60%)',
+            background: 'radial-gradient(circle at 80% 30%, rgba(0, 0, 0, 0.04) 0%, transparent 60%)',
             pointerEvents: 'none'
           }} />
         </div>
@@ -1168,10 +1168,10 @@ const UserProfilePage = ({ staffMember, inventory = [], onUpdate, isMobile }) =>
                       fontSize: '11px', 
                       color: 'rgba(255, 255, 255, 0.5)', 
                       fontWeight: '700', 
-                      backgroundColor: 'rgba(255, 255, 255, 0.05)',
+                      backgroundColor: 'rgba(0, 0, 0, 0.04)',
                       padding: '4px 10px',
                       borderRadius: '8px',
-                      border: '1px solid rgba(255, 255, 255, 0.05)',
+                      border: '1px solid rgba(0, 0, 0, 0.08)',
                       display: 'inline-flex',
                       alignItems: 'center',
                       gap: '4px'
@@ -1185,10 +1185,10 @@ const UserProfilePage = ({ staffMember, inventory = [], onUpdate, isMobile }) =>
                       fontSize: '11px', 
                       color: 'rgba(255, 255, 255, 0.5)', 
                       fontWeight: '700', 
-                      backgroundColor: 'rgba(255, 255, 255, 0.05)',
+                      backgroundColor: 'rgba(0, 0, 0, 0.04)',
                       padding: '4px 10px',
                       borderRadius: '8px',
-                      border: '1px solid rgba(255, 255, 255, 0.05)',
+                      border: '1px solid rgba(0, 0, 0, 0.08)',
                       display: 'inline-flex',
                       alignItems: 'center',
                       gap: '4px'
@@ -1264,7 +1264,7 @@ const UserProfilePage = ({ staffMember, inventory = [], onUpdate, isMobile }) =>
           </div>
 
           {!isAssistant && (
-            <div className="glass-card anim-1 profile-payroll" style={{ padding: isMobile ? 18 : 20, borderRadius: 20, border: '1px solid rgba(17, 17, 17,.18)', background: 'linear-gradient(135deg, rgba(17, 17, 17,.09), rgba(255,255,255,.02))' }}>
+            <div className="glass-card anim-1 profile-payroll" style={{ padding: isMobile ? 18 : 20, borderRadius: 20, border: '1px solid rgba(17, 17, 17,.18)', background: 'linear-gradient(135deg, rgba(17, 17, 17,.09), rgba(0, 0, 0, 0.04))' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 16, flexWrap: 'wrap' }}>
                 <div>
                   <span style={{ color: 'var(--gold-primary)', fontSize: 11, fontWeight: 900, letterSpacing: .8, textTransform: 'uppercase' }}>Historial de pagos</span>
@@ -1274,9 +1274,9 @@ const UserProfilePage = ({ staffMember, inventory = [], onUpdate, isMobile }) =>
                 <button type="button" onClick={() => showPaymentHistory ? handleClosePaymentHistory() : setShowPaymentHistory(true)} className="btn-gold" style={{ padding: '12px 18px', borderRadius: 12, display: 'inline-flex', alignItems: 'center', gap: 8 }}><History size={17} /> {showPaymentHistory ? 'Ocultar historial' : 'Ver historial'}</button>
               </div>
               {(showPaymentHistory || isPaymentHistoryExiting) && (
-                <div className={isPaymentHistoryExiting ? 'animate-slide-down-fade' : 'animate-fade-in'} style={{ marginTop: 18, paddingTop: 14, borderTop: '1px solid rgba(255,255,255,.08)', display: 'grid', gap: 8 }}>
+                <div className={isPaymentHistoryExiting ? 'animate-slide-down-fade' : 'animate-fade-in'} style={{ marginTop: 18, paddingTop: 14, borderTop: '1px solid rgba(0, 0, 0, 0.08)', display: 'grid', gap: 8 }}>
                   {asArray(settlement?.paymentHistory).length === 0 ? <div style={{ padding: 18, textAlign: 'center', color: 'var(--text-muted)', fontSize: 12 }}>Aún no hay pagos ni vales registrados.</div> : asArray(settlement?.paymentHistory).map(item => (
-                    <div key={item.id} style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr auto' : '120px minmax(0, 1fr) 150px auto', gap: 10, alignItems: 'center', padding: isMobile ? '12px' : '11px 12px', borderRadius: 12, background: 'rgba(255,255,255,.035)' }}>
+                    <div key={item.id} style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr auto' : '120px minmax(0, 1fr) 150px auto', gap: 10, alignItems: 'center', padding: isMobile ? '12px' : '11px 12px', borderRadius: 12, background: 'rgba(0, 0, 0, 0.04)' }}>
                       <div><span style={{ display: 'block', color: 'var(--text-muted)', fontSize: 11 }}>{new Date(item.date).toLocaleDateString('es-VE')}</span>{isMobile && <span style={{ display: 'block', marginTop: 3, color: 'var(--text-secondary)', fontSize: 10 }}>{item.paymentMethod}</span>}</div>
                       {isMobile ? (
                         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', justifyContent: 'center', gap: 5 }}>
@@ -1323,7 +1323,7 @@ const UserProfilePage = ({ staffMember, inventory = [], onUpdate, isMobile }) =>
           </div>
 
           {/* PORTFOLIO SECTION */}
-          <div id="profile-portfolio" className="glass-card anim-2 profile-portfolio" style={{ borderRadius: '22px', border: '1px solid rgba(255,255,255,0.06)', padding: isMobile ? '18px' : '22px' }}>
+          <div id="profile-portfolio" className="glass-card anim-2 profile-portfolio" style={{ borderRadius: '22px', border: '1px solid rgba(0, 0, 0, 0.08)', padding: isMobile ? '18px' : '22px' }}>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '16px' }}>
               <div>
                 <h3 style={{ fontSize: '16px', fontWeight: '900', color: 'white', margin: 0, letterSpacing: '-0.3px' }}>Portafolio de Trabajos</h3>
@@ -1333,12 +1333,12 @@ const UserProfilePage = ({ staffMember, inventory = [], onUpdate, isMobile }) =>
             </div>
             {portfolioLoading ? (
               <div style={{ display: 'flex', gap: '10px' }}>
-                {[1,2,3].map(i => <div key={i} style={{ width: '80px', height: '80px', borderRadius: '12px', background: 'rgba(255,255,255,0.03)', animation: 'pulse 1.5s infinite' }} />)}
+                {[1,2,3].map(i => <div key={i} style={{ width: '80px', height: '80px', borderRadius: '12px', background: 'rgba(0, 0, 0, 0.04)', animation: 'pulse 1.5s infinite' }} />)}
               </div>
             ) : (
               <div className="profile-portfolio-grid" style={{ display: 'flex', gap: '10px', flexWrap: 'wrap', alignItems: 'center' }}>
                 {portfolio.map(photo => (
-                  <div className="profile-portfolio-item" key={photo.id} style={{ position: 'relative', width: '80px', height: '80px', borderRadius: '12px', overflow: 'hidden', border: '1px solid rgba(255,255,255,0.08)' }}>
+                  <div className="profile-portfolio-item" key={photo.id} style={{ position: 'relative', width: '80px', height: '80px', borderRadius: '12px', overflow: 'hidden', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
                     <img src={photo.image_url} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                     <button
                       onClick={() => removePortfolioPhoto(photo)}
@@ -1349,7 +1349,7 @@ const UserProfilePage = ({ staffMember, inventory = [], onUpdate, isMobile }) =>
                   </div>
                 ))}
                 {portfolio.length < MAX_PORTFOLIO && (
-                  <label className="profile-portfolio-upload" style={{ width: '80px', height: '80px', borderRadius: '12px', border: '2px dashed rgba(255,255,255,0.15)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', cursor: portfolioUploading ? 'not-allowed' : 'pointer', background: 'rgba(255,255,255,0.02)', gap: '6px', opacity: portfolioUploading ? 0.5 : 1, transition: 'all 0.2s' }}>
+                  <label className="profile-portfolio-upload" style={{ width: '80px', height: '80px', borderRadius: '12px', border: '2px dashed rgba(0, 0, 0, 0.08)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', cursor: portfolioUploading ? 'not-allowed' : 'pointer', background: 'rgba(0, 0, 0, 0.04)', gap: '6px', opacity: portfolioUploading ? 0.5 : 1, transition: 'all 0.2s' }}>
                     {portfolioUploading
                       ? <Loader2 size={18} color="var(--gold-primary)" style={{ animation: 'spin 1s linear infinite' }} />
                       : <><Camera size={16} color="var(--gold-primary)" /><span style={{ fontSize: '8px', color: 'var(--text-muted)', fontWeight: '800' }}>SUBIR</span></>
@@ -1365,7 +1365,7 @@ const UserProfilePage = ({ staffMember, inventory = [], onUpdate, isMobile }) =>
           </div>
 
           <div id="profile-agenda" style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '2fr minmax(0, 1fr)', gap: '16px' }} className="anim-3 profile-agenda-grid">
-            <div className="glass-card" style={{ padding: isMobile ? '20px' : '24px', borderRadius: '24px', border: '1px solid rgba(255,255,255,0.05)' }}>
+            <div className="glass-card" style={{ padding: isMobile ? '20px' : '24px', borderRadius: '24px', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '18px' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '9px' }}>
                   <Calendar size={17} color="var(--gold-primary)" />
@@ -1377,7 +1377,7 @@ const UserProfilePage = ({ staffMember, inventory = [], onUpdate, isMobile }) =>
               </div>
 
               {todayAppointments.length === 0 ? (
-                <div style={{ padding: '30px 18px', textAlign: 'center', color: 'rgba(255,255,255,0.28)', fontSize: '12px', border: '1px dashed rgba(255,255,255,0.08)', borderRadius: '14px' }}>
+                <div style={{ padding: '30px 18px', textAlign: 'center', color: 'rgba(255,255,255,0.28)', fontSize: '12px', border: '1px dashed rgba(0, 0, 0, 0.08)', borderRadius: '14px' }}>
                   {isAssistant ? 'No tienes servicios asignados para hoy' : 'No tienes citas agendadas para hoy'}
                 </div>
               ) : (
@@ -1386,7 +1386,7 @@ const UserProfilePage = ({ staffMember, inventory = [], onUpdate, isMobile }) =>
                     const active = appointment.status === 'En Silla';
                     const completed = appointment.status === 'Completado';
                     return (
-                      <div key={appointment.id} style={{ display: 'flex', alignItems: 'center', gap: '12px', padding: '12px 14px', borderRadius: '14px', background: active ? 'rgba(17, 17, 17,0.08)' : 'rgba(255,255,255,0.025)', border: active ? '1px solid rgba(17, 17, 17,0.22)' : '1px solid rgba(255,255,255,0.035)' }}>
+                      <div key={appointment.id} style={{ display: 'flex', alignItems: 'center', gap: '12px', padding: '12px 14px', borderRadius: '14px', background: active ? 'rgba(17, 17, 17,0.08)' : 'rgba(255,255,255,0.025)', border: active ? '1px solid rgba(17, 17, 17,0.22)' : '1px solid rgba(0, 0, 0, 0.08)' }}>
                         <span style={{ width: '62px', flexShrink: 0, color: active ? 'var(--gold-primary)' : 'rgba(255,255,255,0.4)', fontSize: '11px', fontWeight: '700' }}>{formatTime(appointment.scheduled_at || appointment.created_at)}</span>
                         <span style={{ width: 7, height: 7, flexShrink: 0, borderRadius: '50%', background: completed ? '#30d158' : active ? 'var(--gold-primary)' : '#555' }} />
                         <div style={{ flex: 1, minWidth: 0 }}>
@@ -1401,18 +1401,18 @@ const UserProfilePage = ({ staffMember, inventory = [], onUpdate, isMobile }) =>
               )}
             </div>
 
-            <div className="glass-card" style={{ padding: isMobile ? '20px' : '24px', borderRadius: '24px', border: '1px solid rgba(255,255,255,0.05)' }}>
+            <div className="glass-card" style={{ padding: isMobile ? '20px' : '24px', borderRadius: '24px', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '22px' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '9px' }}>
                   <Target size={17} color="var(--gold-primary)" />
                   <h4 style={{ fontSize: '13px', fontWeight: '900', color: 'white', textTransform: 'uppercase', letterSpacing: '0.6px' }}>Metas del mes</h4>
                 </div>
                 {!editingGoals ? (
-                  <button onClick={openGoalEditor} style={{ border: '1px solid rgba(255,255,255,0.1)', background: 'rgba(255,255,255,0.04)', color: '#999', borderRadius: '8px', padding: '5px 9px', cursor: 'pointer', display: 'flex', gap: '5px', alignItems: 'center', fontSize: '10px', fontWeight: '800' }}><Pencil size={10} /> Editar</button>
+                  <button onClick={openGoalEditor} style={{ border: '1px solid rgba(0, 0, 0, 0.08)', background: 'rgba(0, 0, 0, 0.04)', color: '#999', borderRadius: '8px', padding: '5px 9px', cursor: 'pointer', display: 'flex', gap: '5px', alignItems: 'center', fontSize: '10px', fontWeight: '800' }}><Pencil size={10} /> Editar</button>
                 ) : (
                   <div style={{ display: 'flex', gap: '5px' }}>
                     <button onClick={saveGoals} style={{ border: '1px solid rgba(17, 17, 17,0.3)', background: 'rgba(17, 17, 17,0.12)', color: 'var(--gold-primary)', borderRadius: '8px', padding: '5px 8px', cursor: 'pointer' }}><Check size={11} /></button>
-                    <button onClick={() => setEditingGoals(false)} style={{ border: '1px solid rgba(255,255,255,0.1)', background: 'transparent', color: '#888', borderRadius: '8px', padding: '5px 8px', cursor: 'pointer' }}><X size={11} /></button>
+                    <button onClick={() => setEditingGoals(false)} style={{ border: '1px solid rgba(0, 0, 0, 0.08)', background: 'transparent', color: '#888', borderRadius: '8px', padding: '5px 8px', cursor: 'pointer' }}><X size={11} /></button>
                   </div>
                 )}
               </div>
@@ -1430,7 +1430,7 @@ const UserProfilePage = ({ staffMember, inventory = [], onUpdate, isMobile }) =>
                   ].map(goal => (
                     <div key={goal.label}>
                       <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px', color: '#aaa', fontSize: '12px' }}><span>{goal.label}</span><strong style={{ color: 'white' }}>{goal.value}</strong></div>
-                      <div style={{ height: 6, borderRadius: 6, overflow: 'hidden', background: 'rgba(255,255,255,0.06)' }}><div style={{ height: '100%', width: `${goal.progress}%`, background: goal.color, borderRadius: 6 }} /></div>
+                      <div style={{ height: 6, borderRadius: 6, overflow: 'hidden', background: 'rgba(0, 0, 0, 0.04)' }}><div style={{ height: '100%', width: `${goal.progress}%`, background: goal.color, borderRadius: 6 }} /></div>
                       <div style={{ marginTop: '5px', textAlign: 'right', color: goal.progress >= 100 ? goal.color : '#555', fontSize: '10px' }}>{goal.progress >= 100 ? '¡Meta alcanzada!' : `${goal.progress}% completado`}</div>
                     </div>
                   ))}
@@ -1443,7 +1443,7 @@ const UserProfilePage = ({ staffMember, inventory = [], onUpdate, isMobile }) =>
           <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'minmax(0, 1fr) minmax(0, 1fr)', gap: '18px' }} className="profile-detail-grid">
             
             {/* Left Column: Historial & Rendimiento */}
-            <div className="glass-card anim-4" style={{ borderRadius: '28px', padding: '28px', display: 'flex', flexDirection: 'column', gap: '24px', border: '1px solid rgba(255,255,255,0.04)' }}>
+            <div className="glass-card anim-4" style={{ borderRadius: '28px', padding: '28px', display: 'flex', flexDirection: 'column', gap: '24px', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
               
               <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                 <Activity size={18} color="var(--gold-primary)" />
@@ -1452,13 +1452,13 @@ const UserProfilePage = ({ staffMember, inventory = [], onUpdate, isMobile }) =>
 
               {/* Service & Time Stats */}
               <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) minmax(0, 1fr)', gap: '16px' }}>
-                <div style={{ padding: '20px', backgroundColor: 'var(--bg-secondary)', borderRadius: '20px', border: '1px solid rgba(255,255,255,0.03)' }}>
+                <div style={{ padding: '20px', backgroundColor: 'var(--bg-secondary)', borderRadius: '20px', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: 'rgba(255,255,255,0.4)', fontSize: '11px', fontWeight: '800', letterSpacing: '0.5px' }}>
                     <Star size={12} color="var(--gold-primary)" /> {isAssistant ? 'LIMPIEZAS' : 'SERVICIOS'}
                   </div>
                   <div style={{ fontSize: '32px', fontWeight: '950', color: 'white', marginTop: '8px', fontFamily: 'Outfit, var(--font-sans), system-ui' }}>{stats.totalAppointments}</div>
                 </div>
-                <div style={{ padding: '20px', backgroundColor: 'var(--bg-secondary)', borderRadius: '20px', border: '1px solid rgba(255,255,255,0.03)' }}>
+                <div style={{ padding: '20px', backgroundColor: 'var(--bg-secondary)', borderRadius: '20px', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: 'rgba(255,255,255,0.4)', fontSize: '11px', fontWeight: '800', letterSpacing: '0.5px' }}>
                     <Clock size={12} color="var(--gold-primary)" /> TIEMPO PROMEDIO
                   </div>
@@ -1473,15 +1473,15 @@ const UserProfilePage = ({ staffMember, inventory = [], onUpdate, isMobile }) =>
                 <label style={{ display: 'block', fontSize: '11px', fontWeight: '850', color: 'rgba(255,255,255,0.4)', marginBottom: '16px', textTransform: 'uppercase', letterSpacing: '0.8px' }}>{isAssistant ? 'Limpiezas más realizadas' : 'Servicios más realizados'}</label>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
                   {stats.topServices.length === 0 ? (
-                    <div style={{ padding: '30px 20px', textAlign: 'center', color: 'rgba(255,255,255,0.3)', fontSize: '12px', border: '1px dashed rgba(255,255,255,0.08)', borderRadius: '16px' }}>No hay registros de servicios aún</div>
+                    <div style={{ padding: '30px 20px', textAlign: 'center', color: 'rgba(255,255,255,0.3)', fontSize: '12px', border: '1px dashed rgba(0, 0, 0, 0.08)', borderRadius: '16px' }}>No hay registros de servicios aún</div>
                   ) : (
                     stats.topServices.map((srv, idx) => (
                       <div key={idx} className="rank-row" style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
                         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '13px' }}>
                           <span style={{ fontWeight: '750', color: 'white' }}>{srv.service_name}</span>
-                          <span style={{ fontWeight: '900', color: 'var(--gold-primary)', backgroundColor: 'rgba(255, 255, 255,0.08)', border: '1px solid rgba(255, 255, 255,0.15)', padding: '3px 8px', borderRadius: '8px', fontSize: '10px' }}>{srv.count} veces</span>
+                          <span style={{ fontWeight: '900', color: 'var(--gold-primary)', backgroundColor: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', padding: '3px 8px', borderRadius: '8px', fontSize: '10px' }}>{srv.count} veces</span>
                         </div>
-                        <div style={{ height: '5px', backgroundColor: 'rgba(255,255,255,0.05)', borderRadius: '3px', overflow: 'hidden' }}>
+                        <div style={{ height: '5px', backgroundColor: 'rgba(0, 0, 0, 0.04)', borderRadius: '3px', overflow: 'hidden' }}>
                           <div style={{ 
                             width: `${Math.min(100, (srv.count / Math.max(1, stats.totalAppointments)) * 100)}%`, 
                             height: '100%', 
@@ -1497,7 +1497,7 @@ const UserProfilePage = ({ staffMember, inventory = [], onUpdate, isMobile }) =>
             </div>
 
             {/* Right Column: Herramientas e Inventario */}
-            <div className="glass-card anim-5" style={{ borderRadius: '28px', padding: '28px', display: 'flex', flexDirection: 'column', gap: '24px', border: '1px solid rgba(255,255,255,0.04)' }}>
+            <div className="glass-card anim-5" style={{ borderRadius: '28px', padding: '28px', display: 'flex', flexDirection: 'column', gap: '24px', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
               
               <div style={{ display: 'flex', flexDirection: isMobile ? 'column' : 'row', justifyContent: 'space-between', alignItems: isMobile ? 'stretch' : 'center', gap: isMobile ? '14px' : 0 }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
@@ -1508,8 +1508,8 @@ const UserProfilePage = ({ staffMember, inventory = [], onUpdate, isMobile }) =>
                 <button
                   onClick={() => setShowInventoryHistory(true)}
                   style={{
-                    backgroundColor: 'rgba(255,255,255,0.05)',
-                    border: '1px solid rgba(255,255,255,0.1)',
+                    backgroundColor: 'rgba(0, 0, 0, 0.04)',
+                    border: '1px solid rgba(0, 0, 0, 0.08)',
                     borderRadius: '10px',
                     color: 'white',
                     padding: '9px 11px',
@@ -1529,7 +1529,7 @@ const UserProfilePage = ({ staffMember, inventory = [], onUpdate, isMobile }) =>
                   onClick={() => showAddTool ? handleCloseToolForm() : setShowAddTool(true)}
                   style={{
                     backgroundColor: showAddTool ? 'rgba(255,255,255,0.05)' : 'rgba(255, 255, 255, 0.1)',
-                    border: showAddTool ? '1px solid rgba(255,255,255,0.1)' : '1px solid rgba(255, 255, 255, 0.25)',
+                    border: showAddTool ? '1px solid rgba(0, 0, 0, 0.08)' : '1px solid rgba(0, 0, 0, 0.08)',
                     borderRadius: '10px',
                     color: showAddTool ? 'white' : 'var(--gold-primary)',
                     padding: '9px 14px',
@@ -1551,7 +1551,7 @@ const UserProfilePage = ({ staffMember, inventory = [], onUpdate, isMobile }) =>
 
               {/* Add Tool Form */}
               {(showAddTool || isToolFormExiting) && (
-                <div className={isToolFormExiting ? 'animate-scale-out' : 'animate-scale-in'} style={{ padding: '20px', backgroundColor: 'var(--bg-secondary)', borderRadius: '20px', border: '1px solid rgba(255, 255, 255,0.2)' }}>
+                <div className={isToolFormExiting ? 'animate-scale-out' : 'animate-scale-in'} style={{ padding: '20px', backgroundColor: 'var(--bg-secondary)', borderRadius: '20px', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
                     <div style={{ display: 'flex', gap: '10px' }}>
                       {['Herramienta', 'Producto'].map(itemType => (
@@ -1568,7 +1568,7 @@ const UserProfilePage = ({ staffMember, inventory = [], onUpdate, isMobile }) =>
                             flex: 1,
                             height: '34px',
                             borderRadius: '8px',
-                            border: newTool.item_type === itemType ? '1px solid var(--gold-primary)' : '1px solid rgba(255,255,255,0.08)',
+                            border: newTool.item_type === itemType ? '1px solid var(--gold-primary)' : '1px solid rgba(0, 0, 0, 0.08)',
                             backgroundColor: newTool.item_type === itemType ? 'rgba(17, 17, 17,0.16)' : 'rgba(255,255,255,0.04)',
                             color: newTool.item_type === itemType ? 'var(--gold-primary)' : 'rgba(255,255,255,0.65)',
                             fontSize: '11px',
@@ -1650,7 +1650,7 @@ const UserProfilePage = ({ staffMember, inventory = [], onUpdate, isMobile }) =>
                             textAlign: 'left',
                             width: '100%',
                             background: 'var(--bg-secondary)',
-                            border: dropdownOpen ? '1px solid var(--gold-primary)' : '1px solid rgba(255, 255, 255, 0.08)',
+                            border: dropdownOpen ? '1px solid var(--gold-primary)' : '1px solid rgba(0, 0, 0, 0.08)',
                             boxShadow: dropdownOpen ? '0 0 10px rgba(255, 255, 255, 0.2)' : 'none',
                             transition: 'box-shadow 0.2s ease'
                           }}
@@ -1673,7 +1673,7 @@ const UserProfilePage = ({ staffMember, inventory = [], onUpdate, isMobile }) =>
                             marginTop: '6px',
                             background: 'var(--bg-secondary)',
                             backdropFilter: 'blur(12px)',
-                            border: '1px solid rgba(255, 255, 255, 0.3)',
+                            border: '1px solid rgba(0, 0, 0, 0.08)',
                             boxShadow: '0 15px 35px rgba(0, 0, 0, 0.8), 0 0 20px rgba(255, 255, 255, 0.08)',
                             borderRadius: '10px',
                             maxHeight: '180px',
@@ -1699,7 +1699,7 @@ const UserProfilePage = ({ staffMember, inventory = [], onUpdate, isMobile }) =>
                                     cursor: 'pointer',
                                     fontSize: '13px',
                                     transition: 'all 0.15s ease',
-                                    borderBottom: '1px solid rgba(255, 255, 255, 0.02)'
+                                    borderBottom: '1px solid rgba(0, 0, 0, 0.08)'
                                   }}
                                   onMouseEnter={(e) => {
                                     e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.08)';
@@ -1757,7 +1757,7 @@ const UserProfilePage = ({ staffMember, inventory = [], onUpdate, isMobile }) =>
               {/* Tools List */}
               <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', maxHeight: '350px', overflowY: 'auto', paddingRight: '4px' }}>
                 {tools.length === 0 ? (
-                  <div style={{ padding: '30px 20px', textAlign: 'center', color: 'rgba(255,255,255,0.3)', fontSize: '12px', border: '1px dashed rgba(255,255,255,0.08)', borderRadius: '16px' }}>
+                  <div style={{ padding: '30px 20px', textAlign: 'center', color: 'rgba(255,255,255,0.3)', fontSize: '12px', border: '1px dashed rgba(0, 0, 0, 0.08)', borderRadius: '16px' }}>
                     Ningún artículo registrado en este perfil.
                   </div>
                 ) : (

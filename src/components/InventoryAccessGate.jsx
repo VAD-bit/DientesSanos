@@ -131,8 +131,8 @@ const InventoryAccessGate = ({ children }) => {
             width: 75px;
             height: 75px;
             border-radius: 50%;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(0, 0, 0, 0.04);
+            border: 1px solid rgba(0, 0, 0, 0.08);
             color: #fff;
             font-size: 28px;
             font-weight: 300;
@@ -146,7 +146,7 @@ const InventoryAccessGate = ({ children }) => {
           }
           .numpad-btn:active {
             transform: scale(0.9);
-            background: rgba(255, 255, 255, 0.15);
+            background: rgba(0, 0, 0, 0.04);
           }
           @media (max-width: 400px) {
             .numpad-btn { width: 68px; height: 68px; font-size: 26px; }

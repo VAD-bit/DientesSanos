@@ -293,7 +293,7 @@ const InventoryModule = ({ isMobile, currency, rates }) => {
               }
             }} 
             style={{ 
-              backgroundColor: 'rgba(255, 255, 255, 0.1)', color: 'var(--gold-primary)', border: '1px solid rgba(255, 255, 255, 0.2)',
+              backgroundColor: 'rgba(0, 0, 0, 0.04)', color: 'var(--gold-primary)', border: '1px solid rgba(0, 0, 0, 0.08)',
               flex: isMobile ? '1 1 45%' : 'none', justifyContent: 'center', fontSize: isMobile ? '13px' : '14px', padding: isMobile ? '12px 8px' : '12px 16px', whiteSpace: 'nowrap'
             }}
           >
@@ -365,7 +365,7 @@ const InventoryModule = ({ isMobile, currency, rates }) => {
                 minHeight: isMobile ? '54px' : '64px',
                 padding: isMobile ? '12px 14px' : '14px 18px',
                 borderRadius: '16px',
-                border: `1px solid ${isActive ? 'rgba(17, 17, 17,0.7)' : 'rgba(255,255,255,0.08)'}`,
+                border: `1px solid ${isActive ? 'rgba(17, 17, 17,0.7)' : 'rgba(0, 0, 0, 0.08)'}`,
                 background: isActive
                   ? 'linear-gradient(135deg, rgba(17, 17, 17,0.2), rgba(17, 17, 17,0.06))'
                   : 'rgba(255,255,255,0.025)',
@@ -452,8 +452,8 @@ const InventoryModule = ({ isMobile, currency, rates }) => {
                 onClick={() => setShowCamera(true)}
                 style={{ 
                   height: newItem.image_url ? '120px' : '48px', 
-                  backgroundColor: 'rgba(255,255,255,0.03)', 
-                  border: '1px dashed rgba(255,255,255,0.15)', 
+                  backgroundColor: 'rgba(0, 0, 0, 0.04)', 
+                  border: '1px dashed rgba(0, 0, 0, 0.08)', 
                   borderRadius: '16px', 
                   display: 'flex', 
                   flexDirection: newItem.image_url ? 'column' : 'row',
@@ -595,7 +595,7 @@ const InventoryModule = ({ isMobile, currency, rates }) => {
           </div>
         )}
 
-        <div style={{ display: isMobile ? 'none' : 'flex', backgroundColor: 'rgba(255,255,255,0.03)', borderRadius: '12px', padding: '4px', flex: isMobile ? '1 1 100%' : 'none', justifyContent: 'space-between' }}>
+        <div style={{ display: isMobile ? 'none' : 'flex', backgroundColor: 'rgba(0, 0, 0, 0.04)', borderRadius: '12px', padding: '4px', flex: isMobile ? '1 1 100%' : 'none', justifyContent: 'space-between' }}>
           <button 
             onClick={() => setViewMode('grid')}
             style={{ 
@@ -648,18 +648,18 @@ const InventoryModule = ({ isMobile, currency, rates }) => {
           padding: '80px',
           borderRadius: '32px',
           background: 'var(--bg-secondary)',
-          border: '1px solid rgba(255, 255, 255, 0.05)',
+          border: '1px solid rgba(0, 0, 0, 0.08)',
           boxShadow: '0 16px 40px -12px rgba(0, 0, 0, 0.7)'
         }}>
           <Package size={64} color="rgba(255,255,255,0.05)" style={{ marginBottom: '24px' }} />
           <p style={{ color: 'var(--text-muted)', fontSize: '18px' }}>No hay productos que coincidan.</p>
         </div>
       ) : viewMode === 'list' && !isMobile ? (
-        <div className="animate-slide-up" style={{ background: 'var(--bg-secondary)', padding: '0', borderRadius: '24px', overflow: 'hidden', border: '1px solid rgba(255, 255, 255, 0.15)', marginBottom: '80px' }}>
+        <div className="animate-slide-up" style={{ background: 'var(--bg-secondary)', padding: '0', borderRadius: '24px', overflow: 'hidden', border: '1px solid rgba(0, 0, 0, 0.08)', marginBottom: '80px' }}>
             <div style={{ width: '100%', overflowX: 'hidden' }}>
               <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', tableLayout: 'auto' }}>
                 <thead>
-                  <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.05)', backgroundColor: 'rgba(255,255,255,0.02)' }}>
+                  <tr style={{ borderBottom: '1px solid rgba(0, 0, 0, 0.08)', backgroundColor: 'rgba(0, 0, 0, 0.04)' }}>
                     <th style={{ padding: isMobile ? '12px 6px 12px 16px' : '20px', fontSize: isMobile ? '10px' : '11px', fontWeight: '900', color: 'var(--text-muted)' }}>PRODUCTO</th>
                     <th style={{ padding: isMobile ? '12px 6px' : '20px', fontSize: isMobile ? '10px' : '11px', fontWeight: '900', color: 'var(--text-muted)', display: isMobile ? 'none' : 'table-cell' }}>CATEGORÍA</th>
                     <th style={{ padding: isMobile ? '12px 6px' : '20px', fontSize: isMobile ? '10px' : '11px', fontWeight: '900', color: 'var(--text-muted)', textAlign: 'center' }}>STOCK</th>
@@ -669,7 +669,7 @@ const InventoryModule = ({ isMobile, currency, rates }) => {
                 </thead>
                 <tbody>
                   {filteredInventory.map(item => (
-                    <tr key={item.id} style={{ borderBottom: '1px solid rgba(255,255,255,0.03)', transition: 'background 0.2s' }} className="table-row-hover">
+                    <tr key={item.id} style={{ borderBottom: '1px solid rgba(0, 0, 0, 0.08)', transition: 'background 0.2s' }} className="table-row-hover">
                       <td style={{ padding: isMobile ? '12px 6px 12px 16px' : '16px 20px', maxWidth: isMobile ? '120px' : 'none', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                         <div style={{ display: 'flex', flexDirection: 'column' }}>
                            <span style={{ fontWeight: '800', fontSize: isMobile ? '13px' : '14px', lineHeight: '1.2' }}>{formatProductName(item.name)}</span>
@@ -677,7 +677,7 @@ const InventoryModule = ({ isMobile, currency, rates }) => {
                         </div>
                       </td>
                       <td style={{ padding: isMobile ? '8px 4px' : '16px 20px', display: isMobile ? 'none' : 'table-cell' }}>
-                        <span style={{ fontSize: '10px', backgroundColor: 'rgba(255,255,255,0.05)', padding: '4px 10px', borderRadius: '6px', color: 'var(--text-secondary)', fontWeight: '800' }}>
+                        <span style={{ fontSize: '10px', backgroundColor: 'rgba(0, 0, 0, 0.04)', padding: '4px 10px', borderRadius: '6px', color: 'var(--text-secondary)', fontWeight: '800' }}>
                           {item.category}
                         </span>
                       </td>
@@ -712,7 +712,7 @@ const InventoryModule = ({ isMobile, currency, rates }) => {
                           </button>
                           <button 
                             onClick={() => setEditingItem(item)}
-                            className="action-btn" style={{ width: isMobile ? '28px' : '32px', height: isMobile ? '28px' : '32px', padding: 0, backgroundColor: 'rgba(255, 255, 255,0.1)', color: 'var(--gold-primary)' }}
+                            className="action-btn" style={{ width: isMobile ? '28px' : '32px', height: isMobile ? '28px' : '32px', padding: 0, backgroundColor: 'rgba(0, 0, 0, 0.04)', color: 'var(--gold-primary)' }}
                           >
                             <Edit3 size={14} />
                           </button>
@@ -740,14 +740,14 @@ const InventoryModule = ({ isMobile, currency, rates }) => {
                 borderRadius: '24px',
                 transition: 'none',
                 boxShadow: isLowStock ? '0 10px 30px rgba(255, 255, 255, 0.1)' : '0 10px 30px rgba(0,0,0,0.2)',
-                background: isLowStock ? 'linear-gradient(135deg, rgba(28,28,30,0.9), rgba(255, 255, 255, 0.05))' : 'var(--bg-secondary)'
+                background: isLowStock ? 'linear-gradient(135deg, rgba(232,212,176,0.55), rgba(255,255,255,0.95))' : 'var(--bg-secondary)'
               }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '20px', alignItems: 'center' }}>
                   <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
                     <div className="inventory-actions" style={{ display: 'flex', gap: '8px' }}>
                       <button 
                         onClick={() => setEditingItem(item)}
-                        style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', color: 'var(--text-muted)', cursor: 'pointer', padding: isMobile ? '10px' : '6px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+                        style={{ background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', color: 'var(--text-muted)', cursor: 'pointer', padding: isMobile ? '10px' : '6px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
                         onMouseOver={(e) => e.currentTarget.style.color = 'var(--gold-primary)'}
                         onMouseOut={(e) => e.currentTarget.style.color = 'var(--text-muted)'}
                       >
@@ -755,7 +755,7 @@ const InventoryModule = ({ isMobile, currency, rates }) => {
                       </button>
                       <button 
                         onClick={() => handleDeleteItem(item.id, item.name)}
-                        style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', color: 'var(--text-muted)', cursor: 'pointer', padding: isMobile ? '10px' : '6px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+                        style={{ background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', color: 'var(--text-muted)', cursor: 'pointer', padding: isMobile ? '10px' : '6px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
                         onMouseOver={(e) => e.currentTarget.style.color = '#ff453a'}
                         onMouseOut={(e) => e.currentTarget.style.color = 'var(--text-muted)'}
                       >
@@ -764,7 +764,7 @@ const InventoryModule = ({ isMobile, currency, rates }) => {
                     </div>
                     <span style={{ 
                       fontSize: '10px', 
-                      backgroundColor: 'rgba(255,255,255,0.05)', 
+                      backgroundColor: 'rgba(0, 0, 0, 0.04)', 
                       padding: '4px 12px', 
                       borderRadius: '20px',
                       color: 'var(--text-secondary)',
@@ -787,9 +787,9 @@ const InventoryModule = ({ isMobile, currency, rates }) => {
                     width: '64px', 
                     height: '64px', 
                     borderRadius: '16px', 
-                    background: item.image_url ? 'rgba(255,255,255,0.02)' : 'linear-gradient(135deg, rgba(255, 255, 255,0.08), rgba(0,0,0,0.4))', 
+                    background: item.image_url ? 'rgba(255,255,255,0.6)' : 'linear-gradient(135deg, #f5f7fa, #e5e9ef)', 
                     overflow: 'hidden',
-                    border: '1px solid rgba(255,255,255,0.1)',
+                    border: '1px solid rgba(0, 0, 0, 0.08)',
                     boxShadow: 'inset 0 0 10px rgba(0,0,0,0.5)',
                     display: 'flex',
                     alignItems: 'center',
@@ -816,10 +816,10 @@ const InventoryModule = ({ isMobile, currency, rates }) => {
                           fontSize: '10px', 
                           fontWeight: '800', 
                           padding: '4px 8px', 
-                          backgroundColor: 'rgba(255, 255, 255,0.1)', 
+                          backgroundColor: 'rgba(0, 0, 0, 0.04)', 
                           color: 'var(--gold-primary)', 
                           borderRadius: '8px',
-                          border: '1px solid rgba(255, 255, 255,0.2)'
+                          border: '1px solid rgba(0, 0, 0, 0.08)'
                         }}>
                           ASIGNADA A {staff.find(s => s.id === item.owner_staff_id)?.name.split(' ')[0].toUpperCase() || 'DESCONOCIDO'}
                         </div>
@@ -868,16 +868,16 @@ const InventoryModule = ({ isMobile, currency, rates }) => {
                   padding: '16px',
                   backgroundColor: 'var(--bg-secondary)',
                   borderRadius: '16px',
-                  border: '1px solid rgba(255,255,255,0.03)'
+                  border: '1px solid rgba(0, 0, 0, 0.08)'
                 }}>
                   <div style={{ fontSize: '13px', fontWeight: '700', color: 'var(--text-secondary)' }}>ALMACÉN</div>
                   <div style={{ 
                     display: 'flex', 
                     alignItems: 'center', 
-                    background: 'rgba(255,255,255,0.04)', 
+                    background: 'rgba(0, 0, 0, 0.04)', 
                     borderRadius: '100px', 
                     padding: '4px',
-                    border: '1px solid rgba(255,255,255,0.06)'
+                    border: '1px solid rgba(0, 0, 0, 0.08)'
                   }}>
                     <button 
                       onClick={() => handeAdjustStock(item.id, item.stock, -1)}
@@ -945,7 +945,7 @@ const InventoryModule = ({ isMobile, currency, rates }) => {
           100% { opacity: 0.6; transform: scale(0.95); }
         }
         .table-row-hover:hover {
-          background-color: rgba(255,255,255,0.02) !important;
+          background-color: rgba(0, 0, 0, 0.04) !important;
         }
       `}</style>
 
@@ -986,8 +986,8 @@ const InventoryModule = ({ isMobile, currency, rates }) => {
           const dateGroups = Object.entries(groupedByDate);
 
           return (
-            <div className={overlayClass} style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(0,0,0,0.85)', backdropFilter: 'blur(10px)', zIndex: 99999, display: 'flex', justifyContent: 'center', alignItems: 'center', padding: isMobile ? '12px' : '20px', paddingTop: isMobile ? 'max(12px, env(safe-area-inset-top, 12px))' : 'max(20px, env(safe-area-inset-top, 20px))' }}>
-              <div className={`glass-card ${cardClass.replace('global-modal-card', '')}`} style={{ transition: 'none', maxWidth: 'min(860px, 92vw)', width: '100%', borderRadius: '28px', maxHeight: '92vh', overflowY: 'auto', overflowX: 'hidden', background: 'var(--bg-secondary)', border: '1px solid rgba(255,255,255,0.06)', boxShadow: '0 40px 80px -20px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.03) inset' }}>
+            <div className={overlayClass} style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(255, 255, 255, 0.9)', backdropFilter: 'blur(10px)', zIndex: 99999, display: 'flex', justifyContent: 'center', alignItems: 'center', padding: isMobile ? '12px' : '20px', paddingTop: isMobile ? 'max(12px, env(safe-area-inset-top, 12px))' : 'max(20px, env(safe-area-inset-top, 20px))' }}>
+              <div className={`glass-card ${cardClass.replace('global-modal-card', '')}`} style={{ transition: 'none', maxWidth: 'min(860px, 92vw)', width: '100%', borderRadius: '28px', maxHeight: '92vh', overflowY: 'auto', overflowX: 'hidden', background: 'var(--bg-secondary)', border: '1px solid rgba(0, 0, 0, 0.08)', boxShadow: '0 40px 80px -20px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.03) inset' }}>
                 
                 {/* ── HEADER ── */}
                 <div style={{ padding: isMobile ? '28px 22px 0' : '32px 36px 0', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '16px' }}>
@@ -1000,7 +1000,7 @@ const InventoryModule = ({ isMobile, currency, rates }) => {
                     </h2>
                     <p style={{ color: 'var(--text-muted)', fontSize: '13px', marginTop: '6px', paddingLeft: '52px' }}>Registro completo de entradas y salidas de almacén.</p>
                   </div>
-                  <button onClick={() => setShowHistoryModal(false)} style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.08)', color: 'rgba(255,255,255,0.5)', cursor: 'pointer', width: '36px', height: '36px', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, transition: 'all 0.2s' }} onMouseEnter={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.1)'; e.currentTarget.style.color = 'white'; }} onMouseLeave={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.06)'; e.currentTarget.style.color = 'rgba(255,255,255,0.5)'; }}>
+                  <button onClick={() => setShowHistoryModal(false)} style={{ background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', color: 'rgba(255,255,255,0.5)', cursor: 'pointer', width: '36px', height: '36px', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, transition: 'all 0.2s' }} onMouseEnter={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.1)'; e.currentTarget.style.color = 'white'; }} onMouseLeave={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.06)'; e.currentTarget.style.color = 'rgba(255,255,255,0.5)'; }}>
                     <X size={18} />
                   </button>
                 </div>
@@ -1034,10 +1034,10 @@ const InventoryModule = ({ isMobile, currency, rates }) => {
                       onChange={e => setHistorySearch(e.target.value)}
                       placeholder="Buscar producto o motivo..."
                       className="search-subtle"
-                      style={{ width: '100%', padding: '10px 14px 10px 36px', borderRadius: '12px', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.06)', color: 'white', fontSize: '13px', outline: 'none', boxSizing: 'border-box' }}
+                      style={{ width: '100%', padding: '10px 14px 10px 36px', borderRadius: '12px', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', color: 'white', fontSize: '13px', outline: 'none', boxSizing: 'border-box' }}
                     />
                     {historySearch && (
-                      <button onClick={() => setHistorySearch('')} style={{ position: 'absolute', right: '8px', top: '50%', transform: 'translateY(-50%)', background: 'rgba(255,255,255,0.08)', border: 'none', color: 'rgba(255,255,255,0.4)', cursor: 'pointer', width: '20px', height: '20px', borderRadius: '6px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                      <button onClick={() => setHistorySearch('')} style={{ position: 'absolute', right: '8px', top: '50%', transform: 'translateY(-50%)', background: 'rgba(0, 0, 0, 0.04)', border: 'none', color: 'rgba(255,255,255,0.4)', cursor: 'pointer', width: '20px', height: '20px', borderRadius: '6px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                         <X size={12} />
                       </button>
                     )}
@@ -1054,7 +1054,7 @@ const InventoryModule = ({ isMobile, currency, rates }) => {
                           fontWeight: '700',
                           backgroundColor: historyFilter === tab.value ? 'var(--gold-primary)' : 'rgba(255,255,255,0.04)',
                           color: historyFilter === tab.value ? 'black' : 'rgba(255,255,255,0.5)',
-                          border: `1px solid ${historyFilter === tab.value ? 'var(--gold-primary)' : 'rgba(255,255,255,0.06)'}`,
+                          border: `1px solid ${historyFilter === tab.value ? 'var(--gold-primary)' : 'rgba(0, 0, 0, 0.08)'}`,
                           cursor: 'pointer',
                           transition: 'all 0.2s cubic-bezier(0.4,0,0.2,1)',
                           whiteSpace: 'nowrap'
@@ -1072,7 +1072,7 @@ const InventoryModule = ({ isMobile, currency, rates }) => {
                     <SkeletonList rows={4} rowHeight={56} />
                   ) : filteredHistory.length === 0 ? (
                     <div style={{ textAlign: 'center', padding: '48px 20px' }}>
-                      <div style={{ width: '64px', height: '64px', borderRadius: '20px', background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.05)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 16px' }}>
+                      <div style={{ width: '64px', height: '64px', borderRadius: '20px', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 16px' }}>
                         <Package size={28} color="rgba(255,255,255,0.12)" />
                       </div>
                       <p style={{ color: 'var(--text-muted)', fontSize: '14px', fontWeight: '600' }}>{historySearch ? `Sin resultados para "${historySearch}"` : 'No hay movimientos en este período.'}</p>
@@ -1082,7 +1082,7 @@ const InventoryModule = ({ isMobile, currency, rates }) => {
                       {dateGroups.map(([dateLabel, moves]) => (
                         <div key={dateLabel} style={{ marginBottom: '20px' }}>
                           {/* Date Header */}
-                          <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '10px', paddingBottom: '8px', borderBottom: '1px solid rgba(255,255,255,0.04)' }}>
+                          <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '10px', paddingBottom: '8px', borderBottom: '1px solid rgba(0, 0, 0, 0.08)' }}>
                             <CalendarDays size={14} color="var(--text-muted)" />
                             <span style={{ fontSize: '12px', fontWeight: '700', color: 'var(--text-secondary)', textTransform: 'capitalize' }}>{dateLabel}</span>
                             <span style={{ fontSize: '11px', color: 'var(--text-muted)', fontWeight: '600' }}>({moves.length})</span>
@@ -1093,7 +1093,7 @@ const InventoryModule = ({ isMobile, currency, rates }) => {
                             {moves.map(move => {
                               const isEntry = move.type === 'entry';
                               return (
-                                <div key={move.id} style={{ display: 'flex', alignItems: 'center', gap: '12px', padding: isMobile ? '12px 14px' : '12px 16px', borderRadius: '14px', background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.04)', transition: 'background 0.2s' }} onMouseEnter={e => e.currentTarget.style.background = 'rgba(255,255,255,0.04)'} onMouseLeave={e => e.currentTarget.style.background = 'rgba(255,255,255,0.02)'}>
+                                <div key={move.id} style={{ display: 'flex', alignItems: 'center', gap: '12px', padding: isMobile ? '12px 14px' : '12px 16px', borderRadius: '14px', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', transition: 'background 0.2s' }} onMouseEnter={e => e.currentTarget.style.background = 'rgba(255,255,255,0.04)'} onMouseLeave={e => e.currentTarget.style.background = 'rgba(255,255,255,0.02)'}>
                                   {/* Type Indicator */}
                                   <div style={{ width: '36px', height: '36px', borderRadius: '10px', background: isEntry ? 'rgba(50,215,75,0.08)' : 'rgba(255,69,58,0.08)', border: `1px solid ${isEntry ? 'rgba(50,215,75,0.15)' : 'rgba(255,69,58,0.15)'}`, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                                     {isEntry ? <ArrowDownLeft size={16} color="#32d74b" /> : <ArrowUpRight size={16} color="#ff453a" />}
@@ -1155,11 +1155,11 @@ const EditInventoryModal = ({ isOpen, item, staff = [], onClose, onSave }) => {
   return (
     <AnimatedModal isOpen={isOpen}>
       {(overlayClass, cardClass) => (
-        <div className={overlayClass} style={{ position: 'fixed', inset: 0, backgroundColor: 'rgba(0,0,0,0.7)', backdropFilter: 'blur(10px)', zIndex: 99999, display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '20px', paddingTop: 'max(20px, env(safe-area-inset-top, 20px))' }}>
-          <div className={`glass-card ${cardClass.replace('global-modal-card', '')} panda-scrollbar`} style={{ transition: 'none', maxWidth: 'min(520px, 90vw)', width: '100%', maxHeight: '90vh', overflowY: 'auto', borderRadius: '24px', padding: '0', display: 'flex', flexDirection: 'column', background: 'var(--bg-secondary)', border: '1px solid rgba(255,255,255,0.08)', boxShadow: '0 30px 60px -12px rgba(0,0,0,0.5)' }}>
+        <div className={overlayClass} style={{ position: 'fixed', inset: 0, backgroundColor: 'rgba(255, 255, 255, 0.9)', backdropFilter: 'blur(10px)', zIndex: 99999, display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '20px', paddingTop: 'max(20px, env(safe-area-inset-top, 20px))' }}>
+          <div className={`glass-card ${cardClass.replace('global-modal-card', '')} panda-scrollbar`} style={{ transition: 'none', maxWidth: 'min(520px, 90vw)', width: '100%', maxHeight: '90vh', overflowY: 'auto', borderRadius: '24px', padding: '0', display: 'flex', flexDirection: 'column', background: 'var(--bg-secondary)', border: '1px solid rgba(0, 0, 0, 0.08)', boxShadow: '0 30px 60px -12px rgba(0,0,0,0.5)' }}>
             
             {/* Header */}
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '24px', borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '24px', borderBottom: '1px solid rgba(0, 0, 0, 0.08)' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
                 <div style={{ 
                   width: '40px', height: '40px', borderRadius: '12px', 
@@ -1177,7 +1177,7 @@ const EditInventoryModal = ({ isOpen, item, staff = [], onClose, onSave }) => {
                 onClick={onClose} 
                 style={{ 
                   width: '32px', height: '32px', borderRadius: '50%',
-                  background: 'rgba(255,255,255,0.05)', border: 'none', color: 'var(--text-secondary)',
+                  background: 'rgba(0, 0, 0, 0.04)', border: 'none', color: 'var(--text-secondary)',
                   display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer',
                   transition: 'all 0.2s'
                 }}
@@ -1192,7 +1192,7 @@ const EditInventoryModal = ({ isOpen, item, staff = [], onClose, onSave }) => {
             <div style={{ padding: '24px', display: 'flex', flexDirection: 'column', gap: '20px' }}>
               <div>
                 <label style={{ display: 'block', marginBottom: '8px', fontSize: '11px', fontWeight: '800', color: 'var(--text-muted)' }}>NOMBRE</label>
-                <input type="text" className="panda-input" value={formData.name || ''} onChange={(e) => setFormData({...formData, name: formatProductName(e.target.value)})} onBlur={(e) => setFormData({...formData, name: formatProductName(e.target.value).trim()})} style={{ width: '100%', backgroundColor: 'rgba(255,255,255,0.02)' }} />
+                <input type="text" className="panda-input" value={formData.name || ''} onChange={(e) => setFormData({...formData, name: formatProductName(e.target.value)})} onBlur={(e) => setFormData({...formData, name: formatProductName(e.target.value).trim()})} style={{ width: '100%', backgroundColor: 'rgba(0, 0, 0, 0.04)' }} />
               </div>
 
               <PandaSelect 
@@ -1224,18 +1224,18 @@ const EditInventoryModal = ({ isOpen, item, staff = [], onClose, onSave }) => {
               <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) minmax(0, 1fr)', gap: '16px' }}>
                 <div>
                   <label style={{ display: 'block', marginBottom: '8px', fontSize: '11px', fontWeight: '800', color: 'var(--text-muted)' }}>PRECIO COSTO ($)</label>
-                  <input type="number" className="panda-input" value={formData.cost_price || 0} onChange={(e) => setFormData({...formData, cost_price: Number(e.target.value)})} style={{ width: '100%', backgroundColor: 'rgba(255,255,255,0.02)' }} />
+                  <input type="number" className="panda-input" value={formData.cost_price || 0} onChange={(e) => setFormData({...formData, cost_price: Number(e.target.value)})} style={{ width: '100%', backgroundColor: 'rgba(0, 0, 0, 0.04)' }} />
                 </div>
                 <div>
                   <label style={{ display: 'block', marginBottom: '8px', fontSize: '11px', fontWeight: '800', color: 'var(--text-muted)' }}>PRECIO VENTA ($)</label>
-                  <input type="number" className="panda-input" value={formData.price || 0} onChange={(e) => setFormData({...formData, price: Number(e.target.value)})} style={{ width: '100%', backgroundColor: 'rgba(255,255,255,0.02)' }} />
+                  <input type="number" className="panda-input" value={formData.price || 0} onChange={(e) => setFormData({...formData, price: Number(e.target.value)})} style={{ width: '100%', backgroundColor: 'rgba(0, 0, 0, 0.04)' }} />
                 </div>
               </div>
 
               {(formData.category === 'Venta' || formData.category === 'Accesorios') && (
                 <div>
                   <label style={{ display: 'block', marginBottom: '8px', fontSize: '11px', fontWeight: '800', color: 'var(--text-muted)' }}>COMISIÓN VENDEDOR (%)</label>
-                  <input type="number" className="panda-input" value={formData.commission_pct ?? 10} onChange={(e) => setFormData({...formData, commission_pct: Number(e.target.value)})} style={{ width: '100%', backgroundColor: 'rgba(255,255,255,0.02)' }} />
+                  <input type="number" className="panda-input" value={formData.commission_pct ?? 10} onChange={(e) => setFormData({...formData, commission_pct: Number(e.target.value)})} style={{ width: '100%', backgroundColor: 'rgba(0, 0, 0, 0.04)' }} />
                 </div>
               )}
 
@@ -1245,8 +1245,8 @@ const EditInventoryModal = ({ isOpen, item, staff = [], onClose, onSave }) => {
                   onClick={() => setShowCamera(true)}
                   style={{ 
                     height: formData.image_url ? '120px' : '48px', 
-                    backgroundColor: 'rgba(255,255,255,0.02)', 
-                    border: '1px dashed rgba(255,255,255,0.15)', 
+                    backgroundColor: 'rgba(0, 0, 0, 0.04)', 
+                    border: '1px dashed rgba(0, 0, 0, 0.08)', 
                     borderRadius: '16px', 
                     display: 'flex', 
                     flexDirection: formData.image_url ? 'column' : 'row',
@@ -1290,8 +1290,8 @@ const EditInventoryModal = ({ isOpen, item, staff = [], onClose, onSave }) => {
                   flex: 1, 
                   padding: '16px', 
                   borderRadius: '16px', 
-                  border: '1px solid rgba(255,255,255,0.08)', 
-                  backgroundColor: 'rgba(255,255,255,0.03)', 
+                  border: '1px solid rgba(0, 0, 0, 0.08)', 
+                  backgroundColor: 'rgba(0, 0, 0, 0.04)', 
                   color: 'white', 
                   fontSize: '14px', 
                   fontWeight: '800',

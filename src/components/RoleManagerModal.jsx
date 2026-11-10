@@ -82,7 +82,7 @@ const RoleManagerModal = ({ isOpen, onClose, roles, onSaveRole, onDeleteRole, av
       {(overlayClass, cardClass) => (
         <div className={overlayClass.replace('global-modal-overlay', '')} style={{
           position: 'fixed', top: 0, left: 0, right: 0, bottom: 0,
-          backgroundColor: 'rgba(0,0,0,0.85)',
+          backgroundColor: 'rgba(255, 255, 255, 0.9)',
           backdropFilter: 'blur(12px)',
           display: 'flex', alignItems: 'center', justifyContent: 'center',
           zIndex: 2000, padding: '20px', paddingTop: 'max(20px, env(safe-area-inset-top, 20px))'
@@ -93,22 +93,22 @@ const RoleManagerModal = ({ isOpen, onClose, roles, onSaveRole, onDeleteRole, av
             display: 'flex', flexDirection: 'column',
             overflow: 'hidden',
             background: 'var(--bg-secondary)',
-            border: '1px solid rgba(255,255,255,0.08)',
+            border: '1px solid rgba(0, 0, 0, 0.08)',
             boxShadow: '0 32px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(255, 255, 255,0.08)'
           }}>
 
             {/* Header */}
             <div style={{
               padding: '24px 28px',
-              borderBottom: '1px solid rgba(255,255,255,0.06)',
+              borderBottom: '1px solid rgba(0, 0, 0, 0.08)',
               display: 'flex', justifyContent: 'space-between', alignItems: 'center',
-              background: 'linear-gradient(90deg, rgba(255, 255, 255,0.06) 0%, transparent 60%)'
+              background: 'linear-gradient(90deg, rgba(0, 0, 0, 0.04) 0%, transparent 60%)'
             }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
                 <div style={{
                   width: '44px', height: '44px', borderRadius: '14px',
-                  background: 'linear-gradient(135deg, rgba(255, 255, 255,0.2), rgba(255, 255, 255,0.05))',
-                  border: '1px solid rgba(255, 255, 255,0.25)',
+                  background: 'linear-gradient(135deg, rgba(0, 0, 0, 0.04), rgba(0, 0, 0, 0.04))',
+                  border: '1px solid rgba(0, 0, 0, 0.08)',
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
                   boxShadow: '0 4px 12px rgba(255, 255, 255,0.15)'
                 }}>
@@ -122,7 +122,7 @@ const RoleManagerModal = ({ isOpen, onClose, roles, onSaveRole, onDeleteRole, av
               <button
                 onClick={onClose}
                 style={{
-                  background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.08)',
+                  background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)',
                   borderRadius: '50%', width: '36px', height: '36px',
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
                   cursor: 'pointer', color: 'var(--text-muted)', transition: 'all 0.2s'
@@ -161,8 +161,8 @@ const RoleManagerModal = ({ isOpen, onClose, roles, onSaveRole, onDeleteRole, av
                         display: 'flex',
                         justifyContent: 'space-between',
                         alignItems: 'center',
-                        background: 'rgba(255,255,255,0.025)',
-                        border: '1px solid rgba(255,255,255,0.06)',
+                        background: 'rgba(0, 0, 0, 0.04)',
+                        border: '1px solid rgba(0, 0, 0, 0.08)',
                         transition: 'all 0.2s',
                         gap: '12px'
                       }}
@@ -201,9 +201,9 @@ const RoleManagerModal = ({ isOpen, onClose, roles, onSaveRole, onDeleteRole, av
                             {perms.length > 4 && (
                               <span style={{
                                 fontSize: '10px', color: 'var(--text-muted)',
-                                background: 'rgba(255,255,255,0.05)',
+                                background: 'rgba(0, 0, 0, 0.04)',
                                 padding: '2px 10px', borderRadius: '50px',
-                                fontWeight: '700', border: '1px solid rgba(255,255,255,0.08)'
+                                fontWeight: '700', border: '1px solid rgba(0, 0, 0, 0.08)'
                               }}>+{perms.length - 4} más</span>
                             )}
                           </div>
@@ -214,7 +214,7 @@ const RoleManagerModal = ({ isOpen, onClose, roles, onSaveRole, onDeleteRole, av
                           <button
                             onClick={() => handleEditClick(name, perms)}
                             style={{
-                              background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.08)',
+                              background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)',
                               padding: '8px 10px', borderRadius: '10px', cursor: 'pointer', color: 'white',
                               transition: 'all 0.2s', display: 'flex', alignItems: 'center'
                             }}
@@ -253,7 +253,7 @@ const RoleManagerModal = ({ isOpen, onClose, roles, onSaveRole, onDeleteRole, av
                     />
                   </div>
 
-                  <div style={{ padding: '20px', backgroundColor: 'rgba(255,255,255,0.02)', borderRadius: '20px', border: '1px solid rgba(255,255,255,0.06)' }}>
+                  <div style={{ padding: '20px', backgroundColor: 'rgba(0, 0, 0, 0.04)', borderRadius: '20px', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '16px' }}>
                       <Key size={16} color="var(--gold-primary)" />
                       <label style={{ fontSize: '11px', fontWeight: '900', color: 'white', letterSpacing: '1px', textTransform: 'uppercase' }}>Permisos</label>
@@ -270,14 +270,14 @@ const RoleManagerModal = ({ isOpen, onClose, roles, onSaveRole, onDeleteRole, av
                               display: 'flex', alignItems: 'center', gap: '10px',
                               padding: '12px 14px',
                               borderRadius: '14px',
-                              background: active ? 'linear-gradient(155deg, rgba(17, 17, 17,.14) 0%, #101012 100%)' : 'linear-gradient(155deg, #1c1c1f 0%, #101012 100%)',
-                              border: `1px solid ${active ? 'var(--gold-primary)' : 'rgba(255,255,255,0.1)'}`,
+                              background: active ? 'linear-gradient(155deg, rgba(232,212,176,0.5) 0%, #ffffff 100%)' : 'linear-gradient(155deg, #ffffff 0%, #f5f7fa 100%)',
+                              border: `1px solid ${active ? 'var(--gold-primary)' : 'rgba(0, 0, 0, 0.08)'}`,
                               cursor: 'pointer', transition: 'background-color 0.18s'
                             }}
                           >
                             <div style={{
                               width: '20px', height: '20px', borderRadius: '6px',
-                              border: `1.5px solid ${active ? 'var(--gold-primary)' : 'rgba(255,255,255,0.2)'}`,
+                              border: `1.5px solid ${active ? 'var(--gold-primary)' : 'rgba(0, 0, 0, 0.08)'}`,
                               display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0,
                               backgroundColor: active ? 'var(--gold-primary)' : 'transparent',
                               transition: 'background-color 0.18s'
@@ -294,7 +294,7 @@ const RoleManagerModal = ({ isOpen, onClose, roles, onSaveRole, onDeleteRole, av
                   <div style={{ display: 'flex', gap: '10px', marginTop: '24px' }}>
                     <button
                       onClick={() => setEditingRole(null)}
-                      style={{ flex: 1, height: '50px', borderRadius: '14px', border: '1px solid rgba(255,255,255,0.08)', background: 'rgba(255,255,255,0.04)', color: 'white', fontWeight: '700', cursor: 'pointer', transition: 'all 0.2s' }}
+                      style={{ flex: 1, height: '50px', borderRadius: '14px', border: '1px solid rgba(0, 0, 0, 0.08)', background: 'rgba(0, 0, 0, 0.04)', color: 'white', fontWeight: '700', cursor: 'pointer', transition: 'all 0.2s' }}
                       onMouseOver={e => e.currentTarget.style.background = 'rgba(255,255,255,0.08)'}
                       onMouseOut={e => e.currentTarget.style.background = 'rgba(255,255,255,0.04)'}
                     >
@@ -315,8 +315,8 @@ const RoleManagerModal = ({ isOpen, onClose, roles, onSaveRole, onDeleteRole, av
             {/* Footer */}
             <div style={{
               padding: '14px 28px',
-              background: 'linear-gradient(90deg, rgba(255, 255, 255,0.06) 0%, transparent 70%)',
-              borderTop: '1px solid rgba(255, 255, 255,0.1)',
+              background: 'linear-gradient(90deg, rgba(0, 0, 0, 0.04) 0%, transparent 70%)',
+              borderTop: '1px solid rgba(0, 0, 0, 0.08)',
               display: 'flex', alignItems: 'center', gap: '10px'
             }}>
               <Info size={15} color="var(--gold-primary)" style={{ flexShrink: 0 }} />

@@ -333,7 +333,7 @@ const StaffProfileModal = ({ isOpen, onClose, staffMember, inventory = [], onUpd
         <div className={overlayClass} style={{
           position: 'fixed',
           top: 0, left: 0, right: 0, bottom: 0,
-          backgroundColor: 'rgba(0,0,0,0.85)',
+          backgroundColor: 'rgba(255, 255, 255, 0.9)',
           backdropFilter: 'blur(10px)',
           display: 'flex',
           alignItems: 'center',
@@ -352,15 +352,15 @@ const StaffProfileModal = ({ isOpen, onClose, staffMember, inventory = [], onUpd
             overflow: 'hidden',
             position: 'relative',
             background: 'var(--bg-secondary)',
-            border: '1px solid rgba(255,255,255,0.08)',
+            border: '1px solid rgba(0, 0, 0, 0.08)',
             boxShadow: '0 32px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(255, 255, 255,0.08)'
           }}>
         
         {/* Header Section */}
         <div style={{ 
           padding: isMobileView ? '24px 16px 16px' : '32px 32px 24px', 
-          background: 'linear-gradient(90deg, rgba(255, 255, 255,0.06) 0%, transparent 60%)', 
-          borderBottom: '1px solid rgba(255,255,255,0.06)' 
+          background: 'linear-gradient(90deg, rgba(0, 0, 0, 0.04) 0%, transparent 60%)', 
+          borderBottom: '1px solid rgba(0, 0, 0, 0.08)' 
         }}>
           <button 
             onClick={onClose}
@@ -368,8 +368,8 @@ const StaffProfileModal = ({ isOpen, onClose, staffMember, inventory = [], onUpd
               position: 'absolute', 
               top: isMobileView ? '16px' : '24px', 
               right: isMobileView ? '16px' : '24px', 
-              background: 'rgba(255,255,255,0.06)', 
-              border: '1px solid rgba(255,255,255,0.08)', 
+              background: 'rgba(0, 0, 0, 0.04)', 
+              border: '1px solid rgba(0, 0, 0, 0.08)', 
               borderRadius: '50%', 
               width: '40px', 
               height: '40px', 
@@ -392,7 +392,7 @@ const StaffProfileModal = ({ isOpen, onClose, staffMember, inventory = [], onUpd
               width: isMobileView ? '70px' : '90px', 
               height: isMobileView ? '70px' : '90px', 
               borderRadius: isMobileView ? '16px' : '24px', 
-              backgroundColor: 'rgba(255,255,255,0.05)', 
+              backgroundColor: 'rgba(0, 0, 0, 0.04)', 
               overflow: 'hidden', 
               border: '2px solid var(--gold-primary)', 
               display: 'flex', 
@@ -470,10 +470,10 @@ const StaffProfileModal = ({ isOpen, onClose, staffMember, inventory = [], onUpd
               <div style={{ display: 'grid', gridTemplateColumns: isMobileView ? '1fr' : 'repeat(3, minmax(0, 1fr))', gap: isMobileView ? '12px' : '16px', marginBottom: isMobileView ? '20px' : '32px' }}>
                 <div 
                   style={{ 
-                    background: 'rgba(255,255,255,0.025)', 
+                    background: 'rgba(0, 0, 0, 0.04)', 
                     padding: isMobileView ? '16px' : '24px', 
                     borderRadius: '20px', 
-                    border: '1px solid rgba(255,255,255,0.06)', 
+                    border: '1px solid rgba(0, 0, 0, 0.08)', 
                     display: 'flex', 
                     alignItems: 'center', 
                     gap: isMobileView ? '12px' : '20px',
@@ -492,10 +492,10 @@ const StaffProfileModal = ({ isOpen, onClose, staffMember, inventory = [], onUpd
                 </div>
                 <div 
                   style={{ 
-                    background: 'rgba(255,255,255,0.025)', 
+                    background: 'rgba(0, 0, 0, 0.04)', 
                     padding: isMobileView ? '16px' : '24px', 
                     borderRadius: '20px', 
-                    border: '1px solid rgba(255,255,255,0.06)', 
+                    border: '1px solid rgba(0, 0, 0, 0.08)', 
                     display: 'flex', 
                     alignItems: 'center', 
                     gap: isMobileView ? '12px' : '20px',
@@ -514,10 +514,10 @@ const StaffProfileModal = ({ isOpen, onClose, staffMember, inventory = [], onUpd
                 </div>
                 <div 
                   style={{ 
-                    background: 'rgba(255, 255, 255,0.025)', 
+                    background: 'rgba(0, 0, 0, 0.04)', 
                     padding: isMobileView ? '16px' : '24px', 
                     borderRadius: '20px', 
-                    border: '1px solid rgba(255, 255, 255,0.12)', 
+                    border: '1px solid rgba(0, 0, 0, 0.08)', 
                     display: 'flex', 
                     alignItems: 'center', 
                     gap: isMobileView ? '12px' : '20px',
@@ -526,7 +526,7 @@ const StaffProfileModal = ({ isOpen, onClose, staffMember, inventory = [], onUpd
                   onMouseOver={e => { e.currentTarget.style.background = 'rgba(255, 255, 255,0.04)'; e.currentTarget.style.borderColor = 'rgba(255, 255, 255,0.25)'; }}
                   onMouseOut={e => { e.currentTarget.style.background = 'rgba(255, 255, 255,0.025)'; e.currentTarget.style.borderColor = 'rgba(255, 255, 255,0.12)'; }}
                 >
-                  <div style={{ width: '48px', height: '48px', borderRadius: '12px', background: 'rgba(255, 255, 255,0.1)', color: 'var(--gold-primary)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                  <div style={{ width: '48px', height: '48px', borderRadius: '12px', background: 'rgba(0, 0, 0, 0.04)', color: 'var(--gold-primary)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                     <TrendingUp size={24} />
                   </div>
                   <div>
@@ -541,10 +541,10 @@ const StaffProfileModal = ({ isOpen, onClose, staffMember, inventory = [], onUpd
                 {/* Time & Volume */}
                 <div 
                   style={{ 
-                    background: 'rgba(255, 255, 255,0.025)', 
+                    background: 'rgba(0, 0, 0, 0.04)', 
                     padding: '24px', 
                     borderRadius: '20px', 
-                    border: '1px solid rgba(255, 255, 255,0.12)',
+                    border: '1px solid rgba(0, 0, 0, 0.08)',
                     transition: 'all 0.2s'
                   }}
                   onMouseOver={e => { e.currentTarget.style.background = 'rgba(255, 255, 255,0.04)'; e.currentTarget.style.borderColor = 'rgba(255, 255, 255,0.25)'; }}
@@ -567,10 +567,10 @@ const StaffProfileModal = ({ isOpen, onClose, staffMember, inventory = [], onUpd
                 {/* Top Services */}
                 <div 
                   style={{ 
-                    background: 'rgba(255,255,255,0.025)', 
+                    background: 'rgba(0, 0, 0, 0.04)', 
                     padding: '24px', 
                     borderRadius: '20px', 
-                    border: '1px solid rgba(255,255,255,0.06)',
+                    border: '1px solid rgba(0, 0, 0, 0.08)',
                     transition: 'all 0.2s'
                   }}
                   onMouseOver={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.04)'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)'; }}
@@ -585,7 +585,7 @@ const StaffProfileModal = ({ isOpen, onClose, staffMember, inventory = [], onUpd
                       {stats.topServices.map((srv, idx) => (
                         <div key={idx} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                           <span style={{ color: 'var(--text-secondary)', fontWeight: '600', fontSize: '14px' }}>{srv.name}</span>
-                          <span style={{ background: 'rgba(255, 255, 255,0.1)', color: 'var(--gold-primary)', padding: '4px 12px', borderRadius: '50px', fontSize: '12px', fontWeight: '800' }}>{srv.count} veces</span>
+                          <span style={{ background: 'rgba(0, 0, 0, 0.04)', color: 'var(--gold-primary)', padding: '4px 12px', borderRadius: '50px', fontSize: '12px', fontWeight: '800' }}>{srv.count} veces</span>
                         </div>
                       ))}
                     </div>
@@ -599,10 +599,10 @@ const StaffProfileModal = ({ isOpen, onClose, staffMember, inventory = [], onUpd
               <div 
                 style={{ 
                   marginTop: isMobileView ? '16px' : '24px',
-                  background: 'rgba(255,255,255,0.025)', 
+                  background: 'rgba(0, 0, 0, 0.04)', 
                   padding: '24px', 
                   borderRadius: '20px', 
-                  border: '1px solid rgba(255,255,255,0.06)',
+                  border: '1px solid rgba(0, 0, 0, 0.08)',
                   display: 'flex',
                   flexDirection: 'column',
                   gap: '16px'
@@ -619,7 +619,7 @@ const StaffProfileModal = ({ isOpen, onClose, staffMember, inventory = [], onUpd
                       const avgRev = (Number(rev.rapidez || 0) + Number(rev.limpieza || 0) + Number(rev.habilidad || 0)) / 3;
                       const dateFormatted = rev.created_at ? new Date(rev.created_at).toLocaleDateString('es-ES', { day: '2-digit', month: '2-digit', year: 'numeric' }) : '';
                       return (
-                        <div key={rev.id} style={{ padding: '14px', borderRadius: '16px', background: 'rgba(255,255,255,0.015)', border: '1px solid rgba(255,255,255,0.04)', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                        <div key={rev.id} style={{ padding: '14px', borderRadius: '16px', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', display: 'flex', flexDirection: 'column', gap: '8px' }}>
                           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
                             <div>
                               <span style={{ fontWeight: '700', fontSize: '13px', color: 'white' }}>{clientName}</span>
@@ -663,9 +663,9 @@ const StaffProfileModal = ({ isOpen, onClose, staffMember, inventory = [], onUpd
                 <button
                   onClick={() => setShowInventoryHistory(true)}
                   style={{
-                    background: 'rgba(255,255,255,0.06)',
+                    background: 'rgba(0, 0, 0, 0.04)',
                     color: 'white',
-                    border: '1px solid rgba(255,255,255,0.1)',
+                    border: '1px solid rgba(0, 0, 0, 0.08)',
                     padding: '10px 16px',
                     borderRadius: '50px',
                     fontWeight: '800',
@@ -682,7 +682,7 @@ const StaffProfileModal = ({ isOpen, onClose, staffMember, inventory = [], onUpd
                   style={{ 
                     background: showAddTool ? 'rgba(255,255,255,0.06)' : 'var(--gold-primary)', 
                     color: showAddTool ? 'white' : 'black', 
-                    border: showAddTool ? '1px solid rgba(255,255,255,0.08)' : 'none', 
+                    border: showAddTool ? '1px solid rgba(0, 0, 0, 0.08)' : 'none', 
                     padding: '10px 20px', 
                     borderRadius: '50px', 
                     fontWeight: '800', 
@@ -713,7 +713,7 @@ const StaffProfileModal = ({ isOpen, onClose, staffMember, inventory = [], onUpd
               </div>
 
               {(showAddTool || isToolFormExiting) && (
-                <div className={isToolFormExiting ? 'animate-slide-down-fade' : ''} style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.1)', padding: '20px', borderRadius: '16px', marginBottom: '24px' }}>
+                <div className={isToolFormExiting ? 'animate-slide-down-fade' : ''} style={{ background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', padding: '20px', borderRadius: '16px', marginBottom: '24px' }}>
                   <div style={{ display: 'grid', gridTemplateColumns: isMobileView ? '1fr' : 'minmax(0, 1fr) minmax(0, 1fr)', gap: '16px', marginBottom: '16px' }}>
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
                       <PandaSelect
@@ -824,7 +824,7 @@ const StaffProfileModal = ({ isOpen, onClose, staffMember, inventory = [], onUpd
               )}
 
               {tools.length === 0 ? (
-                <div style={{ textAlign: 'center', padding: '40px', background: 'rgba(255,255,255,0.01)', borderRadius: '16px', border: '1px dashed rgba(255,255,255,0.1)' }}>
+                <div style={{ textAlign: 'center', padding: '40px', background: 'rgba(0, 0, 0, 0.04)', borderRadius: '16px', border: '1px dashed rgba(0, 0, 0, 0.08)' }}>
                   <Wrench size={40} color="var(--text-muted)" opacity={0.5} style={{ marginBottom: '16px' }} />
                   <p style={{ color: 'var(--text-secondary)', fontSize: '14px' }}>No hay artículos registrados para este empleado.</p>
                 </div>
@@ -841,10 +841,10 @@ const StaffProfileModal = ({ isOpen, onClose, staffMember, inventory = [], onUpd
                         display: 'flex', 
                         justifyContent: 'space-between', 
                         alignItems: 'center', 
-                        background: 'rgba(255,255,255,0.025)', 
+                        background: 'rgba(0, 0, 0, 0.04)', 
                         padding: isMobileView ? '12px 16px' : '16px 24px', 
                         borderRadius: '20px', 
-                        border: '1px solid rgba(255,255,255,0.06)', 
+                        border: '1px solid rgba(0, 0, 0, 0.08)', 
                         flexWrap: 'wrap', 
                         gap: '12px',
                         transition: 'all 0.2s'
@@ -921,7 +921,7 @@ const StaffProfileModal = ({ isOpen, onClose, staffMember, inventory = [], onUpd
                             borderRadius: '50px', 
                             background: tool.ownership === 'Asignada' ? 'var(--gold-primary)' : 'rgba(255,255,255,0.08)', 
                             color: tool.ownership === 'Asignada' ? 'black' : 'white',
-                            border: tool.ownership === 'Asignada' ? 'none' : '1px solid rgba(255,255,255,0.08)'
+                            border: tool.ownership === 'Asignada' ? 'none' : '1px solid rgba(0, 0, 0, 0.08)'
                           }}>
                             {tool.ownership}
                           </span>

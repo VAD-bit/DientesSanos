@@ -501,10 +501,10 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
           {!isMobile && (
             <div style={{ 
               display: 'flex', 
-              backgroundColor: 'rgba(255,255,255,0.03)', 
+              backgroundColor: 'rgba(0, 0, 0, 0.04)', 
               borderRadius: '12px', 
               padding: '4px',
-              border: '1px solid rgba(255,255,255,0.05)',
+              border: '1px solid rgba(0, 0, 0, 0.08)',
               marginRight: '12px'
             }}>
               <button 
@@ -546,11 +546,11 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
             </div>
           )}
 
-          <button onClick={() => setIsCategoriesModalOpen(true)} style={{ backgroundColor: 'rgba(255,255,255,0.03)', color: 'white', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', width: isMobile ? '100%' : 'auto', padding: '10px 16px', fontSize: '13px', fontWeight: '600', transition: 'background 0.2s', cursor: 'pointer' }}>
+          <button onClick={() => setIsCategoriesModalOpen(true)} style={{ backgroundColor: 'rgba(0, 0, 0, 0.04)', color: 'white', border: '1px solid rgba(0, 0, 0, 0.08)', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', width: isMobile ? '100%' : 'auto', padding: '10px 16px', fontSize: '13px', fontWeight: '600', transition: 'background 0.2s', cursor: 'pointer' }}>
             <Settings size={16} style={{ marginRight: '6px', color: 'var(--text-muted)' }} />
             Categorías
           </button>
-          <button onClick={() => setIsBillableExtrasModalOpen(true)} style={{ backgroundColor: 'rgba(255,255,255,0.03)', color: 'white', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', width: isMobile ? '100%' : 'auto', padding: '10px 16px', fontSize: '13px', fontWeight: '600', transition: 'background 0.2s', cursor: 'pointer' }}>
+          <button onClick={() => setIsBillableExtrasModalOpen(true)} style={{ backgroundColor: 'rgba(0, 0, 0, 0.04)', color: 'white', border: '1px solid rgba(0, 0, 0, 0.08)', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', width: isMobile ? '100%' : 'auto', padding: '10px 16px', fontSize: '13px', fontWeight: '600', transition: 'background 0.2s', cursor: 'pointer' }}>
             <Rocket size={16} style={{ marginRight: '6px', color: 'var(--text-muted)' }} />
             Extras
           </button>
@@ -601,7 +601,7 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
           zIndex: 999,
           overflow: 'visible',
           background: '#e9eae8',
-          border: '1px solid rgba(255, 255, 255, 0.1)',
+          border: '1px solid rgba(0, 0, 0, 0.08)',
           boxShadow: '0 16px 40px rgba(0,0,0,0.5)'
         }}>
           <h3 style={{ marginBottom: '24px', fontSize: '22px', fontWeight: '800', display: 'flex', alignItems: 'center', gap: '12px' }}>
@@ -645,7 +645,7 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
 
             <div className="form-group">
               <FieldLabel required>PRECIO FINAL ($)</FieldLabel>
-              <div className="premium-price-input-container glow-input" style={{ backgroundColor: 'var(--bg-secondary)', border: '1px solid rgba(255,255,255,0.1)' }}>
+              <div className="premium-price-input-container glow-input" style={{ backgroundColor: 'var(--bg-secondary)', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
                 {(newService.category || '').toLowerCase().includes('tatuaj') && (
                   <span style={{ fontSize: '11px', fontWeight: '800', color: 'var(--gold-primary)', whiteSpace: 'nowrap', marginRight: '4px' }}>DESDE</span>
                 )}
@@ -662,7 +662,7 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
 
             <div className="form-group">
               <label style={{ display: 'block', fontSize: '11px', fontWeight: '900', color: 'var(--text-muted)', marginBottom: '8px', letterSpacing: '1px' }}>ÍCONO</label>
-              <div className="mac-dock-container panda-scrollbar" style={{ padding: '24px 12px 12px 12px', background: 'var(--bg-secondary)', borderRadius: '20px', border: '1px solid rgba(255,255,255,0.05)' }}>
+              <div className="mac-dock-container panda-scrollbar" style={{ padding: '24px 12px 12px 12px', background: 'var(--bg-secondary)', borderRadius: '20px', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
                 {AVAILABLE_ICONS.map(ic => (
                   <button
                     key={ic.name}
@@ -716,8 +716,8 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
                         gap: '8px',
                         cursor: 'pointer',
                         transition: 'all 0.2s',
-                        background: isSelected ? 'rgba(192, 159, 112, 0.15)' : 'rgba(0,0,0,0.3)',
-                        border: isSelected ? '1px solid var(--gold-primary)' : '1px solid rgba(255,255,255,0.05)',
+                        background: isSelected ? 'rgba(192, 159, 112, 0.15)' : 'rgba(0,0,0,0.05)',
+                        border: isSelected ? '1px solid var(--gold-primary)' : '1px solid rgba(0, 0, 0, 0.08)',
                         color: isSelected ? 'var(--gold-primary)' : 'var(--text-secondary)'
                       }}
                     >
@@ -760,7 +760,7 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
                         style={{ 
                           borderRadius: '24px',
                           padding: '20px',
-                          border: '1px solid rgba(255,255,255,0.05)',
+                          border: '1px solid rgba(0, 0, 0, 0.08)',
                           display: 'flex',
                           flexDirection: 'column',
                           gap: '16px',
@@ -862,7 +862,7 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
                     <div className="glass-card premium-hover-card" style={{ 
                       borderRadius: '24px',
                       padding: '24px',
-                      border: '1px solid rgba(255,255,255,0.06)',
+                      border: '1px solid rgba(0, 0, 0, 0.08)',
                       display: 'flex',
                       flexDirection: 'column',
                       gap: '20px',
@@ -897,7 +897,7 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
 
                       {/* Pills Section */}
                       <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', marginTop: 'auto' }}>
-                        <span style={{ display: 'flex', alignItems: 'center', gap: '4px', fontSize: '11px', fontWeight: '600', padding: '4px 10px', borderRadius: '12px', backgroundColor: 'rgba(255,255,255,0.05)', color: 'var(--text-primary)', border: '1px solid rgba(255,255,255,0.05)' }}>
+                        <span style={{ display: 'flex', alignItems: 'center', gap: '4px', fontSize: '11px', fontWeight: '600', padding: '4px 10px', borderRadius: '12px', backgroundColor: 'rgba(0, 0, 0, 0.04)', color: 'var(--text-primary)', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
                           <Clock size={12} style={{ color: 'var(--text-muted)' }} /> {service.duration || 30} m
                         </span>
                         {(service.included_items || []).slice(0, 3).map((item, idx) => (
@@ -906,7 +906,7 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
                           </span>
                         ))}
                         {(service.included_items?.length > 3) && (
-                          <span style={{ fontSize: '10px', fontWeight: '700', padding: '4px 10px', borderRadius: '12px', backgroundColor: 'rgba(255,255,255,0.05)', color: 'var(--text-muted)' }}>
+                          <span style={{ fontSize: '10px', fontWeight: '700', padding: '4px 10px', borderRadius: '12px', backgroundColor: 'rgba(0, 0, 0, 0.04)', color: 'var(--text-muted)' }}>
                             +{service.included_items.length - 3}
                           </span>
                         )}
@@ -917,13 +917,13 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
                         display: 'flex', 
                         alignItems: 'flex-end', 
                         justifyContent: 'space-between',
-                        borderTop: '1px solid rgba(255,255,255,0.06)',
+                        borderTop: '1px solid rgba(0, 0, 0, 0.08)',
                         paddingTop: '16px',
                         marginTop: '8px'
                       }}>
                         <div>
                           {service.strategy_type && (
-                            <div style={{ padding: '4px 10px', borderRadius: '8px', fontSize: '10px', fontWeight: '800', color: 'rgba(255,255,255,0.8)', backgroundColor: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.1)' }}>
+                            <div style={{ padding: '4px 10px', borderRadius: '8px', fontSize: '10px', fontWeight: '800', color: 'rgba(255,255,255,0.8)', backgroundColor: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
                               {service.strategy_type}
                             </div>
                           )}
@@ -1003,14 +1003,14 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
         {(overlayClass, cardClass) => (
           <div className={overlayClass.replace('global-modal-overlay', '')} style={{
             position: 'fixed', top: 0, left: 0, right: 0, bottom: 0,
-            backgroundColor: 'rgba(0,0,0,0.92)', backdropFilter: 'blur(15px)',
+            backgroundColor: 'rgba(255, 255, 255, 0.9)', backdropFilter: 'blur(15px)',
             display: 'flex', alignItems: 'center', justifyContent: 'center',
             zIndex: 99999, padding: isMobile ? '12px' : '20px', paddingTop: isMobile ? 'max(12px, env(safe-area-inset-top, 12px))' : 'max(20px, env(safe-area-inset-top, 20px))'
           }}>
             <div className={`${cardClass.replace('global-modal-card', '')} glass-card panda-scrollbar`} style={{
               width: '100%', maxWidth: '420px', maxHeight: '90vh', overflowY: 'auto', overflowX: 'hidden',
               display: 'flex', flexDirection: 'column', padding: isMobile ? '20px 16px' : '24px',
-              borderRadius: '28px', border: '1px solid rgba(255,255,255,0.2)',
+              borderRadius: '28px', border: '1px solid rgba(0, 0, 0, 0.08)',
               boxShadow: '0 30px 60px -12px rgba(0, 0, 0, 0.6)'
             }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
@@ -1019,7 +1019,7 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
                 </div>
                 <button 
                   onClick={() => setIsExtrasModalOpen(false)} 
-                  style={{ background: 'rgba(255,255,255,0.05)', border: 'none', color: 'white', cursor: 'pointer', width: '36px', height: '36px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+                  style={{ background: 'rgba(0, 0, 0, 0.04)', border: 'none', color: 'white', cursor: 'pointer', width: '36px', height: '36px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
                 >
                   <X size={20} />
                 </button>
@@ -1030,8 +1030,8 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
                   {baseItems.map(item => (
                     <div key={item.id} style={{ 
                       display: 'flex', gap: '8px', alignItems: 'center', 
-                      padding: '6px 10px', borderRadius: '12px', backgroundColor: 'rgba(255,255,255,0.02)',
-                      border: '1px solid rgba(255,255,255,0.05)'
+                      padding: '6px 10px', borderRadius: '12px', backgroundColor: 'rgba(0, 0, 0, 0.04)',
+                      border: '1px solid rgba(0, 0, 0, 0.08)'
                     }}>
                       <input 
                         className="form-input" 
@@ -1064,7 +1064,7 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
               </div>
 
               {/* Agregar nuevo */}
-              <div style={{ borderTop: '1px solid rgba(255,255,255,0.08)', paddingTop: '16px', marginTop: '16px' }}>
+              <div style={{ borderTop: '1px solid rgba(0, 0, 0, 0.08)', paddingTop: '16px', marginTop: '16px' }}>
                 <div style={{ display: 'flex', gap: '8px' }}>
                   <input 
                     className="form-input" 
@@ -1087,8 +1087,8 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
       {/* Billable Extras Management Modal */}
       <AnimatedModal isOpen={isBillableExtrasModalOpen}>
         {(overlayClass, cardClass) => (
-          <div className={overlayClass.replace('global-modal-overlay', '')} style={{ position: 'fixed', inset: 0, backgroundColor: 'rgba(0,0,0,0.8)', backdropFilter: 'blur(8px)', zIndex: 99999, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: isMobile ? '12px' : '20px', paddingTop: isMobile ? 'max(12px, env(safe-area-inset-top, 12px))' : 'max(20px, env(safe-area-inset-top, 20px))' }}>
-            <div className={`${cardClass.replace('global-modal-card', '')} glass-card panda-scrollbar`} style={{ width: '100%', maxWidth: '500px', maxHeight: '90vh', overflowY: 'auto', overflowX: 'hidden', padding: isMobile ? '20px 16px' : '32px', borderRadius: '32px', border: '1px solid rgba(255,255,255,0.2)' }}>
+          <div className={overlayClass.replace('global-modal-overlay', '')} style={{ position: 'fixed', inset: 0, backgroundColor: 'rgba(255, 255, 255, 0.9)', backdropFilter: 'blur(8px)', zIndex: 99999, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: isMobile ? '12px' : '20px', paddingTop: isMobile ? 'max(12px, env(safe-area-inset-top, 12px))' : 'max(20px, env(safe-area-inset-top, 20px))' }}>
+            <div className={`${cardClass.replace('global-modal-card', '')} glass-card panda-scrollbar`} style={{ width: '100%', maxWidth: '500px', maxHeight: '90vh', overflowY: 'auto', overflowX: 'hidden', padding: isMobile ? '20px 16px' : '32px', borderRadius: '32px', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '24px', gap: '16px' }}>
                 <div>
                   <h3 style={{ fontSize: '20px', fontWeight: '800', display: 'flex', alignItems: 'center', gap: '10px' }}>
@@ -1096,7 +1096,7 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
                   </h3>
                   <p style={{ fontSize: '12px', color: 'var(--text-secondary)', marginTop: '4px' }}>Servicios con costo extra que se añaden en caja.</p>
                 </div>
-                <button onClick={() => setIsBillableExtrasModalOpen(false)} style={{ background: 'rgba(255,255,255,0.05)', border: 'none', borderRadius: '50%', width: '36px', height: '36px', color: 'white', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <button onClick={() => setIsBillableExtrasModalOpen(false)} style={{ background: 'rgba(0, 0, 0, 0.04)', border: 'none', borderRadius: '50%', width: '36px', height: '36px', color: 'white', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                   <X size={20} />
                 </button>
               </div>
@@ -1104,7 +1104,7 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
               <div className="panda-scrollbar" style={{ display: 'flex', flexDirection: 'column', gap: '12px', paddingRight: '8px', marginBottom: '24px' }}>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
                   {billableExtras.map(extra => (
-                    <div key={extra.id} style={{ display: 'flex', alignItems: 'center', gap: '12px', padding: '14px', backgroundColor: 'rgba(255,255,255,0.03)', borderRadius: '16px', border: '1px solid rgba(255,255,255,0.05)' }}>
+                    <div key={extra.id} style={{ display: 'flex', alignItems: 'center', gap: '12px', padding: '14px', backgroundColor: 'rgba(0, 0, 0, 0.04)', borderRadius: '16px', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
                       <div style={{ flex: 1, minWidth: 0 }}>
                         {editingExtra?.id === extra.id ? (
                           <input
@@ -1152,7 +1152,7 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
                               fontSize: '13px', 
                               fontWeight: '800', 
                               textAlign: 'right', 
-                              background: editingExtra?.id === extra.id ? 'rgba(0,0,0,0.4)' : 'rgba(0,0,0,0.2)', 
+                              background: editingExtra?.id === extra.id ? 'rgba(232,212,176,0.45)' : 'rgba(0,0,0,0.04)', 
                               border: editingExtra?.id === extra.id ? '1px solid var(--gold-primary)' : '1px solid transparent', 
                               width: '100%',
                               pointerEvents: editingExtra?.id === extra.id ? 'auto' : 'none'
@@ -1166,7 +1166,7 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
                           </button>
                         ) : (
                           <div style={{ display: 'flex', gap: '8px' }}>
-                            <button onClick={() => setEditingExtra({ ...extra, name: String(extra.name || ''), price: String(extra.price ?? '') })} className="action-btn" style={{ backgroundColor: 'rgba(255,255,255,0.05)', color: 'white', flexShrink: 0 }}>
+                            <button onClick={() => setEditingExtra({ ...extra, name: String(extra.name || ''), price: String(extra.price ?? '') })} className="action-btn" style={{ backgroundColor: 'rgba(0, 0, 0, 0.04)', color: 'white', flexShrink: 0 }}>
                               <Pencil size={14} />
                             </button>
                             <button onClick={(e) => handleDeleteBillableExtra(e, extra.id, extra.name)} className="action-btn" style={{ backgroundColor: 'rgba(255,69,58,0.1)', color: '#ff453a', flexShrink: 0 }}>
@@ -1180,7 +1180,7 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
                 </div>
               </div>
 
-              <div style={{ paddingTop: '20px', borderTop: '1px solid rgba(255,255,255,0.1)' }}>
+              <div style={{ paddingTop: '20px', borderTop: '1px solid rgba(0, 0, 0, 0.08)' }}>
                 <div className="extra-add-row">
                   <div style={{ flex: 1, minWidth: 0 }}>
                     <label style={{ display: 'block', fontSize: '10px', fontWeight: '900', color: 'var(--text-muted)', marginBottom: '4px', letterSpacing: '0.5px' }}>NOMBRE DEL EXTRA</label>
@@ -1208,32 +1208,32 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
           selectedServiceDetail && (
             <div className={overlayClass.replace('global-modal-overlay', '')} style={{
               position: 'fixed', top: 0, left: 0, right: 0, bottom: 0,
-              backgroundColor: 'rgba(0,0,0,0.9)', backdropFilter: 'blur(10px)',
+              backgroundColor: 'rgba(255, 255, 255, 0.9)', backdropFilter: 'blur(10px)',
               display: 'flex', alignItems: 'center', justifyContent: 'center',
               zIndex: 99999, padding: isMobile ? '12px' : '20px', paddingTop: isMobile ? 'max(12px, env(safe-area-inset-top, 12px))' : 'max(20px, env(safe-area-inset-top, 20px))'
             }}>
               <div className={`${cardClass.replace('global-modal-card', '')} glass-card panda-scrollbar`} style={{
                 width: '100%', maxWidth: '440px', maxHeight: '90vh', overflowY: 'auto', overflowX: 'hidden',
                 padding: isMobile ? '20px 16px' : '24px', borderRadius: '28px',
-                border: '1px solid rgba(255,255,255,0.2)',
+                border: '1px solid rgba(0, 0, 0, 0.08)',
                 boxShadow: '0 30px 60px -12px rgba(0, 0, 0, 0.6)',
                 position: 'relative'
               }}>
                 <button 
                   onClick={() => setSelectedServiceDetail(null)} 
-                  style={{ position: 'absolute', right: isMobile ? '32px' : '48px', top: '20px', background: 'rgba(255,255,255,0.05)', border: 'none', color: 'white', cursor: 'pointer', width: '36px', height: '36px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+                  style={{ position: 'absolute', right: isMobile ? '32px' : '48px', top: '20px', background: 'rgba(0, 0, 0, 0.04)', border: 'none', color: 'white', cursor: 'pointer', width: '36px', height: '36px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
                 >
                   <X size={20} />
                 </button>
 
                 <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px', paddingRight: '40px' }}>
-                  <div style={{ width: '40px', height: '40px', borderRadius: '10px', backgroundColor: 'rgba(255,255,255,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--gold-primary)' }}>
+                  <div style={{ width: '40px', height: '40px', borderRadius: '10px', backgroundColor: 'rgba(0, 0, 0, 0.04)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--gold-primary)' }}>
                     {selectedServiceDetail.icon ? getIconComponent(selectedServiceDetail.icon, 20) : getCategoryIcon(selectedServiceDetail.category, selectedServiceDetail.name)}
                   </div>
                   <div>
                     <span style={{ fontSize: '10px', fontWeight: '900', color: 'var(--gold-primary)', textTransform: 'uppercase', letterSpacing: '1px' }}>{selectedServiceDetail.category}</span>
                     {selectedServiceDetail.strategy_type && (
-                      <span style={{ marginLeft: '8px', fontSize: '9px', fontWeight: '900', backgroundColor: 'rgba(255,255,255,0.1)', padding: '2px 8px', borderRadius: '10px', border: '1px solid rgba(255,255,255,0.2)', color: 'var(--gold-primary)' }}>
+                      <span style={{ marginLeft: '8px', fontSize: '9px', fontWeight: '900', backgroundColor: 'rgba(0, 0, 0, 0.04)', padding: '2px 8px', borderRadius: '10px', border: '1px solid rgba(0, 0, 0, 0.08)', color: 'var(--gold-primary)' }}>
                         {selectedServiceDetail.strategy_type}
                       </span>
                     )}
@@ -1243,7 +1243,7 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
                 <h3 style={{ fontSize: '22px', fontWeight: '800', color: 'white', marginBottom: '16px', paddingRight: '40px' }}>{selectedServiceDetail.name}</h3>
 
                 <div style={{ display: 'flex', gap: '16px', marginBottom: '20px', fontSize: '13px', color: 'var(--text-secondary)' }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '6px', backgroundColor: 'rgba(255,255,255,0.03)', padding: '6px 12px', borderRadius: '10px' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '6px', backgroundColor: 'rgba(0, 0, 0, 0.04)', padding: '6px 12px', borderRadius: '10px' }}>
                     <Clock size={14} color="var(--gold-primary)" />
                     <strong>Duración:</strong> {selectedServiceDetail.duration || 30} min
                   </div>
@@ -1252,7 +1252,7 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
                 {selectedServiceDetail.description && (
                   <div style={{ marginBottom: '20px' }}>
                     <div style={{ fontSize: '11px', fontWeight: '800', color: 'var(--text-muted)', marginBottom: '6px', textTransform: 'uppercase' }}>Guión de Venta / Descripción</div>
-                    <p style={{ fontSize: '13px', color: 'rgba(255,255,255,0.7)', lineHeight: '1.5', margin: 0, padding: '12px', borderRadius: '12px', backgroundColor: 'var(--bg-secondary)', fontStyle: 'italic', border: '1px solid rgba(255,255,255,0.03)' }}>
+                    <p style={{ fontSize: '13px', color: 'rgba(255,255,255,0.7)', lineHeight: '1.5', margin: 0, padding: '12px', borderRadius: '12px', backgroundColor: 'var(--bg-secondary)', fontStyle: 'italic', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
                       "{selectedServiceDetail.description}"
                     </p>
                   </div>
@@ -1263,7 +1263,7 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
                     <div style={{ fontSize: '11px', fontWeight: '800', color: 'var(--text-muted)', marginBottom: '8px', textTransform: 'uppercase' }}>Checklist Incluido ({selectedServiceDetail.included_items.length})</div>
                     <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
                       {selectedServiceDetail.included_items.map((item, idx) => (
-                        <span key={idx} style={{ fontSize: '11px', padding: '6px 12px', borderRadius: '8px', backgroundColor: 'rgba(255,255,255,0.05)', color: 'white', border: '1px solid rgba(255,255,255,0.1)', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                        <span key={idx} style={{ fontSize: '11px', padding: '6px 12px', borderRadius: '8px', backgroundColor: 'rgba(0, 0, 0, 0.04)', color: 'white', border: '1px solid rgba(0, 0, 0, 0.08)', display: 'flex', alignItems: 'center', gap: '6px' }}>
                           <Check size={12} color="var(--gold-primary)" strokeWidth={3} /> {item}
                         </span>
                       ))}
@@ -1302,7 +1302,7 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
                   </button>
                   <button
                     onClick={() => setSelectedServiceDetail(null)}
-                    style={{ flex: '1', height: '44px', borderRadius: '12px', backgroundColor: 'rgba(255,255,255,0.05)', border: 'none', color: 'white', cursor: 'pointer', fontWeight: '700', fontSize: '14px', whiteSpace: 'nowrap', transition: 'background-color 0.2s' }}
+                    style={{ flex: '1', height: '44px', borderRadius: '12px', backgroundColor: 'rgba(0, 0, 0, 0.04)', border: 'none', color: 'white', cursor: 'pointer', fontWeight: '700', fontSize: '14px', whiteSpace: 'nowrap', transition: 'background-color 0.2s' }}
                     onMouseEnter={e => e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.1)'}
                     onMouseLeave={e => e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.05)'}
                   >
@@ -1320,20 +1320,20 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
         {(overlayClass, cardClass) => (
           <div className={overlayClass.replace('global-modal-overlay', '')} style={{
             position: 'fixed', top: 0, left: 0, right: 0, bottom: 0,
-            backgroundColor: 'rgba(0,0,0,0.85)', backdropFilter: 'blur(12px)',
+            backgroundColor: 'rgba(255, 255, 255, 0.9)', backdropFilter: 'blur(12px)',
             display: 'flex', alignItems: 'center', justifyContent: 'center',
             zIndex: 99999, padding: isMobile ? '12px' : '20px', paddingTop: isMobile ? 'max(12px, env(safe-area-inset-top, 12px))' : 'max(20px, env(safe-area-inset-top, 20px))'
           }}>
             <div className={`${cardClass.replace('global-modal-card', '')} glass-card panda-scrollbar`} style={{
               width: '100%', maxWidth: '480px', maxHeight: '90vh', overflowY: 'auto', overflowX: 'hidden',
               padding: isMobile ? '20px 16px' : '28px', borderRadius: '28px',
-              border: '1px solid rgba(255,255,255,0.2)',
+              border: '1px solid rgba(0, 0, 0, 0.08)',
               boxShadow: '0 30px 60px -12px rgba(0, 0, 0, 0.6)',
               position: 'relative'
             }}>
               <button 
                 onClick={() => setIsCategoriesModalOpen(false)} 
-                style={{ position: 'absolute', right: '20px', top: '20px', background: 'rgba(255,255,255,0.05)', border: 'none', color: 'white', cursor: 'pointer', width: '36px', height: '36px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+                style={{ position: 'absolute', right: '20px', top: '20px', background: 'rgba(0, 0, 0, 0.04)', border: 'none', color: 'white', cursor: 'pointer', width: '36px', height: '36px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
               >
                 <X size={20} />
               </button>
@@ -1344,7 +1344,7 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
               <p style={{ color: 'var(--text-muted)', fontSize: '12px', marginBottom: '20px' }}>Agrega o elimina las categorías disponibles para clasificar tus servicios.</p>
 
               {/* Agregar Categoría */}
-              <div style={{ marginBottom: '24px', backgroundColor: 'rgba(255,255,255,0.02)', padding: '16px', borderRadius: '16px', border: '1px solid rgba(255,255,255,0.05)' }}>
+              <div style={{ marginBottom: '24px', backgroundColor: 'rgba(0, 0, 0, 0.04)', padding: '16px', borderRadius: '16px', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
                 <label style={{ display: 'block', fontSize: '10px', fontWeight: '900', color: 'var(--text-muted)', marginBottom: '8px', letterSpacing: '0.5px' }}>
                   {editingCategory ? 'EDITAR CATEGORÍA' : 'NUEVA CATEGORÍA'}
                 </label>
@@ -1360,7 +1360,7 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
                     <button 
                       onClick={handleCancelEditCategory} 
                       className="btn-gold" 
-                      style={{ height: '44px', width: '44px', borderRadius: '12px', padding: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', color: 'white' }}
+                      style={{ height: '44px', width: '44px', borderRadius: '12px', padding: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', color: 'white' }}
                       type="button"
                     >
                       <X size={20} />
@@ -1381,7 +1381,7 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
               {/* Listado de Categorías */}
               <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
                 {categories.map((catObj, idx) => (
-                  <div key={idx} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 16px', borderRadius: '12px', backgroundColor: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.05)' }}>
+                  <div key={idx} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 16px', borderRadius: '12px', backgroundColor: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                       <div style={{ color: 'var(--gold-primary)' }}>
                         {getIconComponent(catObj.icon || getFallbackIconName(catObj.name), 20)}
@@ -1391,7 +1391,7 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
                     <div style={{ display: 'flex', gap: '8px' }}>
                       <button 
                         onClick={() => handleEditCategoryClick(catObj)} 
-                        style={{ background: 'rgba(255,255,255,0.1)', border: 'none', color: 'var(--gold-primary)', cursor: 'pointer', width: '32px', height: '32px', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+                        style={{ background: 'rgba(0, 0, 0, 0.04)', border: 'none', color: 'var(--gold-primary)', cursor: 'pointer', width: '32px', height: '32px', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
                       >
                         <Pencil size={14} />
                       </button>
@@ -1417,20 +1417,20 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
         {(overlayClass, cardClass) => (
           <div className={overlayClass.replace('global-modal-overlay', '')} style={{
             position: 'fixed', top: 0, left: 0, right: 0, bottom: 0,
-            backgroundColor: 'rgba(0,0,0,0.85)', backdropFilter: 'blur(12px)',
+            backgroundColor: 'rgba(255, 255, 255, 0.9)', backdropFilter: 'blur(12px)',
             display: 'flex', alignItems: 'center', justifyContent: 'center',
             zIndex: 99999, padding: isMobile ? '12px' : '20px', paddingTop: isMobile ? 'max(12px, env(safe-area-inset-top, 12px))' : 'max(20px, env(safe-area-inset-top, 20px))'
           }}>
             <div className={`${cardClass.replace('global-modal-card', '')} glass-card panda-scrollbar`} style={{
               width: '100%', maxWidth: '520px', maxHeight: '90vh', overflowY: 'auto', overflowX: 'hidden',
               padding: isMobile ? '20px 16px' : '28px', borderRadius: '28px',
-              border: '1px solid rgba(255,255,255,0.2)',
+              border: '1px solid rgba(0, 0, 0, 0.08)',
               boxShadow: '0 30px 60px -12px rgba(0, 0, 0, 0.6)',
               position: 'relative'
             }}>
               <button 
                 onClick={() => setIsStrategiesModalOpen(false)} 
-                style={{ position: 'absolute', right: '20px', top: '20px', background: 'rgba(255,255,255,0.05)', border: 'none', color: 'white', cursor: 'pointer', width: '36px', height: '36px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+                style={{ position: 'absolute', right: '20px', top: '20px', background: 'rgba(0, 0, 0, 0.04)', border: 'none', color: 'white', cursor: 'pointer', width: '36px', height: '36px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
               >
                 <X size={20} />
               </button>
@@ -1441,7 +1441,7 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
               <p style={{ color: 'var(--text-muted)', fontSize: '12px', marginBottom: '20px' }}>Configura los tipos de estrategias de venta cruzada y retención para tus servicios.</p>
 
               {/* Agregar Estrategia */}
-              <div style={{ marginBottom: '24px', backgroundColor: 'rgba(255,255,255,0.02)', padding: '16px', borderRadius: '16px', border: '1px solid rgba(255,255,255,0.05)' }}>
+              <div style={{ marginBottom: '24px', backgroundColor: 'rgba(0, 0, 0, 0.04)', padding: '16px', borderRadius: '16px', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
                 <div className="strategy-add-grid">
                   <div>
                     <label style={{ display: 'block', fontSize: '10px', fontWeight: '900', color: 'var(--text-muted)', marginBottom: '8px', letterSpacing: '0.5px' }}>VALOR CLAVE</label>
@@ -1476,7 +1476,7 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
               {/* Listado de Estrategias */}
               <div style={{ maxHeight: '200px', overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: '8px', paddingRight: '4px' }}>
                 {strategies.map((strat, idx) => (
-                  <div key={idx} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 16px', borderRadius: '12px', backgroundColor: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.05)' }}>
+                  <div key={idx} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 16px', borderRadius: '12px', backgroundColor: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
                     <div style={{ display: 'flex', flexDirection: 'column' }}>
                       <span style={{ fontSize: '14px', fontWeight: '700', color: 'white' }}>{strat.label}</span>
                       <span style={{ fontSize: '11px', color: 'var(--gold-primary)', fontWeight: '900' }}>VALOR: {strat.value}</span>

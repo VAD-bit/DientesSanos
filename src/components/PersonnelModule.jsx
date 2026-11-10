@@ -148,7 +148,7 @@ const PhotoSourceMenu = ({ isOpen, onCamera, onGallery, onClose }) => {
         left: 0,
         width: '190px',
         backgroundColor: 'var(--bg-secondary)',
-        border: '1px solid rgba(255,255,255,0.1)',
+        border: '1px solid rgba(0, 0, 0, 0.08)',
         borderRadius: '14px',
         boxShadow: '0 20px 40px rgba(0,0,0,0.6)',
         overflow: 'hidden',
@@ -163,7 +163,7 @@ const PhotoSourceMenu = ({ isOpen, onCamera, onGallery, onClose }) => {
         >
           <Camera size={16} color="var(--gold-primary)" /> Tomar foto
         </button>
-        <div style={{ height: '1px', background: 'rgba(255,255,255,0.08)' }} />
+        <div style={{ height: '1px', background: 'rgba(0, 0, 0, 0.04)' }} />
         <button
           type="button"
           onClick={onGallery}
@@ -252,7 +252,7 @@ const AttendanceHistoryModal = ({ member, dates, logs, streak, onClose, overlayC
         position: 'fixed', 
         inset: 0, 
         zIndex: 30000, 
-        background: 'rgba(0,0,0,0.85)', 
+        background: 'rgba(255, 255, 255, 0.9)', 
         backdropFilter: 'blur(16px)',
         WebkitBackdropFilter: 'blur(16px)',
         display: 'flex', 
@@ -273,7 +273,7 @@ const AttendanceHistoryModal = ({ member, dates, logs, streak, onClose, overlayC
           padding: isMobile ? '16px 14px' : '24px', 
           borderRadius: isMobile ? '20px' : '24px',
           background: 'var(--bg-secondary)',
-          border: '1px solid rgba(255,255,255,0.08)',
+          border: '1px solid rgba(0, 0, 0, 0.08)',
           boxShadow: '0 30px 60px -12px rgba(0,0,0,0.7), 0 0 0 1px rgba(17, 17, 17,0.08) inset',
           display: 'flex',
           flexDirection: 'column',
@@ -281,14 +281,14 @@ const AttendanceHistoryModal = ({ member, dates, logs, streak, onClose, overlayC
         }}
       >
         {/* Header con Avatar y Estado */}
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', borderBottom: '1px solid rgba(255,255,255,0.06)', paddingBottom: isMobile ? '12px' : '16px' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', borderBottom: '1px solid rgba(0, 0, 0, 0.08)', paddingBottom: isMobile ? '12px' : '16px' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: isMobile ? '10px' : '14px', minWidth: 0 }}>
             <div style={{ 
               width: isMobile ? '48px' : '56px', 
               height: isMobile ? '48px' : '56px', 
               borderRadius: '50%', 
               overflow: 'hidden', 
-              backgroundColor: 'rgba(255,255,255,0.04)', 
+              backgroundColor: 'rgba(0, 0, 0, 0.04)', 
               display: 'flex', 
               alignItems: 'center', 
               justifyContent: 'center', 
@@ -342,8 +342,8 @@ const AttendanceHistoryModal = ({ member, dates, logs, streak, onClose, overlayC
           <button 
             onClick={onClose} 
             style={{ 
-              background: 'rgba(255,255,255,0.06)', 
-              border: '1px solid rgba(255,255,255,0.08)', 
+              background: 'rgba(0, 0, 0, 0.04)', 
+              border: '1px solid rgba(0, 0, 0, 0.08)', 
               borderRadius: '10px', 
               color: 'rgba(255,255,255,0.7)', 
               width: isMobile ? '32px' : '34px', 
@@ -431,8 +431,8 @@ const AttendanceHistoryModal = ({ member, dates, logs, streak, onClose, overlayC
 
         {/* Mapa de Asistencia (Últimos 35 Días) */}
         <div style={{ 
-          background: 'rgba(255,255,255,0.02)', 
-          border: '1px solid rgba(255,255,255,0.05)', 
+          background: 'rgba(0, 0, 0, 0.04)', 
+          border: '1px solid rgba(0, 0, 0, 0.08)', 
           borderRadius: '16px', 
           padding: isMobile ? '12px 10px' : '16px' 
         }}>
@@ -451,7 +451,7 @@ const AttendanceHistoryModal = ({ member, dates, logs, streak, onClose, overlayC
                 <span>Asistió</span>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '3px' }}>
-                <span style={{ width: '7px', height: '7px', borderRadius: '2px', background: 'rgba(255,255,255,0.08)' }} />
+                <span style={{ width: '7px', height: '7px', borderRadius: '2px', background: 'rgba(0, 0, 0, 0.04)' }} />
                 <span>Libre</span>
               </div>
             </div>
@@ -475,7 +475,7 @@ const AttendanceHistoryModal = ({ member, dates, logs, streak, onClose, overlayC
                 ? '1px solid var(--gold-primary)'
                 : d.present
                   ? '1px solid rgba(50,215,75,0.4)'
-                  : '1px solid rgba(255,255,255,0.05)';
+                  : '1px solid rgba(0, 0, 0, 0.08)';
 
               const textColor = d.active
                 ? 'var(--gold-primary)'
@@ -522,7 +522,7 @@ const AttendanceHistoryModal = ({ member, dates, logs, streak, onClose, overlayC
                 Historial de Turnos
               </span>
             </div>
-            <span style={{ fontSize: '10px', fontWeight: '800', color: 'var(--text-muted)', background: 'rgba(255,255,255,0.05)', padding: '2px 8px', borderRadius: '100px' }}>
+            <span style={{ fontSize: '10px', fontWeight: '800', color: 'var(--text-muted)', background: 'rgba(0, 0, 0, 0.04)', padding: '2px 8px', borderRadius: '100px' }}>
               {memberLogs.length} {memberLogs.length === 1 ? 'registro' : 'registros'}
             </span>
           </div>
@@ -532,8 +532,8 @@ const AttendanceHistoryModal = ({ member, dates, logs, streak, onClose, overlayC
               textAlign: 'center', 
               padding: '24px 16px', 
               borderRadius: '14px', 
-              background: 'rgba(255,255,255,0.02)', 
-              border: '1px dashed rgba(255,255,255,0.08)',
+              background: 'rgba(0, 0, 0, 0.04)', 
+              border: '1px dashed rgba(0, 0, 0, 0.08)',
               color: 'var(--text-muted)'
             }}>
               <Calendar size={24} style={{ margin: '0 auto 6px', opacity: 0.4 }} />
@@ -566,7 +566,7 @@ const AttendanceHistoryModal = ({ member, dates, logs, streak, onClose, overlayC
                       padding: isMobile ? '10px 12px' : '12px 14px', 
                       borderRadius: '12px', 
                       background: isOngoing ? 'linear-gradient(135deg, rgba(50,215,75,0.1) 0%, rgba(50,215,75,0.02) 100%)' : 'rgba(255,255,255,0.03)', 
-                      border: isOngoing ? '1px solid rgba(50,215,75,0.3)' : '1px solid rgba(255,255,255,0.06)',
+                      border: isOngoing ? '1px solid rgba(50,215,75,0.3)' : '1px solid rgba(0, 0, 0, 0.08)',
                       gap: '8px',
                       flexWrap: 'wrap'
                     }}
@@ -605,7 +605,7 @@ const AttendanceHistoryModal = ({ member, dates, logs, streak, onClose, overlayC
                       padding: '3px 8px', 
                       borderRadius: '7px', 
                       background: isOngoing ? 'rgba(50,215,75,0.15)' : 'rgba(255,255,255,0.06)', 
-                      border: isOngoing ? '1px solid rgba(50,215,75,0.3)' : '1px solid rgba(255,255,255,0.08)',
+                      border: isOngoing ? '1px solid rgba(50,215,75,0.3)' : '1px solid rgba(0, 0, 0, 0.08)',
                       fontSize: '10.5px', 
                       fontWeight: '900', 
                       color: isOngoing ? '#32d74b' : 'var(--gold-primary)',
@@ -672,7 +672,7 @@ const InfoTooltip = ({ text }) => {
           fontWeight: '600',
           padding: '8px 12px',
           borderRadius: '10px',
-          border: '1px solid rgba(255,255,255,0.1)',
+          border: '1px solid rgba(0, 0, 0, 0.08)',
           boxShadow: '0 8px 24px rgba(0,0,0,0.5)',
           whiteSpace: 'normal',
           width: '220px',
@@ -708,7 +708,7 @@ const StaffSettlementPanel = ({ modal, setModal, isMobile, loading, onPay, onSki
   );
 
   const metric = (label, value, color) => (
-    <article style={{ padding: '16px', background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '20px' }}>
+    <article style={{ padding: '16px', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', borderRadius: '20px' }}>
       <span style={{ display: 'block', fontSize: '10px', color: 'var(--text-muted)', fontWeight: '800', textTransform: 'uppercase', letterSpacing: '0.5px' }}>{label}</span>
       <strong style={{ display: 'block', marginTop: '6px', fontSize: '18px', fontWeight: '900', color, letterSpacing: '-0.5px' }}>{formatSettlementBs(value)} Bs</strong>
     </article>
@@ -721,7 +721,7 @@ const StaffSettlementPanel = ({ modal, setModal, isMobile, loading, onPay, onSki
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))', gap: '12px' }}>
         {metric('Ganado', settlement.earnedBs + settlement.propinasBs, '#fff')}
         {metric('Pagado / Anticipos', settlement.paidBs + settlement.valesBs, '#ff9f0a')}
-        <article style={{ padding: '16px', background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '20px' }}>
+        <article style={{ padding: '16px', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', borderRadius: '20px' }}>
           <span style={{ display: 'block', fontSize: '10px', color: 'var(--text-muted)', fontWeight: '800', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Efectivo asignado</span>
           <div style={{ display: 'flex', gap: '10px', alignItems: 'baseline', marginTop: '6px', flexWrap: 'wrap' }}>
             <strong style={{ fontSize: '18px', fontWeight: '900', color: '#32d74b', letterSpacing: '-0.5px' }}>${Number(settlement.cashAssignedUsd || 0).toLocaleString('es-VE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</strong>
@@ -732,7 +732,7 @@ const StaffSettlementPanel = ({ modal, setModal, isMobile, loading, onPay, onSki
       </div>
 
       {/* Breakdown Row */}
-        <div style={{ padding: '12px', borderRadius: '14px', background: 'rgba(255,255,255,0.025)', border: '1px solid rgba(255,255,255,0.06)' }}>
+        <div style={{ padding: '12px', borderRadius: '14px', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', gap: '10px', marginBottom: '9px' }}>
             <span style={{ fontSize: '10px', color: 'var(--text-muted)', fontWeight: '900', textTransform: 'uppercase' }}>Cómo se generó</span>
             <span style={{ fontSize: '10px', color: 'var(--text-secondary)' }}>{settlement.payrollFrequency === 'daily' ? 'Pago diario' : 'Pago semanal'} · tasa {formatSettlementBs(settlement.rate)}</span>
@@ -742,7 +742,7 @@ const StaffSettlementPanel = ({ modal, setModal, isMobile, loading, onPay, onSki
               const isUsdAccount = /efectivo \(\$\)|zelle|zinli|binance|usdt/i.test(method);
               const usdAmount = Number(settlement.methodBreakdownUsd?.[method] || 0);
               return (
-                <span key={method} style={{ padding: '6px 8px', borderRadius: '9px', background: 'rgba(255,255,255,0.05)', fontSize: '10px', color: 'var(--text-secondary)' }}>
+                <span key={method} style={{ padding: '6px 8px', borderRadius: '9px', background: 'rgba(0, 0, 0, 0.04)', fontSize: '10px', color: 'var(--text-secondary)' }}>
                   {method} <strong style={{ color: 'white' }}>{isUsdAccount ? `$${formatSettlementBs(usdAmount)}` : `${formatSettlementBs(amount)} Bs`}</strong>
                 </span>
               );
@@ -752,12 +752,12 @@ const StaffSettlementPanel = ({ modal, setModal, isMobile, loading, onPay, onSki
 
       {/* History Tables */}
       <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'minmax(0, 1fr) minmax(0, 1fr)', gap: '12px' }}>
-        <div style={{ padding: '16px', background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '20px' }}>
+        <div style={{ padding: '16px', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', borderRadius: '20px' }}>
           <span style={{ fontSize: '11px', color: 'var(--text-muted)', fontWeight: '800', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Historial de Servicios</span>
           <div style={{ marginTop: '12px', maxHeight: '180px', overflowY: 'auto' }}>
-            <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) 1.1fr auto', gap: '8px', paddingBottom: '8px', borderBottom: '1px solid rgba(255,255,255,0.08)', color: 'var(--text-muted)', fontSize: '10px', fontWeight: '800', textTransform: 'uppercase' }}><span>Cliente</span><span>Servicio</span><span>Monto</span></div>
+            <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) 1.1fr auto', gap: '8px', paddingBottom: '8px', borderBottom: '1px solid rgba(0, 0, 0, 0.08)', color: 'var(--text-muted)', fontSize: '10px', fontWeight: '800', textTransform: 'uppercase' }}><span>Cliente</span><span>Servicio</span><span>Monto</span></div>
             {settlement.recentEarnings?.length ? settlement.recentEarnings.map(item => (
-              <div key={item.id} style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) 1.1fr auto', gap: '8px', padding: '10px 0', borderBottom: '1px solid rgba(255,255,255,0.04)', fontSize: '11px', alignItems: 'center' }}>
+              <div key={item.id} style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) 1.1fr auto', gap: '8px', padding: '10px 0', borderBottom: '1px solid rgba(0, 0, 0, 0.08)', fontSize: '11px', alignItems: 'center' }}>
                 <span title={item.clientName} style={{ color: 'white', fontWeight: '600', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{item.clientName}</span>
                 <span title={item.serviceName} style={{ color: 'var(--text-secondary)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{item.serviceName}</span>
                 <strong style={{ color: 'white', whiteSpace: 'nowrap', fontWeight: '800' }}>{formatSettlementBs(item.amountBs + item.tipBs)} Bs</strong>
@@ -765,7 +765,7 @@ const StaffSettlementPanel = ({ modal, setModal, isMobile, loading, onPay, onSki
             )) : <span style={{ display: 'block', marginTop: '12px', fontSize: '12px', color: 'var(--text-muted)', fontWeight: '500' }}>Sin servicios registrados.</span>}
           </div>
         </div>
-        <div style={{ padding: '16px', background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '20px' }}>
+        <div style={{ padding: '16px', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', borderRadius: '20px' }}>
           <span style={{ fontSize: '11px', color: 'var(--text-muted)', fontWeight: '800', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Pagos y Adelantos</span>
           <div style={{ marginTop: '12px', display: 'flex', flexDirection: 'column', gap: '10px', maxHeight: '180px', overflowY: 'auto' }}>
             {settlement.paymentHistory?.length ? settlement.paymentHistory.map(item => (
@@ -781,7 +781,7 @@ const StaffSettlementPanel = ({ modal, setModal, isMobile, loading, onPay, onSki
       </section>
 
       {/* Payment Action Section */}
-      <section style={{ padding: '24px 24px 32px 24px', background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '24px', display: 'flex', flexDirection: 'column', gap: '16px' }}>
+      <section style={{ padding: '24px 24px 32px 24px', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', borderRadius: '24px', display: 'flex', flexDirection: 'column', gap: '16px' }}>
         <div>
           <span style={{ fontSize: '12px', color: 'white', fontWeight: '900', textTransform: 'uppercase', letterSpacing: '1px' }}>Distribuir Pago</span>
           <p style={{ marginTop: '4px', fontSize: '12px', color: 'var(--text-secondary)', fontWeight: '500' }}>Montos en Bs. Puedes pagar completo o registrar un abono parcial.</p>
@@ -794,7 +794,7 @@ const StaffSettlementPanel = ({ modal, setModal, isMobile, loading, onPay, onSki
             const displayAvailable = isUsdCash ? available / settlement.rate : available;
             const displayAllocation = isUsdCash && modal.allocations?.[account] !== '' ? Number((Number(modal.allocations?.[account] || 0) / settlement.rate).toFixed(2)) : (modal.allocations?.[account] || '');
             return (
-              <label key={account} style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) 120px', alignItems: 'center', gap: '12px', padding: '12px 16px', borderRadius: '16px', background: 'var(--bg-secondary)', border: '1px solid rgba(255,255,255,0.05)' }}>
+              <label key={account} style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) 120px', alignItems: 'center', gap: '12px', padding: '12px 16px', borderRadius: '16px', background: 'var(--bg-secondary)', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
                 <span style={{ minWidth: 0 }}>
                   <strong style={{ display: 'block', fontSize: '13px', fontWeight: '700', color: 'white' }}>{account}</strong>
                   <small style={{ display: 'block', marginTop: '4px', color: 'var(--text-muted)', fontSize: '11px', fontWeight: '600' }}>Disponible {isUsdCash ? `$${formatSettlementBs(displayAvailable)}` : `${formatSettlementBs(displayAvailable)} Bs`}</small>
@@ -802,7 +802,7 @@ const StaffSettlementPanel = ({ modal, setModal, isMobile, loading, onPay, onSki
                 <input type="number" min="0" max={displayAvailable} step="0.01" value={displayAllocation}
                   onChange={event => setModal(previous => ({ ...previous, allocations: { ...previous.allocations, [account]: event.target.value === '' ? '' : Number(event.target.value) * (isUsdCash ? settlement.rate : 1) } }))}
                   placeholder={isUsdCash ? '$0.00' : '0.00'} aria-label={`Monto desde ${account}`}
-                  style={{ width: '100%', height: '44px', padding: '0 12px', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.05)', background: 'var(--bg-secondary)', color: 'white', textAlign: 'right', fontWeight: '800', fontSize: '14px', outline: 'none', transition: 'border-color 0.2s ease' }} 
+                  style={{ width: '100%', height: '44px', padding: '0 12px', borderRadius: '12px', border: '1px solid rgba(0, 0, 0, 0.08)', background: 'var(--bg-secondary)', color: 'white', textAlign: 'right', fontWeight: '800', fontSize: '14px', outline: 'none', transition: 'border-color 0.2s ease' }} 
                   onFocus={e => e.target.style.borderColor = 'var(--gold-primary)'}
                   onBlur={e => e.target.style.borderColor = 'rgba(255,255,255,0.05)'}
                 />
@@ -811,7 +811,7 @@ const StaffSettlementPanel = ({ modal, setModal, isMobile, loading, onPay, onSki
           })}
         </div>
 
-        <div style={{ marginTop: 'auto', paddingTop: '16px', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
+        <div style={{ marginTop: 'auto', paddingTop: '16px', borderTop: '1px solid rgba(0, 0, 0, 0.08)' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '13px', color: 'var(--text-secondary)', fontWeight: '600' }}>
             <span>Pago a registrar</span>
             <strong style={{ color: 'white', fontSize: '15px', fontWeight: '800' }}>{formatSettlementBs(allocatedBs)} Bs</strong>
@@ -834,7 +834,7 @@ const StaffSettlementPanel = ({ modal, setModal, isMobile, loading, onPay, onSki
         <div style={{ display: 'flex', gap: '8px' }}>
           <button onClick={onSkip} style={{ 
               flex: 1, minHeight: '50px', borderRadius: '16px', 
-              background: 'var(--bg-secondary)', color: 'white', border: '1px solid rgba(255,255,255,0.05)', 
+              background: 'var(--bg-secondary)', color: 'white', border: '1px solid rgba(0, 0, 0, 0.08)', 
               fontWeight: '800', fontSize: '15px',
               cursor: 'pointer', transition: 'all 0.2s ease'
             }}
@@ -2133,7 +2133,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
           zIndex: 998,
           overflow: 'visible',
           background: '#e9eae8',
-          border: '1px solid rgba(255, 255, 255, 0.3)',
+          border: '1px solid rgba(0, 0, 0, 0.08)',
           boxShadow: '0 10px 30px rgba(0,0,0,0.5)',
           width: '100%'
         }}
@@ -2144,7 +2144,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
           </h3>
           <button 
             onClick={handleCloseForm}
-            style={{ background: 'rgba(255,255,255,0.05)', border: 'none', borderRadius: '50%', color: 'white', width: '32px', height: '32px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+            style={{ background: 'rgba(0, 0, 0, 0.04)', border: 'none', borderRadius: '50%', color: 'white', width: '32px', height: '32px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
           >
             <X size={16} />
           </button>
@@ -2159,7 +2159,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
               style={{
                 width: '120px',
                 height: '120px',
-                backgroundColor: 'rgba(255,255,255,0.05)',
+                backgroundColor: 'rgba(0, 0, 0, 0.04)',
                 borderRadius: '24px',
                 border: '2px dashed var(--border-color)',
                 display: 'flex',
@@ -2207,7 +2207,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
               <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', alignItems: 'center' }}>
                 {portfolio.map(photo => (
                   <div key={photo.id} style={{ position: 'relative', width: '72px', height: '72px' }}>
-                     <img loading="lazy" src={photo.image_url} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '10px', border: '1px solid rgba(255,255,255,0.08)' }} />
+                     <img loading="lazy" src={photo.image_url} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '10px', border: '1px solid rgba(0, 0, 0, 0.08)' }} />
                      <button
                        type="button"
                        onClick={() => removePortfolioPhoto(photo)}
@@ -2216,7 +2216,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                   </div>
                 ))}
                 {portfolio.length < MAX_PORTFOLIO && (
-                  <label style={{ width: '72px', height: '72px', borderRadius: '10px', border: '2px dashed rgba(255,255,255,0.15)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', cursor: portfolioUploading ? 'not-allowed' : 'pointer', background: 'rgba(255,255,255,0.03)', gap: '4px', opacity: portfolioUploading ? 0.5 : 1 }}>
+                  <label style={{ width: '72px', height: '72px', borderRadius: '10px', border: '2px dashed rgba(0, 0, 0, 0.08)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', cursor: portfolioUploading ? 'not-allowed' : 'pointer', background: 'rgba(0, 0, 0, 0.04)', gap: '4px', opacity: portfolioUploading ? 0.5 : 1 }}>
                     {portfolioUploading
                       ? <Loader2 size={20} color="var(--gold-primary)" style={{ animation: 'spin 1s linear infinite' }} />
                       : <><Plus size={20} color="var(--gold-primary)" /><span style={{ fontSize: '9px', color: 'var(--text-muted)', fontWeight: '800' }}>SUBIR</span></>
@@ -2243,8 +2243,8 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
         <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', width: '100%' }}>
 
           {/* ═══ SECTION 1: Datos Básicos (always open) ═══ */}
-          <div style={{ borderRadius: '16px', border: '1px solid rgba(255,255,255,0.08)', overflow: 'hidden' }}>
-            <button onClick={() => toggleEditSection('basics')} style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '14px 16px', background: 'rgba(255,255,255,0.03)', border: 'none', cursor: 'pointer', color: 'white' }}>
+          <div style={{ borderRadius: '16px', border: '1px solid rgba(0, 0, 0, 0.08)', overflow: 'hidden' }}>
+            <button onClick={() => toggleEditSection('basics')} style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '14px 16px', background: 'rgba(0, 0, 0, 0.04)', border: 'none', cursor: 'pointer', color: 'white' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                 <User size={16} color="var(--gold-primary)" />
                 <span style={{ fontSize: '12px', fontWeight: '900', letterSpacing: '1px' }}>DATOS BÁSICOS</span>
@@ -2350,7 +2350,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                           placeholder="60"
                           value={formData.commission_pct}
                           onChange={e => setFormData({ ...formData, commission_pct: e.target.value })}
-                          style={{ width: '100%', height: '50px', paddingLeft: '48px', border: '1px solid rgba(255, 255, 255, 0.3)' }}
+                          style={{ width: '100%', height: '50px', paddingLeft: '48px', border: '1px solid rgba(0, 0, 0, 0.08)' }}
                         />
                       </div>
                       <div style={{ marginTop: '7px', fontSize: '10px', color: 'var(--text-muted)', lineHeight: 1.4 }}>
@@ -2377,7 +2377,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                           placeholder="Ej. 2.00" 
                           value={formData.washing_rate} 
                           onChange={e => setFormData({...formData, washing_rate: e.target.value})} 
-                          style={{ width: '100%', height: '50px', paddingLeft: '48px', border: '1px solid rgba(255, 255, 255, 0.3)' }} 
+                          style={{ width: '100%', height: '50px', paddingLeft: '48px', border: '1px solid rgba(0, 0, 0, 0.08)' }} 
                         />
                       </div>
                     </div>
@@ -2388,8 +2388,8 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
           </div>
 
           {/* ═══ SECTION 2: Permisos (collapsed) ═══ */}
-          <div style={{ borderRadius: '16px', border: '1px solid rgba(255,255,255,0.08)', overflow: 'hidden' }}>
-            <button onClick={() => toggleEditSection('permissions')} style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '14px 16px', background: 'rgba(255,255,255,0.03)', border: 'none', cursor: 'pointer', color: 'white' }}>
+          <div style={{ borderRadius: '16px', border: '1px solid rgba(0, 0, 0, 0.08)', overflow: 'hidden' }}>
+            <button onClick={() => toggleEditSection('permissions')} style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '14px 16px', background: 'rgba(0, 0, 0, 0.04)', border: 'none', cursor: 'pointer', color: 'white' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                 <Key size={16} color="var(--gold-primary)" />
                 <span style={{ fontSize: '12px', fontWeight: '900', letterSpacing: '1px' }}>PERMISOS Y MÓDULOS</span>
@@ -2398,7 +2398,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
             </button>
             {editSections.permissions && (
               <div style={{ padding: '16px' }}>
-                <div style={{ padding: '20px', backgroundColor: 'rgba(255,255,255,0.02)', borderRadius: '16px', border: '1px solid var(--border-color)' }}>
+                <div style={{ padding: '20px', backgroundColor: 'rgba(0, 0, 0, 0.04)', borderRadius: '16px', border: '1px solid var(--border-color)' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '16px' }}>
                     <Key size={18} color="var(--gold-primary)" />
                     <label style={{ fontSize: '12px', fontWeight: '900', color: 'white', letterSpacing: '1px' }}>MÓDULOS ACCESIBLES</label>
@@ -2420,7 +2420,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                           padding: '12px', 
                           borderRadius: '12px', 
                           backgroundColor: formData.permissions.includes(mod.id) ? 'rgba(255, 255, 255, 0.1)' : 'rgba(255,255,255,0.03)',
-                          border: `1px solid ${formData.permissions.includes(mod.id) ? 'var(--gold-primary)' : 'rgba(255,255,255,0.05)'}`,
+                          border: `1px solid ${formData.permissions.includes(mod.id) ? 'var(--gold-primary)' : 'rgba(0, 0, 0, 0.08)'}`,
                           cursor: 'pointer',
                           transition: 'background-color 0.2s'
                         }}
@@ -2447,8 +2447,8 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
           </div>
 
           {/* ═══ SECTION 3: Información Personal (collapsed) ═══ */}
-          <div style={{ borderRadius: '16px', border: '1px solid rgba(255,255,255,0.08)', overflow: 'hidden' }}>
-            <button onClick={() => toggleEditSection('profile')} style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '14px 16px', background: 'rgba(255,255,255,0.03)', border: 'none', cursor: 'pointer', color: 'white' }}>
+          <div style={{ borderRadius: '16px', border: '1px solid rgba(0, 0, 0, 0.08)', overflow: 'hidden' }}>
+            <button onClick={() => toggleEditSection('profile')} style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '14px 16px', background: 'rgba(0, 0, 0, 0.04)', border: 'none', cursor: 'pointer', color: 'white' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                 <Star size={16} color="var(--gold-primary)" />
                 <span style={{ fontSize: '12px', fontWeight: '900', letterSpacing: '1px' }}>PERFIL PÚBLICO Y CONTACTO</span>
@@ -2488,7 +2488,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
 
                 {/* Video Upload */}
                 {isServiceProfessional && (
-                  <div style={{ padding: '14px 16px', background: 'rgba(255,255,255,0.03)', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.06)' }}>
+                  <div style={{ padding: '14px 16px', background: 'rgba(0, 0, 0, 0.04)', borderRadius: '12px', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
                     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '12px' }}>
                       <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                         <Film size={14} color="var(--gold-primary)" />
@@ -2505,7 +2505,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                       )}
                     </div>
                     {formData.video_url ? (
-                      <div style={{ position: 'relative', borderRadius: '10px', overflow: 'hidden', border: '1px solid rgba(255,255,255,0.08)' }}>
+                      <div style={{ position: 'relative', borderRadius: '10px', overflow: 'hidden', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
                         <video src={formData.video_url} style={{ width: '100%', maxHeight: '160px', objectFit: 'cover' }} controls />
                       </div>
                     ) : hasHardcodedVideo ? (
@@ -2519,7 +2519,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                         </label>
                       </div>
                     ) : (
-                      <label style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '20px', border: '2px dashed rgba(255,255,255,0.1)', borderRadius: '10px', cursor: videoUploading ? 'not-allowed' : 'pointer', opacity: videoUploading ? 0.5 : 1, transition: 'all 0.2s' }}>
+                      <label style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '20px', border: '2px dashed rgba(0, 0, 0, 0.08)', borderRadius: '10px', cursor: videoUploading ? 'not-allowed' : 'pointer', opacity: videoUploading ? 0.5 : 1, transition: 'all 0.2s' }}>
                         {videoUploading ? (
                           <>
                             <Loader2 size={20} color="var(--gold-primary)" style={{ animation: 'spin 1s linear infinite' }} />
@@ -2576,7 +2576,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                     </div>
                   </div>
                 </div>
-                <div style={{ marginTop: '16px', borderTop: '1px solid rgba(255, 255, 255, 0.05)', paddingTop: '16px' }}>
+                <div style={{ marginTop: '16px', borderTop: '1px solid rgba(0, 0, 0, 0.08)', paddingTop: '16px' }}>
                   <h4 style={{ fontSize: '11px', fontWeight: '900', color: 'var(--gold-primary)', marginBottom: '12px', letterSpacing: '1px', textTransform: 'uppercase' }}>Estadísticas de Perfil Público</h4>
                   <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr 1fr' : 'repeat(auto-fill, minmax(180px, 1fr))', gap: '16px' }}>
                     <div className="form-group">
@@ -2627,8 +2627,8 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
           </div>
 
           {/* ═══ SECTION 4: Credenciales (collapsed) ═══ */}
-          <div style={{ borderRadius: '16px', border: '1px solid rgba(255,255,255,0.08)', overflow: 'hidden' }}>
-            <button onClick={() => toggleEditSection('credentials')} style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '14px 16px', background: 'rgba(255,255,255,0.03)', border: 'none', cursor: 'pointer', color: 'white' }}>
+          <div style={{ borderRadius: '16px', border: '1px solid rgba(0, 0, 0, 0.08)', overflow: 'hidden' }}>
+            <button onClick={() => toggleEditSection('credentials')} style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '14px 16px', background: 'rgba(0, 0, 0, 0.04)', border: 'none', cursor: 'pointer', color: 'white' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                 <Lock size={16} color="var(--gold-primary)" />
                 <span style={{ fontSize: '12px', fontWeight: '900', letterSpacing: '1px' }}>CREDENCIALES DE ACCESO</span>
@@ -2637,12 +2637,12 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
             </button>
             {editSections.credentials && (
               <div style={{ padding: '16px' }}>
-                <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(2, minmax(0, 1fr))', gap: '16px', padding: '20px', backgroundColor: 'rgba(255, 255, 255, 0.03)', borderRadius: '16px', border: '1px solid rgba(255, 255, 255, 0.1)' }}>
+                <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(2, minmax(0, 1fr))', gap: '16px', padding: '20px', backgroundColor: 'rgba(0, 0, 0, 0.04)', borderRadius: '16px', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
                   <div className="form-group">
                   <FieldLabel>EMAIL DE ACCESO</FieldLabel>
                     <div style={{ position: 'relative' }}>
                       <Mail size={18} style={{ position: 'absolute', left: '16px', top: '16px', color: 'var(--gold-primary)' }} />
-                      <input className="form-input" type="email" placeholder="persona@dientessanos.com" value={formData.email} onChange={e => setFormData({...formData, email: e.target.value})} style={{ width: '100%', height: '50px', paddingLeft: '48px', border: '1px solid rgba(255, 255, 255, 0.2)' }} />
+                      <input className="form-input" type="email" placeholder="persona@dientessanos.com" value={formData.email} onChange={e => setFormData({...formData, email: e.target.value})} style={{ width: '100%', height: '50px', paddingLeft: '48px', border: '1px solid rgba(0, 0, 0, 0.08)' }} />
                     </div>
                   </div>
                   <div className="form-group">
@@ -2656,7 +2656,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                         value={formData.password} 
                         onChange={e => setFormData({...formData, password: e.target.value})} 
                         autoComplete="new-password"
-                        style={{ width: '100%', height: '50px', paddingLeft: '48px', border: '1px solid rgba(255, 255, 255, 0.2)' }} 
+                        style={{ width: '100%', height: '50px', paddingLeft: '48px', border: '1px solid rgba(0, 0, 0, 0.08)' }} 
                       />
                     </div>
                   </div>
@@ -2694,10 +2694,10 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
           <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
             <div style={{
               display: 'flex',
-              backgroundColor: 'rgba(255,255,255,0.03)',
+              backgroundColor: 'rgba(0, 0, 0, 0.04)',
               borderRadius: '12px',
               padding: '4px',
-              border: '1px solid rgba(255,255,255,0.05)'
+              border: '1px solid rgba(0, 0, 0, 0.08)'
             }}>
               <button
                 onClick={() => setPersonnelView('cards')}
@@ -2728,7 +2728,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
               <button
                 className="btn-gold"
                 onClick={() => setIsRoleModalOpen(true)}
-                style={{ backgroundColor: 'rgba(255,255,255,0.05)', color: 'white', border: '1px solid rgba(255,255,255,0.1)' }}
+                style={{ backgroundColor: 'rgba(0, 0, 0, 0.04)', color: 'white', border: '1px solid rgba(0, 0, 0, 0.08)' }}
               >
                 <Shield size={18} style={{ marginRight: '8px' }} /> Roles
               </button>
@@ -2766,12 +2766,12 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
         {!attendanceOnly && <div style={{
           display: 'flex',
           gap: '8px',
-          background: 'rgba(255, 255, 255, 0.02)',
+          background: 'rgba(0, 0, 0, 0.04)',
           backdropFilter: 'blur(20px)',
           WebkitBackdropFilter: 'blur(20px)',
           padding: '6px',
           borderRadius: '16px',
-          border: '1px solid rgba(255, 255, 255, 0.05)',
+          border: '1px solid rgba(0, 0, 0, 0.08)',
           width: isMobile ? '100%' : 'fit-content',
           maxWidth: '100%',
           overflowX: isMobile ? 'auto' : 'visible',
@@ -2875,8 +2875,8 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                   width: '100%',
                   padding: '10px 14px 10px 40px',
                   borderRadius: '12px',
-                  background: 'rgba(255,255,255,0.04)',
-                  border: '1px solid rgba(255,255,255,0.08)',
+                  background: 'rgba(0, 0, 0, 0.04)',
+                  border: '1px solid rgba(0, 0, 0, 0.08)',
                   color: 'white',
                   fontSize: '13px',
                   outline: 'none',
@@ -2910,7 +2910,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                 style={{
                   width: '120px',
                   height: '120px',
-                  backgroundColor: 'rgba(255,255,255,0.05)',
+                  backgroundColor: 'rgba(0, 0, 0, 0.04)',
                   borderRadius: '24px',
                   border: '2px dashed var(--border-color)',
                   display: 'flex',
@@ -2959,7 +2959,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                   <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', alignItems: 'center' }}>
                     {portfolio.map(photo => (
                       <div key={photo.id} style={{ position: 'relative', width: '72px', height: '72px' }}>
-                         <img loading="lazy" src={photo.image_url} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '10px', border: '1px solid rgba(255,255,255,0.08)' }} />
+                         <img loading="lazy" src={photo.image_url} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '10px', border: '1px solid rgba(0, 0, 0, 0.08)' }} />
                          <button
                            type="button"
                            onClick={() => removePortfolioPhoto(photo)}
@@ -2968,7 +2968,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                       </div>
                     ))}
                     {portfolio.length < MAX_PORTFOLIO && (
-                      <label style={{ width: '72px', height: '72px', borderRadius: '10px', border: '2px dashed rgba(255,255,255,0.15)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', cursor: portfolioUploading ? 'not-allowed' : 'pointer', background: 'rgba(255,255,255,0.03)', gap: '4px', opacity: portfolioUploading ? 0.5 : 1 }}>
+                      <label style={{ width: '72px', height: '72px', borderRadius: '10px', border: '2px dashed rgba(0, 0, 0, 0.08)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', cursor: portfolioUploading ? 'not-allowed' : 'pointer', background: 'rgba(0, 0, 0, 0.04)', gap: '4px', opacity: portfolioUploading ? 0.5 : 1 }}>
                         {portfolioUploading
                           ? <Loader2 size={20} color="var(--gold-primary)" style={{ animation: 'spin 1s linear infinite' }} />
                           : <><Plus size={20} color="var(--gold-primary)" /><span style={{ fontSize: '9px', color: 'var(--text-muted)', fontWeight: '800' }}>SUBIR</span></>
@@ -3094,7 +3094,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                         placeholder="60"
                         value={formData.commission_pct}
                         onChange={e => setFormData({ ...formData, commission_pct: e.target.value })}
-                        style={{ width: '100%', height: '50px', paddingLeft: '48px', border: '1px solid rgba(255, 255, 255,0.3)' }}
+                        style={{ width: '100%', height: '50px', paddingLeft: '48px', border: '1px solid rgba(0, 0, 0, 0.08)' }}
                       />
                     </div>
                     <div style={{ marginTop: '7px', fontSize: '10px', color: 'var(--text-muted)', lineHeight: 1.4 }}>
@@ -3122,7 +3122,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                         placeholder="Ej. 2.00" 
                         value={formData.washing_rate} 
                         onChange={e => setFormData({...formData, washing_rate: e.target.value})} 
-                        style={{ width: '100%', height: '50px', paddingLeft: '48px', border: '1px solid rgba(255, 255, 255,0.3)' }} 
+                        style={{ width: '100%', height: '50px', paddingLeft: '48px', border: '1px solid rgba(0, 0, 0, 0.08)' }} 
                       />
                     </div>
                   </div>
@@ -3130,7 +3130,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
               </div>
 
               {/* Permissions Section */}
-              <div style={{ padding: '24px', backgroundColor: 'rgba(255,255,255,0.02)', borderRadius: '20px', border: '1px solid var(--border-color)' }}>
+              <div style={{ padding: '24px', backgroundColor: 'rgba(0, 0, 0, 0.04)', borderRadius: '20px', border: '1px solid var(--border-color)' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '16px' }}>
                   <Key size={18} color="var(--gold-primary)" />
                   <label style={{ fontSize: '12px', fontWeight: '900', color: 'white', letterSpacing: '1px' }}>MÓDULOS ACCESIBLES</label>
@@ -3153,7 +3153,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                         padding: '12px', 
                         borderRadius: '12px', 
                         backgroundColor: formData.permissions.includes(mod.id) ? 'rgba(255, 255, 255,0.1)' : 'rgba(255,255,255,0.03)',
-                        border: `1px solid ${formData.permissions.includes(mod.id) ? 'var(--gold-primary)' : 'rgba(255,255,255,0.05)'}`,
+                        border: `1px solid ${formData.permissions.includes(mod.id) ? 'var(--gold-primary)' : 'rgba(0, 0, 0, 0.08)'}`,
                         cursor: 'pointer',
                         transition: 'background-color 0.2s'
                       }}
@@ -3213,7 +3213,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                 </div>
 
                 {/* Profile Stats Configuration */}
-              <div style={{ marginTop: '16px', borderTop: '1px solid rgba(255, 255, 255, 0.05)', paddingTop: '16px' }}>
+              <div style={{ marginTop: '16px', borderTop: '1px solid rgba(0, 0, 0, 0.08)', paddingTop: '16px' }}>
                 <h4 style={{ fontSize: '11px', fontWeight: '900', color: 'var(--gold-primary)', marginBottom: '12px', letterSpacing: '1px', textTransform: 'uppercase' }}>Estadísticas de Perfil Público (Opcional)</h4>
                 <div style={{ display: 'grid', gridTemplateColumns: isMobile ? 'minmax(0, 1fr) minmax(0, 1fr)' : 'repeat(4, minmax(0, 1fr))', gap: '16px' }}>
                   <div className="form-group">
@@ -3263,12 +3263,12 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
               </div>
 
               {/* Login Credentials */}
-              <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(2, minmax(0, 1fr))', gap: '16px', padding: '20px', backgroundColor: 'rgba(255, 255, 255,0.03)', borderRadius: '16px', border: '1px solid rgba(255, 255, 255,0.1)' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(2, minmax(0, 1fr))', gap: '16px', padding: '20px', backgroundColor: 'rgba(0, 0, 0, 0.04)', borderRadius: '16px', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
                 <div className="form-group">
                   <label style={{ display: 'block', fontSize: '11px', fontWeight: '900', color: 'var(--gold-primary)', marginBottom: '8px', letterSpacing: '1px' }}>EMAIL DE ACCESO</label>
                   <div style={{ position: 'relative' }}>
                     <Mail size={18} style={{ position: 'absolute', left: '16px', top: '16px', color: 'var(--gold-primary)' }} />
-                    <input className="form-input" type="email" placeholder="persona@dientessanos.com" value={formData.email} onChange={e => setFormData({...formData, email: e.target.value})} style={{ width: '100%', height: '50px', paddingLeft: '48px', border: '1px solid rgba(255, 255, 255,0.2)' }} />
+                    <input className="form-input" type="email" placeholder="persona@dientessanos.com" value={formData.email} onChange={e => setFormData({...formData, email: e.target.value})} style={{ width: '100%', height: '50px', paddingLeft: '48px', border: '1px solid rgba(0, 0, 0, 0.08)' }} />
                   </div>
                 </div>
                 <div className="form-group">
@@ -3282,7 +3282,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                       value={formData.password} 
                       onChange={e => setFormData({...formData, password: e.target.value})} 
                       autoComplete="new-password"
-                      style={{ width: '100%', height: '50px', paddingLeft: '48px', border: '1px solid rgba(255, 255, 255,0.2)' }} 
+                      style={{ width: '100%', height: '50px', paddingLeft: '48px', border: '1px solid rgba(0, 0, 0, 0.08)' }} 
                     />
                   </div>
                 </div>
@@ -3317,7 +3317,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
         </div>
       ) : filteredStaff.length === 0 ? (
         <div style={{ textAlign: 'center', padding: '60px 20px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-          <div style={{ width: '64px', height: '64px', borderRadius: '50%', background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.05)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px' }}>
+          <div style={{ width: '64px', height: '64px', borderRadius: '50%', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px' }}>
             <Search size={24} color="rgba(255,255,255,0.3)" />
           </div>
           <h3 style={{ fontSize: '18px', fontWeight: '800', color: 'white', marginBottom: '8px' }}>Sin resultados</h3>
@@ -3377,7 +3377,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                       flexDirection: 'column',
                       alignItems: 'center',
                       background: isThisEditing ? 'rgba(17, 17, 17,0.06)' : 'rgba(255,255,255,0.02)',
-                      border: isThisEditing ? '1px solid rgba(17, 17, 17,0.25)' : '1px solid rgba(255,255,255,0.05)',
+                      border: isThisEditing ? '1px solid rgba(17, 17, 17,0.25)' : '1px solid rgba(0, 0, 0, 0.08)',
                       boxShadow: isThisEditing ? '0 8px 32px rgba(17, 17, 17,0.12)' : '0 8px 32px rgba(0,0,0,0.2)',
                       overflow: 'hidden',
                       transition: 'all 0.3s ease'
@@ -3386,9 +3386,9 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                           {person.role?.split('|')[0]?.includes(', ') && (
                             <span style={{
                               position: 'absolute', top: '12px', right: '12px',
-                              padding: '4px 8px', backgroundColor: 'rgba(255,255,255,0.05)', backdropFilter: 'blur(8px)',
+                              padding: '4px 8px', backgroundColor: 'rgba(0, 0, 0, 0.04)', backdropFilter: 'blur(8px)',
                               color: 'var(--gold-primary)', borderRadius: '8px', fontSize: '10px', fontWeight: '800',
-                              border: '1px solid rgba(255,255,255,0.1)'
+                              border: '1px solid rgba(0, 0, 0, 0.08)'
                             }}>
                               MULTI-ROL
                             </span>
@@ -3397,10 +3397,10 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                             width: isMobile ? '80px' : '96px', 
                             height: isMobile ? '80px' : '96px', 
                             borderRadius: '50%', 
-                            border: '2px solid rgba(255,255,255,0.1)',
+                            border: '2px solid rgba(0, 0, 0, 0.08)',
                             boxShadow: '0 8px 16px rgba(0,0,0,0.3)',
                             overflow: 'hidden', 
-                            backgroundColor: 'rgba(255,255,255,0.05)',
+                            backgroundColor: 'rgba(0, 0, 0, 0.04)',
                             display: 'flex',
                             alignItems: 'center',
                             justifyContent: 'center',
@@ -3426,11 +3426,11 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                             </div>
                           </div>
                           <div style={{ width: '100%', display: 'flex', flexDirection: 'column', gap: '8px', marginTop: '20px', position: 'relative', zIndex: 2 }}>
-                            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '12px', color: person.phone ? 'var(--text-secondary)' : 'var(--text-muted)', background: 'rgba(255,255,255,0.03)', padding: '10px 12px', borderRadius: '12px' }}>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '12px', color: person.phone ? 'var(--text-secondary)' : 'var(--text-muted)', background: 'rgba(0, 0, 0, 0.04)', padding: '10px 12px', borderRadius: '12px' }}>
                               <Phone size={14} color={person.phone ? 'var(--gold-primary)' : 'rgba(255,255,255,0.2)'} style={{ flexShrink: 0 }} />
                               <span style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{person.phone || 'Sin teléfono'}</span>
                             </div>
-                            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '12px', color: person.email ? 'var(--text-secondary)' : 'var(--text-muted)', background: 'rgba(255,255,255,0.03)', padding: '10px 12px', borderRadius: '12px' }}>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '12px', color: person.email ? 'var(--text-secondary)' : 'var(--text-muted)', background: 'rgba(0, 0, 0, 0.04)', padding: '10px 12px', borderRadius: '12px' }}>
                               {person.email ? <Mail size={14} color="var(--gold-primary)" style={{ flexShrink: 0 }} /> : <Lock size={14} style={{ flexShrink: 0 }} />}
                               <span className="lowercase-text" style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{person.email || 'Sin email'}</span>
                             </div>
@@ -3439,7 +3439,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                             {isAdmin && (
                               <button 
                                 onClick={(e) => { e.stopPropagation(); handleEditClick(person); }}
-                                style={{ background: 'rgba(255,255,255,0.05)', border: 'none', borderRadius: '12px', padding: '10px 0', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '4px', cursor: 'pointer', transition: 'all 0.2s' }}
+                                style={{ background: 'rgba(0, 0, 0, 0.04)', border: 'none', borderRadius: '12px', padding: '10px 0', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '4px', cursor: 'pointer', transition: 'all 0.2s' }}
                                 onMouseOver={e => e.currentTarget.style.background = 'rgba(255,255,255,0.1)'}
                                 onMouseOut={e => e.currentTarget.style.background = 'rgba(255,255,255,0.05)'}
                               >
@@ -3465,7 +3465,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                 <div className="glass-card animate-slide-up" style={{ 
                   padding: '16px', 
                   borderRadius: '20px',
-                  border: '1px solid rgba(255,255,255,0.05)',
+                  border: '1px solid rgba(0, 0, 0, 0.08)',
                   display: 'flex',
                   flexDirection: 'column',
                   gap: '14px',
@@ -3479,12 +3479,12 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                         width: '48px', 
                         height: '48px', 
                         borderRadius: '12px', 
-                        backgroundColor: 'rgba(255,255,255,0.02)',
+                        backgroundColor: 'rgba(0, 0, 0, 0.04)',
                         overflow: 'hidden',
                         display: 'flex', 
                         alignItems: 'center', 
                         justifyContent: 'center',
-                        border: '1px solid rgba(255,255,255,0.08)',
+                        border: '1px solid rgba(0, 0, 0, 0.08)',
                         flexShrink: 0
                       }}>
                        {person.image_url ? (
@@ -3508,7 +3508,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
 
                     {/* Actions */}
                     <div style={{ display: 'flex', gap: '6px', flexShrink: 0 }}>
-                      <button className="action-btn" onClick={() => handleEditClick(person)} title="Editar Miembro" style={{ width: '34px', height: '34px', borderRadius: '8px', border: '1px solid rgba(255, 255, 255, 0.08)', transition: 'none' }}>
+                      <button className="action-btn" onClick={() => handleEditClick(person)} title="Editar Miembro" style={{ width: '34px', height: '34px', borderRadius: '8px', border: '1px solid rgba(0, 0, 0, 0.08)', transition: 'none' }}>
                         <Edit2 size={15} />
                       </button>
                       <button className="action-btn" onClick={() => handleDeleteStaff(person.id, person.name)} style={{ color: '#ff453a', backgroundColor: 'rgba(255,69,58,0.05)', width: '34px', height: '34px', borderRadius: '8px', border: '1px solid rgba(255, 69, 58, 0.2)', transition: 'none' }} title="Dar de baja">
@@ -3518,7 +3518,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                   </div>
 
                   {/* Divider line */}
-                  <div style={{ height: '1px', background: 'rgba(255,255,255,0.05)', width: '100%' }} />
+                  <div style={{ height: '1px', background: 'rgba(0, 0, 0, 0.04)', width: '100%' }} />
 
                   {/* Details Section */}
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', fontSize: '13px' }}>
@@ -3551,7 +3551,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                 <div className="glass-card animate-slide-up" style={{ 
                   padding: '16px 24px', 
                   borderRadius: '20px',
-                  border: '1px solid rgba(255,255,255,0.05)',
+                  border: '1px solid rgba(0, 0, 0, 0.08)',
                   display: 'grid',
                   gridTemplateColumns: '80px 1.5fr minmax(0, 1fr) 1.5fr 1.2fr 140px',
                   alignItems: 'center',
@@ -3563,12 +3563,12 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                     width: '56px', 
                     height: '56px', 
                     borderRadius: '14px', 
-                    backgroundColor: 'rgba(255,255,255,0.02)',
+                    backgroundColor: 'rgba(0, 0, 0, 0.04)',
                     overflow: 'hidden',
                     display: 'flex', 
                     alignItems: 'center', 
                     justifyContent: 'center',
-                    border: '1px solid rgba(255,255,255,0.08)'
+                    border: '1px solid rgba(0, 0, 0, 0.08)'
                   }}>
                      {person.image_url ? (
                        <img loading="lazy" src={person.image_url} alt={person.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
@@ -3588,11 +3588,11 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                       {person.role?.split('|')[0]?.includes(', ') && (
                         <span style={{ 
                           padding: '2px 6px', 
-                          backgroundColor: 'rgba(255, 255, 255,0.1)', 
+                          backgroundColor: 'rgba(0, 0, 0, 0.04)', 
                           borderRadius: '4px', 
                           fontSize: '9px',
                           marginLeft: '4px',
-                          border: '1px solid rgba(255, 255, 255,0.2)',
+                          border: '1px solid rgba(0, 0, 0, 0.08)',
                           flexShrink: 0
                         }}>
                           MULTI-ROL
@@ -3664,7 +3664,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
 
                   {/* Actions Column */}
                   <div style={{ display: 'flex', gap: '8px', justifyContent: 'flex-end' }}>
-                    <button className="action-btn" onClick={() => handleEditClick(person)} title="Editar Miembro" style={{ border: '1px solid rgba(255, 255, 255, 0.08)', transition: 'none' }}>
+                    <button className="action-btn" onClick={() => handleEditClick(person)} title="Editar Miembro" style={{ border: '1px solid rgba(0, 0, 0, 0.08)', transition: 'none' }}>
                       <Edit2 size={18} />
                     </button>
                     <button className="action-btn" onClick={() => handleDeleteStaff(person.id, person.name)} style={{ color: '#ff453a', backgroundColor: 'rgba(255,69,58,0.05)', border: '1px solid rgba(255, 69, 58, 0.2)', transition: 'none' }} title="Dar de baja">
@@ -3690,8 +3690,8 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
               width: isMobile ? '100%' : '600px',
               position: 'relative',
               borderRadius: '24px',
-              background: 'rgba(255,255,255,0.02)',
-              border: '1px solid rgba(255,255,255,0.05)',
+              background: 'rgba(0, 0, 0, 0.04)',
+              border: '1px solid rgba(0, 0, 0, 0.08)',
               padding: '24px'
             }}>
               {renderEditForm(staff.find(s => s.id === editingId))}
@@ -3771,7 +3771,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                 padding: 0,
                 borderRadius: '16px',
                 background: 'var(--bg-secondary)',
-                border: isCheckedIn ? '1px solid rgba(50, 215, 75, 0.3)' : '1px solid rgba(255, 255, 255, 0.05)',
+                border: isCheckedIn ? '1px solid rgba(50, 215, 75, 0.3)' : '1px solid rgba(0, 0, 0, 0.08)',
                 boxShadow: isCheckedIn ? '0 0 20px rgba(50,215,75,0.1)' : '0 10px 30px rgba(0,0,0,0.5)',
                 transition: 'all 0.3s ease',
                 position: 'relative',
@@ -3797,7 +3797,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                   {showFallback ? (
                     <div style={{ 
                       width: '100%', height: '100%', 
-                      background: 'radial-gradient(circle at 50% 30%, rgba(17, 17, 17,0.15) 0%, #111 80%)', 
+                      background: 'radial-gradient(circle at 50% 30%, rgba(17, 17, 17,0.15) 0%, #ffffff 80%)', 
                       display: 'flex', alignItems: 'center', justifyContent: 'center',
                       boxShadow: 'inset 0 0 40px rgba(0,0,0,0.8)'
                     }}>
@@ -3814,11 +3814,11 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                 {/* Top Right Badges */}
                 <div style={{ position: 'absolute', top: '12px', right: '12px', display: 'flex', gap: '6px', zIndex: 2 }}>
                   {isCheckedIn && queueIndex >= 0 ? (
-                    <div style={{ width: '28px', height: '28px', borderRadius: '50%', background: 'rgba(0,0,0,0.65)', backdropFilter: 'blur(8px)', border: '1px solid rgba(255,255,255,0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '13px', fontWeight: '800', color: 'white' }}>
+                    <div style={{ width: '28px', height: '28px', borderRadius: '50%', background: 'rgba(255, 255, 255, 0.9)', backdropFilter: 'blur(8px)', border: '1px solid rgba(0, 0, 0, 0.08)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '13px', fontWeight: '800', color: 'white' }}>
                       {queueIndex + 1}
                     </div>
                   ) : (
-                    <div style={{ width: '28px', height: '28px', borderRadius: '50%', background: 'rgba(0,0,0,0.65)', backdropFilter: 'blur(8px)', border: '1px solid rgba(17, 17, 17,0.3)', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 2px 8px rgba(0,0,0,0.4)' }}>
+                    <div style={{ width: '28px', height: '28px', borderRadius: '50%', background: 'rgba(255, 255, 255, 0.9)', backdropFilter: 'blur(8px)', border: '1px solid rgba(17, 17, 17,0.3)', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 2px 8px rgba(0,0,0,0.4)' }}>
                       <Clock size={14} color="var(--gold-primary)" />
                     </div>
                   )}
@@ -3925,8 +3925,8 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                 width: '100%',
                 padding: '10px 14px 10px 40px',
                 borderRadius: '12px',
-                background: 'rgba(255,255,255,0.04)',
-                border: '1px solid rgba(255,255,255,0.08)',
+                background: 'rgba(0, 0, 0, 0.04)',
+                border: '1px solid rgba(0, 0, 0, 0.08)',
                 color: 'white',
                 fontSize: '13px',
                 outline: 'none',
@@ -3938,7 +3938,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
 
         return (
           <div className="animate-fade-in" style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', gap: '16px', flexWrap: 'wrap', borderBottom: '1px solid rgba(255,255,255,0.06)', paddingBottom: '20px', paddingRight: '48px' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', gap: '16px', flexWrap: 'wrap', borderBottom: '1px solid rgba(0, 0, 0, 0.08)', paddingBottom: '20px', paddingRight: '48px' }}>
               <div style={{ flex: 1 }}>
                 <h3 style={{ fontSize: '24px', fontWeight: '800', color: 'white', letterSpacing: '-0.8px', margin: '0 0 4px 0' }}>
                   Asistencia
@@ -3975,7 +3975,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
 
             {sorted.length === 0 ? (
               <div style={{ textAlign: 'center', padding: '80px 20px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                <div style={{ width: '64px', height: '64px', borderRadius: '50%', background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.05)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px' }}>
+                <div style={{ width: '64px', height: '64px', borderRadius: '50%', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px' }}>
                   <Search size={24} color="rgba(255,255,255,0.3)" />
                 </div>
                 <h3 style={{ fontSize: '18px', fontWeight: '800', color: 'white', marginBottom: '8px' }}>Sin resultados</h3>
@@ -4095,7 +4095,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
             return (
               <>
                 {/* ── HEADER CARD ── */}
-                <div style={{ borderBottom: '1px solid rgba(255,255,255,0.06)', paddingBottom: '20px', marginBottom: '8px' }}>
+                <div style={{ borderBottom: '1px solid rgba(0, 0, 0, 0.08)', paddingBottom: '20px', marginBottom: '8px' }}>
                   <h3 style={{ fontSize: '24px', fontWeight: '800', color: 'white', letterSpacing: '-0.8px', margin: '0 0 4px 0' }}>
                     Control de Calidad y Feedback
                   </h3>
@@ -4112,7 +4112,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                     style={{ 
                       padding: '24px', 
                       borderRadius: '24px', 
-                      background: 'rgba(255,255,255,0.01)',
+                      background: 'rgba(0, 0, 0, 0.04)',
                       display: 'flex',
                       flexDirection: 'column',
                       gap: '20px',
@@ -4132,21 +4132,21 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                       </div>
 
                       {/* Rapidez */}
-                      <div style={{ textAlign: 'center', padding: '16px', borderRadius: '16px', background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.04)' }}>
+                      <div style={{ textAlign: 'center', padding: '16px', borderRadius: '16px', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
                         <Clock size={20} color="var(--text-muted)" style={{ margin: '0 auto 8px' }} />
                         <div style={{ fontSize: '24px', fontWeight: '900', color: 'white' }}>{avgRapidez}</div>
                         <div style={{ fontSize: '11px', color: 'var(--text-muted)', fontWeight: '700', marginTop: '4px' }}>RAPIDEZ</div>
                       </div>
 
                       {/* Limpieza */}
-                      <div style={{ textAlign: 'center', padding: '16px', borderRadius: '16px', background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.04)' }}>
+                      <div style={{ textAlign: 'center', padding: '16px', borderRadius: '16px', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
                         <Droplets size={20} color="var(--text-muted)" style={{ margin: '0 auto 8px' }} />
                         <div style={{ fontSize: '24px', fontWeight: '900', color: 'white' }}>{avgLimpieza}</div>
                         <div style={{ fontSize: '11px', color: 'var(--text-muted)', fontWeight: '700', marginTop: '4px' }}>LIMPIEZA</div>
                       </div>
 
                       {/* Habilidad */}
-                      <div style={{ textAlign: 'center', padding: '16px', borderRadius: '16px', background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.04)' }}>
+                      <div style={{ textAlign: 'center', padding: '16px', borderRadius: '16px', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
                         <Scissors size={20} color="var(--text-muted)" style={{ margin: '0 auto 8px' }} />
                         <div style={{ fontSize: '24px', fontWeight: '900', color: 'white' }}>{avgHabilidad}</div>
                         <div style={{ fontSize: '11px', color: 'var(--text-muted)', fontWeight: '700', marginTop: '4px' }}>HABILIDAD</div>
@@ -4280,10 +4280,10 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                             display: 'flex', 
                             alignItems: 'center', 
                             gap: '6px',
-                            background: 'rgba(255,255,255,0.03)',
+                            background: 'rgba(0, 0, 0, 0.04)',
                             padding: '6px 12px',
                             borderRadius: '10px',
-                            border: '1px solid rgba(255,255,255,0.05)',
+                            border: '1px solid rgba(0, 0, 0, 0.08)',
                             marginTop: '2px'
                           }}>
                             <span style={{ fontSize: '14px', fontWeight: '900', color: 'white' }}>
@@ -4311,7 +4311,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                   style={{ 
                     padding: '16px 24px', 
                     borderRadius: '20px', 
-                    background: 'rgba(255,255,255,0.01)',
+                    background: 'rgba(0, 0, 0, 0.04)',
                     display: 'flex',
                     flexWrap: 'wrap',
                     gap: '16px',
@@ -4361,7 +4361,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                     </div>
 
                     {/* Filter by Rating Segment */}
-                    <div style={{ display: 'flex', background: 'rgba(255,255,255,0.04)', padding: '3px', borderRadius: '10px', border: '1px solid rgba(255,255,255,0.06)' }}>
+                    <div style={{ display: 'flex', background: 'rgba(0, 0, 0, 0.04)', padding: '3px', borderRadius: '10px', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
                       {[
                         { key: 'all', label: 'Todas' },
                         { key: 'high', label: 'Destacadas (4.5★+)' },
@@ -4413,8 +4413,8 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                            style={{ 
                              padding: '20px', 
                              borderRadius: '20px', 
-                             background: 'rgba(255,255,255,0.01)', 
-                             border: '1px solid rgba(255,255,255,0.04)',
+                             background: 'rgba(0, 0, 0, 0.04)', 
+                             border: '1px solid rgba(0, 0, 0, 0.08)',
                              display: 'flex',
                              flexDirection: 'column',
                              gap: '16px',
@@ -4429,11 +4429,11 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                               {/* Client & Barber Info */}
                               <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
                                 {/* Barber Mini Avatar */}
-                                <div style={{ width: '36px', height: '36px', borderRadius: '50%', overflow: 'hidden', border: '1px solid rgba(255,255,255,0.1)', background: 'var(--bg-secondary)', flexShrink: 0 }}>
+                                <div style={{ width: '36px', height: '36px', borderRadius: '50%', overflow: 'hidden', border: '1px solid rgba(0, 0, 0, 0.08)', background: 'var(--bg-secondary)', flexShrink: 0 }}>
                                    {barber?.image_url ? (
                                      <img loading="lazy" src={barber.image_url} alt={barber.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                                   ) : (
-                                    <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(255,255,255,0.05)', color: 'var(--gold-primary)', fontWeight: '800', fontSize: '12px' }}>
+                                    <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(0, 0, 0, 0.04)', color: 'var(--gold-primary)', fontWeight: '800', fontSize: '12px' }}>
                                       {barber?.name?.substring(0, 1)?.toUpperCase() || 'B'}
                                     </div>
                                   )}
@@ -4479,7 +4479,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                             </div>
 
                             {/* Sub ratings List (Vertical Stack) */}
-                            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', background: 'rgba(255,255,255,0.015)', padding: '12px', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.02)' }}>
+                            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', background: 'rgba(0, 0, 0, 0.04)', padding: '12px', borderRadius: '12px', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
                               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                                 <span style={{ fontSize: '12px', color: 'var(--text-secondary)', fontWeight: '600' }}>Rapidez</span>
                                 <span style={{ fontSize: '12px', fontWeight: '800', color: 'white' }}>{rev.rapidez || rev.rating || 5} / 5</span>
@@ -4506,7 +4506,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                       );
                     })
                   ) : (
-                    <div className="glass-card" style={{ gridColumn: '1 / -1', padding: '40px', borderRadius: '20px', textAlign: 'center', border: '1px solid rgba(255,255,255,0.04)', background: 'rgba(255,255,255,0.01)' }}>
+                    <div className="glass-card" style={{ gridColumn: '1 / -1', padding: '40px', borderRadius: '20px', textAlign: 'center', border: '1px solid rgba(0, 0, 0, 0.08)', background: 'rgba(0, 0, 0, 0.04)' }}>
                       <MessageSquare size={32} color="var(--text-muted)" style={{ margin: '0 auto 12px' }} />
                       <p style={{ color: 'var(--text-secondary)', fontSize: '14px', fontWeight: '700', margin: 0 }}>No hay valoraciones que coincidan con la búsqueda o filtro</p>
                     </div>
@@ -4530,7 +4530,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
             return (
               <>
                 {/* ── HEADER ── */}
-                <div style={{ borderBottom: '1px solid rgba(255,255,255,0.06)', paddingBottom: '20px', marginBottom: '4px' }}>
+                <div style={{ borderBottom: '1px solid rgba(0, 0, 0, 0.08)', paddingBottom: '20px', marginBottom: '4px' }}>
                   <h3 style={{ fontSize: '24px', fontWeight: '800', color: 'white', letterSpacing: '-0.8px', margin: '0 0 4px 0' }}>
                     Reportes de Desempeño
                   </h3>
@@ -4542,7 +4542,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                 {/* ── TOP STAT CARDS ── */}
                 <div style={{ display: 'grid', gridTemplateColumns: isMobile ? 'minmax(0, 1fr) minmax(0, 1fr)' : 'repeat(4, minmax(0, 1fr))', gap: '16px' }}>
                   {/* Asistencia Promedio */}
-                  <div className="glass-card" style={{ padding: '20px', borderRadius: '20px', background: 'rgba(255,255,255,0.02)', transition: 'none' }}>
+                  <div className="glass-card" style={{ padding: '20px', borderRadius: '20px', background: 'rgba(0, 0, 0, 0.04)', transition: 'none' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '12px' }}>
                       <div style={{ width: '40px', height: '40px', borderRadius: '12px', background: 'rgba(50,215,75,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                         <Users size={20} color="#32d74b" />
@@ -4557,7 +4557,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                   </div>
 
                   {/* Puntualidad */}
-                  <div className="glass-card" style={{ padding: '20px', borderRadius: '20px', background: 'rgba(255,255,255,0.02)', transition: 'none' }}>
+                  <div className="glass-card" style={{ padding: '20px', borderRadius: '20px', background: 'rgba(0, 0, 0, 0.04)', transition: 'none' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '12px' }}>
                       <div style={{ width: '40px', height: '40px', borderRadius: '12px', background: 'rgba(17, 17, 17,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                         <Clock size={20} color="var(--gold-primary)" />
@@ -4572,7 +4572,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                   </div>
 
                   {/* Servicios Completados */}
-                  <div className="glass-card" style={{ padding: '20px', borderRadius: '20px', background: 'rgba(255,255,255,0.02)', transition: 'none' }}>
+                  <div className="glass-card" style={{ padding: '20px', borderRadius: '20px', background: 'rgba(0, 0, 0, 0.04)', transition: 'none' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '12px' }}>
                       <div style={{ width: '40px', height: '40px', borderRadius: '12px', background: 'rgba(100,210,255,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                         <Scissors size={20} color="#64d2ff" />
@@ -4587,7 +4587,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                   </div>
 
                   {/* Gasto Promedio */}
-                  <div className="glass-card" style={{ padding: '20px', borderRadius: '20px', background: 'rgba(255,255,255,0.02)', transition: 'none' }}>
+                  <div className="glass-card" style={{ padding: '20px', borderRadius: '20px', background: 'rgba(0, 0, 0, 0.04)', transition: 'none' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '12px' }}>
                       <div style={{ width: '40px', height: '40px', borderRadius: '12px', background: 'rgba(255,159,10,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                         <DollarSign size={20} color="#ff9f0a" />
@@ -4606,15 +4606,15 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                 <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'minmax(0, 1fr) 1.2fr minmax(0, 1fr)', gap: '20px' }}>
 
                   {/* TOP DESEMPEÑO DEL MES */}
-                  <div className="glass-card" style={{ padding: '24px', borderRadius: '24px', background: 'rgba(255,255,255,0.01)', transition: 'none' }}>
+                  <div className="glass-card" style={{ padding: '24px', borderRadius: '24px', background: 'rgba(0, 0, 0, 0.04)', transition: 'none' }}>
                      <h4 style={{ fontSize: '14px', fontWeight: '900', color: 'white', margin: '0 0 20px', letterSpacing: '0.3px', display: 'flex', alignItems: 'center' }}>Top desempeño del mes <InfoTooltip text="Score calculado con: servicios completados (30%), puntualidad (25%), asistencia (25%) y calificación de clientes (20%)." /></h4>
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
                       {topPerformers.map((p, i) => (
-                        <div key={p.id} style={{ display: 'flex', alignItems: 'center', gap: '12px', padding: '10px', borderRadius: '14px', background: i === 0 ? 'rgba(17, 17, 17,0.06)' : 'rgba(255,255,255,0.02)', border: i === 0 ? '1px solid rgba(17, 17, 17,0.15)' : '1px solid rgba(255,255,255,0.04)' }}>
+                        <div key={p.id} style={{ display: 'flex', alignItems: 'center', gap: '12px', padding: '10px', borderRadius: '14px', background: i === 0 ? 'rgba(17, 17, 17,0.06)' : 'rgba(255,255,255,0.02)', border: i === 0 ? '1px solid rgba(17, 17, 17,0.15)' : '1px solid rgba(0, 0, 0, 0.08)' }}>
                           <div style={{ width: '28px', height: '28px', borderRadius: '50%', background: i === 0 ? 'var(--gold-primary)' : i === 1 ? '#c0c0c0' : i === 2 ? '#cd7f32' : 'rgba(255,255,255,0.08)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                             <span style={{ fontSize: '11px', fontWeight: '900', color: i < 3 ? 'black' : 'var(--text-muted)' }}>{i + 1}</span>
                           </div>
-                          <div style={{ width: '36px', height: '36px', borderRadius: '10px', overflow: 'hidden', backgroundColor: 'rgba(255,255,255,0.05)', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                          <div style={{ width: '36px', height: '36px', borderRadius: '10px', overflow: 'hidden', backgroundColor: 'rgba(0, 0, 0, 0.04)', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                              {p.image_url ? (
                                <img loading="lazy" src={p.image_url} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                              ) : (
@@ -4637,10 +4637,10 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                   {/* CENTER COLUMN: Weekly Chart + Productivity Table */}
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
                     {/* ASISTENCIA POR SEMANA */}
-                    <div className="glass-card" style={{ padding: '24px', borderRadius: '24px', background: 'rgba(255,255,255,0.01)', transition: 'none' }}>
+                    <div className="glass-card" style={{ padding: '24px', borderRadius: '24px', background: 'rgba(0, 0, 0, 0.04)', transition: 'none' }}>
                       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
                          <h4 style={{ fontSize: '14px', fontWeight: '900', color: 'white', margin: 0, letterSpacing: '0.3px', display: 'flex', alignItems: 'center' }}>Asistencia por semana <InfoTooltip text="Porcentaje de entradas puntuales (antes de las 10:00 AM) de todo el equipo, agrupadas por semana." /></h4>
-                        <span style={{ fontSize: '10px', fontWeight: '700', color: 'var(--text-muted)', background: 'rgba(255,255,255,0.04)', padding: '4px 10px', borderRadius: '8px' }}>Últimas 4 semanas</span>
+                        <span style={{ fontSize: '10px', fontWeight: '700', color: 'var(--text-muted)', background: 'rgba(0, 0, 0, 0.04)', padding: '4px 10px', borderRadius: '8px' }}>Últimas 4 semanas</span>
                       </div>
                       <div style={{ display: 'flex', alignItems: 'flex-end', gap: '16px', height: '160px', paddingBottom: '28px', position: 'relative' }}>
                         {/* Y-axis labels */}
@@ -4650,11 +4650,11 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                           ))}
                         </div>
                         {/* Bars */}
-                        <div style={{ display: 'flex', alignItems: 'flex-end', gap: '24px', flex: 1, marginLeft: '30px', height: '100%', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
+                        <div style={{ display: 'flex', alignItems: 'flex-end', gap: '24px', flex: 1, marginLeft: '30px', height: '100%', borderBottom: '1px solid rgba(0, 0, 0, 0.08)' }}>
                           {weeklyAttendance.map((w, i) => (
                             <div key={i} style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '6px' }}>
                               <span style={{ fontSize: '11px', fontWeight: '800', color: 'var(--gold-primary)' }}>{w.pct}%</span>
-                              <div style={{ width: '100%', maxWidth: '50px', height: `${w.pct}%`, background: `linear-gradient(180deg, var(--gold-primary) 0%, rgba(17, 17, 17,0.4) 100%)`, borderRadius: '8px 8px 0 0', transition: 'height 0.5s ease' }} />
+                              <div style={{ width: '100%', maxWidth: '50px', height: `${w.pct}%`, background: `linear-gradient(180deg, var(--gold-primary) 0%, rgba(255, 255, 255, 0.9) 100%)`, borderRadius: '8px 8px 0 0', transition: 'height 0.5s ease' }} />
                               <div style={{ textAlign: 'center' }}>
                                 <div style={{ fontSize: '10px', fontWeight: '700', color: 'white' }}>{w.label}</div>
                                 <div style={{ fontSize: '8px', color: 'var(--text-muted)' }}>{w.range}</div>
@@ -4666,12 +4666,12 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                     </div>
 
                     {/* PRODUCTIVIDAD POR ODONTÓLOGO */}
-                    <div className="glass-card" style={{ padding: '24px', borderRadius: '24px', background: 'rgba(255,255,255,0.01)', transition: 'none' }}>
+                    <div className="glass-card" style={{ padding: '24px', borderRadius: '24px', background: 'rgba(0, 0, 0, 0.04)', transition: 'none' }}>
                        <h4 style={{ fontSize: '14px', fontWeight: '900', color: 'white', margin: '0 0 16px', letterSpacing: '0.3px', display: 'flex', alignItems: 'center' }}>Productividad por odontólogo <InfoTooltip text="Servicios completados y gasto promedio (USD) de cada colaborador en el mes actual." /></h4>
                       <div style={{ overflowX: 'auto' }}>
                         <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '12px' }}>
                           <thead>
-                            <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
+                            <tr style={{ borderBottom: '1px solid rgba(0, 0, 0, 0.08)' }}>
                               <th style={{ padding: '8px 4px', textAlign: 'left', fontSize: '10px', fontWeight: '800', color: 'var(--text-muted)', letterSpacing: '0.5px', textTransform: 'uppercase' }}>Colaborador</th>
                               <th style={{ padding: '8px 4px', textAlign: 'center', fontSize: '10px', fontWeight: '800', color: 'var(--text-muted)', letterSpacing: '0.5px', textTransform: 'uppercase' }}>Servicios</th>
                               <th style={{ padding: '8px 4px', textAlign: 'center', fontSize: '10px', fontWeight: '800', color: 'var(--text-muted)', letterSpacing: '0.5px', textTransform: 'uppercase' }}>Gasto Prom.</th>
@@ -4679,9 +4679,9 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                           </thead>
                           <tbody>
                             {allStaff.map((p, i) => (
-                              <tr key={p.id} style={{ borderBottom: '1px solid rgba(255,255,255,0.04)' }}>
+                              <tr key={p.id} style={{ borderBottom: '1px solid rgba(0, 0, 0, 0.08)' }}>
                                 <td style={{ padding: '10px 4px', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                                  <div style={{ width: '28px', height: '28px', borderRadius: '8px', overflow: 'hidden', backgroundColor: 'rgba(255,255,255,0.05)', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                                  <div style={{ width: '28px', height: '28px', borderRadius: '8px', overflow: 'hidden', backgroundColor: 'rgba(0, 0, 0, 0.04)', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                                      {p.image_url ? (
                                        <img loading="lazy" src={p.image_url} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                                      ) : (
@@ -4708,14 +4708,14 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                   </div>
 
                   {/* PUNTUALIDAD POR COLABORADOR */}
-                  <div className="glass-card" style={{ padding: '24px', borderRadius: '24px', background: 'rgba(255,255,255,0.01)', transition: 'none' }}>
+                  <div className="glass-card" style={{ padding: '24px', borderRadius: '24px', background: 'rgba(0, 0, 0, 0.04)', transition: 'none' }}>
                      <h4 style={{ fontSize: '14px', fontWeight: '900', color: 'white', margin: '0 0 20px', letterSpacing: '0.3px', display: 'flex', alignItems: 'center' }}>Puntualidad por colaborador <InfoTooltip text="Porcentaje de veces que cada persona marcó entrada antes de las 10:00 AM sobre el total de sus registros." /></h4>
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
                       {allStaff.map((p) => (
                         <div key={p.id}>
                           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '6px' }}>
                             <div style={{ display: 'flex', alignItems: 'center', gap: '8px', minWidth: 0 }}>
-                               <div style={{ width: '24px', height: '24px', borderRadius: '7px', overflow: 'hidden', backgroundColor: 'rgba(255,255,255,0.05)', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                               <div style={{ width: '24px', height: '24px', borderRadius: '7px', overflow: 'hidden', backgroundColor: 'rgba(0, 0, 0, 0.04)', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                                  {p.image_url ? (
                                    <img loading="lazy" src={p.image_url} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                                 ) : (
@@ -4726,7 +4726,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                             </div>
                             <span style={{ fontSize: '12px', fontWeight: '800', color: p.punctualityPct >= 90 ? '#32d74b' : p.punctualityPct >= 75 ? '#ff9f0a' : '#ff453a', marginLeft: '8px', flexShrink: 0 }}>{p.punctualityPct}%</span>
                           </div>
-                          <div style={{ height: '8px', borderRadius: '4px', background: 'rgba(255,255,255,0.06)', overflow: 'hidden' }}>
+                          <div style={{ height: '8px', borderRadius: '4px', background: 'rgba(0, 0, 0, 0.04)', overflow: 'hidden' }}>
                             <div style={{ height: '100%', width: `${p.punctualityPct}%`, borderRadius: '4px', background: p.punctualityPct >= 90 ? 'linear-gradient(90deg, #32d74b 0%, #30d158 100%)' : p.punctualityPct >= 75 ? 'linear-gradient(90deg, #ff9f0a 0%, #ffb340 100%)' : 'linear-gradient(90deg, #ff453a 0%, #ff6961 100%)', transition: 'width 0.6s ease' }} />
                           </div>
                         </div>
@@ -4736,7 +4736,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                 </div>
 
                 {/* ── INSIGHTS DEL MES ── */}
-                <div className="glass-card" style={{ padding: '28px', borderRadius: '24px', background: 'rgba(255,255,255,0.01)', transition: 'none' }}>
+                <div className="glass-card" style={{ padding: '28px', borderRadius: '24px', background: 'rgba(0, 0, 0, 0.04)', transition: 'none' }}>
                    <h4 style={{ fontSize: '14px', fontWeight: '900', color: 'var(--gold-primary)', margin: '0 0 24px', letterSpacing: '0.5px', textTransform: 'uppercase', display: 'flex', alignItems: 'center' }}>Insights del mes <InfoTooltip text="Resumen automático: mejores y peores métricas del equipo basado en datos reales del mes." /></h4>
                   <div style={{ display: 'grid', gridTemplateColumns: isMobile ? 'minmax(0, 1fr) minmax(0, 1fr)' : 'repeat(4, minmax(0, 1fr))', gap: '16px' }}>
 
@@ -5003,7 +5003,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
             justifyContent: 'center',
             padding: '20px',
             paddingTop: 'max(20px, env(safe-area-inset-top, 20px))',
-            backgroundColor: 'rgba(0,0,0,0.85)',
+            backgroundColor: 'rgba(255, 255, 255, 0.9)',
             backdropFilter: 'blur(20px)'
           }}>
             <div className={cardClass.replace('global-modal-card', '')} style={{
@@ -5012,7 +5012,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
               maxHeight: '92vh',
               overflowY: 'auto',
               background: 'var(--bg-secondary)',
-              border: '1px solid rgba(255, 255, 255, 0.15)',
+              border: '1px solid rgba(0, 0, 0, 0.08)',
               borderRadius: '28px',
               padding: isMobile ? '18px' : '28px',
               boxShadow: '0 40px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.04) inset',
@@ -5051,7 +5051,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                   </div>
                 </div>
                 
-                <button onClick={() => setDailyPaymentModal(emptySettlementModal())} style={{ width: '34px', height: '34px', borderRadius: '50%', background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.08)', color: 'rgba(255,255,255,0.5)', fontSize: '16px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'all 0.2s ease', flexShrink: 0 }} onMouseEnter={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.1)'; e.currentTarget.style.color = 'white'; }} onMouseLeave={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.06)'; e.currentTarget.style.color = 'rgba(255,255,255,0.5)'; }}>×</button>
+                <button onClick={() => setDailyPaymentModal(emptySettlementModal())} style={{ width: '34px', height: '34px', borderRadius: '50%', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', color: 'rgba(255,255,255,0.5)', fontSize: '16px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'all 0.2s ease', flexShrink: 0 }} onMouseEnter={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.1)'; e.currentTarget.style.color = 'white'; }} onMouseLeave={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.06)'; e.currentTarget.style.color = 'rgba(255,255,255,0.5)'; }}>×</button>
               </div>
 
               <StaffSettlementPanel
@@ -5066,7 +5066,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
               />
 
               {showLegacyDailyPaymentUi && dailyPaymentModal.earnings && (
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', backgroundColor: 'rgba(255, 255, 255, 0.02)', padding: '20px', borderRadius: '20px', border: '1px solid rgba(255, 255, 255, 0.04)' }}>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', backgroundColor: 'rgba(0, 0, 0, 0.04)', padding: '20px', borderRadius: '20px', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '13px' }}>
                     <span style={{ color: 'var(--text-secondary)' }}>Comisiones acumuladas:</span>
                     <span style={{ fontWeight: '700' }}>{dailyPaymentModal.earnings.earnedBs.toLocaleString('es-VE')} Bs</span>
@@ -5093,7 +5093,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                       <span style={{ fontWeight: '700', color: '#ff453a' }}>-{dailyPaymentModal.earnings.paidBs.toLocaleString('es-VE')} Bs</span>
                     </div>
                   )}
-                  <div style={{ height: '1px', backgroundColor: 'rgba(255,255,255,0.08)', margin: '4px 0' }} />
+                  <div style={{ height: '1px', backgroundColor: 'rgba(0, 0, 0, 0.04)', margin: '4px 0' }} />
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                     <span style={{ fontSize: '14px', fontWeight: '800' }}>Monto neto a pagar:</span>
                     <div style={{ textAlign: 'right' }}>
@@ -5161,9 +5161,9 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                       flex: 1,
                       padding: '12px',
                       borderRadius: '12px',
-                      backgroundColor: 'rgba(255,255,255,0.03)',
+                      backgroundColor: 'rgba(0, 0, 0, 0.04)',
                       color: 'white',
-                      border: '1px solid rgba(255,255,255,0.08)',
+                      border: '1px solid rgba(0, 0, 0, 0.08)',
                       fontWeight: '700',
                       fontSize: '13px',
                       cursor: 'pointer'
@@ -5197,7 +5197,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
       {/* Video Replace Confirmation Modal */}
       {showVideoConfirm && createPortal(
         <div style={{ position: 'fixed', inset: 0, zIndex: 9999, display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'var(--bg-secondary)', backdropFilter: 'blur(8px)' }} onClick={() => { setShowVideoConfirm(false); setPendingVideoFile(null); }}>
-          <div style={{ background: 'var(--bg-secondary)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '20px', padding: '28px', maxWidth: '380px', width: '90%', textAlign: 'center' }} onClick={e => e.stopPropagation()}>
+          <div style={{ background: 'var(--bg-secondary)', border: '1px solid rgba(0, 0, 0, 0.08)', borderRadius: '20px', padding: '28px', maxWidth: '380px', width: '90%', textAlign: 'center' }} onClick={e => e.stopPropagation()}>
             <div style={{ width: '48px', height: '48px', borderRadius: '50%', background: 'rgba(255,159,10,0.1)', border: '1px solid rgba(255,159,10,0.25)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 16px' }}>
               <Film size={22} color="#ff9f0a" />
             </div>
@@ -5210,7 +5210,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
             <div style={{ display: 'flex', gap: '10px' }}>
               <button
                 onClick={() => { setShowVideoConfirm(false); setPendingVideoFile(null); }}
-                style={{ flex: 1, padding: '10px', borderRadius: '10px', border: '1px solid rgba(255,255,255,0.1)', background: 'rgba(255,255,255,0.04)', color: 'white', fontSize: '12px', fontWeight: '700', cursor: 'pointer' }}
+                style={{ flex: 1, padding: '10px', borderRadius: '10px', border: '1px solid rgba(0, 0, 0, 0.08)', background: 'rgba(0, 0, 0, 0.04)', color: 'white', fontSize: '12px', fontWeight: '700', cursor: 'pointer' }}
               >
                 Cancelar
               </button>
