@@ -13,8 +13,8 @@ siempre que el navegador/PWA lo permita). Implementado el 2026-08-06.
 - **Disparadores** (en `src/services/dataService.js`, centralizados):
   | Evento | Función | Destino |
   |---|---|---|
-  | Cita agendada | `createAppointment` (scheduled_at) | barbero de la cita |
-  | Cliente en silla | `createAppointment`/`updateAppointmentStatus` → 'En Silla' | barbero |
+  | Cita agendada | `createAppointment` (scheduled_at) | odontólogo de la cita |
+  | Cliente en silla | `createAppointment`/`updateAppointmentStatus` → 'En Silla' | odontólogo |
   | Enviar a lavado | `updateAppointmentStatus` → 'En Lavado' | rol Asistente |
   | Venta de producto | `addProductToAppointment` | Barista, Asistente, Admin |
   | Enviar a caja | `updateAppointmentStatus` → 'Por Pagar' | Admin |

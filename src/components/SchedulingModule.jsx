@@ -44,7 +44,7 @@ import ScheduleModal from './ScheduleModal';
 import { useAuth } from '../context/AuthContext';
 import { ModalShield } from '../context/ModalContext';
 import AnimatedModal from './AnimatedModal';
-import { isBarberBookableStaff, roleLabel, getRoleCategory } from '../utils/staffRoles';
+import { isDentistaBookableStaff, roleLabel, getRoleCategory } from '../utils/staffRoles';
 
 const DEFAULT_DAY_TIMELINE_START = 8;
 const DEFAULT_DAY_TIMELINE_END = 24;
@@ -343,7 +343,7 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
   const handleTimeSelected = async (isoTime) => {
     try {
       const service = services.find(s => s.id === newApp.serviceId);
-      if (!isBarberBookableStaff(staff.find(s => String(s.id) === String(newApp.staffId)))) {
+      if (!isDentistaBookableStaff(staff.find(s => String(s.id) === String(newApp.staffId)))) {
         showToast("Ese miembro del equipo no puede recibir citas.", "error");
         return;
       }
@@ -4290,7 +4290,7 @@ return (
                     {/* Barbero */}
                       <FieldLabel required>Odontólogo</FieldLabel>
                       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, 60px)', gap: '12px', justifyItems: 'center' }}>
-                        {staff.filter(isBarberBookableStaff).map(s => {
+                        {staff.filter(isDentistaBookableStaff).map(s => {
                           const isSel = newApp.staffId === s.id;
                           const locked = getRoleCategory(user?.role || '') === 'odontologo';
                           return (
@@ -4381,7 +4381,7 @@ return (
                         showToast("Selecciona cliente, servicio y odontólogo", "error");
                         return;
                       }
-                      if (!isBarberBookableStaff(staff.find(s => String(s.id) === String(newApp.staffId)))) {
+                      if (!isDentistaBookableStaff(staff.find(s => String(s.id) === String(newApp.staffId)))) {
                         showToast("Ese miembro del equipo no puede recibir citas.", "error");
                         return;
                       }

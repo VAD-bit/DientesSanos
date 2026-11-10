@@ -802,7 +802,7 @@ const InventoryModule = ({ isMobile, currency, rates }) => {
                         const n = (item.name || '').toLowerCase();
                         const c = (item.category || '').toLowerCase();
                         if (c.includes('herramienta') || n.includes('maquina') || n.includes('clipper') || n.includes('trimmer')) return <Wrench size={24} color="var(--gold-primary)" style={{ opacity: 0.6 }} />;
-                        if (c.includes('accesorios') || n.includes('tijera') || n.includes('navaja') || n.includes('capa')) return <Scissors size={24} color="var(--gold-primary)" style={{ opacity: 0.6 }} />;
+                        if (c.includes('instrumental') || n.includes('espejo') || n.includes('sonda') || n.includes('pinza') || n.includes('babero')) return <Scissors size={24} color="var(--gold-primary)" style={{ opacity: 0.6 }} />;
                         if (c.includes('venta')) return <ShoppingBag size={24} color="var(--gold-primary)" style={{ opacity: 0.6 }} />;
                         return <Package size={24} color="var(--gold-primary)" style={{ opacity: 0.6 }} />;
                       })()

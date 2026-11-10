@@ -4,7 +4,7 @@ import { X, Calendar as CalendarIcon, Clock, Sparkles, Scissors, User, Search, C
 import { publicService } from '../services/publicService';
 import PandaDatePicker from '../../components/PandaDatePicker';
 import { formatDuration } from '../../utils/formatDuration';
-import { isBookableStaff, isBarberBookableStaff, isTattooBookableStaff } from '../../utils/staffRoles';
+import { isBookableStaff, isDentistaBookableStaff, isTattooBookableStaff } from '../../utils/staffRoles';
 
 export default function QuickBookingModal({ onClose, client, initialBarber = null }) {
   const [step, setStep] = useState(1);
@@ -323,7 +323,7 @@ export default function QuickBookingModal({ onClose, client, initialBarber = nul
               {step === 2 && (() => {
                 const isTattoo = (selectedService?.category || '').toLowerCase().includes('tatuaje');
                 const filteredStaff = staff
-                  .filter(s => isTattoo ? isTattooBookableStaff(s) : isBarberBookableStaff(s))
+                  .filter(s => isTattoo ? isTattooBookableStaff(s) : isDentistaBookableStaff(s))
                   .filter(s => s.name.toLowerCase().includes(searchQuery.toLowerCase()));
 
                 return (

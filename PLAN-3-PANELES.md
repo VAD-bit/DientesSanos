@@ -9,7 +9,7 @@
 
 | Decisión | Respuesta |
 |---|---|
-| Mapeo de roles | `Barbero/Tatuador → Odontologo`, `Recepcionista/Caja/Barista/Asistente de Lavado → Asistente`, `Admin → Administrador` |
+| Mapeo de roles | `Odontólogo/Estético → Odontologo`, `Recepcionista/Caja/Asistente Dental → Asistente`, `Admin → Administrador` |
 | Panel del Odontólogo | Su panel (BarberPanel) + Agenda + Clientes + Historial |
 | Panel del Asistente | Recepción + Agenda + Clientes + Mi Perfil + Historial |
 | Caja/Finanzas/Inventario | Solo Administrador (el Asistente NO cobra) |

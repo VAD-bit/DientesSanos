@@ -30,7 +30,7 @@ import {
   BarChart3
 } from 'lucide-react';
 import { 
-  GiNoseFront, GiBeard, GiComb, GiHairStrands, GiWaterDrop, 
+  GiNoseFront, GiTooth, GiComb, GiWaterDrop, 
   GiCoffeeCup, GiBeerBottle, GiSpray, 
   GiShower, GiBottleVapors, GiTowel
 } from 'react-icons/gi';
@@ -242,12 +242,12 @@ const calculateCouponDiscount = (coupon, apps, washes, wRate) => {
   
   if (name.startsWith('PREMIO:')) {
     const target = name.replace('PREMIO:', '').trim();
-    if (target.includes('CORTE')) {
-      const corteApp = apps.find(a => a.services?.name?.toUpperCase().includes('CORTE'));
-      return corteApp ? (corteApp.total_price || corteApp.services?.price || 0) : 0;
-    } else if (target.includes('LAVADO')) {
-      return washes * (wRate || 1);
-    } else if (target.includes('BARBA') || target.includes('CEJAS')) {
+    if (target.includes('EMPASTE')) {
+      const empasteApp = apps.find(a => a.services?.name?.toUpperCase().includes('EMPASTE'));
+      return empasteApp ? (empasteApp.total_price || empasteApp.services?.price || 0) : 0;
+    } else if (target.includes('PROFILAXIS')) {
+      return profilaxis * (pRate || 1);
+    } else if (target.includes('MUELA') || target.includes('ENCÍAS')) {
       const extraApp = apps.find(a => a.services?.name?.toUpperCase().includes(target));
       return extraApp ? (extraApp.total_price || extraApp.services?.price || 0) : 0;
     } else {
@@ -257,11 +257,11 @@ const calculateCouponDiscount = (coupon, apps, washes, wRate) => {
 
   // Fallback
   if (name.includes('10%')) return sPrice * 0.1;
-  if (name.includes('CORTE')) {
-    const corteApp = apps.find(a => a.services?.name?.toUpperCase().includes('CORTE'));
-    return corteApp ? (corteApp.total_price || corteApp.services?.price || 0) : 0;
+  if (name.includes('EMPASTE')) {
+    const empasteApp = apps.find(a => a.services?.name?.toUpperCase().includes('EMPASTE'));
+    return empasteApp ? (empasteApp.total_price || empasteApp.services?.price || 0) : 0;
   }
-  if (name.includes('LAVADO')) return washes * (wRate || 1);
+  if (name.includes('PROFILAXIS')) return profilaxis * (pRate || 1);
   return 5;
 };
 
@@ -3528,16 +3528,16 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                   // Function to get a minimalist Lucide icon based on the service name
                   const getExtraItemConfig = (name) => {
                     const cleanName = (name || '').toLowerCase();
-                    if (cleanName.includes('alisado') || cleanName.includes('planchado') || cleanName.includes('secado')) {
-                      return { Icon: GiHairStrands };
+                    if (cleanName.includes('endodoncia') || cleanName.includes('limpieza') || cleanName.includes('blanqueamiento')) {
+                      return { Icon: GiTooth };
                     }
-                    if (cleanName.includes('hidratación') || cleanName.includes('hidratacion') || cleanName.includes('capilar')) {
+                    if (cleanName.includes('hidratación') || cleanName.includes('hidratacion') || cleanName.includes('fluor')) {
                       return { Icon: GiWaterDrop };
                     }
                     if (cleanName.includes('profundo')) {
                       return { Icon: Waves };
                     }
-                    if (cleanName.includes('lavado') || cleanName.includes('express') || cleanName.includes('champu')) {
+                    if (cleanName.includes('profilaxis') || cleanName.includes('express') || cleanName.includes('sarro')) {
                       return { Icon: GiShower };
                     }
                     if (cleanName.includes('mask') || cleanName.includes('mascarilla') || cleanName.includes('negra')) {
@@ -3555,8 +3555,8 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                     if (cleanName.includes('ceja')) {
                       return { Icon: MdFace3 };
                     }
-                    if (cleanName.includes('barba') || cleanName.includes('afeitado') || cleanName.includes('perfilado') || cleanName.includes('epilacion') || cleanName.includes('epilación')) {
-                      return { Icon: GiBeard };
+                    if (cleanName.includes('muela') || cleanName.includes('extraccion') || cleanName.includes('cirugia') || cleanName.includes('cirugía')) {
+                      return { Icon: GiTooth };
                     }
                     return { Icon: Zap };
                   };
@@ -3642,7 +3642,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                   const CorteYBarbaIcon = (props) => (
                     <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
                       <Scissors {...props} />
-                      <GiBeard {...props} />
+                      <GiTooth {...props} />
                     </div>
                   );
 
@@ -3651,10 +3651,10 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                     if (cleanName.includes('niño') || cleanName.includes('niña') || cleanName.includes('kid')) return FaChild;
                     if (cleanName.includes('vip') || cleanName.includes('premium')) return MdWorkspacePremium;
                     if (cleanName.includes('tatuaje') || cleanName.includes('tattoo')) return PenTool;
-                    if (cleanName.includes('corte') && cleanName.includes('barba')) return CorteYBarbaIcon;
-                    if (cleanName.includes('barba') || cleanName.includes('perfilado')) return GiBeard;
+                    if (cleanName.includes('obturacion') && cleanName.includes('extraccion')) return CorteYBarbaIcon;
+                    if (cleanName.includes('muela') || cleanName.includes('extraccion') || cleanName.includes('cirugia')) return GiTooth;
                     if (cleanName.includes('ceja')) return MdFace3;
-                    if (cleanName.includes('color') || cleanName.includes('tinte')) return GiBottleVapors;
+                    if (cleanName.includes('color') || cleanName.includes('tinte') || cleanName.includes('blanqueamiento')) return GiBottleVapors;
                     return Scissors;
                   };
                   const ServiceIcon = getServiceIcon(service.name);

@@ -132,7 +132,7 @@ export default function Services() {
             <div className="relative z-10 transform group-hover:-translate-y-1 transition-transform duration-500">
               <p className="text-[8px] sm:text-[10px] font-bold text-gray-300 uppercase tracking-wider mb-0.5 sm:mb-1 shadow-black drop-shadow-lg">CORTESÍA PREMIUM</p>
               <h2 className="text-lg sm:text-2xl font-bold text-white leading-tight mb-1 sm:mb-2 shadow-black drop-shadow-lg">Más que una consulta</h2>
-              <p className="text-[11px] sm:text-sm text-white/80 shadow-black drop-shadow-lg leading-snug">Wi-Fi, café de cortesía y atención personalizada.</p>
+              <p className="text-[11px] sm:text-sm text-white/80 shadow-black drop-shadow-lg leading-snug">Wi-Fi, agua de cortesía y atención odontológica personalizada.</p>
             </div>
           </div>
 

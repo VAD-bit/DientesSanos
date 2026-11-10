@@ -461,13 +461,13 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
     const name = (catName || '').toLowerCase();
     const srvName = (serviceName || '').toLowerCase();
     
-    if (srvName.includes('corte y barba') || srvName.includes('corte & barba')) return 'CorteYBarbaIcon';
-    if (name.includes('barba')) return 'BeardIcon';
+    if (srvName.includes('obturacion y extraccion') || srvName.includes('obturación y extracción')) return 'ObturacionExtraccionIcon';
+    if (name.includes('muela') || name.includes('extraccion') || name.includes('extracción')) return 'MuelaIcon';
     if (name.includes('tatu')) return 'PenTool';
-    if (name.includes('corte')) return 'Scissors';
-    if (name.includes('color')) return 'Palette';
-    if (name.includes('lavado')) return 'Droplets';
-    return 'Scissors';
+    if (name.includes('empaste') || name.includes('obturacion') || name.includes('obturación')) return 'DienteIcon';
+    if (name.includes('color') || name.includes('tinte') || name.includes('blanqueamiento')) return 'Palette';
+    if (name.includes('profilaxis') || name.includes('lavado')) return 'Droplets';
+    return 'DienteIcon';
   };
 
   const getCategoryIcon = (catName, serviceName) => {

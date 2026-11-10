@@ -181,8 +181,8 @@ export default function Explore() {
               <button className="ep-widget">
                 <div className="ep-widget-icon"><Coffee size={20} /></div>
                 <div className="ep-widget-text">
-                  <span className="ep-widget-title">Café de cortesía</span>
-                  <span className="ep-widget-subtitle">Café de especialidad y bebidas premium</span>
+                  <span className="ep-widget-title">Agua de cortesía</span>
+                  <span className="ep-widget-subtitle">Agua embotellada y sala de espera dental</span>
                 </div>
               </button>
               <button className="ep-widget">

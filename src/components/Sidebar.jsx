@@ -62,7 +62,7 @@ const Sidebar = ({ activeTab, setActiveTab, isMobile, rates, isCollapsed, setIsC
   const allMenuItems = [
     { id: 'my-profile', label: 'Mi Perfil', icon: UserCircle },
     { id: 'dashboard', label: 'Inicio', icon: BarChart3 },
-    { id: 'barber', label: 'Mi sillón', icon: Scissors },
+    { id: 'dentista', label: 'Mi sillón dental', icon: Scissors },
     { id: 'scheduling', label: 'Agenda', icon: Calendar },
     { id: 'reception', label: 'Recepción', icon: ClipboardList },
     { id: 'checkout', label: 'Caja', icon: CreditCard },
@@ -85,7 +85,7 @@ const Sidebar = ({ activeTab, setActiveTab, isMobile, rates, isCollapsed, setIsC
     return allMenuItems.filter(item => {
       if (!allowedIds.includes(item.id)) return false;
       // El admin usa la tarjeta de perfil inferior y entra a sillas desde Paneles.
-      if (isAdminRole && (item.id === 'my-profile' || item.id === 'barber')) return false;
+      if (isAdminRole && (item.id === 'my-profile' || item.id === 'dentista')) return false;
       return true;
     });
   })();

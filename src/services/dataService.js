@@ -2764,7 +2764,7 @@ export const dataService = {
     const payments = transactions.filter(isPayroll);
     const role = String(staffMember.role || '').toLowerCase();
     const isAssistant = role.includes('asistente') || role.includes('lavado') || role.includes('operaciones');
-    const isBarber = !isAssistant && (role.includes('barber') || role.includes('tatu') || role.includes('socio') || role.includes('estilista') || role.includes('lider'));
+    const isDentista = !isAssistant && (role.includes('dentista') || role.includes('odontolog') || role.includes('socio') || role.includes('endodon') || role.includes('ortodon') || role.includes('lider'));
 
     const incomeRows = incomeTransactions.map(transaction => {
       const record = staffRecord(transaction);
@@ -2786,7 +2786,7 @@ export const dataService = {
 
     const earnedBs = incomeRows.reduce((sum, row) => sum + row.commissionBs, 0);
     const propinasBs = incomeRows.reduce((sum, row) => sum + row.tipBs, 0);
-    const lavadosCount = isBarber ? incomeRows.reduce((sum, row) => sum + row.washCount, 0) : 0;
+    const lavadosCount = isDentista ? incomeRows.reduce((sum, row) => sum + row.washCount, 0) : 0;
     const lavadoDeductionBs = 0;
     const valesBs = advances.reduce((sum, transaction) => sum + Number(transaction.metadata?.amountBs || 0), 0);
     const consumptionsBs = consumptions.reduce((sum, transaction) => sum + Number(transaction.metadata?.amountBs || (Number(transaction.amount || 0) * txRate(transaction))), 0);
@@ -2947,7 +2947,7 @@ export const dataService = {
 
     const roleLower = staffMember.role?.toLowerCase() || '';
     const isAssistant = roleLower.includes('asistente') || roleLower.includes('lavado') || roleLower.includes('operaciones');
-    const isBarber = !isAssistant && (roleLower.includes('barbero') || roleLower.includes('barber') || roleLower.includes('odontolog') || roleLower.includes('socio') || roleLower.includes('estilista') || roleLower.includes('lider'));
+    const isDentista = !isAssistant && (roleLower.includes('dentista') || roleLower.includes('odontolog') || roleLower.includes('socio') || roleLower.includes('endodon') || roleLower.includes('ortodon') || roleLower.includes('lider'));
 
     const { data: txs, error: txsErr } = await supabase
       .from('transactions')
@@ -2990,7 +2990,7 @@ export const dataService = {
     let lavadoDeductionBs = 0;
     let netIncomeBs = 0;
 
-    if (isBarber) {
+    if (isDentista) {
       lavadosCount = serviceTransactions.filter(t => t.metadata?.didWash).length;
       netIncomeBs = earnedBs;
     } else {

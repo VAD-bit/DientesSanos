@@ -37,11 +37,9 @@ export const isAdminStaff = (member = {}) => {
 // ensuciarían la detección basada en getStaffSearchText.
 const SERVICE_OR_OPS_KEYWORDS = [
   'odontolog',
-  'barber', 'barbero', 'estilista', 'corte', 'barba',
+  'dentista', 'odontologo', 'endodoncista', 'ortodoncista', 'implanta',
   'tatu', 'tattoo', 'ink',
-  'barista', 'cafeter',
-  'asistente', 'lavado', 'operacion',
-  'recepcion', 'recepción', 'caja',
+  'asistente', 'recepcion', 'recepción', 'caja',
 ];
 
 export const isSupportStaff = (member = {}) => {
@@ -51,8 +49,8 @@ export const isSupportStaff = (member = {}) => {
   return !SERVICE_OR_OPS_KEYWORDS.some((keyword) => role.includes(keyword));
 };
 
-const ODONTOLOGO_KEYWORDS = ['odontolog', 'barbero', 'barber', 'tatu', 'estilista', 'corte'];
-const ASISTENTE_KEYWORDS = ['asistente', 'recepcion', 'recepción', 'caja', 'barista', 'lavado', 'cafeter'];
+const ODONTOLOGO_KEYWORDS = ['odontolog', 'dentista', 'odontologo', 'endodoncista', 'ortodoncista', 'implanta'];
+const ASISTENTE_KEYWORDS = ['asistente', 'recepcion', 'recepción', 'caja', 'higienista'];
 
 // Profesional de sillón (Odontologo; tolera Barbero/Tatuador heredados).
 export const isOdontologoRole = (member = {}) => {
@@ -77,21 +75,22 @@ export const isNonServiceStaff = (member = {}) => {
     text.includes('recepcion') ||
     text.includes('recepción') ||
     text.includes('caja') ||
-    text.includes('barista') ||
-    text.includes('cafeter') ||
+    text.includes('asistente dental') ||
+    text.includes('higienista') ||
     text.includes('asistente') ||
-    text.includes('lavado')
+    text.includes('profilaxis')
   );
 };
 
-export const isBarberRole = (member = {}) => {
+export const isDentistaRole = (member = {}) => {
   const text = getStaffSearchText(member);
   return (
-    text.includes('barber') ||
-    text.includes('barbero') ||
-    text.includes('estilista') ||
-    text.includes('corte') ||
-    text.includes('odontolog')
+    text.includes('dentista') ||
+    text.includes('odontologo') ||
+    text.includes('endodon') ||
+    text.includes('ortodon') ||
+    text.includes('estetico') ||
+    text.includes('implanta')
   );
 };
 
@@ -108,7 +107,7 @@ export const isBookableStaff = (member = {}) => (
   isOdontologoRole(member)
 );
 
-export const isBarberBookableStaff = (member = {}) => isBookableStaff(member) && isBarberRole(member) && !isTattooRole(member);
+export const isDentistaBookableStaff = (member = {}) => isBookableStaff(member) && isDentistaRole(member) && !isTattooRole(member);
 
 export const isTattooBookableStaff = (member = {}) => isBookableStaff(member) && isTattooRole(member);
 
@@ -125,7 +124,7 @@ export const isOperationalReceptionStaff = (member = {}) => (
 // ============================================================================
 
 export const ALL_MENU_IDS = [
-  'dashboard', 'my-profile', 'barber', 'scheduling', 'reception', 'checkout',
+  'dashboard', 'my-profile', 'dentista', 'scheduling', 'reception', 'checkout',
   'panels', 'clients', 'services', 'personnel', 'inventory', 'reports',
   'finance', 'history', 'settings',
 ];
@@ -154,21 +153,21 @@ export const getAllowedMenuIds = (userRole = '') => {
 
   if (permissionList.length > 0) return Array.from(new Set(['my-profile', ...permissionList]));
   if (roleName.startsWith('Custom:')) return roleName.slice('Custom:'.length).split(',').filter(Boolean);
-  if (isOdontologoRole(member)) return ['my-profile', 'barber', 'scheduling', 'clients', 'history'];
+  if (isOdontologoRole(member)) return ['my-profile', 'dentista', 'scheduling', 'clients', 'history'];
   if (isAsistenteRole(member)) return ['my-profile', 'reception', 'scheduling', 'clients', 'history'];
   if (isSupportStaff(member)) return ['my-profile'];
   return ['my-profile'];
 };
 
 // Etiqueta VISIBLE de rol para la UI. Los valores internos de staff.role no
-// cambian; acepta el valor con o sin módulos ('Odontologo|barber,...').
+// cambian; acepta el valor con o sin módulos ('Odontologo|dentista,...').
 export const roleLabel = (value) => {
   const raw = String(value ?? '').split('|')[0].trim();
   const lower = raw.toLowerCase();
   if (!raw) return '';
   if (lower.includes('admin')) return 'Administrador';
   if (lower.startsWith('odontologos')) return 'Odontólogos';
-  if (lower.includes('odontolog') || lower.includes('barbero') || lower.includes('barber') || lower.includes('tatu') || lower.includes('estilista')) return 'Odontólogo';
-  if (lower.includes('asistente') || lower.includes('lavado') || lower.includes('recepcion') || lower.includes('recepción') || lower.includes('caja') || lower.includes('barista') || lower.includes('cafeter')) return 'Asistente';
+  if (lower.includes('odontolog') || lower.includes('dentista') || lower.includes('odontologo') || lower.includes('endodoncista') || lower.includes('ortodoncista')) return 'Odontólogo';
+  if (lower.includes('asistente') || lower.includes('lavado') || lower.includes('recepcion') || lower.includes('recepción') || lower.includes('caja') || lower.includes('asistente dental') || lower.includes('higienista')) return 'Asistente';
   return raw;
 };

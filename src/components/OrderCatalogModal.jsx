@@ -1,6 +1,6 @@
 import React from 'react';
 import { Check, Scissors, Zap, X } from 'lucide-react';
-import { GiHairStrands, GiWaterDrop, GiShower, GiNoseFront, GiBeard, GiBottleVapors, GiTowel } from 'react-icons/gi';
+import { GiHairStrands, GiWaterDrop, GiShower, GiNoseFront, GiBeard, GiBottleVapors, GiTowel, GiTooth } from 'react-icons/gi';
 import { VenetianMask } from 'lucide-react';
 import { TbEar } from 'react-icons/tb';
 import { MdFace3, MdWorkspacePremium } from 'react-icons/md';
@@ -15,16 +15,16 @@ const money = value => Number(value || 0).toLocaleString('es-VE', {
 
 const getExtraIcon = (name) => {
   const n = (name || '').toLowerCase();
-  if (n.includes('alisado') || n.includes('planchado') || n.includes('secado')) return GiHairStrands;
-  if (n.includes('hidratación') || n.includes('hidratacion') || n.includes('capilar')) return GiWaterDrop;
+  if (n.includes('endodoncia') || n.includes('limpieza') || n.includes('blanqueamiento')) return GiTooth;
+  if (n.includes('hidratación') || n.includes('hidratacion') || n.includes('fluor')) return GiWaterDrop;
   if (n.includes('profundo')) return Waves;
-  if (n.includes('lavado') || n.includes('express') || n.includes('champu')) return GiShower;
-  if (n.includes('mask') || n.includes('mascarilla') || n.includes('negra')) return VenetianMask;
+  if (n.includes('profilaxis') || n.includes('express') || n.includes('sarro')) return GiShower;
+  if (n.includes('mask') || n.includes('mascarilla') || n.includes('barrera')) return VenetianMask;
   if (n.includes('nariz') || n.includes('naríz')) return GiNoseFront;
   if (n.includes('oido') || n.includes('oído') || n.includes('oreja')) return TbEar;
   if (n.includes('exfoliacion') || n.includes('exfoliación') || n.includes('facial') || n.includes('cutis') || n.includes('limpieza')) return GiTowel;
   if (n.includes('ceja')) return MdFace3;
-  if (n.includes('barba') || n.includes('afeitado') || n.includes('perfilado') || n.includes('epilacion') || n.includes('epilación')) return GiBeard;
+  if (n.includes('muela') || n.includes('extraccion') || n.includes('extracción') || n.includes('cirugia') || n.includes('cirugía')) return GiBeard;
   return Zap;
 };
 
@@ -32,18 +32,18 @@ const getServiceIcon = (name) => {
   const n = (name || '').toLowerCase();
   if (n.includes('niño') || n.includes('niña') || n.includes('kid')) return FaChild;
   if (n.includes('vip') || n.includes('premium')) return MdWorkspacePremium;
-  if (n.includes('tatuaje') || n.includes('tattoo')) return PenTool;
-  if (n.includes('barba') && n.includes('corte')) {
+  if (n.includes('tatuaje') || n.includes('tattoo') || n.includes('piercing')) return PenTool;
+  if (n.includes('obturacion') || n.includes('obturación') && n.includes('extraccion')) {
     return (props) => (
       <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
         <Scissors {...props} />
-        <GiBeard {...props} />
+        <GiTooth {...props} />
       </div>
     );
   }
-  if (n.includes('barba') || n.includes('perfilado')) return GiBeard;
+  if (n.includes('obturacion') || n.includes('obturación') || n.includes('empaste')) return GiTooth;
   if (n.includes('ceja')) return MdFace3;
-  if (n.includes('color') || n.includes('tinte')) return GiBottleVapors;
+  if (n.includes('color') || n.includes('tinte') || n.includes('blanqueamiento')) return GiBottleVapors;
   return Scissors;
 };
 

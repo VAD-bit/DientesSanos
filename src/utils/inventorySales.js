@@ -1,7 +1,7 @@
 export const INVENTORY_SALES_GROUPS = {
   all: 'Todos',
   retail: 'Productos para venta',
-  cafe: 'Café de cortesía'
+  agua: 'Agua de cortesía'
 };
 
 export const getInventorySalesGroup = (item) =>

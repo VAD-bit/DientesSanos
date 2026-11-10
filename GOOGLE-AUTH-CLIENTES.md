@@ -62,7 +62,7 @@ Problema 2 de `SEGURIDAD-PENDIENTE.md`.
 
 ```javascript
 if (existing.auth_user_id && String(existing.auth_user_id) !== String(userId)) {
-  throw new Error('Esta cédula ya está vinculada a otra cuenta. Contacta a la barbería.');
+  throw new Error('Esta cédula ya está vinculada a otra cuenta. Contacta a la clínica dental.');
 }
 ```
 

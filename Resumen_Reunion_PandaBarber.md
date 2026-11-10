@@ -7,7 +7,7 @@
 
 ## Contexto
 
-- **Cliente:** Panda Barber Studio (barbería + tatuajes)
+- **Cliente:** Centro Odontológico Dientes Sanos (odontología + estética dental)
 - **Ubicación:** Centro Comercial Ciudad Jardín, Local 74, Planta Baja, Maracaibo
 - **Equipo:** 6 Odontologos (+ 1 por incorporar), 1 tatuador, asistentes de lavado
 - **Sedes:** 2 (solo la actual está activa por ahora)
@@ -24,7 +24,7 @@
 ### Agenda y Citas
 - Clientes nuevos se registran con: nombre, teléfono, cédula, fecha de nacimiento
 - Sistema recuerda cumpleaños → descuento 10% + mensaje automático
-- Selección de servicio y barbero/tatuador disponible
+- Selección de servicio y odontólogo/estético disponible
 - Horas disponibles se actualizan en tiempo real
 - Opción de "agendar después" si el barbero no está disponible
 
@@ -37,16 +37,16 @@
 ### Notificaciones
 - Recordatorio automático de próxima visita (configurable: 7, 14, 30 días)
 - Mensaje de cumpleaños automático el día del cumpleaños con descuento
-- Notificación al barbero cuando le toca atender
+- Notificación al odontólogo cuando le toca atender
 
 ### Turnos
 - Control por orden de llegada (el barbero marca "llegué" desde su celular
 - Cola de clientes visible en admin
-- Si el barbero no está disponible, se salta al siguiente
+- Si el odontólogo no está disponible, se salta al siguiente
 - Responsabilidad: si no está, pierde el turno
 
 ### Fotos
-- Foto antes/después del corte (barbero toma con su celular)
+- Foto antes/después del tratamiento (odontólogo toma con su celular)
 - Collage de comparativa para compartir con cliente
 
 ### Tatuajes
@@ -67,7 +67,7 @@
 ### Administración
 - Top Odontologos por ingresos, tiempo, clientes atendidos
 - Finanzas, costos de servicios, rentabilidad, ocupación
-- Permisos por rol (admin, barbero, asistente de lavado, tatuador)
+- Permisos por rol (admin, odontólogo, asistente dental, estético dental)
 
 ### Página Web Pública
 - Clientes pueden agendar citas desde la web
@@ -81,7 +81,7 @@
 1. **Implementar cambios** en las próximas 1-2 semanas
 2. **Traer contrato** con precio ($400, dos pagos: uno al inicio, uno al final)
 3. **Primera semana:** desarrollo
-4. **Segundo mes:** prueba en barbería, ajustes según feedback
+4. **Segundo mes:** prueba en clínica dental, ajustes según feedback
 5. **Grabar podcast/video testimonial** al terminar
 6. **Google Maps:** optimizar perfil (nombre: Panda Barber Studio, dirección correcta, SEO)
 

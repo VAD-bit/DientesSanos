@@ -54,7 +54,7 @@ export const whatsappService = {
       const scheduledDate = new Date();
       scheduledDate.setDate(scheduledDate.getDate() + days);
 
-      const message = `👋 ¡Hola ${client.name}! Ya han pasado ${days} días desde tu última visita en Dientes Sanos. 🐼💈\n\nTe sugerimos agendar tu próxima visita con tu barbero habitual para mantener tu estilo al día. ¡Te esperamos!\n\nReserva en segundos aquí: ${window.location.origin}/#/agendar`;
+      const message = `👋 ¡Hola ${client.name}! Ya han pasado ${days} días desde su última visita en Dientes Sanos. 🦷💙\n\nTe sugerimos agendar tu próxima visita con tu odontólogo habitual para mantener tu sonrisa saludable. ¡Te esperamos!\n\nReserva en segundos aquí: ${window.location.origin}/#/agendar`;
 
       console.log(`[WhatsApp Scheduler] Recordatorio de recurrencia programado para ${client.name} en ${days} días (${scheduledDate.toLocaleDateString()}).`);
       

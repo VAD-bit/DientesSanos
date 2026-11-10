@@ -20,8 +20,8 @@ function urlBase64ToUint8Array(base64String) {
 export function roleCategory(role) {
   const r = (role || '').toLowerCase();
   if (r.includes('admin')) return 'admin';
-  if (r.includes('odontolog') || r.includes('barbero') || r.includes('tatu') || r.includes('estilista') || r.includes('socio') || r.includes('lider')) return 'odontologo';
-  if (r.includes('asistente') || r.includes('recepcion') || r.includes('recepci') || r.includes('caja') || r.includes('barista') || r.includes('lavado') || r.includes('cafeter')) return 'asistente';
+  if (r.includes('odontolog') || r.includes('dentista') || r.includes('endodon') || r.includes('ortodon') || r.includes('socio') || r.includes('lider')) return 'odontologo';
+  if (r.includes('asistente') || r.includes('recepcion') || r.includes('recepci') || r.includes('caja') || r.includes('asistente dental') || r.includes('higienista') || r.includes('profilaxis')) return 'asistente';
   return 'otro';
 }
 
@@ -60,7 +60,7 @@ export const pushService = {
     }
   },
 
-  // Dispara una notificación push hacia un barbero (staffId) o a una lista de roles.
+  // Dispara una notificación push hacia un odontólogo (staffId) o a una lista de roles.
   // Fire-and-forget: nunca bloquea ni rompe el flujo si falla.
   notify(target, title, body, data = {}) {
     try {

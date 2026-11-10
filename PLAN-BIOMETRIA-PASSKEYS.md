@@ -317,7 +317,7 @@ Casos:
 - Pérdida del dispositivo con recuperación por contraseña/Google.
 - Dos clics rápidos no crean retos/sesiones duplicados.
 - Arranque del panel de barbero no se vuelve más lento cuando passkeys está desactivado o no se usa.
-- Roles: barbero, asistente, barista, admin y cliente no obtienen permisos adicionales por entrar con passkey.
+- Roles: odontólogo, asistente, asistente dental, admin y cliente no obtienen permisos adicionales por entrar con passkey.
 
 Pruebas de regresión:
 

@@ -41,7 +41,7 @@ const findRelatedClientRecords = async clientId => {
 
 const linkClientRecord = async (existing, userId, incoming) => {
   if (existing.auth_user_id && String(existing.auth_user_id) !== String(userId)) {
-    throw new Error('Esta cédula ya está vinculada a otra cuenta. Contacta a la barbería.');
+    throw new Error('Esta cédula ya está vinculada a otra cuenta. Contacta a la clínica dental.');
   }
 
   const { client } = await authenticatedApi('/api/public/client-profile', {
@@ -116,11 +116,11 @@ export const publicService = {
     });
   },
 
-  // Menú de Panda Café (bebidas de cortesía para el paso de reserva). Vía endpoint
+  // Menú de agua de cortesía para el paso de reserva. Vía endpoint
   // público porque anon no puede leer `inventory` directamente.
-  async getCafeMenu() {
+  async getAguaMenu() {
     try {
-      const response = await fetch('/api/public/cafe');
+      const response = await fetch('/api/public/agua');
       const result = await response.json().catch(() => ({}));
       if (!response.ok) return [];
       return result.items || [];
@@ -144,7 +144,7 @@ export const publicService = {
     return data || [];
   },
 
-  // Get available time slots for a specific barber and date
+  // Get available time slots for a specific dentist and date
   async getOccupiedSlots(staffId, date, requestedDuration = 60) {
     const [year, month, day] = String(date).split('-').map(Number);
     const dayStart = new Date(year, month - 1, day, 0, 0, 0, 0);

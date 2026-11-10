@@ -9,8 +9,8 @@ import {
   ChevronRight, 
   Check, 
   Scissors, 
-  Sparkles, 
-  Coffee, 
+  Sparkles,
+  GlassWater, 
   Compass,
   Phone, 
   CreditCard, 
@@ -30,7 +30,6 @@ import {
   Sunrise,
   Sun,
   Moon,
-  GlassWater,
   Gamepad2,
   Heart,
   X,
@@ -43,7 +42,7 @@ import {
 import { publicService } from '../services/publicService';
 import { clearGoogleAuthIntent, GOOGLE_AUTH_DESTINATIONS, setGoogleAuthIntent } from '../utils/googleAuthIntent';
 import { formatDuration } from '../../utils/formatDuration';
-import { isBookableStaff, isBarberBookableStaff, isTattooBookableStaff, isTattooRole, roleLabel } from '../../utils/staffRoles';
+import { isBookableStaff, isDentistaBookableStaff, isTattooBookableStaff, isTattooRole, roleLabel } from '../../utils/staffRoles';
 import PandaLoader from '../../components/PandaLoader';
 import PandaDatePicker from '../../components/PandaDatePicker';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
@@ -84,13 +83,13 @@ const openCategoryForService = (service) => {
   const category = service?.category || '';
   const nameLower = (service?.name || '').toLowerCase();
   if (DENTAL_CATEGORIES.includes(category)) return category;
-  if (category === 'Barbería' || category === 'Servicios' || category === 'Tratamientos' || category === 'Tatuajes' || nameLower.includes('barba') || nameLower.includes('corte')) return 'Estética';
+  if (category === 'Odontología' || category === 'Servicios Dentales' || category === 'Tratamientos Dentales' || category === 'Estética Dental' || nameLower.includes('muela') || nameLower.includes('empaste')) return 'Odontología';
   return null;
 };
 
 const staffMatchesArtistFilter = (member, filter) => {
   if (!isBookableStaff(member)) return false;
-  if (filter === 'Odontologos') return isBarberBookableStaff(member);
+  if (filter === 'Odontologos') return isDentistaBookableStaff(member);
   if (filter === '') return isTattooBookableStaff(member);
   return true;
 };
@@ -519,7 +518,7 @@ function InstagramReelCard({ post, idx, onOpen }) {
 const renderBeverageIcon = (beverageName, size = 16, className = "text-[var(--champagne)]") => {
   if (!beverageName) return null;
   const name = beverageName.toLowerCase();
-  if (name.includes('café') || name.includes('cafe') || name.includes('espresso') || name.includes('expreso')) return <Coffee size={size} className={className} />;
+  if (name.includes('agua') || name.includes('embotellada') || name.includes('mineral')) return <GlassWater size={size} className={className} />;
   return <GlassWater size={size} className={className} />;
 };
 
@@ -536,9 +535,9 @@ const getServiceIcon = (service) => {
   const n = (service?.name || '').toLowerCase();
   const c = (service?.category || '').toLowerCase();
   if (n.includes('premium') || c.includes('premium')) return <Crown size={26} className="landing-service-icon" />;
-  const hasCorte = n.includes('corte');
-  const hasBarba = n.includes('barba');
-  if (hasCorte && hasBarba) {
+  const hasEmpaste = n.includes('empaste');
+  const hasMuela = n.includes('muela');
+  if (hasEmpaste && hasMuela) {
     return (
       <span style={{ display: 'flex', alignItems: 'center', gap: 1 }}>
         <Scissors size={20} className="landing-service-icon" />
@@ -1627,7 +1626,7 @@ const videoRef = useRef(null);
       const filtered = services.filter(s => {
         const cat = (s.category || '').toLowerCase();
         if (isTattoo) return cat === 'tatuajes';
-        return cat === 'barbería' || cat === 'barba' || cat === 'servicios' || cat === 'tratamientos' || s.name.toLowerCase().includes('corte') || s.name.toLowerCase().includes('barba');
+        return cat === 'odontología' || cat === 'muela' || cat === 'servicios dentales' || cat === 'tratamientos dentales' || s.name.toLowerCase().includes('empaste') || s.name.toLowerCase().includes('muela');
       });
       if (filtered.length > 0) {
         setSelectedService(filtered[0]);
@@ -2281,7 +2280,7 @@ const videoRef = useRef(null);
     if (step === 2) return selectedBarber;
     if (step === 3) return selectedDate && selectedTime;
     if (step === 4) {
-      // La bebida de cortesía es OPCIONAL: se puede continuar sin elegir ninguna.
+      // El agua de cortesía es OPCIONAL: se puede continuar sin elegir ninguna.
       const isTattoo = (selectedService?.category || '').toLowerCase().includes('tatuaj');
       if (isTattoo) {
         return tattooSize && tattooZone && tattooStyle && isOfLegalAge !== null && consentSigned;
@@ -3925,7 +3924,7 @@ const videoRef = useRef(null);
                     { icon: <User size={18} />, title: 'Profesionales', desc: 'Especialistas experimentados en salud y estética dental.' },
                     { icon: <Award size={18} />, title: 'Calidad Premium', desc: 'Usamos insumos y equipos de alta gama para el cuidado dental.' },
                     { icon: <CalendarIcon size={18} />, title: 'Reserva Fácil', desc: 'Agenda tu cita en segundos las 24 horas del día.' },
-                    { icon: <Coffee size={18} />, title: 'Ambiente Único', desc: 'Un espacio cómodo con café de cortesía y sala de espera.' },
+                    { icon: <GlassWater size={18} />, title: 'Ambiente Único', desc: 'Un espacio cómodo con agua de cortesía y sala de espera dental.' },
                   ].map((item, idx) => (
                     <div key={idx} className="p-5 rounded-2xl bg-white border border-[#d9c08f]/15 hover:border-[#111111]/20 hover:bg-[#f7f7f5] transition-all duration-300 flex flex-col gap-3 group">
                       <div className="w-9 h-9 rounded-lg bg-[#111111]/10 border border-[#111111]/25 flex items-center justify-center text-[#111111] transition-colors group-hover:bg-[#111111] group-hover:text-white">
@@ -4742,7 +4741,7 @@ const videoRef = useRef(null);
                           const filtered = barbers.filter(b => {
                             let roleMatches = true;
                             if (selectedCategory) {
-                              roleMatches = selectedCategory === 'Tatuajes' ? isTattooBookableStaff(b) : isBarberBookableStaff(b);
+                              roleMatches = selectedCategory === 'Tatuajes' ? isTattooBookableStaff(b) : isDentistaBookableStaff(b);
                             }
                             
                             if (!isBookableStaff(b) || !roleMatches) return false;
@@ -5197,8 +5196,8 @@ const videoRef = useRef(null);
                     {/* 1. Beverage Section */}
                     <div className="space-y-4">
                       <div className="flex items-center gap-2 text-[#0f172a] text-left">
-                        <Coffee size={18} className="text-[var(--champagne)]" />
-                        <h3 className="text-xs lg:text-sm font-bold uppercase tracking-widest">Elige tu cortesía</h3>
+                        <GlassWater size={18} className="text-[var(--champagne)]" />
+                        <h3 className="text-xs lg:text-sm font-bold uppercase tracking-widest">Elige tu agua de cortesía</h3>
                       </div>
                       <p className="text-[10px] text-[#94a3b8] -mt-1 text-left">
                         Cortesía de la casa · opcional — estará lista cuando llegues.
@@ -5246,7 +5245,7 @@ const videoRef = useRef(null);
                                 }`}
                               >
                                 <div className={`w-9 h-9 rounded-lg flex-shrink-0 flex items-center justify-center ${isSelected ? 'bg-[rgba(17, 17, 17,0.15)]' : 'bg-[#f7f7f5]'}`}>
-                                  <Coffee size={16} className="text-[var(--champagne)]" />
+                                  <GlassWater size={16} className="text-[var(--champagne)]" />
                                 </div>
                                 <div className="min-w-0 flex-1">
                                   <span className={`block font-bold text-[11px] leading-tight truncate ${isSelected ? 'text-[var(--champagne)]' : 'text-[#334155]'}`}>
@@ -5892,7 +5891,7 @@ const videoRef = useRef(null);
                 { key: 'service', label: 'Servicio', icon: Scissors, done: !!selectedService, value: selectedService?.name, activeAt: 1 },
                 { key: 'barber', label: barberLabel, icon: User, done: !!selectedBarber, value: selectedBarber?.name, activeAt: 2 },
                 { key: 'datetime', label: 'Fecha y hora', icon: CalendarIcon, done: !!(selectedDate && selectedTime), value: selectedDate && selectedTime ? `${selectedDate.toLocaleDateString('es-ES', { weekday: 'short', day: 'numeric', month: 'short' })} · ${formatTime12(selectedTime)}` : null, activeAt: 3 },
-                { key: 'beverage', label: 'Cortesía', icon: Coffee, done: !!selectedBeverage, value: selectedBeverage, activeAt: 4 },
+                { key: 'beverage', label: 'Agua de cortesía', icon: GlassWater, done: !!selectedBeverage, value: selectedBeverage, activeAt: 4 },
                 { key: 'confirm', label: 'Confirmación', icon: Check, done: step === 5 && success, value: null, activeAt: 5 },
               ];
               return (
@@ -6301,11 +6300,11 @@ const videoRef = useRef(null);
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
               <div className="p-4 rounded-2xl bg-white border border-[#d9c08f]/15 flex gap-3 items-start">
                 <div className="p-2 rounded-xl bg-white text-[#111111] mt-0.5 border border-[#d9c08f]/15">
-                  <Coffee size={15} />
+                  <GlassWater size={15} />
                 </div>
                 <div className="space-y-1">
-                  <h4 className="text-[#0f172a] font-extrabold text-[11px] uppercase tracking-wider">Café de cortesía</h4>
-                  <p className="text-[#475569] text-[10px] leading-normal">Café, infusiones y bebidas frías de cortesía en cada visita.</p>
+                  <h4 className="text-[#0f172a] font-extrabold text-[11px] uppercase tracking-wider">Agua de cortesía</h4>
+                  <p className="text-[#475569] text-[10px] leading-normal">Agua embotellada y sala de espera en cada visita.</p>
                 </div>
               </div>
 

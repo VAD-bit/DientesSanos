@@ -186,10 +186,10 @@ const DashboardModule = ({
     .filter(s => {
       const role = String(s.role || '').toLowerCase();
       const name = String(s.name || '').toLowerCase();
-      const isBarber = role.includes('barber') && !role.includes('tatuad');
-      const isNonBarberRole = role.includes('admin') || role.includes('caja') || role.includes('recep') || role.includes('asistent') || role.includes('archived');
-      const isNonBarberName = name.includes('admin') || name.includes('caja') || name.includes('yarilin');
-      return isBarber && !isNonBarberRole && !isNonBarberName;
+      const isDentista = role.includes('dentista') || role.includes('odontolog') || role.includes('endodon') || role.includes('ortodon') || role.includes('estetico');
+      const isNonDentistaRole = role.includes('admin') || role.includes('caja') || role.includes('recep') || role.includes('asistent') || role.includes('archived');
+      const isNonDentistaName = name.includes('admin') || name.includes('caja') || name.includes('yarilin');
+      return isDentista && !isNonDentistaRole && !isNonDentistaName;
     })
     .sort((a, b) => (b.stats?.monthlyIncome || 0) - (a.stats?.monthlyIncome || 0));
 
@@ -374,7 +374,7 @@ const DashboardModule = ({
     const role = String(member.role || '').toLowerCase();
     return member.active !== false
       && !role.includes('archived')
-      && (role.includes('barbero') || role.includes('barber') || role.includes('odontolog'));
+      && (role.includes('dentista') || role.includes('odontolog') || role.includes('endodon') || role.includes('ortodon'));
   });
   const checkedInBarberIds = new Set(
     attendanceQueue
@@ -497,7 +497,7 @@ const DashboardModule = ({
   const [showInventoryPopup, setShowInventoryPopup] = useState(false);
   const [showSchedulePopup, setShowSchedulePopup] = useState(false);
 
-  // Interruptor manual Abierto/Cerrado de la barbería (system_settings.store_is_open).
+  // Interruptor manual Abierto/Cerrado de la clínica dental (system_settings.store_is_open).
   // Abierto => el portal público toma reservas 24 h; Cerrado => nadie puede agendar y los
   // horarios salen bloqueados. Sin valor => se asume Abierto.
   const [storeOpen, setStoreOpen] = useState(true);
@@ -566,7 +566,7 @@ const DashboardModule = ({
         appointmentIds: [chair.appointmentId],
         paymentMethod: modalPaymentMethod,
         totalAmountUsd: chair.rawPrice || 0,
-        staffInvolved: chair.appointment?.staff_id ? [{ staffId: chair.appointment.staff_id, role: 'barber', amountUsd: chair.rawPrice || 0 }] : []
+        staffInvolved: chair.appointment?.staff_id ? [{ staffId: chair.appointment.staff_id, role: 'dentista', amountUsd: chair.rawPrice || 0 }] : []
       });
 
       showToast(`¡Cobro de ${chair.price} registrado con éxito! Sillón liberado.`);
@@ -615,8 +615,8 @@ const DashboardModule = ({
         const priceVal = activeApp.total_price || activeApp.services?.price || 0;
         const priceStr = `$${priceVal}`;
 
-        const barber = activeApp.staff || {};
-        const barberName = barber.name || activeApp.staff_name || `Odontólogo`;
+        const dentista = activeApp.staff || {};
+        const dentistaName = dentista.name || activeApp.staff_name || `Odontólogo`;
 
         result.push({
           id: chairId,

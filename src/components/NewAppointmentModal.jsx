@@ -23,7 +23,7 @@ import AnimatedModal from './AnimatedModal';
 import PandaSelect from './PandaSelect';
 import { useScrollLock } from '../hooks/useScrollLock';
 import FieldLabel from './FieldLabel';
-import { isBarberBookableStaff } from '../utils/staffRoles';
+import { isDentistaBookableStaff } from '../utils/staffRoles';
 
 const NewAppointmentModal = ({ isOpen, onClose, onSuccess, rates }) => {
   const { showToast } = useNotifs();
@@ -197,7 +197,7 @@ const NewAppointmentModal = ({ isOpen, onClose, onSuccess, rates }) => {
       showToast("Selecciona cliente, servicio y odontólogo", "error");
       return;
     }
-    if (!isBarberBookableStaff(staff.find(s => String(s.id) === String(newApp.staffId)))) {
+    if (!isDentistaBookableStaff(staff.find(s => String(s.id) === String(newApp.staffId)))) {
       showToast("Ese miembro del equipo no puede recibir citas.", "error");
       return;
     }
@@ -364,7 +364,7 @@ const NewAppointmentModal = ({ isOpen, onClose, onSuccess, rates }) => {
                       <div>
                         <FieldLabel required>Odontólogo</FieldLabel>
                         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, 60px)', gap: '12px', justifyItems: 'center' }}>
-                          {staff.filter(isBarberBookableStaff).map(s => {
+                          {staff.filter(isDentistaBookableStaff).map(s => {
                             const isSel = newApp.staffId === s.id;
                             return (
                               <div key={s.id} onClick={() => setNewApp({...newApp, staffId: s.id})} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '6px', cursor: 'pointer' }}>

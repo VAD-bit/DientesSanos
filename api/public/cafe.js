@@ -1,7 +1,7 @@
 import { getAdminClient } from '../../server/passkeys/supabaseAdmin.js';
 import { handleError, json, requireMethod } from '../../server/passkeys/http.js';
 
-// Menú de Panda Café para el portal público de reservas (bebida de cortesía).
+// Menú de agua de cortesía para el portal público de reservas (sala de espera dental).
 // El rol anónimo no tiene SELECT sobre `inventory`, así que se expone por aquí con la
 // llave de servicio, igual que /api/public/staff.
 export default async function handler(request, response) {
@@ -11,14 +11,14 @@ export default async function handler(request, response) {
       
       .from('inventory')
       .select('id, name, price')
-      .eq('inventory_type', 'cafe')
+      .eq('inventory_type', 'agua')
       .order('name');
     if (error) throw error;
     return json(response, 200, { items: data || [] });
   } catch (error) {
     return handleError(response, error, {
-      fallbackMessage: 'No se pudo cargar el menú de Panda Café.',
-      logLabel: 'public-cafe',
+      fallbackMessage: 'No se pudo cargar el menú de agua de cortesía.',
+      logLabel: 'public-agua',
     });
   }
 }

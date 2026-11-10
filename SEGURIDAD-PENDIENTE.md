@@ -124,7 +124,7 @@ Verificado: se decodificaron los JWT presentes en `dist/assets/*.js` y hay dos, 
 `"role":"anon"` y `"role":"service_role"`. Los archivos son `dataService-*.js` y `public-*.js`.
 
 La `service_role` **ignora RLS por completo**. Como los seis proyectos comparten el mismo motor
-PostgreSQL en el VPS, esa llave da acceso total a `astrobarber`, `odontosonrisa`, `janastudio`,
+PostgreSQL en el VPS, esa llave da acceso total a `odontosonrisa`, `odontosonrisa`, `janastudio`,
 `lavuelta`, `flexpro` y `fullchinavzla` — más `auth.users`. Es la llave más privilegiada de la
 instancia, publicada en una web.
 

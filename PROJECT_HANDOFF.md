@@ -13,7 +13,7 @@ Este documento es la **"Biblia"** del proyecto Panda Barber CRM. Cualquier IA o 
 
 ## 📖 Contexto del Negocio
 
-**Panda Barber Studio** es una barbería/estudio premium. El software debe reflejar esa exclusividad:
+**Centro Odontológico Dientes Sanos** es una clínica dental premium. El software debe reflejar esa exclusividad:
 
 - **Estética:** Dark Mode por defecto, acentos dorados (`#D4AF37`) y blancos
 - **Componentes:** Glassmorphism (fondos semitransparentes + blur), bordes redondeados, micro-animaciones
@@ -120,10 +120,10 @@ El campo `role` en la tabla `staff` tiene el formato: `Posición|módulo1,módul
 
 | Posición | Módulos por defecto | Notas |
 |---------|---------------------|-------|
-| `Admin` | `my-profile,dashboard,scheduling,reception,checkout,barber,clients,personnel,services,inventory,finance,history` | Acceso total |
-| `Barbero` | `my-profile,scheduling,barber,clients,history` | No puede agendar ni modificar citas |
-| `Tatuador` | `my-profile,scheduling,barber,clients,history` | Igual que Barbero, pero ve tatuajes |
-| `Asistente de Lavado` | `my-profile,dashboard,history,inventory,clients,reception,barber,services` | Tarifa plana por servicio de lavado |
+| `Admin` | `my-profile,dashboard,scheduling,reception,checkout,dentista,clients,personnel,services,inventory,finance,history` | Acceso total |
+| `Odontólogo` | `my-profile,scheduling,dentista,clients,history` | No puede agendar ni modificar citas |
+| `Estético Dental` | `my-profile,scheduling,dentista,clients,history` | Igual que Odontólogo, pero ve estética dental |
+| `Asistente Dental` | `my-profile,dashboard,history,inventory,clients,reception,dentista,services` | Tarifa plana por servicio de profilaxis |
 | `Barista` | `my-profile,history` | Acceso mínimo |
 
 > Roles con prefijo `ARCHIVED|` están deshabilitados. El login los filtra automáticamente.
@@ -163,7 +163,7 @@ El campo `role` en la tabla `staff` tiene el formato: `Posición|módulo1,módul
 ## 💰 Sistema de Comisiones
 
 - **Barbero:** `commission_pct` % sobre el precio del servicio (ej. 60% de $20 = $12)
-- **Asistente de Lavado:** Tarifa plana (`washing_rate`) por cada cliente que pasa por lavacabezas. El costo del lavado se descuenta del pago del barbero antes de calcular su comisión
+- **Asistente Dental:** Tarifa plana (`profilaxis_rate`) por cada cliente que pasa por profilaxis dental. El costo de la profilaxis se descuenta del pago del odontólogo antes de calcular su comisión
 - **Tatuador:** `commission_pct` % igual que Barbero
 - **Venta de productos de inventario:** 10% para quien realizó la venta
 

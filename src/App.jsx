@@ -215,7 +215,7 @@ function App() {
 
     const HOME_TAB_BY_CATEGORY = {
       admin: 'dashboard',
-      odontologo: 'barber',
+      odontologo: 'dentista',
       asistente: 'reception',
       support: 'my-profile',
       custom: 'dashboard',
@@ -253,9 +253,9 @@ function App() {
         // 2. Filter by recipient ID or role
         else if (payload.recipientId && String(payload.recipientId) === String(user.id)) {
           shouldShow = true;
-        } else if (recipientRole === 'barbero' && notifyCategory === 'odontologo') {
+        } else if (recipientRole === 'dentista' && notifyCategory === 'odontologo') {
           shouldShow = true;
-        } else if ((recipientRole === 'asistente' || recipientRole === 'barista') && notifyCategory === 'asistente') {
+        } else if ((recipientRole === 'asistente' || recipientRole === 'asistente dental') && notifyCategory === 'asistente') {
           shouldShow = true;
         }
 
@@ -765,7 +765,7 @@ function App() {
         height: document.documentElement.scrollHeight,
       });
       const link = document.createElement('a');
-      link.download = `panda-barber-crm-${activeTab}-${Date.now()}.png`;
+      link.download = `panda-dentista-crm-${activeTab}-${Date.now()}.png`;
       link.href = canvas.toDataURL('image/png');
       link.click();
     } catch (e) {
@@ -831,7 +831,7 @@ function App() {
         );
       case 'reception': return <div className="p-container"><ReceptionModule isMobile={isMobile} /></div>;
       case 'checkout': return <div className="p-container"><CheckoutPOS isMobile={isMobile} rates={effectiveRates} onOpenSale={() => setIsSaleModalOpen(true)} onNavigate={handleTabChange} /></div>;
-      case 'barber': return <div className="p-container"><BarberPanel isMobile={isMobile} rates={effectiveRates} /></div>;
+      case 'dentista': return <div className="p-container"><BarberPanel isMobile={isMobile} rates={effectiveRates} /></div>;
       case 'panels': return <div className="p-container"><PanelsModule isMobile={isMobile} rates={effectiveRates} /></div>;
       case 'scheduling': return <div className="p-container" style={{ height: 'auto', minHeight: '100%' }}><SchedulingModule isMobile={isMobile} rates={effectiveRates} openAddModal={openScheduleAddModal} onCloseAddModal={() => setOpenScheduleAddModal(false)} /></div>;
       case 'services': return <div className="p-container"><ServicesModule isMobile={isMobile} currency={currency} rates={effectiveRates} /></div>;
@@ -845,7 +845,7 @@ function App() {
       case 'my-profile': {
         const profileStaff = dbData.staff.find(s => String(s.id) === String(user?.id) || String(s.auth_user_id) === String(user?.auth_user_id) || (s.email && s.email.toLowerCase() === String(user?.email || '').toLowerCase())) || user;
         // Personal de apoyo ve una ficha simplificada (salario, pagos, consumo) en vez del
-        // perfil de barbero con metas, comisiones, portafolio y silla.
+        // perfil de odontólogo con metas, comisiones, portafolio y silla.
         if (isSupportStaff(profileStaff)) {
           return (
             <div className="p-container">

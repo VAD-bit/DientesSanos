@@ -612,7 +612,7 @@ const ReportsModule = ({ isMobile, rates, staff = [] }) => {
     return Array.from(list).sort();
   })();
 
-  const isBarberRole = (role = '') => {
+  const isDentistaRole = (role = '') => {
     const normalizedRole = role.toLowerCase();
     const isExcluded = normalizedRole.includes('admin') || normalizedRole.includes('asistente') || normalizedRole.includes('lavado') || normalizedRole.includes('caja') || normalizedRole.includes('recepcion');
     return !isExcluded && (normalizedRole.includes('barber') || normalizedRole.includes('barbero') || normalizedRole.includes('odontolog'));
@@ -625,7 +625,7 @@ const ReportsModule = ({ isMobile, rates, staff = [] }) => {
 
   const reportStaffOptions = (() => {
     return staff
-      .filter((s) => isBarberRole(s.role))
+      .filter((s) => isDentistaRole(s.role))
       .sort((a, b) => a.name.localeCompare(b.name))
       .map((s) => ({ value: s.id, label: s.name, imageUrl: s.image_url || s.avatar_url || '', avatarFallback: (s.name || '?').trim().charAt(0).toUpperCase(), subtitle: roleLabel((s.role || 'Odontologo').split('|')[0]) }));
   })();
@@ -823,7 +823,7 @@ const ReportsModule = ({ isMobile, rates, staff = [] }) => {
           (!involvedMember.staffId && member.name === involvedMember.name)
         );
         const role = currentMember?.role ?? involvedMember.role;
-        if (!isBarberRole(role)) return;
+        if (!isDentistaRole(role)) return;
 
         const name = currentMember?.name || involvedMember.name;
         if (!name) return;

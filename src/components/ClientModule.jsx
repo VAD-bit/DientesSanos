@@ -108,8 +108,8 @@ const ClientModule = ({ isMobile, clients, onRefresh, initialClientId }) => {
   const { confirm } = useDialog();
   const { user } = useAuth();
   const roleName = String(user?.role || '').split('|')[0].toLowerCase();
-  const isAssistant = roleName.includes('asistente') || roleName.includes('barista') || roleName.includes('recep') || roleName.includes('admin') || roleName.includes('caja');
-  const isServiceProfessional = !isAssistant && (roleName.includes('barbero') || roleName.includes('odontolog') || roleName.includes('tatuador'));
+  const isAssistant = roleName.includes('asistente') || roleName.includes('recepcion') || roleName.includes('admin') || roleName.includes('caja');
+  const isServiceProfessional = !isAssistant && (roleName.includes('dentista') || roleName.includes('odontolog') || roleName.includes('estetico'));
   const canManageClientAdminActions = !isServiceProfessional;
 
   const [localClients, setLocalClients] = useState(clients || []);
@@ -1186,8 +1186,8 @@ const ClientDetail = ({ isMobile, client, onBack, onDelete, onUpdate }) => {
 
   const { user } = useAuth();
   const roleName = String(user?.role || '').split('|')[0].toLowerCase();
-  const isAssistant = roleName.includes('asistente') || roleName.includes('barista') || roleName.includes('recep') || roleName.includes('admin') || roleName.includes('caja');
-  const isServiceProfessional = !isAssistant && (roleName.includes('barbero') || roleName.includes('odontolog') || roleName.includes('tatuador'));
+  const isAssistant = roleName.includes('asistente') || roleName.includes('recepcion') || roleName.includes('admin') || roleName.includes('caja');
+  const isServiceProfessional = !isAssistant && (roleName.includes('dentista') || roleName.includes('odontolog') || roleName.includes('estetico'));
 
   useEffect(() => {
     const loadHistory = async () => {
@@ -1311,7 +1311,7 @@ const ClientDetail = ({ isMobile, client, onBack, onDelete, onUpdate }) => {
         service_name: photoMeta.serviceId ? history.find(h => h.id === photoMeta.serviceId)?.services?.name : 'Subida manual'
       };
 
-      // Fetch latest gallery from DB to avoid overwriting barber's photos
+      // Fetch latest gallery from DB to avoid overwriting dentist's photos
       const { data: latestClient } = await supabase
         .from('clients')
         .select('work_gallery')
