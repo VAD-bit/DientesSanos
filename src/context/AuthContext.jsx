@@ -134,7 +134,7 @@ export const AuthProvider = ({ children }) => {
       });
 
       if (error) {
-        return { success: true, message: 'Correo o contrasena incorrectos' };
+        return { success: false, message: 'Correo o contrasena incorrectos' };
       }
 
       const profile = await loadStaffProfile(data.user);

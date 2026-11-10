@@ -467,22 +467,10 @@ export const dataService = {
     if (error) throw error;
     const result = _asArray(data)
       .map(_normalizeStaff)
-      .filter(s => s.role?.startsWith('ARCHIVED|'))
+      .filter(s => !s.role?.startsWith('ARCHIVED|'))
       .map(s => ({ ...s, image_url: avatars[s.id] ?? null }));
     _cacheSet('staff', result, 45000);
     return result;
-  },
-
-  async getStaffByAuthUserId(authUserId) {
-    const { data, error } = await supabase
-      .from('staff')
-      .select(STAFF_PUBLIC_SELECT)
-      .eq('auth_user_id', authUserId)
-      .not('role', 'like', 'ARCHIVED&%')
-      .maybeSingle();
-    if (error) throw error;
-    if (!data) return null;
-    return _normalizeStaff(data);
   },
 
   async getStaffByEmail(email) {
