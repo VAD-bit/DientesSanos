@@ -2575,13 +2575,6 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                       <input className="form-input" placeholder="Ej. Especialista en estética dental y blanqueamiento" value={formData.specialty} onChange={e => setFormData({...formData, specialty: e.target.value})} style={{ width: '100%', height: '50px', paddingLeft: '48px' }} />
                     </div>
                   </div>
-                  <div className="form-group">
-                    <label style={{ display: 'block', fontSize: '11px', fontWeight: '900', color: 'var(--text-muted)', marginBottom: '8px', letterSpacing: '1px' }}>PALABRA CLAVE DE RECONOCIMIENTO</label>
-                    <div style={{ position: 'relative' }}>
-                      <Star size={18} style={{ position: 'absolute', left: '16px', top: '16px', color: 'var(--gold-primary)' }} />
-                      <input className="form-input" placeholder="Ej. TOP FADE o EXPERTO" value={formData.badge} onChange={e => setFormData({...formData, badge: e.target.value.toUpperCase()})} style={{ width: '100%', height: '50px', paddingLeft: '48px' }} />
-                    </div>
-                  </div>
                 </div>
                 <div style={{ marginTop: '16px', borderTop: '1px solid rgba(255, 255, 255, 0.05)', paddingTop: '16px' }}>
                   <h4 style={{ fontSize: '11px', fontWeight: '900', color: 'var(--gold-primary)', marginBottom: '12px', letterSpacing: '1px', textTransform: 'uppercase' }}>Estadísticas de Perfil Público</h4>
@@ -3217,16 +3210,9 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                     <input className="form-input" placeholder="Ej. Especialista en estética dental y blanqueamiento" value={formData.specialty} onChange={e => setFormData({...formData, specialty: e.target.value})} style={{ width: '100%', height: '50px', paddingLeft: '48px' }} />
                   </div>
                 </div>
-                <div className="form-group">
-                  <FieldLabel>PALABRA CLAVE DE RECONOCIMIENTO (Ej. TOP, EXPERTO, ESTRELLA)</FieldLabel>
-                  <div style={{ position: 'relative' }}>
-                    <Star size={18} style={{ position: 'absolute', left: '16px', top: '16px', color: 'var(--gold-primary)' }} />
-                    <input className="form-input" placeholder="Ej. TOP FADE o EXPERTO" value={formData.badge} onChange={e => setFormData({...formData, badge: e.target.value.toUpperCase()})} style={{ width: '100%', height: '50px', paddingLeft: '48px' }} />
-                  </div>
                 </div>
-              </div>
 
-              {/* Profile Stats Configuration */}
+                {/* Profile Stats Configuration */}
               <div style={{ marginTop: '16px', borderTop: '1px solid rgba(255, 255, 255, 0.05)', paddingTop: '16px' }}>
                 <h4 style={{ fontSize: '11px', fontWeight: '900', color: 'var(--gold-primary)', marginBottom: '12px', letterSpacing: '1px', textTransform: 'uppercase' }}>Estadísticas de Perfil Público (Opcional)</h4>
                 <div style={{ display: 'grid', gridTemplateColumns: isMobile ? 'minmax(0, 1fr) minmax(0, 1fr)' : 'repeat(4, minmax(0, 1fr))', gap: '16px' }}>
