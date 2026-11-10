@@ -117,12 +117,12 @@ const MobileBottomNav = ({ activeTab, setActiveTab }) => {
               exit={{ borderRadius: 32 }}
               transition={{ type: 'spring', stiffness: 350, damping: 30 }}
               style={{
-                backgroundColor: '#000',
+                backgroundColor: '#ffffff',
                 display: 'flex',
                 alignItems: 'center',
                 padding: '8px',
                 gap: '4px',
-                boxShadow: '0 25px 50px rgba(0,0,0,0.9), inset 0 0 0 1px rgba(255,255,255,0.15)',
+                boxShadow: '0 25px 50px rgba(0,0,0,0.08), inset 0 0 0 1px rgba(0,0,0,0.04)',
                 pointerEvents: 'auto',
                 overflow: 'hidden'
               }}
@@ -141,8 +141,8 @@ const MobileBottomNav = ({ activeTab, setActiveTab }) => {
                       padding: isActive ? '12px 20px' : '12px',
                       borderRadius: '30px',
                       border: 'none',
-                      background: isActive ? 'rgba(255,255,255,0.1)' : 'transparent',
-                      color: isActive ? 'var(--gold-primary)' : 'rgba(255,255,255,0.6)',
+                      background: isActive ? '#f0e2c8' : 'transparent',
+                      color: isActive ? '#e8d4b0' : '#6b7280',
                       cursor: 'pointer',
                       gap: '8px',
                       outline: 'none'
@@ -164,7 +164,8 @@ const MobileBottomNav = ({ activeTab, setActiveTab }) => {
                             fontSize: '13px',
                             fontWeight: '800',
                             whiteSpace: 'nowrap',
-                            overflow: 'hidden'
+                            overflow: 'hidden',
+                            color: '#e8d4b0'
                           }}
                         >
                           {item.label}
@@ -186,7 +187,7 @@ const MobileBottomNav = ({ activeTab, setActiveTab }) => {
                   borderRadius: '30px',
                   border: 'none',
                   background: 'transparent',
-                  color: 'rgba(255,255,255,0.6)',
+                  color: '#6b7280',
                   cursor: 'pointer',
                   outline: 'none'
                 }}
@@ -206,11 +207,11 @@ const MobileBottomNav = ({ activeTab, setActiveTab }) => {
               transition={{ type: 'spring', stiffness: 350, damping: 30 }}
               onClick={(e) => e.stopPropagation()}
               style={{
-                backgroundColor: '#000',
+                backgroundColor: '#ffffff',
                 width: 'calc(100% - 32px)',
                 maxWidth: '420px',
                 padding: '24px',
-                boxShadow: '0 25px 50px rgba(0,0,0,0.9), inset 0 0 0 1px rgba(255,255,255,0.15)',
+                boxShadow: '0 25px 50px rgba(0,0,0,0.08), inset 0 0 0 1px rgba(0,0,0,0.04)',
                 pointerEvents: 'auto',
                 display: 'flex',
                 flexDirection: 'column',
@@ -218,8 +219,8 @@ const MobileBottomNav = ({ activeTab, setActiveTab }) => {
               }}
             >
               <motion.div layout style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '24px' }}>
-                <h3 style={{ margin: 0, fontSize: '18px', fontWeight: '900', color: 'white' }}>Más Opciones</h3>
-                <button onClick={() => setIsMenuOpen(false)} style={{ background: 'rgba(255,255,255,0.1)', border: 'none', borderRadius: '50%', width: '32px', height: '32px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', cursor: 'pointer' }}>
+                <h3 style={{ margin: 0, fontSize: '18px', fontWeight: '900', color: '#111827' }}>Más Opciones</h3>
+                <button onClick={() => setIsMenuOpen(false)} style={{ background: '#f5f7fa', border: 'none', borderRadius: '50%', width: '32px', height: '32px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#374151', cursor: 'pointer' }}>
                   <X size={18} />
                 </button>
               </motion.div>
@@ -234,9 +235,9 @@ const MobileBottomNav = ({ activeTab, setActiveTab }) => {
                   justifyContent: 'space-between',
                   padding: '16px 20px',
                   borderRadius: '20px',
-                  background: notifPermission === 'granted' ? 'rgba(48, 209, 88, 0.15)' : 'rgba(255, 255, 255, 0.05)',
-                  border: notifPermission === 'granted' ? '1px solid rgba(48, 209, 88, 0.3)' : '1px solid transparent',
-                  color: notifPermission === 'granted' ? '#30d158' : 'white',
+                  background: notifPermission === 'granted' ? 'rgba(48, 209, 88, 0.15)' : '#f5f7fa',
+                  border: notifPermission === 'granted' ? '1px solid rgba(48, 209, 88, 0.3)' : '1px solid rgba(0,0,0,0.08)',
+                  color: notifPermission === 'granted' ? '#30d158' : '#374151',
                   cursor: notifPermission === 'granted' ? 'default' : 'pointer',
                   fontSize: '14px',
                   fontWeight: '800',
@@ -245,7 +246,7 @@ const MobileBottomNav = ({ activeTab, setActiveTab }) => {
                 }}
               >
                 <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                  <Bell size={20} color={notifPermission === 'granted' ? '#30d158' : 'white'} />
+                  <Bell size={20} color={notifPermission === 'granted' ? '#30d158' : '#374151'} />
                   <span>{notifPermission === 'granted' ? 'Notificaciones activas' : 'Activar notificaciones'}</span>
                 </div>
                 {notifPermission === 'granted' && (
@@ -270,7 +271,7 @@ const MobileBottomNav = ({ activeTab, setActiveTab }) => {
                         alignItems: 'center',
                         gap: '10px',
                         padding: '0',
-                        color: isActive ? 'var(--gold-primary)' : 'rgba(255,255,255,0.8)',
+                        color: isActive ? '#e8d4b0' : '#6b7280',
                         cursor: 'pointer',
                         outline: 'none'
                       }}
@@ -279,17 +280,17 @@ const MobileBottomNav = ({ activeTab, setActiveTab }) => {
                         width: '56px',
                         height: '56px',
                         borderRadius: '18px',
-                        backgroundColor: isActive ? 'rgba(17, 17, 17, 0.15)' : 'rgba(255,255,255,0.06)',
-                        border: isActive ? '1.5px solid var(--gold-primary)' : '1px solid rgba(255,255,255,0.05)',
+                        backgroundColor: isActive ? '#f0e2c8' : '#f5f7fa',
+                        border: isActive ? '1.5px solid #e8d4b0' : '1px solid rgba(0,0,0,0.08)',
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        boxShadow: isActive ? '0 4px 16px rgba(17, 17, 17, 0.3)' : 'none',
+                        boxShadow: isActive ? '0 4px 16px rgba(232, 212, 176, 0.15)' : 'none',
                         transition: 'background-color 0.2s, box-shadow 0.2s'
                       }}>
                         <item.icon size={26} strokeWidth={isActive ? 2.5 : 1.5} />
                       </div>
-                      <span style={{ fontSize: '11px', textAlign: 'center', fontWeight: isActive ? '800' : '600', letterSpacing: '0.2px' }}>
+                      <span style={{ fontSize: '11px', textAlign: 'center', fontWeight: isActive ? '800' : '600', letterSpacing: '0.2px', color: isActive ? '#e8d4b0' : '#6b7280' }}>
                         {item.label}
                       </span>
                     </motion.button>

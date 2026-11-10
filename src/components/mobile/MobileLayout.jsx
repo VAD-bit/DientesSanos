@@ -19,7 +19,8 @@ const MobileLayout = ({ children, activeTab, setActiveTab, onOpenSale }) => {
       backgroundColor: '#ffffff',
       color: '#111827',
       position: 'relative',
-      className: 'admin-light-theme'
+      className: 'admin-light-theme',
+      overflow: 'hidden'
     }}>
       {/* Sticky Brand Header */}
       <header style={{ 
@@ -49,12 +50,14 @@ const MobileLayout = ({ children, activeTab, setActiveTab, onOpenSale }) => {
         </button>
       </header>
       
-      {/* Main content — the document owns vertical scrolling on mobile */}
+      {/* Main content — scrollable area */}
       <div style={{
         flex: 1,
         padding: '10px 20px 100px 20px',
         minWidth: 0,
         backgroundColor: '#ffffff',
+        overflowY: 'auto',
+        WebkitOverflowScrolling: 'touch'
       }}>
         {children}
       </div>
@@ -68,9 +71,17 @@ const MobileLayout = ({ children, activeTab, setActiveTab, onOpenSale }) => {
       <style>{`
         body {
           background-color: #ffffff;
+          overflow: hidden;
+        }
+        html {
+          overflow: hidden;
         }
         * {
           -webkit-tap-highlight-color: transparent;
+        }
+        /* Allow scrolling within the main content area on iOS */
+        .admin-light-theme > div:nth-child(2) {
+          -webkit-overflow-scrolling: touch;
         }
       `}</style>
     </div>
