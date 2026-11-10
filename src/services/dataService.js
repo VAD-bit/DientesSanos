@@ -42,6 +42,27 @@ function _cacheInvalidate(...keys) {
   keys.forEach(k => delete _cache[k]);
 }
 
+// clients.birth_date es tipo `date` en Postgres: cualquier string que no sea
+// YYYY-MM-DD válido revienta el INSERT/UPDATE con 22007/22008 (p. ej. el
+// vacío '' que dejan los inputs enmascarados, o 'DD/MM/AAAA' a medias).
+// Devuelve ISO válido o null.
+function _normalizeBirthDate(value) {
+  if (value === undefined || value === null) return value;
+  const raw = String(value).trim();
+  if (!raw) return null;
+  if (/^\d{4}-\d{2}-\d{2}$/.test(raw)) {
+    return Number.isNaN(Date.parse(raw)) ? null : raw;
+  }
+  const display = raw.match(/^(\d{2})\/(\d{2})\/(\d{4})$/);
+  if (display) {
+    const [, d, m, y] = display;
+    const iso = `${y}-${m}-${d}`;
+    return Number.isNaN(Date.parse(iso)) ? null : iso;
+  }
+  // Formato parcial o desconocido: no arriesgar el query, se descarta.
+  return null;
+}
+
 function _cacheInvalidateAppts() {
   Object.keys(_cache).filter(k => k.startsWith('appts_') || k.startsWith('apptsRange_')).forEach(k => delete _cache[k]);
 }
@@ -284,6 +305,9 @@ export const dataService = {
     if (!filtered.created_at) {
       filtered.created_at = new Date().toISOString();
     }
+    if ('birth_date' in filtered) {
+      filtered.birth_date = _normalizeBirthDate(filtered.birth_date);
+    }
 
     const { data, error } = await supabase
       .from('clients')
@@ -381,6 +405,9 @@ export const dataService = {
         filtered[col] = updates[col];
       }
     });
+    if ('birth_date' in filtered) {
+      filtered.birth_date = _normalizeBirthDate(filtered.birth_date);
+    }
 
     const { data, error } = await supabase
       .from('clients')
