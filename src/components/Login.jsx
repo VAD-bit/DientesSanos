@@ -1267,7 +1267,7 @@ const mobFeaturesSecureGap = ${mobFeaturesSecureGap};`;
       `}</style>
 
       {/* ── MARCO CONTENEDOR DORADO ── */}
-      <div className="l-frame" style={{
+      <div className="l-frame login-light-theme" style={{
         '--bg-zoom': bgZoomMode === 'cover' ? 'cover' : `${bgZoom}%`,
         '--bg-x': `${bgX}%`,
         '--bg-y': `${bgY}%`,

@@ -2565,3 +2565,115 @@ body.in-booking-flow .whatsapp-float-btn { display: none !important; }
   color: #e8d4b0 !important;
   fill: #e8d4b0 !important;
 }
+
+/* ════════════════════════════════════════════════════════════════════════
+   LOGIN — Tema claro mármol para portal público de autenticación
+   Sobreescribe estilos inline oscuros hardcodeados en Login.jsx
+   ════════════════════════════════════════════════════════════════════════ */
+
+/* Fondo raíz */
+.login-light-theme,
+.login-light-theme .l-root {
+  background: #ffffff !important;
+  color: #111827 !important;
+}
+
+/* Overlay oscuro → mármol claro */
+.login-light-theme .l-overlay {
+  background: #fafafa !important;
+  opacity: 1 !important;
+}
+
+/* Frame y bordes */
+.login-light-theme .l-frame {
+  border: 1.5px solid rgba(0, 0, 0, 0.06) !important;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.08) !important;
+}
+
+/* Tarjeta de login → blanco sólido */
+.login-light-theme .l-card {
+  background: #ffffff !important;
+  border: 1px solid rgba(0, 0, 0, 0.05) !important;
+  box-shadow: 0 50px 100px rgba(0, 0, 0, 0.06) !important;
+  color: #111827 !important;
+}
+
+/* Texto del login */
+.login-light-theme .l-heading,
+.login-light-theme .l-card-title,
+.login-light-theme .l-card-title span {
+  color: #111827 !important;
+}
+
+.login-light-theme .l-desc,
+.login-light-theme .l-card-sub,
+.login-light-theme .l-feat-label,
+.login-light-theme .l-field-label,
+.login-light-theme .l-secure span {
+  color: #6b7280 !important;
+}
+
+/* Features */
+.login-light-theme .l-feat {
+  border-right-color: rgba(0, 0, 0, 0.06) !important;
+}
+
+.login-light-theme .l-feat-icon {
+  color: #e8d4b0 !important;
+}
+
+/* Inputs */
+.login-light-theme .l-input,
+.login-light-theme input {
+  background: #ffffff !important;
+  border: 1px solid rgba(0, 0, 0, 0.10) !important;
+  color: #111827 !important;
+}
+
+.login-light-theme .l-input::placeholder,
+.login-light-theme input::placeholder {
+  color: #9ca3af !important;
+}
+
+.login-light-theme .l-input:focus,
+.login-light-theme input:focus {
+  border-color: #e8d4b0 !important;
+  box-shadow: 0 0 0 3px rgba(232, 212, 176, 0.15) !important;
+  background: #ffffff !important;
+}
+
+/* Botón iniciar sesión */
+.login-light-theme .l-btn-login,
+.login-light-theme button[type="submit"],
+.login-light-theme .l-btn-gold {
+  background: #e8d4b0 !important;
+  color: #111827 !important;
+  border: none !important;
+}
+
+.login-light-theme .l-btn-login:hover,
+.login-light-theme button[type="submit"]:hover,
+.login-light-theme .l-btn-gold:hover {
+  background: #f0e2c8 !important;
+}
+
+/* Enlaces y texto secundario */
+.login-light-theme a,
+.login-light-theme .l-secure {
+  color: #e8d4b0 !important;
+}
+
+/* Iconos */
+.login-light-theme svg,
+.login-light-theme .l-feat-icon {
+  color: #6b7280 !important;
+  fill: #6b7280 !important;
+}
+
+/* Bottom nav móvil */
+.login-light-theme .l-bottom-nav,
+.login-light-theme [class*="bottom-nav"] {
+  background: #ffffff !important;
+  border-top: 1px solid rgba(0, 0, 0, 0.06) !important;
+  color: #374151 !important;
+}
