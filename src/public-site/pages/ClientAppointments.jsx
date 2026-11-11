@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Calendar, FileCheck, Star, Clock, Eye, AlertTriangle, Check, X, PenTool, Scissors, Droplets, Sparkles, User, ChevronRight, ChevronDown } from 'lucide-react';
+import { Calendar, FileCheck, Star, Clock, Eye, AlertTriangle, Check, X, PenTool, Droplets, Sparkles, User, ChevronRight, ChevronDown } from 'lucide-react';
+import ToothIcon from '../../components/icons/ToothIcon';
 import { publicService } from '../services/publicService';
 import Skeleton from '../components/Skeleton';
 import pandaLogo from '../../assets/panda_logo_nobg.png';
@@ -89,7 +90,7 @@ export default function ClientAppointments() {
     const cat = (category || '').toLowerCase();
     if (cat.includes('tatuaj') || name.includes('tatuaj')) return <Sparkles size={16} />;
     if (name.includes('lavado') || cat.includes('lavado')) return <Droplets size={16} />;
-    return <Scissors size={16} />;
+    return <ToothIcon size={16} />;
   };
 
   const initCanvas = useCallback(() => {
@@ -529,7 +530,7 @@ export default function ClientAppointments() {
             <div style={{ padding: '8px 0 24px' }}>
               <StarRating label="Rapidez" icon={Sparkles} value={ratings.rapidez} onChange={v => setRatings(p => ({ ...p, rapidez: v }))} />
               <StarRating label="Limpieza" icon={Star} value={ratings.limpieza} onChange={v => setRatings(p => ({ ...p, limpieza: v }))} />
-              <StarRating label="Habilidad" icon={Scissors} value={ratings.habilidad} onChange={v => setRatings(p => ({ ...p, habilidad: v }))} />
+              <StarRating label="Habilidad" icon={ToothIcon} value={ratings.habilidad} onChange={v => setRatings(p => ({ ...p, habilidad: v }))} />
             </div>
             <button
               onClick={submitRating}

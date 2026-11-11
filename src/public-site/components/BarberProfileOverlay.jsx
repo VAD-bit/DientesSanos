@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { ChevronLeft, ChevronRight, Star, Scissors, User, Heart } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Star, User, Heart } from 'lucide-react';
+import ToothIcon from '../../components/icons/ToothIcon';
 import { publicService } from '../services/publicService';
 import logo from '../../assets/panda_logo_nobg.png';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -239,7 +240,7 @@ export default function BarberProfileOverlay({ isOpen, barber, onClose, onBook }
 
                 <div className="flex items-center justify-between border-t border-b border-[#d9c08f]/15 py-4 w-full">
                   <div className="flex flex-col items-center text-center flex-1">
-                    <Scissors size={20} className="text-[#111111] mb-1.5" />
+                    <ToothIcon size={20} className="text-[#111111] mb-1.5" />
                     <span className="text-xl font-black text-[#0f172a] leading-none mb-1">{details.reviews_count}+</span>
                     <span className="text-[8px] text-[#64748b] font-black uppercase tracking-widest leading-tight">SERVICIOS<br/>REALIZADOS</span>
                   </div>

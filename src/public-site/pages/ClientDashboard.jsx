@@ -4,7 +4,8 @@ import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { publicService } from '../services/publicService';
 import { roleLabel } from '../../utils/staffRoles';
-import { Calendar, Clock, Scissors, ChevronRight, Crown, User, Wallet, X, Sparkles, TrendingUp, ArrowUpRight, RotateCw, Settings, Check, Star, Loader2, Zap, Droplet, Gem, ThumbsUp, Smile, Frown, AlertCircle, MessageSquare } from 'lucide-react';
+import { Calendar, Clock, ChevronRight, Crown, User, Wallet, X, Sparkles, TrendingUp, ArrowUpRight, RotateCw, Settings, Check, Star, Loader2, Zap, Droplet, Gem, ThumbsUp, Smile, Frown, AlertCircle, MessageSquare } from 'lucide-react';
+import ToothIcon from '../../components/icons/ToothIcon';
 import pandaLogo from '../../assets/panda_logo_black.png';
 import pandaIcon from '../../assets/panda_logo_nobg.png';
 
@@ -419,7 +420,7 @@ export default function ClientDashboard() {
                     )}
                     <div className="appt-info-pills">
                       {d && <div className="appt-pill"><Clock size={12} />{d.toLocaleTimeString('es', { hour: '2-digit', minute: '2-digit', hour12: true })}</div>}
-                      {displayAppt.services?.name && <div className="appt-pill"><Scissors size={12} />{displayAppt.services.name}</div>}
+                      {displayAppt.services?.name && <div className="appt-pill"><ToothIcon size={12} />{displayAppt.services.name}</div>}
                       <div className="appt-pill barber-pill">
                         <img src={`https://ui-avatars.com/api/?name=${encodeURIComponent(displayAppt.staff?.name || 'P')}&background=2a2a2a&color=CBB79A`} alt="" className="pill-avatar" />
                         {displayAppt.staff?.name?.split(' ')[0]}
@@ -482,7 +483,7 @@ export default function ClientDashboard() {
                   <div className="w-[72px] h-[72px] rounded-full overflow-hidden border border-[#d9c08f]/15 group-hover:border-[#111111] group-hover:scale-105 transition-all relative">
                     <img src={staff.image_url || 'https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=200&q=80'} alt={staff.name} className="w-full h-full object-cover object-top" />
                     <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 flex flex-col items-center justify-center transition-all">
-                      <Scissors size={16} className="text-[#111111] mb-1" />
+                      <ToothIcon size={16} className="text-[#111111] mb-1" />
                       <span className="text-[8px] font-black tracking-widest text-[#111111] uppercase">Reservar</span>
                     </div>
                   </div>
@@ -629,7 +630,7 @@ export default function ClientDashboard() {
             <div className="ticket-body">
               {/* SERVICE HERO */}
               <div className="ticket-service-hero">
-                <div className="tsh-icon"><Scissors size={24} color="var(--champagne)" /></div>
+                <div className="tsh-icon"><ToothIcon size={24} color="var(--champagne)" /></div>
                 <h2 className="tsh-name">{displayAppt.services?.name}</h2>
               </div>
 
@@ -793,7 +794,7 @@ export default function ClientDashboard() {
                       <div style={{ background: '#f7f7f5', padding: '16px 16px', borderRadius: 24, border: '1px solid rgba(217, 192, 143, 0.15)', display: 'flex', flexDirection: 'column', gap: 8 }}>
                         <StarRatingRow label="Rapidez" icon={Zap} value={ratings.rapidez} onChange={v => setRatings({ ...ratings, rapidez: v })} />
                         <StarRatingRow label="Limpieza" icon={Droplet} value={ratings.limpieza} onChange={v => setRatings({ ...ratings, limpieza: v })} />
-                        <StarRatingRow label="Habilidad" icon={Scissors} value={ratings.habilidad} onChange={v => setRatings({ ...ratings, habilidad: v })} />
+                        <StarRatingRow label="Habilidad" icon={ToothIcon} value={ratings.habilidad} onChange={v => setRatings({ ...ratings, habilidad: v })} />
                       </div>
 
                       {/* Comment Section (iMessage/Apple style) */}

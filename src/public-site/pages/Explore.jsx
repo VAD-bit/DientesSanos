@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Settings, User, Award, Calendar as CalendarIcon, Scissors, Coffee, Gamepad2, Compass, ArrowUpRight, MapPin, X, ChevronLeft, Star, Heart } from 'lucide-react';
+import { Settings, User, Award, Calendar as CalendarIcon, Coffee, Gamepad2, Compass, ArrowUpRight, MapPin, X, ChevronLeft, Star, Heart } from 'lucide-react';
+import ToothIcon from '../../components/icons/ToothIcon';
 import { publicService } from '../services/publicService';
 import { CLINIC } from '../config/clinic';
 import { roleLabel } from '../../utils/staffRoles';
@@ -11,7 +12,7 @@ const BENEFITS = [
   { icon: User, title: 'Profesionales', desc: 'Especialistas expertos en las últimas técnicas odontológicas.', accent: '#111111' },
   { icon: Award, title: 'Calidad Premium', desc: 'Tecnología y materiales de alta gama para tu salud bucal.', accent: '#A8C4B8' },
   { icon: CalendarIcon, title: 'Reserva Fácil', desc: 'Agenda tu cita en segundos, las 24 horas del día.', accent: '#B8A8C4' },
-  { icon: Scissors, title: 'Tecnología Moderna', desc: 'Equipos de última generación en un espacio pensado para ti.', accent: '#C4B8A8' },
+  { icon: ToothIcon, title: 'Tecnología Moderna', desc: 'Equipos de última generación en un espacio pensado para ti.', accent: '#C4B8A8' },
   { icon: Star, title: 'Atención VIP', desc: 'Servicio personalizado pensado en tu satisfacción.', accent: '#A8B8C4' },
 ];
 
@@ -236,7 +237,7 @@ export default function Explore() {
                 <span>Paciencia</span>
               </div>
               <div className="kids-feature-chip" style={{ animationDelay: '0.9s' }}>
-                <Scissors size={15} />
+                <ToothIcon size={15} />
                 <span>Estilo</span>
               </div>
             </div>

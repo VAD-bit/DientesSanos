@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { Phone, CreditCard, Calendar, Check, Loader, Shield, Gift, Coins, Scissors, ArrowRight, Info, UserRound, Mail } from 'lucide-react';
+import { Phone, CreditCard, Calendar, Check, Loader, Shield, Gift, Coins, ArrowRight, Info, UserRound, Mail } from 'lucide-react';
+import ToothIcon from '../../components/icons/ToothIcon';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { publicService } from '../services/publicService';
 import { clearGoogleAuthIntent, shouldReturnToBookingAfterGoogle } from '../utils/googleAuthIntent';
@@ -37,7 +38,7 @@ const formatBirthDateInput = (rawValue) => {
 const BENEFITS = [
   { icon: Coins, title: 'Puntos', desc: 'En cada visita' },
   { icon: Gift, title: 'Premios', desc: 'Canjea al instante' },
-  { icon: Scissors, title: 'Tu estilo', desc: 'Historial guardado' },
+  { icon: ToothIcon, title: 'Tu estilo', desc: 'Historial guardado' },
 ];
 
 // Rank thresholds match the points catalog already used in Profile.jsx (100/200/300 unlock

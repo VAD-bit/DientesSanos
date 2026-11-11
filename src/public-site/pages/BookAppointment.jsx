@@ -8,9 +8,7 @@ import {
   ChevronLeft, 
   ChevronRight, 
   Check, 
-  Scissors, 
   Sparkles,
-  GlassWater, 
   Compass,
   Phone, 
   CreditCard, 
@@ -39,6 +37,7 @@ import {
   HeartPulse,
   Baby
 } from 'lucide-react';
+import ToothIcon from '../../components/icons/ToothIcon';
 import { publicService } from '../services/publicService';
 import { clearGoogleAuthIntent, GOOGLE_AUTH_DESTINATIONS, setGoogleAuthIntent } from '../utils/googleAuthIntent';
 import { formatDuration } from '../../utils/formatDuration';
@@ -540,14 +539,14 @@ const getServiceIcon = (service) => {
   if (hasEmpaste && hasMuela) {
     return (
       <span style={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-        <Scissors size={20} className="landing-service-icon" />
+        <ToothIcon size={20} className="landing-service-icon" />
         <BeardIcon size={20} />
       </span>
     );
   }
   if (hasBarba) return <BeardIcon size={26} />;
   if (n.includes('tatu')) return <PenTool size={26} className="landing-service-icon" />;
-  return <Scissors size={26} className="landing-service-icon" />;
+  return <ToothIcon size={26} className="landing-service-icon" />;
 };
 
 // Availability is now controlled solely by the manual "Abierta/Cerrada" toggle
@@ -5139,7 +5138,7 @@ const videoRef = useRef(null);
                           {/* Service & Artist chips row */}
                           <div className="flex items-center gap-2 flex-wrap">
                             <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full" style={{background: 'rgba(0,0,0,0.04)', border: '1px solid rgba(0,0,0,0.07)'}}>
-                              <Scissors size={9} className="text-[#94a3b8]" />
+                              <ToothIcon size={9} className="text-[#94a3b8]" />
                               <span className="text-[9px] font-semibold text-[#64748b] truncate max-w-[100px]">{selectedService?.name}</span>
                             </div>
                             <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full" style={{background: 'rgba(0,0,0,0.04)', border: '1px solid rgba(0,0,0,0.07)'}}>
@@ -5557,7 +5556,7 @@ const videoRef = useRef(null);
                           border: '1px solid rgba(17, 17, 17,0.14)'
                         }}>
                           <div className="w-8 h-8 rounded-xl flex items-center justify-center flex-shrink-0" style={{background: 'rgba(17, 17, 17,0.12)'}}>
-                            <Scissors size={14} style={{color: '#111111'}} />
+                            <ToothIcon size={14} style={{color: '#111111'}} />
                           </div>
                           <div className="flex-1 min-w-0">
                             <p className="text-[8px] font-black uppercase tracking-widest" style={{color: 'rgba(17, 17, 17,0.55)'}}>Servicio</p>
@@ -5888,10 +5887,10 @@ const videoRef = useRef(null);
             {!(step === 2 && expandedBarber) && (() => {
               const barberLabel = 'Especialista';
               const timeline = [
-                { key: 'service', label: 'Servicio', icon: Scissors, done: !!selectedService, value: selectedService?.name, activeAt: 1 },
+                { key: 'service', label: 'Servicio', icon: ToothIcon, done: !!selectedService, value: selectedService?.name, activeAt: 1 },
                 { key: 'barber', label: barberLabel, icon: User, done: !!selectedBarber, value: selectedBarber?.name, activeAt: 2 },
                 { key: 'datetime', label: 'Fecha y hora', icon: CalendarIcon, done: !!(selectedDate && selectedTime), value: selectedDate && selectedTime ? `${selectedDate.toLocaleDateString('es-ES', { weekday: 'short', day: 'numeric', month: 'short' })} · ${formatTime12(selectedTime)}` : null, activeAt: 3 },
-                { key: 'beverage', label: 'Agua de cortesía', icon: GlassWater, done: !!selectedBeverage, value: selectedBeverage, activeAt: 4 },
+                ...(isTattooBooking ? [{ key: 'case', label: 'Detalles del caso', icon: PenTool, done: !!(tattooSize && tattooZone && tattooStyle), value: null, activeAt: 4 }] : []),
                 { key: 'confirm', label: 'Confirmación', icon: Check, done: step === 5 && success, value: null, activeAt: 5 },
               ];
               return (

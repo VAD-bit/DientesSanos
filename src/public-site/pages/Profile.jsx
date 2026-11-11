@@ -3,10 +3,11 @@ import { createPortal } from 'react-dom';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { 
-  Star, Calendar, Scissors, Clock, Wallet, 
+  Star, Calendar, Clock, Wallet, 
   ChevronRight, Gift, Crown, Droplets, MapPin,
   Heart, X, User, Plus, Zap, Lock, Diamond
 } from 'lucide-react';
+import ToothIcon from '../../components/icons/ToothIcon';
 import { publicService } from '../services/publicService';
 import PrizeWheel from '../components/PrizeWheel';
 import ProfileHeader from '../components/ProfileHeader';
@@ -175,7 +176,7 @@ export default function Profile() {
   };
 
   const prizes = [
-    { name: 'Limpieza Gratis', points: 300, icon: Scissors, available: points >= 300 },
+    { name: 'Limpieza Gratis', points: 300, icon: ToothIcon, available: points >= 300 },
     { name: 'Blanqueamiento', points: 200, icon: Crown, available: points >= 200 },
     { name: 'Consulta Preferencial', points: 100, icon: Droplets, available: points >= 100 },
   ];

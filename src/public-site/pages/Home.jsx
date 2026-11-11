@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Scissors, Star, Clock, ChevronRight, Sparkles, Users } from 'lucide-react';
+import { Star, Clock, ChevronRight, Sparkles, Users } from 'lucide-react';
+import ToothIcon from '../../components/icons/ToothIcon';
 import { publicService } from '../services/publicService';
 import { formatDuration } from '../../utils/formatDuration';
-import { roleLabel } from '../../utils/staffRoles';
+import { isBookableStaff, roleLabel } from '../../utils/staffRoles';
 
 export default function Home() {
   const [services, setServices] = useState([]);
@@ -167,7 +168,7 @@ export default function Home() {
               justifyContent: 'center',
               position: 'relative',
             }}>
-              <Scissors size={100} style={{ color: 'var(--champagne)', opacity: 0.3 }} />
+              <ToothIcon size={100} style={{ color: 'var(--champagne)', opacity: 0.3 }} />
               <div style={{
                 position: 'absolute',
                 top: 0,
@@ -207,7 +208,7 @@ export default function Home() {
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 16 }}>
               {services.map((service) => (
                 <div key={service.id} className="glass-card" style={{ textAlign: 'center', padding: '32px 20px' }}>
-                  <div style={{ marginBottom: 16, display: 'flex', justifyContent: 'center' }}><Scissors size={40} color="var(--gold-primary)" /></div>
+                  <div style={{ marginBottom: 16, display: 'flex', justifyContent: 'center' }}><ToothIcon size={40} color="var(--gold-primary)" /></div>
                   <h3 style={{ fontWeight: 700, marginBottom: 8, fontSize: 16 }}>{service.name}</h3>
                   <div className="text-gold" style={{ fontSize: 28, fontWeight: 900, marginBottom: 4 }}>
                     {(service.category || '').toLowerCase().includes('tatuaj') && <span style={{ fontSize: 16, fontWeight: 700, marginRight: 4 }}>Desde</span>}

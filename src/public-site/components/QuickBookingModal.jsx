@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Calendar as CalendarIcon, Clock, Sparkles, Scissors, User, Search, CheckCircle, Coffee, MessageSquare, Beer, Martini, GlassWater, Lock } from 'lucide-react';
+import { X, Calendar as CalendarIcon, Clock, Sparkles, User, Search, CheckCircle, MessageSquare, Lock } from 'lucide-react';
+import ToothIcon from '../../components/icons/ToothIcon';
 import { publicService } from '../services/publicService';
 import PandaDatePicker from '../../components/PandaDatePicker';
 import { formatDuration } from '../../utils/formatDuration';
@@ -239,7 +240,7 @@ export default function QuickBookingModal({ onClose, client, initialBarber = nul
                   }}
                 />
                 <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                  <Scissors size={20} color="#111111" strokeWidth={2.5} />
+                  <ToothIcon size={20} color="#111111" strokeWidth={2.5} />
                 </div>
               </div>
               <motion.div 

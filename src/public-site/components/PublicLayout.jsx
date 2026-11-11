@@ -1,6 +1,6 @@
 import { Outlet, Link, useLocation, useNavigate } from 'react-router-dom';
 import { useState, useEffect, useRef, Suspense } from 'react';
-import { Menu, X, Scissors, Phone, MapPin, Calendar, User, ChevronRight, Check, ArrowRight, Star, Gift } from 'lucide-react';
+import { Menu, X, Phone, MapPin, Calendar, User, ChevronRight, Check, ArrowRight, Star, Gift } from 'lucide-react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { publicService } from '../services/publicService';
 import { CLINIC } from '../config/clinic';

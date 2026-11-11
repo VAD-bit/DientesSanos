@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { Mail, Lock, Eye, EyeOff, ArrowRight, ArrowLeft, User, Coins, Gift, Bookmark, Phone, CreditCard, Check, Calendar, Star, Scissors, Loader2 } from 'lucide-react';
+import { Mail, Lock, Eye, EyeOff, ArrowRight, ArrowLeft, User, Coins, Gift, Bookmark, Phone, CreditCard, Check, Calendar, Star, Loader2 } from 'lucide-react';
+import ToothIcon from '../../components/icons/ToothIcon';
 import { motion, useMotionValue, useSpring, useTransform, AnimatePresence } from 'framer-motion';
 import { publicService } from '../services/publicService';
 import { clearGoogleAuthIntent, GOOGLE_AUTH_DESTINATIONS, setGoogleAuthIntent } from '../utils/googleAuthIntent';
@@ -1117,7 +1118,7 @@ export default function Login() {
                 style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 20 }}
               >
                 <div style={{ flex: 1, height: 1, background: 'linear-gradient(90deg, transparent, rgba(17, 17, 17,0.3))' }} />
-                <Scissors size={14} style={{ color: 'var(--champagne)' }} />
+                <ToothIcon size={14} style={{ color: 'var(--champagne)' }} />
                 <div style={{ flex: 1, height: 1, background: 'linear-gradient(90deg, rgba(17, 17, 17,0.3), transparent)' }} />
               </motion.div>
 
@@ -1149,7 +1150,7 @@ export default function Login() {
                   {[
                     { icon: Star, title: 'Acumula puntos', desc: 'en cada visita' },
                     { icon: Gift, title: 'Gana premios', desc: 'exclusivos' },
-                    { icon: Scissors, title: 'Disfruta servicios', desc: 'preferenciales' },
+                    { icon: ToothIcon, title: 'Disfruta servicios', desc: 'preferenciales' },
                   ].map(({ icon: Icon, title, desc }, idx) => (
                     <div key={title} style={{
                       flex: 1, padding: '14px 8px', textAlign: 'center',
