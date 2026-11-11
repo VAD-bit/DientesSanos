@@ -8,13 +8,13 @@ import {
   Coins, 
   Droplets, 
   ReceiptText, 
-  Scissors,
   User,
   CreditCard,
   Building2,
   Users,
   TrendingUp
 } from 'lucide-react';
+import ToothIcon from './icons/ToothIcon';
 import { dataService } from '../services/dataService';
 import { SkeletonList } from './Skeleton';
 import {
@@ -494,7 +494,7 @@ const StaffTransactionHistory = ({ staffMember, rates, isMobile }) => {
         {[
           { label: isAssistant ? 'Comisiones y propinas' : 'Ganancia personal', value: totals.earnings, valueBs: totals.earningsBs, icon: <Coins size={18} color={'#32d74b'} /> },
           { label: 'Propinas', value: totals.tips, valueBs: totals.tipsBs, icon: <Coins size={18} color={'#ff9f0a'} /> },
-          { label: isAssistant ? 'Limpiezas registradas' : 'Servicios cobrados', count: rows.length, icon: isAssistant ? <Droplets size={18} color={'#007aff'} /> : <Scissors size={18} color={'var(--gold-primary)'} /> }
+          { label: isAssistant ? 'Limpiezas registradas' : 'Servicios cobrados', count: rows.length, icon: isAssistant ? <Droplets size={18} color={'#007aff'} /> : <ToothIcon size={18} color={'var(--gold-primary)'} /> }
         ].map(card => (
           <div key={card.label} className={'glass-card staff-history-metric'} style={{ padding: '18px', borderRadius: '18px' }}>
             <div className="staff-history-metric-label" style={{ display: 'flex', gap: '8px', alignItems: 'center', color: 'var(--text-secondary)', fontSize: '11px', fontWeight: '850', textTransform: 'uppercase' }}>
@@ -707,7 +707,7 @@ const StaffTransactionHistory = ({ staffMember, rates, isMobile }) => {
 
                           {appointment?.staff?.name && (
                             <div style={{ fontSize: '11px', color: 'var(--text-muted)', display: 'flex', alignItems: 'center', gap: '6px', marginTop: 'auto' }}>
-                              <Scissors size={12} color="var(--gold-primary)" /> Atendido por: <strong style={{ color: 'rgba(255,255,255,0.85)' }}>{appointment.staff.name}</strong>
+                              <ToothIcon size={12} color="var(--gold-primary)" /> Atendido por: <strong style={{ color: 'rgba(255,255,255,0.85)' }}>{appointment.staff.name}</strong>
                             </div>
                           )}
                         </div>

@@ -10,12 +10,12 @@ import {
   Key,
   Info,
   Crown,
-  Scissors,
   UserCheck,
   Package,
   Users,
   ChevronRight
 } from 'lucide-react';
+import ToothIcon from './icons/ToothIcon';
 import { useScrollLock } from '../hooks/useScrollLock';
 import { useDialog } from '../context/DialogContext';
 import AnimatedModal from './AnimatedModal';
@@ -24,11 +24,11 @@ import { roleLabel } from '../utils/staffRoles';
 // Map role names to icons & accent colors
 const ROLE_STYLES = {
   'Administrador':  { icon: Crown,     color: '#ffffff', bg: 'rgba(255, 255, 255,0.12)' },
-  'Odontologo':     { icon: Scissors,  color: '#0a84ff', bg: 'rgba(10,132,255,0.12)' },
+  'Odontologo':     { icon: ToothIcon,  color: '#0a84ff', bg: 'rgba(10,132,255,0.12)' },
   'Asistente':      { icon: UserCheck, color: '#30d158', bg: 'rgba(48,209,88,0.12)'  },
   // Valores heredados (tolerancia)
   'Admin':          { icon: Crown,     color: '#ffffff', bg: 'rgba(255, 255, 255,0.12)' },
-  'Barbero':        { icon: Scissors,  color: '#0a84ff', bg: 'rgba(10,132,255,0.12)' },
+  'Barbero':        { icon: ToothIcon,  color: '#0a84ff', bg: 'rgba(10,132,255,0.12)' },
   'Recepcionista':  { icon: UserCheck, color: '#30d158', bg: 'rgba(48,209,88,0.12)'  },
   'Caja':           { icon: Package,   color: '#ff9f0a', bg: 'rgba(255,159,10,0.12)' },
   'Asistente de Lavado': { icon: Users, color: '#64d2ff', bg: 'rgba(100,210,255,0.12)' },

@@ -26,8 +26,8 @@ import {
   MessageCircle,
   Receipt,
   ClipboardPlus,
-  Scissors
 } from 'lucide-react';
+import ToothIcon from './icons/ToothIcon';
 import { dataService } from '../services/dataService';
 import { SkeletonList } from './Skeleton';
 import { supabase } from '../lib/supabase';
@@ -2278,7 +2278,7 @@ const ClientDetail = ({ isMobile, client, onBack, onDelete, onUpdate }) => {
       {/* Tratamientos e intervenciones del paciente */}
       <div className="glass-card" style={{ marginTop: '20px' }}>
         <h4 style={{ marginBottom: '16px', display: 'flex', alignItems: 'center', gap: '8px' }}>
-          <Scissors size={18} color="var(--gold-primary)" /> Tratamientos e Intervenciones
+          <ToothIcon size={18} color="var(--gold-primary)" /> Tratamientos e Intervenciones
         </h4>
         {loadingTreatments ? (
           <SkeletonList rows={3} rowHeight={40} gap={8} />

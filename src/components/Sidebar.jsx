@@ -3,7 +3,6 @@ import { createPortal } from 'react-dom';
 import {
   BarChart3, 
   Users, 
-  Scissors, 
   Package, 
   Wallet, 
   Star,
@@ -22,6 +21,7 @@ import {
   Bell,
   CheckCircle
 } from 'lucide-react';
+import ToothIcon from './icons/ToothIcon';
 import logo from '../assets/logo.png';
 import sidebarLogo from '../assets/sidebar_logo.png';
 import { useAuth } from '../context/AuthContext';
@@ -62,11 +62,11 @@ const Sidebar = ({ activeTab, setActiveTab, isMobile, rates, isCollapsed, setIsC
   const allMenuItems = [
     { id: 'my-profile', label: 'Mi Perfil', icon: UserCircle },
     { id: 'dashboard', label: 'Inicio', icon: BarChart3 },
-    { id: 'dentista', label: 'Mi sillón dental', icon: Scissors },
+    { id: 'dentista', label: 'Mi sillón dental', icon: ToothIcon },
     { id: 'scheduling', label: 'Agenda', icon: Calendar },
     { id: 'reception', label: 'Recepción', icon: ClipboardList },
     { id: 'checkout', label: 'Caja', icon: CreditCard },
-    { id: 'panels', label: 'Paneles', icon: Scissors },
+    { id: 'panels', label: 'Paneles', icon: ToothIcon },
     { id: 'clients', label: 'Pacientes', icon: Users },
     { id: 'services', label: 'Servicios', icon: Star },
     { id: 'personnel', label: 'Equipo', icon: UserCheck },

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { 
-  Plus, Search, Edit2, Trash2, Clock, Scissors, Rocket,
+  Plus, Search, Edit2, Trash2, Clock, Rocket,
   Droplets, Zap, Check, X,
   Settings, LayoutList, Star, Crown,
   LayoutGrid, Table, Eye, Info, Pencil,
@@ -9,6 +9,7 @@ import {
   PenTool, Flame, Gem, Shield, Crosshair, Stethoscope,
   Activity, Baby, HeartPulse, Anchor
 } from 'lucide-react';
+import ToothIcon from './icons/ToothIcon';
 import { dataService } from '../services/dataService';
 import { SkeletonGrid } from './Skeleton';
 import { useDialog } from '../context/DialogContext';
@@ -37,24 +38,6 @@ const BeardIcon = ({ size = 20 }) => (
   </svg>
 );
 
-// Custom SVG: Combined Scissors + Beard
-const CorteYBarbaIcon = ({ size = 20 }) => (
-  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-    <g transform="translate(-1, -1) scale(0.75)">
-      <circle cx="6" cy="6" r="3" />
-      <circle cx="6" cy="18" r="3" />
-      <line x1="20" y1="4" x2="8.12" y2="15.88" />
-      <line x1="14.47" y1="14.48" x2="20" y2="20" />
-      <line x1="8.12" y1="8.12" x2="12" y2="12" />
-    </g>
-    <g transform="translate(7, 7) scale(0.75)">
-      <path d="M4 8c0 6 3 13 8 13s8-7 8-13" />
-      <path d="M7.5 11.5c0 2 2 3.5 4.5 3.5s4.5-1.5 4.5-3.5" />
-      <path d="M10 9.5c0-1 1-1.5 2-1.5s2 .5 2 1.5" />
-    </g>
-  </svg>
-);
-
 const AVAILABLE_ICONS = [
   { name: 'Stethoscope', label: 'Diagnóstico' },
   { name: 'Smile',       label: 'Diseño de sonrisa' },
@@ -80,8 +63,8 @@ const getIconComponent = (iconName, size = 20) => {
   if (iconName === 'UserRound') iconName = 'BeardIcon';
 
   switch (iconName) {
-    case 'CorteYBarbaIcon': return <CorteYBarbaIcon size={size} />;
-    case 'Scissors':    return <Scissors size={size} />;
+    case 'CorteYBarbaIcon': return <ToothIcon size={size} />;
+    case 'Scissors':    return <ToothIcon size={size} />;
     case 'BeardIcon':   return <BeardIcon size={size} />;
     case 'PenTool':     return <PenTool size={size} />;
     case 'Flame':       return <Flame size={size} />;

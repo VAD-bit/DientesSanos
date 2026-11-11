@@ -5,7 +5,6 @@ import dentalChairImg from '../../assets/dental-chair.png';
 import { 
   Zap,
   TrendingUp,
-  Scissors,
   User,
   Package,
   DollarSign,

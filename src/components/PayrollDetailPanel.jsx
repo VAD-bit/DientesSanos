@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Banknote, CalendarDays, ChevronDown, Clock3, Scissors, WalletCards, X } from 'lucide-react';
+import { Banknote, CalendarDays, ChevronDown, Clock3, WalletCards, X } from 'lucide-react';
+import ToothIcon from './icons/ToothIcon';
 
 const fmt = value => Number(value || 0).toLocaleString('es-VE', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 const txAmountBs = (transaction, rate) => Number(transaction.metadata?.amountBs || (Number(transaction.amount || 0) * Number(transaction.exchange_rate || rate)));
@@ -48,7 +49,7 @@ const PayrollDetailPanel = ({ detail, rate, periodStart, periodEnd, isMobile, on
       {stat(<Banknote size={isMobile ? 17 : 20}/>, isAssistant ? 'Total ganado' : 'Generado por el profesional', totalGeneratedBs, null, totalGeneratedUsd)}
       {stat(<WalletCards size={isMobile ? 17 : 20}/>, 'Pagado / vales', paidAndAdvancesBs, null, paidAndAdvancesUsd)}
       {stat(<Clock3 size={isMobile ? 17 : 20}/>, 'Pendiente', pendingBs, null, pendingUsd)}
-      {stat(<Scissors size={isMobile ? 17 : 20}/>, isAssistant ? 'Limpiezas' : 'Servicios', null, String(staff.servicesCount || services.length))}
+      {stat(<ToothIcon size={isMobile ? 17 : 20}/>, isAssistant ? 'Limpiezas' : 'Servicios', null, String(staff.servicesCount || services.length))}
     </div>
     {isAssistant && (() => {
       // Desglose de lavados por tipo: los incluidos (washCount) y cada extra de lavado
@@ -134,9 +135,9 @@ const PayrollDetailPanel = ({ detail, rate, periodStart, periodEnd, isMobile, on
           const washGrossBs = washGrossUsd * transactionRate;
           const washAreaUsd = Math.max(0, washGrossUsd - washUsd);
           const washAreaBs = washAreaUsd * transactionRate;
-          return <article key={transaction.id} style={{padding:isMobile?'10px':'13px',borderRadius:'12px',background:'rgba(0,122,255,.055)',border:'1px solid rgba(0,122,255,.18)'}}>
+          return <article key={transaction.id} style={{padding:isMobile?'10px':'13px',borderRadius:'12px',background: 'rgba(0,122,255,.055)',border: '1px solid rgba(0,122,255,.18)'}}>
             <div style={{display:'flex',justifyContent:'space-between',gap:'12px'}}><div style={{minWidth:0}}><strong style={{display:'block',fontSize:'12px',wordBreak:'break-word'}}>Limpieza · {client}</strong><span style={{display:'block',marginTop:'4px',color:'var(--text-secondary)',fontSize:'10px',wordBreak:'break-word'}}>{service}</span></div><div style={{textAlign:'right',flexShrink:0}}><strong style={{display:'block',color:'#64d2ff',fontSize:'13px'}}>+${fmt(washUsd)}</strong><small style={{color:'var(--text-secondary)',fontSize:'9px'}}>{fmt(washBs)} Bs</small></div></div>
-            <button type="button" onClick={toggleDetails} aria-expanded={isExpanded} style={{width:'100%',display:'flex',justifyContent:'space-between',alignItems:'center',marginTop:'9px',padding:'8px 10px',borderRadius:'9px',border:'1px solid rgba(100,210,255,.15)',background:'rgba(0,122,255,.055)',color:'#9bdfff',fontSize:'9px',fontWeight:850,cursor:'pointer'}}><span>{isExpanded?'Ocultar desglose':'Ver desglose de la limpieza'}</span><ChevronDown size={13} style={{transform:isExpanded?'rotate(180deg)':'none',transition:'transform .2s'}}/></button>
+            <button type="button" onClick={toggleDetails} aria-expanded={isExpanded} style={{width:'100%',display:'flex',justifyContent:'space-between',alignItems:'center',marginTop:'9px',padding:'8px 10px',borderRadius:'9px',border: '1px solid rgba(100,210,255,.15)',background: 'rgba(0,122,255,.055)',color:'#9bdfff',fontSize:'9px',fontWeight:850,cursor:'pointer'}}><span>{isExpanded?'Ocultar desglose':'Ver desglose de la limpieza'}</span><ChevronDown size={13} style={{transform:isExpanded?'rotate(180deg)':'none',transition:'transform .2s'}}/></button>
             {isExpanded&&<div style={{display:'grid',gap:'5px',marginTop:'7px',padding:'9px',borderRadius:'9px',background: 'var(--bg-secondary)',border: '1px solid rgba(0, 0, 0, 0.08)',fontSize:'9px'}}><div style={{display:'flex',justifyContent:'space-between'}}><span style={{color:'var(--text-secondary)'}}>Tarifa total de la limpieza</span><strong>${fmt(washGrossUsd)} · {fmt(washGrossBs)} Bs</strong></div><div style={{display:'flex',justifyContent:'space-between'}}><span style={{color:'var(--text-secondary)'}}>Asistente (60%)</span><strong style={{color:'#64d2ff'}}>${fmt(washUsd)} · {fmt(washBs)} Bs</strong></div><div style={{display:'flex',justifyContent:'space-between'}}><span style={{color:'var(--text-secondary)'}}>Fondo área de limpieza (40%)</span><strong>${fmt(washAreaUsd)} · {fmt(washAreaBs)} Bs</strong></div>{assistantTipUsd>0&&<div style={{display:'flex',justifyContent:'space-between',paddingTop:'5px',borderTop: '1px solid rgba(0, 0, 0, 0.08)'}}><span style={{color:'var(--text-secondary)'}}>Propina del cliente</span><strong style={{color:'#32d74b'}}>+${fmt(assistantTipUsd)} · {fmt(assistantTipBs)} Bs</strong></div>}</div>}
             <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '6px', marginTop: '9px' }}><span style={{ padding: '4px 7px', borderRadius: '7px', background: 'rgba(0,122,255,.1)', color: '#8fd0ff', fontSize: '8px', fontWeight: 800 }}>{methodLabelFor(transaction)}</span><span style={{ marginLeft: 'auto', color: 'var(--text-muted)', fontSize: '8px' }}>{dateLabel(transaction.created_at)}</span></div>
           </article>;

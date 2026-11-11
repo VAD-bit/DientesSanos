@@ -25,7 +25,6 @@ import {
   Medal, 
   ArrowRight,
   ShoppingBag,
-  Scissors as ScissorsIcon,
   Circle,
   Gift,
   Cake,
@@ -43,6 +42,7 @@ import {
   Wallet,
   Package
 } from 'lucide-react';
+import ToothIcon from './icons/ToothIcon';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -1022,7 +1022,7 @@ const DashboardModule = ({
                       ? User
                       : result.type === 'appointment'
                         ? Calendar
-                        : ScissorsIcon;
+                        : ToothIcon;
                     const typeLabel = result.type === 'client'
                       ? 'Cliente'
                       : result.type === 'appointment'
@@ -2294,7 +2294,7 @@ const DashboardModule = ({
                     <label style={{ fontSize: '10px', fontWeight: '800', color: 'rgba(255,255,255,0.75)' }}>SERVICIO</label>
                     <div style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
                       <div style={{ position: 'absolute', left: '12px', color: 'rgba(255,255,255,0.5)', display: 'flex', alignItems: 'center' }}>
-                        <ScissorsIcon size={15} color="var(--champagne)" />
+                        <ToothIcon size={15} color="var(--champagne)" />
                       </div>
                       <input 
                         type="text" 

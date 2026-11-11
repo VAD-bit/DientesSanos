@@ -23,7 +23,6 @@ import {
   X, 
   ShoppingBag, 
   RefreshCcw, 
-  Scissors, 
   Droplets,
   Banknote,
   Landmark,
@@ -41,6 +40,7 @@ import {
   TrendingDown,
   AlertCircle
 } from 'lucide-react';
+import ToothIcon from './icons/ToothIcon';
 
 import { dataService } from '../services/dataService';
 import { supabase } from '../lib/supabase';
@@ -310,7 +310,7 @@ const EditTransactionContent = ({ transaction: t, rates, staff = [], onSave, onC
         <div className="finance-edit-column">
       {/* SERVICIO + BARBERO (una fila por cada cita/servicio enlazado en la transacción) */}
       <div style={sectionBox}>
-        <div style={sectionLabel}><Scissors size={15} /> Servicio y Odontólogo{services.length > 1 ? ` (${services.length})` : ''}</div>
+        <div style={sectionLabel}><ToothIcon size={15} /> Servicio y Odontólogo{services.length > 1 ? ` (${services.length})` : ''}</div>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
           {services.map((row, idx) => (
             <div key={row.appointmentId ?? idx} style={idx > 0 ? { paddingTop: '14px', borderTop: '1px solid rgba(0, 0, 0, 0.08)', display: 'flex', flexDirection: 'column', gap: '10px' } : { display: 'flex', flexDirection: 'column', gap: '10px' }}>
@@ -326,11 +326,11 @@ const EditTransactionContent = ({ transaction: t, rates, staff = [], onSave, onC
                         updateService(idx, { serviceName: v, servicePrice: svc ? Number(svc.price || 0) : row.servicePrice });
                       }}
                       options={[
-                        ...(!servicesList.some(s => s.name === row.serviceName) ? [{ value: '__custom__', label: row.serviceName || 'Personalizado', icon: <Scissors size={14} />, subtitle: 'Servicio registrado anteriormente' }] : []),
+                        ...(!servicesList.some(s => s.name === row.serviceName) ? [{ value: '__custom__', label: row.serviceName || 'Personalizado', icon: <ToothIcon size={14} />, subtitle: 'Servicio registrado anteriormente' }] : []),
                         ...servicesList.filter(s => s.active !== false).map(svc => ({
                           value: svc.name,
                           label: svc.name,
-                          icon: <Scissors size={14} />,
+                          icon: <ToothIcon size={14} />,
                           subtitle: `$${Number(svc.price || 0).toFixed(2)}`
                         }))
                       ]}
@@ -3586,7 +3586,7 @@ const FinanceModule = ({ isMobile, currency, rates, staff = [] }) => {
                 ].filter(Boolean))).join(', ') || meta.barberName || '';
                 return <article key={transaction.id} style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1.2fr 1.3fr .9fr auto', gap: '12px', alignItems: 'center', padding: '14px 16px', borderRadius: '14px', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(255,159,10,.18)' }}>
                   <div><strong style={{ display: 'block' }}>{meta.clientName || 'Cliente'}</strong><small style={{ color: 'var(--text-muted)' }}>{new Date(transaction.created_at).toLocaleDateString('es-VE')}</small></div>
-                  <div style={{ color: 'var(--text-secondary)', fontSize: '12px' }}>{meta.serviceName || 'Servicio'}{barber && <span style={{ display: 'block', color: 'var(--gold-primary)', fontSize: '11px', fontWeight: 700, marginTop: '2px' }}>✂ {barber}</span>}</div>
+                  <div style={{ color: 'var(--text-secondary)', fontSize: '12px' }}>{meta.serviceName || 'Servicio'}{barber && <span style={{ display: 'block', color: 'var(--gold-primary)', fontSize: '11px', fontWeight: 700, marginTop: '2px' }}>🦷 {barber}</span>}</div>
                   <div><strong style={{ color: '#ff9f0a' }}>{formatCurrency(bs, '')} Bs</strong><small style={{ display: 'block', color: 'var(--text-muted)' }}>${formatCurrency(usd, '')}</small></div>
                   <div style={{ justifySelf: isMobile ? 'stretch' : 'end', display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}><span style={{ padding: '6px 9px', borderRadius: '999px', background: 'rgba(255,159,10,.12)', color: '#ffb340', fontSize: '9px', fontWeight: 900 }}>PENDIENTE</span><button type="button" onClick={() => setReceivablePayment({ isOpen: true, transaction })} className="btn-gold" style={{ borderRadius: 10, padding: '9px 13px', fontSize: 11, fontWeight: 900, cursor: 'pointer' }}>Registrar pago</button></div>
                 </article>;
@@ -3712,7 +3712,7 @@ const FinanceModule = ({ isMobile, currency, rates, staff = [] }) => {
                     {st.isBarber ? (
                       <>
                         <span style={{ fontSize: '10.5px', fontWeight: '750', color: 'rgba(255,255,255,0.85)', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', padding: '3px 7px', borderRadius: '7px', display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
-                          <Scissors size={11} color="var(--gold-primary)" /> {st.servicesCount} {st.servicesCount === 1 ? 'servicio' : 'servicios'}
+                          <ToothIcon size={11} color="var(--gold-primary)" /> {st.servicesCount} {st.servicesCount === 1 ? 'servicio' : 'servicios'}
                         </span>
                         <span style={{ fontSize: '10.5px', fontWeight: '750', color: 'rgba(255,255,255,0.85)', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', padding: '3px 7px', borderRadius: '7px', display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
                           <Droplets size={11} color="#64d2ff" /> {st.lavadosCount} {st.lavadosCount === 1 ? 'limpieza' : 'limpiezas'}

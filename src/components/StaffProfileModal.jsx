@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { 
   X, 
   User, 
-  Scissors, 
   ShoppingBag, 
   Clock, 
   Star, 
@@ -16,6 +15,7 @@ import {
   Zap,
   Droplets
 } from 'lucide-react';
+import ToothIcon from './icons/ToothIcon';
 import { dataService } from '../services/dataService';
 import { SkeletonGrid } from './Skeleton';
 import { useNotifs } from '../context/NotificationContext';
@@ -483,7 +483,7 @@ const StaffProfileModal = ({ isOpen, onClose, staffMember, inventory = [], onUpd
                   onMouseOut={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.025)'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.06)'; }}
                 >
                   <div style={{ width: '48px', height: '48px', borderRadius: '12px', background: 'rgba(50,215,75,0.1)', color: '#32d74b', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                    <Scissors size={24} />
+                    <ToothIcon size={24} />
                   </div>
                   <div>
                     <div style={{ fontSize: '10px', color: 'var(--text-muted)', fontWeight: '900', letterSpacing: '1px', marginBottom: '4px' }}>COMISIONES SERVICIOS</div>
@@ -635,7 +635,7 @@ const StaffProfileModal = ({ isOpen, onClose, staffMember, inventory = [], onUpd
                           <div style={{ display: 'flex', gap: '12px', fontSize: '11px', color: 'var(--text-muted)', fontWeight: '600' }}>
                             <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}><Zap size={10} color="#ffcc00" /> Rapidez: <span style={{ color: 'white' }}>{rev.rapidez || rev.rating || 5}</span></span>
                             <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}><Droplets size={10} color="#007aff" /> Limpieza: <span style={{ color: 'white' }}>{rev.limpieza || rev.rating || 5}</span></span>
-                            <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}><Scissors size={10} color="#ff3b30" /> Habilidad: <span style={{ color: 'white' }}>{rev.habilidad || rev.rating || 5}</span></span>
+                            <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}><ToothIcon size={10} color="#ff3b30" /> Habilidad: <span style={{ color: 'white' }}>{rev.habilidad || rev.rating || 5}</span></span>
                           </div>
 
                           {rev.comment && (

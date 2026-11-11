@@ -4,7 +4,6 @@ import FieldLabel from './FieldLabel';
 import { 
   Calendar as CalendarIcon, 
   Clock, 
-  Scissors, 
   Plus, 
   ChevronLeft, 
   ChevronRight,
@@ -33,6 +32,7 @@ import {
   GlassWater,
   StickyNote
 } from 'lucide-react';
+import ToothIcon from './icons/ToothIcon';
 import { dataService } from '../services/dataService';
 import { filterSellableInventory, getInventorySalesLabel } from '../utils/inventorySales';
 import { useNotifs } from '../context/NotificationContext';
@@ -4495,7 +4495,7 @@ return (
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'rgba(0, 0, 0, 0.04)', padding: '12px 16px', borderRadius: '14px', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
                       <div style={{ display: 'flex', alignItems: 'center', gap: '10px', minWidth: 0 }}>
                         <div style={{ background: 'rgba(0, 0, 0, 0.04)', color: 'var(--gold-primary)', borderRadius: '10px', width: '32px', height: '32px', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                          <Scissors size={15} />
+                          <ToothIcon size={15} />
                         </div>
                         <div style={{ minWidth: 0 }}>
                           <div style={{ fontWeight: '850', color: 'white', fontSize: '13px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>

@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import { User, ArrowLeft, Scissors, Droplets, Megaphone } from 'lucide-react';
+import { User, ArrowLeft, Droplets, Megaphone } from 'lucide-react';
+import ToothIcon from './icons/ToothIcon';
 import { dataService } from '../services/dataService';
 import { isSupportStaff, getRoleCategory, roleLabel } from '../utils/staffRoles';
 import BarberPanel from './BarberPanel';
@@ -11,7 +12,7 @@ const MAX_RECENTS = 4;
 const roleOf = staff => String(staff?.role || '').split('|')[0].toLowerCase();
 
 const ROLE_META = {
-  odontologo: { label: 'Odontólogo', color: 'var(--gold-primary)', Icon: Scissors, filter: 'odontologo' },
+  odontologo: { label: 'Odontólogo', color: 'var(--gold-primary)', Icon: ToothIcon, filter: 'odontologo' },
   asistente: { label: 'Asistente', color: '#6fb8e0', Icon: Droplets, filter: 'asistente' },
   support: { label: 'Personal de apoyo', color: '#e0a36f', Icon: Megaphone, filter: 'apoyo' }
 };

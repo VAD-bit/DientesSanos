@@ -1,5 +1,6 @@
 import React from 'react';
-import { Check, Scissors, Zap, X } from 'lucide-react';
+import { Check, Zap, X } from 'lucide-react';
+import ToothIcon from './icons/ToothIcon';
 import { GiHairStrands, GiWaterDrop, GiShower, GiNoseFront, GiBeard, GiBottleVapors, GiTowel, GiTooth } from 'react-icons/gi';
 import { VenetianMask } from 'lucide-react';
 import { TbEar } from 'react-icons/tb';
@@ -36,7 +37,7 @@ const getServiceIcon = (name) => {
   if (n.includes('obturacion') || n.includes('obturación') && n.includes('extraccion')) {
     return (props) => (
       <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
-        <Scissors {...props} />
+        <ToothIcon {...props} />
         <GiTooth {...props} />
       </div>
     );
@@ -44,7 +45,7 @@ const getServiceIcon = (name) => {
   if (n.includes('obturacion') || n.includes('obturación') || n.includes('empaste')) return GiTooth;
   if (n.includes('ceja')) return MdFace3;
   if (n.includes('color') || n.includes('tinte') || n.includes('blanqueamiento')) return GiBottleVapors;
-  return Scissors;
+  return ToothIcon;
 };
 
 const OrderCatalogModal = ({
@@ -59,7 +60,7 @@ const OrderCatalogModal = ({
   const isService = type === 'service';
   const title = isService ? 'Catálogo de Servicios' : 'Servicios Extras';
   const subtitle = `${items.length} ${isService ? 'servicios' : 'extras'} disponibles`;
-  const HeaderIcon = isService ? Scissors : Zap;
+  const HeaderIcon = isService ? ToothIcon : Zap;
   const getIcon = isService ? getServiceIcon : getExtraIcon;
 
   return (

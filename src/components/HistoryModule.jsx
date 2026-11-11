@@ -5,12 +5,12 @@ import {
   Search, 
   Calendar, 
   User, 
-  Scissors, 
   TrendingUp, 
   ChevronDown,
   Package,
   Camera
 } from 'lucide-react';
+import ToothIcon from './icons/ToothIcon';
 import { dataService } from '../services/dataService';
 import { SkeletonList } from './Skeleton';
 import { useAuth } from '../context/AuthContext';
@@ -204,7 +204,7 @@ const HistoryModule = ({ isMobile, rates, onNavigate }) => {
           }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: isMobile ? '14px' : '20px' }}>
               <div style={{ padding: '8px', borderRadius: '10px', background: 'rgba(0, 0, 0, 0.04)', color: 'var(--gold-primary)', display: 'flex' }}>
-                <Scissors size={16} />
+                <ToothIcon size={16} />
               </div>
               <span style={{ fontSize: '12px', fontWeight: '900', color: 'white', letterSpacing: '1px', textTransform: 'uppercase' }}>
                 Servicio y Extras Realizados

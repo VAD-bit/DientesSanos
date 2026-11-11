@@ -3,7 +3,6 @@ import {
   BarChart3, 
   Users, 
   UserCircle, 
-  Scissors, 
   Package, 
   Wallet, 
   Star,
@@ -19,6 +18,7 @@ import {
   CheckCircle,
   Settings
 } from 'lucide-react';
+import ToothIcon from '../icons/ToothIcon';
 import { motion, AnimatePresence } from 'framer-motion';
 
 import { useAuth } from '../../context/AuthContext';
@@ -40,8 +40,8 @@ const MobileBottomNav = ({ activeTab, setActiveTab }) => {
   };
 
   const allMasterItems = [
-    { id: 'panels', label: 'Paneles', icon: Scissors },
-    { id: 'barber', label: 'Mi sillón', icon: Scissors },
+    { id: 'panels', label: 'Paneles', icon: ToothIcon },
+    { id: 'barber', label: 'Mi sillón', icon: ToothIcon },
     { id: 'scheduling', label: 'Agenda', icon: Calendar },
     { id: 'my-profile', label: 'Mi Perfil', icon: UserCircle },
     { id: 'clients', label: 'Pacientes', icon: Users },

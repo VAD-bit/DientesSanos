@@ -7,7 +7,6 @@ import {
   Search, 
   Plus, 
   Rocket, 
-  Scissors, 
   CreditCard, 
   Loader2, 
   UserPlus,
@@ -19,6 +18,7 @@ import {
   MinusCircle,
   ChevronDown
 } from 'lucide-react';
+import ToothIcon from './icons/ToothIcon';
 import { dataService } from '../services/dataService';
 import PandaSelect from './PandaSelect';
 import PandaDatePicker from './PandaDatePicker';
@@ -331,7 +331,7 @@ const SaleServiceModal = ({ isOpen, onClose, clients, services, staff, extras, i
                   value={involvedStaff[0].staffId}
                   onChange={val => setInvolvedStaff([{ ...involvedStaff[0], staffId: val }])}
                   options={staff.map(s => ({ label: s.name, value: s.id, imageUrl: s.image_url || s.avatar_url || '', avatarFallback: (s.name || '?').trim().charAt(0).toUpperCase(), subtitle: roleLabel((s.role || 'Profesional').split('|')[0]) }))}
-                  icon={<Scissors size={18} color="var(--gold-primary)" />}
+                  icon={<ToothIcon size={18} color="var(--gold-primary)" />}
                 />
               </div>
 

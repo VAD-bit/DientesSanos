@@ -2,7 +2,6 @@ import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { useModal } from '../context/ModalContext';
 import { 
-  Scissors, 
   Camera, 
   Sparkles,
   CheckCircle, 
@@ -27,6 +26,7 @@ import {
   LayoutDashboard,
   ReceiptText
 } from 'lucide-react';
+import ToothIcon from './icons/ToothIcon';
 import { dataService } from '../services/dataService';
 import { SkeletonList } from './Skeleton';
 import { useNotifs } from '../context/NotificationContext';
@@ -1171,7 +1171,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
               {selectedBarber.image_url ? (
                  <img loading="lazy" src={selectedBarber.image_url} alt={selectedBarber.name} style={{ width: '100%', height: '100%', borderRadius: '50%', objectFit: 'cover' }} />
               ) : (
-                isAssistant ? <Droplets size={20} color="white" /> : <Scissors size={20} color="black" />
+                isAssistant ? <Droplets size={20} color="white" /> : <ToothIcon size={20} color="black" />
               )}
             </div>
             <h2 style={{ fontSize: '24px', fontWeight: '900' }}>{getGreeting()} <span className="text-gold">{selectedBarber.name.split(' ')[0]}!</span></h2>
@@ -1434,7 +1434,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
         ) : (
           <section>
             <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '20px' }}>
-              <Scissors 
+              <ToothIcon 
                 size={18} 
                 color="var(--gold-primary)" 
                 style={{ filter: 'drop-shadow(0 1px 3px rgba(255, 255, 255, 0.4))' }} 
@@ -1879,7 +1879,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
                             transition: 'all 0.2s'
                           }}
                         >
-                          <Scissors size={15} color="var(--gold-primary)" style={{ filter: 'drop-shadow(0 0 5px rgba(255, 255, 255,0.4))' }} /> Servicio
+                          <ToothIcon size={15} color="var(--gold-primary)" style={{ filter: 'drop-shadow(0 0 5px rgba(255, 255, 255,0.4))' }} /> Servicio
                         </button>
                         <button
                           onClick={() => { setActiveAppId(app.id); setAddMode('extra'); setShowAddModal(true); }}
@@ -1938,7 +1938,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
                         </button>
                         {mobileAddMenuAppId === app.id && (
                           <div className="barber-mobile-add-menu">
-                            <button type="button" onClick={() => { setActiveAppId(app.id); setAddMode('service'); setShowAddModal(true); setMobileAddMenuAppId(null); }}><Scissors size={13} /> Servicio</button>
+                            <button type="button" onClick={() => { setActiveAppId(app.id); setAddMode('service'); setShowAddModal(true); setMobileAddMenuAppId(null); }}><ToothIcon size={13} /> Servicio</button>
                             <button type="button" onClick={() => { setActiveAppId(app.id); setAddMode('extra'); setShowAddModal(true); setMobileAddMenuAppId(null); }}><Plus size={13} /> Extra</button>
                             <button type="button" onClick={() => { setActiveAppId(app.id); setAddMode('product'); setShowAddModal(true); setMobileAddMenuAppId(null); }}><ShoppingBag size={13} /> Producto</button>
                           </div>
@@ -2135,7 +2135,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
             {isAssistant ? (
               <Droplets size={24} color="#007aff" style={{ margin: '0 auto 12px' }} />
             ) : (
-              <Scissors size={24} color="var(--gold-primary)" style={{ margin: '0 auto 12px' }} />
+              <ToothIcon size={24} color="var(--gold-primary)" style={{ margin: '0 auto 12px' }} />
             )}
             <div className="barber-stat-label" style={{ fontSize: '11px', fontWeight: '800', color: 'var(--text-secondary)', textTransform: 'uppercase' }}>
               {isAssistant ? "Limpiezas" : "Servicios"}
@@ -2236,7 +2236,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
                           display: 'flex', alignItems: 'center', justifyContent: 'center',
                           boxShadow: isAssistant ? 'inset 0 0 10px rgba(0,122,255,0.2)' : 'inset 0 0 10px rgba(50,215,75,0.2)'
                         }}>
-                          {isAssistant ? <Droplets size={20} color="#007aff" style={{ filter: 'drop-shadow(0 0 5px rgba(0,122,255,0.5))' }} /> : <Scissors size={20} color="#32d74b" style={{ filter: 'drop-shadow(0 0 5px rgba(50,215,75,0.5))' }} />}
+                          {isAssistant ? <Droplets size={20} color="#007aff" style={{ filter: 'drop-shadow(0 0 5px rgba(0,122,255,0.5))' }} /> : <ToothIcon size={20} color="#32d74b" style={{ filter: 'drop-shadow(0 0 5px rgba(50,215,75,0.5))' }} />}
                         </div>
                         <div>
                           <div style={{ fontWeight: '900', fontSize: '16px', color: 'white', letterSpacing: '0.3px' }}>{app.clients?.name || 'Cliente'}</div>

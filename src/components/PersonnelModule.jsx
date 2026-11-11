@@ -61,9 +61,9 @@ import {
   DollarSign,
   Target,
   TrendingUp as TrendingUpIcon,
-  Globe,
   Film
 } from 'lucide-react';
+import ToothIcon from './icons/ToothIcon';
 import { dataService } from '../services/dataService';
 import { SkeletonList, SkeletonGrid } from './Skeleton';
 import PandaSelect from './PandaSelect';
@@ -1634,7 +1634,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
   const getRoleIcon = (role) => {
     const iconStyle = { flexShrink: 0 };
     const r = String(role || '').toLowerCase().split('|')[0];
-    if (r.includes('odontolog') || r.includes('barbero') || r.includes('tatu') || r.includes('estilista')) return <Scissors size={16} style={iconStyle} />;
+    if (r.includes('odontolog') || r.includes('barbero') || r.includes('tatu') || r.includes('estilista')) return <ToothIcon size={16} style={iconStyle} />;
     if (r.includes('asistente') || r.includes('lavado')) return <Droplets size={16} style={iconStyle} />;
     if (r.includes('recepcion')) return <Headset size={16} style={iconStyle} />;
     if (r.includes('caja')) return <CreditCard size={16} style={iconStyle} />;
@@ -2571,7 +2571,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                   <div className="form-group">
                   <FieldLabel>¿EN QUÉ SE ESPECIALIZA? (PUESTO / ENFOQUE)</FieldLabel>
                     <div style={{ position: 'relative' }}>
-                      <Scissors size={18} style={{ position: 'absolute', left: '16px', top: '16px', color: 'var(--gold-primary)' }} />
+                      <ToothIcon size={18} style={{ position: 'absolute', left: '16px', top: '16px', color: 'var(--gold-primary)' }} />
                       <input className="form-input" placeholder="Ej. Especialista en estética dental y blanqueamiento" value={formData.specialty} onChange={e => setFormData({...formData, specialty: e.target.value})} style={{ width: '100%', height: '50px', paddingLeft: '48px' }} />
                     </div>
                   </div>
@@ -2582,7 +2582,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                     <div className="form-group">
                   <FieldLabel>CANT. SERVICIOS</FieldLabel>
                       <div style={{ position: 'relative' }}>
-                        <Scissors size={16} style={{ position: 'absolute', left: '16px', top: '16px', color: 'var(--gold-primary)' }} />
+                        <ToothIcon size={16} style={{ position: 'absolute', left: '16px', top: '16px', color: 'var(--gold-primary)' }} />
                         <input className="form-input" placeholder="Ej. 324 o 500+" value={formData.services_count} onChange={e => setFormData({...formData, services_count: e.target.value})} style={{ width: '100%', height: '50px', paddingLeft: '48px' }} />
                       </div>
                     </div>
@@ -3206,7 +3206,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                 <div className="form-group">
                   <label style={{ display: 'block', fontSize: '11px', fontWeight: '900', color: 'var(--text-muted)', marginBottom: '8px', letterSpacing: '1px' }}>¿EN QUÉ SE ESPECIALIZA? (PUESTO / ENFOQUE)</label>
                   <div style={{ position: 'relative' }}>
-                    <Scissors size={18} style={{ position: 'absolute', left: '16px', top: '16px', color: 'var(--gold-primary)' }} />
+                    <ToothIcon size={18} style={{ position: 'absolute', left: '16px', top: '16px', color: 'var(--gold-primary)' }} />
                     <input className="form-input" placeholder="Ej. Especialista en estética dental y blanqueamiento" value={formData.specialty} onChange={e => setFormData({...formData, specialty: e.target.value})} style={{ width: '100%', height: '50px', paddingLeft: '48px' }} />
                   </div>
                 </div>
@@ -3219,7 +3219,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                   <div className="form-group">
                     <label style={{ display: 'block', fontSize: '10px', fontWeight: '900', color: 'var(--text-muted)', marginBottom: '8px', letterSpacing: '1px' }}>CANT. SERVICIOS</label>
                     <div style={{ position: 'relative' }}>
-                      <Scissors size={16} style={{ position: 'absolute', left: '16px', top: '16px', color: 'var(--gold-primary)' }} />
+                      <ToothIcon size={16} style={{ position: 'absolute', left: '16px', top: '16px', color: 'var(--gold-primary)' }} />
                       <input className="form-input" placeholder="Ej. 324 o 500+" value={formData.services_count} onChange={e => setFormData({...formData, services_count: e.target.value})} style={{ width: '100%', height: '50px', paddingLeft: '48px' }} />
                     </div>
                   </div>
@@ -4147,7 +4147,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
 
                       {/* Habilidad */}
                       <div style={{ textAlign: 'center', padding: '16px', borderRadius: '16px', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
-                        <Scissors size={20} color="var(--text-muted)" style={{ margin: '0 auto 8px' }} />
+                        <ToothIcon size={20} color="var(--text-muted)" style={{ margin: '0 auto 8px' }} />
                         <div style={{ fontSize: '24px', fontWeight: '900', color: 'white' }}>{avgHabilidad}</div>
                         <div style={{ fontSize: '11px', color: 'var(--text-muted)', fontWeight: '700', marginTop: '4px' }}>HABILIDAD</div>
                       </div>
@@ -4575,7 +4575,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                   <div className="glass-card" style={{ padding: '20px', borderRadius: '20px', background: 'rgba(0, 0, 0, 0.04)', transition: 'none' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '12px' }}>
                       <div style={{ width: '40px', height: '40px', borderRadius: '12px', background: 'rgba(100,210,255,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                        <Scissors size={20} color="#64d2ff" />
+                        <ToothIcon size={20} color="#64d2ff" />
                       </div>
                        <span style={{ fontSize: '11px', fontWeight: '800', color: 'var(--text-muted)', letterSpacing: '0.5px', textTransform: 'uppercase' }}>Servicios Completados</span>
                       <InfoTooltip text="Total de citas con estado 'Completado' registradas por todo el equipo en el mes actual." />

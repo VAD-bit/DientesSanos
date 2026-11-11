@@ -8,7 +8,6 @@ import {
   Search, 
   Calendar, 
   User, 
-  Scissors, 
   AlertCircle,
   Package
 } from 'lucide-react';

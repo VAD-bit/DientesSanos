@@ -3,7 +3,6 @@ import {
   BarChart3, 
   Calendar, 
   Users, 
-  Scissors, 
   TrendingUp, 
   Download,
   Clock,

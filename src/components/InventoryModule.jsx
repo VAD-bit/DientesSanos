@@ -21,7 +21,6 @@ import {
   ShoppingBag,
   Wrench,
   ShoppingCart,
-  Scissors,
   Store,
   Smile,
   ArrowDownLeft,
@@ -29,6 +28,7 @@ import {
   CalendarDays,
   TrendingUp
 } from 'lucide-react';
+import ToothIcon from './icons/ToothIcon';
 import { dataService } from '../services/dataService';
 import { SkeletonList, SkeletonGrid } from './Skeleton';
 import { useNotifs } from '../context/NotificationContext';
@@ -428,7 +428,7 @@ const InventoryModule = ({ isMobile, currency, rates }) => {
                 ] : []),
                 ...(activeInventory === 'tools' ? [
                   { label: <div style={{display: 'flex', alignItems: 'center', gap: '8px'}}><Wrench size={14} color="#007aff"/> Herramienta</div>, value: 'Herramienta' },
-                  { label: <div style={{display: 'flex', alignItems: 'center', gap: '8px'}}><Scissors size={14} color="#ff3b30"/> Accesorio</div>, value: 'Accesorios' },
+                  { label: <div style={{display: 'flex', alignItems: 'center', gap: '8px'}}><ToothIcon size={14} color="#ff3b30"/> Accesorio</div>, value: 'Accesorios' },
                   { label: <div style={{display: 'flex', alignItems: 'center', gap: '8px'}}><Smile size={14} color="var(--gold-primary)"/> Uso clínico</div>, value: 'Uso Clínico' }
                 ] : [])
               ]}
@@ -802,7 +802,7 @@ const InventoryModule = ({ isMobile, currency, rates }) => {
                         const n = (item.name || '').toLowerCase();
                         const c = (item.category || '').toLowerCase();
                         if (c.includes('herramienta') || n.includes('maquina') || n.includes('clipper') || n.includes('trimmer')) return <Wrench size={24} color="var(--gold-primary)" style={{ opacity: 0.6 }} />;
-                        if (c.includes('instrumental') || n.includes('espejo') || n.includes('sonda') || n.includes('pinza') || n.includes('babero')) return <Scissors size={24} color="var(--gold-primary)" style={{ opacity: 0.6 }} />;
+                        if (c.includes('instrumental') || n.includes('espejo') || n.includes('sonda') || n.includes('pinza') || n.includes('babero')) return <ToothIcon size={24} color="var(--gold-primary)" style={{ opacity: 0.6 }} />;
                         if (c.includes('venta')) return <ShoppingBag size={24} color="var(--gold-primary)" style={{ opacity: 0.6 }} />;
                         return <Package size={24} color="var(--gold-primary)" style={{ opacity: 0.6 }} />;
                       })()
@@ -1203,7 +1203,7 @@ const EditInventoryModal = ({ isOpen, item, staff = [], onClose, onSave }) => {
                   { label: <div style={{display: 'flex', alignItems: 'center', gap: '8px'}}><ShoppingCart size={14} color="var(--gold-primary)"/> Para Venta</div>, value: 'Venta' },
                   { label: <div style={{display: 'flex', alignItems: 'center', gap: '8px'}}><Package size={14} color="var(--gold-primary)"/> Insumos dentales</div>, value: 'Insumos dentales' },
                   { label: <div style={{display: 'flex', alignItems: 'center', gap: '8px'}}><Smile size={14} color="var(--gold-primary)"/> Uso clínico</div>, value: 'Uso Clínico' },
-                  { label: <div style={{display: 'flex', alignItems: 'center', gap: '8px'}}><Scissors size={14} color="#ff3b30"/> Accesorios</div>, value: 'Accesorios' },
+                  { label: <div style={{display: 'flex', alignItems: 'center', gap: '8px'}}><ToothIcon size={14} color="#ff3b30"/> Accesorios</div>, value: 'Accesorios' },
                   { label: <div style={{display: 'flex', alignItems: 'center', gap: '8px'}}><Wrench size={14} color="#007aff"/> Herramienta</div>, value: 'Herramienta' }
                 ]}
               />

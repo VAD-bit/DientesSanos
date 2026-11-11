@@ -4,7 +4,6 @@ import {
   Users, 
   Search, 
   UserPlus, 
-  Scissors, 
   Calendar, 
   Zap,
   CheckCircle2,
@@ -20,6 +19,7 @@ import {
   Sparkles,
   Check
 } from 'lucide-react';
+import ToothIcon from './icons/ToothIcon';
 import { dataService } from '../services/dataService';
 import { useNotifs } from '../context/NotificationContext';
 import PandaSelect from './PandaSelect';
@@ -789,7 +789,7 @@ const ReceptionModule = ({ isMobile, rates }) => {
                 className="action-add-btn btn-service reception-animate-item"
                 style={{ animationDelay: '0ms' }}
               >
-                <Scissors size={18} /> <span style={{ textAlign: 'center' }}>+ SERVICIO</span>
+                <ToothIcon size={18} /> <span style={{ textAlign: 'center' }}>+ SERVICIO</span>
               </button>
               <button
                 onClick={() => setIsExtraModalOpen(true)}
@@ -819,7 +819,7 @@ const ReceptionModule = ({ isMobile, rates }) => {
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '7px' }}>
                   {selectedServices.map(s => (
                     <div key={s.id} className="reception-order-row" style={{ minHeight: '62px', padding: '9px 9px 9px 10px', display: 'grid', gridTemplateColumns: '38px minmax(0,1fr) auto 36px', alignItems: 'center', gap: '10px', borderRadius: '14px', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
-                      <span style={{ width: '38px', height: '38px', display: 'grid', placeItems: 'center', borderRadius: '11px', color: 'var(--gold-primary)', background: 'rgba(17, 17, 17,.11)', border: '1px solid rgba(17, 17, 17,.2)' }}><Scissors size={17} /></span>
+                      <span style={{ width: '38px', height: '38px', display: 'grid', placeItems: 'center', borderRadius: '11px', color: 'var(--gold-primary)', background: 'rgba(17, 17, 17,.11)', border: '1px solid rgba(17, 17, 17,.2)' }}><ToothIcon size={17} /></span>
                       <div style={{ minWidth: 0 }}><span style={{ display: 'block', color: 'var(--gold-primary)', fontSize: '8px', fontWeight: 950, letterSpacing: '.7px' }}>SERVICIO</span><strong style={{ display: 'block', marginTop: '2px', color: '#fff', fontSize: '13px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{s.name}</strong></div>
                       <div style={{ textAlign: 'right' }}>
                         <strong style={{ display: 'block', color: '#fff', fontSize: '12px' }}>{formatBs(Number(s.price) * exchangeRate)} Bs</strong>
@@ -1234,7 +1234,7 @@ const ReceptionModule = ({ isMobile, rates }) => {
               </div>
             ) : selectedServices.length === 0 && selectedProducts.length === 0 && selectedExtras.length === 0 ? (
               <>
-                <Scissors size={48} color="rgba(255, 255, 255,0.2)" style={{ marginBottom: '20px' }} />
+                <ToothIcon size={48} color="rgba(255, 255, 255,0.2)" style={{ marginBottom: '20px' }} />
                 <h3 style={{ color: 'var(--text-secondary)' }}>Añade productos o servicios</h3>
                 <p style={{ fontSize: '13px', color: 'var(--text-muted)', marginTop: '8px' }}>Selecciona lo que el cliente desea adquirir.</p>
               </>
@@ -1253,7 +1253,7 @@ const ReceptionModule = ({ isMobile, rates }) => {
                     {selectedServices.map(s => (
                       <div key={s.id}>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                          <Scissors size={14} color="var(--gold-primary)" />
+                          <ToothIcon size={14} color="var(--gold-primary)" />
                           <span style={{ fontSize: '13px', fontWeight: '700' }}>{s.name}</span>
                         </div>
                         {s.included_items && s.included_items.length > 0 && (
@@ -1757,7 +1757,7 @@ const SelectionModal = ({ isOpen, onClose, title, icon, items, selectedItems, on
                       <img src={item.image_url} alt={item.name} style={{ width: '100%', height: '100%', borderRadius: '12px', objectFit: 'cover' }} />
                     ) : (
                       type === 'service' ? (
-                        <Scissors size={20} color={isSelected ? 'black' : 'var(--gold-primary)'} />
+                        <ToothIcon size={20} color={isSelected ? 'black' : 'var(--gold-primary)'} />
                       ) : type === 'extra' ? (
                         <Rocket size={20} color={isSelected ? 'black' : '#ff9f0a'} />
                       ) : (

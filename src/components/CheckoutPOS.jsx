@@ -16,7 +16,6 @@ import {
   History,
   TrendingUp,
   User,
-  Scissors,
   Zap,
   Droplets,
   Edit3,
@@ -29,6 +28,7 @@ import {
   PenTool,
   BarChart3
 } from 'lucide-react';
+import ToothIcon from './icons/ToothIcon';
 import { 
   GiNoseFront, GiTooth, GiComb, GiWaterDrop, 
   GiCoffeeCup, GiBeerBottle, GiSpray, 
@@ -2068,7 +2068,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                       </div>
                       <div style={{ fontSize: '13px', color: 'var(--text-secondary)', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '6px', maxWidth: '70%', minWidth: 0 }}>
-                          <Scissors size={12} style={{ flexShrink: 0 }} /> <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', display: 'block', minWidth: 0 }}>{serviceNames}</span> <span style={{ flexShrink: 0 }}>•</span> <span style={{ fontWeight: '600', flexShrink: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', display: 'block' }}>{staffNames}</span>
+                          <ToothIcon size={12} style={{ flexShrink: 0 }} /> <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', display: 'block', minWidth: 0 }}>{serviceNames}</span> <span style={{ flexShrink: 0 }}>•</span> <span style={{ fontWeight: '600', flexShrink: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', display: 'block' }}>{staffNames}</span>
                         </div>
                         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '2px' }}>
                           <span style={{ fontWeight: '700', color: 'var(--gold-primary)' }}>{(totalUsd * fixedRate).toLocaleString('es-VE', {minimumFractionDigits: 2, maximumFractionDigits: 2})} Bs.</span>
@@ -2180,7 +2180,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                 onPointerUp={e => { e.currentTarget.style.transform = 'scale(1)'; }}
                 onPointerCancel={e => { e.currentTarget.style.transform = 'scale(1)'; }}
               >
-                <Scissors size={isMobile ? 22 : 28} color="var(--gold-primary)" strokeWidth={1.5} style={{ transform: 'rotate(-45deg)' }} />
+                <ToothIcon size={isMobile ? 22 : 28} color="var(--gold-primary)" strokeWidth={1.5} style={{ transform: 'rotate(-45deg)' }} />
                 <span style={{ fontWeight: '700', fontSize: isMobile ? '9px' : '11px', letterSpacing: '0.5px', color: 'rgba(255,255,255,0.7)' }}>SERVICIOS</span>
               </button>
 
@@ -3616,7 +3616,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
                     <div style={{ width: '40px', height: '40px', borderRadius: '12px', background: 'linear-gradient(135deg, rgba(0, 0, 0, 0.04), rgba(0, 0, 0, 0.04))', border: '1px solid rgba(0, 0, 0, 0.08)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                      <Scissors size={20} color="var(--gold-primary)" />
+                      <ToothIcon size={20} color="var(--gold-primary)" />
                     </div>
                     <div>
                       <h2 style={{ fontWeight: '900', fontSize: '20px', color: 'white', marginBottom: '2px' }}>Catálogo de Servicios</h2>
@@ -3639,23 +3639,15 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                     }
                   };
 
-                  const CorteYBarbaIcon = (props) => (
-                    <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
-                      <Scissors {...props} />
-                      <GiTooth {...props} />
-                    </div>
-                  );
-
                   const getServiceIcon = (name) => {
                     const cleanName = (name || '').toLowerCase();
                     if (cleanName.includes('niño') || cleanName.includes('niña') || cleanName.includes('kid')) return FaChild;
                     if (cleanName.includes('vip') || cleanName.includes('premium')) return MdWorkspacePremium;
                     if (cleanName.includes('tatuaje') || cleanName.includes('tattoo')) return PenTool;
-                    if (cleanName.includes('obturacion') && cleanName.includes('extraccion')) return CorteYBarbaIcon;
                     if (cleanName.includes('muela') || cleanName.includes('extraccion') || cleanName.includes('cirugia')) return GiTooth;
                     if (cleanName.includes('ceja')) return MdFace3;
                     if (cleanName.includes('color') || cleanName.includes('tinte') || cleanName.includes('blanqueamiento')) return GiBottleVapors;
-                    return Scissors;
+                    return ToothIcon;
                   };
                   const ServiceIcon = getServiceIcon(service.name);
 
@@ -3700,7 +3692,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '20px' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
                     <div style={{ width: '40px', height: '40px', borderRadius: '12px', background: 'linear-gradient(135deg, rgba(0, 0, 0, 0.04), rgba(0, 0, 0, 0.04))', border: '1px solid rgba(0, 0, 0, 0.08)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                      <Scissors size={20} color="var(--gold-primary)" />
+                      <ToothIcon size={20} color="var(--gold-primary)" />
                     </div>
                     <div>
                       <h2 style={{ fontWeight: '900', fontSize: '20px', color: 'white', margin: 0 }}>Asignar Profesional</h2>

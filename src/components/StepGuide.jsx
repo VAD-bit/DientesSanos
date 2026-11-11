@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Check, ChevronRight, User, Scissors, Sparkles, PartyPopper, Circle } from 'lucide-react';
+import { Check, ChevronRight, User, Sparkles, PartyPopper, Circle } from 'lucide-react';
 
 /**
  * StepGuide — Friendly guided walkthrough for multi-step modals.
@@ -9,7 +9,7 @@ import { Check, ChevronRight, User, Scissors, Sparkles, PartyPopper, Circle } fr
  *   <StepGuide
  *     steps={[
  *       { id: 'client', label: 'Cliente', required: true, message: 'Primero, busca el cliente por cédula o nombre', icon: '👤' },
- *       { id: 'service', label: 'Servicio', required: true, message: '¡Genial! Ahora elige el servicio', icon: '✂️' },
+ *       { id: 'service', label: 'Servicio', required: true, message: '¡Genial! Ahora elige el servicio', icon: '🦷' },
  *       { id: 'barber', label: 'Barbero', required: true, message: 'Perfecto. Ahora selecciona el barbero', icon: '💈' },
  *       { id: 'extras', label: 'Extras', required: false, message: 'Casi listo. Puedes agregar extras si quieres', icon: '✨' },
  *     ]}
