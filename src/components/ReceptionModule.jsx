@@ -1405,7 +1405,7 @@ const ReceptionModule = ({ isMobile, rates }) => {
         mode="multiple"
         initialSelection={selectedProducts}
         title="Productos y Cortesías"
-        subtitle="Selecciona productos o bebidas para agregarlos a la orden"
+        subtitle="Selecciona productos o insumos para agregarlos a la orden"
         onConfirm={applyProductSelection}
       />
 

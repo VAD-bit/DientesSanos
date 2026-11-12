@@ -103,7 +103,7 @@ const SellableInventoryModal = ({
               <div style={{ marginTop: '13px', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(240px, 100%), 1fr))', gap: '8px', alignItems: 'center' }}>
                 <label style={{ position: 'relative' }}>
                   <Search size={17} style={{ position: 'absolute', left: '15px', top: '50%', transform: 'translateY(-50%)', color: 'var(--gold-primary)' }} />
-                  <input value={search} onChange={event => setSearch(event.target.value)} placeholder="Buscar productos o bebidas..." style={{ width: '100%', height: '42px', boxSizing: 'border-box', padding: '0 13px 0 42px', borderRadius: '12px', border: '1px solid rgba(0, 0, 0, 0.08)', background: 'var(--bg-secondary)', color: '#fff', outline: 'none', fontSize: '13px' }} />
+                  <input value={search} onChange={event => setSearch(event.target.value)} placeholder="Buscar productos o insumos..." style={{ width: '100%', height: '42px', boxSizing: 'border-box', padding: '0 13px 0 42px', borderRadius: '12px', border: '1px solid rgba(0, 0, 0, 0.08)', background: 'var(--bg-secondary)', color: '#fff', outline: 'none', fontSize: '13px' }} />
                 </label>
                 <div style={{ display: 'flex', gap: '7px', overflowX: 'auto', maxWidth: '100%' }}>
                   {Object.entries(INVENTORY_SALES_GROUPS).map(([value, label]) => (

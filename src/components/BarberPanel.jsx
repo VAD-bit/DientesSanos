@@ -514,7 +514,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
       // Notify barbers that client is ready
       notificationService.broadcastNotification(
         supabase,
-        '💈 Cliente listo',
+        '🦷 Cliente listo',
         `El cliente ${clientName} terminó su profilaxis y está listo para pasar a sillón.`,
         { recipientRole: 'Barbero' }
       );
@@ -1782,7 +1782,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
                                 {renderBeverageIcon(app.beverage_selection, 15, '')}
                               </span>
                               <div>
-                                <span style={{ fontSize: '9px', color: 'rgba(255,255,255,0.4)', textTransform: 'uppercase', fontWeight: '800', display: 'block', lineHeight: '1.2' }}>Bebida Solicitada</span>
+                                <span style={{ fontSize: '9px', color: 'rgba(255,255,255,0.4)', textTransform: 'uppercase', fontWeight: '800', display: 'block', lineHeight: '1.2' }}>Hidratación Solicitada</span>
                                 <span style={{ fontSize: '12px', color: 'white', fontWeight: '700' }}>{app.beverage_selection}</span>
                               </div>
                             </div>
@@ -2073,7 +2073,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
           mode="single"
           loading={addingItemId !== null}
           title="Productos y Cortesías"
-          subtitle="Selecciona un producto o bebida para agregarlo a la cuenta"
+          subtitle="Selecciona un producto o insumo para agregarlo a la cuenta"
           onSelect={handleAddProduct}
         />
 

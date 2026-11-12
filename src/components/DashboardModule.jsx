@@ -1922,7 +1922,7 @@ const DashboardModule = ({
                             background: 'rgba(232, 212, 176, 0.1)', border: '1px solid rgba(232, 212, 176, 0.2)',
                             borderRadius: '6px', padding: '3px 8px', whiteSpace: 'nowrap', flexShrink: 0,
                             textTransform: 'capitalize'
-                          }}>☕ {item.beverage}</span>
+                          }}>💧 {item.beverage}</span>
                         )}
                       </div>
                     </div>

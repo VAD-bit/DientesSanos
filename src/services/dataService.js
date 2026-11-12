@@ -1621,10 +1621,10 @@ export const dataService = {
         pushService.notify({ staffId: app.staff_id }, '📅 Nueva cita agendada',
           `${clientName}${svc ? ' • ' + svc : ''}${when}${priceStr}`, { appId, kind });
       } else if (kind === 'ensilla') {
-        pushService.notify({ staffId: app.staff_id }, '💈 Cliente en tu silla',
+        pushService.notify({ staffId: app.staff_id }, '🦷 Cliente en tu silla',
           `${clientName} está en tu silla${svc ? ' • ' + svc : ''}${priceStr}`, { appId, kind });
         if (app.beverage_selection) {
-          pushService.notify({ roles: ['asistente', 'admin'] }, 'Preparar bebida',
+          pushService.notify({ roles: ['asistente', 'admin'] }, 'Preparar hidratación',
             `${clientName} ya llegó y quiere ${formatProductName(app.beverage_selection) || app.beverage_selection}`, { appId, kind, beverage: app.beverage_selection });
         }
       } else if (kind === 'caja') {
@@ -1649,7 +1649,7 @@ export const dataService = {
       const prodName = formatProductName(prodRes.data?.name) || 'Producto';
       const clientName = formatName(appRes.data?.clients?.name) || 'Cliente';
       const qty = quantity && quantity > 1 ? ` x${quantity}` : '';
-      pushService.notify({ roles: ['asistente', 'admin'] }, '🥤 Venta de producto',
+      pushService.notify({ roles: ['asistente', 'admin'] }, '🦷 Venta de producto',
         `${prodName}${qty} para ${clientName}`, { appointmentId, productId });
     } catch (e) {
       console.error('push product error', e);
@@ -1810,7 +1810,7 @@ export const dataService = {
 
           notificationService.broadcastNotification(
             supabase,
-            '💈 Nuevo Cliente en Silla',
+            '🦷 Nuevo Cliente en Silla',
             `Hey, te toca atender a ${clientName} para el servicio: ${serviceName}${includedList}.`,
             { recipientId: appDetails.staff_id, recipientRole: 'Barbero' }
           );

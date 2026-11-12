@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Settings, User, Award, Calendar as CalendarIcon, Coffee, Gamepad2, Compass, ArrowUpRight, MapPin, X, ChevronLeft, Star, Heart } from 'lucide-react';
+import { Settings, User, Award, Calendar as CalendarIcon, GlassWater, Gamepad2, Compass, ArrowUpRight, MapPin, X, ChevronLeft, Star, Heart } from 'lucide-react';
 import ToothIcon from '../../components/icons/ToothIcon';
 import { publicService } from '../services/publicService';
 import { CLINIC } from '../config/clinic';
@@ -180,7 +180,7 @@ export default function Explore() {
             
             <div className="ep-widgets">
               <button className="ep-widget">
-                <div className="ep-widget-icon"><Coffee size={20} /></div>
+                <div className="ep-widget-icon"><GlassWater size={20} /></div>
                 <div className="ep-widget-text">
                   <span className="ep-widget-title">Agua de cortesía</span>
                   <span className="ep-widget-subtitle">Agua embotellada y sala de espera dental</span>

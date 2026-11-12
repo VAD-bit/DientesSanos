@@ -3126,10 +3126,10 @@ const videoRef = useRef(null);
                        
                        const specialtyText = (barber.specialty || '').trim() 
                           ? barber.specialty.trim().toUpperCase() 
-                          : (isAbraham ? 'MASTER DENTAL' : isAlejandro ? 'ODONTÓLOGO' : isAngel ? 'ODONTÓLOGO' : isJose ? 'ESTÉTICA' : isMarko ? 'ESTÉTICA' : (isBarista ? 'BARISTA' : isAsistente ? 'ASISTENTE CLÍNICO' : (isRawRolePermissions ? 'ASISTENTE' : roleLabel(rawRole).toUpperCase())));
+                          : (isAbraham ? 'MASTER DENTAL' : isAlejandro ? 'ODONTÓLOGO' : isAngel ? 'ODONTÓLOGO' : isJose ? 'ESTÉTICA' : isMarko ? 'ESTÉTICA' : (isBarista ? 'ASISTENTE CLÍNICO' : isAsistente ? 'ASISTENTE CLÍNICO' : (isRawRolePermissions ? 'ASISTENTE' : roleLabel(rawRole).toUpperCase())));
                        const cleanTags = (barber.role?.split('|')[1] || '').trim();
                        const isRawPermissions = cleanTags.includes(',') || cleanTags.includes('barber') || cleanTags.includes('schedule') || !cleanTags;
-                       const defaultTags = isBarista ? 'Café • Bebidas • Experiencia' : (isAsistente ? 'Higiene • Confort • Cuidado' : (specialtyText.includes('TATUA') || rawRole.toLowerCase().includes('tatu') ? 'Estética • Blanqueamiento • Sonrisa' : (specialtyText.includes('MANICUR') || specialtyText.includes('UÑA') ? 'Estética • Diseño • Sonrisa' : 'Prevención • Estética • Confort')));
+                       const defaultTags = isBarista ? 'Hidratación • Confort • Experiencia' : (isAsistente ? 'Higiene • Confort • Cuidado' : (specialtyText.includes('TATUA') || rawRole.toLowerCase().includes('tatu') ? 'Estética • Blanqueamiento • Sonrisa' : (specialtyText.includes('MANICUR') || specialtyText.includes('UÑA') ? 'Estética • Diseño • Sonrisa' : 'Prevención • Estética • Confort')));
                        const tagsText = !isRawPermissions 
                          ? cleanTags 
                          : (isAbraham ? 'Prevención • Estética • Control' : isAlejandro ? 'Ortodoncia • Estética • Control' : isAngel ? 'Endodoncia • Urgencias • Confort' : isJose ? 'Estética • Blanqueamiento' : isMarko ? 'Estética • Blanqueamiento' : defaultTags);

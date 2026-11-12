@@ -4688,7 +4688,7 @@ const FinanceModule = ({ isMobile, currency, rates, staff = [] }) => {
             rates={rates}
             mode="multiple"
             title={`Consumo de ${consumptionModal.staff?.name || 'personal'}`}
-            subtitle="Selecciona productos o bebidas. El total se descontará de su saldo de nómina, aunque quede negativo."
+            subtitle="Selecciona productos o insumos. El total se descontará de su saldo de nómina, aunque quede negativo."
             loading={loading}
             onClose={() => setConsumptionModal(prev => ({ ...prev, isOpen: false }))}
             onConfirm={handleRegisterConsumption}

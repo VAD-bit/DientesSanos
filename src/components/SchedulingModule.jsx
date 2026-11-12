@@ -4612,7 +4612,7 @@ return (
                            activeDetail.beverage_selection.includes('Whiskey') ? <Martini size={14} color="#ff9f0a" /> : <GlassWater size={14} color="#007aff" />}
                         </span>
                         <div>
-                          <span style={{ fontSize: '9px', fontWeight: '900', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.8px', display: 'block' }}>Bebida Solicitada</span>
+                          <span style={{ fontSize: '9px', fontWeight: '900', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.8px', display: 'block' }}>Hidratación Solicitada</span>
                           <span style={{ fontSize: '13px', fontWeight: '800', color: 'white' }}>{activeDetail.beverage_selection}</span>
                         </div>
                       </div>

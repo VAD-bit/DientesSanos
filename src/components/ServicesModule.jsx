@@ -1334,7 +1334,7 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
                 <div style={{ display: 'flex', gap: '8px', marginBottom: '16px' }}>
                   <input 
                     className="form-input" 
-                    placeholder="Ej. Manicura, Masajes" 
+                    placeholder="Ej. Limpieza, Blanqueamiento" 
                     value={newCategoryName} 
                     onChange={e => setNewCategoryName(e.target.value)} 
                     style={{ height: '44px', flex: 1 }} 

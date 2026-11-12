@@ -116,7 +116,7 @@ export default function ProductHistoryModal({
                     Historial de Productos Vendidos
                   </h2>
                   <p style={{ margin: '2px 0 0', fontSize: '11.5px', color: 'var(--text-secondary)' }}>
-                    Desglose de productos y bebidas vendidos, ganancia neta para la clínica y costo de reposición.
+                    Desglose de productos e insumos vendidos, ganancia neta para la clínica y costo de reposición.
                   </p>
                 </div>
               </div>

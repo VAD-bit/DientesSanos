@@ -10,7 +10,7 @@ import { Check, ChevronRight, User, Sparkles, PartyPopper, Circle } from 'lucide
  *     steps={[
  *       { id: 'client', label: 'Cliente', required: true, message: 'Primero, busca el cliente por cédula o nombre', icon: '👤' },
  *       { id: 'service', label: 'Servicio', required: true, message: '¡Genial! Ahora elige el servicio', icon: '🦷' },
- *       { id: 'barber', label: 'Barbero', required: true, message: 'Perfecto. Ahora selecciona el barbero', icon: '💈' },
+ *       { id: 'barber', label: 'Dentista', required: true, message: 'Perfecto. Ahora selecciona al odontólogo', icon: '🦷' },
  *       { id: 'extras', label: 'Extras', required: false, message: 'Casi listo. Puedes agregar extras si quieres', icon: '✨' },
  *     ]}
  *     currentStep={0}

@@ -169,5 +169,7 @@ export const roleLabel = (value) => {
   if (lower.startsWith('odontologos')) return 'Odontólogos';
   if (lower.includes('odontolog') || lower.includes('dentista') || lower.includes('odontologo') || lower.includes('endodoncista') || lower.includes('ortodoncista')) return 'Odontólogo';
   if (lower.includes('asistente') || lower.includes('lavado') || lower.includes('recepcion') || lower.includes('recepción') || lower.includes('caja') || lower.includes('asistente dental') || lower.includes('higienista')) return 'Asistente';
+  if (lower.includes('barista') || lower.includes('cafeter')) return 'Asistente';
+  if (lower.includes('barber')) return 'Odontólogo';
   return raw;
 };

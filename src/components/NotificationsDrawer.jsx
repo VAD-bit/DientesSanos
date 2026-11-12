@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Bell, X, ShieldAlert, Trash2, CheckCheck, Sparkles, Smartphone, AlertTriangle, ChevronDown, DollarSign, Calendar, Trophy, Coffee, ShieldCheck } from 'lucide-react';
+import { Bell, X, ShieldAlert, Trash2, CheckCheck, Sparkles, Smartphone, AlertTriangle, ChevronDown, DollarSign, Calendar, Trophy, GlassWater, ShieldCheck } from 'lucide-react';
 import { notificationService } from '../services/notificationService';
 import { useDialog } from '../context/DialogContext';
 
@@ -16,8 +16,8 @@ const categorizeNotification = (n) => {
   if (/cobro|pago|factura|venta|ingreso|\$/.test(text)) {
     return { icon: DollarSign, color: '#30d158' };
   }
-  if (/bebida|café|caf[eé]|barista/.test(text)) {
-    return { icon: Coffee, color: '#111111' };
+  if (/bebida|café|caf[eé]|barista|hidrataci/.test(text)) {
+    return { icon: GlassWater, color: '#111111' };
   }
   if (/cita|agenda|reserv/.test(text)) {
     return { icon: Calendar, color: '#5ac8fa' };
