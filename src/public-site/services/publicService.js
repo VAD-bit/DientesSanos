@@ -116,19 +116,6 @@ export const publicService = {
     });
   },
 
-  // Menú de agua de cortesía para el paso de reserva. Vía endpoint
-  // público porque anon no puede leer `inventory` directamente.
-  async getAguaMenu() {
-    try {
-      const response = await fetch('/api/public/agua');
-      const result = await response.json().catch(() => ({}));
-      if (!response.ok) return [];
-      return result.items || [];
-    } catch {
-      return [];
-    }
-  },
-
   // Get portfolio photos for a specific staff member
   async getStaffPortfolio(staffId) {
     if (!staffId) return [];
@@ -151,12 +138,11 @@ export const publicService = {
     const dayEnd = new Date(year, month - 1, day + 1, 0, 0, 0, 0);
     const { data, error } = await supabase
       .from('appointments')
-      .select('scheduled_at, services(duration)')
-      .eq('staff_id', staffId)
+      .select('staff_id, scheduled_at, services(duration)')
       .not('scheduled_at', 'is', null)
       .gte('scheduled_at', dayStart.toISOString())
       .lt('scheduled_at', dayEnd.toISOString())
-      .in('status', ['Agendado', 'Confirmado', 'En Silla', 'Por Pagar']);
+      .in('status', ['Agendado', 'Confirmado', 'En Espera', 'En espera', 'En Silla', 'En Lavado', 'Por Pagar']);
     if (error) throw error;
 
     const targetDuration = Math.max(30, Number(requestedDuration) || 60);
@@ -165,56 +151,66 @@ export const publicService = {
       for (const minute of [0, 30]) {
         const candidateStart = new Date(year, month - 1, day, hour, minute, 0, 0);
         const candidateEnd = new Date(candidateStart.getTime() + targetDuration * 60000);
-        const overlaps = (data || []).some(appointment => {
+        let concurrentAppointments = 0;
+        let overlapsForStaff = false;
+        for (const appointment of data || []) {
           const existingStart = new Date(appointment.scheduled_at);
           const existingDuration = Math.max(30, Number(appointment.services?.duration) || 60);
           const existingEnd = new Date(existingStart.getTime() + existingDuration * 60000);
-          return candidateStart < existingEnd && candidateEnd > existingStart;
-        });
-        if (overlaps) occupied.add(`${String(hour).padStart(2, '0')}:${String(minute).padStart(2, '0')}`);
+          if (candidateStart < existingEnd && candidateEnd > existingStart) {
+            concurrentAppointments += 1;
+            if (String(appointment.staff_id) === String(staffId)) overlapsForStaff = true;
+          }
+        }
+        if (overlapsForStaff || concurrentAppointments >= 2) {
+          occupied.add(`${String(hour).padStart(2, '0')}:${String(minute).padStart(2, '0')}`);
+        }
       }
     }
     return [...occupied];
   },
 
+  // Crea (o repara y confirma) la cuenta de auth vía el endpoint serverless
+  // api/public/signup. Ver el comentario de ese archivo: el signUp público
+  // directo desde el navegador estaba limitado por rate limit, no devolvía
+  // sesión con "confirmar correo" activo y dejaba cuentas inutilizables.
+  async signupConfirmed({ email, password, name, id_card }) {
+    const response = await fetch('/api/public/signup', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, password, name: name || '', idCard: id_card || '' })
+    });
+    const result = await response.json().catch(() => ({}));
+    if (!response.ok) throw new Error(result.error || 'No se pudo crear la cuenta. Intenta de nuevo.');
+    return result;
+  },
+
   // Register new client
   async registerClient({ name, phone, id_card, email, password, birth_date }) {
-    const effectiveEmail = email || `${phone}@odontosonrisa.app`;
+    const effectiveEmail = String(email || `${phone}@odontosonrisa.app`).trim().toLowerCase();
 
-    // Step 1: Try to create auth user
-    const { data: authData, error: authError } = await supabase.auth.signUp({
+    // Step 1: cuenta creada/confirmada en el servidor (sin rate limit, sin
+    // depender del correo de confirmación).
+    await this.signupConfirmed({ email: effectiveEmail, password, name, id_card });
+
+    // Step 2: sesión ANTES de cualquier endpoint autenticado. Antes el orden
+    // estaba invertido: el registro sin sesión se estrellaba contra
+    // authenticatedApi con "Debes iniciar sesión para completar esta
+    // operación" y dejaba el auth user huérfano sin perfil de cliente.
+    const { data: signInData, error: signInError } = await supabase.auth.signInWithPassword({
       email: effectiveEmail,
-      password: password,
-      options: { data: { name, id_card } }
+      password
     });
-
-    let userId = authData?.user?.id;
-
-    // Supabase may return no error but an "unconfirmed" user (identities=[])
-    // when email confirmations are off and the user already exists.
-    const isExistingUser =
-      (authError && authError.message?.toLowerCase().includes('already registered')) ||
-      (authData?.user && (!authData.user.identities || authData.user.identities.length === 0));
-
-    if (isExistingUser) {
-      // Try to sign them in — if the password matches, we link the session
-      const { data: signInData, error: signInError } = await supabase.auth.signInWithPassword({
-        email: effectiveEmail,
-        password: password
-      });
-      if (signInError) {
-        throw new Error('Este correo o teléfono ya tiene una cuenta. Intenta iniciar sesión.');
+    if (signInError || !signInData?.session) {
+      const message = String(signInError?.message || '');
+      if (/invalid login credentials/i.test(message)) {
+        throw new Error('Este correo ya tenía una cuenta con otra contraseña. Inicia sesión con tu contraseña o usa otra distinta.');
       }
-      userId = signInData?.user?.id;
-    } else if (authError) {
-      throw new Error('No se pudo crear la cuenta. Intenta con otro correo o contraseña.');
+      throw new Error(`No se pudo iniciar sesión con la cuenta creada.${message ? ` (${message})` : ''}`);
     }
+    const userId = signInData.user.id;
 
-    if (!userId) {
-      throw new Error('No se pudo verificar tu identidad. Intenta de nuevo.');
-    }
-
-    // Step 2: Check if a client record already exists (by cédula/phone/email)
+    // Step 3: Check if a client record already exists (by cédula/phone/email)
     const existing = await findExistingClientRecord({ id_card, email, phone });
 
     if (existing) {
@@ -226,10 +222,7 @@ export const publicService = {
         // Link this auth user to the existing client record
         try {
           const linkedClient = await linkClientRecord(existing, userId, { name, phone, email, birth_date });
-          const { data: sessionData } = await supabase.auth.signInWithPassword({
-            email: effectiveEmail, password
-          }).catch(() => ({ data: null }));
-          return { user: { id: userId }, client: linkedClient, linkedExisting: true, session: sessionData?.session };
+          return { user: { id: userId }, client: linkedClient, linkedExisting: true, session: signInData.session };
         } catch {
           // If linking fails for any reason, create a fresh record
         }
@@ -240,39 +233,34 @@ export const publicService = {
       userId, name, phone, id_card, email: email || null, birth_date: birth_date || null
     });
 
-    // Sign in to get session
-    const { data: sessionData } = await supabase.auth.signInWithPassword({
-      email: effectiveEmail,
-      password: password
-    }).catch(() => ({ data: null }));
-
-    return { user: { id: userId }, client: clientData, session: sessionData?.session };
+    return { user: { id: userId }, client: clientData, session: signInData.session };
   },
 
   // Login client (accepts email or phone)
   async loginClient({ identifier, password }) {
     const isEmail = identifier.includes('@');
-    const { data, error } = await supabase.auth.signInWithPassword({
-      email: isEmail ? identifier : `${identifier}@odontosonrisa.app`,
-      password
-    });
-    if (error) throw error;
-    return data;
-  },
+    const email = isEmail ? identifier : `${identifier}@odontosonrisa.app`;
+    let { data, error } = await supabase.auth.signInWithPassword({ email, password });
 
-  // Sign in with Google. `forceAccountPicker` adds Google's `prompt=select_account`,
-  // which is needed for a "switch account" action — without it, if the browser still
-  // has an active Google session, this silently re-authenticates with that same
-  // account instead of letting the user pick a different one.
-  async signInWithGoogle({ forceAccountPicker = false } = {}) {
-    const { data, error } = await supabase.auth.signInWithOAuth({
-      provider: 'google',
-      options: {
-        redirectTo: `${window.location.origin}/`,
-        ...(forceAccountPicker ? { queryParams: { prompt: 'select_account' } } : {}),
+    // Auto-reparación: cuentas creadas cuando "confirmar correo" estaba activo
+    // quedaron sin confirmar y Supabase las rechaza para siempre. Si la
+    // contraseña es válida el endpoint serverless confirma el correo y el
+    // segundo intento entra sin problemas.
+    if (error && /email not confirmed/i.test(String(error.message || '')) && String(password || '').length >= 6) {
+      try {
+        await this.signupConfirmed({ email, password });
+        ({ data, error } = await supabase.auth.signInWithPassword({ email, password }));
+      } catch {
+        // Se mantiene el error original de más abajo
       }
-    });
-    if (error) throw error;
+    }
+
+    if (error) {
+      const message = String(error.message || '');
+      if (/invalid login credentials/i.test(message)) throw new Error('Correo o contraseña incorrectos.');
+      if (/email not confirmed/i.test(message)) throw new Error('No se pudo confirmar el correo de la cuenta. Contacta a la clínica.');
+      throw new Error(message || 'No se pudo iniciar sesión.');
+    }
     return data;
   },
 
@@ -282,9 +270,7 @@ export const publicService = {
     return session;
   },
 
-  // Sign out of the current auth session (e.g. Google) — used on
-  // /completar-registro so someone who doesn't want to finish registering
-  // right now has a real way out instead of being stuck there.
+  // Sign out of the current auth session.
   async signOut() {
     const { error } = await supabase.auth.signOut();
     if (error) throw error;
@@ -318,14 +304,6 @@ export const publicService = {
     const { error } = await supabase.auth.updateUser({ password: newPassword });
     if (error) throw error;
     return true;
-  },
-
-  // Complete Google registration (create or update client record using service role to bypass RLS)
-  async completeGoogleRegistration({ user_id, name, email, phone, id_card, birth_date }) {
-    const { client } = await authenticatedApi('/api/public/client-profile', {
-      userId: user_id, name, email, phone, id_card, birth_date
-    });
-    return client;
   },
 
   // Check if user has completed registration
@@ -389,7 +367,7 @@ export const publicService = {
   },
 
   // Create appointment
-  async createAppointment({ client_id, service_id, staff_id, scheduled_at, beverage_selection, notes, tattoo_data }) {
+  async createAppointment({ client_id, service_id, staff_id, scheduled_at, notes, tattoo_data }) {
     const bookableStaff = await this.getStaff();
     if (!bookableStaff.some(member => String(member.id) === String(staff_id))) {
       throw new Error('Este profesional no está disponible para agendar citas.');
@@ -419,7 +397,6 @@ export const publicService = {
         scheduled_at,
         total_price: service?.price || 0,
         status: 'Agendado',
-        beverage_selection: beverage_selection || null,
         notes: notes || null,
         tattoo_data: tattoo_data || null
       }])
@@ -429,6 +406,9 @@ export const publicService = {
       const errorText = `${error.message || ''} ${error.details || ''}`;
       if (errorText.includes('APPOINTMENT_TIME_CONFLICT')) {
         throw new Error('Lo sentimos, este horario acaba de ser reservado por otra persona. Por favor elige otro.');
+      }
+      if (errorText.includes('APPOINTMENT_CAPACITY_CONFLICT')) {
+        throw new Error('Lo sentimos, los sillones disponibles para ese horario ya están ocupados. Por favor elige otro.');
       }
       throw error;
     }
@@ -690,4 +670,3 @@ export const publicService = {
     }
   }
 };
-

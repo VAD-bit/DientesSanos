@@ -39,14 +39,12 @@ import {
 } from 'lucide-react';
 import ToothIcon from '../../components/icons/ToothIcon';
 import { publicService } from '../services/publicService';
-import { clearGoogleAuthIntent, GOOGLE_AUTH_DESTINATIONS, setGoogleAuthIntent } from '../utils/googleAuthIntent';
 import { formatDuration } from '../../utils/formatDuration';
 import { isBookableStaff, isDentistaBookableStaff, isTattooBookableStaff, isTattooRole, roleLabel } from '../../utils/staffRoles';
 import PandaLoader from '../../components/PandaLoader';
 import PandaDatePicker from '../../components/PandaDatePicker';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import HorizontalScrollGallery from '../components/HorizontalScrollGallery';
-import { pushService } from '../../services/pushService';
 import { CLINIC } from '../config/clinic';
 import { getInstagramPosts } from '../services/instagramFeed';
 
@@ -513,14 +511,6 @@ function InstagramReelCard({ post, idx, onOpen }) {
   );
 }
 
-// Helper to render beverage icons uniformly without using raw system emojis
-const renderBeverageIcon = (beverageName, size = 16, className = "text-[var(--champagne)]") => {
-  if (!beverageName) return null;
-  const name = beverageName.toLowerCase();
-  if (name.includes('agua') || name.includes('embotellada') || name.includes('mineral')) return <GlassWater size={size} className={className} />;
-  return <GlassWater size={size} className={className} />;
-};
-
 // Minimal beard glyph used in the popular-services grid (lucide has no beard icon)
 const BeardIcon = ({ size = 26, className = "landing-service-icon" }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className={className}>
@@ -791,12 +781,6 @@ const videoRef = useRef(null);
     : null;
 
   const autoStartHandledRef = useRef(null);
-  // Set by the draft-restore effect below when it repopulates the wizard from a
-  // panda_draft_booking left before a login/registration redirect. Read by the
-  // startBooking effect so it doesn't stomp the just-restored step back to 1.
-  const draftRestoredRef = useRef(false);
-  const autoResumeAttemptedRef = useRef(false);
-  const [resumeBookingAfterAuth, setResumeBookingAfterAuth] = useState(false);
   const [services, setServices] = useState([]);
   const [barbers, setBarbers] = useState([]);
   const [barberStartIndex, setBarberStartIndex] = useState(0);
@@ -1435,30 +1419,6 @@ const videoRef = useRef(null);
     const saved = localStorage.getItem('bookingState');
     return saved ? JSON.parse(saved).selectedTime : null;
   });
-  const [selectedBeverage, setSelectedBeverage] = useState(() => {
-    const saved = localStorage.getItem('bookingState');
-    return saved ? JSON.parse(saved).selectedBeverage : '';
-  });
-  // Menú de bebidas de cortesía para la reserva (reemplaza las 4 bebidas fijas).
-  const [aguaMenu, setAguaMenu] = useState([]);
-  const [cafeTab, setCafeTab] = useState('cafe');
-  useEffect(() => {
-    let alive = true;
-    publicService.getAguaMenu().then(items => { if (alive) setAguaMenu(items || []); });
-    return () => { alive = false; };
-  }, []);
-  // Todos vienen con categoría "Bebidas" en la DB, así que se agrupan por nombre en 3
-  // secciones (Café / Infusiones / Bebidas frías) para no mostrar 17 opciones de golpe.
-  const cafeGroups = useMemo(() => {
-    const groups = { cafe: [], infusion: [], fria: [] };
-    (aguaMenu || []).forEach(item => {
-      const n = (item.name || '').toLowerCase();
-      if (n.includes('café') || n.includes('cafe') || n.includes('espresso') || n.includes('expreso') || n.includes('cappuccino') || n.includes('latte')) groups.cafe.push(item);
-      else if (n.includes('té') || n.includes('infus') || n.includes('manzanilla') || n.includes('hierbabuena') || n.includes('chai')) groups.infusion.push(item);
-      else groups.fria.push(item);
-    });
-    return groups;
-  }, [aguaMenu]);
   const [notes, setNotes] = useState(() => {
     const saved = localStorage.getItem('bookingState');
     return saved ? JSON.parse(saved).notes || '' : '';
@@ -1497,41 +1457,11 @@ const videoRef = useRef(null);
   });
   const [imgErrors, setImgErrors] = useState({});
   
-  // Auth state at step 6
+  // Auth state at the final booking step
   const [isLoggedIn, setIsLoggedIn] = useState(() =>
     Boolean(localStorage.getItem('panda_public_client'))
   );
 
-  // PublicLayout no longer force-redirects to /completar-registro on every page load (that
-  // used to hijack navigation anywhere on the site). Completing the profile is instead
-  // enforced right here, at the one place it actually matters: entering the booking flow.
-  // If there's an active Google session whose client record is missing phone/id_card, send
-  // them to finish registration and flag it to bring them straight back into booking after.
-  const googleProfileCheckRef = useRef(false);
-  useEffect(() => {
-    if (isLoggedIn || googleProfileCheckRef.current) return;
-    googleProfileCheckRef.current = true;
-    (async () => {
-      try {
-        const session = await publicService.getSession();
-        const user = session?.user;
-        if (!user) return;
-        const isGoogleUser = user.app_metadata?.provider === 'google'
-          || user.identities?.some(id => id.provider === 'google');
-        if (!isGoogleUser) return;
-
-        let client = await publicService.getClientByUserId(user.id);
-        if (!client && user.email) client = await publicService.getClientByEmail(user.email);
-
-        if (!client || !client.phone || !client.id_card) {
-          localStorage.setItem('panda_login_return_to_booking', 'true');
-          navigate('/completar-registro', { replace: true });
-        }
-      } catch (e) {
-        console.error('Error checking Google profile before booking:', e);
-      }
-    })();
-  }, [isLoggedIn, navigate]);
   const [loggedInClient, setLoggedInClient] = useState(null);
   const [authTab, setAuthTab] = useState('register'); // 'register' or 'login'
   const [showPassword, setShowPassword] = useState(false);
@@ -1585,7 +1515,6 @@ const videoRef = useRef(null);
       selectedBarber,
       selectedDate: selectedDate?.toISOString() || null,
       selectedTime,
-      selectedBeverage,
       notes,
       expandedBarber,
       tattooIdea,
@@ -1598,7 +1527,7 @@ const videoRef = useRef(null);
       consentSigned
     };
     localStorage.setItem('bookingState', JSON.stringify(state));
-  }, [showWelcome, hasVisited, step, selectedCategory, selectedService, selectedBarber, selectedDate, selectedTime, selectedBeverage, notes, success, expandedBarber, tattooIdea, tattooSize, tattooZone, tattooStyle, tattooTheme, isOfLegalAge, hasDesign, consentSigned]);
+  }, [showWelcome, hasVisited, step, selectedCategory, selectedService, selectedBarber, selectedDate, selectedTime, notes, success, expandedBarber, tattooIdea, tattooSize, tattooZone, tattooStyle, tattooTheme, isOfLegalAge, hasDesign, consentSigned]);
 
   // Restore portfolio images if expandedBarber is loaded from localStorage on mount
   useEffect(() => {
@@ -1720,15 +1649,9 @@ const videoRef = useRef(null);
 
     autoStartHandledRef.current = bookingRequestId;
 
-    // A pending draft means the user just came back from a login/registration
-    // redirect mid-booking (see handleGoogleLogin / the "guardar sesión" flow below) —
-    // the draft-restore effect above already repopulated step/selections, so forcing
-    // step 1 here would silently discard all of that progress.
-    if (!draftRestoredRef.current) {
-      localStorage.removeItem('bookingState');
-      setStep(1);
-      setShowWelcome(false);
-    }
+    localStorage.removeItem('bookingState');
+    setStep(1);
+    setShowWelcome(false);
     setIsTransitioning(false);
     setHasVisited(true);
 
@@ -1765,7 +1688,6 @@ const videoRef = useRef(null);
     setSelectedBarber(null);
     setSelectedDate(null);
     setSelectedTime(null);
-    setSelectedBeverage(null);
     setNotes('');
     setTattooIdea('');
     setTattooSize('');
@@ -1998,51 +1920,6 @@ const videoRef = useRef(null);
         setReviews(reviewsData || []);
 
 
-        // Restore draft booking (e.g. after Google OAuth redirect)
-        const draft = localStorage.getItem('panda_draft_booking');
-        if (draft) {
-          try {
-            const parsed = JSON.parse(draft);
-            if (parsed.serviceId) {
-              const matchedService = servicesData.find(s => s.id === parsed.serviceId);
-              if (matchedService) {
-                setSelectedService(matchedService);
-                setOpenCategory(openCategoryForService(matchedService));
-              }
-            }
-            if (parsed.barberId) {
-              const matchedBarber = filteredBarbers.find(b => b.id === parsed.barberId);
-              if (matchedBarber) setSelectedBarber(matchedBarber);
-            }
-            if (parsed.date) setSelectedDate(new Date(parsed.date));
-            if (parsed.time) setSelectedTime(parsed.time);
-            if (parsed.beverage) setSelectedBeverage(parsed.beverage);
-            if (parsed.notes) setNotes(parsed.notes);
-            if (parsed.category) setSelectedCategory(parsed.category);
-            if (parsed.tattooData) {
-              const t = parsed.tattooData;
-              if (t.idea) setTattooIdea(t.idea);
-              if (t.size) setTattooSize(t.size);
-              if (t.zone) setTattooZone(t.zone);
-              if (t.style) setTattooStyle(t.style);
-              if (t.theme) setTattooTheme(t.theme);
-              if (t.has_design !== undefined) setHasDesign(t.has_design);
-              if (t.is_of_legal_age !== undefined) setIsOfLegalAge(t.is_of_legal_age);
-              if (t.consent_signed !== undefined) setConsentSigned(t.consent_signed);
-            }
-            if (parsed.step) {
-              setStep(parsed.step === 6 ? 5 : parsed.step);
-              setShowWelcome(false);
-              draftRestoredRef.current = true;
-            }
-            if (parsed.resumeAfterAuth === true) {
-              setResumeBookingAfterAuth(true);
-            }
-          } catch (e) {
-            console.error('Error restoring draft booking:', e);
-          }
-        }
-        
         // ── PREFILL FROM "REPETIR" BUTTON ──
         // When the user clicks "Repetir" in their history, we receive prefillStaff
         // and prefillService IDs via React Router location.state. Match them to the
@@ -2064,10 +1941,6 @@ const videoRef = useRef(null);
               setSelectedBarber(matchedBarber);
               prefillApplied = true;
             }
-          }
-          if (location.state.prefillBeverage) {
-            setSelectedBeverage(location.state.prefillBeverage);
-            prefillApplied = true;
           }
           if (prefillApplied) {
             // Skip welcome screen and both selection steps — go straight to date/time
@@ -2266,68 +2139,33 @@ const videoRef = useRef(null);
     setSelectedTime(null);
   }, [selectedDate, selectedBarber, selectedService]);
 
+  const isTattooBooking = (selectedService?.category || '').toLowerCase().includes('tatuaj');
   const steps = [
     { num: 1, label: 'Servicio' },
     { num: 2, label: 'Especialista' },
     { num: 3, label: 'Fecha y Hora' },
-    { num: 4, label: 'Cortesía' },
-    { num: 5, label: 'Cierre' },
+    ...(isTattooBooking ? [{ num: 4, label: 'Detalles del caso' }] : []),
+    { num: 5, label: 'Reserva' },
   ];
+  const displayStep = Math.max(1, steps.findIndex(({ num }) => num === step) + 1);
 
   const canNext = () => {
     if (step === 1) return selectedService;
     if (step === 2) return selectedBarber;
     if (step === 3) return selectedDate && selectedTime;
-    if (step === 4) {
-      // El agua de cortesía es OPCIONAL: se puede continuar sin elegir ninguna.
-      const isTattoo = (selectedService?.category || '').toLowerCase().includes('tatuaj');
-      if (isTattoo) {
-        return tattooSize && tattooZone && tattooStyle && isOfLegalAge !== null && consentSigned;
-      }
-      return true;
+    if (step === 4 && isTattooBooking) {
+      return tattooSize && tattooZone && tattooStyle && isOfLegalAge !== null && consentSigned;
     }
     return false;
-  };
-
-  // Save current progress & trigger Google Login redirect
-  const handleGoogleLogin = () => {
-    localStorage.setItem('panda_draft_booking', JSON.stringify({
-      serviceId: selectedService?.id,
-      barberId: selectedBarber?.id,
-      date: selectedDate ? selectedDate.toISOString() : null,
-      time: selectedTime,
-      beverage: selectedBeverage,
-      notes: notes,
-      category: selectedCategory,
-      tattooData: (selectedService?.category || '').toLowerCase().includes('tatuaj') ? {
-        idea: tattooIdea,
-        size: tattooSize,
-        zone: tattooZone,
-        style: tattooStyle,
-        theme: tattooTheme,
-        has_design: hasDesign,
-        is_of_legal_age: isOfLegalAge,
-        consent_signed: consentSigned
-      } : null,
-      step: 5,
-      resumeAfterAuth: true
-    }));
-    // Tells PublicLayout's post-OAuth handler (and CompleteRegistration, for first-time
-    // Google users) to send the visitor back into /agendar instead of /perfil once
-    // sign-in finishes, so the draft saved above actually gets picked back up.
-    setGoogleAuthIntent(GOOGLE_AUTH_DESTINATIONS.BOOKING);
-    localStorage.setItem('panda_login_return_to_booking', 'true');
-    publicService.signInWithGoogle().catch((error) => {
-      clearGoogleAuthIntent();
-      localStorage.removeItem('panda_login_return_to_booking');
-      console.error('Google booking login error:', error);
-      setAuthError('No se pudo iniciar sesión con Google. Inténtalo nuevamente.');
-    });
   };
 
   // Unified final checkout handling
   const handleCheckout = async (e) => {
     if (e) e.preventDefault();
+    // Guard: ignora envíos duplicados mientras la operación está en curso
+    // (doble clic o Enter repetido). Sin esto dos registerClient() corren en
+    // paralelo y pisan el estado de la reserva.
+    if (submitting) return;
     setAuthError('');
     setSubmitting(true);
     
@@ -2426,12 +2264,11 @@ const videoRef = useRef(null);
         throw new Error('Este profesional no está disponible para agendar citas.');
       }
 
-      const createdAppointment = await publicService.createAppointment({
+      await publicService.createAppointment({
         client_id: activeClient.id,
         service_id: selectedService.id,
         staff_id: selectedBarber.id,
         scheduled_at: scheduledAt.toISOString(),
-        beverage_selection: selectedBeverage,
         notes: notes,
         tattoo_data: (selectedService?.category || '').toLowerCase().includes('tatuaj') ? {
           idea: tattooIdea,
@@ -2444,76 +2281,27 @@ const videoRef = useRef(null);
           consent_signed: consentSigned
         } : null
       });
-      if (selectedBeverage) {
-        pushService.notify(
-          { roles: ['asistente', 'admin'] },
-          'Nueva cortesía solicitada',
-          `${activeClient.name || 'Cliente'} quiere ${selectedBeverage} para su cita`,
-          { appointmentId: createdAppointment.id, beverage: selectedBeverage }
-        );
-      }
       localStorage.removeItem('panda_draft_booking');
       localStorage.removeItem('panda_login_return_to_booking');
       setSuccess(true);
     } catch (err) {
       console.error('Booking checkout error:', err);
-      setAuthError(err.message || 'Error al agendar la cita. Intenta de nuevo.');
+      const message = err.message || 'Error al agendar la cita. Intenta de nuevo.';
+      setAuthError(message);
+      // Si el registro chocó con una cuenta que ya existe con otra contraseña,
+      // lleva al usuario directo a la pestaña de ingreso con los datos cargados
+      // en lugar de dejarlo en un callejón sin salida.
+      if (authTab === 'register' && /cuenta con otra contraseña/i.test(message)) {
+        setAuthTab('login');
+        setLoginForm(prev => ({
+          identifier: prev.identifier || authForm.email || authForm.phone || '',
+          password: prev.password || authForm.password || ''
+        }));
+      }
     } finally {
       setSubmitting(false);
     }
   };
-
-  // Google OAuth leaves the browser and returns later. Once the saved draft and
-  // authenticated client have both been restored, finish the exact reservation
-  // the visitor had already confirmed. The draft is marked before submitting so
-  // a refresh during the request cannot create the same appointment twice.
-  useEffect(() => {
-    if (
-      !resumeBookingAfterAuth
-      || autoResumeAttemptedRef.current
-      || loading
-      || submitting
-      || success
-      || !isLoggedIn
-      || !selectedService
-      || !selectedBarber
-      || !selectedDate
-      || !selectedTime
-    ) {
-      return;
-    }
-
-    autoResumeAttemptedRef.current = true;
-    setResumeBookingAfterAuth(false);
-
-    try {
-      const rawDraft = localStorage.getItem('panda_draft_booking');
-      if (rawDraft) {
-        const draft = JSON.parse(rawDraft);
-        localStorage.setItem('panda_draft_booking', JSON.stringify({
-          ...draft,
-          resumeAfterAuth: false
-        }));
-      }
-    } catch (error) {
-      console.error('Error marking resumed booking:', error);
-    }
-
-    handleCheckout();
-    // handleCheckout intentionally runs once for the restored snapshot. The ref
-    // above guards subsequent renders while it is submitting.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [
-    resumeBookingAfterAuth,
-    loading,
-    submitting,
-    success,
-    isLoggedIn,
-    selectedService,
-    selectedBarber,
-    selectedDate,
-    selectedTime
-  ]);
 
   const renderWelcomeContent = (sliceClass = "", skipAnimations = false) => {
     const fade = (n) => skipAnimations ? '' : `fade-up-${n}`;
@@ -3923,7 +3711,7 @@ const videoRef = useRef(null);
                     { icon: <User size={18} />, title: 'Profesionales', desc: 'Especialistas experimentados en salud y estética dental.' },
                     { icon: <Award size={18} />, title: 'Calidad Premium', desc: 'Usamos insumos y equipos de alta gama para el cuidado dental.' },
                     { icon: <CalendarIcon size={18} />, title: 'Reserva Fácil', desc: 'Agenda tu cita en segundos las 24 horas del día.' },
-                    { icon: <GlassWater size={18} />, title: 'Ambiente Único', desc: 'Un espacio cómodo con agua de cortesía y sala de espera dental.' },
+                    { icon: <Users size={18} />, title: 'Ambiente Único', desc: 'Un espacio cómodo y una sala de espera pensada para tu tranquilidad.' },
                   ].map((item, idx) => (
                     <div key={idx} className="p-5 rounded-2xl bg-white border border-[#d9c08f]/15 hover:border-[#111111]/20 hover:bg-[#f7f7f5] transition-all duration-300 flex flex-col gap-3 group">
                       <div className="w-9 h-9 rounded-lg bg-[#111111]/10 border border-[#111111]/25 flex items-center justify-center text-[#111111] transition-colors group-hover:bg-[#111111] group-hover:text-white">
@@ -4317,7 +4105,7 @@ const videoRef = useRef(null);
           const timeStr = formatTime12(selectedTime) || '';
           
           let whatsappMsg = `Hola! Quiero agendar una cita.\n\n`;
-          whatsappMsg += `*Fecha:* ${dateStr}\n*Hora:* ${timeStr}\n*Servicio:* ${selectedService?.name}\n*Cortesía:* ${selectedBeverage}\n`;
+          whatsappMsg += `*Fecha:* ${dateStr}\n*Hora:* ${timeStr}\n*Servicio:* ${selectedService?.name}\n`;
           
           if (isTattoo && tattooSize) {
             whatsappMsg += `\n--- *Detalles del caso* ---\n`;
@@ -4370,10 +4158,6 @@ const videoRef = useRef(null);
                   <span className="text-sm font-bold text-[#0f172a]">
                     {selectedDate?.toLocaleDateString('es-ES', { day: 'numeric', month: 'short' })} a las {formatTime12(selectedTime)}
                   </span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-xs text-[#94a3b8] uppercase tracking-wider">Cortesía</span>
-                  <span className="text-sm font-bold text-emerald-600">{selectedBeverage}</span>
                 </div>
               </div>
 
@@ -4441,7 +4225,12 @@ const videoRef = useRef(null);
               {(!isEmbedded || step > 1) && (
               <div className="absolute left-0 top-0">
                 <button 
-                  onClick={() => { step > 1 ? setStep(step - 1) : handleReturnToWelcome(); scrollToTop(); }}
+                  onClick={() => {
+                    if (step === 5 && !isTattooBooking) setStep(3);
+                    else if (step > 1) setStep(step - 1);
+                    else handleReturnToWelcome();
+                    scrollToTop();
+                  }}
                   className="wizard-back-button"
                   type="button"
                 >
@@ -4453,23 +4242,26 @@ const videoRef = useRef(null);
               {/* Step indicator */}
               <div className="inline-block mt-2">
                 <span className="text-[11px] sm:text-xs font-black tracking-[0.2em] text-[var(--champagne)] uppercase block mb-2.5">
-                  PASO {step} DE 5
+                  PASO {displayStep} DE {steps.length}
                 </span>
                 
                 {/* Segmented Progress Bar */}
                 <div className="flex gap-1 w-32 justify-center mx-auto mb-4">
-                  {[1, 2, 3, 4, 5].map((i) => (
+                  {steps.map((_, index) => {
+                    const progressStep = index + 1;
+                    return (
                     <div 
-                      key={i} 
+                      key={progressStep}
                       className={`h-0.5 rounded-full transition-all duration-300 ${
-                        i === step 
+                        progressStep === displayStep
                           ? 'w-6 bg-[var(--champagne)] shadow-[0_0_8px_rgba(17, 17, 17,0.6)]' 
-                          : i < step 
+                          : progressStep < displayStep
                             ? 'w-3 bg-[var(--champagne-dark)] opacity-70' 
                             : 'w-3 bg-[#e9eae8]'
                       }`}
                     />
-                  ))}
+                    );
+                  })}
                 </div>
               </div>
 
@@ -4488,14 +4280,14 @@ const videoRef = useRef(null);
                   {step === 1 && "¿Qué servicio buscas hoy?"}
                   {step === 2 && <>Elige tu <span className="text-[var(--champagne)]">especialista</span></>}
                   {step === 3 && <>Elige tu <span className="text-[var(--champagne)]">fecha y hora</span></>}
-                  {step === 4 && <>Personaliza tu <span className="text-[var(--champagne)]">Experiencia</span></>}
+                  {step === 4 && <>Detalles de tu <span className="text-[var(--champagne)]">caso</span></>}
                   {step === 5 && <>Completa tu <span className="text-[var(--champagne)]">Reserva</span></>}
                 </h1>
                 <p className="text-[var(--text-secondary)] text-xs sm:text-sm font-medium max-w-sm mx-auto mt-2">
                   {step === 1 && "Elige la categoría que mejor se adapte a tu sonrisa."}
                   {step === 2 && "Cada especialista tiene su área. Escoge el que mejor va contigo."}
                   {step === 3 && "Selecciona el día y la hora que mejor se adapten a ti."}
-                  {step === 4 && "Queremos que tu visita sea perfecta desde que llegas hasta que te vas."}
+                  {step === 4 && "Cuéntanos los detalles necesarios para preparar tu atención."}
                   {step === 5 && "Ingresa tus datos para asegurar tu cita en 1 clic."}
                 </p>
               </motion.div>
@@ -5161,6 +4953,22 @@ const videoRef = useRef(null);
                     )}
                     
 
+                    {!isTattooBooking && (
+                      <div className="space-y-2 text-left">
+                        <label htmlFor="booking-notes" className="text-xs font-bold uppercase tracking-widest text-[#0f172a]">
+                          ¿Algo más que debamos saber? <span className="normal-case tracking-normal text-[#94a3b8]">(opcional)</span>
+                        </label>
+                        <textarea
+                          id="booking-notes"
+                          value={notes}
+                          onChange={(e) => setNotes(e.target.value.slice(0, 200))}
+                          placeholder="Alergias, sensibilidades u otra información importante..."
+                          className="w-full h-20 bg-white border border-[#d9c08f]/15 rounded-xl p-3 text-xs text-[#0f172a] placeholder-[#94a3b8] focus:outline-none focus:border-[var(--champagne)]/40 transition-all resize-none"
+                        />
+                        <p className="text-right text-[9px] font-bold text-[#94a3b8]">{notes.length}/200</p>
+                      </div>
+                    )}
+
                     {/* Big Gold CONTINUAR Button — solo visible en móvil, en desktop usa el Siguiente del sidebar */}
                     <div className="pt-2 lg:hidden" ref={step3ContinueBtnRef} style={{ scrollMarginBottom: isEmbedded ? '120px' : '40px' }}>
                       <button
@@ -5168,7 +4976,7 @@ const videoRef = useRef(null);
                         onClick={(e) => {
                           createRipple(e);
                           if (selectedDate && selectedTime) {
-                            setStep(4);
+                            setStep(isTattooBooking ? 4 : 5);
                             scrollToTop();
                           }
                         }}
@@ -5187,83 +4995,11 @@ const videoRef = useRef(null);
                   </div>
                 )}
 
-                {/* STEP 4: Beverage Concierge & Experience Customization */}
+                {/* STEP 4: Tattoo case details */}
                 {step === 4 && (() => {
                   const isTattoo = (selectedService?.category || '').toLowerCase().includes('tatuaj');
                   return (
                   <div className="space-y-10 w-full animate-fade-in py-2">
-                    {/* 1. Beverage Section */}
-                    <div className="space-y-4">
-                      <div className="flex items-center gap-2 text-[#0f172a] text-left">
-                        <GlassWater size={18} className="text-[var(--champagne)]" />
-                        <h3 className="text-xs lg:text-sm font-bold uppercase tracking-widest">Elige tu agua de cortesía</h3>
-                      </div>
-                      <p className="text-[10px] text-[#94a3b8] -mt-1 text-left">
-                        Cortesía de la casa · opcional — estará lista cuando llegues.
-                      </p>
-                      {aguaMenu.length === 0 ? (
-                        <div className="grid grid-cols-2 lg:grid-cols-3 gap-2.5">
-                          {[0, 1, 2, 3, 4, 5].map(i => (
-                            <div key={i} className="animate-pulse h-[64px] rounded-xl bg-white border border-[#d9c08f]/15" />
-                          ))}
-                        </div>
-                      ) : (
-                      <>
-                        {/* Secciones: Café / Infusiones / Bebidas frías */}
-                        <div className="flex gap-2 mb-3">
-                          {[{ k: 'cafe', label: 'Café' }, { k: 'infusion', label: 'Infusiones' }, { k: 'fria', label: 'Bebidas frías' }].map(t => (
-                            <button
-                              key={t.k}
-                              type="button"
-                              onClick={() => setCafeTab(t.k)}
-                              disabled={cafeGroups[t.k].length === 0}
-                              className={`flex-1 py-2 rounded-lg text-[10px] font-bold uppercase tracking-wide transition-all border ${
-                                cafeTab === t.k
-                                  ? 'border-[var(--champagne)] bg-[rgba(17, 17, 17,0.1)] text-[var(--champagne)]'
-                                  : cafeGroups[t.k].length === 0
-                                    ? 'border-[#d9c08f]/15 bg-[#f7f7f5] text-[#cbd5e1] cursor-not-allowed'
-                                    : 'border-[#d9c08f]/15 bg-white text-[#64748b] hover:text-[#0f172a] hover:border-[#d9c08f]/30'
-                              }`}
-                            >
-                              {t.label} <span className="opacity-50">({cafeGroups[t.k].length})</span>
-                            </button>
-                          ))}
-                        </div>
-                        <div className="grid grid-cols-2 lg:grid-cols-3 gap-2.5 max-h-[260px] overflow-y-auto panda-scrollbar pr-1">
-                          {cafeGroups[cafeTab].map((item) => {
-                            const isSelected = selectedBeverage === item.name;
-                            return (
-                              <button
-                                key={item.id}
-                                type="button"
-                                onClick={() => { const next = isSelected ? '' : item.name; setSelectedBeverage(next); if (next) scrollToNextButton(); }}
-                                className={`relative rounded-xl cursor-pointer transition-all duration-300 flex items-center gap-2.5 p-2.5 border text-left ${
-                                  isSelected
-                                    ? 'border-[var(--champagne)] bg-[rgba(17, 17, 17,0.06)] shadow-[0_4px_15px_rgba(17, 17, 17,0.12)]'
-                                    : 'border-[#d9c08f]/15 bg-white hover:bg-[#d9c08f]/10 hover:border-[#d9c08f]/30'
-                                }`}
-                              >
-                                <div className={`w-9 h-9 rounded-lg flex-shrink-0 flex items-center justify-center ${isSelected ? 'bg-[rgba(17, 17, 17,0.15)]' : 'bg-[#f7f7f5]'}`}>
-                                  <GlassWater size={16} className="text-[var(--champagne)]" />
-                                </div>
-                                <div className="min-w-0 flex-1">
-                                  <span className={`block font-bold text-[11px] leading-tight truncate ${isSelected ? 'text-[var(--champagne)]' : 'text-[#334155]'}`}>
-                                    {item.name}
-                                  </span>
-                                  <div className="flex items-center gap-1.5 mt-0.5">
-                                    <span className="text-[9px] text-[#94a3b8] line-through">${Number(item.price || 0).toFixed(2)}</span>
-                                    <span className="text-[9px] font-extrabold text-emerald-600">GRATIS</span>
-                                  </div>
-                                </div>
-                                <div className={`w-4 h-4 rounded-full flex-shrink-0 flex items-center justify-center text-[9px] font-extrabold transition-all ${isSelected ? 'bg-[var(--champagne)] text-black' : 'bg-white text-transparent border border-[#d9c08f]/20'}`}>✓</div>
-                              </button>
-                            );
-                          })}
-                        </div>
-                      </>
-                      )}
-                    </div>
-
                     {!isTattoo ? (
                     <div className="space-y-4">
                       <div className="flex items-center gap-2 text-[#0f172a] text-left">
@@ -5582,27 +5318,6 @@ const videoRef = useRef(null);
                           </div>
                         </div>
 
-                        {/* Beverage chip — champagne darkest */}
-                        {selectedBeverage && (
-                          <div className="flex items-center gap-3 p-3 rounded-2xl" style={{
-                            background: 'rgba(17, 17, 17,0.06)',
-                            border: '1px solid rgba(17, 17, 17,0.14)'
-                          }}>
-                            <div className="w-8 h-8 rounded-xl flex items-center justify-center flex-shrink-0" style={{background: 'rgba(17, 17, 17,0.10)'}}>
-                              {renderBeverageIcon(selectedBeverage, 14, '')}
-                            </div>
-                            <div className="flex-1">
-                              <p className="text-[8px] font-black uppercase tracking-widest" style={{color: 'rgba(17, 17, 17,0.55)'}}>Tu Cortesía</p>
-                              <p className="text-sm font-extrabold text-[#0f172a]">{selectedBeverage}</p>
-                            </div>
-                            <span className="text-[9px] font-black px-2.5 py-1 rounded-full" style={{
-                              background: 'rgba(17, 17, 17,0.1)',
-                              color: 'rgba(17, 17, 17,0.85)',
-                              border: '1px solid rgba(17, 17, 17,0.2)'
-                            }}>Gratis</span>
-                          </div>
-                        )}
-
                         {/* Shimmer divider */}
                         <div className="h-px w-full" style={{background: 'linear-gradient(90deg, transparent, rgba(17, 17, 17,0.25), transparent)'}} />
 
@@ -5634,19 +5349,7 @@ const videoRef = useRef(null);
                           <p className="text-xs text-[#94a3b8]">Agenda tu cita y crea tu perfil express en un paso.</p>
                         </div>
 
-                        <button
-                          type="button"
-                          onClick={handleGoogleLogin}
-                          className="w-full py-3.5 px-4 rounded-full border border-[#d9c08f]/20 bg-[#f7f7f5] hover:bg-[#d9c08f]/10 text-[#0f172a] font-bold text-xs flex items-center justify-center gap-2.5 transition-all duration-300 hover:scale-[1.01] hover:border-[#d9c08f]/40 active:scale-[0.99] cursor-pointer shadow-[0_4px_16px_rgba(0,0,0,0.05)]"
-                        >
-                          <svg width="16" height="16" viewBox="0 0 24 24">
-                            <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z"/>
-                            <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
-                            <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
-                            <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
-                          </svg>
-                          Conectar con Google
-                        </button>
+                        
 
                         <div className="flex items-center gap-4 py-1">
                           <div className="h-px bg-[#e9eae8] flex-1"></div>
@@ -5854,6 +5557,8 @@ const videoRef = useRef(null);
                     if (canNext()) { 
                       if (step === 1 && selectedBarber) {
                         setStep(3);
+                      } else if (step === 3) {
+                        setStep(isTattooBooking ? 4 : 5);
                       } else {
                         setStep(step + 1); 
                       }
@@ -5977,7 +5682,7 @@ const videoRef = useRef(null);
                     </div>
                   </div>
 
-                  {/* Vertical timeline of the 5 steps */}
+                  {/* Vertical timeline of the booking steps */}
                   <div className="relative px-5 pt-4 pb-2">
                     {timeline.map((item, idx) => {
                       const isCurrent = step === item.activeAt;
@@ -6052,6 +5757,8 @@ const videoRef = useRef(null);
                             if (canNext()) { 
                               if (step === 1 && selectedBarber) {
                                 setStep(3);
+                              } else if (step === 3) {
+                                setStep(isTattooBooking ? 4 : 5);
                               } else {
                                 setStep(step + 1); 
                               }
@@ -6296,17 +6003,7 @@ const videoRef = useRef(null);
                En <strong className="text-[#111111] font-semibold">Dientes Sanos</strong> cuidamos tu salud bucal con tecnología moderna y trato cercano. Cada tratamiento se diseña para que salgas sonriendo y con total confianza.
             </p>
             
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
-              <div className="p-4 rounded-2xl bg-white border border-[#d9c08f]/15 flex gap-3 items-start">
-                <div className="p-2 rounded-xl bg-white text-[#111111] mt-0.5 border border-[#d9c08f]/15">
-                  <GlassWater size={15} />
-                </div>
-                <div className="space-y-1">
-                  <h4 className="text-[#0f172a] font-extrabold text-[11px] uppercase tracking-wider">Agua de cortesía</h4>
-                  <p className="text-[#475569] text-[10px] leading-normal">Agua embotellada y sala de espera en cada visita.</p>
-                </div>
-              </div>
-
+            <div className="grid grid-cols-1 gap-4 pt-2">
               <div className="p-4 rounded-2xl bg-white border border-[#d9c08f]/15 flex gap-3 items-start">
                 <div className="p-2 rounded-xl bg-white text-[#111111] mt-0.5 border border-[#d9c08f]/15">
                   <Users size={15} />
