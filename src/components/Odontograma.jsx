@@ -399,7 +399,7 @@ export default function Odontograma({ value, onChange }) {
   const permCount = marks.filter(m => isPermanentTooth(m.tooth)).length;
 
   return (
-    <div style={styles.wrap}>
+    <div style={{ ...styles.wrap, colorScheme: 'dark', backgroundColor: '#111', minHeight: '100%' }}>
       {/* Selector de vista */}
       <div style={styles.viewSelector}>
         <button
