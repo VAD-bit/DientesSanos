@@ -16,7 +16,8 @@ import { assertPasskeyRateLimit } from '../server/passkeys/rateLimit.js';
 export default async function handler(request, response) {
   try {
     const url = new URL(request.url);
-    const path = url.pathname; // ej: /api/passkeys/register/options
+    const pathParam = url.searchParams.get('path') || '';
+    const path = pathParam ? `/api/passkeys/${pathParam}` : '/api/passkeys';
     const method = request.method;
 
     const config = getPasskeyConfig(request);

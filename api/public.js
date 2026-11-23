@@ -8,7 +8,8 @@ import { isBookableStaff } from '../src/utils/staffRoles.js';
 export default async function handler(request, response) {
   try {
     const url = new URL(request.url);
-    const path = url.pathname; // ej: /api/public/store-status
+    const pathParam = url.searchParams.get('path') || '';
+    const path = pathParam ? `/api/public/${pathParam}` : '/api/public';
     const method = request.method;
 
     // ---------------- GET /api/public/store-status ----------------

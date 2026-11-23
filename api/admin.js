@@ -6,7 +6,9 @@ import { json, parseBody, requireMethod } from '../server/passkeys/http.js';
 export default async function handler(request, response) {
   try {
     const url = new URL(request.url);
-    const path = url.pathname;
+    // Vercel rewrite pasa el path original como query param ?path=:path*
+    const pathParam = url.searchParams.get('path') || '';
+    const path = pathParam ? `/api/admin/${pathParam}` : '/api/admin';
     const method = request.method;
 
     // ---------------- POST /api/admin/auth-users ----------------
