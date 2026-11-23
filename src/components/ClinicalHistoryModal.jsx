@@ -251,7 +251,9 @@ export default function ClinicalHistoryModal({ isOpen, client, onClose, mandator
               </p>
             </div>
           ) : tab === 'odontograma' ? (
-            <Odontograma value={odontograma} onChange={setOdontograma} />
+            <div style={{ background: '#ffffff', borderRadius: '14px', minHeight: '300px' }}>
+              <Odontograma value={odontograma} onChange={setOdontograma} />
+            </div>
           ) : (
             <div>
               <p style={{ color: 'var(--text-secondary)', fontSize: '13px', marginBottom: '14px', lineHeight: 1.5 }}>

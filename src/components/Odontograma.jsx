@@ -381,7 +381,7 @@ export default function Odontograma({ value, onChange }) {
   }, [marks]);
 
   return (
-    <div style={{ ...styles.wrap, colorScheme: 'dark', backgroundColor: '#111', minHeight: '100%' }}>
+    <div style={{ ...styles.wrap, colorScheme: 'dark' }}>
       {/* Selector de vista - SOLO 2 botones: Permanente / Temporal */}
       <div style={styles.viewSelector}>
         <button
