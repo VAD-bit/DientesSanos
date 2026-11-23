@@ -1145,6 +1145,7 @@ const ClientDetail = ({ isMobile, client, onBack, onDelete, onUpdate }) => {
   const [photoMeta, setPhotoMeta] = useState({ type: 'Normal', serviceId: null });
 
   const [clientCoupons, setClientCoupons] = useState([]);
+  const [roulettePrizes, setRoulettePrizes] = useState([]);
   const [showClinical, setShowClinical] = useState(false);
   const [treatments, setTreatments] = useState([]);
   const [loadingTreatments, setLoadingTreatments] = useState(true);

@@ -254,9 +254,9 @@ const Sidebar = ({ activeTab, setActiveTab, isMobile, rates, isCollapsed, setIsC
               }}
             >
               <div style={{
-                color: isActive ? 'var(--champagne)' : isHovered ? 'rgba(245, 245, 245, 0.85)' : 'rgba(245, 245, 245, 0.45)',
+                color: isActive ? 'var(--champagne)' : isHovered ? 'rgba(17, 17, 17, 0.85)' : 'rgba(17, 17, 17, 0.65)',
                 display: 'flex', alignItems: 'center',
-                filter: isActive ? 'drop-shadow(0 0 7px rgba(232, 212, 176, 0.55))' : isHovered ? 'drop-shadow(0 0 5px rgba(255, 255, 255, 0.25))' : 'none',
+                filter: isActive ? 'drop-shadow(0 0 7px rgba(232, 212, 176, 0.55))' : isHovered ? 'drop-shadow(0 0 5px rgba(0, 0, 0, 0.25))' : 'none',
                 transition: 'all 0.25s ease',
               }}>
                 <Icon size={17} strokeWidth={isActive ? 2.2 : 1.7} />
@@ -265,7 +265,7 @@ const Sidebar = ({ activeTab, setActiveTab, isMobile, rates, isCollapsed, setIsC
                 <span className="sidebar-nav-text" style={{
                   fontSize: '13.5px',
                   letterSpacing: isActive ? '-0.2px' : '0',
-                  color: isActive ? '#f8f8f8' : 'rgba(200,200,200,0.42)',
+                  color: isActive ? '#111111' : 'rgba(17, 17, 17, 0.75)',
                   transition: 'all 0.2s ease',
                 }}>
                   {item.label}

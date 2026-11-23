@@ -70,7 +70,7 @@ const ReceptionModule = ({ isMobile, rates }) => {
   
   const [activeAppointments, setActiveAppointments] = useState([]);
   const [upcomingAppointments, setUpcomingAppointments] = useState([]);
-  const [exchangeRate, setExchangeRate] = useState(58); // Default
+  const [exchangeRate, setExchangeRate] = useState(0); // Default: se actualiza con BCV al cargar
   const [dialog, setDialog] = useState({ isOpen: false, type: 'confirm', title: '', message: '', onConfirm: null });
   
   const [formData, setFormData] = useState({
@@ -244,7 +244,8 @@ const ReceptionModule = ({ isMobile, rates }) => {
       const todayLocal = getLocalDateStr(new Date());
       setUpcomingAppointments(allApps.filter(a => getLocalDateStr(a.scheduled_at) === todayLocal || getLocalDateStr(a.created_at) === todayLocal));
 
-      const activeRate = rates?.usd || rates?.euro || (ratesData ? (ratesData.euro || ratesData.bcv) : 841.84);
+      // Prioridad: tasa BCV (oficial del Banco Central de Venezuela)
+      const activeRate = ratesData?.bcv || rates?.bcv || ratesData?.euro || rates?.euro || ratesData?.usd || rates?.usd || 0;
       setExchangeRate(activeRate);
 
       if (selectedClientRef.current) {
@@ -428,7 +429,8 @@ const ReceptionModule = ({ isMobile, rates }) => {
       setFormData({ serviceId: '', staffId: '', status: 'En Silla' });
       loadData();
     } catch (error) {
-      showToast("Error al enviar a sillón", "error");
+      const errorMessage = error?.message || error?.details || 'Error al enviar a sillón';
+      showToast(errorMessage, "error");
       console.error(error);
     } finally {
       isSubmittingRef.current = false;
@@ -564,7 +566,8 @@ const ReceptionModule = ({ isMobile, rates }) => {
       setIsScheduleModalOpen(false);
       loadData();
      } catch (error) {
-      showToast("Error al procesar orden", "error");
+      const errorMessage = error?.message || error?.details || 'Error al procesar orden';
+      showToast(errorMessage, "error");
       console.error(error);
     } finally {
       isSubmittingRef.current = false;

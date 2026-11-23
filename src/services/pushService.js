@@ -61,9 +61,10 @@ export const pushService = {
   },
 
   // Dispara una notificación push hacia un odontólogo (staffId) o a una lista de roles.
-  // Fire-and-forget: nunca bloquea ni rompe el flujo si falla.
+  // Fire-and-forget: nunca bloquea ni rompe el flujo si falla (CORS, función no desplegada, etc.).
   notify(target, title, body, data = {}) {
     try {
+      if (typeof fetch === 'undefined') return;
       fetch(`${SUPABASE_URL}/functions/v1/send-push`, {
         method: 'POST',
         headers: {
@@ -72,9 +73,15 @@ export const pushService = {
           Authorization: `Bearer ${ANON_KEY}`,
         },
         body: JSON.stringify({ target, title, body, data }),
-      }).catch((e) => console.error('push notify error', e));
+      }).catch((e) => {
+        // Silenciar errores de CORS / red — la función send-push puede no estar desplegada
+        if (e?.name === 'TypeError' && e.message?.includes('fetch')) {
+          return;
+        }
+        console.error('push notify error', e);
+      });
     } catch (e) {
-      console.error('push notify error', e);
+      // Silenciar errores críticos de red/CORS
     }
   },
 };

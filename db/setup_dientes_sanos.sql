@@ -141,7 +141,7 @@ create table if not exists odontosonrisa.staff (
   email             text,
   name              text not null,
     role              text not null default 'Odontologo',
-  commission_pct    numeric default 0,
+  commission_pct    numeric default 40,
   active            boolean default true,
   created_at        timestamptz default now(),
   image_url         text,
@@ -160,6 +160,7 @@ create table if not exists odontosonrisa.staff (
   show_on_landing   boolean default true,
   video_url         text
 );
+alter table odontosonrisa.staff alter column commission_pct set default 40;
 create unique index if not exists staff_email_key on odontosonrisa.staff (email) where email is not null and email <> '';
 create index if not exists staff_auth_user_idx on odontosonrisa.staff (auth_user_id);
 
@@ -248,12 +249,26 @@ create table if not exists odontosonrisa.appointments (
   completed_at       timestamptz,
   beverage_selection text,
   notes              text,
-  tattoo_data        jsonb
+  tattoo_data        jsonb,
+  metadata           jsonb default '{}'::jsonb
 );
 create index if not exists appointments_staff_sched_idx on odontosonrisa.appointments (staff_id, scheduled_at);
 create index if not exists appointments_client_idx on odontosonrisa.appointments (client_id, created_at desc);
 create index if not exists appointments_status_idx on odontosonrisa.appointments (status);
 create index if not exists appointments_created_idx on odontosonrisa.appointments (created_at desc);
+
+-- Agregar columna metadata a tablas existentes que no la tengan (migración segura)
+do $$
+begin
+  if not exists (
+    select 1 from information_schema.columns
+    where table_schema = 'odontosonrisa'
+      and table_name = 'appointments'
+      and column_name = 'metadata'
+  ) then
+    alter table odontosonrisa.appointments add column metadata jsonb default '{}'::jsonb;
+  end if;
+end $$;
 
 create table if not exists odontosonrisa.appointment_staff (
   id                  uuid primary key default gen_random_uuid(),
@@ -695,6 +710,10 @@ begin
     return new;
   end if;
 
+  -- Serializa las reservas para que dos solicitudes simultáneas no ocupen el
+  -- mismo último sillón.
+  perform pg_advisory_xact_lock(hashtext('odontosonrisa.appointment_chair_capacity'));
+
   select coalesce(s.duration, 30) into v_dur
   from services s where s.id = new.service_id;
   if v_dur is null then v_dur := 30; end if;
@@ -707,12 +726,25 @@ begin
   where a.staff_id = new.staff_id
     and a.id is distinct from new.id
     and a.scheduled_at is not null
-    and coalesce(a.status, '') not in ('Cancelada', 'Cancelado')
+    and a.status in ('Agendado', 'Confirmado', 'En Espera', 'En espera', 'En Silla', 'En Lavado', 'Por Pagar')
     and a.scheduled_at < v_new_end
     and (a.scheduled_at + make_interval(mins => coalesce(s.duration, 30))) > new.scheduled_at;
 
   if v_overlap > 0 then
     raise exception 'APPOINTMENT_TIME_CONFLICT: ya hay una cita en ese horario para este odontólogo';
+  end if;
+
+  select count(*) into v_overlap
+  from appointments a
+  left join services s on s.id = a.service_id
+  where a.id is distinct from new.id
+    and a.scheduled_at is not null
+    and a.status in ('Agendado', 'Confirmado', 'En Espera', 'En espera', 'En Silla', 'En Lavado', 'Por Pagar')
+    and a.scheduled_at < v_new_end
+    and (a.scheduled_at + make_interval(mins => coalesce(s.duration, 30))) > new.scheduled_at;
+
+  if v_overlap >= 2 then
+    raise exception 'APPOINTMENT_CAPACITY_CONFLICT: no hay sillones libres en ese horario';
   end if;
 
   return new;

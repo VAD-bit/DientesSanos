@@ -3,37 +3,37 @@
 @import "tailwindcss";
 
 :root {
-  /* ─── Dientes Sanos Palette (gris oscuro + luces cálidas arena / texto blanco) ─── */
-  --black: #f5f5f5;
-  --graphite: #16161a;
-  --card: #222226;
+  /* ─── Dientes Sanos Palette (blanco/negro/gris + acento arena #E8D4B0) ─── */
+  --black: #111111;
+  --graphite: #333333;
+  --card: #ffffff;
   --border: rgba(0, 0, 0, 0.08);
   --white: #ffffff;
-  --text-secondary-custom: #b8b8b8;
+  --text-secondary-custom: #666666;
 
-  --color-neutral-light: #1c1c20;
+  --color-neutral-light: #f5f5f5;
   --color-purple-primary: #e8d4b0;
   --color-purple-secondary: #d9c08f;
   --color-teal-accent: #e8d4b0;
-  --color-surface: #16161a;
+  --color-surface: #ffffff;
 
   --champagne: #e8d4b0;
   --champagne-light: #f0e2c8;
   --champagne-dark: #d9c08f;
 
-  /* Core Palette Mappings */
-  --bg-primary: #16161a;
-  --bg-secondary: #1e1e22;
-  --bg-tertiary: #242428;
+  /* Core Palette Mappings - Tema claro */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f5f5f5;
+  --bg-tertiary: #e8e8e8;
 
   --gold-primary: #e8d4b0;
   --gold-secondary: #d9c08f;
   --gold-gradient: linear-gradient(135deg, #e8d4b0 0%, #d9c08f 100%);
   --gold-glow: 0 0 24px rgba(232, 212, 176, 0.35);
 
-  --text-primary: #f5f5f5;
-  --text-secondary: #c4c4c4;
-  --text-muted: #8a8a8a;
+  --text-primary: #111111;
+  --text-secondary: #666666;
+  --text-muted: #999999;
 
   --border-color: rgba(0, 0, 0, 0.08);
   --accent-color: #e8d4b0;
@@ -51,11 +51,11 @@
   --radius-xl: 20px;
   --radius-pill: 100px;
 
-  /* Shadows & Glass */
-  --glass-bg: rgba(30, 30, 34, 0.92);
+  /* Shadows & Glass - Tema claro */
+  --glass-bg: rgba(255, 255, 255, 0.95);
   --glass-border: 1px solid rgba(0, 0, 0, 0.08);
-  --shadow-apple: 0 8px 40px 0 rgba(0, 0, 0, 0.45);
-  --shadow-glow-gold: 0 0 20px rgba(232, 212, 176, 0.35), 0 4px 20px rgba(217, 192, 143, 0.18);
+  --shadow-apple: 0 8px 40px 0 rgba(0, 0, 0, 0.10);
+  --shadow-glow-gold: 0 0 20px rgba(232, 212, 176, 0.25), 0 4px 20px rgba(217, 192, 143, 0.15);
 
   /* Transitions */
   --transition-fast: 0.18s ease;
@@ -124,23 +124,26 @@ table, th, td {
 
 html, body {
   background: 
-    radial-gradient(ellipse 80% 60% at 10% -10%, rgba(232, 212, 176, 0.06) 0%, transparent 60%),
-    radial-gradient(ellipse 60% 80% at 90% 110%, rgba(217, 192, 143, 0.08) 0%, transparent 60%),
-    radial-gradient(circle at 50% 50%, #16161a 0%, #16161a 100%);
+    radial-gradient(ellipse 80% 60% at 10% -10%, rgba(232, 212, 176, 0.04) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 80% at 90% 110%, rgba(217, 192, 143, 0.04) 0%, transparent 60%),
+    radial-gradient(circle at 50% 50%, #ffffff 0%, #ffffff 100%);
   color: var(--text-primary);
   min-height: 100vh;
-  overflow-y: hidden;
+  overflow-y: auto;
   overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
   background-color: var(--color-surface);
 }
 
 #root {
   transition: transform 0.5s cubic-bezier(0.32, 0.72, 0, 1), filter 0.5s cubic-bezier(0.32, 0.72, 0, 1), border-radius 0.5s cubic-bezier(0.32, 0.72, 0, 1);
   transform-origin: center center;
-  min-height: 100vh;
+  min-height: 100dvh;
   background: var(--bg-primary);
   position: relative;
   z-index: 1;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 #root.ios-sheet-active {
@@ -1472,7 +1475,7 @@ input[type="submit"]:active {
 .modal-card-exit ::-webkit-scrollbar-track,
 .modal-overlay-enter ::-webkit-scrollbar-track,
 .modal-overlay-exit ::-webkit-scrollbar-track {
-  background: transparent !important;
+  background: rgba(0, 0, 0, 0.06) !important;
   margin: 16px 0 !important; /* Keeps scrollbar away from rounded corners */
 }
 
@@ -1485,12 +1488,12 @@ input[type="submit"]:active {
 .modal-card-exit ::-webkit-scrollbar-thumb,
 .modal-overlay-enter::-webkit-scrollbar-thumb,
 .modal-overlay-exit::-webkit-scrollbar-thumb {
-  background: rgba(0, 0, 0, 0.04) !important;
+  background: #555555 !important;
   border-radius: 10px !important;
   border: none !important;
 }
 
-/* 2. Hover and active (drag/click) states - must be gold! */
+/* 2. Hover and active (drag/click) states */
 .panda-scrollbar::-webkit-scrollbar-thumb:hover,
 .panda-scrollbar::-webkit-scrollbar-thumb:active,
 .glass-card::-webkit-scrollbar-thumb:hover,
@@ -1509,7 +1512,7 @@ input[type="submit"]:active {
 .modal-overlay-enter ::-webkit-scrollbar-thumb:active,
 .modal-overlay-exit ::-webkit-scrollbar-thumb:hover,
 .modal-overlay-exit ::-webkit-scrollbar-thumb:active {
-  background: var(--gold-primary) !important;
+  background: #333333 !important;
 }
 
 /* 3. Hide arrow buttons on Chrome/Edge scrollbars */

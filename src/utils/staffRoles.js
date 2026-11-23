@@ -60,6 +60,8 @@ export const isOdontologoRole = (member = {}) => {
   return ODONTOLOGO_KEYWORDS.some((keyword) => role.includes(keyword));
 };
 
+export const defaultCommissionPct = (member = {}) => isOdontologoRole(member) ? 40 : 60;
+
 // Asistente operativo (Asistente; tolera Recepcionista/Caja/Barista/Lavado heredados).
 export const isAsistenteRole = (member = {}) => {
   if (!isActiveStaff(member)) return false;

@@ -8,9 +8,8 @@ export default async function handler(request, response) {
     const { data, error } = await getAdminClient()
       
       .from('staff')
-      .select('id, name, role, image_url, active, specialty, badge, biography, phone, video_url, show_on_landing')
+      .select('id, name, role, image_url, active, specialty, badge, biography, phone, video_url')
       .eq('active', true)
-      .eq('show_on_landing', true)
       .not('role', 'like', 'ARCHIVED|%')
       .order('name');
     if (error) throw error;

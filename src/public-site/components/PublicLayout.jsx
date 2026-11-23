@@ -1,10 +1,9 @@
 import { Outlet, Link, useLocation, useNavigate } from 'react-router-dom';
-import { useState, useEffect, useRef, Suspense } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { Menu, X, Phone, MapPin, Calendar, User, ChevronRight, Check, ArrowRight, Star, Gift } from 'lucide-react';
+import ToothIcon from '../../components/icons/ToothIcon';
 import { AnimatePresence, motion } from 'framer-motion';
-import { publicService } from '../services/publicService';
 import { CLINIC } from '../config/clinic';
-import { clearGoogleAuthIntent, shouldReturnToBookingAfterGoogle } from '../utils/googleAuthIntent';
 import logo from '../../assets/panda_menu_logo.png';
 import PandaLoader from '../../components/PandaLoader';
 import Onboarding from './Onboarding';
@@ -30,35 +29,6 @@ export default function PublicLayout() {
   const [showOnboarding, setShowOnboarding] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
-  const googleCallbackHandledRef = useRef(false);
-
-  const isGoogleCallback = typeof window !== 'undefined' && (
-    window.location.hash.includes('access_token=') ||
-    window.location.search.includes('code=') ||
-    (localStorage.getItem('panda_google_login_pending') === 'true' && !localStorage.getItem('panda_public_client'))
-  );
-  const [isAuthResolving, setIsAuthResolving] = useState(isGoogleCallback);
-
-  // Clean up stale panda_google_login_pending if it's been there too long (5 minutes)
-  // or if user is already logged in
-  useEffect(() => {
-    const pending = localStorage.getItem('panda_google_login_pending');
-    const alreadyLoggedIn = localStorage.getItem('panda_public_client');
-    if (pending === 'true') {
-      if (alreadyLoggedIn) {
-        // User is already logged in, just clean up the flag
-        localStorage.removeItem('panda_google_login_pending');
-        setIsAuthResolving(false);
-      } else {
-        const timer = setTimeout(() => {
-          localStorage.removeItem('panda_google_login_pending');
-          setIsAuthResolving(false);
-        }, 5 * 60 * 1000); // 5 minutes timeout
-        return () => clearTimeout(timer);
-      }
-    }
-  }, []);
-
   // Show onboarding the first time a new user actually lands on /perfil — not the
   // moment registration finishes. Registration can complete mid-booking (e.g. Google
   // sign-in from step 5), and that flow redirects back to /agendar to let the visitor
@@ -109,102 +79,6 @@ export default function PublicLayout() {
     };
   }, [menuOpen]);
 
-  useEffect(() => {
-    // `isExplicitLogin` distinguishes "the user just finished signing in with Google" (the
-    // SIGNED_IN event, fired right after the OAuth redirect) from "the app booted and found
-    // a session Supabase already had persisted" (INITIAL_SESSION, and the getSession() call
-    // below — this fires on every single page load/refresh while a Google session exists).
-    // Only the former should force-navigate to /completar-registro: doing it on every load
-    // hijacked ALL navigation on the site (clicking any nav link, even the logo) back to
-    // that screen for as long as the profile stayed incomplete, with no way out. Now, on a
-    // routine reload with an incomplete profile, the visitor is simply not marked as a full
-    // client (isLoggedIn stays false) and can browse normally; completing the profile is
-    // enforced at the point that actually requires it — entering the booking flow (see the
-    // guard in BookAppointment.jsx).
-    const completeGoogleLogin = async (session, isExplicitLogin) => {
-      if (!session?.user) {
-        localStorage.removeItem('panda_google_login_pending');
-        setIsAuthResolving(false);
-        return;
-      }
-
-      const isGoogleUser = session.user.app_metadata?.provider === 'google'
-        || session.user.identities?.some(id => id.provider === 'google');
-
-      if (!isGoogleUser && localStorage.getItem('panda_google_login_pending') !== 'true') {
-        setIsAuthResolving(false);
-        return;
-      }
-
-      if (googleCallbackHandledRef.current) return;
-      googleCallbackHandledRef.current = true;
-
-      if (localStorage.getItem('panda_public_client')) {
-        setIsAuthResolving(false);
-        return;
-      }
-
-      if (isExplicitLogin) setIsAuthResolving(true);
-
-      try {
-        localStorage.removeItem('panda_google_login_pending');
-
-        let client = await publicService.getClientByUserId(session.user.id);
-        if (!client && session.user.email) {
-          client = await publicService.getClientByEmail(session.user.email);
-        }
-
-        // If client record doesn't exist OR is missing phone/id_card -> Complete Registration,
-        // but only redirect there automatically when this is a fresh login. On a routine
-        // reload, leave the visitor wherever they already are.
-        if (!client || !client.phone || !client.id_card) {
-          if (isExplicitLogin) {
-            navigate('/completar-registro', { replace: true });
-          }
-          return;
-        }
-
-        localStorage.setItem('panda_public_client', JSON.stringify(client));
-        localStorage.setItem('panda_public_session', JSON.stringify(session));
-        setIsLoggedIn(true);
-
-        if (isExplicitLogin) {
-          if (shouldReturnToBookingAfterGoogle()) {
-            clearGoogleAuthIntent();
-            localStorage.removeItem('panda_login_return_to_booking');
-            navigate('/agendar', { replace: true });
-          } else {
-            clearGoogleAuthIntent();
-            localStorage.removeItem('panda_login_return_to_booking');
-            navigate('/perfil', { replace: true });
-          }
-        }
-      } catch (e) {
-        googleCallbackHandledRef.current = false;
-        console.error('Error fetching client after Google login:', e);
-      } finally {
-        setIsAuthResolving(false);
-      }
-    };
-
-    const { data: authListener } = publicService.onAuthStateChange((event, session) => {
-      if (event === 'SIGNED_IN' || event === 'INITIAL_SESSION') {
-        completeGoogleLogin(session, event === 'SIGNED_IN');
-      }
-    });
-
-    publicService.getSession()
-      .then(session => completeGoogleLogin(session, false))
-      .catch(error => {
-        console.error('Error restoring Google session:', error);
-        setIsAuthResolving(false);
-      });
-
-    return () => {
-      authListener?.subscription?.unsubscribe();
-    };
-  }, [navigate]);
-
   const mobileNavLinks = [
     { id: 'inicio', label: 'Inicio' },
     { id: 'servicios', label: 'Servicios' },
@@ -217,7 +91,7 @@ export default function PublicLayout() {
   const isActive = (path) => location.pathname === path;
 
   // Navbar links target sections that only exist on the landing ('/'). From any other route
-  // (e.g. /completar-registro, /perfil) document.getElementById(id) finds nothing and used to
+  // (e.g. /perfil) document.getElementById(id) finds nothing and used to
   // silently do nothing — clicking "Inicio"/"Servicios"/etc. looked completely dead and left
   // the user stranded with no way out of that page. Now: navigate home first, then scroll
   // once the landing has actually rendered.
@@ -248,12 +122,12 @@ export default function PublicLayout() {
   // Also hide on /perfil (and sub-routes) — the profile is an authenticated view that
   // should not show the landing nav. Hide on /reservar and /agendar too — BookAppointment
   // has its own navigation and showing the landing nav causes a flash.
-  const hideNav = ['/completar-registro', '/login', '/registro', '/olvidar-contraseña', '/restablecer-contraseña', '/reset-password', '/perfil', '/reservar', '/agendar'].some(p => decodeURIComponent(location.pathname).startsWith(p));
+  const hideNav = ['/login', '/registro', '/olvidar-contraseña', '/restablecer-contraseña', '/reset-password', '/perfil', '/reservar', '/agendar'].some(p => decodeURIComponent(location.pathname).startsWith(p));
 
   // Skip auth loading screen if onboarding is showing or just finished
   // Also show loader (prevent flash) if we are on the landing page and have a session, because we will redirect to /perfil
   const isPendingPwaRedirect = typeof window !== 'undefined' && location.pathname === '/' && !!localStorage.getItem('panda_public_client');
-  if ((isAuthResolving || isPendingPwaRedirect) && !showOnboarding) {
+  if (isPendingPwaRedirect && !showOnboarding) {
     return (
       <div style={{
         minHeight: '100dvh',
@@ -277,7 +151,6 @@ export default function PublicLayout() {
           <Onboarding onComplete={() => {
             localStorage.removeItem('panda_show_onboarding');
             localStorage.setItem('panda_onboarding_seen', 'true');
-            setIsAuthResolving(false);
             setShowOnboarding(false);
           }} />
         )}

@@ -32,11 +32,7 @@ export default function Home() {
           publicService.getGoogleReviews().catch(() => [])
         ]);
         setServices(servicesData.slice(0, 4));
-        setBarbers(staffData.filter(s => {
-          if (s.show_on_landing === false) return false;
-          const r = (s.role || '').toLowerCase();
-          return r.includes('barber') || r.includes('barba') || r.includes('artista') || r.includes('odontolog') || r.includes('tatu');
-        }).slice(0, 3));
+        setBarbers(staffData.filter(isBookableStaff));
         setReviews(reviewsData || []);
         if (googleData.length) {
           setGoogleAvg(googleData.reduce((s, r) => s + (Number(r.rating) || 5), 0) / googleData.length);

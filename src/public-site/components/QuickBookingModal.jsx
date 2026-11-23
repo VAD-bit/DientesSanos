@@ -22,9 +22,7 @@ export default function QuickBookingModal({ onClose, client, initialBarber = nul
   const [selectedBarber, setSelectedBarber] = useState(initialBarber);
   const [selectedDate, setSelectedDate] = useState(null);
   const [selectedTime, setSelectedTime] = useState(null);
-  const [selectedBeverage, setSelectedBeverage] = useState(null);
   const [notes, setNotes] = useState('');
-  const [imgErrors, setImgErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [isClosing, setIsClosing] = useState(false);
@@ -39,9 +37,9 @@ export default function QuickBookingModal({ onClose, client, initialBarber = nul
     }, 600);
   };
 
-  // Confetti effect when reaching step 4
+  // Confetti effect when reaching the booking confirmation
   useEffect(() => {
-    if (step === 4) {
+    if (step === 5) {
       import('canvas-confetti').then((confetti) => {
         confetti.default({
           particleCount: 150,
@@ -138,7 +136,6 @@ export default function QuickBookingModal({ onClose, client, initialBarber = nul
         service_id: selectedService.id,
         staff_id: selectedBarber.id,
         scheduled_at,
-        beverage: selectedBeverage,
         notes: notes
       });
       setStep(5); 
@@ -523,73 +520,26 @@ export default function QuickBookingModal({ onClose, client, initialBarber = nul
                         {renderSlotGrid('Mañana', morning)}
                         {renderSlotGrid('Tarde', afternoon)}
                         {renderSlotGrid('Noche', evening)}
+                        {!(selectedService?.category || '').toLowerCase().includes('tatuaje') && (
+                          <motion.div variants={itemVariants} style={{ display: 'flex', flexDirection: 'column', gap: 12, marginTop: 16 }}>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                              <MessageSquare size={18} color="var(--champagne)" />
+                              <h5 style={{ color: '#0f172a', fontSize: 12, margin: 0, textTransform: 'uppercase', letterSpacing: 1 }}>¿Algo que debamos saber?</h5>
+                            </div>
+                            <textarea
+                              value={notes}
+                              onChange={e => setNotes(e.target.value)}
+                              placeholder="Ej: Sensibilidad en la muela inferior, alergia a algún medicamento..."
+                              style={{
+                                width: '100%', padding: 16, background: '#f7f7f5', border: '1px solid rgba(217, 192, 143, 0.2)',
+                                borderRadius: 12, color: '#0f172a', fontSize: 13, minHeight: 80, resize: 'none', fontFamily: 'inherit'
+                              }}
+                            />
+                          </motion.div>
+                        )}
                       </div>
                     );
                   })()}
-                </motion.div>
-              )}
-
-              {step === 4 && (
-                <motion.div key="step4" variants={containerVariants} initial="hidden" animate="show" exit="exit" style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-                  <motion.h4 variants={itemVariants} style={{ color: 'var(--champagne)', fontSize: 14, fontWeight: 700 }}>4. Personaliza tu Experiencia</motion.h4>
-                  
-                  <motion.div variants={itemVariants} style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                      <Coffee size={18} color="var(--champagne)" />
-                      <h5 style={{ color: '#0f172a', fontSize: 12, margin: 0, textTransform: 'uppercase', letterSpacing: 1 }}>¿Qué te gustaría tomar?</h5>
-                    </div>
-                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: 12 }}>
-                      {[
-                        { id: 'Cerveza Fría', label: 'Cerveza Fría', img: '/cerveza.webp', fallbackIcon: <Beer size={32} color="var(--champagne)" /> },
-                        { id: 'Café Premium', label: 'Café Premium', img: '/cafe.webp', fallbackIcon: <Coffee size={32} color="var(--champagne)" /> },
-                        { id: 'Whiskey Premium', label: 'Whiskey Premium', img: '/whiskey.webp', fallbackIcon: <Martini size={32} color="var(--champagne)" /> },
-                        { id: 'Agua Natural', label: 'Agua Natural', img: '/agua.webp', fallbackIcon: <GlassWater size={32} color="var(--champagne)" /> }
-                      ].map(bev => {
-                        const isSelected = selectedBeverage === bev.id;
-                        return (
-                          <button
-                            key={bev.id}
-                            onClick={() => setSelectedBeverage(bev.id)}
-                            style={{
-                              position: 'relative', overflow: 'hidden', borderRadius: 12, border: `1px solid ${isSelected ? 'var(--champagne)' : 'rgba(217, 192, 143, 0.2)'}`,
-                              background: isSelected ? 'rgba(17,17,17,0.1)' : '#f7f7f5', height: 100, display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', cursor: 'pointer', padding: 8
-                            }}
-                          >
-                            <div style={{ position: 'absolute', top: 4, right: 4, width: 16, height: 16, borderRadius: '50%', background: isSelected ? 'var(--champagne)' : 'rgba(0,0,0,0.5)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#ffffff', fontSize: 10, fontWeight: 800 }}>
-                              {isSelected && '✓'}
-                            </div>
-                            <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 0 }}>
-                              {!imgErrors[bev.id] ? (
-                                <img src={bev.img} alt={bev.label} onError={() => setImgErrors(prev => ({ ...prev, [bev.id]: true }))} style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.8 }} />
-                              ) : (
-                                <span style={{ fontSize: 30 }}>{bev.fallbackIcon}</span>
-                              )}
-                              <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, #111, transparent)' }} />
-                            </div>
-                            <span style={{ position: 'relative', zIndex: 1, color: isSelected ? 'var(--champagne)' : 'white', fontSize: 10, fontWeight: 800, textTransform: 'uppercase', textAlign: 'center', width: '100%' }}>{bev.label}</span>
-                          </button>
-                        )
-                      })}
-                    </div>
-                  </motion.div>
-
-                  {!(selectedService?.category || '').toLowerCase().includes('tatuaje') && (
-                    <motion.div variants={itemVariants} style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                        <MessageSquare size={18} color="var(--champagne)" />
-                        <h5 style={{ color: '#0f172a', fontSize: 12, margin: 0, textTransform: 'uppercase', letterSpacing: 1 }}>¿Algo que debamos saber?</h5>
-                      </div>
-                      <textarea
-                        value={notes}
-                        onChange={e => setNotes(e.target.value)}
-                        placeholder="Ej: Sensibilidad en la muela inferior, alergia a algún medicamento..."
-                        style={{
-                          width: '100%', padding: 16, background: '#f7f7f5', border: '1px solid rgba(217, 192, 143, 0.2)',
-                          borderRadius: 12, color: '#0f172a', fontSize: 13, minHeight: 80, resize: 'none', fontFamily: 'inherit'
-                        }}
-                      />
-                    </motion.div>
-                  )}
                 </motion.div>
               )}
 
@@ -610,7 +560,7 @@ export default function QuickBookingModal({ onClose, client, initialBarber = nul
 
                 return (
                   <motion.div 
-                    key="step4" 
+                    key="step5"
                     initial={{ opacity: 0, y: 50, scale: 0.9 }} 
                     animate={{ opacity: 1, y: 0, scale: 1 }} 
                     transition={{ type: 'spring', damping: 25, stiffness: 120 }}
@@ -732,7 +682,7 @@ export default function QuickBookingModal({ onClose, client, initialBarber = nul
               }}>Atrás</button>
             )}
             
-            {step < 4 ? (
+            {step < 3 ? (
               <button 
                 onClick={handleNext} 
                 disabled={(step === 1 && !selectedService) || (step === 2 && !selectedBarber) || (step === 3 && !selectedTime)}

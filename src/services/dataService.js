@@ -2,7 +2,7 @@ import { supabase as anonClient } from '../lib/supabase';
 const supabase = anonClient;
 import { notificationService } from './notificationService';
 import { pushService } from './pushService';
-import { isBookableStaff, isOperationalReceptionStaff, isAsistenteRole } from '../utils/staffRoles';
+import { defaultCommissionPct, isBookableStaff, isOperationalReceptionStaff, isAsistenteRole } from '../utils/staffRoles';
 import { formatName, formatProductName, formatServiceName } from '../utils/stringUtils';
 
 // ─── Smart In-Memory Cache ────────────────────────────────────────────────────
@@ -1116,7 +1116,7 @@ export const dataService = {
         services(name, price, included_items),
         staff(name),
         appointment_staff(staff_id),
-        appointment_products(products(name)),
+        appointment_products(inventory(name)),
         appointment_extras(service_extras(name))
       `)
       .eq('client_id', clientId)
@@ -1152,7 +1152,7 @@ export const dataService = {
         description: `Servicio: ${app.services?.name} - Barbero: ${app.staff?.name}`,
         staff_id: app.staff_id,
         appointment_staff: app.appointment_staff || [],
-        products: app.appointment_products?.map(p => p.products?.name).filter(Boolean) || [],
+        products: app.appointment_products?.map(p => p.inventory?.name).filter(Boolean) || [],
         extras: app.appointment_extras?.map(e => e.service_extras?.name).filter(Boolean) || []
       };
     });
@@ -2004,7 +2004,7 @@ export const dataService = {
         earningsUsd += Number(myStaffRecord.commission_earned || 0);
         tipsUsd += Number(myStaffRecord.tip_amount || 0);
       } else {
-        const pct = Number(app.staff?.commission_pct ?? 60);
+        const pct = Number(app.staff?.commission_pct ?? defaultCommissionPct(app.staff));
         earningsUsd += sPrice * (pct / 100); // solo servicio, sin productos
       }
     });

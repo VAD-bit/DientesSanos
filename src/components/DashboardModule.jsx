@@ -367,7 +367,7 @@ const DashboardModule = ({
   }, [facturadoHoyAmount]);
 
   const occupiedChairsCount = (realtimeAppointments || []).filter(a => a.status === 'En Silla').length;
-  const totalChairs = 1;
+  const totalChairs = 2;
   const ocupacionPercent = Math.min(100, Math.round((occupiedChairsCount / totalChairs) * 100));
 
   const activeBarbers = staffList.filter(member => {
@@ -605,9 +605,9 @@ const DashboardModule = ({
     const activeInChair = realtimeAppointments.filter(a => a.status === 'En Silla');
     const result = [];
 
-    for (let i = 1; i <= 1; i++) {
+    for (let i = 1; i <= 2; i++) {
       const chairId = String(i).padStart(2, '0');
-      const activeApp = activeInChair[0];
+      const activeApp = activeInChair[i - 1];
 
       if (activeApp) {
         const elapsedStr = formatElapsedTime(activeApp.started_at || activeApp.created_at);
@@ -621,8 +621,8 @@ const DashboardModule = ({
         result.push({
           id: chairId,
           appointmentId: activeApp.id,
-          type: barberName,
-          barberAvatar: barber.image_url,
+          type: dentistaName,
+          barberAvatar: dentista.image_url,
           name: activeApp.clients?.name || activeApp.client_name || 'Cliente',
           service: activeApp.services?.name || 'Servicio',
           price: priceStr,

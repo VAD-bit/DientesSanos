@@ -1,4 +1,4 @@
-import { HashRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
 import PublicLayout from './public-site/components/PublicLayout';
 import ClientLayout from './public-site/components/ClientLayout';
@@ -18,7 +18,6 @@ const Profile = lazy(() => import('./public-site/pages/Profile'));
 const ClientDashboard = lazy(() => import('./public-site/pages/ClientDashboard'));
 const ForgotPassword = lazy(() => import('./public-site/pages/ForgotPassword'));
 const ResetPassword = lazy(() => import('./public-site/pages/ResetPassword'));
-const CompleteRegistration = lazy(() => import('./public-site/pages/CompleteRegistration'));
 const ClientAppointments = lazy(() => import('./public-site/pages/ClientAppointments'));
 const ClientSettings = lazy(() => import('./public-site/pages/ClientSettings'));
 const Explore = lazy(() => import('./public-site/pages/Explore'));
@@ -38,7 +37,7 @@ export default function PublicRouter() {
               <Route path="/login" element={<Login />} />
               <Route path="/olvidar-contraseña" element={<ForgotPassword />} />
               <Route path="/restablecer-contraseña" element={<ResetPassword />} />
-              <Route path="/completar-registro" element={<CompleteRegistration />} />
+              <Route path="/completar-registro" element={<Navigate to="/login" replace />} />
               <Route path="/perfil" element={<ClientLayout />}>
                 <Route index element={<ClientDashboard />} />
                 <Route path="club" element={<Profile />} />

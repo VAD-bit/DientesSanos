@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Banknote, CalendarDays, ChevronDown, Clock3, WalletCards, X } from 'lucide-react';
 import ToothIcon from './icons/ToothIcon';
+import { defaultCommissionPct } from '../utils/staffRoles';
 
 const fmt = value => Number(value || 0).toLocaleString('es-VE', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 const txAmountBs = (transaction, rate) => Number(transaction.metadata?.amountBs || (Number(transaction.amount || 0) * Number(transaction.exchange_rate || rate)));
@@ -142,7 +143,7 @@ const PayrollDetailPanel = ({ detail, rate, periodStart, periodEnd, isMobile, on
             <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '6px', marginTop: '9px' }}><span style={{ padding: '4px 7px', borderRadius: '7px', background: 'rgba(0,122,255,.1)', color: '#8fd0ff', fontSize: '8px', fontWeight: 800 }}>{methodLabelFor(transaction)}</span><span style={{ marginLeft: 'auto', color: 'var(--text-muted)', fontSize: '8px' }}>{dateLabel(transaction.created_at)}</span></div>
           </article>;
         }
-        const commissionPct = Number(involved.commissionPct || staff.commission_pct || 60);
+        const commissionPct = Number(involved.commissionPct ?? staff.commission_pct ?? defaultCommissionPct(staff));
         const commissionBs = Number(involved.commissionBs || 0);
         const commissionUsd = Number(involved.commissionEarned || commissionBs / transactionRate);
         const productCommissionBs = Number(involved.productCommissionBs || 0);

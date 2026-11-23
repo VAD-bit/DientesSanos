@@ -3,7 +3,7 @@ import useDebounce from '../hooks/useDebounce';
 import { createPortal } from 'react-dom';
 import { useScrollLock } from '../hooks/useScrollLock';
 import { useNotifs } from '../context/NotificationContext';
-import { roleLabel } from '../utils/staffRoles';
+import { defaultCommissionPct, roleLabel } from '../utils/staffRoles';
 import { 
   Plus, 
   Minus, 
@@ -1239,7 +1239,7 @@ const FinanceModule = ({ isMobile, currency, rates, staff = [] }) => {
         // permite re-rutear correctamente. Regla clave: los extras de LAVADO son de la
         // asistente al 60% (como los lavados incluidos), NO del barbero. Ver checkout.
         const WASH_SHARE = 0.6;
-        const pctOf = (id) => { const s = (staff || []).find(x => String(x.id) === String(id)); return s?.commission_pct != null ? Number(s.commission_pct) : 60; };
+        const pctOf = (id) => { const s = (staff || []).find(x => String(x.id) === String(id)); return s?.commission_pct != null ? Number(s.commission_pct) : defaultCommissionPct(s); };
         const nameOf = (id) => { const s = (staff || []).find(x => String(x.id) === String(id)); return s?.name || ''; };
         const isAssistantRole = (role) => { const r = (role || '').toLowerCase(); return r.includes('asist') || r.includes('lavado'); };
         const isWashExtra = (ex) => (ex?.service_extras?.name || ex?.name || '').toLowerCase().includes('lavado');
@@ -4977,7 +4977,7 @@ const FinanceModule = ({ isMobile, currency, rates, staff = [] }) => {
                       const prodCommUsd = stInvolved?.productCommissionEarned || 0;
                       const tipBs = stInvolved?.tipBs || 0;
                       const tipUsd = stInvolved?.tip || 0;
-                      const commissionPct = Number(stInvolved?.commissionPct || payrollDetail.staff?.commission_pct || 60);
+                      const commissionPct = Number(stInvolved?.commissionPct ?? payrollDetail.staff?.commission_pct ?? defaultCommissionPct(payrollDetail.staff));
                       const grossServiceUsd = commissionPct > 0 ? commUsd / (commissionPct / 100) : 0;
                       const grossServiceBs = commissionPct > 0 ? commBs / (commissionPct / 100) : 0;
                       

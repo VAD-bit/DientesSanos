@@ -59,6 +59,7 @@ import { useScrollLock } from '../hooks/useScrollLock';
 import ReceiptTicket from './ReceiptTicket';
 import { enqueuePayment, subscribeToQueue, initOfflineService, listPendingPayments, discardPayment, retryQueueNow } from '../services/offlineService';
 import { filterSellableInventory, getInventorySalesLabel, INVENTORY_SALES_GROUPS, matchesInventorySalesGroup } from '../utils/inventorySales';
+import { defaultCommissionPct } from '../utils/staffRoles';
 
 const parseUsdAmount = (value) => {
   if (typeof value === 'number') return Number.isFinite(value) ? value : 0;
@@ -343,11 +344,11 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
   const { isModalOpen } = useModal();
   
   // Checkout Multi-State
-  const [fixedRate, setFixedRate] = useState(() => rates?.usd ? Number(Number(rates.usd).toFixed(2)) : 0);
+  const [fixedRate, setFixedRate] = useState(() => rates?.bcv ? Number(Number(rates.bcv).toFixed(2)) : 0);
 
   useEffect(() => {
-    if (rates?.usd) {
-      setFixedRate(Number(Number(rates.usd).toFixed(2)));
+    if (rates?.bcv) {
+      setFixedRate(Number(Number(rates.bcv).toFixed(2)));
     }
   }, [rates]);
   const [tips, setTips] = useState([]); // Array of { id, staffId, amount }
@@ -512,7 +513,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
 
   useEffect(() => {
     loadData();
-    if (rates?.usd) setFixedRate(rates.usd);
+    if (rates?.bcv) setFixedRate(rates.bcv);
 
     const channel = supabase
       .channel('checkout-realtime')
@@ -1229,7 +1230,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
             }
 
             const isServiceProfessional = role.includes('barber') || role.includes('tatu') || role.includes('odontolog');
-            const pct = isServiceProfessional ? Number(app.staff?.commission_pct ?? 60) : 0;
+            const pct = isServiceProfessional ? Number(app.staff?.commission_pct ?? defaultCommissionPct(app.staff)) : 0;
 
             const comm = grossBase * (pct / 100);
             const tipVal = tips.filter(t => t.staffId === app.staff_id).reduce((acc, t) => {
@@ -1326,7 +1327,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                 || app.staff_id;
               if (!assignedStaffId) return;
               const staffObj = allStaff.find(s => s.id === assignedStaffId);
-              const pct = isWashExtra ? (WASH_ASSISTANT_SHARE * 100) : Number(staffObj?.commission_pct ?? 60);
+              const pct = isWashExtra ? (WASH_ASSISTANT_SHARE * 100) : Number(staffObj?.commission_pct ?? defaultCommissionPct(staffObj));
               const extraComm = (Number(ex.price) || 0) * (pct / 100);
               if (extraComm <= 0) return;
               const existing = involved.find(i => i.staffId === assignedStaffId);
@@ -1414,7 +1415,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
               appliedWashes++;
             }
             const isServiceProfessional = role.includes('barber') || role.includes('tatu') || role.includes('odontolog');
-            const pct = isServiceProfessional ? Number(app.staff?.commission_pct ?? 60) : 0;
+            const pct = isServiceProfessional ? Number(app.staff?.commission_pct ?? defaultCommissionPct(app.staff)) : 0;
             const comm = grossBase * (pct / 100);
             const row = getRow(app.id, app.staff_id);
             if (row) row.commissionEarned += comm;
@@ -1426,7 +1427,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
               || app.staff_id;
             if (!assignedStaffId) return;
             const staffObj = allStaff.find(s => s.id === assignedStaffId);
-            const pct = isWashExtra ? (WASH_ASSISTANT_SHARE * 100) : Number(staffObj?.commission_pct ?? 60);
+            const pct = isWashExtra ? (WASH_ASSISTANT_SHARE * 100) : Number(staffObj?.commission_pct ?? defaultCommissionPct(staffObj));
             const extraComm = (Number(ex.price) || 0) * (pct / 100);
             if (extraComm <= 0) return;
             const row = getRow(app.id, assignedStaffId);
@@ -1486,7 +1487,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
           const washValue = applyWash ? getWashingRate(allStaff.find(member => member.id === selectedWasherId)) : 0;
           if (applyWash) washesApplied += 1;
           const distributableService = Math.max(0, serviceValue - washValue);
-          const commissionPct = Number(app.staff?.commission_pct ?? 60);
+          const commissionPct = Number(app.staff?.commission_pct ?? defaultCommissionPct(app.staff));
           const shopServiceShare = distributableService * (Math.max(0, 100 - commissionPct) / 100);
           exchangeChargeUsd += shopServiceShare + washValue;
         });
@@ -2307,17 +2308,13 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                   </div>
                 </div>
                 <div style={{ textAlign: isMobile ? 'left' : 'right', display: 'flex', flexDirection: isMobile ? 'row' : 'column', alignItems: isMobile ? 'center' : 'flex-end', gap: '8px', flexShrink: 0 }}>
-                  <label style={{ fontSize: '10px', color: 'var(--text-muted)', fontWeight: '900', whiteSpace: 'nowrap' }}>TASA MANUAL ($)</label>
+                  <label style={{ fontSize: '10px', color: 'var(--text-muted)', fontWeight: '900', whiteSpace: 'nowrap' }}>DÓLAR BCV</label>
                   <input 
                     type="number" 
                     step="0.01"
                     value={fixedRate} 
-                    onChange={(e) => setFixedRate(e.target.value)}
-                    onBlur={() => {
-                      if (fixedRate) {
-                        setFixedRate(Number(Number(fixedRate).toFixed(2)));
-                      }
-                    }}
+                    readOnly
+                    aria-label="Tasa del dólar BCV"
                     style={{ width: isMobile ? '90px' : '100px', textAlign: 'right', fontWeight: '900', color: 'var(--gold-primary)', background: 'none', border: '1px solid rgba(0, 0, 0, 0.08)', marginLeft: isMobile ? '0' : '10px' }}
                   />
                 </div>
@@ -4097,6 +4094,4 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
 };
 
 export default CheckoutPOS;
-
-
 

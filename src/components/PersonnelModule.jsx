@@ -1,10 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { useNotifs } from '../context/NotificationContext';
-import { roleLabel } from '../utils/staffRoles';
+import { defaultCommissionPct, isOdontologoRole, roleLabel } from '../utils/staffRoles';
 import { supabase } from '../lib/supabase';
 import { 
-  Scissors, 
   Trash2, 
   Edit2, 
   UserPlus,
@@ -919,7 +918,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
     email: '',
     username: '',
     permissions: rolePresets['Odontologo'],
-    commission_pct: 60,
+    commission_pct: 40,
     washing_rate: 0,
     birth_date: '',
     password: '',
@@ -960,6 +959,9 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
   const [portfolioLoading, setPortfolioLoading] = useState(false);
   const [portfolioUploading, setPortfolioUploading] = useState(false);
   const MAX_PORTFOLIO = 5;
+  const supportsServiceCommission = roles => roles.some(role =>
+    /barber|tatu/i.test(role) || isOdontologoRole({ role })
+  );
 
   // Video upload state
   const [videoUploading, setVideoUploading] = useState(false);
@@ -1256,8 +1258,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
     try {
       const ratesData = await dataService.getExchangeRates();
       if (ratesData) {
-        const activeType = localStorage.getItem('panda_active_rate') || 'euro';
-        setExchangeRate(activeType === 'euro' ? (ratesData.euro || 42.0) : (ratesData.bcv || 36.5));
+        setExchangeRate(Number(ratesData.bcv) || 0);
       }
     } catch (err) {
       console.error("Error loading rates:", err);
@@ -1322,7 +1323,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
       email: person.email || '',
       username: person.username || '',
       permissions: perms,
-      commission_pct: person.commission_pct ?? 60,
+      commission_pct: person.commission_pct ?? defaultCommissionPct({ role: rolesArray[0] }),
       washing_rate: person.washing_rate || 0,
       birth_date: person.birth_date || '',
       password: '',
@@ -1334,7 +1335,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
       happy_clients: hClients,
       experience: expYears,
       location: workLoc,
-      show_on_landing: person.show_on_landing !== false,
+      show_on_landing: true,
       video_url: person.video_url || ''
     });
     setEditingId(person.id);
@@ -1359,7 +1360,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
         email: '',
         username: '',
         permissions: rolePresets['Odontologo'],
-        commission_pct: 60,
+        commission_pct: 40,
         washing_rate: 0,
         roles: ['Odontologo'],
         birth_date: '',
@@ -1464,7 +1465,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
       showToast('La contraseña debe tener al menos 6 caracteres.', 'error');
       return;
     }
-    const usesServiceCommission = formData.roles.some(role => /barber|tatu/i.test(role));
+    const usesServiceCommission = supportsServiceCommission(formData.roles);
     const serviceCommission = Number(formData.commission_pct);
     if (usesServiceCommission && (!Number.isFinite(serviceCommission) || serviceCommission < 0 || serviceCommission > 100)) {
       showToast('El porcentaje por servicio debe estar entre 0% y 100%.', 'error');
@@ -1512,7 +1513,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
         badge: formData.badge || '',
         biography: finalBiography,
         payroll_frequency: formData.payroll_frequency || 'weekly',
-        show_on_landing: formData.show_on_landing,
+        show_on_landing: true,
         video_url: formData.video_url || null
       };
 
@@ -2334,7 +2335,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                       placeholder="Selecciona la frecuencia..."
                     />
                   </div>
-                  {formData.roles.some(role => /barber|tatu/i.test(role)) && (
+                  {supportsServiceCommission(formData.roles) && (
                     <div className="form-group animate-slide-right">
                       <label style={{ display: 'block', fontSize: '11px', fontWeight: '900', color: 'var(--gold-primary)', marginBottom: '8px', letterSpacing: '1px' }}>
                         PORCENTAJE POR SERVICIO (%)
@@ -2457,35 +2458,6 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
             </button>
             {editSections.profile && (
               <div style={{ padding: '16px', display: 'flex', flexDirection: 'column', gap: '16px' }}>
-                {/* Show on Landing Toggle */}
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '14px 16px', background: formData.show_on_landing ? 'rgba(48,209,88,0.06)' : 'rgba(255,255,255,0.03)', borderRadius: '12px', border: formData.show_on_landing ? '1px solid rgba(48,209,88,0.2)' : '1px solid rgba(255,255,255,0.06)' }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                    <Globe size={16} color={formData.show_on_landing ? '#30d158' : 'var(--text-muted)'} />
-                    <div>
-                      <div style={{ fontSize: '12px', fontWeight: '700', color: 'white' }}>Aparecer en Landing Page</div>
-                      <div style={{ fontSize: '11px', color: 'var(--text-muted)', marginTop: '2px' }}>Visible en la sección "Nuestro Equipo"</div>
-                    </div>
-                  </div>
-                  <button
-                    type="button"
-                    onClick={() => setFormData({...formData, show_on_landing: !formData.show_on_landing})}
-                    style={{
-                      width: '44px', height: '24px', borderRadius: '12px', border: 'none', cursor: 'pointer', position: 'relative',
-                      background: formData.show_on_landing ? 'linear-gradient(135deg, #30d158, #28a745)' : 'rgba(255,255,255,0.12)',
-                      transition: 'background 0.3s ease',
-                      flexShrink: 0,
-                    }}
-                  >
-                    <div style={{
-                      width: '18px', height: '18px', borderRadius: '50%', background: 'white',
-                      position: 'absolute', top: '3px',
-                      left: formData.show_on_landing ? '23px' : '3px',
-                      transition: 'left 0.3s ease',
-                      boxShadow: '0 1px 4px rgba(0,0,0,0.3)',
-                    }} />
-                  </button>
-                </div>
-
                 {/* Video Upload */}
                 {isServiceProfessional && (
                   <div style={{ padding: '14px 16px', background: 'rgba(0, 0, 0, 0.04)', borderRadius: '12px', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
@@ -2746,7 +2718,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                   email: '',
                   username: '',
                   permissions: rolePresets['Odontologo'],
-                  commission_pct: 60,
+                  commission_pct: 40,
                   washing_rate: 0,
                   birth_date: '',
                   password: ''
@@ -3080,7 +3052,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                   />
                 </div>
 
-                {formData.roles.some(role => /barber|tatu/i.test(role)) && (
+                {supportsServiceCommission(formData.roles) && (
                   <div className="form-group animate-slide-right">
                     <FieldLabel>PORCENTAJE POR SERVICIO (%)</FieldLabel>
                     <div style={{ position: 'relative' }}>

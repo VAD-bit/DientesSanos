@@ -294,7 +294,7 @@ const MobileDashboard = ({ onOpenSale, stats, chartData, dbData, onNavigate, onO
     .slice(0, 3);
 
   return (
-    <div className="mobile-dashboard animate-fade-in" style={{ fontFamily: "'Inter', sans-serif", overflowX: 'hidden', position: 'relative' }}>
+    <div className="mobile-dashboard animate-fade-in" style={{ fontFamily: "'Inter', sans-serif", overflowX: 'hidden', overflowY: 'auto', minHeight: '100dvh', position: 'relative', WebkitOverflowScrolling: 'touch', background: 'var(--bg-primary)' }}>
       
       {/* Hello Greeting Header */}
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '24px' }}>
