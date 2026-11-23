@@ -3865,7 +3865,7 @@ const FinanceModule = ({ isMobile, currency, rates, staff = [] }) => {
                   )}
 
                   {/* Action Buttons */}
-                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, minmax(0, 1fr))', gap: '8px', marginTop: 'auto' }}>
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: '8px', marginTop: 'auto' }}>
                     <button 
                       onClick={() => setPayrollDetail({ isOpen: true, staff: st, transactions: st.staffTransactions })}
                       style={{ minWidth: 0, padding: '10px 6px', borderRadius: '12px', background: 'rgba(0, 0, 0, 0.04)', color: 'white', border: '1px solid rgba(0, 0, 0, 0.08)', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '5px', cursor: 'pointer', transition: 'all 0.2s ease' }}
@@ -3883,35 +3883,6 @@ const FinanceModule = ({ isMobile, currency, rates, staff = [] }) => {
                         onMouseLeave={e => e.currentTarget.style.background = 'rgba(17, 17, 17,.09)'}
                       >
                         <WalletCards size={14} /> <span style={{ fontSize: '11px', fontWeight: '850' }}>Salario</span>
-                      </button>
-                    )}
-                    <button
-                      onClick={() => openStaffConsumption(st)}
-                      style={{ minWidth: 0, padding: '10px 6px', borderRadius: '12px', background: 'rgba(255,159,10,.09)', color: '#ffb340', border: '1px solid rgba(255,159,10,.22)', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '5px', cursor: 'pointer', transition: 'all 0.2s ease' }}
-                      onMouseEnter={e => e.currentTarget.style.background = 'rgba(255,159,10,.18)'}
-                      onMouseLeave={e => e.currentTarget.style.background = 'rgba(255,159,10,.09)'}
-                    >
-                      <ShoppingBag size={14} /> <span style={{ fontSize: '11px', fontWeight: '850' }}>Consumo</span>
-                    </button>
-
-                    {(st.isBarber || st.isAssistant || st.isBarista || st.isSupportStaff) && (
-                      <button
-                        onClick={() => {
-                          setValeModal({
-                            isOpen: true,
-                            staff: st,
-                            amountBs: '',
-                            paymentMethod: 'Efectivo ($)',
-                            note: '',
-                            allocations: {},
-                            maxBalance: st.balanceBs
-                          });
-                        }}
-                        style={{ minWidth: 0, padding: '10px 6px', borderRadius: '12px', background: 'rgba(255, 69, 58, 0.09)', color: '#ff6961', border: '1px solid rgba(255, 69, 58, 0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '5px', cursor: 'pointer', transition: 'all 0.2s ease' }}
-                        onMouseEnter={e => e.currentTarget.style.background = 'rgba(255, 69, 58, 0.18)'}
-                        onMouseLeave={e => e.currentTarget.style.background = 'rgba(255, 69, 58, 0.09)'}
-                      >
-                        <Minus size={14} /> <span style={{fontSize: '11px', fontWeight: '800'}}>Vale</span>
                       </button>
                     )}
 
