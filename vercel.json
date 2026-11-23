@@ -6,6 +6,9 @@
   "installCommand": "npm install",
   "cleanUrls": true,
   "rewrites": [
+    { "source": "/api/public/:path*", "destination": "/api/public" },
+    { "source": "/api/admin/:path*", "destination": "/api/admin" },
+    { "source": "/api/passkeys/:path*", "destination": "/api/passkeys" },
     { "source": "/admin", "destination": "/admin.html" },
     { "source": "/admin/", "destination": "/admin.html" },
     { "source": "/admin/(.*)", "destination": "/admin.html" },
