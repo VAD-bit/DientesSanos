@@ -44,8 +44,9 @@ export default async function handler(request, response) {
           email_confirm: true,
         });
         if (error) {
-          const msg = error?.message || error?.error_description || error?.error || 'Error al crear usuario en Supabase Auth';
-          throw Object.assign(new Error(msg), { statusCode: error?.status || 500 });
+          console.error('[admin-auth-users] Supabase createUser error object:', JSON.stringify(error, null, 2));
+          const msg = error?.message || error?.error_description || error?.error || error?.msg || JSON.stringify(error) || 'Error al crear usuario en Supabase Auth';
+          throw Object.assign(new Error(msg), { statusCode: error?.status || error?.statusCode || 500 });
         }
         return json(response, 201, { user: data.user });
       }
@@ -75,9 +76,9 @@ export default async function handler(request, response) {
     return json(response, 404, { error: 'Ruta no encontrada' });
   } catch (error) {
     // Manejo de errores específico para admin (sin mensaje genérico de biometría)
-    const status = Number(error?.statusCode) || 500;
+    const status = Number(error?.statusCode || error?.status) || 500;
     const message = error?.message || 'Error en la operación de administración';
-    console.error('[admin-auth-users] ERROR:', { status, message, error: String(error) });
-    return json(response, status, { error: message, details: String(error) });
+    console.error('[admin-auth-users] ERROR:', { status, message, error: String(error), stack: error?.stack });
+    return json(response, status, { error: message, details: String(error), stack: error?.stack });
   }
 }
