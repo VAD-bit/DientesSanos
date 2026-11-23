@@ -1,12 +1,12 @@
-﻿import React, { useState, useCallback, useMemo } from 'react';
+import React, { useState, useCallback, useMemo } from 'react';
 import { Eraser, Trash2, ChevronLeft, ChevronRight } from 'lucide-react';
 
-// FDI (ISO 3950) - DenticiÃ³n Permanente (adultos): cuadrantes 1-4, 8 piezas cada uno = 32
+// FDI (ISO 3950) - Dentición Permanente (adultos): cuadrantes 1-4, 8 piezas cada uno = 32
 const PERMANENT_UPPER = [18, 17, 16, 15, 14, 13, 12, 11, 21, 22, 23, 24, 25, 26, 27, 28];
 const PERMANENT_LOWER = [48, 47, 46, 45, 44, 43, 42, 41, 31, 32, 33, 34, 35, 36, 37, 38];
 
-// FDI - DenticiÃ³n Temporal (niÃ±os): cuadrantes 5-8, 5 piezas cada uno = 20
-// No hay premolares en denticiÃ³n temporal
+// FDI - Dentición Temporal (niños): cuadrantes 5-8, 5 piezas cada uno = 20
+// No hay premolares en dentición temporal
 const TEMPORARY_UPPER = [55, 54, 53, 52, 51, 61, 62, 63, 64, 65];
 const TEMPORARY_LOWER = [85, 84, 83, 82, 81, 71, 72, 73, 74, 75];
 
@@ -25,21 +25,21 @@ const CONDITIONS = [
   { id: 'rest_temp', label: 'Rest. Temporal', color: '#f97316', kind: 'surface', circle: true },
   { id: 'corona_temp', label: 'Corona Temporal', color: '#ef4444', kind: 'tooth', ring: true },
   { id: 'corona_def', label: 'Corona Definitiva', color: '#3b82f6', kind: 'tooth', ring: true, materials: ['CC', 'CF', 'CMC'] },
-  { id: 'ausente', label: 'Ausente / ExtraÃ­do', color: '#6b7280', kind: 'tooth', cross: true },
+  { id: 'ausente', label: 'Ausente / Extraído', color: '#6b7280', kind: 'tooth', cross: true },
   { id: 'endodoncia', label: 'Endodoncia', color: '#8b5cf6', kind: 'tooth', rootLine: true },
-  { id: 'erupcion', label: 'En erupciÃ³n', color: '#22c55e', kind: 'tooth', outline: true },
+  { id: 'erupcion', label: 'En erupción', color: '#22c55e', kind: 'tooth', outline: true },
 ];
 
 const MATERIAL_LABELS = {
   AM: 'Amalgama',
   R: 'Resina',
-  IV: 'IncrustaciÃ³n de Vidrio',
-  IM: 'IncrustaciÃ³n MetÃ¡lica',
-  IE: 'IncrustaciÃ³n EstÃ©tica',
+  IV: 'Incrustación de Vidrio',
+  IM: 'Incrustación Metálica',
+  IE: 'Incrustación Estética',
   CP: 'Corona de Porcelana',
-  CC: 'Corona MetÃ¡lica',
+  CC: 'Corona Metálica',
   CF: 'Corona Fija',
-  CMC: 'Corona MetÃ¡lica Revestida'
+  CMC: 'Corona Metálica Revestida'
 };
 
 // Determina si un diente es temporal (cuadrantes 5-8)
@@ -54,7 +54,7 @@ function isPermanentTooth(num) {
   return quad >= 1 && quad <= 4;
 }
 
-// TamaÃ±o del diente segÃºn tipo y posiciÃ³n
+// Tamaño del diente según tipo y posición
 function toothSize(num) {
   const isTemp = isTemporaryTooth(num);
   const pos = num % 10;
@@ -86,7 +86,7 @@ function groupByQuadrant(teeth) {
 
 // Slot fijo por pieza
 const TOOTH_SLOT = 38;
-const ARCH_GAP = 6; // gap entre cuadrantes (lÃ­nea media)
+const ARCH_GAP = 6; // gap entre cuadrantes (línea media)
 const VIEW_W = 16 * TOOTH_SLOT + ARCH_GAP + 16;
 const MID_X = 8 * TOOTH_SLOT + ARCH_GAP / 2;
 
@@ -152,7 +152,7 @@ export default function Odontograma({ value, onChange }) {
 
   const marksForTooth = useCallback((tooth) => marks.filter(m => m.tooth === tooth), [marks]);
 
-  // Dientes segÃºn vista actual
+  // Dientes según vista actual
   const getCurrentTeeth = () => {
     if (viewMode === 'permanent') {
       return { upper: PERMANENT_UPPER, lower: PERMANENT_LOWER };
@@ -245,7 +245,7 @@ export default function Odontograma({ value, onChange }) {
         onClick={() => handleToothClick(num)}
         style={{ cursor: cond?.kind === 'tooth' || eraser ? 'pointer' : 'default' }}
       >
-        {/* nÃºmero FDI */}
+        {/* número FDI */}
         <text
           x={bx + w / 2}
           y={isUpper ? by - 3 : by + h + 12}
@@ -294,7 +294,7 @@ export default function Odontograma({ value, onChange }) {
           </g>
         )}
 
-        {/* Endodoncia - lÃ­nea vertical en raÃ­z */}
+        {/* Endodoncia - línea vertical en raíz */}
         {endodoncia && (
           <line
             x1={bx + w / 2}
@@ -307,7 +307,7 @@ export default function Odontograma({ value, onChange }) {
           />
         )}
 
-        {/* En erupciÃ³n - contorno punteado */}
+        {/* En erupción - contorno punteado */}
         {erupcion && (
           <rect
             x={bx - 2}
@@ -340,7 +340,7 @@ export default function Odontograma({ value, onChange }) {
   // Renderiza una arcada (superior o inferior) agrupada por cuadrantes
   const renderArch = (teeth, isUpper, yOffset) => {
     const groups = groupByQuadrant(teeth);
-    const quadrantOrder = isUpper ? [1, 2, 5, 6] : [4, 3, 8, 7]; // orden visual: der â†’ izq
+    const quadrantOrder = isUpper ? [1, 2, 5, 6] : [4, 3, 8, 7]; // orden visual: der → izq
     
     return (
       <g transform={`translate(8, ${yOffset})`}>
@@ -391,7 +391,7 @@ export default function Odontograma({ value, onChange }) {
       const k = m.type + (m.mat ? ` ${m.mat}` : '');
       byType[k] = (byType[k] || 0) + 1;
     }
-    return Object.entries(byType).map(([k, n]) => `${n}Ã— ${k}`).join(' Â· ');
+    return Object.entries(byType).map(([k, n]) => `${n}× ${k}`).join(' · ');
   }, [marks]);
 
   // Contar dientes por tipo en la vista actual
@@ -504,7 +504,7 @@ export default function Odontograma({ value, onChange }) {
         <div style={styles.hint}>
           {eraser
             ? 'Borrador activo: toca una superficie o diente para quitar marcas.'
-            : `Selecciona ${cond?.label?.toLowerCase() || 'una condiciÃ³n'}${cond?.materials ? ` (${activeMat} â€” ${MATERIAL_LABELS[activeMat] || activeMat})` : ''} y toca las caras del diente${cond?.kind === 'tooth' ? ' o el diente completo' : ''}. Tocar de nuevo = alternar/quitar.`}
+            : `Selecciona ${cond?.label?.toLowerCase() || 'una condición'}${cond?.materials ? ` (${activeMat} — ${MATERIAL_LABELS[activeMat] || activeMat})` : ''} y toca las caras del diente${cond?.kind === 'tooth' ? ' o el diente completo' : ''}. Tocar de nuevo = alternar/quitar.`}
         </div>
       </div>
 
@@ -515,7 +515,7 @@ export default function Odontograma({ value, onChange }) {
           width="100%"
           style={{ maxWidth: `${VIEW_W}px`, minWidth: '520px', display: 'block', margin: '0 auto' }}
         >
-          {/* lÃ­nea media */}
+          {/* línea media */}
           <line
             x1={MID_X}
             y1="6"
@@ -532,43 +532,43 @@ export default function Odontograma({ value, onChange }) {
           {/* Inferior */}
           {renderArch(currentLower, false, 145)}
 
-          {/* etiquetas de cuadrante - dinÃ¡micas segÃºn vista */}
+          {/* etiquetas de cuadrante - dinámicas según vista */}
           {viewMode === 'permanent' && (
             <>
               <text x={MID_X / 2} y="272" textAnchor="middle" fontSize="9" fill="rgba(255,255,255,0.32)" fontWeight="700">
-                SUP Â· DER 18â€“11 | IZQ 21â€“28
+                SUP · DER 18–11 | IZQ 21–28
               </text>
               <text x={MID_X + (VIEW_W - MID_X) / 2} y="272" textAnchor="middle" fontSize="9" fill="rgba(188,203,197,0.86)" fontWeight="700">
-                INF Â· DER 48â€“41 | IZQ 31â€“38
+                INF · DER 48–41 | IZQ 31–38
               </text>
             </>
           )}
           {viewMode === 'temporary' && (
             <>
               <text x={MID_X / 2} y="272" textAnchor="middle" fontSize="9" fill="rgba(255,255,255,0.32)" fontWeight="700">
-                SUP Â· DER 55â€“51 | IZQ 61â€“65
+                SUP · DER 55–51 | IZQ 61–65
               </text>
               <text x={MID_X + (VIEW_W - MID_X) / 2} y="272" textAnchor="middle" fontSize="9" fill="rgba(255,255,255,0.32)" fontWeight="700">
-                INF Â· DER 85â€“81 | IZQ 71â€“75
+                INF · DER 85–81 | IZQ 71–75
               </text>
             </>
           )}
           {viewMode === 'mixed' && (
             <>
               <text x={MID_X / 2} y="272" textAnchor="middle" fontSize="8" fill="rgba(255,255,255,0.32)" fontWeight="700">
-                SUP Â· DER 18â€“11, 55â€“51 | IZQ 21â€“28, 61â€“65
+                SUP · DER 18–11, 55–51 | IZQ 21–28, 61–65
               </text>
               <text x={MID_X + (VIEW_W - MID_X) / 2} y="272" textAnchor="middle" fontSize="8" fill="rgba(255,255,255,0.32)" fontWeight="700">
-                INF Â· DER 48â€“41, 85â€“81 | IZQ 31â€“38, 71â€“75
+                INF · DER 48–41, 85–81 | IZQ 31–38, 71–75
               </text>
             </>
           )}
         </svg>
       </div>
 
-      {/* Leyenda (simbologÃ­a clÃ­nica) */}
+      {/* Leyenda (simbología clínica) */}
       <div style={styles.legend}>
-        <div style={styles.legendTitle}>SimbologÃ­a del odontograma (FDI)</div>
+        <div style={styles.legendTitle}>Simbología del odontograma (FDI)</div>
         <div style={styles.legendGrid}>
           {CONDITIONS.map(c => (
             <div key={c.id} style={styles.legendItem}>
@@ -599,15 +599,15 @@ export default function Odontograma({ value, onChange }) {
               <div>
                 <div style={styles.legendLabel}>{c.label}</div>
                 {c.materials && (
-                  <div style={styles.legendMats}>{c.materials.join(' Â· ')}</div>
+                  <div style={styles.legendMats}>{c.materials.join(' · ')}</div>
                 )}
               </div>
             </div>
           ))}
         </div>
         <div style={styles.legendNote}>
-          CÃ­rculo en la cara = lesiÃ³n/restauraciÃ³n en esa superficie (V, L, M, D, O). Anillo = corona. X = ausente/extraÃ­do. LÃ­nea vertical = endodoncia. Contorno punteado = en erupciÃ³n.
-          {viewMode === 'mixed' && ' â€¢ DenticiÃ³n mixta: permanentes (cuadrantes 1â€“4) + temporales (5â€“8). El 1er molar definitivo (16, 26, 36, 46) erupciona detrÃ¡s del 2Âº molar temporal (55, 65, 75, 85).'}
+          Círculo en la cara = lesión/restauración en esa superficie (V, L, M, D, O). Anillo = corona. X = ausente/extraído. Línea vertical = endodoncia. Contorno punteado = en erupción.
+          {viewMode === 'mixed' && ' • Dentición mixta: permanentes (cuadrantes 1–4) + temporales (5–8). El 1er molar definitivo (16, 26, 36, 46) erupciona detrás del 2º molar temporal (55, 65, 75, 85).'}
         </div>
       </div>
 
@@ -631,20 +631,20 @@ export default function Odontograma({ value, onChange }) {
         {viewMode !== 'temporary' && (
           <>
             <button type="button" onClick={() => emit(marks.filter(m => m.tooth < 20 || m.tooth > 29))} style={styles.quadBtn}>
-              Limpiar sup. permanente (11â€“28)
+              Limpiar sup. permanente (11–28)
             </button>
             <button type="button" onClick={() => emit(marks.filter(m => m.tooth < 30 || m.tooth > 39))} style={styles.quadBtn}>
-              Limpiar inf. permanente (31â€“48)
+              Limpiar inf. permanente (31–48)
             </button>
           </>
         )}
         {viewMode !== 'permanent' && (
           <>
             <button type="button" onClick={() => emit(marks.filter(m => m.tooth < 50 || m.tooth > 69))} style={styles.quadBtn}>
-              Limpiar sup. temporal (51â€“65)
+              Limpiar sup. temporal (51–65)
             </button>
             <button type="button" onClick={() => emit(marks.filter(m => m.tooth < 70 || m.tooth > 89))} style={styles.quadBtn}>
-              Limpiar inf. temporal (71â€“85)
+              Limpiar inf. temporal (71–85)
             </button>
           </>
         )}
@@ -737,7 +737,6 @@ const styles = {
   quadRow: { display: 'flex', flexWrap: 'wrap', gap: '8px', marginTop: '8px' },
   quadBtn: {
     padding: '6px 10px', borderRadius: '8px', border: '1px dashed rgba(0, 0, 0, 0.08)',
-    background: '#ffffff', color: 'rgba(255,255,255,0.5)', fontSize: '11px', fontWeight: '700', cursor: 'pointer'
+    background: 'transparent', color: 'rgba(255,255,255,0.5)', fontSize: '11px', fontWeight: '700', cursor: 'pointer'
   }
 };
-

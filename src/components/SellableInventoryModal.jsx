@@ -1,4 +1,4 @@
-﻿import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { X, Search, Plus, Minus, ShoppingBag } from 'lucide-react';
 import { 
   GiCoffeeCup, GiBeerBottle, GiWaterBottle, GiChocolateBar, 
@@ -29,7 +29,7 @@ const SellableInventoryModal = ({
   loading = false,
   mode = 'single',
   initialSelection = [],
-  title = 'Productos y CortesÃ­as',
+  title = 'Productos y Cortesías',
   subtitle = 'Selecciona un producto para agregarlo a la orden'
 }) => {
   const [search, setSearch] = useState('');
@@ -97,7 +97,7 @@ const SellableInventoryModal = ({
                     <p style={{ margin: '3px 0 0', color: 'var(--text-secondary)', fontSize: '11px', lineHeight: 1.4 }}>{subtitle}</p>
                   </div>
                 </div>
-                <button type="button" onClick={onClose} aria-label="Cerrar catÃ¡logo" style={{ width: '40px', height: '40px', display: 'grid', placeItems: 'center', flexShrink: 0, borderRadius: '12px', border: '1px solid rgba(0, 0, 0, 0.08)', background: 'rgba(0, 0, 0, 0.04)', color: '#d8d8da', cursor: 'pointer' }}><X size={18} /></button>
+                <button type="button" onClick={onClose} aria-label="Cerrar catálogo" style={{ width: '40px', height: '40px', display: 'grid', placeItems: 'center', flexShrink: 0, borderRadius: '12px', border: '1px solid rgba(0, 0, 0, 0.08)', background: 'rgba(0, 0, 0, 0.04)', color: '#d8d8da', cursor: 'pointer' }}><X size={18} /></button>
               </div>
 
               <div style={{ marginTop: '13px', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(240px, 100%), 1fr))', gap: '8px', alignItems: 'center' }}>
@@ -131,7 +131,7 @@ const SellableInventoryModal = ({
                         if (cleanName.includes('refresco') || cleanName.includes('coca') || cleanName.includes('pepsi')) return GiSodaCan;
                         if (cleanName.includes('chocolate') || cleanName.includes('dulce')) return GiChocolateBar;
                         if (cleanName.includes('snack') || cleanName.includes('papas') || cleanName.includes('pepito')) return GiChipsBag;
-                        if (cleanName.includes('cafe') || cleanName.includes('cafÃ©') || cleanName.includes('capuchino')) return GiCoffeeCup;
+                        if (cleanName.includes('cafe') || cleanName.includes('café') || cleanName.includes('capuchino')) return GiCoffeeCup;
                         return MdLocalDrink;
                       } else {
                         if (cleanName.includes('pomada') || cleanName.includes('cera') || cleanName.includes('gel')) return GiOpenedFoodCan;
@@ -148,7 +148,7 @@ const SellableInventoryModal = ({
                     const ProductIcon = getProductIcon(item.name, item.inventory_type);
                     return (
                       <article key={item.id} className="pos-extra-card sellable-inventory-item" style={{ display: 'flex', flexDirection: 'column', overflow: 'hidden', borderRadius: '16px', border: `1px solid ${quantity ? 'rgba(17, 17, 17,.62)' : 'rgba(0, 0, 0, 0.08)'}`, background: quantity ? 'rgba(17, 17, 17,.08)' : 'rgba(255,255,255,.025)', opacity: out ? .55 : 1 }}>
-                        <button type="button" disabled={out} onClick={() => mode === 'single' ? onSelect?.(item) : changeQuantity(item, 1)} style={{ padding: 0, border: 0, background: '#ffffff', color: 'inherit', cursor: out ? 'not-allowed' : 'pointer', textAlign: 'left', flex: 1, display: 'flex', flexDirection: 'column' }}>
+                        <button type="button" disabled={out} onClick={() => mode === 'single' ? onSelect?.(item) : changeQuantity(item, 1)} style={{ padding: 0, border: 0, background: 'transparent', color: 'inherit', cursor: out ? 'not-allowed' : 'pointer', textAlign: 'left', flex: 1, display: 'flex', flexDirection: 'column' }}>
                           <div className="sellable-inventory-visual" style={{ width: '100%', aspectRatio: '4/3', position: 'relative', overflow: 'hidden', background: 'var(--bg-secondary)' }}>
                             {item.image_url ? <img src={item.image_url} alt={item.name} loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover' }} /> : <div style={{ height: '100%', display: 'grid', placeItems: 'center', color: isCafe ? 'var(--gold-primary)' : '#54d37b' }}><ProductIcon size={35} /></div>}
                             <span style={{ position: 'absolute', top: '7px', right: '7px', padding: '3px 7px', borderRadius: '999px', color: '#fff', background: out ? '#8d2f2a' : 'rgba(31,143,71,.9)', fontSize: '8px', fontWeight: 950 }}>{out ? 'AGOTADO' : `${stock} DISP.`}</span>
@@ -157,7 +157,7 @@ const SellableInventoryModal = ({
                             <span style={{ color: isCafe ? 'var(--gold-primary)' : '#54d37b', fontSize: '9px', fontWeight: 950, textTransform: 'uppercase', letterSpacing: '.55px' }}>{getInventorySalesLabel(item)}</span>
                             <h3 style={{ margin: '4px 0 6px', color: '#fff', fontSize: '13px', lineHeight: 1.2, fontWeight: 900, textTransform: 'capitalize' }}>{item.name}</h3>
                             <strong style={{ color: 'var(--gold-primary)', fontSize: '18px', lineHeight: 1 }}>${money(item.price)}</strong>
-                            {rate > 0 && <span style={{ marginTop: '4px', display: 'block', color: 'rgba(255,255,255,0.5)', fontSize: '11.5px', fontWeight: 500 }}>â‰ˆ {money(Number(item.price || 0) * rate)} Bs</span>}
+                            {rate > 0 && <span style={{ marginTop: '4px', display: 'block', color: 'rgba(255,255,255,0.5)', fontSize: '11.5px', fontWeight: 500 }}>≈ {money(Number(item.price || 0) * rate)} Bs</span>}
                           </div>
                         </button>
                         {mode === 'multiple' && (
@@ -171,7 +171,7 @@ const SellableInventoryModal = ({
                     );
                   })}
                 </div>
-              ) : <div style={{ minHeight: '260px', display: 'grid', placeItems: 'center', textAlign: 'center', color: 'var(--text-muted)' }}><div><ShoppingBag size={38} style={{ opacity: .35, marginBottom: '10px' }} /><p>Sin productos disponibles para esta bÃºsqueda.</p></div></div>}
+              ) : <div style={{ minHeight: '260px', display: 'grid', placeItems: 'center', textAlign: 'center', color: 'var(--text-muted)' }}><div><ShoppingBag size={38} style={{ opacity: .35, marginBottom: '10px' }} /><p>Sin productos disponibles para esta búsqueda.</p></div></div>}
             </div>
 
             {mode === 'multiple' && (
@@ -188,5 +188,3 @@ const SellableInventoryModal = ({
 };
 
 export default SellableInventoryModal;
-
-

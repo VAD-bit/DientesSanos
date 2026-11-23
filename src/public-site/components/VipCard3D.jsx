@@ -1,4 +1,4 @@
-﻿import { useState, useRef } from 'react';
+import { useState, useRef } from 'react';
 import pandaLogo from '../../assets/panda_logo_nobg.png';
 
 export default function VipCard3D({ client, points, rank }) {
@@ -245,4 +245,3 @@ export default function VipCard3D({ client, points, rank }) {
     </>
   );
 }
-

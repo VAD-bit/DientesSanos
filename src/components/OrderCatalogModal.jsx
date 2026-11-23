@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import { Check, Zap, X } from 'lucide-react';
 import ToothIcon from './icons/ToothIcon';
 import { GiHairStrands, GiWaterDrop, GiShower, GiNoseFront, GiBeard, GiBottleVapors, GiTowel, GiTooth } from 'react-icons/gi';
@@ -17,24 +17,24 @@ const money = value => Number(value || 0).toLocaleString('es-VE', {
 const getExtraIcon = (name) => {
   const n = (name || '').toLowerCase();
   if (n.includes('endodoncia') || n.includes('limpieza') || n.includes('blanqueamiento')) return GiTooth;
-  if (n.includes('hidrataciÃ³n') || n.includes('hidratacion') || n.includes('fluor')) return GiWaterDrop;
+  if (n.includes('hidratación') || n.includes('hidratacion') || n.includes('fluor')) return GiWaterDrop;
   if (n.includes('profundo')) return Waves;
   if (n.includes('profilaxis') || n.includes('express') || n.includes('sarro')) return GiShower;
   if (n.includes('mask') || n.includes('mascarilla') || n.includes('barrera')) return VenetianMask;
-  if (n.includes('nariz') || n.includes('narÃ­z')) return GiNoseFront;
-  if (n.includes('oido') || n.includes('oÃ­do') || n.includes('oreja')) return TbEar;
-  if (n.includes('exfoliacion') || n.includes('exfoliaciÃ³n') || n.includes('facial') || n.includes('cutis') || n.includes('limpieza')) return GiTowel;
+  if (n.includes('nariz') || n.includes('naríz')) return GiNoseFront;
+  if (n.includes('oido') || n.includes('oído') || n.includes('oreja')) return TbEar;
+  if (n.includes('exfoliacion') || n.includes('exfoliación') || n.includes('facial') || n.includes('cutis') || n.includes('limpieza')) return GiTowel;
   if (n.includes('ceja')) return MdFace3;
-  if (n.includes('muela') || n.includes('extraccion') || n.includes('extracciÃ³n') || n.includes('cirugia') || n.includes('cirugÃ­a')) return GiBeard;
+  if (n.includes('muela') || n.includes('extraccion') || n.includes('extracción') || n.includes('cirugia') || n.includes('cirugía')) return GiBeard;
   return Zap;
 };
 
 const getServiceIcon = (name) => {
   const n = (name || '').toLowerCase();
-  if (n.includes('niÃ±o') || n.includes('niÃ±a') || n.includes('kid')) return FaChild;
+  if (n.includes('niño') || n.includes('niña') || n.includes('kid')) return FaChild;
   if (n.includes('vip') || n.includes('premium')) return MdWorkspacePremium;
   if (n.includes('tatuaje') || n.includes('tattoo') || n.includes('piercing')) return PenTool;
-  if (n.includes('obturacion') || n.includes('obturaciÃ³n') && n.includes('extraccion')) {
+  if (n.includes('obturacion') || n.includes('obturación') && n.includes('extraccion')) {
     return (props) => (
       <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
         <ToothIcon {...props} />
@@ -42,7 +42,7 @@ const getServiceIcon = (name) => {
       </div>
     );
   }
-  if (n.includes('obturacion') || n.includes('obturaciÃ³n') || n.includes('empaste')) return GiTooth;
+  if (n.includes('obturacion') || n.includes('obturación') || n.includes('empaste')) return GiTooth;
   if (n.includes('ceja')) return MdFace3;
   if (n.includes('color') || n.includes('tinte') || n.includes('blanqueamiento')) return GiBottleVapors;
   return ToothIcon;
@@ -58,7 +58,7 @@ const OrderCatalogModal = ({
   rate = 0
 }) => {
   const isService = type === 'service';
-  const title = isService ? 'CatÃ¡logo de Servicios' : 'Servicios Extras';
+  const title = isService ? 'Catálogo de Servicios' : 'Servicios Extras';
   const subtitle = `${items.length} ${isService ? 'servicios' : 'extras'} disponibles`;
   const HeaderIcon = isService ? ToothIcon : Zap;
   const getIcon = isService ? getServiceIcon : getExtraIcon;
@@ -89,7 +89,7 @@ const OrderCatalogModal = ({
                     <HeaderIcon size={20} color="var(--gold-primary)" />
                   </div>
                   <div>
-                    <h2 style={{ fontWeight: '900', fontSize: '20px', color: '#111111', marginBottom: '2px' }}>{title}</h2>
+                    <h2 style={{ fontWeight: '900', fontSize: '20px', color: 'white', marginBottom: '2px' }}>{title}</h2>
                     <p style={{ fontSize: '12px', color: 'var(--text-muted)' }}>{subtitle}</p>
                   </div>
                 </div>
@@ -102,7 +102,7 @@ const OrderCatalogModal = ({
                 const ItemIcon = getIcon(item.name);
                 return (
                   <article key={item.id} className="order-catalog-item" style={{ display: 'flex', flexDirection: 'column', height: '230px', overflow: 'hidden', borderRadius: '16px', border: `1px solid ${isSelected ? 'var(--gold-primary)' : 'rgba(0, 0, 0, 0.08)'}`, background: isSelected ? 'rgba(17, 17, 17, 0.05)' : 'rgba(255,255,255,.025)', transition: 'all 0.2s' }}>
-                    <button type="button" onClick={() => onToggle?.(item)} style={{ padding: 0, border: 0, background: '#ffffff', color: 'inherit', cursor: 'pointer', textAlign: 'left', display: 'flex', flexDirection: 'column', height: '100%', outline: 'none' }}>
+                    <button type="button" onClick={() => onToggle?.(item)} style={{ padding: 0, border: 0, background: 'transparent', color: 'inherit', cursor: 'pointer', textAlign: 'left', display: 'flex', flexDirection: 'column', height: '100%', outline: 'none' }}>
                       <div className="order-catalog-visual" style={{ height: '140px', width: '100%', position: 'relative', overflow: 'hidden', background: 'var(--bg-secondary)' }}>
                         <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--gold-primary)' }}>
                           <ItemIcon size={32} strokeWidth={1.5} />
@@ -117,7 +117,7 @@ const OrderCatalogModal = ({
                         <span style={{ color: 'var(--gold-primary)', fontSize: '9px', fontWeight: 950, textTransform: 'uppercase', letterSpacing: '.55px' }}>{isService ? 'Servicio Base' : 'Servicio Extra'}</span>
                         <h3 style={{ margin: '4px 0 6px', color: '#fff', fontSize: '13px', lineHeight: 1.2, fontWeight: 900, textTransform: 'capitalize', display: 'block' }}>{item.name || (isService ? 'Servicio' : 'Extra')}</h3>
                         <strong style={{ color: 'var(--gold-primary)', fontSize: '18px', lineHeight: 1, display: 'block' }}>${item.price || 0}</strong>
-                        {Number(rate) > 0 && <span style={{ marginTop: '4px', display: 'block', color: 'rgba(255,255,255,0.5)', fontSize: '11.5px', fontWeight: 500 }}>â‰ˆ {Math.round((Number(item.price || 0) * Number(rate))).toLocaleString('es-VE')} Bs</span>}
+                        {Number(rate) > 0 && <span style={{ marginTop: '4px', display: 'block', color: 'rgba(255,255,255,0.5)', fontSize: '11.5px', fontWeight: 500 }}>≈ {Math.round((Number(item.price || 0) * Number(rate))).toLocaleString('es-VE')} Bs</span>}
                       </div>
                     </button>
                   </article>
@@ -132,5 +132,3 @@ const OrderCatalogModal = ({
 };
 
 export default OrderCatalogModal;
-
-

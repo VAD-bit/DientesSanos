@@ -1,4 +1,4 @@
-﻿// Servicio de GestiÃ³n de Notificaciones para Dientes Sanos CRM
+// Servicio de Gestión de Notificaciones para Dientes Sanos CRM
 
 class NotificationService {
   constructor() {
@@ -12,7 +12,7 @@ class NotificationService {
         window.addEventListener('load', () => this.initServiceWorker());
       }
     } else if ('serviceWorker' in navigator && isLocalDevelopment) {
-      // En desarrollo el SW interfiere con las peticiones de Vite (HMR, mÃ³dulos)
+      // En desarrollo el SW interfiere con las peticiones de Vite (HMR, módulos)
       // y termina respondiendo 503 desde su propio fallback offline.
       navigator.serviceWorker.getRegistrations().then((registrations) => {
         registrations.forEach((registration) => registration.unregister());
@@ -24,7 +24,7 @@ class NotificationService {
   async initServiceWorker() {
     try {
       const registration = await navigator.serviceWorker.register('/sw.js');
-      console.log('Service Worker registrado con Ã©xito:', registration.scope);
+      console.log('Service Worker registrado con éxito:', registration.scope);
       this.swRegistered = true;
 
       window.addEventListener('online', () => {
@@ -54,14 +54,14 @@ class NotificationService {
     return Notification.permission;
   }
 
-  // Enviar una notificaciÃ³n (tanto local en primer plano como push si es posible)
+  // Enviar una notificación (tanto local en primer plano como push si es posible)
   async sendNotification(title, body) {
-    // 1. Guardar la notificaciÃ³n en el historial local
+    // 1. Guardar la notificación en el historial local
     this.saveToHistory(title, body);
 
-    // 2. Intentar disparar notificaciÃ³n nativa si tenemos permiso
+    // 2. Intentar disparar notificación nativa si tenemos permiso
     if ('Notification' in window && Notification.permission === 'granted') {
-      // Disparar vÃ­a Service Worker si estÃ¡ registrado (para soporte premium PWA)
+      // Disparar vía Service Worker si está registrado (para soporte premium PWA)
       if ('serviceWorker' in navigator) {
         const registration = await navigator.serviceWorker.ready;
         registration.showNotification(title, {
@@ -73,7 +73,7 @@ class NotificationService {
           renotify: true
         });
       } else {
-        // Fallback a notificaciÃ³n nativa simple de navegador
+        // Fallback a notificación nativa simple de navegador
         new Notification(title, {
           body: body,
           icon: '/pwa-icon.png'
@@ -95,7 +95,7 @@ class NotificationService {
     list.unshift(newNotification);
     localStorage.setItem(this.notificationsKey, JSON.stringify(list.slice(0, 5)));
     
-    // Disparar un evento personalizado de ventana para que React se entere al instante de la actualizaciÃ³n
+    // Disparar un evento personalizado de ventana para que React se entere al instante de la actualización
     window.dispatchEvent(new Event('panda_new_notification'));
   }
 
@@ -109,7 +109,7 @@ class NotificationService {
     }
   }
 
-  // Marcar todas como leÃ­das
+  // Marcar todas como leídas
   markAllAsRead() {
     const list = this.getHistory();
     list.forEach(n => n.read = true);
@@ -123,7 +123,7 @@ class NotificationService {
     window.dispatchEvent(new Event('panda_new_notification'));
   }
 
-  // Enviar una notificaciÃ³n broadcast a travÃ©s de Supabase Realtime
+  // Enviar una notificación broadcast a través de Supabase Realtime
   broadcastNotification(supabase, title, body, options = {}) {
     try {
       const channel = supabase.channel('panda-notifications');
@@ -148,8 +148,8 @@ class NotificationService {
     return [
       {
         id: 'default-1',
-        title: 'Â¡Bienvenido al CRM Dientes Sanos!',
-        body: 'El sistema de notificaciones push estÃ¡ listo. ActÃ­valo para enterarte de citas y cierres semanales.',
+        title: '¡Bienvenido al CRM Dientes Sanos!',
+        body: 'El sistema de notificaciones push está listo. Actívalo para enterarte de citas y cierres semanales.',
         date: new Date().toISOString(),
         read: false
       }
@@ -158,4 +158,3 @@ class NotificationService {
 }
 
 export const notificationService = new NotificationService();
-

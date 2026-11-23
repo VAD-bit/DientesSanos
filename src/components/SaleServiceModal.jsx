@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNotifs } from '../context/NotificationContext';
 import { roleLabel } from '../utils/staffRoles';
 import { 
@@ -97,7 +97,7 @@ const SaleServiceModal = ({ isOpen, onClose, clients, services, staff, extras, i
       setStep(2);
       showToast(`Cliente encontrado: ${client.name}`);
     } else {
-      showToast("No se encontrÃ³ el cliente. Â¿Es nuevo?", "warning");
+      showToast("No se encontró el cliente. ¿Es nuevo?", "warning");
     }
   };
 
@@ -112,7 +112,7 @@ const SaleServiceModal = ({ isOpen, onClose, clients, services, staff, extras, i
       setSelectedExtras(selectedExtras.filter(e => e.id !== extra.id));
     } else {
       setSelectedExtras([...selectedExtras, extra]);
-      showToast(`${extra.name} aÃ±adido`);
+      showToast(`${extra.name} añadido`);
     }
   };
 
@@ -121,7 +121,7 @@ const SaleServiceModal = ({ isOpen, onClose, clients, services, staff, extras, i
     if (exists) {
       const newQty = exists.quantity + delta;
       if (delta > 0 && newQty > Number(product.stock || 0)) {
-        showToast(`Stock mÃ¡ximo alcanzado para ${product.name}`, 'error');
+        showToast(`Stock máximo alcanzado para ${product.name}`, 'error');
         return;
       }
       if (newQty <= 0) {
@@ -131,7 +131,7 @@ const SaleServiceModal = ({ isOpen, onClose, clients, services, staff, extras, i
       }
     } else if (delta > 0) {
       setSelectedProducts([...selectedProducts, { ...product, quantity: 1 }]);
-      showToast(`${product.name} aÃ±adido`);
+      showToast(`${product.name} añadido`);
     }
   };
 
@@ -145,7 +145,7 @@ const SaleServiceModal = ({ isOpen, onClose, clients, services, staff, extras, i
     }
 
     if (selectedService && involvedStaff.some(s => !s.staffId)) {
-      showToast('Por favor selecciona un odontÃ³logo.', 'error');
+      showToast('Por favor selecciona un odontólogo.', 'error');
       return;
     }
 
@@ -180,13 +180,13 @@ const SaleServiceModal = ({ isOpen, onClose, clients, services, staff, extras, i
       if (onRefresh) onRefresh();
       
       triggerRocket();
-      showToast(`Â¡OperaciÃ³n registrada! ${selectedClient.name} enviado a caja.`);
-      sendPushNotification('ðŸš€ OperaciÃ³n Dientes Sanos', `${selectedClient.name} â€” ${selectedService?.name || 'Venta'}`);
+      showToast(`¡Operación registrada! ${selectedClient.name} enviado a caja.`);
+      sendPushNotification('🚀 Operación Dientes Sanos', `${selectedClient.name} — ${selectedService?.name || 'Venta'}`);
       
       onClose();
     } catch (error) {
       console.error('Error registering quick operation:', error);
-      showToast('Error tÃ©cnico al registrar operaciÃ³n.', 'error');
+      showToast('Error técnico al registrar operación.', 'error');
     } finally {
       isSubmittingRef.current = false;
       setLoading(false);
@@ -246,7 +246,7 @@ const SaleServiceModal = ({ isOpen, onClose, clients, services, staff, extras, i
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '32px', flexShrink: 0 }}>
           <div>
             <h2 style={{ fontSize: '24px', fontWeight: '900', letterSpacing: '-0.5px' }}>
-              OperaciÃ³n <span className="text-gold">RÃ¡pida</span>
+              Operación <span className="text-gold">Rápida</span>
             </h2>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginTop: '4px' }}>
               <div style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: step === 1 ? 'var(--gold-primary)' : 'rgba(255,255,255,0.2)' }} />
@@ -268,7 +268,7 @@ const SaleServiceModal = ({ isOpen, onClose, clients, services, staff, extras, i
                 <Search style={{ position: 'absolute', left: '16px', top: '16px' }} size={20} color="var(--gold-primary)" />
                 <input 
                   type="text" 
-                  placeholder="Busca por CÃ©dula o Nombre..." 
+                  placeholder="Busca por Cédula o Nombre..." 
                   value={idSearch}
                   onChange={(e) => setIdSearch(e.target.value)}
                   onKeyDown={(e) => e.key === 'Enter' && handleIdSearch()}
@@ -323,7 +323,7 @@ const SaleServiceModal = ({ isOpen, onClose, clients, services, staff, extras, i
                   label="Servicio"
                   value={selectedService?.id || ''}
                   onChange={val => setSelectedService(services.find(s => s.id == val))}
-                  options={services.map(s => ({ label: `${s.name} â€” $${s.price}`, value: s.id }))}
+                  options={services.map(s => ({ label: `${s.name} — $${s.price}`, value: s.id }))}
                   icon={<Rocket size={18} color="var(--gold-primary)" />}
                 />
                 <PandaSelect 
@@ -337,7 +337,7 @@ const SaleServiceModal = ({ isOpen, onClose, clients, services, staff, extras, i
 
               {/* Searchable Extras */}
               <div>
-                <label style={{ display: 'block', fontSize: '11px', fontWeight: '800', color: 'var(--text-muted)', marginBottom: '12px', textTransform: 'uppercase', letterSpacing: '1px' }}>AÃ±adir Extras</label>
+                <label style={{ display: 'block', fontSize: '11px', fontWeight: '800', color: 'var(--text-muted)', marginBottom: '12px', textTransform: 'uppercase', letterSpacing: '1px' }}>Añadir Extras</label>
                 <div style={{ position: 'relative', marginBottom: '12px' }}>
                   <Search style={{ position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)' }} size={14} color="var(--text-muted)" />
                   <input 
@@ -370,7 +370,7 @@ const SaleServiceModal = ({ isOpen, onClose, clients, services, staff, extras, i
 
               {/* Searchable Products */}
               <div>
-                <label style={{ display: 'block', fontSize: '11px', fontWeight: '800', color: 'var(--text-muted)', marginBottom: '12px', textTransform: 'uppercase', letterSpacing: '1px' }}>Productos y CortesÃ­as</label>
+                <label style={{ display: 'block', fontSize: '11px', fontWeight: '800', color: 'var(--text-muted)', marginBottom: '12px', textTransform: 'uppercase', letterSpacing: '1px' }}>Productos y Cortesías</label>
                 <div style={{ position: 'relative', marginBottom: '12px' }}>
                   <Search style={{ position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)' }} size={14} color="var(--text-muted)" />
                   <input 
@@ -425,7 +425,7 @@ const SaleServiceModal = ({ isOpen, onClose, clients, services, staff, extras, i
                                 cursor: isOutOfStock ? 'not-allowed' : 'pointer' 
                               }}
                             >
-                              {isOutOfStock ? 'SIN STOCK' : 'AÃ‘ADIR'}
+                              {isOutOfStock ? 'SIN STOCK' : 'AÑADIR'}
                             </button>
                           )}
                         </div>
@@ -452,10 +452,10 @@ const SaleServiceModal = ({ isOpen, onClose, clients, services, staff, extras, i
             <div>
               <div style={{ fontSize: '10px', color: 'var(--gold-primary)', fontWeight: '800', textTransform: 'uppercase', marginBottom: '2px' }}>Total Estimado</div>
               <div style={{ display: 'flex', flexDirection: 'column' }}>
-                <div style={{ fontSize: '24px', fontWeight: '950', color: '#111111' }}>${totalPrice}</div>
+                <div style={{ fontSize: '24px', fontWeight: '950', color: 'white' }}>${totalPrice}</div>
                 {rates?.usd > 0 && (
                   <div style={{ fontSize: '12px', fontWeight: '700', color: 'var(--text-secondary)' }}>
-                    â‰ˆ {Math.round(totalPrice * rates.usd).toLocaleString()} BS
+                    ≈ {Math.round(totalPrice * rates.usd).toLocaleString()} BS
                   </div>
                 )}
               </div>
@@ -498,4 +498,3 @@ const SaleServiceModal = ({ isOpen, onClose, clients, services, staff, extras, i
 };
 
 export default SaleServiceModal;
-

@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   X, 
   User, 
@@ -115,7 +115,7 @@ const StaffProfileModal = ({ isOpen, onClose, staffMember, inventory = [], onUpd
       setReviews(profileReviews);
     } catch (error) {
       console.error('Error loading stats:', error);
-      showToast('Error cargando mÃ©tricas del odontÃ³logo', 'error');
+      showToast('Error cargando métricas del odontólogo', 'error');
     } finally {
       setLoading(false);
     }
@@ -126,12 +126,12 @@ const StaffProfileModal = ({ isOpen, onClose, staffMember, inventory = [], onUpd
     let adjustedInventoryItem = null;
     if (newTool.ownership === 'Propia') {
       if (!newTool.name.trim()) {
-        showToast('Ingresa el nombre del artÃ­culo', 'warning');
+        showToast('Ingresa el nombre del artículo', 'warning');
         return;
       }
     } else {
       if (!newTool.inventory_id) {
-        showToast('Selecciona un artÃ­culo del inventario', 'warning');
+        showToast('Selecciona un artículo del inventario', 'warning');
         return;
       }
     }
@@ -179,7 +179,7 @@ const StaffProfileModal = ({ isOpen, onClose, staffMember, inventory = [], onUpd
         quantity: 1
       });
       setShowAddTool(false);
-      showToast('ArtÃ­culo registrado');
+      showToast('Artículo registrado');
       if (onUpdate) {
         try {
           await onUpdate();
@@ -196,14 +196,14 @@ const StaffProfileModal = ({ isOpen, onClose, staffMember, inventory = [], onUpd
           console.error('Error restoring inventory stock:', rollbackError);
         }
       }
-      showToast('Error al guardar el artÃ­culo', 'error');
+      showToast('Error al guardar el artículo', 'error');
     } finally {
       setLoading(false);
     }
   };
 
   const handleRemoveTool = async (toolId) => {
-    if (!await confirm('Â¿Seguro que deseas eliminar este artÃ­culo del inventario personal?')) return;
+    if (!await confirm('¿Seguro que deseas eliminar este artículo del inventario personal?')) return;
     try {
       setLoading(true);
       const toolToRemove = tools.find(t => t.id === toolId);
@@ -234,8 +234,8 @@ const StaffProfileModal = ({ isOpen, onClose, staffMember, inventory = [], onUpd
         );
       }
       showToast(toolToRemove?.inventory_id
-        ? 'ArtÃ­culo removido y devuelto al almacÃ©n general'
-        : 'ArtÃ­culo removido del perfil');
+        ? 'Artículo removido y devuelto al almacén general'
+        : 'Artículo removido del perfil');
       if (onUpdate) {
         try {
           await onUpdate();
@@ -268,7 +268,7 @@ const StaffProfileModal = ({ isOpen, onClose, staffMember, inventory = [], onUpd
 
     const currentQuantity = Math.max(0, Number(tool.quantity) || 0);
     if (amount < 0 && currentQuantity === 0) {
-      showToast('Este producto ya estÃ¡ agotado.', 'warning');
+      showToast('Este producto ya está agotado.', 'warning');
       return;
     }
 
@@ -278,7 +278,7 @@ const StaffProfileModal = ({ isOpen, onClose, staffMember, inventory = [], onUpd
       if (amount > 0 && tool.inventory_id) {
         const invItem = inventory.find(item => item.id === tool.inventory_id);
         if (!invItem || Number(invItem.stock || 0) < 1) {
-          showToast('No quedan unidades disponibles en el almacÃ©n.', 'warning');
+          showToast('No quedan unidades disponibles en el almacén.', 'warning');
           return;
         }
         await dataService.updateStock(invItem.id, Number(invItem.stock) - 1);
@@ -298,7 +298,7 @@ const StaffProfileModal = ({ isOpen, onClose, staffMember, inventory = [], onUpd
         amount < 0 || tool.inventory_id ? 'exit' : 'entry',
         amount > 0 ? tool.inventory_id || null : null
       );
-      showToast(amount < 0 ? `Registrado: se gastÃ³ 1 ${tool.name}` : `Se repuso 1 ${tool.name}`);
+      showToast(amount < 0 ? `Registrado: se gastó 1 ${tool.name}` : `Se repuso 1 ${tool.name}`);
 
       if (onUpdate) {
         try {
@@ -407,10 +407,10 @@ const StaffProfileModal = ({ isOpen, onClose, staffMember, inventory = [], onUpd
               )}
             </div>
             <div>
-              <h2 style={{ fontSize: isMobileView ? '22px' : '28px', fontWeight: '900', color: '#111111', margin: 0 }}>{staffMember.name}</h2>
+              <h2 style={{ fontSize: isMobileView ? '22px' : '28px', fontWeight: '900', color: 'white', margin: 0 }}>{staffMember.name}</h2>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--gold-primary)', fontWeight: '700', fontSize: isMobileView ? '12px' : '14px', marginTop: '4px' }}>
                 <Star size={14} fill="var(--gold-primary)" />
-                {roleLabel(staffMember.role?.split('|')[0]) || 'OdontÃ³logo'}
+                {roleLabel(staffMember.role?.split('|')[0]) || 'Odontólogo'}
               </div>
             </div>
           </div>
@@ -435,7 +435,7 @@ const StaffProfileModal = ({ isOpen, onClose, staffMember, inventory = [], onUpd
                 fontSize: isMobileView ? '11px' : '14px' 
               }}
             >
-              <TrendingUp size={isMobileView ? 14 : 18} /> {isMobileView ? 'Rendimiento' : 'Rendimiento HistÃ³rico'}
+              <TrendingUp size={isMobileView ? 14 : 18} /> {isMobileView ? 'Rendimiento' : 'Rendimiento Histórico'}
             </button>
             <button 
               onClick={() => setActiveTab('inventario')}
@@ -487,7 +487,7 @@ const StaffProfileModal = ({ isOpen, onClose, staffMember, inventory = [], onUpd
                   </div>
                   <div>
                     <div style={{ fontSize: '10px', color: 'var(--text-muted)', fontWeight: '900', letterSpacing: '1px', marginBottom: '4px' }}>COMISIONES SERVICIOS</div>
-                    <div style={{ fontSize: '20px', fontWeight: '900', color: '#111111' }}>${stats.totalServiceComm.toFixed(2)}</div>
+                    <div style={{ fontSize: '20px', fontWeight: '900', color: 'white' }}>${stats.totalServiceComm.toFixed(2)}</div>
                   </div>
                 </div>
                 <div 
@@ -509,7 +509,7 @@ const StaffProfileModal = ({ isOpen, onClose, staffMember, inventory = [], onUpd
                   </div>
                   <div>
                     <div style={{ fontSize: '10px', color: 'var(--text-muted)', fontWeight: '900', letterSpacing: '1px', marginBottom: '4px' }}>COMISIONES PRODUCTOS</div>
-                    <div style={{ fontSize: '20px', fontWeight: '900', color: '#111111' }}>${stats.totalProductComm.toFixed(2)}</div>
+                    <div style={{ fontSize: '20px', fontWeight: '900', color: 'white' }}>${stats.totalProductComm.toFixed(2)}</div>
                   </div>
                 </div>
                 <div 
@@ -556,11 +556,11 @@ const StaffProfileModal = ({ isOpen, onClose, staffMember, inventory = [], onUpd
                   
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
                     <span style={{ color: 'var(--text-secondary)', fontWeight: '600' }}>Servicios Totales</span>
-                    <span style={{ color: '#111111', fontWeight: '900', fontSize: '18px' }}>{stats.totalAppointments}</span>
+                    <span style={{ color: 'white', fontWeight: '900', fontSize: '18px' }}>{stats.totalAppointments}</span>
                   </div>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                     <span style={{ color: 'var(--text-secondary)', fontWeight: '600' }}>Tiempo Promedio</span>
-                    <span style={{ color: '#111111', fontWeight: '900', fontSize: '18px' }}>{stats.avgDurationMin > 0 ? `${stats.avgDurationMin} min` : 'N/A'}</span>
+                    <span style={{ color: 'white', fontWeight: '900', fontSize: '18px' }}>{stats.avgDurationMin > 0 ? `${stats.avgDurationMin} min` : 'N/A'}</span>
                   </div>
                 </div>
 
@@ -576,8 +576,8 @@ const StaffProfileModal = ({ isOpen, onClose, staffMember, inventory = [], onUpd
                   onMouseOver={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.04)'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)'; }}
                   onMouseOut={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.025)'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.06)'; }}
                 >
-                  <h4 style={{ color: '#111111', fontSize: '14px', fontWeight: '900', marginBottom: '24px', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                    <TrendingUp size={16} color="var(--gold-primary)" /> Servicios MÃ¡s Realizados
+                  <h4 style={{ color: 'white', fontSize: '14px', fontWeight: '900', marginBottom: '24px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                    <TrendingUp size={16} color="var(--gold-primary)" /> Servicios Más Realizados
                   </h4>
                   
                   {stats.topServices.length > 0 ? (
@@ -608,8 +608,8 @@ const StaffProfileModal = ({ isOpen, onClose, staffMember, inventory = [], onUpd
                   gap: '16px'
                 }}
               >
-                <h4 style={{ color: '#111111', fontSize: '14px', fontWeight: '900', margin: 0, display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  <Star size={16} color="var(--gold-primary)" fill="var(--gold-primary)" /> Valoraciones y ReseÃ±as de Pacientes
+                <h4 style={{ color: 'white', fontSize: '14px', fontWeight: '900', margin: 0, display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <Star size={16} color="var(--gold-primary)" fill="var(--gold-primary)" /> Valoraciones y Reseñas de Pacientes
                 </h4>
                 
                 {reviews.length > 0 ? (
@@ -622,7 +622,7 @@ const StaffProfileModal = ({ isOpen, onClose, staffMember, inventory = [], onUpd
                         <div key={rev.id} style={{ padding: '14px', borderRadius: '16px', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', display: 'flex', flexDirection: 'column', gap: '8px' }}>
                           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
                             <div>
-                              <span style={{ fontWeight: '700', fontSize: '13px', color: '#111111' }}>{clientName}</span>
+                              <span style={{ fontWeight: '700', fontSize: '13px', color: 'white' }}>{clientName}</span>
                               <span style={{ fontSize: '11px', color: 'var(--text-muted)', marginLeft: '8px' }}>{dateFormatted}</span>
                             </div>
                             <div style={{ display: 'flex', alignItems: 'center', gap: '4px', background: 'rgba(17, 17, 17, 0.1)', padding: '2px 8px', borderRadius: '6px', fontSize: '12px', fontWeight: '800', color: 'var(--champagne)' }}>
@@ -633,9 +633,9 @@ const StaffProfileModal = ({ isOpen, onClose, staffMember, inventory = [], onUpd
                           
                           {/* Sub ratings */}
                           <div style={{ display: 'flex', gap: '12px', fontSize: '11px', color: 'var(--text-muted)', fontWeight: '600' }}>
-                            <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}><Zap size={10} color="#ffcc00" /> Rapidez: <span style={{ color: '#111111' }}>{rev.rapidez || rev.rating || 5}</span></span>
-                            <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}><Droplets size={10} color="#007aff" /> Limpieza: <span style={{ color: '#111111' }}>{rev.limpieza || rev.rating || 5}</span></span>
-                            <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}><ToothIcon size={10} color="#ff3b30" /> Habilidad: <span style={{ color: '#111111' }}>{rev.habilidad || rev.rating || 5}</span></span>
+                            <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}><Zap size={10} color="#ffcc00" /> Rapidez: <span style={{ color: 'white' }}>{rev.rapidez || rev.rating || 5}</span></span>
+                            <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}><Droplets size={10} color="#007aff" /> Limpieza: <span style={{ color: 'white' }}>{rev.limpieza || rev.rating || 5}</span></span>
+                            <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}><ToothIcon size={10} color="#ff3b30" /> Habilidad: <span style={{ color: 'white' }}>{rev.habilidad || rev.rating || 5}</span></span>
                           </div>
 
                           {rev.comment && (
@@ -648,7 +648,7 @@ const StaffProfileModal = ({ isOpen, onClose, staffMember, inventory = [], onUpd
                     })}
                   </div>
                 ) : (
-                  <div style={{ color: 'var(--text-muted)', fontSize: '13px', textAlign: 'center', padding: '20px 0' }}>No hay reseÃ±as de clientes todavÃ­a</div>
+                  <div style={{ color: 'var(--text-muted)', fontSize: '13px', textAlign: 'center', padding: '20px 0' }}>No hay reseñas de clientes todavía</div>
                 )}
               </div>
             </div>
@@ -656,7 +656,7 @@ const StaffProfileModal = ({ isOpen, onClose, staffMember, inventory = [], onUpd
             <div className="animate-fade-in">
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '24px' }}>
                 <div>
-                  <h3 style={{ fontSize: '18px', fontWeight: '900', color: '#111111' }}>Equipamiento de {staffMember.name.split(' ')[0]}</h3>
+                  <h3 style={{ fontSize: '18px', fontWeight: '900', color: 'white' }}>Equipamiento de {staffMember.name.split(' ')[0]}</h3>
                   <p style={{ color: 'var(--text-muted)', fontSize: '13px', marginTop: '4px' }}>Control de herramientas asignadas o propias.</p>
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap', justifyContent: 'flex-end' }}>
@@ -664,7 +664,7 @@ const StaffProfileModal = ({ isOpen, onClose, staffMember, inventory = [], onUpd
                   onClick={() => setShowInventoryHistory(true)}
                   style={{
                     background: 'rgba(0, 0, 0, 0.04)',
-                    color: '#111111',
+                    color: 'white',
                     border: '1px solid rgba(0, 0, 0, 0.08)',
                     padding: '10px 16px',
                     borderRadius: '50px',
@@ -707,7 +707,7 @@ const StaffProfileModal = ({ isOpen, onClose, staffMember, inventory = [], onUpd
                     }
                   }}
                 >
-                  {showAddTool ? 'Cancelar' : <><Plus size={16} /> AÃ±adir ArtÃ­culo</>}
+                  {showAddTool ? 'Cancelar' : <><Plus size={16} /> Añadir Artículo</>}
                 </button>
                 </div>
               </div>
@@ -717,7 +717,7 @@ const StaffProfileModal = ({ isOpen, onClose, staffMember, inventory = [], onUpd
                   <div style={{ display: 'grid', gridTemplateColumns: isMobileView ? '1fr' : 'minmax(0, 1fr) minmax(0, 1fr)', gap: '16px', marginBottom: '16px' }}>
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
                       <PandaSelect
-                        label="Tipo de artÃ­culo"
+                        label="Tipo de artículo"
                         value={newTool.item_type}
                         onChange={(value) => setNewTool({
                           ...newTool,
@@ -750,7 +750,7 @@ const StaffProfileModal = ({ isOpen, onClose, staffMember, inventory = [], onUpd
                       <>
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
                           <label style={{ fontSize: '10px', color: 'var(--text-muted)', fontWeight: '800', letterSpacing: '1px' }}>NOMBRE</label>
-                          <input className="form-input" placeholder={newTool.item_type === 'Producto' ? 'Ej. Laca profesional' : 'Ej. MÃ¡quina Clipper'} value={newTool.name} onChange={e => setNewTool({...newTool, name: e.target.value})} style={{ height: '44px', width: '100%' }} />
+                          <input className="form-input" placeholder={newTool.item_type === 'Producto' ? 'Ej. Laca profesional' : 'Ej. Máquina Clipper'} value={newTool.name} onChange={e => setNewTool({...newTool, name: e.target.value})} style={{ height: '44px', width: '100%' }} />
                         </div>
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
                           <label style={{ fontSize: '10px', color: 'var(--text-muted)', fontWeight: '800', letterSpacing: '1px' }}>MARCA / DETALLES</label>
@@ -760,12 +760,12 @@ const StaffProfileModal = ({ isOpen, onClose, staffMember, inventory = [], onUpd
                     ) : (
                       <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', gridColumn: 'span 2' }}>
                         <PandaSelect 
-                          label={`Seleccionar del almacÃ©n (${newTool.item_type.toLowerCase()}s)`}
+                          label={`Seleccionar del almacén (${newTool.item_type.toLowerCase()}s)`}
                           value={newTool.inventory_id} 
                           onChange={(val) => setNewTool({...newTool, inventory_id: val})} 
                           options={[
                             { value: '', label: `-- Selecciona ${newTool.item_type === 'Producto' ? 'un producto' : 'una herramienta'} --` },
-                            ...availableInventoryTools.map(item => ({ value: item.id, label: `${item.name} Â· Stock: ${item.stock}` }))
+                            ...availableInventoryTools.map(item => ({ value: item.id, label: `${item.name} · Stock: ${item.stock}` }))
                           ]}
                         />
                       </div>
@@ -797,7 +797,7 @@ const StaffProfileModal = ({ isOpen, onClose, staffMember, inventory = [], onUpd
                           : [
                               { value: 'Operativa', label: 'Operativa' },
                               { value: 'En Mantenimiento', label: 'En Mantenimiento' },
-                              { value: 'DaÃ±ada', label: 'DaÃ±ada' }
+                              { value: 'Dañada', label: 'Dañada' }
                             ]}
                       />
                     </div>
@@ -818,7 +818,7 @@ const StaffProfileModal = ({ isOpen, onClose, staffMember, inventory = [], onUpd
                     onMouseOver={e => e.currentTarget.style.background = '#e5e5e5'}
                     onMouseOut={e => e.currentTarget.style.background = 'white'}
                   >
-                    Guardar ArtÃ­culo
+                    Guardar Artículo
                   </button>
                 </div>
               )}
@@ -826,7 +826,7 @@ const StaffProfileModal = ({ isOpen, onClose, staffMember, inventory = [], onUpd
               {tools.length === 0 ? (
                 <div style={{ textAlign: 'center', padding: '40px', background: 'rgba(0, 0, 0, 0.04)', borderRadius: '16px', border: '1px dashed rgba(0, 0, 0, 0.08)' }}>
                   <Wrench size={40} color="var(--text-muted)" opacity={0.5} style={{ marginBottom: '16px' }} />
-                  <p style={{ color: 'var(--text-secondary)', fontSize: '14px' }}>No hay artÃ­culos registrados para este empleado.</p>
+                  <p style={{ color: 'var(--text-secondary)', fontSize: '14px' }}>No hay artículos registrados para este empleado.</p>
                 </div>
               ) : (
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
@@ -859,11 +859,11 @@ const StaffProfileModal = ({ isOpen, onClose, staffMember, inventory = [], onUpd
                             : <Wrench size={18} color={tool.ownership === 'Asignada' ? 'var(--gold-primary)' : 'white'} />}
                         </div>
                         <div>
-                          <div style={{ fontWeight: '800', color: '#111111', fontSize: '15px' }}>
-                            {tool.name} <span style={{ color: 'var(--gold-primary)', fontSize: '12px' }}>Ã— {tool.quantity || 1}</span>
+                          <div style={{ fontWeight: '800', color: 'white', fontSize: '15px' }}>
+                            {tool.name} <span style={{ color: 'var(--gold-primary)', fontSize: '12px' }}>× {tool.quantity || 1}</span>
                           </div>
                           <div style={{ color: 'var(--text-muted)', fontSize: '12px', fontWeight: '600' }}>
-                            {itemType}{tool.brand ? ` Â· ${tool.brand}` : ''}
+                            {itemType}{tool.brand ? ` · ${tool.brand}` : ''}
                           </div>
                         </div>
                       </div>
@@ -874,7 +874,7 @@ const StaffProfileModal = ({ isOpen, onClose, staffMember, inventory = [], onUpd
                             <button
                               onClick={() => handleAdjustPersonalProduct(tool.id, -1)}
                               disabled={adjustingToolId === tool.id || Number(tool.quantity || 0) <= 0}
-                              title="Registrar que se gastÃ³ una unidad"
+                              title="Registrar que se gastó una unidad"
                               style={{
                                 height: '34px',
                                 padding: '0 11px',
@@ -891,7 +891,7 @@ const StaffProfileModal = ({ isOpen, onClose, staffMember, inventory = [], onUpd
                                 gap: '5px'
                               }}
                             >
-                              <Minus size={12} /> GastÃ© 1
+                              <Minus size={12} /> Gasté 1
                             </button>
                             <button
                               onClick={() => handleAdjustPersonalProduct(tool.id, 1)}
@@ -981,4 +981,3 @@ const StaffProfileModal = ({ isOpen, onClose, staffMember, inventory = [], onUpd
 };
 
 export default StaffProfileModal;
-

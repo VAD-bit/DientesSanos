@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Bell, X, ShieldAlert, Trash2, CheckCheck, Sparkles, Smartphone, AlertTriangle, ChevronDown, DollarSign, Calendar, Trophy, GlassWater, ShieldCheck } from 'lucide-react';
 import { notificationService } from '../services/notificationService';
 import { useDialog } from '../context/DialogContext';
@@ -10,13 +10,13 @@ const categorizeNotification = (n) => {
   if (/bienvenido|activad|sistema|permiso/.test(text)) {
     return { icon: ShieldCheck, color: 'var(--gold-primary)' };
   }
-  if (/ðŸŽ‰|ðŸ†|ðŸ‘‘|ðŸŽ¯|meta|objetivo|cumplea|logro/.test(text)) {
+  if (/🎉|🏆|👑|🎯|meta|objetivo|cumplea|logro/.test(text)) {
     return { icon: Trophy, color: '#ffd166' };
   }
   if (/cobro|pago|factura|venta|ingreso|\$/.test(text)) {
     return { icon: DollarSign, color: '#30d158' };
   }
-  if (/bebida|cafÃ©|caf[eÃ©]|barista|hidrataci/.test(text)) {
+  if (/bebida|café|caf[eé]|barista|hidrataci/.test(text)) {
     return { icon: GlassWater, color: '#111111' };
   }
   if (/cita|agenda|reserv/.test(text)) {
@@ -56,12 +56,12 @@ const NotificationsDrawer = ({ isOpen, onClose }) => {
 
   const handleRequestPermission = async () => {
     if (!isSecure) {
-      await alert("âš ï¸ ConexiÃ³n no segura (HTTP):\n\nLos navegadores bloquean las notificaciones push por seguridad en conexiones HTTP (cuando usas una IP local como 192.168.x.x).\n\nPara probar en tu telÃ©fono:\n1. Si es Android: puedes conectar el telÃ©fono por USB y usar Chrome Port Forwarding (localhost).\n2. Si es iPhone o Android: se requiere un tÃºnel seguro HTTPS (como ngrok o Cloudflare).");
+      await alert("⚠️ Conexión no segura (HTTP):\n\nLos navegadores bloquean las notificaciones push por seguridad en conexiones HTTP (cuando usas una IP local como 192.168.x.x).\n\nPara probar en tu teléfono:\n1. Si es Android: puedes conectar el teléfono por USB y usar Chrome Port Forwarding (localhost).\n2. Si es iPhone o Android: se requiere un túnel seguro HTTPS (como ngrok o Cloudflare).");
       return;
     }
 
     if (isIOS && !isStandalone) {
-      await alert("ðŸ“± Requisito de iPhone:\n\nApple no permite activar notificaciones desde el navegador Safari.\n\nPara activarlas:\n1. Pulsa el botÃ³n 'Compartir' en Safari (icono de cuadrado con flecha arriba).\n2. Selecciona 'Agregar a la pantalla de inicio'.\n3. Abre la app desde tu pantalla de inicio e intÃ©ntalo de nuevo.");
+      await alert("📱 Requisito de iPhone:\n\nApple no permite activar notificaciones desde el navegador Safari.\n\nPara activarlas:\n1. Pulsa el botón 'Compartir' en Safari (icono de cuadrado con flecha arriba).\n2. Selecciona 'Agregar a la pantalla de inicio'.\n3. Abre la app desde tu pantalla de inicio e inténtalo de nuevo.");
       return;
     }
 
@@ -69,16 +69,16 @@ const NotificationsDrawer = ({ isOpen, onClose }) => {
     setPermission(res);
     if (res === 'granted') {
       notificationService.sendNotification(
-        'Â¡Permiso Activado! ðŸŽ‰',
-        'Las notificaciones push del CRM Dientes Sanos ya estÃ¡n activadas en este dispositivo.'
+        '¡Permiso Activado! 🎉',
+        'Las notificaciones push del CRM Dientes Sanos ya están activadas en este dispositivo.'
       );
     }
   };
 
   const handleSendTestNotification = () => {
     notificationService.sendNotification(
-      'Dientes Sanos CRM ðŸš€',
-      'Â¡Funciona genial! Esta notificaciÃ³n llegarÃ¡ a tu telÃ©fono o computadora de forma instantÃ¡nea.'
+      'Dientes Sanos CRM 🚀',
+      '¡Funciona genial! Esta notificación llegará a tu teléfono o computadora de forma instantánea.'
     );
   };
 
@@ -131,7 +131,7 @@ const NotificationsDrawer = ({ isOpen, onClose }) => {
         }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
             <Bell size={22} className="text-gold" />
-            <h3 style={{ fontSize: '18px', fontWeight: '900', color: '#111111', margin: 0 }}>Notificaciones</h3>
+            <h3 style={{ fontSize: '18px', fontWeight: '900', color: 'white', margin: 0 }}>Notificaciones</h3>
           </div>
           <button 
             onClick={onClose}
@@ -141,7 +141,7 @@ const NotificationsDrawer = ({ isOpen, onClose }) => {
               borderRadius: '50%',
               width: '36px',
               height: '36px',
-              color: '#111111',
+              color: 'white',
               cursor: 'pointer',
               display: 'flex',
               alignItems: 'center',
@@ -152,7 +152,7 @@ const NotificationsDrawer = ({ isOpen, onClose }) => {
           </button>
         </div>
 
-        {/* Permission Banner (PWA Config) â€” collapsed to a slim row, expands on tap */}
+        {/* Permission Banner (PWA Config) — collapsed to a slim row, expands on tap */}
         {permission !== 'granted' && (
           <div style={{
             margin: '16px 24px 0 24px',
@@ -176,7 +176,7 @@ const NotificationsDrawer = ({ isOpen, onClose }) => {
               }}
             >
               <Smartphone size={16} className="text-gold" style={{ flexShrink: 0 }} />
-              <span style={{ fontSize: '12px', fontWeight: '800', color: '#111111', flex: 1 }}>Activa las notificaciones push</span>
+              <span style={{ fontSize: '12px', fontWeight: '800', color: 'white', flex: 1 }}>Activa las notificaciones push</span>
               <ChevronDown size={15} color="var(--text-muted)" style={{ transform: bannerExpanded ? 'rotate(180deg)' : 'none', transition: 'transform 0.2s', flexShrink: 0 }} />
             </button>
 
@@ -185,7 +185,7 @@ const NotificationsDrawer = ({ isOpen, onClose }) => {
                 {/* Dynamic warning context */}
                 {!isSecure ? (
                   <span style={{ fontSize: '11px', color: '#ffb3b3', display: 'flex', gap: '4px', fontWeight: '600' }}>
-                    <AlertTriangle size={12} style={{marginTop: '1px'}} /> Requiere HTTPS (ConexiÃ³n segura). EstÃ¡s conectado vÃ­a IP local sin cifrar (HTTP).
+                    <AlertTriangle size={12} style={{marginTop: '1px'}} /> Requiere HTTPS (Conexión segura). Estás conectado vía IP local sin cifrar (HTTP).
                   </span>
                 ) : isIOS && !isStandalone ? (
                   <span style={{ fontSize: '11px', color: '#ffeb9c', display: 'flex', gap: '4px', fontWeight: '600' }}>
@@ -193,7 +193,7 @@ const NotificationsDrawer = ({ isOpen, onClose }) => {
                   </span>
                 ) : (
                   <span style={{ fontSize: '11px', color: 'var(--text-secondary)' }}>
-                    Recibe alertas instantÃ¡neas en tu dispositivo como un mensaje de WhatsApp cuando haya nuevos cobros.
+                    Recibe alertas instantáneas en tu dispositivo como un mensaje de WhatsApp cuando haya nuevos cobros.
                   </span>
                 )}
                 <button
@@ -201,7 +201,7 @@ const NotificationsDrawer = ({ isOpen, onClose }) => {
                   className="btn-gold"
                   style={{ padding: '8px 16px', borderRadius: '10px', fontSize: '12px', fontWeight: '900' }}
                 >
-                  {!isSecure ? 'Ver requisitos de red' : isIOS && !isStandalone ? 'Ver guÃ­a de instalaciÃ³n' : 'Activar Notificaciones'}
+                  {!isSecure ? 'Ver requisitos de red' : isIOS && !isStandalone ? 'Ver guía de instalación' : 'Activar Notificaciones'}
                 </button>
               </div>
             )}
@@ -222,7 +222,7 @@ const NotificationsDrawer = ({ isOpen, onClose }) => {
               onClick={handleMarkAllRead} 
               style={{ background: 'none', border: 'none', color: 'var(--text-secondary)', fontWeight: '800', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '4px' }}
             >
-              <CheckCheck size={14} className="text-gold" /> Marcar leÃ­das
+              <CheckCheck size={14} className="text-gold" /> Marcar leídas
             </button>
             <button 
               onClick={handleClearHistory} 
@@ -261,7 +261,7 @@ const NotificationsDrawer = ({ isOpen, onClose }) => {
                 gap: '8px'
               }}
             >
-              <Sparkles size={14} /> Probar notificaciÃ³n push en vivo
+              <Sparkles size={14} /> Probar notificación push en vivo
             </button>
           )}
 
@@ -309,7 +309,7 @@ const NotificationsDrawer = ({ isOpen, onClose }) => {
                   <CategoryIcon size={16} />
                 </div>
                 <div style={{ flex: 1, minWidth: 0 }}>
-                  <h4 style={{ fontSize: '13px', fontWeight: '900', color: '#111111', margin: '0 0 4px 0', paddingRight: '12px' }}>
+                  <h4 style={{ fontSize: '13px', fontWeight: '900', color: 'white', margin: '0 0 4px 0', paddingRight: '12px' }}>
                     {n.title}
                   </h4>
                   <p style={{ fontSize: '12px', color: 'var(--text-secondary)', margin: '0 0 10px 0', lineHeight: '1.5' }}>
@@ -352,4 +352,3 @@ const NotificationsDrawer = ({ isOpen, onClose }) => {
 };
 
 export default NotificationsDrawer;
-

@@ -1,4 +1,4 @@
-﻿import { useEffect } from 'react';
+import { useEffect } from 'react';
 
 let globalOpenModalsCount = 0;
 let savedScrollY = 0;
@@ -42,4 +42,3 @@ export const useScrollLock = (isOpen) => {
     };
   }, [isOpen]);
 };
-

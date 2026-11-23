@@ -1,4 +1,4 @@
-﻿import { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -11,7 +11,7 @@ import pandaIcon from '../../assets/panda_logo_nobg.png';
 
 const getGreeting = () => {
   const h = new Date().getHours();
-  if (h < 12) return 'Buenos dÃ­as';
+  if (h < 12) return 'Buenos días';
   if (h < 19) return 'Buenas tardes';
   return 'Buenas noches';
 };
@@ -22,7 +22,7 @@ const cleanStaffName = (name) => {
 };
 
 const getRatingBadge = (val) => {
-  if (val === 5) return { text: 'Â¡Excelente!', icon: Gem, color: 'var(--champagne)' };
+  if (val === 5) return { text: '¡Excelente!', icon: Gem, color: 'var(--champagne)' };
   if (val === 4) return { text: 'Muy bueno', icon: ThumbsUp, color: '#475569' };
   if (val === 3) return { text: 'Normal', icon: Smile, color: '#64748b' };
   if (val === 2) return { text: 'Regular', icon: Frown, color: '#64748b' };
@@ -293,7 +293,7 @@ export default function ClientDashboard() {
   const totalSpent = historyAppointments.reduce((s, a) => s + getVisitPrice(a), 0);
   const lastAppt = historyAppointments[0];
 
-  // Walk-in visits ("En Silla") never had a scheduled_at set â€” fall back to
+  // Walk-in visits ("En Silla") never had a scheduled_at set — fall back to
   // when the visit was actually completed/created instead of showing epoch.
   const getApptDate = (a) => {
     const raw = a?.scheduled_at || a?.completed_at || a?.created_at;
@@ -307,7 +307,7 @@ export default function ClientDashboard() {
   return (
     <div className="db-root animate-fade-in-up" style={{ animationDelay: '0ms' }}>
 
-      {/* â”€â”€ GREETING HERO â”€â”€ */}
+      {/* ── GREETING HERO ── */}
       <div className="db-hero">
         <div className="db-hero-left">
           <span className="db-greeting-sub">{getGreeting()},</span>
@@ -323,7 +323,7 @@ export default function ClientDashboard() {
         </div>
       </div>
 
-      {/* â”€â”€ HERO BANNER (PENDING RATING) â”€â”€ */}
+      {/* ── HERO BANNER (PENDING RATING) ── */}
       {pendingRating && !ratingModal && (
         <motion.div
           initial={{ opacity: 0, y: -10 }}
@@ -354,10 +354,10 @@ export default function ClientDashboard() {
             </div>
             <div style={{ textAlign: 'left' }}>
               <div style={{ fontSize: 14, fontWeight: 700, color: '#0f172a', marginBottom: 2 }}>
-                Califica tu servicio con {pendingRating.staff?.name || 'tu odontÃ³logo'}
+                Califica tu servicio con {pendingRating.staff?.name || 'tu odontólogo'}
               </div>
               <div style={{ fontSize: 12, color: '#475569' }}>
-                CuÃ©ntanos cÃ³mo estuvo tu experiencia para ayudarnos a mejorar.
+                Cuéntanos cómo estuvo tu experiencia para ayudarnos a mejorar.
               </div>
             </div>
           </div>
@@ -365,7 +365,7 @@ export default function ClientDashboard() {
         </motion.div>
       )}
 
-      {/* â”€â”€ MAIN GRID â”€â”€ */}
+      {/* ── MAIN GRID ── */}
       <div className="db-grid">
 
         {/* LEFT: Appointment card + Book button */}
@@ -395,11 +395,11 @@ export default function ClientDashboard() {
                     ) : (
                       <span className="appt-confirmed-badge"><Check size={10} strokeWidth={4} /> CONFIRMADA</span>
                     )}
-                    <span className="appt-step-label">{isLive ? 'Te estÃ¡n atendiendo' : 'PrÃ³xima cita'}</span>
+                    <span className="appt-step-label">{isLive ? 'Te están atendiendo' : 'Próxima cita'}</span>
                   </div>
                   {!isLive && d && (
                     <div className="appt-countdown">
-                      {days > 0 && <div className="countdown-block"><span className="cb-num">{days}</span><span className="cb-lbl">{days === 1 ? 'dÃ­a' : 'dÃ­as'}</span></div>}
+                      {days > 0 && <div className="countdown-block"><span className="cb-num">{days}</span><span className="cb-lbl">{days === 1 ? 'día' : 'días'}</span></div>}
                       <div className="countdown-block"><span className="cb-num">{days > 0 ? hours : Math.max(0, Math.floor(ms / 3600000))}</span><span className="cb-lbl">hrs</span></div>
                       {days === 0 && <div className="countdown-block"><span className="cb-num">{Math.max(0, mins)}</span><span className="cb-lbl">min</span></div>}
                     </div>
@@ -431,7 +431,7 @@ export default function ClientDashboard() {
               </div>
             );
           })() : (
-            /* EMPTY STATE â€” branded & premium */
+            /* EMPTY STATE — branded & premium */
             <div 
               className="appt-card empty-appt" 
               onClick={() => {
@@ -457,7 +457,7 @@ export default function ClientDashboard() {
                 </div>
 
                 <div className="ea-text">
-                  <h3 className="ea-title">Tu sillÃ³n te espera</h3>
+                  <h3 className="ea-title">Tu sillón te espera</h3>
                   <p className="ea-subtitle">Reserva en segundos. Vive la Experiencia Dientes Sanos.</p>
                 </div>
 
@@ -547,17 +547,17 @@ export default function ClientDashboard() {
             <div className="stat-card">
               <div className="stat-icon-wrap"><Calendar size={15} color="var(--champagne)" /></div>
               <span className="stat-val" style={{ fontSize: lastAppt ? 14 : 20 }}>
-                {lastAppt && getApptDate(lastAppt) ? getApptDate(lastAppt).toLocaleDateString('es-ES', { day: '2-digit', month: 'short' }) : 'â€”'}
+                {lastAppt && getApptDate(lastAppt) ? getApptDate(lastAppt).toLocaleDateString('es-ES', { day: '2-digit', month: 'short' }) : '—'}
               </span>
-              <span className="stat-lbl">Ãšltima cita</span>
+              <span className="stat-lbl">Última cita</span>
             </div>
           </div>
 
           {/* VISIT HISTORY */}
           <div className="history-card">
             <div className="hc-header">
-              <span className="hc-title">Ãšltimas visitas</span>
-              <span className="hc-link" onClick={() => navigate('/perfil/citas')}>Ver todo â†’</span>
+              <span className="hc-title">Últimas visitas</span>
+              <span className="hc-link" onClick={() => navigate('/perfil/citas')}>Ver todo →</span>
             </div>
 
             <div className="hc-list">
@@ -570,7 +570,7 @@ export default function ClientDashboard() {
                     <div className="hci-service">{a.services?.name}</div>
                     <div className="hci-meta">
                       {getApptDate(a) ? getApptDate(a).toLocaleDateString('es-ES', { day: 'numeric', month: 'short', year: 'numeric' }) : 'Fecha no disponible'}
-                      &nbsp;Â·&nbsp;
+                      &nbsp;·&nbsp;
                       con {a.staff?.name?.split(' ')[0]}
                     </div>
                   </div>
@@ -597,7 +597,7 @@ export default function ClientDashboard() {
               {historyAppointments.length === 0 && (
                 <div className="hc-empty">
                   <Calendar size={20} color="#94a3b8" />
-                  <span>AÃºn no hay visitas registradas</span>
+                  <span>Aún no hay visitas registradas</span>
                 </div>
               )}
             </div>
@@ -674,7 +674,7 @@ export default function ClientDashboard() {
         </div>
       )}
 
-      {/* â”€â”€ AUTOMATIC RATING POP-UP MODAL â”€â”€ */}
+      {/* ── AUTOMATIC RATING POP-UP MODAL ── */}
       {typeof document !== 'undefined' && createPortal(
         <>
           {ratingModal && (
@@ -752,7 +752,7 @@ export default function ClientDashboard() {
                       <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                         <div style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 11, fontWeight: 800, color: 'var(--champagne)', letterSpacing: 2 }}>
                           <Star size={14} fill="var(--champagne)" />
-                          <span>VALORACIÃ“N</span>
+                          <span>VALORACIÓN</span>
                         </div>
                       </div>
 
@@ -784,7 +784,7 @@ export default function ClientDashboard() {
                             />
                           </div>
                         </div>
-                        <h2 style={{ fontSize: 22, fontWeight: 800, color: '#0f172a', margin: '0 0 6px', letterSpacing: '-0.5px' }}>Â¿QuÃ© tal estuvo tu cita?</h2>
+                        <h2 style={{ fontSize: 22, fontWeight: 800, color: '#0f172a', margin: '0 0 6px', letterSpacing: '-0.5px' }}>¿Qué tal estuvo tu cita?</h2>
                         <p style={{ fontSize: 13, color: '#64748b', margin: 0 }}>
                           Califica tu experiencia con <span style={{ color: 'var(--champagne)', fontWeight: 700 }}>{cleanStaffName(ratingModal.staff?.name)}</span>
                         </p>
@@ -847,7 +847,7 @@ export default function ClientDashboard() {
                               <textarea
                                 value={ratingComment}
                                 onChange={e => setRatingComment(e.target.value)}
-                                placeholder="Escribe aquÃ­ tu experiencia..."
+                                placeholder="Escribe aquí tu experiencia..."
                                 maxLength={200}
                                 autoFocus
                                 style={{
@@ -891,7 +891,7 @@ export default function ClientDashboard() {
                             transition: 'all 0.2s'
                           }}
                         >
-                          Hacerlo mÃ¡s tarde
+                          Hacerlo más tarde
                         </button>
                         <button
                           type="button"
@@ -957,10 +957,10 @@ export default function ClientDashboard() {
                       </motion.div>
 
                       <h2 style={{ fontSize: 24, fontWeight: 800, color: '#0f172a', margin: '10px 0 4px', letterSpacing: '-0.5px' }}>
-                        Â¡Muchas gracias!
+                        ¡Muchas gracias!
                       </h2>
                       <p style={{ fontSize: 13, color: '#64748b', lineHeight: 1.5, maxWidth: 280, margin: 0 }}>
-                        Tu opiniÃ³n nos ayuda a mantener el nivel de la Experiencia Dientes Sanos.
+                        Tu opinión nos ayuda a mantener el nivel de la Experiencia Dientes Sanos.
                       </p>
                     </div>
                   )}
@@ -971,7 +971,7 @@ export default function ClientDashboard() {
         document.body
       )}
 
-      {/* â”€â”€ FAVORITES MODAL â”€â”€ */}
+      {/* ── FAVORITES MODAL ── */}
       {typeof document !== 'undefined' && createPortal(
         <AnimatePresence>
         {showFavoritesModal && (
@@ -993,7 +993,7 @@ export default function ClientDashboard() {
                 <Crown size={28} className="text-[#111111]" />
                 TU EQUIPO IDEAL
               </h2>
-              <p className="text-[#64748b] text-sm leading-relaxed font-medium">Â¿QuiÃ©nes son los artistas que mejor entienden tu estilo? Selecciona a tus protagonistas para acceder a ellos con un solo toque.</p>
+              <p className="text-[#64748b] text-sm leading-relaxed font-medium">¿Quiénes son los artistas que mejor entienden tu estilo? Selecciona a tus protagonistas para acceder a ellos con un solo toque.</p>
             </div>
             
             <div className="flex-1 overflow-y-auto hide-scrollbar grid grid-cols-2 md:grid-cols-3 gap-4 p-2 pb-6">
@@ -1059,7 +1059,7 @@ export default function ClientDashboard() {
       </AnimatePresence>, document.body)}
 
       <style>{`
-        /* â”€â”€ ROOT â”€â”€ */
+        /* ── ROOT ── */
         .db-root {
           width: 100%;
           max-width: 1080px;
@@ -1068,7 +1068,7 @@ export default function ClientDashboard() {
           font-family: 'General Sans', sans-serif;
         }
 
-        /* â”€â”€ HERO GREETING â”€â”€ */
+        /* ── HERO GREETING ── */
         .db-hero {
           display: flex;
           align-items: flex-start;
@@ -1105,7 +1105,7 @@ export default function ClientDashboard() {
         }
         .db-hero-avatar img { width: 100%; object-fit: contain; }
 
-        /* â”€â”€ GRID â”€â”€ */
+        /* ── GRID ── */
         .db-grid {
           display: flex;
           flex-direction: column;
@@ -1125,7 +1125,7 @@ export default function ClientDashboard() {
           gap: 16px;
         }
 
-        /* â”€â”€ APPOINTMENT CARD BASE â”€â”€ */
+        /* ── APPOINTMENT CARD BASE ── */
         .appt-card {
           position: relative;
           border-radius: 28px;
@@ -1133,14 +1133,14 @@ export default function ClientDashboard() {
           cursor: default;
           transition: transform 0.4s cubic-bezier(0.2,0.8,0.2,1), box-shadow 0.4s ease;
           /* Without this, iOS has to decide whether a touch here means "scroll the
-             page" or "hover/tap this card" before committing to either â€” with the
+             page" or "hover/tap this card" before committing to either — with the
              hover transform + transition below, that ambiguity can eat the first
              swipe, so the card appears to shift in place while the page underneath
              doesn't move until you swipe again. Still relevant for .empty-appt,
              which is clickable. */
           touch-action: pan-y;
         }
-        /* Only the empty-state card (no upcoming appointment) is clickable â€” it
+        /* Only the empty-state card (no upcoming appointment) is clickable — it
            opens the booking flow. The has-appt card below is informational only. */
         .appt-card:hover:not(.has-appt) {
           transform: translateY(-6px) scale(1.01);
@@ -1296,7 +1296,7 @@ export default function ClientDashboard() {
         .barber-pill { background: rgba(0,0,0,0.7); border-color: rgba(17,17,17,0.4); color: var(--champagne); }
         .pill-avatar { width: 16px; height: 16px; border-radius: 50%; object-fit: cover; }
 
-        /* â”€â”€ EMPTY APPOINTMENT CARD â”€â”€ */
+        /* ── EMPTY APPOINTMENT CARD ── */
         .empty-appt {
           cursor: pointer;
           height: 260px;
@@ -1395,7 +1395,7 @@ export default function ClientDashboard() {
           transform: scale(1.04);
         }
 
-        /* â”€â”€ BOOK BUTTON â”€â”€ */
+        /* ── BOOK BUTTON ── */
         .db-book-btn {
           position: relative;
           overflow: hidden;
@@ -1436,7 +1436,7 @@ export default function ClientDashboard() {
           50%,100% { left: 110%; }
         }
 
-        /* â”€â”€ CLUB SONRISA CARD â”€â”€ */
+        /* ── CLUB SONRISA CARD ── */
         .club-card {
           position: relative;
           overflow: hidden;
@@ -1478,7 +1478,7 @@ export default function ClientDashboard() {
         .club-pts { font-size: 22px; font-weight: 900; color: #334155; line-height: 1.1; }
         .club-pts span { font-size: 13px; font-weight: 600; }
 
-        /* â”€â”€ STATS ROW â”€â”€ */
+        /* ── STATS ROW ── */
         .stats-row {
           display: grid;
           grid-template-columns: repeat(3, 1fr);
@@ -1507,7 +1507,7 @@ export default function ClientDashboard() {
         .stat-val { font-size: 18px; font-weight: 800; color: #0f172a; line-height: 1; }
         .stat-lbl { font-size: 10px; font-weight: 600; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px; }
 
-        /* â”€â”€ HISTORY CARD â”€â”€ */
+        /* ── HISTORY CARD ── */
         .history-card {
           background: #ffffff;
           border: 1px solid rgba(217, 192, 143, 0.15);
@@ -1567,7 +1567,7 @@ export default function ClientDashboard() {
           font-size: 13px; font-weight: 500;
         }
 
-        /* â”€â”€ APPLE WALLET TICKET MODAL â”€â”€ */
+        /* ── APPLE WALLET TICKET MODAL ── */
         .db-modal-overlay {
           position: fixed; inset: 0;
           background: rgba(0,0,0,0.6);
@@ -1740,7 +1740,7 @@ export default function ClientDashboard() {
         }
         .ticket-cancel-btn:hover { background: rgba(255,60,60,0.15); }
 
-        /* â”€â”€ RESPONSIVE â”€â”€ */
+        /* ── RESPONSIVE ── */
         @media (max-width: 480px) {
           .db-root { padding: 24px 16px 100px; }
           .db-greeting-name { font-size: 28px; }
@@ -1752,4 +1752,3 @@ export default function ClientDashboard() {
     </div>
   );
 }
-

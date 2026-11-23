@@ -1,13 +1,13 @@
-﻿import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import logo from '../assets/logo_full.png';
 import bgImageDesktop from '../assets/client_loading_bg.webp';
 import bgImageMobile from '../assets/client_loading_bg_mobile.webp';
 
 const clientTips = [
-  "Consejo: Revisa tu BÃ³veda VIP para descubrir premios ocultos.",
+  "Consejo: Revisa tu Bóveda VIP para descubrir premios ocultos.",
   "Consejo: Acumula puntos en cada visita para subir de nivel.",
   "Consejo: Muestra tu tarjeta VIP digital al pagar en caja.",
-  "Consejo: Agenda tus citas con anticipaciÃ³n desde tu perfil."
+  "Consejo: Agenda tus citas con anticipación desde tu perfil."
 ];
 
 const LOADER_MIN_DURATION_MS = 1500;
@@ -165,7 +165,7 @@ const ClientLoader = ({ visible, onFinish }) => {
         {/* Logo */}
         <img 
           src={logo} 
-          alt="Centro OdontolÃ³gico Dientes Sanos" 
+          alt="Centro Odontológico Dientes Sanos" 
           style={{ 
             height: isMobile ? '100px' : '120px',
             objectFit: 'contain',
@@ -183,7 +183,7 @@ const ClientLoader = ({ visible, onFinish }) => {
           letterSpacing: '-0.5px',
           textAlign: isMobile ? 'center' : 'left'
         }}>
-          Tu espacio estÃ¡ casi listo
+          Tu espacio está casi listo
         </div>
 
         {/* Subtitle */}
@@ -242,7 +242,7 @@ const ClientLoader = ({ visible, onFinish }) => {
           gap: '16px', 
           opacity: 0.7 
         }}>
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{ color: '#111111', flexShrink: 0 }}>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{ color: 'white', flexShrink: 0 }}>
             <circle cx="6" cy="6" r="3"></circle>
             <circle cx="6" cy="18" r="3"></circle>
             <line x1="20" y1="4" x2="8.12" y2="15.88"></line>
@@ -252,7 +252,7 @@ const ClientLoader = ({ visible, onFinish }) => {
           <div style={{ width: '1px', height: '20px', backgroundColor: 'rgba(0, 0, 0, 0.04)', flexShrink: 0 }} />
           <div style={{ 
             fontSize: isMobile ? '12px' : '14px', 
-            color: '#111111', 
+            color: 'white', 
             lineHeight: '1.4', 
             fontWeight: '400', 
             textAlign: 'left',
@@ -269,4 +269,3 @@ const ClientLoader = ({ visible, onFinish }) => {
 };
 
 export default ClientLoader;
-

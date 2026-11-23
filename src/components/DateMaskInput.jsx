@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { isoToDisplay, formatBirthDateInput } from '../utils/dateTime';
 
 export default function DateMaskInput({ value, onChange, placeholder = "DD/MM/AAAA", style, className }) {
@@ -48,4 +48,3 @@ export default function DateMaskInput({ value, onChange, placeholder = "DD/MM/AA
     />
   );
 }
-

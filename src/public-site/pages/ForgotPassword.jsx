@@ -1,4 +1,4 @@
-﻿import { useState } from 'react';
+import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Mail, Check, ArrowLeft, ArrowRight, Shield } from 'lucide-react';
 import { motion } from 'framer-motion';
@@ -86,7 +86,7 @@ export default function ForgotPassword() {
               <Mail size={22} style={{ color: 'var(--champagne)' }} />
             </div>
             <h1 className="section-title" style={{ fontSize: '1.8rem', marginBottom: 8 }}>
-              Â¿Olvidaste tu <span className="text-gold">ContraseÃ±a</span>?
+              ¿Olvidaste tu <span className="text-gold">Contraseña</span>?
             </h1>
             <p style={{ color: 'var(--text-secondary)', fontSize: 14, lineHeight: 1.6 }}>
               Ingresa tu email y te enviaremos las instrucciones
@@ -119,7 +119,7 @@ export default function ForgotPassword() {
                 <p style={{ color: 'var(--text-secondary)', fontSize: 13, lineHeight: 1.6, marginBottom: 20 }}>
                   Revisa tu bandeja de entrada en<br />
                   <strong style={{ color: 'var(--champagne)' }}>{email}</strong><br />
-                  y sigue las instrucciones para restablecer tu contraseÃ±a.
+                  y sigue las instrucciones para restablecer tu contraseña.
                 </p>
                 <button
                   type="button"
@@ -151,7 +151,7 @@ export default function ForgotPassword() {
                 <div style={{ marginBottom: 22 }}>
                   <label style={{ display: 'flex', alignItems: 'center', gap: 5, fontSize: 12, fontWeight: 700, color: '#0f172a', marginBottom: 8 }}>
                     <Mail size={13} style={{ color: 'var(--champagne)' }} />
-                    Correo electrÃ³nico
+                    Correo electrónico
                   </label>
                   <input
                     type="email"
@@ -195,7 +195,7 @@ export default function ForgotPassword() {
           >
             <Shield size={15} style={{ color: 'var(--champagne)', flexShrink: 0 }} />
             <p style={{ fontSize: 11.5, color: 'var(--text-muted)', lineHeight: 1.5 }}>
-              Solo podrÃ¡s restablecer la contraseÃ±a de cuentas creadas con email/contraseÃ±a.
+              Solo podrás restablecer la contraseña de cuentas creadas con email/contraseña.
             </p>
           </motion.div>
         </motion.div>
@@ -203,4 +203,3 @@ export default function ForgotPassword() {
     </div>
   );
 }
-

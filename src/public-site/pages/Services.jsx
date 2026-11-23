@@ -1,4 +1,4 @@
-﻿import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Clock, Star, ChevronRight, User, X } from 'lucide-react';
 import { publicService } from '../services/publicService';
 import QuickBookingModal from '../components/QuickBookingModal';
@@ -31,8 +31,8 @@ export default function Services() {
           publicService.getStaff()
         ]);
         
-        // Group services (solo categorÃ­as dentales exactas)
-        const DENTAL_CATEGORIES = ['EstÃ©tica', 'Ortodoncia', 'Endodoncia', 'OdontopediatrÃ­a'];
+        // Group services (solo categorías dentales exactas)
+        const DENTAL_CATEGORIES = ['Estética', 'Ortodoncia', 'Endodoncia', 'Odontopediatría'];
         const grouped = {};
         servicesData.forEach(service => {
           const raw = (service.category || '').toLowerCase();
@@ -99,8 +99,8 @@ export default function Services() {
     const cat = categoryName.toLowerCase();
     if (cat.includes('ortodoncia')) return hero3;
     if (cat.includes('endodoncia')) return hero1;
-    if (cat.includes('odontopediatrÃ­a')) return experienciaCover;
-    if (cat.includes('estÃ©tica')) return hero4;
+    if (cat.includes('odontopediatría')) return experienciaCover;
+    if (cat.includes('estética')) return hero4;
     return hero4;
   };
 
@@ -121,7 +121,7 @@ export default function Services() {
             <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
             <div className="relative z-10 transform group-hover:-translate-y-1 transition-transform duration-500">
               <p className="text-[8px] sm:text-[10px] font-bold text-[#e8d4b0] uppercase tracking-wider mb-0.5 sm:mb-1 shadow-black drop-shadow-lg">NUEVA EXPERIENCIA</p>
-              <h2 className="text-lg sm:text-2xl font-bold text-white leading-tight mb-1 sm:mb-2 shadow-black drop-shadow-lg">Tu mejor sonrisa empieza aquÃ­</h2>
+              <h2 className="text-lg sm:text-2xl font-bold text-white leading-tight mb-1 sm:mb-2 shadow-black drop-shadow-lg">Tu mejor sonrisa empieza aquí</h2>
               <p className="text-[11px] sm:text-sm text-white/80 shadow-black drop-shadow-lg leading-snug">Reserva con especialistas.</p>
             </div>
           </div>
@@ -130,9 +130,9 @@ export default function Services() {
             <div className="absolute inset-0 w-full h-full object-cover opacity-50 grayscale group-hover:scale-105 transition-transform duration-700" style={{ background: 'linear-gradient(135deg,#f7f4ee 0%,#efe6d5 50%,#e8d4b0 100%)' }} aria-hidden="true"></div>
             <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
             <div className="relative z-10 transform group-hover:-translate-y-1 transition-transform duration-500">
-              <p className="text-[8px] sm:text-[10px] font-bold text-gray-300 uppercase tracking-wider mb-0.5 sm:mb-1 shadow-black drop-shadow-lg">CORTESÃA PREMIUM</p>
-              <h2 className="text-lg sm:text-2xl font-bold text-white leading-tight mb-1 sm:mb-2 shadow-black drop-shadow-lg">MÃ¡s que una consulta</h2>
-              <p className="text-[11px] sm:text-sm text-white/80 shadow-black drop-shadow-lg leading-snug">Wi-Fi, agua de cortesÃ­a y atenciÃ³n odontolÃ³gica personalizada.</p>
+              <p className="text-[8px] sm:text-[10px] font-bold text-gray-300 uppercase tracking-wider mb-0.5 sm:mb-1 shadow-black drop-shadow-lg">CORTESÍA PREMIUM</p>
+              <h2 className="text-lg sm:text-2xl font-bold text-white leading-tight mb-1 sm:mb-2 shadow-black drop-shadow-lg">Más que una consulta</h2>
+              <p className="text-[11px] sm:text-sm text-white/80 shadow-black drop-shadow-lg leading-snug">Wi-Fi, agua de cortesía y atención odontológica personalizada.</p>
             </div>
           </div>
 
@@ -156,7 +156,7 @@ export default function Services() {
                 
                 {/* Contenedor relativo exterior que NO corta cosas */}
                 <div className="relative mb-3">
-                  {/* Contenedor que SÃ recorta la imagen en cÃ­rculo */}
+                  {/* Contenedor que SÍ recorta la imagen en círculo */}
                   <div className="w-20 h-20 rounded-full bg-white border-2 border-transparent group-hover:border-[#111111] transition-all overflow-hidden shadow-lg">
                     {member.image_url ? (
                       <img src={member.image_url} alt={member.name} className="w-full h-full object-cover" />
@@ -249,7 +249,7 @@ export default function Services() {
         }}
       />
 
-      {/* MODAL DE RESERVA RAPIDA (Superpuesto en esta misma pÃ¡gina) */}
+      {/* MODAL DE RESERVA RAPIDA (Superpuesto en esta misma página) */}
       {showQuickBook && (
         <QuickBookingModal 
           onClose={() => setShowQuickBook(false)}
@@ -259,4 +259,3 @@ export default function Services() {
     </div>
   );
 }
-

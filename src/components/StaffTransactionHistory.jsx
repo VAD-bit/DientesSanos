@@ -1,4 +1,4 @@
-﻿import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { 
   CalendarRange, 
@@ -25,7 +25,7 @@ import {
 } from '../utils/dateTime';
 
 const MONTH_NAMES = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
-const DAY_NAMES = ['do','lu','ma','mi','ju','vi','sÃ¡'];
+const DAY_NAMES = ['do','lu','ma','mi','ju','vi','sá'];
 
 const toDateStr = (y, m, d) =>
   `${y}-${String(m + 1).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
@@ -119,7 +119,7 @@ const DatePicker = ({ value, onChange, placeholder, min }) => {
         <button onClick={() => setView(new Date(year, month - 1, 1))} style={{ background: 'none', border: 'none', color: 'var(--text-secondary)', cursor: 'pointer', padding: '4px', display: 'flex', borderRadius: '8px' }}>
           <ChevronLeft size={18} />
         </button>
-        <span style={{ fontWeight: '800', fontSize: '14px', color: '#111111' }}>
+        <span style={{ fontWeight: '800', fontSize: '14px', color: 'white' }}>
           {MONTH_NAMES[month]} {year}
         </span>
         <button onClick={() => setView(new Date(year, month + 1, 1))} style={{ background: 'none', border: 'none', color: 'var(--text-secondary)', cursor: 'pointer', padding: '4px', display: 'flex', borderRadius: '8px' }}>
@@ -240,7 +240,7 @@ const MoneyRow = ({ label, usd, transactionRate, accent = false, strong = false 
       <span style={{ textAlign: 'right', color: accent ? '#32d74b' : strong ? 'var(--gold-primary)' : '#fff', fontSize: strong ? '14px' : '12px', fontWeight: '900', whiteSpace: 'nowrap' }}>
         {numBs.toLocaleString('es-VE')} Bs.
         <small style={{ display: 'block', color: 'rgba(255,255,255,0.7)', fontSize: '10.5px', marginTop: '1px', fontWeight: '800' }}>
-          â‰ˆ ${numUsd.toFixed(2)} USD
+          ≈ ${numUsd.toFixed(2)} USD
         </small>
       </span>
     </div>
@@ -261,7 +261,7 @@ const getPaymentMethod = metadata => {
       .filter(method => method && method !== 'N/A')
       .forEach(method => methods.push(method));
   }
-  return [...new Set(methods)].join(' + ') || 'MÃ©todo no registrado';
+  return [...new Set(methods)].join(' + ') || 'Método no registrado';
 };
 
 const getTransactionRate = (transaction, fallbackRate) => {
@@ -500,12 +500,12 @@ const StaffTransactionHistory = ({ staffMember, rates, isMobile }) => {
             <div className="staff-history-metric-label" style={{ display: 'flex', gap: '8px', alignItems: 'center', color: 'var(--text-secondary)', fontSize: '11px', fontWeight: '850', textTransform: 'uppercase' }}>
               {card.icon} {card.label}
             </div>
-            <div className="staff-history-metric-value" style={{ marginTop: '10px', fontSize: '23px', fontWeight: '950', color: '#111111' }}>
+            <div className="staff-history-metric-value" style={{ marginTop: '10px', fontSize: '23px', fontWeight: '950', color: 'white' }}>
               {card.count !== undefined ? card.count : `${formatBs(card.valueBs)} Bs.`}
             </div>
             {card.count === undefined && (
               <div className="staff-history-metric-ref" style={{ marginTop: '3px', color: 'rgba(255,255,255,0.7)', fontSize: '11px', fontWeight: '800' }}>
-                â‰ˆ ${formatUsd(card.value)} USD
+                ≈ ${formatUsd(card.value)} USD
               </div>
             )}
           </div>
@@ -586,7 +586,7 @@ const StaffTransactionHistory = ({ staffMember, rates, isMobile }) => {
                     </div>
                   </div>
                   <div className="staff-history-transaction-main">
-                    <div className="client" style={{ color: '#111111', fontWeight: '900', fontSize: '14px' }}>{clientName}</div>
+                    <div className="client" style={{ color: 'white', fontWeight: '900', fontSize: '14px' }}>{clientName}</div>
                     <div className="service" style={{ marginTop: '3px', color: 'var(--text-secondary)', fontSize: '12px' }}>{serviceName}</div>
                     <div className="method" style={{ marginTop: '4px', color: 'var(--text-muted)', fontSize: '11px', display: 'flex', alignItems: 'center', gap: '6px', flexWrap: 'wrap' }}>
                       <span>{method}</span>
@@ -601,7 +601,7 @@ const StaffTransactionHistory = ({ staffMember, rates, isMobile }) => {
                     <div style={{ display: 'flex', alignItems: 'center', justifyContent: isMobile ? 'space-between' : 'flex-end', gap: '10px' }}>
                       <div>
                         <div className="amount" style={{ color: '#32d74b', fontSize: '16px', fontWeight: '950' }}>+{Math.round(personalBs).toLocaleString('es-VE')} Bs.</div>
-                        <div className="reference" style={{ color: 'rgba(255,255,255,0.7)', fontSize: '10.5px', marginTop: '2px', fontWeight: '800' }}>â‰ˆ +${formatUsd(transaction.staffAmounts.earnings)} USD</div>
+                        <div className="reference" style={{ color: 'rgba(255,255,255,0.7)', fontSize: '10.5px', marginTop: '2px', fontWeight: '800' }}>≈ +${formatUsd(transaction.staffAmounts.earnings)} USD</div>
                       </div>
                       <ChevronDown size={16} color={'var(--text-muted)'} style={{ transform: selected ? 'rotate(180deg)' : 'none', transition: 'transform 0.2s' }} />
                     </div>
@@ -647,12 +647,12 @@ const StaffTransactionHistory = ({ staffMember, rates, isMobile }) => {
                               )}
                               {transaction.staffAmounts.tips > 0 && (
                                 <span style={{ fontSize: '11px', color: '#32d74b', fontWeight: '850' }}>
-                                  Â· Propina: +${formatUsd(transaction.staffAmounts.tips)}
+                                  · Propina: +${formatUsd(transaction.staffAmounts.tips)}
                                 </span>
                               )}
                               {transaction.staffAmounts.productCommission > 0 && (
                                 <span style={{ fontSize: '11px', color: 'var(--gold-primary)', fontWeight: '850' }}>
-                                  Â· ComisiÃ³n productos: +${formatUsd(transaction.staffAmounts.productCommission)}
+                                  · Comisión productos: +${formatUsd(transaction.staffAmounts.productCommission)}
                                 </span>
                               )}
                             </div>
@@ -663,7 +663,7 @@ const StaffTransactionHistory = ({ staffMember, rates, isMobile }) => {
                             +{Math.round(personalBs).toLocaleString('es-VE')} Bs.
                           </div>
                           <div style={{ color: 'rgba(255,255,255,0.7)', fontSize: '11.5px', fontWeight: '800', marginTop: '1px' }}>
-                            â‰ˆ +${formatUsd(transaction.staffAmounts.earnings)} USD
+                            ≈ +${formatUsd(transaction.staffAmounts.earnings)} USD
                           </div>
                         </div>
                       </div>
@@ -683,7 +683,7 @@ const StaffTransactionHistory = ({ staffMember, rates, isMobile }) => {
                             <div style={{ fontSize: '14px', fontWeight: '900', color: '#fff' }}>{clientName}</div>
                             <div style={{ display: 'flex', gap: '10px', fontSize: '11px', color: 'var(--text-muted)', marginTop: '3px', flexWrap: 'wrap' }}>
                               {clientCedula !== 'No registrada' && <span>CI: {clientCedula}</span>}
-                              {clientPhone !== 'No registrado' && <span>Â· Tel: {clientPhone}</span>}
+                              {clientPhone !== 'No registrado' && <span>· Tel: {clientPhone}</span>}
                             </div>
                           </div>
 
@@ -724,7 +724,7 @@ const StaffTransactionHistory = ({ staffMember, rates, isMobile }) => {
                           <MoneyRow label="Total cobrado" usd={transaction.amount} transactionRate={transactionRate} strong />
                           
                           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '12px' }}>
-                            <span style={{ color: 'var(--text-muted)' }}>MÃ©todo de pago</span>
+                            <span style={{ color: 'var(--text-muted)' }}>Método de pago</span>
                             <div style={{ display: 'flex', alignItems: 'center', gap: '6px', flexWrap: 'wrap', justifyContent: 'flex-end' }}>
                               <span style={{ color: '#fff', fontWeight: '850' }}>{method}</span>
                               {referenceNo && (
@@ -736,22 +736,22 @@ const StaffTransactionHistory = ({ staffMember, rates, isMobile }) => {
                           </div>
 
                           {cashUsd > 0 && <MoneyRow label={`Parte en ${metadata.methodUsd || metadata.method_usd || 'USD'}`} usd={cashUsd} transactionRate={transactionRate} />}
-                          {transferBs > 0 && <MoneyRow label={`Parte en ${metadata.methodBs || metadata.method_bs || 'BolÃ­vares'}`} usd={transferBs / transactionRate} transactionRate={transactionRate} />}
+                          {transferBs > 0 && <MoneyRow label={`Parte en ${metadata.methodBs || metadata.method_bs || 'Bolívares'}`} usd={transferBs / transactionRate} transactionRate={transactionRate} />}
 
                           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '11.5px', marginTop: 'auto', paddingTop: '8px', borderTop: '1px solid rgba(0, 0, 0, 0.08)' }}>
-                            <span style={{ color: 'var(--text-muted)' }}>Tasa de la operaciÃ³n:</span>
+                            <span style={{ color: 'var(--text-muted)' }}>Tasa de la operación:</span>
                             <span style={{ color: 'rgba(255,255,255,0.85)', fontWeight: '850' }}>{transactionRate.toLocaleString('es-VE')} Bs./USD</span>
                           </div>
                         </div>
                       </div>
 
-                      {/* DistribuciÃ³n Transparente de la TransacciÃ³n */}
+                      {/* Distribución Transparente de la Transacción */}
                       {(metadata.staffInvolved && metadata.staffInvolved.length > 0) && (
                         <div style={{ padding: '14px 16px', borderRadius: '15px', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
                           <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '10px' }}>
                             <Users size={14} color="var(--gold-primary)" />
                             <span style={{ fontSize: '10.5px', fontWeight: '900', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
-                              DistribuciÃ³n de la TransacciÃ³n
+                              Distribución de la Transacción
                             </span>
                           </div>
 
@@ -781,7 +781,7 @@ const StaffTransactionHistory = ({ staffMember, rates, isMobile }) => {
                                       {memberBs.toLocaleString('es-VE')} Bs.
                                     </div>
                                     <div style={{ fontSize: '10px', color: 'rgba(255,255,255,0.65)', fontWeight: '800' }}>
-                                      â‰ˆ ${memberUsd.toFixed(2)} USD
+                                      ≈ ${memberUsd.toFixed(2)} USD
                                     </div>
                                   </div>
                                 </div>
@@ -804,4 +804,3 @@ const StaffTransactionHistory = ({ staffMember, rates, isMobile }) => {
 };
 
 export default StaffTransactionHistory;
-

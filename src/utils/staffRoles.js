@@ -1,11 +1,11 @@
-﻿const normalize = (value) => String(value || '').trim().toLowerCase();
+const normalize = (value) => String(value || '').trim().toLowerCase();
 
 // ============================================================================
 // Modelo de 3 roles (Dientes Sanos):
 //   Administrador | Odontologo | Asistente
-// Valor interno en staff.role (sin tildes) + mÃ³dulos tras el `|`:
+// Valor interno en staff.role (sin tildes) + módulos tras el `|`:
 //   'Odontologo|my-profile,barber,scheduling,clients,history'
-// La detecciÃ³n por roles es por PALABRAS CLAVE sobre el nombre del rol (la
+// La detección por roles es por PALABRAS CLAVE sobre el nombre del rol (la
 // parte antes del `|`) para tolerar valores heredados (Barbero, Tatuador,
 // Asistente de Lavado, Recepcionista, Caja, Barista) sin romper.
 // ============================================================================
@@ -21,7 +21,7 @@ export const getStaffSearchText = (member = {}) => [
 
 export const isArchivedStaff = (member = {}) => normalize(member.role).startsWith('archived|');
 
-// Nombre del rol sin mÃ³dulos: 'Odontologo|barber,clients' -> 'odontologo'.
+// Nombre del rol sin módulos: 'Odontologo|barber,clients' -> 'odontologo'.
 export const roleNameOf = (member = {}) => normalize(member.role).split('|')[0];
 
 export const isActiveStaff = (member = {}) => member.active !== false && !isArchivedStaff(member);
@@ -34,12 +34,12 @@ export const isAdminStaff = (member = {}) => {
 // Personal de apoyo (Editor, Marketing, etc.): sueldo fijo, no atiende clientes ni
 // acumula comisiones. Se detecta SOLO por el nombre del rol (la parte antes del `|`),
 // nunca por el texto completo: los correos @odontosonrisa.com contienen "barber" y
-// ensuciarÃ­an la detecciÃ³n basada en getStaffSearchText.
+// ensuciarían la detección basada en getStaffSearchText.
 const SERVICE_OR_OPS_KEYWORDS = [
   'odontolog',
   'dentista', 'odontologo', 'endodoncista', 'ortodoncista', 'implanta',
   'tatu', 'tattoo', 'ink',
-  'asistente', 'recepcion', 'recepciÃ³n', 'caja',
+  'asistente', 'recepcion', 'recepción', 'caja',
 ];
 
 export const isSupportStaff = (member = {}) => {
@@ -50,9 +50,9 @@ export const isSupportStaff = (member = {}) => {
 };
 
 const ODONTOLOGO_KEYWORDS = ['odontolog', 'dentista', 'odontologo', 'endodoncista', 'ortodoncista', 'implanta'];
-const ASISTENTE_KEYWORDS = ['asistente', 'recepcion', 'recepciÃ³n', 'caja', 'higienista'];
+const ASISTENTE_KEYWORDS = ['asistente', 'recepcion', 'recepción', 'caja', 'higienista'];
 
-// Profesional de sillÃ³n (Odontologo; tolera Barbero/Tatuador heredados).
+// Profesional de sillón (Odontologo; tolera Barbero/Tatuador heredados).
 export const isOdontologoRole = (member = {}) => {
   if (!isActiveStaff(member)) return false;
   const role = roleNameOf(member);
@@ -75,7 +75,7 @@ export const isNonServiceStaff = (member = {}) => {
   return (
     text.includes('recepcionista') ||
     text.includes('recepcion') ||
-    text.includes('recepciÃ³n') ||
+    text.includes('recepción') ||
     text.includes('caja') ||
     text.includes('asistente dental') ||
     text.includes('higienista') ||
@@ -101,8 +101,8 @@ export const isTattooRole = (member = {}) => {
   return text.includes('tatu') || text.includes('tattoo') || text.includes('ink');
 };
 
-// Reservable en el portal pÃºblico: cualquier odontÃ³logo activo (antes exigÃ­a
-// ademÃ¡s isAdminStaff, con lo que NINGÃšN miembro del equipo pasaba el filtro
+// Reservable en el portal público: cualquier odontólogo activo (antes exigía
+// además isAdminStaff, con lo que NINGÚN miembro del equipo pasaba el filtro
 // y el portal no listaba a nadie).
 export const isBookableStaff = (member = {}) => (
   isActiveStaff(member) &&
@@ -113,7 +113,7 @@ export const isDentistaBookableStaff = (member = {}) => isBookableStaff(member) 
 
 export const isTattooBookableStaff = (member = {}) => isBookableStaff(member) && isTattooRole(member);
 
-// Puede recibir clientes en recepciÃ³n (cita sin horario / "enviar a sillÃ³n"):
+// Puede recibir clientes en recepción (cita sin horario / "enviar a sillón"):
 // administradores y los dos roles operativos. Excluye archivados e inactivos.
 export const isOperationalReceptionStaff = (member = {}) => (
   isActiveStaff(member) &&
@@ -121,7 +121,7 @@ export const isOperationalReceptionStaff = (member = {}) => (
 );
 
 // ============================================================================
-// NavegaciÃ³n: Ãºnica fuente de verdad de quÃ© pestaÃ±as puede abrir cada rol.
+// Navegación: única fuente de verdad de qué pestañas puede abrir cada rol.
 // La consumen Sidebar, MobileBottomNav y el guardia de handleTabChange (App).
 // ============================================================================
 
@@ -131,7 +131,7 @@ export const ALL_MENU_IDS = [
   'finance', 'history', 'settings',
 ];
 
-// CategorÃ­a de rol para decisiones de presentaciÃ³n (home, menÃºs, carga de datos).
+// Categoría de rol para decisiones de presentación (home, menús, carga de datos).
 export const getRoleCategory = (userRole = '') => {
   const member = { role: userRole };
   const roleName = roleNameOf(member);
@@ -142,7 +142,7 @@ export const getRoleCategory = (userRole = '') => {
   return 'custom';
 };
 
-// Ids de mÃ³dulos que el rol puede abrir. Los mÃ³dulos otorgados explÃ­citamente
+// Ids de módulos que el rol puede abrir. Los módulos otorgados explícitamente
 // en staff.role (tras el `|`) mandan sobre los presets por palabra clave.
 export const getAllowedMenuIds = (userRole = '') => {
   const roleStr = String(userRole || '');
@@ -150,7 +150,7 @@ export const getAllowedMenuIds = (userRole = '') => {
   const permissionList = customPerms ? customPerms.split(',').filter(Boolean) : [];
   const member = { role: roleStr };
 
-  // Admin: todo (el menÃº oculta "Mi sillÃ³n"/"Mi Perfil"; Paneles abre sillas).
+  // Admin: todo (el menú oculta "Mi sillón"/"Mi Perfil"; Paneles abre sillas).
   if (roleName.toLowerCase().includes('admin')) return ALL_MENU_IDS;
 
   if (permissionList.length > 0) return Array.from(new Set(['my-profile', ...permissionList]));
@@ -162,17 +162,16 @@ export const getAllowedMenuIds = (userRole = '') => {
 };
 
 // Etiqueta VISIBLE de rol para la UI. Los valores internos de staff.role no
-// cambian; acepta el valor con o sin mÃ³dulos ('Odontologo|dentista,...').
+// cambian; acepta el valor con o sin módulos ('Odontologo|dentista,...').
 export const roleLabel = (value) => {
   const raw = String(value ?? '').split('|')[0].trim();
   const lower = raw.toLowerCase();
   if (!raw) return '';
   if (lower.includes('admin')) return 'Administrador';
-  if (lower.startsWith('odontologos')) return 'OdontÃ³logos';
-  if (lower.includes('odontolog') || lower.includes('dentista') || lower.includes('odontologo') || lower.includes('endodoncista') || lower.includes('ortodoncista')) return 'OdontÃ³logo';
-  if (lower.includes('asistente') || lower.includes('lavado') || lower.includes('recepcion') || lower.includes('recepciÃ³n') || lower.includes('caja') || lower.includes('asistente dental') || lower.includes('higienista')) return 'Asistente';
+  if (lower.startsWith('odontologos')) return 'Odontólogos';
+  if (lower.includes('odontolog') || lower.includes('dentista') || lower.includes('odontologo') || lower.includes('endodoncista') || lower.includes('ortodoncista')) return 'Odontólogo';
+  if (lower.includes('asistente') || lower.includes('lavado') || lower.includes('recepcion') || lower.includes('recepción') || lower.includes('caja') || lower.includes('asistente dental') || lower.includes('higienista')) return 'Asistente';
   if (lower.includes('barista') || lower.includes('cafeter')) return 'Asistente';
-  if (lower.includes('barber')) return 'OdontÃ³logo';
+  if (lower.includes('barber')) return 'Odontólogo';
   return raw;
 };
-

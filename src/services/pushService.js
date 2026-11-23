@@ -1,5 +1,5 @@
-﻿// Web Push (PWA) â€” suscripciÃ³n del staff y disparo de notificaciones vÃ­a la
-// Edge Function `send-push` del VPS. La llave VAPID pÃºblica es segura en el cliente;
+// Web Push (PWA) — suscripción del staff y disparo de notificaciones vía la
+// Edge Function `send-push` del VPS. La llave VAPID pública es segura en el cliente;
 // la privada vive solo en el servidor (tabla odontosonrisa.push_config).
 import { supabase } from '../lib/supabase';
 
@@ -16,7 +16,7 @@ function urlBase64ToUint8Array(base64String) {
   return arr;
 }
 
-// Normaliza el rol del staff a una categorÃ­a estable para rutear notificaciones.
+// Normaliza el rol del staff a una categoría estable para rutear notificaciones.
 export function roleCategory(role) {
   const r = (role || '').toLowerCase();
   if (r.includes('admin')) return 'admin';
@@ -26,7 +26,7 @@ export function roleCategory(role) {
 }
 
 export const pushService = {
-  // Suscribe el dispositivo del staff a Web Push y guarda la suscripciÃ³n.
+  // Suscribe el dispositivo del staff a Web Push y guarda la suscripción.
   async subscribe(staff) {
     try {
       if (!('serviceWorker' in navigator) || !('PushManager' in window) || !('Notification' in window)) {
@@ -60,8 +60,8 @@ export const pushService = {
     }
   },
 
-  // Dispara una notificaciÃ³n push hacia un odontÃ³logo (staffId) o a una lista de roles.
-  // Fire-and-forget: nunca bloquea ni rompe el flujo si falla (CORS, funciÃ³n no desplegada, etc.).
+  // Dispara una notificación push hacia un odontólogo (staffId) o a una lista de roles.
+  // Fire-and-forget: nunca bloquea ni rompe el flujo si falla (CORS, función no desplegada, etc.).
   notify(target, title, body, data = {}) {
     try {
       if (typeof fetch === 'undefined') return;
@@ -74,15 +74,14 @@ export const pushService = {
         },
         body: JSON.stringify({ target, title, body, data }),
       }).catch((e) => {
-        // Silenciar errores de CORS / red â€” la funciÃ³n send-push puede no estar desplegada
+        // Silenciar errores de CORS / red — la función send-push puede no estar desplegada
         if (e?.name === 'TypeError' && e.message?.includes('fetch')) {
           return;
         }
         console.error('push notify error', e);
       });
     } catch (e) {
-      // Silenciar errores crÃ­ticos de red/CORS
+      // Silenciar errores críticos de red/CORS
     }
   },
 };
-

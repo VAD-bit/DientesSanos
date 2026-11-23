@@ -1,4 +1,4 @@
-﻿import manifest from '../../assets/instagram/manifest.json';
+import manifest from '../../assets/instagram/manifest.json';
 
 // Vite inyecta las URLs finales de cada imagen empaquetada.
 const imageModules = import.meta.glob('../../assets/instagram/*.{jpg,jpeg,png,webp}', {
@@ -14,8 +14,8 @@ const fileToUrl = () => {
   return map;
 };
 
-// Devuelve los posts mÃ¡s recientes ya descargados localmente (scripts/fetch-instagram.mjs).
-// Si el manifest estÃ¡ vacÃ­o, devuelve [] y la UI cae en fallback (card con link al perfil).
+// Devuelve los posts más recientes ya descargados localmente (scripts/fetch-instagram.mjs).
+// Si el manifest está vacío, devuelve [] y la UI cae en fallback (card con link al perfil).
 export function getInstagramPosts(limit = 4) {
   const urls = fileToUrl();
   return (manifest || [])
@@ -23,4 +23,3 @@ export function getInstagramPosts(limit = 4) {
     .filter((post) => post.image)
     .slice(0, limit);
 }
-

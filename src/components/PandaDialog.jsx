@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { X, AlertTriangle } from 'lucide-react';
 import AnimatedModal from './AnimatedModal';
 
@@ -98,7 +98,7 @@ const PandaDialog = ({
                   <AlertTriangle size={32} color="#ff453a" style={{ filter: 'drop-shadow(0 0 8px rgba(255,69,58,0.5))' }} />
                 </div>
               )}
-              {title && <h3 style={{ fontSize: '24px', fontWeight: '900', marginBottom: '12px', color: '#111111', letterSpacing: '-0.5px' }}>{title}</h3>}
+              {title && <h3 style={{ fontSize: '24px', fontWeight: '900', marginBottom: '12px', color: 'white', letterSpacing: '-0.5px' }}>{title}</h3>}
               {message && <p style={{ fontSize: '15px', color: 'rgba(255,255,255,0.65)', marginBottom: '32px', lineHeight: '1.6', whiteSpace: 'pre-wrap', fontWeight: '500' }}>{message}</p>}
 
               {type === 'prompt' && (
@@ -180,4 +180,3 @@ const PandaDialog = ({
 };
 
 export default PandaDialog;
-

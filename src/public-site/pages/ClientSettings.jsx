@@ -1,4 +1,4 @@
-﻿import { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { User, LogOut, Phone, Shield, Edit2, Check, X, ArrowLeft } from 'lucide-react';
 import { publicService } from '../services/publicService';
@@ -73,7 +73,7 @@ export default function ClientSettings() {
             </div>
           </div>
           <h1 className="tab-intro-title">Mi Perfil</h1>
-          <p className="tab-intro-subtitle" style={{ maxWidth: '320px' }}>Actualiza tus datos personales y gestiona tus preferencias para recibir una atenciÃ³n personalizada.</p>
+          <p className="tab-intro-subtitle" style={{ maxWidth: '320px' }}>Actualiza tus datos personales y gestiona tus preferencias para recibir una atención personalizada.</p>
         </div>
         {!isEditing ? (
           <button onClick={() => setIsEditing(true)} className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white text-[#0f172a] border border-[#d9c08f]/15 hover:border-[#111111] hover:text-[#111111] transition-all text-[11px] font-black uppercase tracking-wider shadow-[0_4px_10px_rgba(0,0,0,0.10)]">
@@ -141,7 +141,7 @@ export default function ClientSettings() {
                 onChange={e => setFormData({...formData, phone: e.target.value})}
                 className="w-full bg-white border border-[#d9c08f]/15 rounded-xl px-4 py-3 text-[#0f172a] text-lg font-bold focus:border-[#111111] outline-none transition-all"
                 style={{ color: '#0f172a' }}
-                placeholder="NÃºmero de telÃ©fono"
+                placeholder="Número de teléfono"
               />
             ) : (
               <p className="text-xl sm:text-2xl font-bold text-[#0f172a] tracking-wide">{client.phone || <span className="text-[#94a3b8] italic text-base">No registrado</span>}</p>
@@ -149,13 +149,13 @@ export default function ClientSettings() {
           </div>
         </div>
 
-        {/* CÃ©dula */}
+        {/* Cédula */}
         <div className="p-6 sm:p-8 rounded-[2rem] bg-white border border-[#d9c08f]/15 hover:border-[#d9c08f]/30 transition-all duration-300 flex flex-col justify-between min-h-[140px] animate-fade-in-up" style={{ animationDelay: '220ms' }}>
           <div className="flex items-center gap-3 text-[#64748b] mb-4">
             <div className="w-10 h-10 rounded-full bg-[#f7f7f5] flex items-center justify-center">
               <Shield size={16} />
             </div>
-            <span className="text-[10px] font-black uppercase tracking-[0.2em]">CÃ©dula de Identidad</span>
+            <span className="text-[10px] font-black uppercase tracking-[0.2em]">Cédula de Identidad</span>
           </div>
           <div>
             <div className="flex items-center justify-between">
@@ -176,11 +176,10 @@ export default function ClientSettings() {
           onClick={handleLogout}
           className="flex items-center gap-2 px-6 py-3 rounded-xl border border-red-500/20 text-red-400 bg-red-500/5 hover:bg-red-500/10 transition-all font-bold uppercase tracking-widest text-[10px]"
         >
-          <LogOut size={16} /> Cerrar SesiÃ³n
+          <LogOut size={16} /> Cerrar Sesión
         </button>
       </div>
 
     </div>
   );
 }
-

@@ -1,4 +1,4 @@
-﻿import { useState, useCallback } from 'react';
+import { useState, useCallback } from 'react';
 
 export const useNotifications = () => {
   const [toasts, setToasts] = useState([]);
@@ -26,7 +26,7 @@ export const useNotifications = () => {
 
     const permission = await Notification.requestPermission();
     if (permission === 'granted') {
-      showToast('Â¡Notificaciones activadas con Ã©xito!', 'success');
+      showToast('¡Notificaciones activadas con éxito!', 'success');
       return true;
     } else {
       showToast('Permiso de notificaciones denegado.', 'error');
@@ -74,7 +74,7 @@ export const useNotifications = () => {
     container.className = 'rocket-container';
     container.innerHTML = `
       <div class="rocket-body" style="font-size: 56px; filter: drop-shadow(0 0 20px rgba(197, 168, 128, 0.9));">
-        ðŸ¼
+        🐼
         <div class="rocket-trail" style="background: linear-gradient(to bottom, var(--gold-primary), transparent); box-shadow: 0 0 20px var(--gold-primary);"></div>
       </div>
     `;
@@ -109,4 +109,3 @@ export const useNotifications = () => {
     triggerRocket
   };
 };
-

@@ -1,4 +1,4 @@
-﻿import { useRef, useState, useEffect } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import {
   BarChart3, 
@@ -29,8 +29,8 @@ import { useModal } from '../context/ModalContext';
 import { notificationService } from '../services/notificationService';
 import { getAllowedMenuIds, roleNameOf } from '../utils/staffRoles';
 
-// Tooltip de Ã­conos del sidebar: se porta al body con posiciÃ³n fija calculada
-// a partir del botÃ³n, para que el overflow del sidebar no lo corte.
+// Tooltip de íconos del sidebar: se porta al body con posición fija calculada
+// a partir del botón, para que el overflow del sidebar no lo corte.
 const SidebarTooltip = ({ targetRef, label, danger }) => {
   if (!targetRef.current) return null;
   const rect = targetRef.current.getBoundingClientRect();
@@ -55,16 +55,16 @@ const Sidebar = ({ activeTab, setActiveTab, isMobile, rates, isCollapsed, setIsC
     const res = await notificationService.requestPermission();
     setNotifPermission(res);
     if (res === 'granted') {
-      notificationService.sendNotification('ðŸ”” Notificaciones Activadas', 'Â¡Excelente! Ahora recibirÃ¡s alertas en tiempo real de citas y avisos.');
+      notificationService.sendNotification('🔔 Notificaciones Activadas', '¡Excelente! Ahora recibirás alertas en tiempo real de citas y avisos.');
     }
   };
 
   const allMenuItems = [
     { id: 'my-profile', label: 'Mi Perfil', icon: UserCircle },
     { id: 'dashboard', label: 'Inicio', icon: BarChart3 },
-    { id: 'dentista', label: 'Mi sillÃ³n dental', icon: ToothIcon },
+    { id: 'dentista', label: 'Mi sillón dental', icon: ToothIcon },
     { id: 'scheduling', label: 'Agenda', icon: Calendar },
-    { id: 'reception', label: 'RecepciÃ³n', icon: ClipboardList },
+    { id: 'reception', label: 'Recepción', icon: ClipboardList },
     { id: 'checkout', label: 'Caja', icon: CreditCard },
     { id: 'panels', label: 'Paneles', icon: ToothIcon },
     { id: 'clients', label: 'Pacientes', icon: Users },
@@ -126,7 +126,7 @@ const Sidebar = ({ activeTab, setActiveTab, isMobile, rates, isCollapsed, setIsC
   }, [displayedTab, menuItems, isCollapsed]);
 
   const sidebarStyle = isMobile ? {
-    width: '100%', height: 'auto', backgroundColor: '#ffffff', display: 'flex', flexDirection: 'column', padding: '0'
+    width: '100%', height: 'auto', backgroundColor: 'transparent', display: 'flex', flexDirection: 'column', padding: '0'
   } : {
     width: isCollapsed ? '75px' : '245px',
     height: '100vh',
@@ -177,7 +177,7 @@ const Sidebar = ({ activeTab, setActiveTab, isMobile, rates, isCollapsed, setIsC
               position: isCollapsed ? 'relative' : 'absolute',
               right: isCollapsed ? 'auto' : '0',
               top: '0',
-              background: '#ffffff',
+              background: 'transparent',
               border: 'none',
               color: 'rgba(255,255,255,0.25)',
               cursor: 'pointer',
@@ -192,13 +192,13 @@ const Sidebar = ({ activeTab, setActiveTab, isMobile, rates, isCollapsed, setIsC
             {isCollapsed ? <PanelLeftOpen size={17} /> : <PanelLeftClose size={17} />}
           </button>
           {isToggleHovered && (
-            <SidebarTooltip targetRef={toggleBtnRef} label={isCollapsed ? 'Expandir menÃº' : 'Minimizar menÃº'} />
+            <SidebarTooltip targetRef={toggleBtnRef} label={isCollapsed ? 'Expandir menú' : 'Minimizar menú'} />
           )}
 
           {!isCollapsed && (
             <img
               src={sidebarLogo}
-              alt="Centro OdontolÃ³gico Dientes Sanos"
+              alt="Centro Odontológico Dientes Sanos"
               className="sidebar-logo-img"
               style={{
                 width: '85%', height: 'auto', maxWidth: '185px', marginTop: '8px',
@@ -244,7 +244,7 @@ const Sidebar = ({ activeTab, setActiveTab, isMobile, rates, isCollapsed, setIsC
               style={{
                 display: 'flex', alignItems: 'center', gap: '10px',
                 padding: isCollapsed ? '10px 0' : menuItems.length <= 4 ? '12px 14px' : '8px 12px',
-                backgroundColor: '#ffffff', border: 'none', borderRadius: '10px',
+                backgroundColor: 'transparent', border: 'none', borderRadius: '10px',
                 cursor: 'pointer',
                 transition: 'color 0.2s ease',
                 textAlign: 'left', width: '100%',
@@ -374,7 +374,7 @@ const Sidebar = ({ activeTab, setActiveTab, isMobile, rates, isCollapsed, setIsC
                   {userRoleName}
                 </div>
               </div>
-              <span style={{ fontSize: '9px', color: 'rgba(255,255,255,0.18)', fontWeight: '700' }}>â–¼</span>
+              <span style={{ fontSize: '9px', color: 'rgba(255,255,255,0.18)', fontWeight: '700' }}>▼</span>
             </div>
           )}
 
@@ -412,10 +412,10 @@ const Sidebar = ({ activeTab, setActiveTab, isMobile, rates, isCollapsed, setIsC
               position: 'relative',
             }}
           >
-            <LogOut size={isCollapsed ? 15 : 13} /> {!isCollapsed && "Cerrar SesiÃ³n"}
+            <LogOut size={isCollapsed ? 15 : 13} /> {!isCollapsed && "Cerrar Sesión"}
           </button>
           {isCollapsed && isLogoutHovered && (
-            <SidebarTooltip targetRef={logoutBtnRef} label="Cerrar SesiÃ³n" danger />
+            <SidebarTooltip targetRef={logoutBtnRef} label="Cerrar Sesión" danger />
           )}
         </div>
       )}    </div>
@@ -423,5 +423,3 @@ const Sidebar = ({ activeTab, setActiveTab, isMobile, rates, isCollapsed, setIsC
 };
 
 export default Sidebar;
-
-

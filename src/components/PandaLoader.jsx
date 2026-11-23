@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import logo from '../assets/panda_logo_nobg.png';
 import bgImageDesktop from '../assets/admin_loading_bg.webp';
 import bgImageMobile from '../assets/admin_loading_bg_mobile.webp';
@@ -9,15 +9,15 @@ const loadingTexts = [
   "Calibrando la unidad dental...",
   "Preparando la profilaxis perfecta...",
   "Calculando la sonrisa ideal...",
-  "Encendiendo las luces de la estaciÃ³n..."
+  "Encendiendo las luces de la estación..."
 ];
 
 const pandaTips = [
-  "Consejo: Actualiza tu catÃ¡logo.",
-  "Consejo: Revisa los cumpleaÃ±os de hoy.",
-  "Consejo: Prepara la sala para el prÃ³ximo paciente.",
-  "Consejo: Confirma las citas del dÃ­a.",
-  "Consejo: MantÃ©n ordenada tu estaciÃ³n de trabajo."
+  "Consejo: Actualiza tu catálogo.",
+  "Consejo: Revisa los cumpleaños de hoy.",
+  "Consejo: Prepara la sala para el próximo paciente.",
+  "Consejo: Confirma las citas del día.",
+  "Consejo: Mantén ordenada tu estación de trabajo."
 ];
 
 const LOADER_MIN_DURATION_MS = 1200;
@@ -275,7 +275,7 @@ const PandaLoader = ({ visible, onFinish }) => {
             gap: '16px', 
             opacity: 0.6 
           }}>
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{ color: '#111111', flexShrink: 0 }}>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{ color: 'white', flexShrink: 0 }}>
               <circle cx="6" cy="6" r="3"></circle>
               <circle cx="6" cy="18" r="3"></circle>
               <line x1="20" y1="4" x2="8.12" y2="15.88"></line>
@@ -285,7 +285,7 @@ const PandaLoader = ({ visible, onFinish }) => {
             <div style={{ width: '1px', height: '24px', backgroundColor: 'rgba(0, 0, 0, 0.04)', flexShrink: 0 }} />
             <div style={{ 
               fontSize: '13px', 
-              color: '#111111', 
+              color: 'white', 
               lineHeight: '1.4', 
               fontWeight: '400', 
               textAlign: 'left',
@@ -305,4 +305,3 @@ const PandaLoader = ({ visible, onFinish }) => {
 };
 
 export default PandaLoader;
-

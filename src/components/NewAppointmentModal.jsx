@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { 
   X, 
@@ -194,7 +194,7 @@ const NewAppointmentModal = ({ isOpen, onClose, onSuccess, rates }) => {
 
   const handleGoToStep2 = () => {
     if (!newApp.clientId || !newApp.serviceId || !newApp.staffId) {
-      showToast("Selecciona cliente, servicio y odontÃ³logo", "error");
+      showToast("Selecciona cliente, servicio y odontólogo", "error");
       return;
     }
     if (!isDentistaBookableStaff(staff.find(s => String(s.id) === String(newApp.staffId)))) {
@@ -297,7 +297,7 @@ const NewAppointmentModal = ({ isOpen, onClose, onSuccess, rates }) => {
                   {/* Header */}
                   <div style={{ padding: '24px 28px 16px', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
                     <div>
-                      <h2 style={{ fontSize: '22px', fontWeight: '800', margin: 0, color: '#111111', letterSpacing: '-0.5px' }}>
+                      <h2 style={{ fontSize: '22px', fontWeight: '800', margin: 0, color: 'white', letterSpacing: '-0.5px' }}>
                         Nueva <span style={{ color: 'var(--champagne)' }}>Cita</span>
                       </h2>
                       <span style={{ fontSize: '13px', color: 'rgba(255,255,255,0.5)', fontWeight: '500' }}>
@@ -317,7 +317,7 @@ const NewAppointmentModal = ({ isOpen, onClose, onSuccess, rates }) => {
                   {/* Scrollable Content - 2 Column Grid */}
                   <div className="custom-scrollbar" style={{ padding: '20px 28px', overflowY: 'auto', flex: 1, display: 'grid', gridTemplateColumns: 'minmax(200px, 0.38fr) minmax(0, 1fr)', gap: '0 36px', alignItems: 'start' }}>
                     
-                    {/* â”€â”€ LEFT: Cliente + Barbero â”€â”€ */}
+                    {/* ── LEFT: Cliente + Barbero ── */}
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', paddingRight: '12px' }}>
                       {/* Cliente */}
                       <div>
@@ -325,11 +325,11 @@ const NewAppointmentModal = ({ isOpen, onClose, onSuccess, rates }) => {
                         {selectedClient ? (
                           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', padding: '14px 16px', borderRadius: '16px' }}>
                             <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                              <div style={{ width: '40px', height: '40px', borderRadius: '20px', background: 'linear-gradient(135deg, #3a3a40, #ffffff)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '16px', fontWeight: '800', color: '#111111', flexShrink: 0 }}>
+                              <div style={{ width: '40px', height: '40px', borderRadius: '20px', background: 'linear-gradient(135deg, #3a3a40, #ffffff)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '16px', fontWeight: '800', color: 'white', flexShrink: 0 }}>
                                 {selectedClient.name.charAt(0)}
                               </div>
                               <div style={{ minWidth: 0 }}>
-                                <div style={{ fontWeight: '700', color: '#111111', fontSize: '14px', letterSpacing: '-0.3px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{selectedClient.name}</div>
+                                <div style={{ fontWeight: '700', color: 'white', fontSize: '14px', letterSpacing: '-0.3px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{selectedClient.name}</div>
                                 <div style={{ fontSize: '12px', color: 'rgba(255,255,255,0.4)', marginTop: '1px' }}>V-{selectedClient.id_card}</div>
                               </div>
                             </div>
@@ -341,14 +341,14 @@ const NewAppointmentModal = ({ isOpen, onClose, onSuccess, rates }) => {
                           <div style={{ position: 'relative' }}>
                             <div style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
                               <Search style={{ position: 'absolute', left: '14px', pointerEvents: 'none' }} size={18} color="rgba(255,255,255,0.35)" />
-                              <input type="text" placeholder="CÃ©dula o nombre..." value={clientSearchTerm} onChange={(e) => handleClientSearch(e.target.value)} style={{ width: '100%', padding: '0 14px 0 42px', height: '46px', fontSize: '14px', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', borderRadius: '14px', color: '#111111', outline: 'none', fontWeight: '500', transition: 'all 0.2s' }} onFocus={e => { e.target.style.borderColor = 'rgba(17, 17, 17,0.4)'; e.target.style.background = 'rgba(255,255,255,0.08)'; }} onBlur={e => { e.target.style.borderColor = 'rgba(255,255,255,0.08)'; e.target.style.background = 'rgba(255,255,255,0.05)'; }} />
+                              <input type="text" placeholder="Cédula o nombre..." value={clientSearchTerm} onChange={(e) => handleClientSearch(e.target.value)} style={{ width: '100%', padding: '0 14px 0 42px', height: '46px', fontSize: '14px', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', borderRadius: '14px', color: 'white', outline: 'none', fontWeight: '500', transition: 'all 0.2s' }} onFocus={e => { e.target.style.borderColor = 'rgba(17, 17, 17,0.4)'; e.target.style.background = 'rgba(255,255,255,0.08)'; }} onBlur={e => { e.target.style.borderColor = 'rgba(255,255,255,0.08)'; e.target.style.background = 'rgba(255,255,255,0.05)'; }} />
                             </div>
                             {!selectedClient && clientSearchResults.length > 0 && (
                               <div className="animate-scale-in" style={{ position: 'absolute', top: 'calc(100% + 6px)', left: 0, right: 0, background: 'var(--bg-secondary)', border: '1px solid rgba(0, 0, 0, 0.08)', borderRadius: '14px', overflow: 'hidden', zIndex: 200, backdropFilter: 'blur(30px)', boxShadow: '0 16px 40px rgba(0,0,0,0.5)', maxHeight: '200px', overflowY: 'auto' }}>
                                 {clientSearchResults.map(c => (
                                   <div key={c.id} onClick={() => handleSelectClient(c)} style={{ padding: '12px 16px', cursor: 'pointer', borderBottom: '1px solid rgba(0, 0, 0, 0.08)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }} onMouseOver={e => e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.06)'} onMouseOut={e => e.currentTarget.style.backgroundColor = 'transparent'}>
                                     <div>
-                                      <div style={{ fontWeight: '700', fontSize: '13px', color: '#111111' }}>{c.name}</div>
+                                      <div style={{ fontWeight: '700', fontSize: '13px', color: 'white' }}>{c.name}</div>
                                       {c.phone && <div style={{ fontSize: '11px', color: 'rgba(255,255,255,0.4)' }}>{c.phone}</div>}
                                     </div>
                                     <span style={{ fontSize: '11px', color: 'rgba(255,255,255,0.4)', fontWeight: '600' }}>V-{c.id_card}</span>
@@ -362,7 +362,7 @@ const NewAppointmentModal = ({ isOpen, onClose, onSuccess, rates }) => {
 
                       {/* Barbero */}
                       <div>
-                        <FieldLabel required>OdontÃ³logo</FieldLabel>
+                        <FieldLabel required>Odontólogo</FieldLabel>
                         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, 60px)', gap: '12px', justifyItems: 'center' }}>
                           {staff.filter(isDentistaBookableStaff).map(s => {
                             const isSel = newApp.staffId === s.id;
@@ -370,7 +370,7 @@ const NewAppointmentModal = ({ isOpen, onClose, onSuccess, rates }) => {
                               <div key={s.id} onClick={() => setNewApp({...newApp, staffId: s.id})} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '6px', cursor: 'pointer' }}>
                                 <div style={{ width: '52px', height: '52px', borderRadius: '26px', padding: '2px', background: isSel ? 'linear-gradient(135deg, var(--champagne-dark), var(--champagne-light))' : 'rgba(255,255,255,0.08)', transition: 'all 0.25s', transform: isSel ? 'scale(1.08)' : 'scale(1)' }}>
                                   <div style={{ width: '100%', height: '100%', borderRadius: '50%', overflow: 'hidden', background: 'var(--bg-secondary)', border: '2px solid rgba(0,0,0,0.15)' }}>
-                                    {s.image_url ? <img loading="lazy" src={s.image_url} alt={s.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} /> : <span style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%', fontSize: '18px', fontWeight: '800', color: '#111111', background: 'linear-gradient(135deg, #444, #ffffff)' }}>{s.name.charAt(0)}</span>}
+                                    {s.image_url ? <img loading="lazy" src={s.image_url} alt={s.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} /> : <span style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%', fontSize: '18px', fontWeight: '800', color: 'white', background: 'linear-gradient(135deg, #444, #ffffff)' }}>{s.name.charAt(0)}</span>}
                                   </div>
                                 </div>
                                 <span style={{ fontSize: '11px', color: isSel ? 'white' : 'rgba(255,255,255,0.45)', fontWeight: isSel ? '700' : '500' }}>{s.name.split(' ')[0]}</span>
@@ -381,7 +381,7 @@ const NewAppointmentModal = ({ isOpen, onClose, onSuccess, rates }) => {
                       </div>
                     </div>
 
-                    {/* â”€â”€ RIGHT: Servicio + Extras â”€â”€ */}
+                    {/* ── RIGHT: Servicio + Extras ── */}
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '22px' }}>
                       {/* Servicio */}
                       <div>
@@ -389,7 +389,7 @@ const NewAppointmentModal = ({ isOpen, onClose, onSuccess, rates }) => {
                         <PandaSelect placeholder="Selecciona el servicio..." value={newApp.serviceId} onChange={(val) => setNewApp({...newApp, serviceId: val})} options={services.map(s => ({ label: `${s.name} ($${s.price})`, value: s.id }))} />
                       </div>
 
-                      {/* Extras â€” Grid 2 columnas */}
+                      {/* Extras — Grid 2 columnas */}
                       <div>
                         <FieldLabel>Extras</FieldLabel>
                         <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) minmax(0, 1fr)', gap: '8px' }}>
@@ -414,10 +414,10 @@ const NewAppointmentModal = ({ isOpen, onClose, onSuccess, rates }) => {
                   <div style={{ background: 'var(--bg-secondary)', backdropFilter: 'blur(20px)', borderTop: '1px solid rgba(0, 0, 0, 0.08)', padding: '18px 28px', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '20px' }}>
                     <div style={{ minWidth: 0 }}>
                       <div style={{ fontSize: '11px', color: 'rgba(255,255,255,0.4)', fontWeight: '700', letterSpacing: '0.5px', textTransform: 'uppercase' }}>Total Estimado</div>
-                      <div style={{ fontSize: '28px', fontWeight: '800', color: '#111111', lineHeight: '1.1' }}>${totalEstimated.toFixed(2)}</div>
+                      <div style={{ fontSize: '28px', fontWeight: '800', color: 'white', lineHeight: '1.1' }}>${totalEstimated.toFixed(2)}</div>
                       <div style={{ fontSize: '11px', color: 'rgba(255,255,255,0.3)', marginTop: '2px' }}>
                         {newApp.serviceId && <span>Servicio: ${servicePrice.toFixed(2)}</span>}
-                        {newApp.extras.length > 0 && <span> Â· Extras: +${extrasPrice.toFixed(2)}</span>}
+                        {newApp.extras.length > 0 && <span> · Extras: +${extrasPrice.toFixed(2)}</span>}
                       </div>
                     </div>
                     <button type="button" onClick={handleGoToStep2} style={{ height: '52px', padding: '0 32px', borderRadius: '16px', background: 'linear-gradient(135deg, var(--champagne-dark), var(--champagne-light))', color: 'black', border: 'none', fontSize: '15px', fontWeight: '800', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px', cursor: 'pointer', transition: 'all 0.25s', flexShrink: 0, whiteSpace: 'nowrap' }} onMouseEnter={e => e.currentTarget.style.transform = 'scale(1.03)'} onMouseLeave={e => e.currentTarget.style.transform = 'scale(1)'}>
@@ -438,7 +438,7 @@ const NewAppointmentModal = ({ isOpen, onClose, onSuccess, rates }) => {
                     >
                       <ArrowLeft size={14} /> VOLVER AL FORMULARIO
                     </button>
-                    <h2 style={{ fontSize: '22px', fontWeight: '900', color: '#111111', marginBottom: '4px' }}>
+                    <h2 style={{ fontSize: '22px', fontWeight: '900', color: 'white', marginBottom: '4px' }}>
                       Agendar <span className="text-gold">Turno</span>
                     </h2>
                     <p style={{ color: 'var(--text-muted)', fontSize: '13px' }}>
@@ -455,13 +455,13 @@ const NewAppointmentModal = ({ isOpen, onClose, onSuccess, rates }) => {
                         setSelectedDate(prev);
                         setSelectedSlot(null);
                       }} 
-                      style={{ background: 'none', border: 'none', color: '#111111', cursor: 'pointer', padding: '4px' }}
+                      style={{ background: 'none', border: 'none', color: 'white', cursor: 'pointer', padding: '4px' }}
                     >
                       <ChevronLeft size={20} />
                     </button>
                     
                     <div style={{ textAlign: 'center' }}>
-                      <div style={{ fontWeight: '800', fontSize: '14px', color: '#111111' }}>
+                      <div style={{ fontWeight: '800', fontSize: '14px', color: 'white' }}>
                         {selectedDate.toLocaleDateString('es-ES', { weekday: 'long', day: 'numeric', month: 'long' })}
                       </div>
                     </div>
@@ -473,7 +473,7 @@ const NewAppointmentModal = ({ isOpen, onClose, onSuccess, rates }) => {
                         setSelectedDate(next);
                         setSelectedSlot(null);
                       }} 
-                      style={{ background: 'none', border: 'none', color: '#111111', cursor: 'pointer', padding: '4px' }}
+                      style={{ background: 'none', border: 'none', color: 'white', cursor: 'pointer', padding: '4px' }}
                     >
                       <ChevronRight size={20} />
                     </button>
@@ -573,4 +573,3 @@ const NewAppointmentModal = ({ isOpen, onClose, onSuccess, rates }) => {
 };
 
 export default NewAppointmentModal;
-

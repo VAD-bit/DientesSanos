@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 import {
   Mail, Lock, Loader2, Rocket, Eye, EyeOff,
@@ -10,16 +10,16 @@ import PasskeyLoginButton from './PasskeyLoginButton';
 
 const features = [
   { icon: Calendar, title: 'Citas', desc: 'Gestiona tus reservas\ncon facilidad' },
-  { icon: Users, title: 'Pacientes', desc: 'Crea relaciones\nmÃ¡s fuertes' },
+  { icon: Users, title: 'Pacientes', desc: 'Crea relaciones\nmás fuertes' },
   { icon: DollarSign, title: 'Finanzas', desc: 'Controla tus ingresos\nen tiempo real' },
   { icon: BarChart2, title: 'Reportes', desc: 'Monitorea tu rendimiento\ny crecimiento' }
 ];
 
-// ConfiguraciÃ³n dinÃ¡mica de textos de marca para personalizar por cliente fÃ¡cilmente
+// Configuración dinámica de textos de marca para personalizar por cliente fácilmente
 const BRAND_CONFIG = {
   headingFirstPart: 'EL CONTROL ABSOLUTO',
   headingSecondPart: 'ESTUDIO',
-  description: 'Optimiza tu tiempo, simplifica tu administraciÃ³n y ofrece una experiencia inolvidable a cada cliente.'
+  description: 'Optimiza tu tiempo, simplifica tu administración y ofrece una experiencia inolvidable a cada cliente.'
 };
 
 export default function Login() {
@@ -36,7 +36,7 @@ export default function Login() {
     const box = card.getBoundingClientRect();
     const x = e.clientX - box.left - box.width / 2;
     const y = e.clientY - box.top - box.height / 2;
-    const rotateX = -(y / (box.height / 2)) * 6; // MÃ¡ximo 6 grados de rotaciÃ³n
+    const rotateX = -(y / (box.height / 2)) * 6; // Máximo 6 grados de rotación
     const rotateY = (x / (box.width / 2)) * 6;
     setTilt({ x: rotateX, y: rotateY });
   };
@@ -45,9 +45,9 @@ export default function Login() {
     setTilt({ x: 0, y: 0 });
   };
   
-  // â”€â”€ ESTADOS DE CALIBRACIÃ“N DE FONDO INTERACTIVOS (CON PERSISTENCIA LOCALSTORAGE) â”€â”€
+  // ── ESTADOS DE CALIBRACIÓN DE FONDO INTERACTIVOS (CON PERSISTENCIA LOCALSTORAGE) ──
   
-  // Helper para obtener valores numÃ©ricos de localStorage
+  // Helper para obtener valores numéricos de localStorage
   const getLocalNum = (key, fallback) => {
     const val = localStorage.getItem(key);
     return val !== null ? Number(val) : fallback;
@@ -74,7 +74,7 @@ export default function Login() {
   const [tabBgX, setTabBgX]               = useState(() => getLocalNum('tabBgX', 64));
   const [tabBgY, setTabBgY]               = useState(() => getLocalNum('tabBgY', 97));
 
-  // 3. TelÃ©fono / MÃ³vil (Inicializado con los valores calibrados por el usuario en el screenshot)
+  // 3. Teléfono / Móvil (Inicializado con los valores calibrados por el usuario en el screenshot)
   const [mobBgZoomMode, setMobBgZoomMode] = useState(() => getLocalStr('mobBgZoomMode', 'manual')); 
   const [mobBgZoom, setMobBgZoom]         = useState(104);
   const [mobBgX, setMobBgX]               = useState(0);
@@ -82,7 +82,7 @@ export default function Login() {
   const [mobileSplit, setMobileSplit]     = useState(34);
   const [rememberMe, setRememberMe]       = useState(false);
 
-  // 4. Espaciados e Interlineados de Pantalla MÃ³vil (Actualizado con screenshot)
+  // 4. Espaciados e Interlineados de Pantalla Móvil (Actualizado con screenshot)
   const [mobLogoSize, setMobLogoSize]         = useState(() => getLocalNum('mobLogoSize', 118));
   const [mobLogoGap, setMobLogoGap]           = useState(() => getLocalNum('mobLogoGap', 26));
   const [mobTitleGap, setMobTitleGap]         = useState(() => getLocalNum('mobTitleGap', 7));
@@ -92,7 +92,7 @@ export default function Login() {
   const [mobBottomGap, setMobBottomGap]       = useState(() => getLocalNum('mobBottomGap', 25));
   const [mobBottomPaddingTop, setMobBottomPaddingTop] = useState(() => getLocalNum('mobBottomPaddingTop', 20));
 
-  // Nuevas separaciones especÃ­ficas debajo de la tarjeta
+  // Nuevas separaciones específicas debajo de la tarjeta
   const [mobCardFeaturesGap, setMobCardFeaturesGap]   = useState(() => getLocalNum('mobCardFeaturesGap', 22));
   const [mobFeaturesSecureGap, setMobFeaturesSecureGap] = useState(() => getLocalNum('mobFeaturesSecureGap', 25));
 
@@ -169,7 +169,7 @@ export default function Login() {
   const activeDevice = getActiveDevice();
 
   const handleCopyConfig = () => {
-    const configCode = `// Reemplaza estas variables al inicio de Login.jsx para fijar tu diseÃ±o:
+    const configCode = `// Reemplaza estas variables al inicio de Login.jsx para fijar tu diseño:
 const bgZoom = ${bgZoomMode === 'cover' ? "'cover'" : bgZoom};
 const bgX = ${bgX};
 const bgY = ${bgY};
@@ -205,10 +205,10 @@ const mobFeaturesSecureGap = ${mobFeaturesSecureGap};`;
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
-    setIsExiting(true); // Activa la animaciÃ³n de salida
+    setIsExiting(true); // Activa la animación de salida
     const result = await login(email.trim(), password);
     if (!result.success) {
-      setIsExiting(false); // Revierte la animaciÃ³n de salida si falla
+      setIsExiting(false); // Revierte la animación de salida si falla
       setError(result.message);
     }
   };
@@ -267,7 +267,7 @@ const mobFeaturesSecureGap = ${mobFeaturesSecureGap};`;
             width: 100% !important;
           }
         }
-/* â”€â”€ ROOT â”€â”€ */
+/* ── ROOT ── */
         .l-root {
           position: relative;
           width: 100vw;
@@ -283,7 +283,7 @@ const mobFeaturesSecureGap = ${mobFeaturesSecureGap};`;
           padding-top: calc(24px + env(safe-area-inset-top, 0px));
         }
 
-        /* â”€â”€ CONTENEDOR CON BORDE DORADO (MARCO) â”€â”€ */
+        /* ── CONTENEDOR CON BORDE DORADO (MARCO) ── */
         .l-frame {
           position: relative;
           width: 100%;
@@ -296,14 +296,14 @@ const mobFeaturesSecureGap = ${mobFeaturesSecureGap};`;
           box-shadow: 0 24px 60px rgba(0, 0, 0, 0.8);
         }
 
-        /* â”€â”€ BACKGROUND LAYERS â”€â”€ */
+        /* ── BACKGROUND LAYERS ── */
         .l-bg {
           position: absolute;
           top: 0;
           bottom: 0;
           left: 0;
           transition: opacity 0.4s;
-          filter: brightness(0.70) contrast(1.05); /* Hace la foto y sus alrededores mÃ¡s oscuros y cinematogrÃ¡ficos */
+          filter: brightness(0.70) contrast(1.05); /* Hace la foto y sus alrededores más oscuros y cinematográficos */
           background-repeat: no-repeat;
         }
         .l-bg-desktop {
@@ -347,7 +347,7 @@ const mobFeaturesSecureGap = ${mobFeaturesSecureGap};`;
           );
         }
 
-        /* â”€â”€ LAYOUT â”€â”€ */
+        /* ── LAYOUT ── */
         .l-inner {
           position: relative;
           z-index: 2;
@@ -364,7 +364,7 @@ const mobFeaturesSecureGap = ${mobFeaturesSecureGap};`;
           overflow: visible;
         }
 
-        /* â”€â”€ LEFT SIDE â”€â”€ */
+        /* ── LEFT SIDE ── */
         .l-left {
           flex: 1;
           display: flex;
@@ -386,8 +386,8 @@ const mobFeaturesSecureGap = ${mobFeaturesSecureGap};`;
           max-width: 580px;
         }
         .l-logo {
-          width: clamp(120px, min(14vw, 20vh), 195px); /* MÃ¡s imponente e identificable, comprime en pantallas bajas */
-          margin: 0 0 clamp(10px, 3vh, 32px) -28px; /* Alinear logo a la izquierda ajustado al tamaÃ±o */
+          width: clamp(120px, min(14vw, 20vh), 195px); /* Más imponente e identificable, comprime en pantallas bajas */
+          margin: 0 0 clamp(10px, 3vh, 32px) -28px; /* Alinear logo a la izquierda ajustado al tamaño */
           display: block;
           filter: drop-shadow(0 8px 16px rgba(0,0,0,0.95)) drop-shadow(0 2px 4px rgba(0,0,0,0.85));
         }
@@ -398,17 +398,17 @@ const mobFeaturesSecureGap = ${mobFeaturesSecureGap};`;
           color: #fff;
           letter-spacing: -0.5px;
           margin-bottom: clamp(8px, 2.5vh, 20px);
-          text-align: left; /* TÃ­tulo alineado a la izquierda */
+          text-align: left; /* Título alineado a la izquierda */
           width: 100%;
         }
         .l-heading span { color: inherit; }
         .l-desc {
           font-size: clamp(11px, 1.8vh, 13.5px);
-          color: rgba(255, 255, 255, 0.85); /* Mucho mÃ¡s contraste y luminosidad */
-          font-weight: 500; /* AÃ±ade cuerpo al texto */
+          color: rgba(255, 255, 255, 0.85); /* Mucho más contraste y luminosidad */
+          font-weight: 500; /* Añade cuerpo al texto */
           line-height: 1.6;
           max-width: 440px; /* Ancho exacto e ideal */
-          text-align: left; /* SubtÃ­tulo alineado a la izquierda */
+          text-align: left; /* Subtítulo alineado a la izquierda */
           margin-left: 0; /* Resetear margen */
           text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8); /* Sombra para despegarlo del fondo */
         }
@@ -425,31 +425,31 @@ const mobFeaturesSecureGap = ${mobFeaturesSecureGap};`;
           flex-direction: column;
           align-items: flex-start; /* Alineado a la izquierda */
           gap: 12px;
-          border-right: 1px solid rgba(255, 255, 255, 0.08); /* LÃ­nea divisoria fina entre items */
+          border-right: 1px solid rgba(255, 255, 255, 0.08); /* Línea divisoria fina entre items */
           padding: 0 16px 0 0; /* Borde y espaciado alineado */
         }
         .l-feat:last-child {
-          border-right: none; /* Quitar borde al Ãºltimo elemento */
+          border-right: none; /* Quitar borde al último elemento */
         }
         .l-feat-icon {
           display: flex;
           align-items: center;
           justify-content: flex-start;
           color: var(--champagne);
-          filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.85)); /* AÃ±ade sombra al icono dorado */
+          filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.85)); /* Añade sombra al icono dorado */
         }
         .l-feat-label {
-          font-size: 10.5px; /* Ligeramente mÃ¡s grande */
+          font-size: 10.5px; /* Ligeramente más grande */
           font-weight: 800;
           text-align: left; /* Alineado a la izquierda */
-          color: rgba(255, 255, 255, 0.9); /* MÃ¡s contraste e iluminaciÃ³n */
+          color: rgba(255, 255, 255, 0.9); /* Más contraste e iluminación */
           letter-spacing: 0.6px;
           line-height: 1.5;
           white-space: pre-line;
-          text-shadow: 0 2px 6px rgba(0, 0, 0, 0.95); /* Sombra para despegar el texto del mÃ¡rmol */
+          text-shadow: 0 2px 6px rgba(0, 0, 0, 0.95); /* Sombra para despegar el texto del mármol */
         }
 
-        /* â”€â”€ RIGHT CARD â”€â”€ */
+        /* ── RIGHT CARD ── */
         .l-card {
           flex-shrink: 1;
           min-height: 0;
@@ -480,7 +480,7 @@ const mobFeaturesSecureGap = ${mobFeaturesSecureGap};`;
           margin-bottom: clamp(14px, 3.2vh, 28px);
         }
 
-        /* â”€â”€ INPUTS â”€â”€ */
+        /* ── INPUTS ── */
         .l-field {
           position: relative;
           margin-bottom: 24px; /* Mayor espacio vertical */
@@ -512,7 +512,7 @@ const mobFeaturesSecureGap = ${mobFeaturesSecureGap};`;
           padding: 28px 46px 12px 54px;
           background: #1a1a1e; /* Negro/gris mate plano de la referencia */
           border: 1px solid #2e2e35; /* Borde gris sutil */
-          border-radius: 12px; /* Redondeado igual al botÃ³n */
+          border-radius: 12px; /* Redondeado igual al botón */
           color: #fff;
           font-size: 14px;
           font-family: 'Inter', sans-serif;
@@ -584,7 +584,7 @@ const mobFeaturesSecureGap = ${mobFeaturesSecureGap};`;
           text-decoration: underline;
         }
 
-        /* â”€â”€ ERROR â”€â”€ */
+        /* ── ERROR ── */
         .l-error {
           color: #ff453a;
           font-size: 13px;
@@ -596,7 +596,7 @@ const mobFeaturesSecureGap = ${mobFeaturesSecureGap};`;
           margin-bottom: 16px;
         }
 
-        /* â”€â”€ BUTTON â”€â”€ */
+        /* ── BUTTON ── */
         .l-btn {
           width: 100%;
           height: 56px;
@@ -621,7 +621,7 @@ const mobFeaturesSecureGap = ${mobFeaturesSecureGap};`;
         }
         .l-btn:disabled { opacity: 0.6; cursor: not-allowed; }
 
-        /* â”€â”€ SECURITY NOTE â”€â”€ */
+        /* ── SECURITY NOTE ── */
         .l-secure {
           display: flex;
           align-items: center;
@@ -633,11 +633,11 @@ const mobFeaturesSecureGap = ${mobFeaturesSecureGap};`;
         }
         .l-secure span { color: #ffffff; font-weight: 600; }
 
-        /* â”€â”€ SPIN â”€â”€ */
+        /* ── SPIN ── */
         @keyframes l-spin { to { transform: rotate(360deg); } }
         .l-spin { animation: l-spin 1s linear infinite; }
 
-        /* â”€â”€ PREMIUM ANIMATIONS & SHADOWS â”€â”€ */
+        /* ── PREMIUM ANIMATIONS & SHADOWS ── */
         @keyframes l-pulse-glow {
           0% { opacity: 0.55; transform: scale(0.9) translateY(-50%); }
           100% { opacity: 0.95; transform: scale(1.1) translateY(-50%); }
@@ -727,7 +727,7 @@ const mobFeaturesSecureGap = ${mobFeaturesSecureGap};`;
           transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        /* Clases de salida aplicadas dinÃ¡micamente */
+        /* Clases de salida aplicadas dinámicamente */
         .l-exit-left {
           animation: l-slide-out-left 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
         }
@@ -764,7 +764,7 @@ const mobFeaturesSecureGap = ${mobFeaturesSecureGap};`;
           transform: translateY(-50%) scale(1.15);
         }
 
-        /* â”€â”€ MOBILE / TABLET PORTRAIT APILADO â”€â”€ */
+        /* ── MOBILE / TABLET PORTRAIT APILADO ── */
         @media (max-width: 768px), (orientation: portrait) {
           .l-root {
             padding: 0 !important;
@@ -792,7 +792,7 @@ const mobFeaturesSecureGap = ${mobFeaturesSecureGap};`;
           }
           @media (min-width: 480px) {
             .l-bg-mobile-container {
-              height: 48% !important; /* MÃ¡s alto en tablets/pantallas grandes para evitar recortar */
+              height: 48% !important; /* Más alto en tablets/pantallas grandes para evitar recortar */
             }
             .l-bg-mobile-img {
               object-position: 75% 25% !important; /* Centra la silla sin cortarle la cabecera */
@@ -984,7 +984,7 @@ const mobFeaturesSecureGap = ${mobFeaturesSecureGap};`;
             display: none !important;
           }
 
-          /* Escalar componentes si es una pantalla portrait mÃ¡s ancha (ej: iPad de 768px o Pixel Tablet de 800px) */
+          /* Escalar componentes si es una pantalla portrait más ancha (ej: iPad de 768px o Pixel Tablet de 800px) */
           @media (min-width: 600px) {
             .l-card {
               max-width: 510px;
@@ -1031,7 +1031,7 @@ const mobFeaturesSecureGap = ${mobFeaturesSecureGap};`;
           }
         }
 
-        /* â”€â”€ TABLET HORIZONTAL (769px a 1024px) â”€â”€ */
+        /* ── TABLET HORIZONTAL (769px a 1024px) ── */
         @media (min-width: 769px) and (max-width: 1024px) and (orientation: landscape) {
           .l-bg-desktop {
             background-size: var(--tab-bg-zoom, cover) !important;
@@ -1073,9 +1073,9 @@ const mobFeaturesSecureGap = ${mobFeaturesSecureGap};`;
           }
         }
 
-        /* â”€â”€ PANTALLAS GRANDES (Full HD 1920x1080 en adelante) â”€â”€ */
+        /* ── PANTALLAS GRANDES (Full HD 1920x1080 en adelante) ── */
         /* Todos los valores verticales usan clamp() con vh para que se ajusten
-           siempre a la altura disponible y jamÃ¡s requieran scroll interno. */
+           siempre a la altura disponible y jamás requieran scroll interno. */
         @media (min-width: 1600px) {
           .l-inner {
             max-width: 1680px;
@@ -1119,7 +1119,7 @@ const mobFeaturesSecureGap = ${mobFeaturesSecureGap};`;
         .l-mob-features { display: none; }
         .l-mob-bottom { display: contents; }
 
-        /* â”€â”€ CONFIGURADOR FLOTANTE (CALIBRATOR PANEL) â”€â”€ */
+        /* ── CONFIGURADOR FLOTANTE (CALIBRATOR PANEL) ── */
         .l-cal-btn {
           position: fixed;
           bottom: 16px;
@@ -1266,7 +1266,7 @@ const mobFeaturesSecureGap = ${mobFeaturesSecureGap};`;
         }
       `}</style>
 
-      {/* â”€â”€ MARCO CONTENEDOR DORADO â”€â”€ */}
+      {/* ── MARCO CONTENEDOR DORADO ── */}
       <div className="l-frame login-light-theme" style={{
         '--bg-zoom': bgZoomMode === 'cover' ? 'cover' : `${bgZoom}%`,
         '--bg-x': `${bgX}%`,
@@ -1296,7 +1296,7 @@ const mobFeaturesSecureGap = ${mobFeaturesSecureGap};`;
         '--mob-card-features-gap': `${mobCardFeaturesGap}px`,
         '--mob-features-secure-gap': `${mobFeaturesSecureGap}px`
       }}>
-        {/* â”€â”€ BACKGROUNDS â”€â”€ */}
+        {/* ── BACKGROUNDS ── */}
         <div className="l-bg l-bg-desktop" />
         <div className="l-bg-mobile-container">
            <div className="l-bg-mobile-img" style={{ background: 'linear-gradient(135deg,#f7f4ee 0%,#efe6d5 50%,#e8d4b0 100%)' }} />
@@ -1304,15 +1304,15 @@ const mobFeaturesSecureGap = ${mobFeaturesSecureGap};`;
         <div className="l-overlay" />
         <div className="l-glow-orb" />
 
-        {/* â”€â”€ CONTENT â”€â”€ */}
+        {/* ── CONTENT ── */}
         <div className="l-inner">
           
           <div className="l-main-section">
 
-          {/* â”€â”€ LEFT â”€â”€ */}
+          {/* ── LEFT ── */}
           <div className={`l-left l-animate-left ${isExiting ? 'l-exit-left' : ''}`}>
             <div className="l-tagline">
-               <img loading="lazy" src={logo} alt="Centro OdontolÃ³gico Dientes Sanos" className="l-logo" onDoubleClick={handleLogoDoubleClick} style={{
+               <img loading="lazy" src={logo} alt="Centro Odontológico Dientes Sanos" className="l-logo" onDoubleClick={handleLogoDoubleClick} style={{
                 filter: 'drop-shadow(0 12px 24px rgba(0, 0, 0, 0.95)) drop-shadow(0 0 30px rgba(17, 17, 17, 0.35))',
                 animation: 'l-fade-in-right 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards',
                 cursor: import.meta.env.DEV ? 'pointer' : 'default'
@@ -1329,16 +1329,16 @@ const mobFeaturesSecureGap = ${mobFeaturesSecureGap};`;
 
           </div>
 
-          {/* â”€â”€ MOBILE HEADER (Only shown on mobile) â”€â”€ */}
+          {/* ── MOBILE HEADER (Only shown on mobile) ── */}
           <div className="l-mob-header">
-             <img loading="lazy" src={logo} alt="Centro OdontolÃ³gico Dientes Sanos" className="l-logo-mob" onDoubleClick={handleLogoDoubleClick} />
-            <h2 className="l-mob-title">Â¡BIENVENIDO A <span>DIENTES SANOS!</span></h2>
+             <img loading="lazy" src={logo} alt="Centro Odontológico Dientes Sanos" className="l-logo-mob" onDoubleClick={handleLogoDoubleClick} />
+            <h2 className="l-mob-title">¡BIENVENIDO A <span>DIENTES SANOS!</span></h2>
             <p className="l-mob-sub">Ingresa tus credenciales para continuar</p>
           </div>
 
-          {/* â”€â”€ MOBILE BOTTOM WRAPPER â”€â”€ */}
+          {/* ── MOBILE BOTTOM WRAPPER ── */}
           <div className="l-mob-bottom">
-            {/* â”€â”€ RIGHT CARD â”€â”€ */}
+            {/* ── RIGHT CARD ── */}
             <div 
               className={`l-card l-animate-right ${isExiting ? 'l-exit-right' : ''}`}
               onMouseMove={handleMouseMove}
@@ -1350,12 +1350,12 @@ const mobFeaturesSecureGap = ${mobFeaturesSecureGap};`;
             >
               {/* Mobile Card Header */}
               <div className="l-card-mobile-header">
-                 <img loading="lazy" src={logo} alt="Centro OdontolÃ³gico Dientes Sanos" style={{ width: '130px', marginBottom: '24px', objectFit: 'contain', display: 'block', marginLeft: 'auto', marginRight: 'auto', filter: 'drop-shadow(0 8px 16px rgba(0,0,0,0.95)) drop-shadow(0 0 25px rgba(17, 17, 17, 0.3))' }} />
-                <h2 style={{ fontSize: '24px', fontWeight: '600', color: '#fff', marginBottom: '6px' }}>Â¡Bienvenido de nuevo!</h2>
-                <p style={{ fontSize: '13.5px', color: 'rgba(255,255,255,0.4)', marginBottom: '8px' }}>Inicia sesiÃ³n para acceder al CRM de tu clÃ­nica</p>
+                 <img loading="lazy" src={logo} alt="Centro Odontológico Dientes Sanos" style={{ width: '130px', marginBottom: '24px', objectFit: 'contain', display: 'block', marginLeft: 'auto', marginRight: 'auto', filter: 'drop-shadow(0 8px 16px rgba(0,0,0,0.95)) drop-shadow(0 0 25px rgba(17, 17, 17, 0.3))' }} />
+                <h2 style={{ fontSize: '24px', fontWeight: '600', color: '#fff', marginBottom: '6px' }}>¡Bienvenido de nuevo!</h2>
+                <p style={{ fontSize: '13.5px', color: 'rgba(255,255,255,0.4)', marginBottom: '8px' }}>Inicia sesión para acceder al CRM de tu clínica</p>
               </div>
 
-              <p className="l-card-title">Â¡BIENVENIDO A <span>DIENTES SANOS!</span></p>
+              <p className="l-card-title">¡BIENVENIDO A <span>DIENTES SANOS!</span></p>
               <p className="l-card-sub">Ingresa tus credenciales para continuar</p>
 
               
@@ -1543,8 +1543,8 @@ const mobFeaturesSecureGap = ${mobFeaturesSecureGap};`;
 
               <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 'clamp(8px, 1.6vh, 14px)' }}>
                 <div className="panda-field-group">
-                  <label className="desktop-only-label">Correo electrÃ³nico</label>
-                  <label className="mobile-only-label">Correo electrÃ³nico</label>
+                  <label className="desktop-only-label">Correo electrónico</label>
+                  <label className="mobile-only-label">Correo electrónico</label>
                   <div className="panda-input-wrapper">
                     <input
                       type="email"
@@ -1567,12 +1567,12 @@ const mobFeaturesSecureGap = ${mobFeaturesSecureGap};`;
                 </div>
 
                 <div className="panda-field-group">
-                  <label className="desktop-only-label">ContraseÃ±a</label>
-                  <label className="mobile-only-label">ContraseÃ±a</label>
+                  <label className="desktop-only-label">Contraseña</label>
+                  <label className="mobile-only-label">Contraseña</label>
                   <div className="panda-input-wrapper">
                     <input
                       type={showPassword ? 'text' : 'password'}
-                      placeholder="Ingresa tu contraseÃ±a"
+                      placeholder="Ingresa tu contraseña"
                       value={password}
                       onChange={e => setPassword(e.target.value)}
                       required
@@ -1609,7 +1609,7 @@ const mobFeaturesSecureGap = ${mobFeaturesSecureGap};`;
                 {error && <div className="l-error" style={{ margin: '4px 0 0 0' }}>{error}</div>}
 
                 <button type="submit" disabled={loading} className="panda-submit-btn">
-                  {loading ? <Loader2 size={18} className="l-spin" /> : <>INICIAR SESIÃ“N <span className="panda-btn-arrow">â†’</span></>}
+                  {loading ? <Loader2 size={18} className="l-spin" /> : <>INICIAR SESIÓN <span className="panda-btn-arrow">→</span></>}
                 </button>
 
                 <style>{`
@@ -1644,7 +1644,7 @@ const mobFeaturesSecureGap = ${mobFeaturesSecureGap};`;
               </form>
             </div>
 
-            {/* â”€â”€ MOBILE: features below card â”€â”€ */}
+            {/* ── MOBILE: features below card ── */}
             <div className="l-mob-features">
               {features.map(({ icon: Icon, title, desc }) => (
                 <div key={title} className="l-feat" style={{ flex: 1 }}>
@@ -1661,7 +1661,7 @@ const mobFeaturesSecureGap = ${mobFeaturesSecureGap};`;
           </div>
           </div>
 
-          {/* â”€â”€ BOTTOM FEATURES BAR (FOTO 1) â”€â”€ */}
+          {/* ── BOTTOM FEATURES BAR (FOTO 1) ── */}
           <style>{`
             .panda-bottom-features-bar {
               display: flex;
@@ -1775,7 +1775,7 @@ const mobFeaturesSecureGap = ${mobFeaturesSecureGap};`;
           </div>
 
           <div style={{ textAlign: 'center', fontSize: '10.5px', color: 'rgba(255,255,255,0.35)', marginTop: '14px', marginBottom: '8px' }} className="mob-only-copyright">
-            Â© {new Date().getFullYear()} Centro OdontolÃ³gico Dientes Sanos. Todos los derechos reservados.
+            © {new Date().getFullYear()} Centro Odontológico Dientes Sanos. Todos los derechos reservados.
           </div>
 
         </div>
@@ -1784,4 +1784,3 @@ const mobFeaturesSecureGap = ${mobFeaturesSecureGap};`;
     </div>
   );
 }
-

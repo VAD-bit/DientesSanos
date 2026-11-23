@@ -1,4 +1,4 @@
-﻿import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Settings, User, Award, Calendar as CalendarIcon, GlassWater, Gamepad2, Compass, ArrowUpRight, MapPin, X, ChevronLeft, Star, Heart } from 'lucide-react';
 import ToothIcon from '../../components/icons/ToothIcon';
@@ -9,11 +9,11 @@ import { getNormalizedSpecialty, getBarberBiography, getBarberStats } from './Bo
 import BarberProfileView from '../components/BarberProfileView';
 
 const BENEFITS = [
-  { icon: User, title: 'Profesionales', desc: 'Especialistas expertos en las Ãºltimas tÃ©cnicas odontolÃ³gicas.', accent: '#111111' },
-  { icon: Award, title: 'Calidad Premium', desc: 'TecnologÃ­a y materiales de alta gama para tu salud bucal.', accent: '#A8C4B8' },
-  { icon: CalendarIcon, title: 'Reserva FÃ¡cil', desc: 'Agenda tu cita en segundos, las 24 horas del dÃ­a.', accent: '#B8A8C4' },
-  { icon: ToothIcon, title: 'TecnologÃ­a Moderna', desc: 'Equipos de Ãºltima generaciÃ³n en un espacio pensado para ti.', accent: '#C4B8A8' },
-  { icon: Star, title: 'AtenciÃ³n VIP', desc: 'Servicio personalizado pensado en tu satisfacciÃ³n.', accent: '#A8B8C4' },
+  { icon: User, title: 'Profesionales', desc: 'Especialistas expertos en las últimas técnicas odontológicas.', accent: '#111111' },
+  { icon: Award, title: 'Calidad Premium', desc: 'Tecnología y materiales de alta gama para tu salud bucal.', accent: '#A8C4B8' },
+  { icon: CalendarIcon, title: 'Reserva Fácil', desc: 'Agenda tu cita en segundos, las 24 horas del día.', accent: '#B8A8C4' },
+  { icon: ToothIcon, title: 'Tecnología Moderna', desc: 'Equipos de última generación en un espacio pensado para ti.', accent: '#C4B8A8' },
+  { icon: Star, title: 'Atención VIP', desc: 'Servicio personalizado pensado en tu satisfacción.', accent: '#A8B8C4' },
 ];
 
 export default function Explore() {
@@ -46,7 +46,7 @@ export default function Explore() {
 
 
   // A self-contained profile peek instead of sending the visitor into the
-  // booking wizard's own "expanded barber" step â€” that view lives deep inside
+  // booking wizard's own "expanded barber" step — that view lives deep inside
   // BookAppointment's step machinery and pulled them into the reservation flow
   // just to look at a photo. This stays on Explorar; only the explicit
   // "Reservar" button below hands off to booking.
@@ -70,7 +70,7 @@ export default function Explore() {
             <span>Descubre Dientes Sanos</span>
           </div>
           <h1 className="tab-intro-title">Explorar</h1>
-          <p className="tab-intro-subtitle" style={{ maxWidth: '280px' }}>Conoce a nuestros OdontÃ³logos, los beneficios del club y nuestra calidad premium.</p>
+          <p className="tab-intro-subtitle" style={{ maxWidth: '280px' }}>Conoce a nuestros Odontólogos, los beneficios del club y nuestra calidad premium.</p>
         </div>
       </div>
 
@@ -79,7 +79,7 @@ export default function Explore() {
         <div className="explore-hero-img" style={{ background: 'linear-gradient(135deg,#f7f4ee 0%,#efe6d5 50%,#e8d4b0 100%)' }} />
         <div className="explore-hero-overlay" />
         <div className="explore-hero-content">
-          <span className="explore-hero-eyebrow">ODONTOLOGÃA INTEGRAL</span>
+          <span className="explore-hero-eyebrow">ODONTOLOGÍA INTEGRAL</span>
           <h2 className="explore-hero-title">Experiencia Dientes Sanos</h2>
           <div className="explore-hero-meta">
             <MapPin size={12} />
@@ -132,8 +132,8 @@ export default function Explore() {
       {/* BENEFICIOS */}
       <div className="explore-section animate-fade-in-up" style={{ animationDelay: '180ms' }}>
         <div className="explore-section-head">
-          <span className="explore-section-kicker">EL ESTÃNDAR DIENTES SANOS</span>
-          <h3 className="explore-section-title">Por QuÃ© Elegirnos</h3>
+          <span className="explore-section-kicker">EL ESTÁNDAR DIENTES SANOS</span>
+          <h3 className="explore-section-title">Por Qué Elegirnos</h3>
         </div>
         <div className="explore-benefits-snap">
           {BENEFITS.map((b, idx) => (
@@ -171,10 +171,10 @@ export default function Explore() {
           
           <div className="ep-poster-content">
             <div className="ep-poster-header">
-              <span className="ep-poster-kicker">MÃS QUE UNA CONSULTA</span>
+              <span className="ep-poster-kicker">MÁS QUE UNA CONSULTA</span>
               <h3 className="ep-poster-title">Experiencia Dientes Sanos</h3>
               <p className="ep-poster-desc">
-                OdontologÃ­a integral en un entorno exclusivo, diseÃ±ado para tu comodidad y relax.
+                Odontología integral en un entorno exclusivo, diseñado para tu comodidad y relax.
               </p>
             </div>
             
@@ -182,7 +182,7 @@ export default function Explore() {
               <button className="ep-widget">
                 <div className="ep-widget-icon"><GlassWater size={20} /></div>
                 <div className="ep-widget-text">
-                  <span className="ep-widget-title">Agua de cortesÃ­a</span>
+                  <span className="ep-widget-title">Agua de cortesía</span>
                   <span className="ep-widget-subtitle">Agua embotellada y sala de espera dental</span>
                 </div>
               </button>
@@ -198,10 +198,10 @@ export default function Explore() {
         </div>
       </div>
 
-      {/* ODONTOPEDÃA â€” CINEMATIC IMMERSIVE EXPERIENCE */}
+      {/* ODONTOPEDÍA — CINEMATIC IMMERSIVE EXPERIENCE */}
       <div className="explore-section animate-fade-in-up" style={{ animationDelay: '300ms' }}>
         <div className="kids-cinema">
-          {/* Cinematic Media Layer (barberÃ­a neutralizada: fondo arena) */}
+          {/* Cinematic Media Layer (barbería neutralizada: fondo arena) */}
           <div className="kids-cinema-video-wrap">
             <div
               className="kids-cinema-video"
@@ -212,21 +212,21 @@ export default function Explore() {
             <div className="kids-cinema-gradient" />
           </div>
           
-          {/* Content Layer â€” Centered, Breathing */}
+          {/* Content Layer — Centered, Breathing */}
           <div className="kids-cinema-content">
 
-            {/* Hero Title â€” The Star */}
+            {/* Hero Title — The Star */}
             <h2 className="kids-cinema-title">
-              Odonto<br />pediatrÃ­a<span className="kids-title-dot">.</span>
+              Odonto<br />pediatría<span className="kids-title-dot">.</span>
             </h2>
 
             {/* Emotional subtitle */}
             <p className="kids-cinema-subtitle">
               La primera consulta no se olvida.<br />
-              <span className="kids-subtitle-secondary">Paciencia, cuidado y sonrisas para los mÃ¡s pequeÃ±os.</span>
+              <span className="kids-subtitle-secondary">Paciencia, cuidado y sonrisas para los más pequeños.</span>
             </p>
             
-            {/* Feature Trio â€” Apple-style horizontal chips */}
+            {/* Feature Trio — Apple-style horizontal chips */}
             <div className="kids-cinema-features">
               <div className="kids-feature-chip" style={{ animationDelay: '0.6s' }}>
                 <Gamepad2 size={15} />
@@ -242,9 +242,9 @@ export default function Explore() {
               </div>
             </div>
 
-            {/* CTA â€” Shimmer Button */}
+            {/* CTA — Shimmer Button */}
             <button className="kids-cinema-cta" onClick={() => navigate('/perfil/reservar', { state: { startBooking: true, openCategory: 'Kids' } })}>
-              <span className="kids-cta-text">Reservar para mi pequeÃ±o</span>
+              <span className="kids-cta-text">Reservar para mi pequeño</span>
               <ArrowUpRight size={16} strokeWidth={2.5} />
               <div className="kids-cta-shimmer" />
             </button>
@@ -368,7 +368,7 @@ export default function Explore() {
           font-size: 13px; font-weight: 500;
         }
 
-        /* TEAM ROW â€” story-style portrait cards */
+        /* TEAM ROW — story-style portrait cards */
         .explore-team-row {
           display: flex;
           gap: 12px;
@@ -442,7 +442,7 @@ export default function Explore() {
           0%,100% { opacity: 0.5; } 50% { opacity: 1; }
         }
 
-        /* BENEFITS â€” asymmetric bento (first item featured) */
+        /* BENEFITS — asymmetric bento (first item featured) */
         /* SNAP CARDS (Apple-style horizontal scroll) */
         .explore-benefits-snap {
           display: flex;
@@ -679,7 +679,7 @@ export default function Explore() {
           .ep-widget { flex: 1; }
         }
 
-        /* BARBER PROFILE â€” full-screen takeover, same layout as the landing's
+        /* BARBER PROFILE — full-screen takeover, same layout as the landing's
            expanded barber view (photo hero, manifesto panel, stats, portfolio). */
         .explore-profile-overlay {
           position: fixed; inset: 0;
@@ -745,9 +745,9 @@ export default function Explore() {
         }
         .explore-profile-reserve-btn:active { transform: scale(0.98); }
 
-        /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-           ODONTOPEDÃA â€” CINEMATIC IMMERSIVE CARD
-           â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+        /* ═══════════════════════════════════════════════════
+           ODONTOPEDÍA — CINEMATIC IMMERSIVE CARD
+           ═══════════════════════════════════════════════════ */
         .kids-cinema {
           position: relative;
           border-radius: 28px;
@@ -763,7 +763,7 @@ export default function Explore() {
           .kids-cinema { min-height: 560px; }
         }
 
-        /* â”€â”€ Video Layer â”€â”€ */
+        /* ── Video Layer ── */
         .kids-cinema-video-wrap {
           position: absolute;
           inset: 0;
@@ -782,7 +782,7 @@ export default function Explore() {
           transform: scale(1.08);
         }
 
-        /* â”€â”€ Gradient Layers (depth) â”€â”€ */
+        /* ── Gradient Layers (depth) ── */
         .kids-cinema-vignette {
           position: absolute;
           inset: 0;
@@ -802,7 +802,7 @@ export default function Explore() {
           opacity: 0.85;
         }
 
-        /* â”€â”€ Content Layer â”€â”€ */
+        /* ── Content Layer ── */
         .kids-cinema-content {
           position: relative;
           z-index: 2;
@@ -815,7 +815,7 @@ export default function Explore() {
           gap: 0;
         }
 
-        /* â”€â”€ Floating Eyebrow â”€â”€ */
+        /* ── Floating Eyebrow ── */
         .kids-cinema-eyebrow {
           display: inline-flex;
           align-items: center;
@@ -842,7 +842,7 @@ export default function Explore() {
           animation: kidsDotPulse 2.5s ease-in-out infinite;
         }
 
-        /* â”€â”€ Hero Title â”€â”€ */
+        /* ── Hero Title ── */
         .kids-cinema-title {
           font-size: clamp(52px, 14vw, 88px);
           font-weight: 900;
@@ -859,7 +859,7 @@ export default function Explore() {
           text-shadow: none;
         }
 
-        /* â”€â”€ Subtitle â”€â”€ */
+        /* ── Subtitle ── */
         .kids-cinema-subtitle {
           font-size: 15px;
           line-height: 1.6;
@@ -875,7 +875,7 @@ export default function Explore() {
           font-size: 14px;
         }
 
-        /* â”€â”€ Feature Chips â”€â”€ */
+        /* ── Feature Chips ── */
         .kids-cinema-features {
           display: flex;
           gap: 8px;
@@ -909,7 +909,7 @@ export default function Explore() {
           transform: translateY(-2px);
         }
 
-        /* â”€â”€ CTA Button with Shimmer â”€â”€ */
+        /* ── CTA Button with Shimmer ── */
         .kids-cinema-cta {
           position: relative;
           display: inline-flex;
@@ -956,7 +956,7 @@ export default function Explore() {
           pointer-events: none;
         }
 
-        /* â”€â”€ Keyframes â”€â”€ */
+        /* ── Keyframes ── */
         @keyframes kidsSlideUp {
           from { opacity: 0; transform: translateY(24px); }
           to   { opacity: 1; transform: translateY(0); }
@@ -978,4 +978,3 @@ export default function Explore() {
     </div>
   );
 }
-

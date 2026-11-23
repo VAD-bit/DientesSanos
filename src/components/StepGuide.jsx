@@ -1,17 +1,17 @@
-﻿import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Check, ChevronRight, User, Sparkles, PartyPopper, Circle } from 'lucide-react';
 
 /**
- * StepGuide â€” Friendly guided walkthrough for multi-step modals.
+ * StepGuide — Friendly guided walkthrough for multi-step modals.
  * Shows a message bar talking to the user + dot indicators.
  *
  * Usage:
  *   <StepGuide
  *     steps={[
- *       { id: 'client', label: 'Cliente', required: true, message: 'Primero, busca el cliente por cÃ©dula o nombre', icon: 'ðŸ‘¤' },
- *       { id: 'service', label: 'Servicio', required: true, message: 'Â¡Genial! Ahora elige el servicio', icon: 'ðŸ¦·' },
- *       { id: 'barber', label: 'Dentista', required: true, message: 'Perfecto. Ahora selecciona al odontÃ³logo', icon: 'ðŸ¦·' },
- *       { id: 'extras', label: 'Extras', required: false, message: 'Casi listo. Puedes agregar extras si quieres', icon: 'âœ¨' },
+ *       { id: 'client', label: 'Cliente', required: true, message: 'Primero, busca el cliente por cédula o nombre', icon: '👤' },
+ *       { id: 'service', label: 'Servicio', required: true, message: '¡Genial! Ahora elige el servicio', icon: '🦷' },
+ *       { id: 'barber', label: 'Dentista', required: true, message: 'Perfecto. Ahora selecciona al odontólogo', icon: '🦷' },
+ *       { id: 'extras', label: 'Extras', required: false, message: 'Casi listo. Puedes agregar extras si quieres', icon: '✨' },
  *     ]}
  *     currentStep={0}
  *     completedSteps={new Set()}
@@ -70,7 +70,7 @@ const StepGuide = ({ steps, currentStep = 0, completedSteps = new Set(), compact
               letterSpacing: '0.3px',
             }}>
               {allDone
-                ? 'Â¡Todo listo!'
+                ? '¡Todo listo!'
                 : `Paso ${currentStep + 1} de ${steps.length}`
               }
             </div>
@@ -78,7 +78,7 @@ const StepGuide = ({ steps, currentStep = 0, completedSteps = new Set(), compact
               fontSize: '12px', color: 'rgba(255,255,255,0.65)', fontWeight: '500', lineHeight: '1.3', marginTop: '1px',
             }}>
               {allDone
-                ? 'Todos los campos requeridos estÃ¡n completos.'
+                ? 'Todos los campos requeridos están completos.'
                 : (step?.message || 'Completa este paso para continuar')
               }
             </div>
@@ -138,7 +138,7 @@ const StepGuide = ({ steps, currentStep = 0, completedSteps = new Set(), compact
 };
 
 /**
- * StepHighlight â€” Wraps a form field to add a glowing border when it's the active step.
+ * StepHighlight — Wraps a form field to add a glowing border when it's the active step.
  *
  * Usage:
  *   <StepHighlight active={currentStep === 0} label="Paso 1">
@@ -174,4 +174,3 @@ export const StepHighlight = ({ active, label, children, style = {} }) => {
 };
 
 export default StepGuide;
-

@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 
 export const SkeletonBlock = ({ height = 60, width = '100%', borderRadius, style = {} }) => (
   <div className="panda-skeleton" style={{ height, width, borderRadius, ...style }} />
@@ -21,4 +21,3 @@ export const SkeletonGrid = ({ items = 6, itemHeight = 44, minWidth = 90, gap = 
 );
 
 export default SkeletonList;
-

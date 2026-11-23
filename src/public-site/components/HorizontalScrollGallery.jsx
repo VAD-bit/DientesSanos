@@ -1,4 +1,4 @@
-﻿import { useRef, useEffect, useState } from "react";
+import { useRef, useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight, Maximize2, Play } from "lucide-react";
 
 export default function HorizontalScrollGallery({ items, children }) {
@@ -227,4 +227,3 @@ export default function HorizontalScrollGallery({ items, children }) {
         </div>
     );
 }
-

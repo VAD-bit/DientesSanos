@@ -1,4 +1,4 @@
-﻿import { createClient } from '@supabase/supabase-js';
+import { createClient } from '@supabase/supabase-js';
 
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
@@ -26,5 +26,4 @@ export const publicSupabase = createClient(supabaseUrl, supabaseAnonKey, {
 
 // Compatibilidad temporal mientras dataService/publicService terminan de migrar
 // sus llamadas a RLS/RPC. Nunca se crea un cliente administrativo en el browser.
-// En CRM conserva la sesiÃ³n del empleado; el portal pÃºblico usa su propia sesiÃ³n.
-
+// En CRM conserva la sesión del empleado; el portal público usa su propia sesión.

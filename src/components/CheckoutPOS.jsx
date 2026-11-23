@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect, useRef, useMemo } from 'react';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
 import useDebounce from '../hooks/useDebounce';
 import FieldLabel from './FieldLabel';
 import { createPortal } from 'react-dom';
@@ -71,7 +71,7 @@ const parseUsdAmount = (value) => {
   return Number.isFinite(amount) ? amount : 1;
 };
 
-// No real service costs under $1 â€” if a Bs-labeled price input converts to
+// No real service costs under $1 — if a Bs-labeled price input converts to
 // less than that, the cashier almost certainly typed the USD amount into the
 // Bs field by mistake. Catch it before it silently corrupts total_price.
 const MIN_PLAUSIBLE_SERVICE_USD = 1;
@@ -89,7 +89,7 @@ const getWashingRate = (staffMember) => {
 };
 
 // Un extra cuyo nombre contiene "lavado" (Lavado express, Lavado premium, etc.) es trabajo
-// de la asistente de lavado, no del barbero. Su comisiÃ³n va a la asistente al 60% fijo.
+// de la asistente de lavado, no del barbero. Su comisión va a la asistente al 60% fijo.
 const isAssistantRole = (role) => {
   const r = (role || '').toLowerCase();
   return r.includes('asist') || r.includes('lavado');
@@ -248,7 +248,7 @@ const calculateCouponDiscount = (coupon, apps, washes, wRate) => {
       return empasteApp ? (empasteApp.total_price || empasteApp.services?.price || 0) : 0;
     } else if (target.includes('PROFILAXIS')) {
       return profilaxis * (pRate || 1);
-    } else if (target.includes('MUELA') || target.includes('ENCÃAS')) {
+    } else if (target.includes('MUELA') || target.includes('ENCÍAS')) {
       const extraApp = apps.find(a => a.services?.name?.toUpperCase().includes(target));
       return extraApp ? (extraApp.total_price || extraApp.services?.price || 0) : 0;
     } else {
@@ -299,7 +299,7 @@ const CartWrapper = ({ isMobile, showMobileCart, onClose, isModalView, children 
             <div style={{ width: '40px', height: '4px', background: 'rgba(0, 0, 0, 0.04)', borderRadius: '2px', margin: '0 auto 12px auto' }} />
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
               <h3 style={{ margin: 0, fontSize: '20px', fontWeight: '900' }}>Carrito</h3>
-              <button onClick={onClose} style={{ background: 'rgba(0, 0, 0, 0.04)', border: 'none', borderRadius: '50%', padding: '6px', color: '#111111', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><X size={20} /></button>
+              <button onClick={onClose} style={{ background: 'rgba(0, 0, 0, 0.04)', border: 'none', borderRadius: '50%', padding: '6px', color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><X size={20} /></button>
             </div>
           </div>
           {/* Contenido Scrolleable */}
@@ -359,7 +359,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
   const [exchangeStaffId, setExchangeStaffId] = useState('');
   const [cashUsd, setCashUsd] = useState(0);
   const [methodUsd, setMethodUsd] = useState('Efectivo');
-  const [methodBs, setMethodBs] = useState('Pago MÃ³vil');
+  const [methodBs, setMethodBs] = useState('Pago Móvil');
   const [paymentReferenceBs, setPaymentReferenceBs] = useState('');
   const [selectedWasherId, setSelectedWasherId] = useState('');
   const [isWasherDropdownOpen, setIsWasherDropdownOpen] = useState(false);
@@ -390,7 +390,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
   };
   const handleRetryOffline = async () => {
     setOfflineBusy(true);
-    try { await retryQueueNow(); showToast('Reintentando sincronizarâ€¦'); } catch { /* noop */ }
+    try { await retryQueueNow(); showToast('Reintentando sincronizar…'); } catch { /* noop */ }
     await refreshOfflineItems();
     setOfflineBusy(false);
   };
@@ -399,7 +399,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
       isOpen: true,
       type: 'confirm',
       title: 'Descartar pago pendiente',
-      message: 'Este pago no se enviarÃ¡ al servidor y no se podrÃ¡ recuperar. Â¿Descartar de todas formas?',
+      message: 'Este pago no se enviará al servidor y no se podrá recuperar. ¿Descartar de todas formas?',
       onConfirm: async () => {
         setDialog(prev => ({ ...prev, isOpen: false }));
         setOfflineBusy(true);
@@ -460,10 +460,10 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
     }
   };
 
-  // Editar el monto de un producto (p. ej. si se vendiÃ³ mÃ¡s caro, incluye cortesÃ­as).
-  // El input edita el TOTAL de la lÃ­nea en Bs (lo que se muestra); se guarda como precio
-  // unitario en USD. Se actualiza el carrito al instante y, si el producto ya estÃ¡ en la
-  // cita (lo agregÃ³ el barbero), se persiste para que no se revierta al recargar.
+  // Editar el monto de un producto (p. ej. si se vendió más caro, incluye cortesías).
+  // El input edita el TOTAL de la línea en Bs (lo que se muestra); se guarda como precio
+  // unitario en USD. Se actualiza el carrito al instante y, si el producto ya está en la
+  // cita (lo agregó el barbero), se persiste para que no se revierta al recargar.
   const handleUpdateProductPrice = async (product, newTotalBs) => {
     const qty = Number(product.quantity) || 1;
     const totalBs = parseFloat(newTotalBs) || 0;
@@ -491,7 +491,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
       const newPriceBs = parseFloat(newAppPriceVal) || 0;
       const newPriceUsd = fixedRate > 0 ? (newPriceBs / fixedRate) : 0;
       if (newPriceUsd > 0 && newPriceUsd < MIN_PLAUSIBLE_SERVICE_USD) {
-        showToast(`Ese monto equivale a $${newPriceUsd.toFixed(4)} â€” el campo es en bolÃ­vares, no en dÃ³lares. Revisa la cifra.`, "warning");
+        showToast(`Ese monto equivale a $${newPriceUsd.toFixed(4)} — el campo es en bolívares, no en dólares. Revisa la cifra.`, "warning");
         return;
       }
       await dataService.updateAppointment(editingAppPrice.id, { total_price: newPriceUsd });
@@ -609,7 +609,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
         const wRate = getWashingRate(allStaff.find(s => s.id === selectedWasherId));
         const discount = calculateCouponDiscount(autoCoupon, totalAppsInCheckout, washCount, wRate);
         setCouponDiscount(discount);
-        showToast(`CupÃ³n automÃ¡tico aplicado: ${autoCoupon.prize_name}`, "success");
+        showToast(`Cupón automático aplicado: ${autoCoupon.prize_name}`, "success");
       }
     }
   }, [selectedApp, clientCoupons, totalAppsInCheckout, activeCoupon, selectedWasherId, washCount, allStaff]);
@@ -726,7 +726,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
           });
 
           // Extras default association. Un extra de lavado va a la asistente: la que se
-          // documentÃ³ en el flujo (finalWasherId) o, si hay una sola en el sistema, esa.
+          // documentó en el flujo (finalWasherId) o, si hay una sola en el sistema, esa.
           app.appointment_extras?.forEach(ex => {
             const itemId = ex.id;
             if (itemId && !newAssociations[itemId]) {
@@ -811,7 +811,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
     try {
       setLoading(true);
       await dataService.updateAppointmentStatus(id, 'En Silla');
-      showToast("Â¡Servicio iniciado! El cliente ya estÃ¡ en sillÃ³n.");
+      showToast("¡Servicio iniciado! El cliente ya está en sillón.");
       loadData();
     } catch (error) {
       showToast("Error al iniciar servicio", "error");
@@ -826,7 +826,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
       for (const app of apps) {
         await dataService.updateAppointmentStatus(app.id, 'En Silla');
       }
-      showToast("Â¡Servicios iniciados! El cliente ya estÃ¡ en sillÃ³n.");
+      showToast("¡Servicios iniciados! El cliente ya está en sillón.");
       loadData();
     } catch (error) {
       showToast("Error al iniciar servicios", "error");
@@ -848,7 +848,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
   const totalBs = useMemo(() => (totalUsd * fixedRate).toFixed(2), [totalUsd, fixedRate]);
 
   // Arma una VISTA PREVIA del recibo con el estado actual del carrito (antes de cobrar).
-  // Mismo formato que el recibo final, pero sin nÃºmero de orden asignado.
+  // Mismo formato que el recibo final, pero sin número de orden asignado.
   const buildPreviewReceipt = () => {
     const currency = paymentMode === 'mixed' ? 'both' : paymentMode === 'full_bs' ? 'bs' : 'usd';
     const paymentMethodLabel = paymentMode === 'mixed' ? `${methodUsd} + ${methodBs}` : paymentMode === 'full_bs' ? methodBs : methodUsd;
@@ -902,7 +902,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
           .reduce((sum, ap) => sum + Number(ap.quantity || 0), 0)
       : Number(cart.find(p => p.id === product.id)?.quantity || 0);
     if (Number(product.stock || 0) <= currentQuantity) {
-      showToast(`No hay mÃ¡s unidades disponibles de ${product.name}`, 'error');
+      showToast(`No hay más unidades disponibles de ${product.name}`, 'error');
       return;
     }
 
@@ -913,7 +913,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
       } else {
         setCart([...cart, {...product, quantity: 1}]);
       }
-      showToast(`${product.name} aÃ±adido`);
+      showToast(`${product.name} añadido`);
       return;
     }
 
@@ -938,14 +938,14 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
         );
       }
 
-      showToast(`${product.name} aÃ±adido a la cuenta.`);
+      showToast(`${product.name} añadido a la cuenta.`);
       await loadData();
       const updatedApps = await dataService.getAppointmentsByState(['En Silla', 'Por Pagar', 'Agendado', 'En Lavado']);
       const updatedSelected = updatedApps.find(a => a.id === selectedApp.id);
       setSelectedApp(updatedSelected);
     } catch (e) {
       console.error(e);
-      showToast("Error al aÃ±adir producto", "error");
+      showToast("Error al añadir producto", "error");
     } finally {
       setLoading(false);
     }
@@ -981,7 +981,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
   const handleIncrementProduct = async (product) => {
     const inventoryProduct = inventory.find(item => item.id === product.id) || product;
     if (Number(product.quantity || 0) >= Number(inventoryProduct.stock || 0)) {
-      showToast(`Stock mÃ¡ximo alcanzado para ${product.name}`, 'error');
+      showToast(`Stock máximo alcanzado para ${product.name}`, 'error');
       return;
     }
 
@@ -1041,19 +1041,19 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
   const handleAddExtra = async (extra) => {
     if (!selectedApp) {
       setCart([...cart, { id: 'extra_' + extra.id, name: extra.name, price: extra.price, quantity: 1, type: 'extra' }]);
-      showToast(`${extra.name} aÃ±adido al carrito`);
+      showToast(`${extra.name} añadido al carrito`);
       return;
     }
     try {
       setLoading(true);
       await dataService.addExtraToAppointment(selectedApp.id, extra.id, extra.price);
-      showToast(`${extra.name} aÃ±adido a la cuenta.`);
+      showToast(`${extra.name} añadido a la cuenta.`);
       await loadData();
       const updatedApps = await dataService.getAppointmentsByState(['En Silla', 'Por Pagar', 'Agendado', 'En Lavado']);
       const updatedSelected = updatedApps.find(a => a.id === selectedApp.id);
       setSelectedApp(updatedSelected);
     } catch (e) {
-      showToast("Error al aÃ±adir extra", "error");
+      showToast("Error al añadir extra", "error");
     } finally {
       setLoading(false);
     }
@@ -1081,7 +1081,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
   };
 
   const handleCancelOrder = () => {
-    // In direct sale mode there are no appointments â€” just reset and close panel
+    // In direct sale mode there are no appointments — just reset and close panel
     if (isDirectSale) {
       setIsDirectSale(false);
       setSelectedClient(null);
@@ -1092,7 +1092,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
       setPaymentMode('full_bs');
       setSettlementType('paid');
       setExchangeStaffId('');
-      setMethodBs('Pago MÃ³vil');
+      setMethodBs('Pago Móvil');
       setPaymentReferenceBs('');
       setDirectSaleIdSearch('');
       setDirectSaleSearchResults([]);
@@ -1105,7 +1105,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
     setDialog({
       isOpen: true,
       title: "Cancelar Orden",
-      message: `Â¿Seguro que deseas cancelar toda la orden de este cliente? Se marcarÃ¡n los servicios como 'Cancelado'.`,
+      message: `¿Seguro que deseas cancelar toda la orden de este cliente? Se marcarán los servicios como 'Cancelado'.`,
       type: "confirm",
       onConfirm: async () => {
         setDialog(prev => ({ ...prev, isOpen: false }));
@@ -1119,7 +1119,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
           showToast("Orden cancelada correctamente", "success");
           setSelectedApp(null);
           setSelectedClient(null);
-          setMethodBs('Pago MÃ³vil');
+          setMethodBs('Pago Móvil');
           setPaymentReferenceBs('');
           await loadData();
         } catch (e) {
@@ -1144,12 +1144,12 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
 
     const hasAssignedService = totalAppsInCheckout.some(app => app.service_id && app.services?.name);
     if (selectedApp && !hasAssignedService && cart.length === 0) {
-      showToast("Asigna primero el servicio realizado. No se registrarÃ¡ como venta de productos.", "warning");
+      showToast("Asigna primero el servicio realizado. No se registrará como venta de productos.", "warning");
       return;
     }
 
     if (settlementType === 'exchange' && cart.length > 0) {
-      showToast("El intercambio del odontÃ³logo solo puede aplicarse a servicios. Retira los productos del carrito.", "warning");
+      showToast("El intercambio del odontólogo solo puede aplicarse a servicios. Retira los productos del carrito.", "warning");
       return;
     }
 
@@ -1159,15 +1159,15 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
     }
 
     const hasBsPayment = settlementType === 'paid' && (paymentMode === 'full_bs' || (paymentMode === 'mixed' && Number(remainingBs) > 0));
-    const referenceRequired = hasBsPayment && ['Pago MÃ³vil', 'Punto de venta'].includes(methodBs);
+    const referenceRequired = hasBsPayment && ['Pago Móvil', 'Punto de venta'].includes(methodBs);
     const normalizedBsReference = paymentReferenceBs.trim();
 
     if (referenceRequired && !normalizedBsReference) {
       showToast(`Ingresa la referencia de ${methodBs}.`, "warning");
       return;
     }
-    if (hasBsPayment && methodBs === 'Pago MÃ³vil' && !/^\d{4}$/.test(normalizedBsReference)) {
-      showToast("La referencia de Pago MÃ³vil debe tener exactamente 4 dÃ­gitos.", "warning");
+    if (hasBsPayment && methodBs === 'Pago Móvil' && !/^\d{4}$/.test(normalizedBsReference)) {
+      showToast("La referencia de Pago Móvil debe tener exactamente 4 dígitos.", "warning");
       return;
     }
 
@@ -1202,7 +1202,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
             staff_id: app.staff_id,
             clientName: app.clients?.name || 'Cliente',
             clientCedula: app.clients?.id_card || 'S/C',
-            barberName: app.staff?.name || 'OdontÃ³logo',
+            barberName: app.staff?.name || 'Odontólogo',
             serviceName: app.services?.name || 'Servicio',
             servicePrice: servicePrice,
             extrasPrice: appExtrasTotal,
@@ -1247,7 +1247,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
             } else {
               involved.push({
                 staffId: app.staff_id,
-                name: app.staff?.name || 'OdontÃ³logo',
+                name: app.staff?.name || 'Odontólogo',
                 role: app.staff?.role || 'Odontologo',
                 commissionPct: pct,
                 commissionEarned: comm,
@@ -1309,15 +1309,15 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
 
 
  
-          // 5. Productos: SIN comisiÃ³n al staff. Los productos (bebidas, etc.) son 100% de
-          // Dientes Sanos (la casa se queda venta âˆ’ costo). Los OdontÃ³logos no ganan nada por productos.
-          // Se conserva el vendedor (sellerName) solo para el historial, no para comisiÃ³n.
+          // 5. Productos: SIN comisión al staff. Los productos (bebidas, etc.) son 100% de
+          // Dientes Sanos (la casa se queda venta − costo). Los Odontólogos no ganan nada por productos.
+          // Se conserva el vendedor (sellerName) solo para el historial, no para comisión.
 
           // 6. Extras Commission Assignment. Un extra (ej. "lavado premium") genera
-          // comisiÃ³n igual que un servicio: al vendedor asignado en caja
-          // (itemSalesAssociations[extra.id]) o, si no se asignÃ³, al barbero de la cita.
-          // ExcepciÃ³n: los extras de LAVADO son de la asistente (al 60% fijo, como los
-          // lavados incluidos), no del barbero â€” si hay una sola asistente, cae en ella.
+          // comisión igual que un servicio: al vendedor asignado en caja
+          // (itemSalesAssociations[extra.id]) o, si no se asignó, al barbero de la cita.
+          // Excepción: los extras de LAVADO son de la asistente (al 60% fijo, como los
+          // lavados incluidos), no del barbero — si hay una sola asistente, cae en ella.
           const soleAssistantId = getSoleAssistantId(allStaff);
           totalAppsInCheckout.forEach(app => {
             (app.appointment_extras || []).forEach(ex => {
@@ -1379,11 +1379,11 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
       paymentData.pendingStaffInvolved = paymentData.staffInvolved;
 
       // Desglose por-cita para la tabla appointment_staff. `staffInvolved` (arriba)
-      // agrega por persona para la nÃ³mina, lo que pierde DE QUÃ‰ cita vino cada comisiÃ³n.
-      // El panel del barbero consulta appointment_staff por el barbero dueÃ±o de la cita
-      // (appointments.staff_id), asÃ­ que la comisiÃ³n de servicio de cada barbero debe
-      // quedar bajo la cita que Ã©l realmente hizo â€” si no, en un pago grupal el segundo
-      // barbero ve un estimado en vez de su nÃºmero real. Estas filas mantienen ese mapeo.
+      // agrega por persona para la nómina, lo que pierde DE QUÉ cita vino cada comisión.
+      // El panel del barbero consulta appointment_staff por el barbero dueño de la cita
+      // (appointments.staff_id), así que la comisión de servicio de cada barbero debe
+      // quedar bajo la cita que él realmente hizo — si no, en un pago grupal el segundo
+      // barbero ve un estimado en vez de su número real. Estas filas mantienen ese mapeo.
       paymentData.appointmentStaff = (() => {
         const primaryAppId = selectedApp?.id || totalAppsInCheckout[0]?.id || null;
         const rows = [];
@@ -1404,7 +1404,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
         const soleAssistantId = getSoleAssistantId(allStaff);
         let appliedWashes = 0;
 
-        // ComisiÃ³n de servicio + extras â†’ al barbero de cada cita, bajo esa misma cita
+        // Comisión de servicio + extras → al barbero de cada cita, bajo esa misma cita
         totalAppsInCheckout.forEach(app => {
           if (app.staff_id) {
             const role = (app.staff?.role || '').split('|')[0].toLowerCase();
@@ -1435,8 +1435,8 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
           });
         });
 
-        // ComisiÃ³n de lavado â†’ la asistente, bajo la cita principal (su panel recorre
-        // todas las citas, asÃ­ que aquÃ­ la propiedad de la cita no importa).
+        // Comisión de lavado → la asistente, bajo la cita principal (su panel recorre
+        // todas las citas, así que aquí la propiedad de la cita no importa).
         if (washCount > 0 && selectedWasherId) {
           const washCommission = washCount * washRate * WASH_ASSISTANT_SHARE;
           if (washCommission > 0) {
@@ -1445,9 +1445,9 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
           }
         }
 
-        // Productos: SIN comisiÃ³n al staff â€” son 100% de Dientes Sanos (ver bloque de staffInvolved).
+        // Productos: SIN comisión al staff — son 100% de Dientes Sanos (ver bloque de staffInvolved).
 
-        // Propinas â†’ al staff, bajo una cita que posea (o la principal)
+        // Propinas → al staff, bajo una cita que posea (o la principal)
         tips.forEach(t => {
           if (!t.staffId) return;
           const isBs = t.currency === 'BS';
@@ -1469,7 +1469,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
         const responsibleStaffId = exchangeStaffId || totalAppsInCheckout.find(app => app.staff_id)?.staff_id;
         const responsibleStaff = allStaff.find(member => String(member.id) === String(responsibleStaffId));
         if (!responsibleStaffId || !responsibleStaff) {
-          showToast("Selecciona el odontÃ³logo responsable del intercambio", "warning");
+          showToast("Selecciona el odontólogo responsable del intercambio", "warning");
           setLoading(false);
           return;
         }
@@ -1500,7 +1500,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
           const role = String(member.role || '').toLowerCase();
           return role.includes('asistente') || role.includes('lavado');
         });
-        // En intercambio solo el lavado genera comisiÃ³n: deja Ãºnicamente esas filas.
+        // En intercambio solo el lavado genera comisión: deja únicamente esas filas.
         paymentData.appointmentStaff = paymentData.appointmentStaff.filter(r => {
           const st = allStaff.find(s => String(s.id) === String(r.staffId));
           const role = String(st?.role || '').toLowerCase();
@@ -1510,7 +1510,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
 
       await enqueuePayment(paymentData);
 
-      // Historial clÃ­nico OBLIGATORIO tras cobro exitoso (solo servicios/pagos reales)
+      // Historial clínico OBLIGATORIO tras cobro exitoso (solo servicios/pagos reales)
       if (settlementType === 'paid') {
         const payClientId = selectedClient?.id || selectedApp?.client_id || paymentData.clientId;
         const payClientName = selectedClient?.name || selectedApp?.clients?.name || paymentData.clientName;
@@ -1519,7 +1519,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
         }
       }
 
-      // Enviar notificaciÃ³n Push y agregar a historial local
+      // Enviar notificación Push y agregar a historial local
       let paymentDetail = '';
       if (paymentMode === 'full_usd') {
         paymentDetail = `por un total de $${Number(paymentData.totalUsd).toFixed(2)} USD (${methodUsd})`;
@@ -1534,14 +1534,14 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
 
       notificationService.sendNotification(
         'Cobro Realizado',
-        `Se completÃ³ el cobro de ${paymentData.clientName || 'Cliente'} ${paymentDetail}.`
+        `Se completó el cobro de ${paymentData.clientName || 'Cliente'} ${paymentDetail}.`
       );
       
-      // Transmitir notificaciÃ³n en tiempo real a otros dispositivos (Admin)
+      // Transmitir notificación en tiempo real a otros dispositivos (Admin)
       notificationService.broadcastNotification(
         dataService.supabase,
         'Cobro Realizado',
-        `Se completÃ³ el cobro de ${paymentData.clientName || 'Cliente'} ${paymentDetail}.`,
+        `Se completó el cobro de ${paymentData.clientName || 'Cliente'} ${paymentDetail}.`,
         { recipientRole: 'Admin' }
       );
       
@@ -1569,27 +1569,27 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
         } catch(e) { console.error('Error scheduling reminder', e); }
       }
 
-      // NÃºmero de orden secuencial (#0001, #0002...) para el recibo.
+      // Número de orden secuencial (#0001, #0002...) para el recibo.
       const orderNumber = await dataService.getNextOrderNumber().catch(() => null);
 
-      // Moneda del recibo segÃºn el mÃ©todo de pago: $ si se pagÃ³ en dÃ³lares, Bs si en bolÃ­vares,
-      // ambas si fue mixto. Fiado/cortesÃ­a/intercambio se muestran en $ (nominal).
+      // Moneda del recibo según el método de pago: $ si se pagó en dólares, Bs si en bolívares,
+      // ambas si fue mixto. Fiado/cortesía/intercambio se muestran en $ (nominal).
       let receiptCurrency;
       if (settlementType !== 'paid') receiptCurrency = 'usd';
       else if (paymentMode === 'mixed') receiptCurrency = 'both';
       else if (paymentMode === 'full_bs') receiptCurrency = 'bs';
       else receiptCurrency = 'usd';
 
-      // MÃ©todo de pago y referencia (una lÃ­nea, como en el formato de la comanda).
+      // Método de pago y referencia (una línea, como en el formato de la comanda).
       let paymentMethodLabel;
       if (settlementType === 'receivable') paymentMethodLabel = 'Fiado / Cuenta por cobrar';
-      else if (settlementType === 'courtesy') paymentMethodLabel = 'CortesÃ­a de la clÃ­nica';
+      else if (settlementType === 'courtesy') paymentMethodLabel = 'Cortesía de la clínica';
       else if (settlementType === 'exchange') paymentMethodLabel = `Intercambio - ${paymentData.exchangeStaffName || ''}`;
       else if (paymentMode === 'mixed') paymentMethodLabel = `${methodUsd} + ${methodBs}`;
       else if (paymentMode === 'full_bs') paymentMethodLabel = methodBs;
       else paymentMethodLabel = methodUsd;
 
-      // "Atendido por": los OdontÃ³logos que hicieron los servicios (no el asistente dental).
+      // "Atendido por": los Odontólogos que hicieron los servicios (no el asistente dental).
       const barberNames = Array.from(new Set(totalAppsInCheckout.map(a => a.staff?.name).filter(Boolean))).join(', ');
 
       // Initialize Receipt
@@ -1628,7 +1628,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
 
       setPrintTransaction(receiptData);
       triggerRocket();
-      showToast("Â¡Venta completada con Ã©xito!", "success");
+      showToast("¡Venta completada con éxito!", "success");
       loadData();
     } catch (err) {
       console.error("Error en checkout:", err);
@@ -1664,7 +1664,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
     const catalogPrice = Number(selectedServiceForBarber?.price || 0);
     const unitPrice = catalogPrice > 0 ? catalogPrice : Number(String(customServicePrice).replace(',', '.'));
     if (!(unitPrice > 0)) {
-      showToast("Este servicio no tiene precio fijo. Ingresa el precio acordado con el odontÃ³logo.", "warning");
+      showToast("Este servicio no tiene precio fijo. Ingresa el precio acordado con el odontólogo.", "warning");
       return;
     }
     confirmServiceBarberRef.current = true;
@@ -1680,10 +1680,10 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
 
       let newApp;
 
-      // Caso "sin servicio": la orden ya existe pero el barbero olvidÃ³ asignarle el servicio
-      // desde su panel, asÃ­ que llegÃ³ a caja en $0. Al agregar el servicio aquÃ­, RELLENAMOS
-      // esa misma cita (como hace el panel de barbero) en vez de crear otra â€” si creÃ¡ramos
-      // una nueva, la de $0 quedarÃ­a colada y se cobrarÃ­a duplicada.
+      // Caso "sin servicio": la orden ya existe pero el barbero olvidó asignarle el servicio
+      // desde su panel, así que llegó a caja en $0. Al agregar el servicio aquí, RELLENAMOS
+      // esa misma cita (como hace el panel de barbero) en vez de crear otra — si creáramos
+      // una nueva, la de $0 quedaría colada y se cobraría duplicada.
       if (selectedApp && !selectedApp.service_id && !selectedApp.services?.name) {
         const addedPrice = parseUsdAmount(unitPrice);
         await dataService.updateAppointment(selectedApp.id, {
@@ -1694,9 +1694,9 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
         newApp = selectedApp;
         showToast("Servicio asignado a la orden existente.");
       } else {
-        // Guard anti-duplicado: si ya existe una cita activa idÃ©ntica (mismo cliente +
-        // servicio + barbero, aÃºn sin cobrar), la reutilizamos en vez de crear otra. Evita
-        // el doble servicio cuando el flujo de Venta Directa se repite por confusiÃ³n.
+        // Guard anti-duplicado: si ya existe una cita activa idéntica (mismo cliente +
+        // servicio + barbero, aún sin cobrar), la reutilizamos en vez de crear otra. Evita
+        // el doble servicio cuando el flujo de Venta Directa se repite por confusión.
         const activeNow = await dataService.getAppointmentsByState(['En Silla', 'Por Pagar', 'Agendado', 'En Lavado']);
         const existingDupe = (activeNow || []).find(a =>
           String(a.client_id) === String(clientId) &&
@@ -1706,7 +1706,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
 
         if (existingDupe) {
           newApp = existingDupe;
-          showToast("Ese servicio ya estaba en la lista â€” no se duplicÃ³.", "info");
+          showToast("Ese servicio ya estaba en la lista — no se duplicó.", "info");
         } else {
           newApp = await dataService.createAppointment({
             client_id: clientId,
@@ -1736,7 +1736,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
       if (selectedApp) {
         const currentAppResel = updatedApps.find(a => a.id === selectedApp.id);
         if (currentAppResel) setSelectedApp(currentAppResel);
-        showToast("Servicio aÃ±adido y odontÃ³logo asignado.");
+        showToast("Servicio añadido y odontólogo asignado.");
       } else {
         const fullyLoadedApp = updatedApps.find(a => a.id === newApp.id);
         if (fullyLoadedApp) {
@@ -1756,12 +1756,12 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
           setIsDirectSale(false);
           setSelectedApp(constructedApp);
         }
-        showToast("Servicio aÃ±adido y odontÃ³logo asignado.");
+        showToast("Servicio añadido y odontólogo asignado.");
       }
       setSelectedServiceForBarber(null);
     } catch (e) {
       console.error(e);
-      showToast("Error al asignar odontÃ³logo", "error");
+      showToast("Error al asignar odontólogo", "error");
     } finally {
       setLoading(false);
       confirmServiceBarberRef.current = false;
@@ -1791,7 +1791,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
       setActiveAppForBarberChange(null);
       
       await dataService.updateAppointment(appToChange.id, { staff_id: barberId });
-      showToast("OdontÃ³logo actualizado correctamente");
+      showToast("Odontólogo actualizado correctamente");
       await loadData();
       
       const updatedApps = await dataService.getAppointmentsByState(['En Silla', 'Por Pagar', 'Agendado', 'En Lavado']);
@@ -1799,7 +1799,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
       setSelectedApp(updatedSelected);
     } catch (e) {
       console.error(e);
-      showToast("Error al cambiar de odontÃ³logo", "error");
+      showToast("Error al cambiar de odontólogo", "error");
     } finally {
       setLoading(false);
     }
@@ -1811,7 +1811,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
     setDialog({
       isOpen: true,
       title: "Eliminar Servicio",
-      message: `Â¿Seguro que deseas eliminar el servicio "${app.services?.name}" de esta cita?`,
+      message: `¿Seguro que deseas eliminar el servicio "${app.services?.name}" de esta cita?`,
       type: "confirm",
       onConfirm: async () => {
         setDialog(prev => ({ ...prev, isOpen: false }));
@@ -1879,9 +1879,9 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
       if (exact) {
         handleSelectDirectSaleClient(exact);
       } else if (directSaleSearchResults.length > 1) {
-        showToast("MÃºltiples coincidencias. Selecciona uno de la lista.", "info");
+        showToast("Múltiples coincidencias. Selecciona uno de la lista.", "info");
       } else {
-        showToast("Cliente no encontrado. Â¿Es un cliente nuevo?", "warning");
+        showToast("Cliente no encontrado. ¿Es un cliente nuevo?", "warning");
       }
     }
   };
@@ -1890,7 +1890,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
     setAllClients([...allClients, newClient]);
     setSelectedClient(newClient);
     setShowNewClientModal(false);
-    showToast(`Â¡Cliente ${newClient.name} registrado y enlazado!`);
+    showToast(`¡Cliente ${newClient.name} registrado y enlazado!`);
   };
 
   // Group active services (status !== 'Agendado') by client
@@ -1939,7 +1939,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
       {!isModalView && (
         <header style={{ marginBottom: isMobile ? '16px' : '40px', paddingRight: '48px' }}>
           <h1 style={{ fontSize: '32px', fontWeight: '900' }}>Caja <span className="text-gold">Pro</span></h1>
-          <p style={{ color: 'var(--text-secondary)' }}>LiquidaciÃ³n de servicios y venta de productos.</p>
+          <p style={{ color: 'var(--text-secondary)' }}>Liquidación de servicios y venta de productos.</p>
           {pendingOfflineCount > 0 && (
             <button type="button" onClick={openOfflineModal} title="Ver detalle de los pagos pendientes" style={{ marginTop: '8px', padding: '6px 14px', borderRadius: '10px', background: 'rgba(255, 149, 0, 0.15)', border: '1px solid rgba(255, 149, 0, 0.4)', color: '#ff9500', fontSize: '11px', fontWeight: '800', display: 'inline-flex', alignItems: 'center', gap: '6px', cursor: 'pointer' }}>
               <RefreshCcw size={12} /> {pendingOfflineCount} pago(s) pendientes offline
@@ -1976,7 +1976,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
               <Search style={{ position: 'absolute', left: '16px', top: '14px' }} size={18} color="var(--gold-primary)" />
               <input 
                 type="text" 
-                placeholder="Buscar por cÃ©dula o nombre..." 
+                placeholder="Buscar por cédula o nombre..." 
                 value={idSearch}
                 onChange={(e) => {
                   const val = e.target.value;
@@ -1994,7 +1994,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                       isOpen: true,
                       type: 'confirm',
                       title: 'Cita Encontrada',
-                      message: `El cliente ${scheduledMatch.clients?.name} tiene una cita agendada para hoy. Â¿Deseas iniciar su servicio ahora?`,
+                      message: `El cliente ${scheduledMatch.clients?.name} tiene una cita agendada para hoy. ¿Deseas iniciar su servicio ahora?`,
                       onConfirm: () => {
                         const clientApps = pendingServices.filter(app => app.client_id === scheduledMatch.client_id && app.status === 'Agendado');
                         handleStartGroupAppointments(clientApps);
@@ -2048,7 +2048,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                       }}
                     >
                       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
-                        <span style={{ fontWeight: '800', fontSize: '14px', color: '#111111', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', maxWidth: '65%', display: 'block' }}>{group.client_name}</span>
+                        <span style={{ fontWeight: '800', fontSize: '14px', color: 'white', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', maxWidth: '65%', display: 'block' }}>{group.client_name}</span>
                         <span style={{ 
                           fontSize: '9px', 
                           backgroundColor: badgeStatus === 'En Silla' 
@@ -2065,11 +2065,11 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                           fontWeight: '900',
                           textTransform: 'uppercase',
                           letterSpacing: '0.5px'
-                        }}>{badgeStatus === 'En Silla' ? 'En sillÃ³n' : badgeStatus === 'En Lavado' ? 'En profilaxis' : badgeStatus}</span>
+                        }}>{badgeStatus === 'En Silla' ? 'En sillón' : badgeStatus === 'En Lavado' ? 'En profilaxis' : badgeStatus}</span>
                       </div>
                       <div style={{ fontSize: '13px', color: 'var(--text-secondary)', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '6px', maxWidth: '70%', minWidth: 0 }}>
-                          <ToothIcon size={12} style={{ flexShrink: 0 }} /> <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', display: 'block', minWidth: 0 }}>{serviceNames}</span> <span style={{ flexShrink: 0 }}>â€¢</span> <span style={{ fontWeight: '600', flexShrink: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', display: 'block' }}>{staffNames}</span>
+                          <ToothIcon size={12} style={{ flexShrink: 0 }} /> <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', display: 'block', minWidth: 0 }}>{serviceNames}</span> <span style={{ flexShrink: 0 }}>•</span> <span style={{ fontWeight: '600', flexShrink: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', display: 'block' }}>{staffNames}</span>
                         </div>
                         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '2px' }}>
                           <span style={{ fontWeight: '700', color: 'var(--gold-primary)' }}>{(totalUsd * fixedRate).toLocaleString('es-VE', {minimumFractionDigits: 2, maximumFractionDigits: 2})} Bs.</span>
@@ -2083,10 +2083,10 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
             </div>
 
             <div style={{ marginTop: '24px' }}>
-              <label style={{ display: 'block', fontSize: '11px', fontWeight: '900', color: 'var(--gold-primary)', marginBottom: '16px', letterSpacing: '1px' }}>PRÃ“XIMAS CITAS (AGENDA HOY)</label>
+              <label style={{ display: 'block', fontSize: '11px', fontWeight: '900', color: 'var(--gold-primary)', marginBottom: '16px', letterSpacing: '1px' }}>PRÓXIMAS CITAS (AGENDA HOY)</label>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
                 {groupedScheduledServices.length === 0 ? (
-                  <div style={{ padding: '20px', textAlign: 'center', color: 'rgba(255,255,255,0.1)', fontSize: '12px', border: '1px dashed rgba(0, 0, 0, 0.08)', borderRadius: '16px' }}>No hay mÃ¡s citas para hoy</div>
+                  <div style={{ padding: '20px', textAlign: 'center', color: 'rgba(255,255,255,0.1)', fontSize: '12px', border: '1px dashed rgba(0, 0, 0, 0.08)', borderRadius: '16px' }}>No hay más citas para hoy</div>
                 ) : (
                   groupedScheduledServices.map(group => {
                     const firstApp = group.apps[0];
@@ -2118,7 +2118,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                         <div style={{ maxWidth: '70%', minWidth: 0 }}>
                           <div style={{ fontWeight: '800', fontSize: '14px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', display: 'block' }}>{group.client_name}</div>
                           <div style={{ fontSize: '11px', color: 'var(--text-muted)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', display: 'block' }}>
-                            {timeString} â€¢ {serviceNames} â€¢ {staffNames}
+                            {timeString} • {serviceNames} • {staffNames}
                           </div>
                         </div>
                         <button 
@@ -2148,7 +2148,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
               
               <button 
                 onClick={() => setShowProductModal(true)}
-                style={{ flex: 1, padding: isMobile ? '18px 8px' : '24px', borderRadius: isMobile ? '18px' : '24px', border: '1px solid rgba(0, 0, 0, 0.08)', background: 'rgba(0, 0, 0, 0.04)', backdropFilter: 'blur(10px)', WebkitBackdropFilter: 'blur(10px)', color: '#111111', cursor: 'pointer', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '12px', transition: 'all 0.3s ease' }}
+                style={{ flex: 1, padding: isMobile ? '18px 8px' : '24px', borderRadius: isMobile ? '18px' : '24px', border: '1px solid rgba(0, 0, 0, 0.08)', background: 'rgba(0, 0, 0, 0.04)', backdropFilter: 'blur(10px)', WebkitBackdropFilter: 'blur(10px)', color: 'white', cursor: 'pointer', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '12px', transition: 'all 0.3s ease' }}
                 onMouseEnter={e => { e.currentTarget.style.background = 'rgba(255, 255, 255, 0.05)'; }}
                 onMouseLeave={e => { e.currentTarget.style.background = 'rgba(255, 255, 255, 0.02)'; }}
                 onPointerDown={e => { e.currentTarget.style.transform = 'scale(0.97)'; }}
@@ -2161,7 +2161,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
 
               <button 
                 onClick={() => setShowExtraModal(true)}
-                style={{ flex: 1, padding: isMobile ? '18px 8px' : '24px', borderRadius: isMobile ? '18px' : '24px', border: '1px solid rgba(0, 0, 0, 0.08)', background: 'rgba(0, 0, 0, 0.04)', backdropFilter: 'blur(10px)', WebkitBackdropFilter: 'blur(10px)', color: '#111111', cursor: 'pointer', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '12px', transition: 'all 0.3s ease' }}
+                style={{ flex: 1, padding: isMobile ? '18px 8px' : '24px', borderRadius: isMobile ? '18px' : '24px', border: '1px solid rgba(0, 0, 0, 0.08)', background: 'rgba(0, 0, 0, 0.04)', backdropFilter: 'blur(10px)', WebkitBackdropFilter: 'blur(10px)', color: 'white', cursor: 'pointer', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '12px', transition: 'all 0.3s ease' }}
                 onMouseEnter={e => { e.currentTarget.style.background = 'rgba(255, 255, 255, 0.05)'; }}
                 onMouseLeave={e => { e.currentTarget.style.background = 'rgba(255, 255, 255, 0.02)'; }}
                 onPointerDown={e => { e.currentTarget.style.transform = 'scale(0.97)'; }}
@@ -2174,7 +2174,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
 
               <button 
                 onClick={() => setShowServiceModal(true)}
-                style={{ flex: 1, padding: isMobile ? '18px 8px' : '24px', borderRadius: isMobile ? '18px' : '24px', border: '1px solid rgba(0, 0, 0, 0.08)', background: 'rgba(0, 0, 0, 0.04)', backdropFilter: 'blur(10px)', WebkitBackdropFilter: 'blur(10px)', color: '#111111', cursor: 'pointer', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '12px', transition: 'all 0.3s ease' }}
+                style={{ flex: 1, padding: isMobile ? '18px 8px' : '24px', borderRadius: isMobile ? '18px' : '24px', border: '1px solid rgba(0, 0, 0, 0.08)', background: 'rgba(0, 0, 0, 0.04)', backdropFilter: 'blur(10px)', WebkitBackdropFilter: 'blur(10px)', color: 'white', cursor: 'pointer', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '12px', transition: 'all 0.3s ease' }}
                 onMouseEnter={e => { e.currentTarget.style.background = 'rgba(255, 255, 255, 0.05)'; }}
                 onMouseLeave={e => { e.currentTarget.style.background = 'rgba(255, 255, 255, 0.02)'; }}
                 onPointerDown={e => { e.currentTarget.style.transform = 'scale(0.97)'; }}
@@ -2194,7 +2194,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
             <div className="glass-card" style={{ borderRadius: '24px', padding: '24px' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '20px' }}>
                 <BarChart3 size={20} color="var(--gold-primary)" />
-                <span style={{ fontWeight: '800', fontSize: '13px', letterSpacing: '1px', textTransform: 'uppercase' }}>Resumen del DÃ­a</span>
+                <span style={{ fontWeight: '800', fontSize: '13px', letterSpacing: '1px', textTransform: 'uppercase' }}>Resumen del Día</span>
               </div>
               <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) minmax(0, 1fr)', gap: '12px', marginBottom: '20px' }}>
                 <div style={{ padding: '16px', borderRadius: '16px', background: 'rgba(17, 17, 17,0.08)', border: '1px solid rgba(17, 17, 17,0.15)', textAlign: 'center' }}>
@@ -2202,7 +2202,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                   <div style={{ fontSize: '10px', color: 'var(--text-muted)', fontWeight: '700', letterSpacing: '0.5px', marginTop: '4px' }}>POR COBRAR</div>
                 </div>
                 <div style={{ padding: '16px', borderRadius: '16px', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', textAlign: 'center' }}>
-                  <div style={{ fontSize: '28px', fontWeight: '900', color: '#111111' }}>{groupedScheduledServices.length}</div>
+                  <div style={{ fontSize: '28px', fontWeight: '900', color: 'white' }}>{groupedScheduledServices.length}</div>
                   <div style={{ fontSize: '10px', color: 'var(--text-muted)', fontWeight: '700', letterSpacing: '0.5px', marginTop: '4px' }}>EN COLA</div>
                 </div>
               </div>
@@ -2233,7 +2233,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                       <>
                         {selectedApp.clients.name} 
                         {bundledApps.length > 0 && bundledApps.map(a => a.services?.name).filter(Boolean).length > 0 ? (
-                          ` â€¢ ${bundledApps.map(a => a.services?.name).filter(Boolean).join(' + ')}`
+                          ` • ${bundledApps.map(a => a.services?.name).filter(Boolean).join(' + ')}`
                         ) : ''}
                       </>
                     ) : (
@@ -2253,7 +2253,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                                 <Search style={{ position: 'absolute', left: '10px', top: '12px' }} size={14} color="var(--text-muted)" />
                                 <input 
                                   type="text" 
-                                  placeholder={isMobile ? 'CÃ©dula o nombre...' : 'CÃ©dula o nombre del cliente...'} 
+                                  placeholder={isMobile ? 'Cédula o nombre...' : 'Cédula o nombre del cliente...'} 
                                   value={directSaleIdSearch}
                                   onChange={(e) => handleDirectSaleSearchInput(e.target.value)}
                                   onKeyDown={(e) => e.key === 'Enter' && handleDirectSaleIdSearch()}
@@ -2272,7 +2272,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                               </button>
                               <button 
                                 onClick={() => setShowNewClientModal(true)} 
-                                style={{ padding: '0 10px', height: '40px', borderRadius: '12px', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', color: '#111111', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '6px', flexShrink: 0 }}
+                                style={{ padding: '0 10px', height: '40px', borderRadius: '12px', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', color: 'white', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '6px', flexShrink: 0 }}
                               >
                                 <UserPlus size={16} />
                               </button>
@@ -2295,7 +2295,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                                     onMouseOver={(e) => e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255,0.1)'}
                                     onMouseOut={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
                                   >
-                                    <span style={{ fontWeight: '700', fontSize: '13px', color: '#111111' }}>{c.name}</span>
+                                    <span style={{ fontWeight: '700', fontSize: '13px', color: 'white' }}>{c.name}</span>
                                     <span style={{ fontSize: '11px', color: 'var(--text-muted)' }}>V-{c.id_card}</span>
                                   </div>
                                 ))}
@@ -2308,13 +2308,13 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                   </div>
                 </div>
                 <div style={{ textAlign: isMobile ? 'left' : 'right', display: 'flex', flexDirection: isMobile ? 'row' : 'column', alignItems: isMobile ? 'center' : 'flex-end', gap: '8px', flexShrink: 0 }}>
-                  <label style={{ fontSize: '10px', color: 'var(--text-muted)', fontWeight: '900', whiteSpace: 'nowrap' }}>DÃ“LAR BCV</label>
+                  <label style={{ fontSize: '10px', color: 'var(--text-muted)', fontWeight: '900', whiteSpace: 'nowrap' }}>DÓLAR BCV</label>
                   <input 
                     type="number" 
                     step="0.01"
                     value={fixedRate} 
                     readOnly
-                    aria-label="Tasa del dÃ³lar BCV"
+                    aria-label="Tasa del dólar BCV"
                     style={{ width: isMobile ? '90px' : '100px', textAlign: 'right', fontWeight: '900', color: 'var(--gold-primary)', background: 'none', border: '1px solid rgba(0, 0, 0, 0.08)', marginLeft: isMobile ? '0' : '10px' }}
                   />
                 </div>
@@ -2348,7 +2348,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                         <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', color: 'rgba(255,255,255,0.9)' }}>
                           {app.services ? `Servicio: ${app.services.name}` : ((app.appointment_extras?.length || 0) > 0 ? 'Extras' : ((app.appointment_products?.length || 0) > 0 ? 'Productos' : 'Sin servicio asignado'))}
                         </span>
-                        {' â€¢ '}
+                        {' • '}
                         <span 
                           onClick={() => handleOpenChangeBundledBarber(app)}
                           style={{ 
@@ -2364,7 +2364,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                             borderRadius: '6px',
                             flexShrink: 0
                           }}
-                          title="Click para cambiar odontÃ³logo"
+                          title="Click para cambiar odontólogo"
                         >
                           {app.staff?.name?.split(' ')[0] || 'Caja'}
                           <Edit3 size={12} />
@@ -2385,7 +2385,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                                     const newPriceBs = parseFloat(val) || 0;
                                     const newPriceUsd = fixedRate > 0 ? (newPriceBs / fixedRate) : 0;
                                     if (newPriceUsd > 0 && newPriceUsd < MIN_PLAUSIBLE_SERVICE_USD) {
-                                      showToast(`Ese monto equivale a $${newPriceUsd.toFixed(4)} â€” el campo es en bolÃ­vares, no en dÃ³lares. Revisa la cifra.`, "warning");
+                                      showToast(`Ese monto equivale a $${newPriceUsd.toFixed(4)} — el campo es en bolívares, no en dólares. Revisa la cifra.`, "warning");
                                       setEditingAppPrice(null);
                                       return;
                                     }
@@ -2411,7 +2411,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                                       const newPriceBs = parseFloat(val) || 0;
                                       const newPriceUsd = fixedRate > 0 ? (newPriceBs / fixedRate) : 0;
                                       if (newPriceUsd > 0 && newPriceUsd < MIN_PLAUSIBLE_SERVICE_USD) {
-                                        showToast(`Ese monto equivale a $${newPriceUsd.toFixed(4)} â€” el campo es en bolÃ­vares, no en dÃ³lares. Revisa la cifra.`, "warning");
+                                        showToast(`Ese monto equivale a $${newPriceUsd.toFixed(4)} — el campo es en bolívares, no en dólares. Revisa la cifra.`, "warning");
                                         setEditingAppPrice(null);
                                         return;
                                       }
@@ -2434,7 +2434,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                                       setEditingAppPrice(null);
                                     }
                                   }}
-                                  style={{ width: isMobile ? '110px' : '95px', height: isMobile ? '44px' : '28px', background: 'var(--bg-secondary)', border: '1px solid var(--gold-primary)', borderRadius: '6px', color: '#111111', paddingLeft: '28px', paddingRight: '6px', fontSize: '12px', fontWeight: '800', textAlign: 'right', outline: 'none' }}
+                                  style={{ width: isMobile ? '110px' : '95px', height: isMobile ? '44px' : '28px', background: 'var(--bg-secondary)', border: '1px solid var(--gold-primary)', borderRadius: '6px', color: 'white', paddingLeft: '28px', paddingRight: '6px', fontSize: '12px', fontWeight: '800', textAlign: 'right', outline: 'none' }}
                                 />
                               </div>
                             ) : (
@@ -2445,7 +2445,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                                 onMouseOut={(ev) => ev.currentTarget.style.backgroundColor = 'transparent'}
                               >
                                 <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '0px' }}>
-                                  <span style={{ fontWeight: '800', fontSize: isMobile ? '12px' : '14px', color: '#111111' }}>
+                                  <span style={{ fontWeight: '800', fontSize: isMobile ? '12px' : '14px', color: 'white' }}>
                                     {isMobile ? `${Math.round(sPrice * fixedRate).toLocaleString('es-VE')} Bs.` : `${(sPrice * fixedRate).toLocaleString('es-VE', {minimumFractionDigits: 2, maximumFractionDigits: 2})} Bs.`}
                                   </span>
                                   <span style={{ fontSize: '9px', color: 'var(--text-muted)' }}>Ref: ${Number(sPrice).toFixed(2)}</span>
@@ -2500,7 +2500,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                         >
                           <Minus size={8} />
                         </button>
-                        <span style={{ fontSize: '9px', fontWeight: '900', color: '#111111', minWidth: '10px', textAlign: 'center' }}>{p.quantity}</span>
+                        <span style={{ fontSize: '9px', fontWeight: '900', color: 'white', minWidth: '10px', textAlign: 'center' }}>{p.quantity}</span>
                         <button 
                           onClick={() => handleIncrementProduct(p)}
                           style={{ background: 'none', border: 'none', color: 'var(--gold-primary)', cursor: 'pointer', padding: '1px', display: 'flex', alignItems: 'center' }}
@@ -2525,7 +2525,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                           defaultValue={(p.price * p.quantity * fixedRate).toFixed(2)}
                           onBlur={(e) => handleUpdateProductPrice(p, e.target.value)}
                           onKeyDown={(e) => e.key === 'Enter' && handleUpdateProductPrice(p, e.target.value)}
-                          style={{ width: isMobile ? '110px' : '95px', height: isMobile ? '44px' : '28px', background: 'var(--bg-secondary)', border: '1px solid var(--gold-primary)', borderRadius: '6px', color: '#111111', paddingLeft: '28px', paddingRight: '6px', fontSize: '12px', fontWeight: '800', textAlign: 'right', outline: 'none' }}
+                          style={{ width: isMobile ? '110px' : '95px', height: isMobile ? '44px' : '28px', background: 'var(--bg-secondary)', border: '1px solid var(--gold-primary)', borderRadius: '6px', color: 'white', paddingLeft: '28px', paddingRight: '6px', fontSize: '12px', fontWeight: '800', textAlign: 'right', outline: 'none' }}
                         />
                       </div>
                     ) : (
@@ -2536,7 +2536,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                         onMouseOut={(ev) => ev.currentTarget.style.backgroundColor = 'transparent'}
                       >
                         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '0px' }}>
-                          <span style={{ fontWeight: '800', fontSize: isMobile ? '12px' : '14px', color: '#111111' }}>
+                          <span style={{ fontWeight: '800', fontSize: isMobile ? '12px' : '14px', color: 'white' }}>
                             {isMobile ? `${Math.round(p.price * p.quantity * fixedRate).toLocaleString('es-VE')} Bs.` : `${(p.price * p.quantity * fixedRate).toLocaleString('es-VE', {minimumFractionDigits: 2, maximumFractionDigits: 2})} Bs.`}
                           </span>
                           <span style={{ fontSize: '9px', color: 'var(--text-muted)' }}>Ref: ${(p.price * p.quantity).toFixed(2)}</span>
@@ -2577,7 +2577,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                             defaultValue={(extra.price * fixedRate).toFixed(2)}
                             onBlur={(e) => handleUpdateExtraPrice(extra.id, e.target.value)}
                             onKeyDown={(e) => e.key === 'Enter' && handleUpdateExtraPrice(extra.id, e.target.value)}
-                            style={{ width: isMobile ? '110px' : '95px', height: isMobile ? '44px' : '28px', background: 'var(--bg-secondary)', border: '1px solid var(--gold-primary)', borderRadius: '6px', color: '#111111', paddingLeft: '28px', paddingRight: '6px', fontSize: '12px', fontWeight: '800', textAlign: 'right', outline: 'none' }}
+                            style={{ width: isMobile ? '110px' : '95px', height: isMobile ? '44px' : '28px', background: 'var(--bg-secondary)', border: '1px solid var(--gold-primary)', borderRadius: '6px', color: 'white', paddingLeft: '28px', paddingRight: '6px', fontSize: '12px', fontWeight: '800', textAlign: 'right', outline: 'none' }}
                           />
                         </div>
                       ) : (
@@ -2609,7 +2609,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                           <Droplets size={14} />
                         </div>
                         <div>
-                          <h4 style={{ fontSize: '11px', fontWeight: '800', color: '#111111', margin: 0 }}>Limpiezas</h4>
+                          <h4 style={{ fontSize: '11px', fontWeight: '800', color: 'white', margin: 0 }}>Limpiezas</h4>
                           <p style={{ fontSize: '9px', color: 'var(--text-secondary)', margin: 0 }}>Selecciona la cantidad de limpiezas.</p>
                         </div>
                       </div>
@@ -2650,7 +2650,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                             borderRadius: '12px',
                             background: 'rgba(0, 0, 0, 0.04)',
                             border: '1px solid rgba(0, 0, 0, 0.08)',
-                            color: '#111111',
+                            color: 'white',
                             fontSize: isMobile ? '12px' : '14px',
                             cursor: 'pointer',
                             display: 'flex',
@@ -2716,7 +2716,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                                   padding: '12px 16px',
                                   cursor: 'pointer',
                                   fontSize: isMobile ? '12px' : '14px',
-                                  color: '#111111',
+                                  color: 'white',
                                   borderBottom: '1px solid rgba(0, 0, 0, 0.08)',
                                   display: 'flex',
                                   justifyContent: 'space-between',
@@ -2735,7 +2735,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                         </PortaledDropdown>
                         {allStaff.filter(s => s.role?.toLowerCase().includes('asistente')).length > 1 && !selectedWasherId && (
                           <div style={{ marginTop: '6px', fontSize: '9px', color: '#ff9500', fontWeight: '800', display: 'flex', alignItems: 'center', gap: '4px' }}>
-                            <AlertTriangle size={11} /> Hay mÃºltiples asistentes. Por favor selecciona una.
+                            <AlertTriangle size={11} /> Hay múltiples asistentes. Por favor selecciona una.
                           </div>
                         )}
                       </div>
@@ -2771,7 +2771,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                               borderRadius: '10px',
                               fontSize: '12px',
                               border: '1px solid rgba(0, 0, 0, 0.08)',
-                              color: '#111111',
+                              color: 'white',
                               padding: '0 12px',
                               display: 'flex',
                               justifyContent: 'space-between',
@@ -2836,7 +2836,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                                   padding: '10px 12px',
                                   cursor: 'pointer',
                                   fontSize: '12px',
-                                  color: '#111111',
+                                  color: 'white',
                                   borderBottom: '1px solid rgba(0, 0, 0, 0.08)',
                                   transition: 'background-color 0.2s',
                                   backgroundColor: t.staffId === s.id ? 'rgba(255, 255, 255, 0.1)' : 'transparent'
@@ -2912,7 +2912,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                       <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap' }}>
                         {[
                           { value: '1_week', label: '1 Semana' },
-                          { value: '14_days', label: '14 DÃ­as' },
+                          { value: '14_days', label: '14 Días' },
                           { value: '1_month', label: '1 Mes' },
                           { value: 'custom', label: 'Personalizado' }
                         ].map(opt => (
@@ -2954,7 +2954,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                 {/* Coupon Section */}
                 {selectedApp && (
                   <div style={{ padding: '6px 10px', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', borderRadius: '10px', marginBottom: '8px' }}>
-                    <div style={{ fontSize: '10px', fontWeight: '900', color: 'var(--gold-primary)', marginBottom: '4px', letterSpacing: '0.5px', display: 'flex', alignItems: 'center', gap: '5px' }}><Gift size={12} /> CANJEAR CUPÃ“N DE REGALO</div>
+                    <div style={{ fontSize: '10px', fontWeight: '900', color: 'var(--gold-primary)', marginBottom: '4px', letterSpacing: '0.5px', display: 'flex', alignItems: 'center', gap: '5px' }}><Gift size={12} /> CANJEAR CUPÓN DE REGALO</div>
                     
                     {!activeCoupon ? (
                       <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
@@ -2965,7 +2965,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                                 key={c.id}
                                 onClick={() => {
                                   setActiveCoupon(c);
-                                  showToast(`CupÃ³n vÃ¡lido: ${c.prize_name}`, "success");
+                                  showToast(`Cupón válido: ${c.prize_name}`, "success");
                                   const wRate = getWashingRate(allStaff.find(s => s.id === selectedWasherId));
                                   const discount = calculateCouponDiscount(c, totalAppsInCheckout, washCount, wRate);
                                   setCouponDiscount(discount);
@@ -3000,10 +3000,10 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                         <div style={{ display: 'flex', gap: '8px', marginTop: '4px' }}>
                           <input 
                             type="text" 
-                            placeholder="O ingresa cÃ³digo manual..."
+                            placeholder="O ingresa código manual..."
                             value={couponCode}
                             onChange={(e) => setCouponCode(e.target.value)}
-                            style={{ flex: 1, height: '36px', fontSize: '12px', background: 'var(--bg-secondary)', border: '1px solid rgba(0, 0, 0, 0.08)', borderRadius: '8px', color: '#111111', paddingLeft: '8px' }}
+                            style={{ flex: 1, height: '36px', fontSize: '12px', background: 'var(--bg-secondary)', border: '1px solid rgba(0, 0, 0, 0.08)', borderRadius: '8px', color: 'white', paddingLeft: '8px' }}
                           />
                           <button 
                             onClick={async () => {
@@ -3013,16 +3013,16 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                                 const coupons = await dataService.getCoupons();
                                 const code = couponCode.trim().toUpperCase();
                                 const found = coupons.find(c => c.id?.substring(0, 8).toUpperCase() === code || c.id === couponCode.trim());
-                                if (!found) { showToast("CupÃ³n no encontrado", "error"); return; }
-                                if (found.status === 'USED') { showToast("El cupÃ³n ya ha sido utilizado", "warning"); return; }
+                                if (!found) { showToast("Cupón no encontrado", "error"); return; }
+                                if (found.status === 'USED') { showToast("El cupón ya ha sido utilizado", "warning"); return; }
                                 setActiveCoupon(found);
-                                showToast(`CupÃ³n vÃ¡lido: ${found.prize_name}`, "success");
+                                showToast(`Cupón válido: ${found.prize_name}`, "success");
                                 const wRate = getWashingRate(allStaff.find(s => s.id === selectedWasherId));
                                 const discount = calculateCouponDiscount(found, totalAppsInCheckout, washCount, wRate);
                                 setCouponDiscount(discount);
                               } catch (err) {
                                 console.error(err);
-                                showToast("Error al validar cupÃ³n", "error");
+                                showToast("Error al validar cupón", "error");
                               } finally {
                                 setLoading(false);
                               }
@@ -3069,7 +3069,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                   {[
                     { value: 'paid', label: 'PAGADO' },
                     { value: 'receivable', label: 'FIADO' },
-                    { value: 'courtesy', label: 'CORTESÃA' },
+                    { value: 'courtesy', label: 'CORTESÍA' },
                     { value: 'exchange', label: 'INTERCAMBIO' }
                   ].map(option => (
                     <button
@@ -3096,7 +3096,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                 {settlementType === 'exchange' && (
                   <div style={{ padding: '13px', borderRadius: '12px', background: 'rgba(255,159,10,.08)', border: '1px solid rgba(255,159,10,.3)', marginBottom: '14px' }}>
                     <PandaSelect
-                      label="OdontÃ³logo responsable del intercambio"
+                      label="Odontólogo responsable del intercambio"
                       value={exchangeStaffId}
                       onChange={setExchangeStaffId}
                       options={allStaff.filter(member => {
@@ -3104,13 +3104,13 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                         return role.includes('barber') || role.includes('odontolog') || role.includes('tatu') || role.includes('estilista');
                       }).map(member => ({ value: member.id, label: member.name, imageUrl: member.image_url || member.avatar_url || '', avatarFallback: (member.name || '?').trim().charAt(0).toUpperCase(), subtitle: (member.role || 'Profesional').split('|')[0] }))}
                     />
-                    <p style={{ margin: '8px 0 0', color: '#ffcc80', fontSize: '10px', lineHeight: 1.4 }}>El cliente paga $0. No se genera comisiÃ³n del odontÃ³logo; se le carga la parte de la clÃ­nica y la profilaxis completa.</p>
+                    <p style={{ margin: '8px 0 0', color: '#ffcc80', fontSize: '10px', lineHeight: 1.4 }}>El cliente paga $0. No se genera comisión del odontólogo; se le carga la parte de la clínica y la profilaxis completa.</p>
                   </div>
                 )}
 
                 {settlementType !== 'paid' && settlementType !== 'exchange' && (
                   <div style={{ padding: '11px 13px', borderRadius: '10px', marginBottom: '14px', background: settlementType === 'receivable' ? 'rgba(255,159,10,.08)' : 'rgba(100,210,255,.08)', border: `1px solid ${settlementType === 'receivable' ? 'rgba(255,159,10,.3)' : 'rgba(100,210,255,.25)'}`, color: settlementType === 'receivable' ? '#ffcc80' : '#8bdcff', fontSize: '10px', lineHeight: 1.45 }}>
-                    {settlementType === 'receivable' ? 'El cliente no paga ahora. La deuda quedarÃ¡ registrada en Cuentas por cobrar y no generarÃ¡ comisiÃ³n hasta ser cobrada.' : 'CortesÃ­a asumida por la clÃ­nica: cuenta como servicio realizado, pero no generarÃ¡ ingreso, deuda ni comisiones.'}
+                    {settlementType === 'receivable' ? 'El cliente no paga ahora. La deuda quedará registrada en Cuentas por cobrar y no generará comisión hasta ser cobrada.' : 'Cortesía asumida por la clínica: cuenta como servicio realizado, pero no generará ingreso, deuda ni comisiones.'}
                   </div>
                 )}
 
@@ -3153,7 +3153,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
 
                 {paymentMode === 'full_usd' && (
                   <div className="animate-slide-up" style={{ padding: '16px', backgroundColor: 'var(--bg-secondary)', borderRadius: '16px', marginBottom: '12px' }}>
-                    <FieldLabel required>MÃ©todo de Pago ($)</FieldLabel>
+                    <FieldLabel required>Método de Pago ($)</FieldLabel>
                     <div style={{ display: 'flex', gap: '6px' }}>
                       {['Efectivo', 'Zelle', 'Binance', 'Zinli'].map(m => (
                         <button 
@@ -3176,12 +3176,12 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                 {paymentMode === 'full_bs' && (
                   <div className="animate-slide-up" style={{ padding: '16px', backgroundColor: 'var(--bg-secondary)', borderRadius: '16px', marginBottom: '12px' }}>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '12px' }}>
-                      <label style={{ fontSize: '10px', fontWeight: '800', color: 'var(--text-muted)' }}>TOTAL EN BOLÃVARES (BS)</label>
+                      <label style={{ fontSize: '10px', fontWeight: '800', color: 'var(--text-muted)' }}>TOTAL EN BOLÍVARES (BS)</label>
                       <div style={{ fontWeight: '900', color: 'var(--gold-primary)', fontSize: '16px' }}>{formatCurrency(totalBs)} BS</div>
                     </div>
-                    <FieldLabel required>MÃ©todo de Pago (BS)</FieldLabel>
+                    <FieldLabel required>Método de Pago (BS)</FieldLabel>
                     <div style={{ display: 'flex', gap: '6px' }}>
-                      {['Pago MÃ³vil', 'Efectivo', 'Punto de venta'].map(m => (
+                      {['Pago Móvil', 'Efectivo', 'Punto de venta'].map(m => (
                         <button 
                           key={m}
                           onClick={() => {
@@ -3199,24 +3199,24 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                         >{m}</button>
                       ))}
                     </div>
-                    {['Pago MÃ³vil', 'Punto de venta'].includes(methodBs) && (
+                    {['Pago Móvil', 'Punto de venta'].includes(methodBs) && (
                       <div style={{ marginTop: '12px' }}>
                         <label style={{ fontSize: '9px', fontWeight: '900', color: 'var(--text-muted)', marginBottom: '7px', display: 'block' }}>
-                          {methodBs === 'Pago MÃ³vil' ? 'ÃšLTIMOS 4 DÃGITOS DE LA REFERENCIA' : 'REFERENCIA DEL PUNTO DE VENTA'}
+                          {methodBs === 'Pago Móvil' ? 'ÚLTIMOS 4 DÍGITOS DE LA REFERENCIA' : 'REFERENCIA DEL PUNTO DE VENTA'}
                         </label>
                         <input
                           type="text"
-                          inputMode={methodBs === 'Pago MÃ³vil' ? 'numeric' : 'text'}
-                          maxLength={methodBs === 'Pago MÃ³vil' ? 4 : 40}
+                          inputMode={methodBs === 'Pago Móvil' ? 'numeric' : 'text'}
+                          maxLength={methodBs === 'Pago Móvil' ? 4 : 40}
                           value={paymentReferenceBs}
                           onChange={(e) => {
-                            const value = methodBs === 'Pago MÃ³vil'
+                            const value = methodBs === 'Pago Móvil'
                               ? e.target.value.replace(/\D/g, '').slice(0, 4)
                               : e.target.value.slice(0, 40);
                             setPaymentReferenceBs(value);
                           }}
-                          placeholder={methodBs === 'Pago MÃ³vil' ? 'Ej. 4821' : 'Ej. 00123456'}
-                          style={{ width: '100%', height: '40px', padding: '0 12px', borderRadius: '10px', border: '1px solid rgba(0, 0, 0, 0.08)', background: 'rgba(0, 0, 0, 0.04)', color: '#111111', fontSize: '12px', fontWeight: '700', boxSizing: 'border-box' }}
+                          placeholder={methodBs === 'Pago Móvil' ? 'Ej. 4821' : 'Ej. 00123456'}
+                          style={{ width: '100%', height: '40px', padding: '0 12px', borderRadius: '10px', border: '1px solid rgba(0, 0, 0, 0.08)', background: 'rgba(0, 0, 0, 0.04)', color: 'white', fontSize: '12px', fontWeight: '700', boxSizing: 'border-box' }}
                         />
                       </div>
                     )}
@@ -3226,7 +3226,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                 {paymentMode === 'mixed' && (
                   <div className="animate-slide-up" style={{ padding: '16px', backgroundColor: 'var(--bg-secondary)', borderRadius: '16px', display: 'flex', flexDirection: 'column', gap: '12px' }}>
                     <div>
-                      <label style={{ fontSize: '9px', fontWeight: '900', color: 'var(--text-muted)', marginBottom: '8px', display: 'block' }}>1. PAGO EN DÃ“LARES ($)</label>
+                      <label style={{ fontSize: '9px', fontWeight: '900', color: 'var(--text-muted)', marginBottom: '8px', display: 'block' }}>1. PAGO EN DÓLARES ($)</label>
                       <div style={{ display: 'flex', gap: '8px', alignItems: 'center', marginBottom: '8px' }}>
                         <input 
                           type="number" 
@@ -3254,11 +3254,11 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                     </div>
 
                     <div style={{ borderTop: '1px solid rgba(0, 0, 0, 0.08)', paddingTop: '12px' }}>
-                      <label style={{ fontSize: '9px', fontWeight: '900', color: 'var(--text-muted)', marginBottom: '8px', display: 'block' }}>2. RESTANTE EN BOLÃVARES (BS)</label>
+                      <label style={{ fontSize: '9px', fontWeight: '900', color: 'var(--text-muted)', marginBottom: '8px', display: 'block' }}>2. RESTANTE EN BOLÍVARES (BS)</label>
                       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
                         <div style={{ fontWeight: '900', color: 'var(--gold-primary)', fontSize: '16px' }}>{formatCurrency(remainingBs)} BS</div>
                         <div style={{ display: 'flex', flex: 1.5, gap: '4px', flexWrap: 'wrap', marginLeft: '10px' }}>
-                          {['Pago MÃ³vil', 'Efectivo', 'Punto de venta'].map(m => (
+                          {['Pago Móvil', 'Efectivo', 'Punto de venta'].map(m => (
                             <button 
                               key={m}
                               onClick={() => {
@@ -3277,24 +3277,24 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                           ))}
                         </div>
                       </div>
-                      {['Pago MÃ³vil', 'Punto de venta'].includes(methodBs) && (
+                      {['Pago Móvil', 'Punto de venta'].includes(methodBs) && (
                         <div style={{ marginTop: '10px' }}>
                           <label style={{ fontSize: '9px', fontWeight: '900', color: 'var(--text-muted)', marginBottom: '7px', display: 'block' }}>
-                            {methodBs === 'Pago MÃ³vil' ? 'ÃšLTIMOS 4 DÃGITOS DE LA REFERENCIA' : 'REFERENCIA DEL PUNTO DE VENTA'}
+                            {methodBs === 'Pago Móvil' ? 'ÚLTIMOS 4 DÍGITOS DE LA REFERENCIA' : 'REFERENCIA DEL PUNTO DE VENTA'}
                           </label>
                           <input
                             type="text"
-                            inputMode={methodBs === 'Pago MÃ³vil' ? 'numeric' : 'text'}
-                            maxLength={methodBs === 'Pago MÃ³vil' ? 4 : 40}
+                            inputMode={methodBs === 'Pago Móvil' ? 'numeric' : 'text'}
+                            maxLength={methodBs === 'Pago Móvil' ? 4 : 40}
                             value={paymentReferenceBs}
                             onChange={(e) => {
-                              const value = methodBs === 'Pago MÃ³vil'
+                              const value = methodBs === 'Pago Móvil'
                                 ? e.target.value.replace(/\D/g, '').slice(0, 4)
                                 : e.target.value.slice(0, 40);
                               setPaymentReferenceBs(value);
                             }}
-                            placeholder={methodBs === 'Pago MÃ³vil' ? 'Ej. 4821' : 'Ej. 00123456'}
-                            style={{ width: '100%', height: '40px', padding: '0 12px', borderRadius: '10px', border: '1px solid rgba(0, 0, 0, 0.08)', background: 'rgba(0, 0, 0, 0.04)', color: '#111111', fontSize: '12px', fontWeight: '700', boxSizing: 'border-box' }}
+                            placeholder={methodBs === 'Pago Móvil' ? 'Ej. 4821' : 'Ej. 00123456'}
+                            style={{ width: '100%', height: '40px', padding: '0 12px', borderRadius: '10px', border: '1px solid rgba(0, 0, 0, 0.08)', background: 'rgba(0, 0, 0, 0.04)', color: 'white', fontSize: '12px', fontWeight: '700', boxSizing: 'border-box' }}
                           />
                         </div>
                       )}
@@ -3387,13 +3387,13 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                       <div style={{ width: '36px', height: '36px', borderRadius: '10px', background: 'linear-gradient(135deg, rgba(0, 0, 0, 0.04), rgba(0, 0, 0, 0.04))', border: '1px solid rgba(0, 0, 0, 0.08)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                         <ShoppingBag size={18} color="var(--gold-primary)" />
                       </div>
-                      <h2 style={{ fontWeight: '900', fontSize: '22px', letterSpacing: '-0.3px', color: '#111111' }}>Productos y CortesÃ­as</h2>
+                      <h2 style={{ fontWeight: '900', fontSize: '22px', letterSpacing: '-0.3px', color: 'white' }}>Productos y Cortesías</h2>
                     </div>
                     <p style={{ fontSize: '13px', color: 'var(--text-muted)', marginLeft: '46px' }}>
                       {inventory.filter(i => matchesInventorySalesGroup(i, productGroup) && i.name.toLowerCase().includes(debouncedProductSearch.toLowerCase())).length} opciones disponibles
                     </p>
                   </div>
-                   <button onClick={() => {setShowProductModal(false); setSearchTerm(''); setProductGroup('all');}} style={{ width: '44px', height: '44px', borderRadius: '50%', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', color: 'rgba(255,255,255,0.6)', fontSize: '20px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'all 0.2s', flexShrink: 0 }}>Ã—</button>
+                   <button onClick={() => {setShowProductModal(false); setSearchTerm(''); setProductGroup('all');}} style={{ width: '44px', height: '44px', borderRadius: '50%', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', color: 'rgba(255,255,255,0.6)', fontSize: '20px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'all 0.2s', flexShrink: 0 }}>×</button>
                 </div>
 
                 {/* Search */}
@@ -3405,7 +3405,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                     placeholder="Buscar por nombre..."
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
-                    style={{ width: '100%', height: '44px', padding: '0 44px', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', borderRadius: '14px', color: '#111111', fontSize: '14px', outline: 'none', boxSizing: 'border-box' }}
+                    style={{ width: '100%', height: '44px', padding: '0 44px', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', borderRadius: '14px', color: 'white', fontSize: '14px', outline: 'none', boxSizing: 'border-box' }}
                   />
                 </div>
                 <div style={{ display: 'flex', gap: '8px', overflowX: 'auto', padding: '4px 4px 16px 4px', margin: '-4px -4px 0 -4px' }}>
@@ -3466,19 +3466,19 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                                 </div>
                             }
                             {/* Stock badge */}
-                            <div style={{ position: 'absolute', top: '8px', right: '8px', padding: '3px 8px', borderRadius: '20px', background: isOutOfStock ? 'rgba(255,59,48,0.85)' : 'rgba(48,209,88,0.85)', backdropFilter: 'blur(6px)', fontSize: '10px', fontWeight: '800', color: '#111111', letterSpacing: '0.3px' }}>
-                              {isOutOfStock ? 'AGOTADO' : `Ã—${item.stock}`}
+                            <div style={{ position: 'absolute', top: '8px', right: '8px', padding: '3px 8px', borderRadius: '20px', background: isOutOfStock ? 'rgba(255,59,48,0.85)' : 'rgba(48,209,88,0.85)', backdropFilter: 'blur(6px)', fontSize: '10px', fontWeight: '800', color: 'white', letterSpacing: '0.3px' }}>
+                              {isOutOfStock ? 'AGOTADO' : `×${item.stock}`}
                             </div>
                           </div>
 
                           {/* Info area */}
                           <div style={{ padding: '12px 14px 14px' }}>
                             <div style={{ color: String(item.inventory_type).toLowerCase() === 'cafe' ? '#ff9f0a' : '#30d158', fontWeight: '850', fontSize: '9px', textTransform: 'uppercase', letterSpacing: '0.6px', marginBottom: '5px' }}>{getInventorySalesLabel(item)}</div>
-                            <div style={{ fontWeight: '800', fontSize: '13px', color: '#111111', marginBottom: '8px', lineHeight: '1.3' }}>{item.name}</div>
+                            <div style={{ fontWeight: '800', fontSize: '13px', color: 'white', marginBottom: '8px', lineHeight: '1.3' }}>{item.name}</div>
                             <div style={{ display: 'flex', alignItems: 'baseline', gap: '4px' }}>
                               <span style={{ color: 'var(--gold-primary)', fontWeight: '900', fontSize: '18px' }}>${item.price}</span>
                             </div>
-                            {rates?.usd > 0 && <div style={{ fontSize: '10px', color: 'var(--text-muted)', marginTop: '2px' }}>â‰ˆ {Math.round(item.price * rates.usd).toLocaleString()} Bs.</div>}
+                            {rates?.usd > 0 && <div style={{ fontSize: '10px', color: 'var(--text-muted)', marginTop: '2px' }}>≈ {Math.round(item.price * rates.usd).toLocaleString()} Bs.</div>}
                           </div>
                         </button>
                       );
@@ -3512,11 +3512,11 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                       <Zap size={20} color="var(--gold-primary)" />
                     </div>
                     <div>
-                      <h2 style={{ fontWeight: '900', fontSize: '20px', color: '#111111', marginBottom: '2px' }}>Servicios Extras</h2>
+                      <h2 style={{ fontWeight: '900', fontSize: '20px', color: 'white', marginBottom: '2px' }}>Servicios Extras</h2>
                       <p style={{ fontSize: '12px', color: 'var(--text-muted)' }}>{allExtras.length} extras disponibles</p>
                     </div>
 </div>
-                   <button onClick={() => setShowExtraModal(false)} style={{ width: '44px', height: '44px', borderRadius: '50%', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', color: 'rgba(255,255,255,0.5)', fontSize: '18px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>Ã—</button>
+                   <button onClick={() => setShowExtraModal(false)} style={{ width: '44px', height: '44px', borderRadius: '50%', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', color: 'rgba(255,255,255,0.5)', fontSize: '18px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>×</button>
                 </div>
               </div>
               {/* Items in a grid */}
@@ -3528,7 +3528,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                     if (cleanName.includes('endodoncia') || cleanName.includes('limpieza') || cleanName.includes('blanqueamiento')) {
                       return { Icon: GiTooth };
                     }
-                    if (cleanName.includes('hidrataciÃ³n') || cleanName.includes('hidratacion') || cleanName.includes('fluor')) {
+                    if (cleanName.includes('hidratación') || cleanName.includes('hidratacion') || cleanName.includes('fluor')) {
                       return { Icon: GiWaterDrop };
                     }
                     if (cleanName.includes('profundo')) {
@@ -3540,19 +3540,19 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                     if (cleanName.includes('mask') || cleanName.includes('mascarilla') || cleanName.includes('negra')) {
                       return { Icon: VenetianMask };
                     }
-                    if (cleanName.includes('nariz') || cleanName.includes('narÃ­z')) {
+                    if (cleanName.includes('nariz') || cleanName.includes('naríz')) {
                       return { Icon: GiNoseFront };
                     }
-                    if (cleanName.includes('oido') || cleanName.includes('oÃ­do') || cleanName.includes('oreja')) {
+                    if (cleanName.includes('oido') || cleanName.includes('oído') || cleanName.includes('oreja')) {
                       return { Icon: TbEar };
                     }
-                    if (cleanName.includes('exfoliacion') || cleanName.includes('exfoliaciÃ³n') || cleanName.includes('facial') || cleanName.includes('cutis') || cleanName.includes('limpieza')) {
+                    if (cleanName.includes('exfoliacion') || cleanName.includes('exfoliación') || cleanName.includes('facial') || cleanName.includes('cutis') || cleanName.includes('limpieza')) {
                       return { Icon: GiTowel };
                     }
                     if (cleanName.includes('ceja')) {
                       return { Icon: MdFace3 };
                     }
-                    if (cleanName.includes('muela') || cleanName.includes('extraccion') || cleanName.includes('cirugia') || cleanName.includes('cirugÃ­a')) {
+                    if (cleanName.includes('muela') || cleanName.includes('extraccion') || cleanName.includes('cirugia') || cleanName.includes('cirugía')) {
                       return { Icon: GiTooth };
                     }
                     return { Icon: Zap };
@@ -3576,7 +3576,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
 
                   return (
                     <article key={extra.id} className="pos-extra-card" style={{ display: 'flex', flexDirection: 'column', height: '230px', overflow: 'hidden', borderRadius: '16px', border: `1px solid ${isSelected ? 'var(--gold-primary)' : 'rgba(0, 0, 0, 0.08)'}`, background: isSelected ? 'rgba(17, 17, 17, 0.05)' : 'rgba(255,255,255,.025)', transition: 'all 0.2s' }}>
-                      <div role="button" tabIndex={0} onClick={() => isSelected ? toggleExtra() : handleAddExtra(extra)} onKeyDown={(e) => { if(e.key==='Enter'||e.key===' ') isSelected ? toggleExtra() : handleAddExtra(extra); }} style={{ padding: 0, border: 0, background: '#ffffff', color: 'inherit', cursor: 'pointer', textAlign: 'left', display: 'flex', flexDirection: 'column', height: '100%', outline: 'none' }}>
+                      <div role="button" tabIndex={0} onClick={() => isSelected ? toggleExtra() : handleAddExtra(extra)} onKeyDown={(e) => { if(e.key==='Enter'||e.key===' ') isSelected ? toggleExtra() : handleAddExtra(extra); }} style={{ padding: 0, border: 0, background: 'transparent', color: 'inherit', cursor: 'pointer', textAlign: 'left', display: 'flex', flexDirection: 'column', height: '100%', outline: 'none' }}>
                         <div style={{ height: '140px', width: '100%', position: 'relative', overflow: 'hidden', background: 'var(--bg-secondary)' }}>
                           <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--gold-primary)' }}>
                             <IconComponent size={32} strokeWidth={1.5} />
@@ -3591,7 +3591,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                           <span style={{ color: 'var(--gold-primary)', fontSize: '9px', fontWeight: 950, textTransform: 'uppercase', letterSpacing: '.55px' }}>Servicio Extra</span>
                           <h3 style={{ margin: '4px 0 6px', color: '#fff', fontSize: '13px', lineHeight: 1.2, fontWeight: 900, textTransform: 'capitalize', display: 'block' }}>{extra.name || 'Extra'}</h3>
                           <strong style={{ color: 'var(--gold-primary)', fontSize: '18px', lineHeight: 1, display: 'block' }}>${extra.price || 0}</strong>
-                          {rates?.usd > 0 && <span style={{ marginTop: '4px', display: 'block', color: 'rgba(255,255,255,0.5)', fontSize: '11.5px', fontWeight: 500 }}>â‰ˆ {Math.round((extra.price || 0) * rates.usd).toLocaleString('es-VE')} Bs</span>}
+                          {rates?.usd > 0 && <span style={{ marginTop: '4px', display: 'block', color: 'rgba(255,255,255,0.5)', fontSize: '11.5px', fontWeight: 500 }}>≈ {Math.round((extra.price || 0) * rates.usd).toLocaleString('es-VE')} Bs</span>}
                         </div>
                       </div>
                     </article>
@@ -3616,11 +3616,11 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                       <ToothIcon size={20} color="var(--gold-primary)" />
                     </div>
                     <div>
-                      <h2 style={{ fontWeight: '900', fontSize: '20px', color: '#111111', marginBottom: '2px' }}>CatÃ¡logo de Servicios</h2>
+                      <h2 style={{ fontWeight: '900', fontSize: '20px', color: 'white', marginBottom: '2px' }}>Catálogo de Servicios</h2>
                       <p style={{ fontSize: '12px', color: 'var(--text-muted)' }}>{allServices.length} servicios disponibles</p>
                     </div>
                   </div>
-                   <button onClick={() => setShowServiceModal(false)} style={{ width: '44px', height: '44px', borderRadius: '50%', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', color: 'rgba(255,255,255,0.5)', fontSize: '18px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>Ã—</button>
+                   <button onClick={() => setShowServiceModal(false)} style={{ width: '44px', height: '44px', borderRadius: '50%', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', color: 'rgba(255,255,255,0.5)', fontSize: '18px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>×</button>
                 </div>
               </div>
               {/* Items grid */}
@@ -3638,7 +3638,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
 
                   const getServiceIcon = (name) => {
                     const cleanName = (name || '').toLowerCase();
-                    if (cleanName.includes('niÃ±o') || cleanName.includes('niÃ±a') || cleanName.includes('kid')) return FaChild;
+                    if (cleanName.includes('niño') || cleanName.includes('niña') || cleanName.includes('kid')) return FaChild;
                     if (cleanName.includes('vip') || cleanName.includes('premium')) return MdWorkspacePremium;
                     if (cleanName.includes('tatuaje') || cleanName.includes('tattoo')) return PenTool;
                     if (cleanName.includes('muela') || cleanName.includes('extraccion') || cleanName.includes('cirugia')) return GiTooth;
@@ -3650,7 +3650,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
 
                   return (
                   <article key={service.id} className="pos-extra-card" style={{ display: 'flex', flexDirection: 'column', height: '230px', overflow: 'hidden', borderRadius: '16px', border: `1px solid ${isSelected ? 'var(--gold-primary)' : 'rgba(0, 0, 0, 0.08)'}`, background: isSelected ? 'rgba(17, 17, 17, 0.05)' : 'rgba(255,255,255,.025)', transition: 'all 0.2s' }}>
-                    <div role="button" tabIndex={0} onClick={() => isSelected ? toggleService() : handleAddService(service)} onKeyDown={(e) => { if(e.key==='Enter'||e.key===' ') isSelected ? toggleService() : handleAddService(service); }} style={{ padding: 0, border: 0, background: '#ffffff', color: 'inherit', cursor: 'pointer', textAlign: 'left', display: 'flex', flexDirection: 'column', height: '100%', outline: 'none' }}>
+                    <div role="button" tabIndex={0} onClick={() => isSelected ? toggleService() : handleAddService(service)} onKeyDown={(e) => { if(e.key==='Enter'||e.key===' ') isSelected ? toggleService() : handleAddService(service); }} style={{ padding: 0, border: 0, background: 'transparent', color: 'inherit', cursor: 'pointer', textAlign: 'left', display: 'flex', flexDirection: 'column', height: '100%', outline: 'none' }}>
                       <div style={{ height: '140px', width: '100%', position: 'relative', overflow: 'hidden', background: 'var(--bg-secondary)' }}>
                         <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--gold-primary)' }}>
                           <ServiceIcon size={32} />
@@ -3665,7 +3665,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                         <span style={{ color: 'var(--gold-primary)', fontSize: '9px', fontWeight: 950, textTransform: 'uppercase', letterSpacing: '.55px' }}>Servicio Base</span>
                         <h3 style={{ margin: '4px 0 6px', color: '#fff', fontSize: '13px', lineHeight: 1.2, fontWeight: 900, textTransform: 'capitalize', display: 'block' }}>{service.name || 'Servicio'}</h3>
                         <strong style={{ color: 'var(--gold-primary)', fontSize: '18px', lineHeight: 1, display: 'block' }}>${formatUsdAmount(service.price || 0)}</strong>
-                        {rates?.usd > 0 && <span style={{ marginTop: '4px', display: 'block', color: 'rgba(255,255,255,0.5)', fontSize: '11.5px', fontWeight: 500 }}>â‰ˆ {Math.round(Number(service.price || 0) * rates.usd).toLocaleString('es-VE')} Bs</span>}
+                        {rates?.usd > 0 && <span style={{ marginTop: '4px', display: 'block', color: 'rgba(255,255,255,0.5)', fontSize: '11.5px', fontWeight: 500 }}>≈ {Math.round(Number(service.price || 0) * rates.usd).toLocaleString('es-VE')} Bs</span>}
                       </div>
                     </div>
                   </article>
@@ -3692,8 +3692,8 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                       <ToothIcon size={20} color="var(--gold-primary)" />
                     </div>
                     <div>
-                      <h2 style={{ fontWeight: '900', fontSize: '20px', color: '#111111', margin: 0 }}>Asignar Profesional</h2>
-                      <span style={{ fontSize: '11px', color: 'var(--text-muted)', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Seleccionar OdontÃ³logo o Asistente</span>
+                      <h2 style={{ fontWeight: '900', fontSize: '20px', color: 'white', margin: 0 }}>Asignar Profesional</h2>
+                      <span style={{ fontSize: '11px', color: 'var(--text-muted)', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Seleccionar Odontólogo o Asistente</span>
                     </div>
                   </div>
                    <button onClick={() => { setShowBarberModal(false); setIsChangingBarber(false); }} style={{ width: '44px', height: '44px', borderRadius: '50%', background: 'rgba(0, 0, 0, 0.04)', border: 'none', color: 'rgba(255,255,255,0.6)', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'all 0.2s' }} onMouseEnter={e => e.currentTarget.style.color = '#ff453a'} onMouseLeave={e => e.currentTarget.style.color = 'rgba(255,255,255,0.6)'}>&times;</button>
@@ -3701,9 +3701,9 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
 
                 <p style={{ color: 'var(--text-secondary)', marginBottom: '24px', fontSize: '13px', lineHeight: '1.4' }}>
                   {isChangingBarber ? (
-                    "Selecciona el nuevo odontÃ³logo o asistente para esta cita."
+                    "Selecciona el nuevo odontólogo o asistente para esta cita."
                   ) : (
-                    <>Asigna la comisiÃ³n por el servicio <strong>{selectedServiceForBarber?.name}</strong> al profesional correspondiente.</>
+                    <>Asigna la comisión por el servicio <strong>{selectedServiceForBarber?.name}</strong> al profesional correspondiente.</>
                   )}
                 </p>
 
@@ -3721,7 +3721,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                       onChange={e => setCustomServicePrice(e.target.value)}
                       placeholder="Ej: 150"
                       autoFocus
-                      style={{ width: '100%', padding: '12px 14px', borderRadius: '12px', border: '1px solid rgba(0, 0, 0, 0.08)', background: 'rgba(255, 255, 255, 0.9)', color: '#111111', fontSize: '16px', fontWeight: '700', outline: 'none' }}
+                      style={{ width: '100%', padding: '12px 14px', borderRadius: '12px', border: '1px solid rgba(0, 0, 0, 0.08)', background: 'rgba(255, 255, 255, 0.9)', color: 'white', fontSize: '16px', fontWeight: '700', outline: 'none' }}
                     />
                   </div>
                 )}
@@ -3770,7 +3770,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                         )}
                       </div>
                       <div>
-                        <div style={{ fontWeight: '800', color: '#111111', fontSize: '15px' }}>{barber.name}</div>
+                        <div style={{ fontWeight: '800', color: 'white', fontSize: '15px' }}>{barber.name}</div>
                         <span style={{ fontSize: '11px', color: 'var(--text-muted)' }}>{barber.role?.split('|')[0]}</span>
                       </div>
                     </button>
@@ -3795,17 +3795,17 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
             <div className={`${cardClass.replace('global-modal-card', '')} glass-card`} style={{ maxWidth: 'min(560px, 90vw)', width: '100%', borderRadius: '24px', border: '1px solid rgba(0, 0, 0, 0.08)', padding: '28px', background: 'var(--bg-secondary)', boxShadow: '0 30px 60px -12px rgba(0,0,0,0.5)' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '24px' }}>
                 <h2 style={{ fontWeight: '900', fontSize: '20px' }}>Enlazar Citas en Espera</h2>
-                <button onClick={() => setShowLinkModal(false)} style={{ background: 'none', border: 'none', color: '#111111', fontSize: '24px', cursor: 'pointer' }}>&times;</button>
+                <button onClick={() => setShowLinkModal(false)} style={{ background: 'none', border: 'none', color: 'white', fontSize: '24px', cursor: 'pointer' }}>&times;</button>
               </div>
               
               <p style={{ color: 'var(--text-secondary)', marginBottom: '20px', fontSize: '13px' }}>
-                Selecciona los clientes que estÃ¡n en sillÃ³n o pendientes de cobro para cargarlos a la cuenta de <strong>{selectedApp?.clients?.name}</strong>.
+                Selecciona los clientes que están en sillón o pendientes de cobro para cargarlos a la cuenta de <strong>{selectedApp?.clients?.name}</strong>.
               </p>
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', maxHeight: '350px', overflowY: 'auto', paddingRight: '8px' }} className="panda-scrollbar">
                 {groupedActiveServices.filter(g => g.client_id !== selectedApp?.client_id && !linkedApps.some(la => la.client_id === g.client_id)).length === 0 ? (
                   <div style={{ padding: '20px', textAlign: 'center', color: 'var(--text-muted)', fontSize: '13px' }}>
-                    No hay otros clientes pendientes en sillÃ³n o por pagar.
+                    No hay otros clientes pendientes en sillón o por pagar.
                   </div>
                 ) : (
                   groupedActiveServices
@@ -3819,7 +3819,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                           style={{ padding: '14px 16px', borderRadius: '16px', border: '1px solid rgba(0, 0, 0, 0.08)', background: 'rgba(0, 0, 0, 0.04)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
                         >
                           <div>
-                            <div style={{ fontWeight: '800', fontSize: '14px', color: '#111111' }}>{group.client_name}</div>
+                            <div style={{ fontWeight: '800', fontSize: '14px', color: 'white' }}>{group.client_name}</div>
                             <div style={{ fontSize: '11px', color: 'var(--text-muted)', marginTop: '2px' }}>{sNames}</div>
                           </div>
                           <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
@@ -3865,7 +3865,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
         )}
       </AnimatedModal>
 
-      {/* â”€â”€ Pagos pendientes offline â”€â”€ */}
+      {/* ── Pagos pendientes offline ── */}
       <AnimatedModal isOpen={showOfflineModal}>
         {(overlayClass, cardClass) => (
           <div className={`${overlayClass} modal-centered-overlay`} style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(255, 255, 255, 0.9)', backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)', zIndex: 1000, display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '20px', paddingTop: 'max(20px, env(safe-area-inset-top, 20px))' }}>
@@ -3883,13 +3883,13 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                 <button onClick={() => setShowOfflineModal(false)} style={{ background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', color: 'rgba(255,255,255,0.7)', width: '44px', height: '44px', borderRadius: '12px', fontSize: '20px', lineHeight: 1, cursor: 'pointer', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>&times;</button>
               </div>
               <p style={{ color: 'var(--text-secondary)', margin: '10px 0 18px', fontSize: '12.5px', lineHeight: 1.5 }}>
-                Cobros que aÃºn no se sincronizaron con el servidor. Cuando vuelva la conexiÃ³n se reintentan solos; tambiÃ©n puedes forzar el reintento o descartar los que hayan quedado atascados.
+                Cobros que aún no se sincronizaron con el servidor. Cuando vuelva la conexión se reintentan solos; también puedes forzar el reintento o descartar los que hayan quedado atascados.
               </p>
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', maxHeight: '340px', overflowY: 'auto', paddingRight: '8px' }} className="panda-scrollbar">
                 {offlineItems.length === 0 ? (
                   <div style={{ padding: '20px', textAlign: 'center', color: 'var(--text-muted)', fontSize: '13px' }}>
-                    No hay pagos pendientes. Â¡Todo sincronizado! âœ…
+                    No hay pagos pendientes. ¡Todo sincronizado! ✅
                   </div>
                 ) : (
                   offlineItems.map(item => {
@@ -3902,7 +3902,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                       <div key={item.id} style={{ padding: '14px 16px', borderRadius: '16px', border: '1px solid rgba(0, 0, 0, 0.08)', background: 'rgba(0, 0, 0, 0.04)' }}>
                         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '12px' }}>
                           <div style={{ minWidth: 0 }}>
-                            <div style={{ fontWeight: '800', fontSize: '14px', color: '#111111' }}>{p.clientName || 'Cliente'}</div>
+                            <div style={{ fontWeight: '800', fontSize: '14px', color: 'white' }}>{p.clientName || 'Cliente'}</div>
                             <div style={{ fontSize: '11px', color: 'var(--text-muted)', marginTop: '2px' }}>{p.serviceName || 'Venta de productos'}</div>
                             {when && <div style={{ fontSize: '10px', color: 'var(--text-muted)', marginTop: '4px' }}>En cola desde {when}</div>}
                           </div>
@@ -3945,7 +3945,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                 </button>
                 <button
                   onClick={() => setShowOfflineModal(false)}
-                  style={{ padding: '10px 24px', borderRadius: '12px', fontWeight: '800', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', color: '#111111', cursor: 'pointer' }}
+                  style={{ padding: '10px 24px', borderRadius: '12px', fontWeight: '800', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', color: 'white', cursor: 'pointer' }}
                 >
                   Cerrar
                 </button>
@@ -4015,12 +4015,12 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
           >
             Cerrar
           </button>
-          <p style={{ marginTop: '10px', color: 'rgba(255,255,255,0.7)', fontSize: '12px', textAlign: 'center' }}>Vista previa â€” la factura final se genera al completar el cobro.</p>
+          <p style={{ marginTop: '10px', color: 'rgba(255,255,255,0.7)', fontSize: '12px', textAlign: 'center' }}>Vista previa — la factura final se genera al completar el cobro.</p>
         </div>,
         document.body
       )}
 
-      {/* TICKET DE IMPRESIÃ“N OCULTO Y MODAL DE Ã‰XITO */}
+      {/* TICKET DE IMPRESIÓN OCULTO Y MODAL DE ÉXITO */}
       {printTransaction && (
         <div style={{
           position: 'fixed',
@@ -4034,7 +4034,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
         }}>
           <div className="glass-card animate-scale-in" style={{ padding: '32px', borderRadius: '24px', textAlign: 'center', maxWidth: '400px', width: '90%' }}>
             <CheckCircle size={64} color="var(--success-color)" style={{ margin: '0 auto 20px auto' }} />
-            <h2 style={{ marginBottom: '12px', fontSize: '24px', fontWeight: '900' }}>Â¡Cobro Exitoso!</h2>
+            <h2 style={{ marginBottom: '12px', fontSize: '24px', fontWeight: '900' }}>¡Cobro Exitoso!</h2>
             <p style={{ color: 'var(--text-secondary)', marginBottom: '32px' }}>El pago de {printTransaction.client?.name} ha sido procesado.</p>
             
             <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
@@ -4062,10 +4062,10 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                   setPaymentMode('full_bs');
                   setSettlementType('paid');
                   setExchangeStaffId('');
-                  setMethodBs('Pago MÃ³vil');
+                  setMethodBs('Pago Móvil');
                   setPaymentReferenceBs('');
                 }}
-                style={{ width: '100%', padding: '16px', borderRadius: '14px', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', color: '#111111', fontWeight: '800', cursor: 'pointer' }}
+                style={{ width: '100%', padding: '16px', borderRadius: '14px', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', color: 'white', fontWeight: '800', cursor: 'pointer' }}
               >
                 Cerrar y Continuar
               </button>
@@ -4085,7 +4085,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
         mandatory
         onClose={() => setClinicalAfterPay(null)}
         onSaved={() => {
-          showToast('Historial clÃ­nico registrado. Servicio concluido.', 'success');
+          showToast('Historial clínico registrado. Servicio concluido.', 'success');
           setClinicalAfterPay(null);
         }}
       />
@@ -4094,6 +4094,4 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
 };
 
 export default CheckoutPOS;
-
-
 

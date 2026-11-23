@@ -1,4 +1,4 @@
-﻿import { useState, useEffect, useMemo, useRef } from 'react';
+import { useState, useEffect, useMemo, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { useNavigate, useLocation, Link } from 'react-router-dom';
 import { 
@@ -65,13 +65,13 @@ import heroSlide2 from '../../assets/hero2.webp';
 import heroSlide3 from '../../assets/hero3.webp';
 import heroSlide4 from '../../assets/hero4.webp';
 
-const DENTAL_CATEGORIES = ['EstÃ©tica', 'Ortodoncia', 'Endodoncia', 'OdontopediatrÃ­a'];
+const DENTAL_CATEGORIES = ['Estética', 'Ortodoncia', 'Endodoncia', 'Odontopediatría'];
 
 const LEGACY_CATEGORY_KEYS = {
-  Kids: 'OdontopediatrÃ­a',
-  Corte: 'EstÃ©tica',
-  Barba: 'EstÃ©tica',
-  Tatuajes: 'EstÃ©tica',
+  Kids: 'Odontopediatría',
+  Corte: 'Estética',
+  Barba: 'Estética',
+  Tatuajes: 'Estética',
 };
 
 const toWizardCategoryKey = (key) => LEGACY_CATEGORY_KEYS[key] || key || null;
@@ -80,7 +80,7 @@ const openCategoryForService = (service) => {
   const category = service?.category || '';
   const nameLower = (service?.name || '').toLowerCase();
   if (DENTAL_CATEGORIES.includes(category)) return category;
-  if (category === 'OdontologÃ­a' || category === 'Servicios Dentales' || category === 'Tratamientos Dentales' || category === 'EstÃ©tica Dental' || nameLower.includes('muela') || nameLower.includes('empaste')) return 'OdontologÃ­a';
+  if (category === 'Odontología' || category === 'Servicios Dentales' || category === 'Tratamientos Dentales' || category === 'Estética Dental' || nameLower.includes('muela') || nameLower.includes('empaste')) return 'Odontología';
   return null;
 };
 
@@ -123,124 +123,124 @@ import BarberProfileView from '../components/BarberProfileView';
 export const getBarberVideo = () => null;
 
 const BARBER_DETAILS = {
-  'Ã¡ngel serrano': {
+  'ángel serrano': {
     rating: '4.9',
     reviews_count: 512,
-    specialties: ['EstÃ©tica dental', 'Blanqueamiento', 'Limpieza', 'DiseÃ±o de sonrisa'],
+    specialties: ['Estética dental', 'Blanqueamiento', 'Limpieza', 'Diseño de sonrisa'],
     testimonials: [
-      { client: 'Carlos M.', text: 'Excelente atenciÃ³n y mucha precisiÃ³n en el tratamiento. 100% recomendado.', service: 'Limpieza dental' },
-      { client: 'AndrÃ©s V.', text: 'La experiencia completa es de otro nivel. VolverÃ© sin duda.', service: 'Blanqueamiento' },
-      { client: 'Diego R.', text: 'El ambiente y el servicio son espectaculares. Un gran profesional.', service: 'DiseÃ±o de sonrisa' }
+      { client: 'Carlos M.', text: 'Excelente atención y mucha precisión en el tratamiento. 100% recomendado.', service: 'Limpieza dental' },
+      { client: 'Andrés V.', text: 'La experiencia completa es de otro nivel. Volveré sin duda.', service: 'Blanqueamiento' },
+      { client: 'Diego R.', text: 'El ambiente y el servicio son espectaculares. Un gran profesional.', service: 'Diseño de sonrisa' }
     ]
   },
   'moret serrano': {
     rating: '4.8',
     reviews_count: 240,
-    specialties: ['Ortodoncia', 'Alineadores', 'Control', 'EstÃ©tica'],
+    specialties: ['Ortodoncia', 'Alineadores', 'Control', 'Estética'],
     testimonials: [
-      { client: 'JosÃ© P.', text: 'Mi alineador quedÃ³ impecable, muy detallista en cada revisiÃ³n.', service: 'Ortodoncia' },
-      { client: 'Mateo L.', text: 'Los resultados hablan por sÃ­ solos. Muy recomendado.', service: 'Alineadores' },
-      { client: 'Santi G.', text: 'Gran trato y un seguimiento espectacular.', service: 'Control ortodÃ³ncico' }
+      { client: 'José P.', text: 'Mi alineador quedó impecable, muy detallista en cada revisión.', service: 'Ortodoncia' },
+      { client: 'Mateo L.', text: 'Los resultados hablan por sí solos. Muy recomendado.', service: 'Alineadores' },
+      { client: 'Santi G.', text: 'Gran trato y un seguimiento espectacular.', service: 'Control ortodóncico' }
     ]
   },
-  'abraham dÃ­az': {
+  'abraham díaz': {
     rating: '4.9',
     reviews_count: 310,
-    specialties: ['Endodoncia', 'Urgencias', 'Conservadora', 'DiagnÃ³stico'],
+    specialties: ['Endodoncia', 'Urgencias', 'Conservadora', 'Diagnóstico'],
     testimonials: [
       { client: 'Javier M.', text: 'Gran profesional. Sabe exactamente lo que necesitas.', service: 'Endodoncia' },
       { client: 'Felipe D.', text: 'Excelente servicio, una experiencia muy relajante.', service: 'Tratamiento de conducto' },
       { client: 'Carlos T.', text: 'El mejor cuidado que me han dado, sin molestias.', service: 'Conservadora' }
     ]
   },
-  'alejandro ramÃ­rez': {
+  'alejandro ramírez': {
     rating: '4.7',
     reviews_count: 156,
-    specialties: ['EstÃ©tica', 'Resinas', 'DiseÃ±o', 'Color'],
+    specialties: ['Estética', 'Resinas', 'Diseño', 'Color'],
     testimonials: [
-      { client: 'Lucas B.', text: 'SÃºper creativo. El diseÃ±o de mi sonrisa es Ãºnico.', service: 'DiseÃ±o de sonrisa' },
-      { client: 'Rodrigo S.', text: 'Muy buen resultado y el servicio excelente.', service: 'Resinas estÃ©ticas' },
-      { client: 'Tomas C.', text: 'Muy buena energÃ­a en la clÃ­nica y el tratamiento genial.', service: 'EstÃ©tica dental' }
+      { client: 'Lucas B.', text: 'Súper creativo. El diseño de mi sonrisa es único.', service: 'Diseño de sonrisa' },
+      { client: 'Rodrigo S.', text: 'Muy buen resultado y el servicio excelente.', service: 'Resinas estéticas' },
+      { client: 'Tomas C.', text: 'Muy buena energía en la clínica y el tratamiento genial.', service: 'Estética dental' }
     ]
   },
   'jeff carrero': {
     rating: '4.8',
     reviews_count: 189,
-    specialties: ['EstÃ©tica', 'Blanqueamiento', 'Resinas', 'DiseÃ±o'],
+    specialties: ['Estética', 'Blanqueamiento', 'Resinas', 'Diseño'],
     testimonials: [
-      { client: 'Marcos A.', text: 'Excelente trabajo estÃ©tico y el resultado quedÃ³ perfecto.', service: 'Blanqueamiento' },
-      { client: 'Daniel V.', text: 'Muy profesional y atento a los detalles.', service: 'Resinas estÃ©ticas' },
-      { client: 'Juan M.', text: 'Muy buena experiencia, la atenciÃ³n es increÃ­ble.', service: 'Limpieza dental' }
+      { client: 'Marcos A.', text: 'Excelente trabajo estético y el resultado quedó perfecto.', service: 'Blanqueamiento' },
+      { client: 'Daniel V.', text: 'Muy profesional y atento a los detalles.', service: 'Resinas estéticas' },
+      { client: 'Juan M.', text: 'Muy buena experiencia, la atención es increíble.', service: 'Limpieza dental' }
     ]
   },
   'juan herrera': {
     rating: '4.9',
     reviews_count: 324,
-    specialties: ['PrevenciÃ³n', 'Periodoncia', 'Limpieza', 'Control', 'AsesorÃ­a'],
+    specialties: ['Prevención', 'Periodoncia', 'Limpieza', 'Control', 'Asesoría'],
     testimonials: [
-      { client: 'SebastiÃ¡n L.', text: 'Sumamente meticuloso. La limpieza profunda fue una maravilla.', service: 'Limpieza dental' },
-      { client: 'HÃ©ctor P.', text: 'Gran atenciÃ³n al detalle, el control y la revisiÃ³n quedaron perfectos.', service: 'Control dental' },
-      { client: 'Diego R.', text: 'Mis encÃ­as nunca se habÃ­an sentido tan bien. Gran profesional.', service: 'Periodoncia' }
+      { client: 'Sebastián L.', text: 'Sumamente meticuloso. La limpieza profunda fue una maravilla.', service: 'Limpieza dental' },
+      { client: 'Héctor P.', text: 'Gran atención al detalle, el control y la revisión quedaron perfectos.', service: 'Control dental' },
+      { client: 'Diego R.', text: 'Mis encías nunca se habían sentido tan bien. Gran profesional.', service: 'Periodoncia' }
     ]
   },
   'mark cardozo': {
     rating: '4.9',
     reviews_count: 420,
-    specialties: ['EstÃ©tica', 'Blanqueamiento', 'DiseÃ±o de sonrisa', 'Ortodoncia'],
+    specialties: ['Estética', 'Blanqueamiento', 'Diseño de sonrisa', 'Ortodoncia'],
     testimonials: [
-      { client: 'FabiÃ¡n K.', text: 'Su trabajo es de cirujano. Un resultado minimalista impecable.', service: 'DiseÃ±o de sonrisa' },
-      { client: 'MatÃ­as S.', text: 'Es mi tercera sesiÃ³n y como siempre, el trato y la precisiÃ³n de 10.', service: 'Blanqueamiento' },
-      { client: 'RenÃ© P.', text: 'Muy higiÃ©nico y profesional, te asesora genial con el plan de tratamiento.', service: 'EstÃ©tica dental' }
+      { client: 'Fabián K.', text: 'Su trabajo es de cirujano. Un resultado minimalista impecable.', service: 'Diseño de sonrisa' },
+      { client: 'Matías S.', text: 'Es mi tercera sesión y como siempre, el trato y la precisión de 10.', service: 'Blanqueamiento' },
+      { client: 'René P.', text: 'Muy higiénico y profesional, te asesora genial con el plan de tratamiento.', service: 'Estética dental' }
     ]
   },
   'marko cardozo': {
     rating: '4.9',
     reviews_count: 420,
-    specialties: ['EstÃ©tica', 'Blanqueamiento', 'DiseÃ±o de sonrisa', 'Ortodoncia'],
+    specialties: ['Estética', 'Blanqueamiento', 'Diseño de sonrisa', 'Ortodoncia'],
     testimonials: [
-      { client: 'FabiÃ¡n K.', text: 'Su trabajo es de cirujano. Un resultado minimalista impecable.', service: 'DiseÃ±o de sonrisa' },
-      { client: 'MatÃ­as S.', text: 'Es mi tercera sesiÃ³n y como siempre, el trato y la precisiÃ³n de 10.', service: 'Blanqueamiento' },
-      { client: 'RenÃ© P.', text: 'Muy higiÃ©nico y profesional, te asesora genial con el plan de tratamiento.', service: 'EstÃ©tica dental' }
+      { client: 'Fabián K.', text: 'Su trabajo es de cirujano. Un resultado minimalista impecable.', service: 'Diseño de sonrisa' },
+      { client: 'Matías S.', text: 'Es mi tercera sesión y como siempre, el trato y la precisión de 10.', service: 'Blanqueamiento' },
+      { client: 'René P.', text: 'Muy higiénico y profesional, te asesora genial con el plan de tratamiento.', service: 'Estética dental' }
     ]
   },
-  'josÃ© cordero': {
+  'josé cordero': {
     rating: '4.9',
     reviews_count: 380,
-    specialties: ['EstÃ©tica', 'Resinas', 'DiseÃ±o', 'Blanqueamiento'],
+    specialties: ['Estética', 'Resinas', 'Diseño', 'Blanqueamiento'],
     testimonials: [
-      { client: 'JuliÃ¡n G.', text: 'Su trabajo estÃ©tico es increÃ­ble, cuidÃ³ cada detalle de mi sonrisa.', service: 'Resinas estÃ©ticas' },
-      { client: 'Franco M.', text: 'Excelente profesional, todo quedÃ³ perfecto y muy limpio el consultorio.', service: 'Blanqueamiento' },
-      { client: 'AdriÃ¡n L.', text: 'Muy buena vibra en la sesiÃ³n y el acabado finÃ­simo.', service: 'DiseÃ±o de sonrisa' }
+      { client: 'Julián G.', text: 'Su trabajo estético es increíble, cuidó cada detalle de mi sonrisa.', service: 'Resinas estéticas' },
+      { client: 'Franco M.', text: 'Excelente profesional, todo quedó perfecto y muy limpio el consultorio.', service: 'Blanqueamiento' },
+      { client: 'Adrián L.', text: 'Muy buena vibra en la sesión y el acabado finísimo.', service: 'Diseño de sonrisa' }
     ]
   },
-  'kevin farÃ­as': {
+  'kevin farías': {
     rating: '4.8',
     reviews_count: 215,
-    specialties: ['PrevenciÃ³n', 'Limpieza', 'Periodoncia', 'Control'],
+    specialties: ['Prevención', 'Limpieza', 'Periodoncia', 'Control'],
     testimonials: [
-      { client: 'Samuel D.', text: 'La limpieza y el cuidado de encÃ­as con Kevin son espectaculares.', service: 'Limpieza dental' },
-      { client: 'Gustavo F.', text: 'Kevin es un experto explicando el tratamiento. Sabe quÃ© conviene a tu boca.', service: 'Control dental' },
-      { client: 'Bruno R.', text: 'AtenciÃ³n excelente, muy detallista con cada zona.', service: 'Periodoncia' }
+      { client: 'Samuel D.', text: 'La limpieza y el cuidado de encías con Kevin son espectaculares.', service: 'Limpieza dental' },
+      { client: 'Gustavo F.', text: 'Kevin es un experto explicando el tratamiento. Sabe qué conviene a tu boca.', service: 'Control dental' },
+      { client: 'Bruno R.', text: 'Atención excelente, muy detallista con cada zona.', service: 'Periodoncia' }
     ]
   },
   'kevin farias': {
     rating: '4.8',
     reviews_count: 215,
-    specialties: ['PrevenciÃ³n', 'Limpieza', 'Periodoncia', 'Control'],
+    specialties: ['Prevención', 'Limpieza', 'Periodoncia', 'Control'],
     testimonials: [
-      { client: 'Samuel D.', text: 'La limpieza y el cuidado de encÃ­as con Kevin son espectaculares.', service: 'Limpieza dental' },
-      { client: 'Gustavo F.', text: 'Kevin es un experto explicando el tratamiento. Sabe quÃ© conviene a tu boca.', service: 'Control dental' },
-      { client: 'Bruno R.', text: 'AtenciÃ³n excelente, muy detallista con cada zona.', service: 'Periodoncia' }
+      { client: 'Samuel D.', text: 'La limpieza y el cuidado de encías con Kevin son espectaculares.', service: 'Limpieza dental' },
+      { client: 'Gustavo F.', text: 'Kevin es un experto explicando el tratamiento. Sabe qué conviene a tu boca.', service: 'Control dental' },
+      { client: 'Bruno R.', text: 'Atención excelente, muy detallista con cada zona.', service: 'Periodoncia' }
     ]
   },
   'cesia zuleta': {
     rating: '4.9',
     reviews_count: 142,
-    specialties: ['Higiene', 'PrevenciÃ³n', 'Urgencias', 'Tratamientos'],
+    specialties: ['Higiene', 'Prevención', 'Urgencias', 'Tratamientos'],
     testimonials: [
       { client: 'Gabriel J.', text: 'La higiene y el cuidado durante la cita son de otro planeta.', service: 'Limpieza dental' },
-      { client: 'Nico S.', text: 'Excelente atenciÃ³n y cuidado, muy profesional.', service: 'PrevenciÃ³n' },
-      { client: 'Pedro V.', text: 'Muy buena tÃ©cnica, la cita fue rapidita y sin molestias.', service: 'Higiene dental' }
+      { client: 'Nico S.', text: 'Excelente atención y cuidado, muy profesional.', service: 'Prevención' },
+      { client: 'Pedro V.', text: 'Muy buena técnica, la cita fue rapidita y sin molestias.', service: 'Higiene dental' }
     ]
   }
 };
@@ -255,7 +255,7 @@ export const getBarberDetails = (barberName) => {
   return {
     rating: '4.8',
     reviews_count: 120,
-    specialties: ['EstÃ©tica', 'PrevenciÃ³n', 'Ortodoncia'],
+    specialties: ['Estética', 'Prevención', 'Ortodoncia'],
     testimonials: [
       { client: 'Cliente Dientes Sanos', text: 'Excelente servicio, muy profesional y buena onda.', service: 'Limpieza dental' }
     ]
@@ -285,34 +285,34 @@ export const getNormalizedSpecialty = (barber) => {
 export const getBarberBiography = (barber) => {
   const name = barber?.name?.toLowerCase() || '';
   if (name.includes('kevin')) {
-    return 'Especialista certificado en prevenciÃ³n y salud encÃ­as. Apasionado por la higiene meticulosa y por explicar cada paso para que tu boca se sienta cuidada.';
+    return 'Especialista certificado en prevención y salud encías. Apasionado por la higiene meticulosa y por explicar cada paso para que tu boca se sienta cuidada.';
   }
-  if (name.includes('Ã¡ngel') || name.includes('angel')) {
-    return 'Fundador de Dientes Sanos. Con aÃ±os de experiencia, me especializo en odontologÃ­a estÃ©tica y el cuidado integral de la salud bucal de la mÃ¡s alta calidad.';
+  if (name.includes('ángel') || name.includes('angel')) {
+    return 'Fundador de Dientes Sanos. Con años de experiencia, me especializo en odontología estética y el cuidado integral de la salud bucal de la más alta calidad.';
   }
   if (name.includes('moret')) {
-    return 'Especialista en ortodoncia y alineadores. Apasionado por la precisiÃ³n de cada control y por lograr sonrisas sanas y bien alineadas.';
+    return 'Especialista en ortodoncia y alineadores. Apasionado por la precisión de cada control y por lograr sonrisas sanas y bien alineadas.';
   }
   if (name.includes('jeff')) {
-    return 'Especialista en estÃ©tica dental y blanqueamiento. Experto en transformar tu sonrisa cuidando el equilibrio natural de cada pieza dental.';
+    return 'Especialista en estética dental y blanqueamiento. Experto en transformar tu sonrisa cuidando el equilibrio natural de cada pieza dental.';
   }
   if (name.includes('juan')) {
-    return 'Maestro en prevenciÃ³n y periodoncia. Me enfoco en brindar una experiencia relajante y un cuidado detallado para que tu sonrisa luzca sana y fuerte.';
+    return 'Maestro en prevención y periodoncia. Me enfoco en brindar una experiencia relajante y un cuidado detallado para que tu sonrisa luzca sana y fuerte.';
   }
   if (name.includes('alejandro')) {
     return 'Especialista en resinas y tratamientos conservadores. Mi objetivo es que cada paciente recupere su sonrisa con un enfoque personalizado y detallado.';
   }
   if (name.includes('abraham')) {
-    return 'Experto en endodoncia y tratamientos de conducto. Dedicado al 100% a la precisiÃ³n milimÃ©trica en cada procedimiento y a la total satisfacciÃ³n de quienes confÃ­an en mis manos.';
+    return 'Experto en endodoncia y tratamientos de conducto. Dedicado al 100% a la precisión milimétrica en cada procedimiento y a la total satisfacción de quienes confían en mis manos.';
   }
   if (name.includes('mark') || name.includes('marco')) {
-    return 'Especialista en odontologÃ­a estÃ©tica. Combino diseÃ±o de sonrisa y blanqueamiento para lograr resultados naturales con mÃ¡xima precisiÃ³n e higiene.';
+    return 'Especialista en odontología estética. Combino diseño de sonrisa y blanqueamiento para lograr resultados naturales con máxima precisión e higiene.';
   }
-  if (name.includes('josÃ©') || name.includes('jose')) {
-    return 'Especialista en estÃ©tica dental y resinas. Mi pasiÃ³n es devolver la confianza a tu sonrisa con el mÃ¡ximo detalle y cuidado tÃ©cnico.';
+  if (name.includes('josé') || name.includes('jose')) {
+    return 'Especialista en estética dental y resinas. Mi pasión es devolver la confianza a tu sonrisa con el máximo detalle y cuidado técnico.';
   }
   if (name.includes('cesia')) {
-    return 'Experta en higiene dental, prevenciÃ³n y urgencias. Comprometida con brindarte un momento de confort y tranquilidad antes y despuÃ©s de tu cita.';
+    return 'Experta en higiene dental, prevención y urgencias. Comprometida con brindarte un momento de confort y tranquilidad antes y después de tu cita.';
   }
 
   // Fallbacks for database overrides
@@ -323,7 +323,7 @@ export const getBarberBiography = (barber) => {
   if (barber?.biography && !barber.biography.trim().startsWith('{') && barber.biography.trim().length > 10) {
     return barber.biography;
   }
-  return 'Especialista en prevenciÃ³n, estÃ©tica y cuidado integral. Enfocado en brindar una experiencia confiable a travÃ©s de detalles que definen tu sonrisa.';
+  return 'Especialista en prevención, estética y cuidado integral. Enfocado en brindar una experiencia confiable a través de detalles que definen tu sonrisa.';
 };
 
 export const getBarberStats = (barber) => {
@@ -333,49 +333,49 @@ export const getBarberStats = (barber) => {
   // Custom default values based on employee to look more realistic and unique
   let defServices = '324';
   let defHappy = '98%';
-  let defExp = '5 aÃ±os';
+  let defExp = '5 años';
   let defLoc = barber?.location || 'Consultorio Central';
   
-  if (name.includes('Ã¡ngel') || name.includes('angel')) {
+  if (name.includes('ángel') || name.includes('angel')) {
     defServices = '780+';
     defHappy = '99%';
-    defExp = '8 aÃ±os';
+    defExp = '8 años';
   } else if (name.includes('moret')) {
     defServices = '520+';
     defHappy = '98%';
-    defExp = '4 aÃ±os';
+    defExp = '4 años';
   } else if (name.includes('abraham')) {
     defServices = '310+';
     defHappy = '98.5%';
-    defExp = '5 aÃ±os';
+    defExp = '5 años';
   } else if (name.includes('alejandro')) {
     defServices = '280+';
     defHappy = '96%';
-    defExp = '3 aÃ±os';
+    defExp = '3 años';
   } else if (name.includes('jeff')) {
     defServices = '340+';
     defHappy = '97.5%';
-    defExp = '4 aÃ±os';
+    defExp = '4 años';
   } else if (name.includes('juan')) {
     defServices = '460+';
     defHappy = '98.8%';
-    defExp = '6 aÃ±os';
+    defExp = '6 años';
   } else if (name.includes('mark') || name.includes('marco')) {
     defServices = '220+';
     defHappy = '99.2%';
-    defExp = '5 aÃ±os';
-  } else if (name.includes('josÃ©') || name.includes('jose')) {
+    defExp = '5 años';
+  } else if (name.includes('josé') || name.includes('jose')) {
     defServices = '410+';
     defHappy = '98.6%';
-    defExp = '7 aÃ±os';
+    defExp = '7 años';
   } else if (name.includes('kevin')) {
     defServices = '290+';
     defHappy = '97.8%';
-    defExp = '3 aÃ±os';
+    defExp = '3 años';
   } else if (name.includes('cesia')) {
     defServices = '640+';
     defHappy = '99.5%';
-    defExp = '2 aÃ±os';
+    defExp = '2 años';
   }
   
   return {
@@ -470,7 +470,7 @@ function InstagramReelCard({ post, idx, onOpen }) {
       {hasImage ? (
         <img
           src={post.image}
-          alt={post.caption || 'PublicaciÃ³n de Dientes Sanos en Instagram'}
+          alt={post.caption || 'Publicación de Dientes Sanos en Instagram'}
           loading="lazy"
           className="w-full h-full object-cover block transition-transform duration-500 md:group-hover:scale-105"
         />
@@ -499,10 +499,10 @@ function InstagramReelCard({ post, idx, onOpen }) {
       {/* Hover Overlay */}
       <div className="absolute inset-0 bg-black/0 md:bg-black/0 md:group-hover:bg-black/50 opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center gap-1.5 text-white text-[10px] font-extrabold z-10 pointer-events-none">
         <span className="bg-[#111111] text-white py-1.5 px-3.5 rounded-lg uppercase tracking-wider scale-90 md:group-hover:scale-100 transition-transform duration-300">
-          {hasImage ? 'VER EN INSTAGRAM' : 'PRÃ“XIMAMENTE'}
+          {hasImage ? 'VER EN INSTAGRAM' : 'PRÓXIMAMENTE'}
         </span>
         {hasImage && post?.likes ? (
-          <span className="text-[8px] text-[#d9c08f] uppercase tracking-widest mt-1">â™¥ {post.likes}</span>
+          <span className="text-[8px] text-[#d9c08f] uppercase tracking-widest mt-1">♥ {post.likes}</span>
         ) : (
           <span className="text-[7.5px] text-[#d9c08f]/105 uppercase tracking-widest mt-1">Contenido del perfil</span>
         )}
@@ -540,7 +540,7 @@ const getServiceIcon = (service) => {
 };
 
 // Availability is now controlled solely by the manual "Abierta/Cerrada" toggle
-// (system_settings.store_is_open), not by a weekly schedule â€” while open, clients
+// (system_settings.store_is_open), not by a weekly schedule — while open, clients
 // can book any slot around the clock.
 function generateTimeSlotsForDate() {
   const slots = [];
@@ -631,9 +631,9 @@ const FadeInUp = ({ children, delay = 0, className = "", ...props }) => (
 );
 
 export default function BookAppointment({ isEmbedded = false }) {
-  // El interruptor manual del dashboard (system_settings.store_is_open) es el Ãºnico
+  // El interruptor manual del dashboard (system_settings.store_is_open) es el único
   // control de disponibilidad: abierto = se puede reservar cualquier hora, cerrado =
-  // no se puede agendar en absoluto. Se relee cada 60 s para reflejar el cambio del dueÃ±o.
+  // no se puede agendar en absoluto. Se relee cada 60 s para reflejar el cambio del dueño.
   const [storeIsOpen, setStoreIsOpen] = useState(true);
 
   useEffect(() => {
@@ -642,7 +642,7 @@ export default function BookAppointment({ isEmbedded = false }) {
       try {
         const open = await publicService.getStoreOpen();
         if (alive) setStoreIsOpen(open);
-      } catch { /* mantener Ãºltimo */ }
+      } catch { /* mantener último */ }
     };
     sync();
     const interval = setInterval(sync, 60000);
@@ -650,8 +650,8 @@ export default function BookAppointment({ isEmbedded = false }) {
   }, []);
 
   const storeStatus = storeIsOpen
-    ? { isOpen: true, text: 'Abierto Â· Reservas disponibles' }
-    : { isOpen: false, text: 'Cerrado temporalmente Â· No se puede agendar' };
+    ? { isOpen: true, text: 'Abierto · Reservas disponibles' }
+    : { isOpen: false, text: 'Cerrado temporalmente · No se puede agendar' };
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -676,7 +676,7 @@ const videoRef = useRef(null);
           if (isEnd) {
             el.scrollTo({ left: 0, behavior: 'smooth' });
           } else {
-            // Step by the actual card width + gap (24px, gap-6) instead of a fixed guess â€”
+            // Step by the actual card width + gap (24px, gap-6) instead of a fixed guess —
             // a mismatched step drifts out of sync with the snap points every cycle, so no
             // card ever lands centered.
             const card = el.querySelector('[data-review-card]');
@@ -719,7 +719,7 @@ const videoRef = useRef(null);
   const [cafeVideoRef] = useLazyMount('600px 0px');
   const [kidsVideoRef] = useLazyMount('600px 0px');
   // Solo controla el fade de la FOTO del hero (texto y CTA aparecen aparte, de inmediato,
-  // sin esperarla) â€” se activa cuando la imagen realmente termino de cargar, no con un
+  // sin esperarla) — se activa cuando la imagen realmente termino de cargar, no con un
   // timer ciego, para que el fade se vea sincronizado con la llegada real de la foto.
   const [heroPhotoLoaded, setHeroPhotoLoaded] = useState(false);
   const [activeMuralIdx, setActiveMuralIdx] = useState(0);
@@ -738,15 +738,15 @@ const videoRef = useRef(null);
   }, []);
   const [bentoGridItems, setBentoGridItems] = useState([
     { id: 1, type: 'video', src: null, tag: 'Experiencia', title: 'Dientes Sanos', colSpan: 3, rowSpan: 6, posX: 50, posY: 50 },
-    { id: 2, type: 'image', src: mural3, tag: 'Cuidado', title: 'PrevenciÃ³n', colSpan: 3, rowSpan: 4, posX: 38, posY: 26 },
-    { id: 3, type: 'image', src: mural1, tag: 'EstÃ©tica', title: 'PrecisiÃ³n', colSpan: 3, rowSpan: 4, posX: 50, posY: 50 },
+    { id: 2, type: 'image', src: mural3, tag: 'Cuidado', title: 'Prevención', colSpan: 3, rowSpan: 4, posX: 38, posY: 26 },
+    { id: 3, type: 'image', src: mural1, tag: 'Estética', title: 'Precisión', colSpan: 3, rowSpan: 4, posX: 50, posY: 50 },
     { id: 4, type: 'video', src: null, tag: 'Relax', title: 'Consulta', colSpan: 3, rowSpan: 6, posX: 50, posY: 50 },
     { id: 10, type: 'image', src: mural9, tag: 'Comunidad', title: 'La Experiencia', colSpan: 3, rowSpan: 5, posX: 35, posY: 11 },
-    { id: 6, type: 'image', src: mural4, tag: 'AtenciÃ³n', title: 'Detalles', colSpan: 3, rowSpan: 5, posX: 50, posY: 18 },
-    { id: 7, type: 'image', src: mural5, tag: 'CafÃ©', title: 'Disfruta', colSpan: 3, rowSpan: 6, posX: 50, posY: 52 },
-    { id: 5, type: 'image', src: mural2, tag: 'DiseÃ±o', title: 'Tu Sonrisa', colSpan: 3, rowSpan: 6, posX: 50, posY: 67 },
+    { id: 6, type: 'image', src: mural4, tag: 'Atención', title: 'Detalles', colSpan: 3, rowSpan: 5, posX: 50, posY: 18 },
+    { id: 7, type: 'image', src: mural5, tag: 'Café', title: 'Disfruta', colSpan: 3, rowSpan: 6, posX: 50, posY: 52 },
+    { id: 5, type: 'image', src: mural2, tag: 'Diseño', title: 'Tu Sonrisa', colSpan: 3, rowSpan: 6, posX: 50, posY: 67 },
     { id: 9, type: 'image', src: mural8, tag: 'Premium', title: 'Tu Momento', colSpan: 3, rowSpan: 3, posX: 50, posY: 88 },
-    { id: 8, type: 'image', src: mural7, tag: 'Resultados', title: 'Antes y DespuÃ©s', colSpan: 3, rowSpan: 3, posX: 46, posY: 29 },
+    { id: 8, type: 'image', src: mural7, tag: 'Resultados', title: 'Antes y Después', colSpan: 3, rowSpan: 3, posX: 46, posY: 29 },
   ]);
 
   const [isTransitioning, setIsTransitioning] = useState(false);
@@ -768,8 +768,8 @@ const videoRef = useRef(null);
   useEffect(() => { stepDirRef.current = step; }, [step]);
   const [stepKey, setStepKey] = useState(0);
 
-  // ReseÃ±as de Google (tabla `google_reviews`). Si estÃ¡ vacÃ­a, el badge del hero y la
-  // secciÃ³n #resenas quedan en espera â€” listos para conectar con las reseÃ±as reales.
+  // Reseñas de Google (tabla `google_reviews`). Si está vacía, el badge del hero y la
+  // sección #resenas quedan en espera — listos para conectar con las reseñas reales.
   const [googleReviews, setGoogleReviews] = useState([]);
   useEffect(() => {
     let alive = true;
@@ -854,7 +854,7 @@ const videoRef = useRef(null);
   };
 
   const handleMouseDown = (e) => {
-    // Solo si no es un clic en un botÃ³n o elemento interactivo
+    // Solo si no es un clic en un botón o elemento interactivo
     if (e.target.closest('button') || e.target.closest('a')) return;
     mouseStartX.current = e.clientX;
     isMouseDown.current = true;
@@ -1074,8 +1074,8 @@ const videoRef = useRef(null);
   //
   // scrollProgress used to be React state, re-set on every single scroll event. That
   // meant every scroll tick re-rendered this entire (huge) component tree, which on a
-  // real phone saturates the main thread badly enough that taps â€” e.g. on the hamburger
-  // button â€” get delayed or dropped. It only ever feeds one <circle>'s strokeDashoffset,
+  // real phone saturates the main thread badly enough that taps — e.g. on the hamburger
+  // button — get delayed or dropped. It only ever feeds one <circle>'s strokeDashoffset,
   // so it's written straight to the DOM via a ref instead, skipping React entirely.
   const handleLandingScroll = (e) => {
     const { scrollTop, scrollHeight, clientHeight } = e.currentTarget;
@@ -1103,7 +1103,7 @@ const videoRef = useRef(null);
   // Selections
   const [selectedCategory, setSelectedCategory] = useState(() => {
     const saved = localStorage.getItem('bookingState');
-    return saved ? toWizardCategoryKey(JSON.parse(saved).selectedCategory) : 'EstÃ©tica';
+    return saved ? toWizardCategoryKey(JSON.parse(saved).selectedCategory) : 'Estética';
   });
   const [openCategory, setOpenCategory] = useState(() => toWizardCategoryKey(location.state?.openCategory));
   const [selectedService, setSelectedService] = useState(() => {
@@ -1144,7 +1144,7 @@ const videoRef = useRef(null);
     return null;
   });
   const [expandedBarberPortfolio, setExpandedBarberPortfolio] = useState([]);
-  const [profileActivePeriod, setProfileActivePeriod] = useState('maÃ±ana');
+  const [profileActivePeriod, setProfileActivePeriod] = useState('mañana');
   const landingReturnScrollRef = useRef(null);
   const shouldRestoreLandingScrollRef = useRef(false);
 
@@ -1193,9 +1193,9 @@ const videoRef = useRef(null);
 
   // Applies the barberId that arrived via Explorar's { exploreBarbers, barberId }
   // navigation state exactly once. Without exploreDeepLinkAppliedRef, this re-ran
-  // on every expandedBarber change (it was in the dependency array) â€” including
-  // the change fired by clicking a different barber in "TambiÃ©n podrÃ­as reservar
-  // con" inside the profile â€” and since location.state.barberId never updates
+  // on every expandedBarber change (it was in the dependency array) — including
+  // the change fired by clicking a different barber in "También podrías reservar
+  // con" inside the profile — and since location.state.barberId never updates
   // after the initial navigation, it kept finding a mismatch and snapping
   // expandedBarber straight back to the original barber, so switching looked
   // like it silently did nothing.
@@ -1236,8 +1236,8 @@ const videoRef = useRef(null);
       const idNum = photo.id || 0;
       if (portfolioFilter === 'Cortes') return idNum % 3 === 0;
       if (portfolioFilter === 'Barba') return idNum % 3 === 1;
-      if (portfolioFilter === 'ClÃ¡sicos') return idNum % 4 === 0;
-      if (portfolioFilter === 'DiseÃ±os') return idNum % 4 === 1;
+      if (portfolioFilter === 'Clásicos') return idNum % 4 === 0;
+      if (portfolioFilter === 'Diseños') return idNum % 4 === 1;
       return true;
     });
   }, [expandedBarberPortfolio, portfolioFilter]);
@@ -1272,7 +1272,7 @@ const videoRef = useRef(null);
     'd625e8c7-2054-4099-be6e-43cb24a365cb': { y: 20, zoom: 1 },
     '24bfdf6d-9560-43c2-b1d0-78ee74d9acfb': { y: 10, zoom: 1 },
     'efd17bae-d4d4-495f-9caf-227d94aa962e': { y: 10, zoom: 1 },
-    '2e981a1a-c0b3-4e30-ab4c-766ea6d6805e': { y: 20, zoom: 1 }, // JosÃ© Cordero (tatuador)
+    '2e981a1a-c0b3-4e30-ab4c-766ea6d6805e': { y: 20, zoom: 1 }, // José Cordero (tatuador)
   };
   const getPhotoAdjustment = (barberId) => BARBER_PHOTO_ADJUSTMENTS[barberId] || { y: 0, zoom: 1 };
   const [barberOfMonth, setBarberOfMonth] = useState(null);
@@ -1376,7 +1376,7 @@ const videoRef = useRef(null);
     const shareUrl = window.location.origin + window.location.pathname + '#/agendar?barber=' + barber.id;
     const shareData = {
       title: `Dientes Sanos - ${barber.name}`,
-      text: `Â¡Mira el perfil de ${barber.name} en Dientes Sanos y reserva tu cita!`,
+      text: `¡Mira el perfil de ${barber.name} en Dientes Sanos y reserva tu cita!`,
       url: shareUrl
     };
     try {
@@ -1487,7 +1487,7 @@ const videoRef = useRef(null);
 
   // Tells ClientLayout (when embedded inside the profile, /perfil/reservar)
   // to hide its sidebar/BottomNav so the confirmation card is the only
-  // thing on screen â€” see the panda_hide_chrome listener there. A no-op
+  // thing on screen — see the panda_hide_chrome listener there. A no-op
   // outside that context since nothing listens for the event elsewhere.
   useEffect(() => {
     if (!isEmbedded) return;
@@ -1536,11 +1536,11 @@ const videoRef = useRef(null);
     }
   }, [expandedBarber]);
 
-  // PreselecciÃ³n por defecto para el perfil expandido de computadoras.
+  // Preselección por defecto para el perfil expandido de computadoras.
   // Solo la fecha (hoy) - nunca la hora: el cliente debe elegir su hora
-  // explÃ­citamente. Un default de hora aquÃ­ competÃ­a con el efecto que
+  // explícitamente. Un default de hora aquí competía con el efecto que
   // limpia selectedTime al cambiar fecha/barbero/servicio, re-rellenando
-  // en silencio una hora que no era la que el cliente habÃ­a elegido.
+  // en silencio una hora que no era la que el cliente había elegido.
   useEffect(() => {
     if (expandedBarber && !selectedDate) {
       setSelectedDate(new Date());
@@ -1554,7 +1554,7 @@ const videoRef = useRef(null);
       const filtered = services.filter(s => {
         const cat = (s.category || '').toLowerCase();
         if (isTattoo) return cat === 'tatuajes';
-        return cat === 'odontologÃ­a' || cat === 'muela' || cat === 'servicios dentales' || cat === 'tratamientos dentales' || s.name.toLowerCase().includes('empaste') || s.name.toLowerCase().includes('muela');
+        return cat === 'odontología' || cat === 'muela' || cat === 'servicios dentales' || cat === 'tratamientos dentales' || s.name.toLowerCase().includes('empaste') || s.name.toLowerCase().includes('muela');
       });
       if (filtered.length > 0) {
         setSelectedService(filtered[0]);
@@ -1704,7 +1704,7 @@ const videoRef = useRef(null);
   
   const getScrollContainer = () => {
     // When embedded in the profile, this component's own wrapper is intentionally
-    // non-scrolling (overflow-visible) â€” the actual scroll happens on ClientLayout's
+    // non-scrolling (overflow-visible) — the actual scroll happens on ClientLayout's
     // .main-content-area. Scrolling scrollContainerRef itself here would be a no-op.
     if (isEmbedded) {
       return scrollContainerRef.current?.closest('.main-content-area') || document.documentElement;
@@ -1723,7 +1723,7 @@ const videoRef = useRef(null);
     const currentScroll = isDoc ? window.scrollY : container.scrollTop;
 
     // Embedded (profile) view has a floating bottom-nav dock overlapping the last
-    // ~100px of the viewport that isn't part of layout flow â€” clear it with extra
+    // ~100px of the viewport that isn't part of layout flow — clear it with extra
     // buffer. The standalone landing has no such overlay, so a small buffer suffices.
     const bottomClearance = isEmbedded ? 110 : 32;
 
@@ -1808,19 +1808,19 @@ const videoRef = useRef(null);
         
         const filteredBarbers = staffData.filter(isBookableStaff);
 
-        // â”€â”€ ORDEN FIJO DEL EQUIPO (nunca cambia sin importar quiÃ©n se agregue) â”€â”€â”€â”€â”€â”€â”€â”€â”€
-        // Grupo 1: Odontologos  â†’ Ãngel primero, Moret segundo, luego los demÃ¡s por nombre
+        // ── ORDEN FIJO DEL EQUIPO (nunca cambia sin importar quién se agregue) ─────────
+        // Grupo 1: Odontologos  → Ángel primero, Moret segundo, luego los demás por nombre
         // Grupo 2: 
         // Grupo 3: BARISTA
         // Grupo 4: ASISTENTE
-        // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+        // ────────────────────────────────────────────────────────────────────────────────
         const sortedBarbers = [...filteredBarbers].sort((a, b) => {
           const getGroupRank = (barber) => {
             const role = (barber.role || '').toLowerCase();
             const spec = (barber.specialty || '').toLowerCase();
             const name = barber.name.toLowerCase();
 
-            // Asistente (grupo 4) â€” va siempre al final
+            // Asistente (grupo 4) — va siempre al final
             const isAsistente = role.includes('asistente') ||
                                 role.includes('lavado') ||
                                 role.includes('lavarista') ||
@@ -1829,12 +1829,12 @@ const videoRef = useRef(null);
                                 name.includes('cesia');
             if (isAsistente) return 4;
 
-            // Barista (grupo 3) â€” va antes del asistente
+            // Barista (grupo 3) — va antes del asistente
             const isBarista = role.includes('barista') ||
-                              role.includes('cafÃ©') ||
+                              role.includes('café') ||
                               role.includes('cafe') ||
                               spec.includes('barista') ||
-                              spec.includes('cafÃ©') ||
+                              spec.includes('café') ||
                               spec.includes('cafe') ||
                               name.includes('yarlin');
             if (isBarista) return 3;
@@ -1848,7 +1848,7 @@ const videoRef = useRef(null);
                                spec.includes('artista');
             if (isTatuador) return 2;
 
-            // Barbero (grupo 1) â€” va primero
+            // Barbero (grupo 1) — va primero
             return 1;
           };
 
@@ -1857,10 +1857,10 @@ const videoRef = useRef(null);
 
           if (rankA !== rankB) return rankA - rankB;
 
-          // Dentro del grupo de Odontologos: Ãngel primero, Moret segundo
+          // Dentro del grupo de Odontologos: Ángel primero, Moret segundo
           if (rankA === 1) {
-            if (a.name === 'Ãngel Serrano') return -1;
-            if (b.name === 'Ãngel Serrano') return 1;
+            if (a.name === 'Ángel Serrano') return -1;
+            if (b.name === 'Ángel Serrano') return 1;
             if (a.name === 'Moret Serrano') return -1;
             if (b.name === 'Moret Serrano') return 1;
           }
@@ -1920,7 +1920,7 @@ const videoRef = useRef(null);
         setReviews(reviewsData || []);
 
 
-        // â”€â”€ PREFILL FROM "REPETIR" BUTTON â”€â”€
+        // ── PREFILL FROM "REPETIR" BUTTON ──
         // When the user clicks "Repetir" in their history, we receive prefillStaff
         // and prefillService IDs via React Router location.state. Match them to the
         // loaded data and jump straight to step 3 (date picker).
@@ -1943,7 +1943,7 @@ const videoRef = useRef(null);
             }
           }
           if (prefillApplied) {
-            // Skip welcome screen and both selection steps â€” go straight to date/time
+            // Skip welcome screen and both selection steps — go straight to date/time
             setShowWelcome(false);
             setStep(3);
           }
@@ -2090,8 +2090,8 @@ const videoRef = useRef(null);
   }, [currentCalendarMonth, selectedDate]);
 
   // Filter visible time slots. isClosed lives on the slot itself (not recomputed by
-  // each consumer) so every place that renders a slot grid â€” including
-  // BarberProfileView's own grid â€” stays in sync with the manual open/closed toggle.
+  // each consumer) so every place that renders a slot grid — including
+  // BarberProfileView's own grid — stays in sync with the manual open/closed toggle.
   const visibleSlots = useMemo(() => {
     const isToday = selectedDate?.toDateString() === new Date().toDateString();
     return allTimeSlots.map(time => ({
@@ -2110,11 +2110,11 @@ const videoRef = useRef(null);
       const cLower = c.toLowerCase();
       const nameLower = service.name.toLowerCase();
 
-      if (catKey === 'OdontopediatrÃ­a') {
+      if (catKey === 'Odontopediatría') {
         return cLower.includes('odontopediatr');
       }
       if (DENTAL_CATEGORIES.includes(catKey)) {
-        if (catKey === 'EstÃ©tica') {
+        if (catKey === 'Estética') {
           return cLower.includes('est') || cLower.includes('blanqueamiento') || cLower.includes('limpieza') || nameLower.includes('blanqueamiento');
         }
         if (catKey === 'Ortodoncia') return cLower.includes('ortodoncia') || nameLower.includes('ortodoncia') || nameLower.includes('alineador');
@@ -2122,7 +2122,7 @@ const videoRef = useRef(null);
         return c === catKey;
       }
       // Legacy keys (drafts saved by older sessions)
-      if (catKey === 'Corte') return c === 'BarberÃ­a' || c === 'Servicios';
+      if (catKey === 'Corte') return c === 'Barbería' || c === 'Servicios';
       if (catKey === 'Barba') return c === 'Tratamientos' || nameLower.includes('barba');
       if (catKey === 'Tatuajes') return c === 'Tatuajes';
       return false;
@@ -2162,7 +2162,7 @@ const videoRef = useRef(null);
   // Unified final checkout handling
   const handleCheckout = async (e) => {
     if (e) e.preventDefault();
-    // Guard: ignora envÃ­os duplicados mientras la operaciÃ³n estÃ¡ en curso
+    // Guard: ignora envíos duplicados mientras la operación está en curso
     // (doble clic o Enter repetido). Sin esto dos registerClient() corren en
     // paralelo y pisan el estado de la reserva.
     if (submitting) return;
@@ -2182,7 +2182,7 @@ const videoRef = useRef(null);
     try { liveStoreOpen = await publicService.getStoreOpen(); } catch { /* keep last known */ }
     if (!liveStoreOpen) {
       setStoreIsOpen(false);
-      setAuthError('La clÃ­nica estÃ¡ cerrada por ahora â€” no se pueden agendar citas.');
+      setAuthError('La clínica está cerrada por ahora — no se pueden agendar citas.');
       setSubmitting(false);
       return;
     }
@@ -2210,14 +2210,14 @@ const videoRef = useRef(null);
           localStorage.setItem('panda_public_client', JSON.stringify(activeClient));
           setIsLoggedIn(true);
           // Same "first time in your profile" intro shown to Register.jsx/Google
-          // signups â€” stays pending until they actually visit /perfil (see the
+          // signups — stays pending until they actually visit /perfil (see the
           // route-gated effect in PublicLayout.jsx), so it doesn't interrupt the
           // booking they're finishing right now.
           localStorage.setItem('panda_show_onboarding', 'true');
         } else {
           // Log in existing client
           if (!loginForm.identifier || !loginForm.password) {
-            throw new Error('Por favor completa los campos de inicio de sesiÃ³n.');
+            throw new Error('Por favor completa los campos de inicio de sesión.');
           }
           await publicService.loginClient({
             identifier: loginForm.identifier,
@@ -2231,7 +2231,7 @@ const videoRef = useRef(null);
             // Try real email first, then odontosonrisa.app email
             client = await publicService.getClientByEmail(id);
           } else {
-            // It's a phone number â€” try by phone
+            // It's a phone number — try by phone
             client = await publicService.getClientByPhone(id);
             // If not found by phone, try with fake email format
             if (!client) {
@@ -2240,7 +2240,7 @@ const videoRef = useRef(null);
           }
           
           if (!client) {
-            throw new Error('Tu cuenta fue creada pero el perfil no se encontrÃ³. Contacta al negocio.');
+            throw new Error('Tu cuenta fue creada pero el perfil no se encontró. Contacta al negocio.');
           }
           
           activeClient = client;
@@ -2252,7 +2252,7 @@ const videoRef = useRef(null);
       }
 
       if (!activeClient) {
-        throw new Error('No hay una sesiÃ³n activa de cliente.');
+        throw new Error('No hay una sesión activa de cliente.');
       }
 
       // Schedule appointment
@@ -2261,7 +2261,7 @@ const videoRef = useRef(null);
       scheduledAt.setHours(parseInt(hours), parseInt(minutes), 0, 0);
 
       if (!isBookableStaff(selectedBarber)) {
-        throw new Error('Este profesional no estÃ¡ disponible para agendar citas.');
+        throw new Error('Este profesional no está disponible para agendar citas.');
       }
 
       await publicService.createAppointment({
@@ -2288,10 +2288,10 @@ const videoRef = useRef(null);
       console.error('Booking checkout error:', err);
       const message = err.message || 'Error al agendar la cita. Intenta de nuevo.';
       setAuthError(message);
-      // Si el registro chocÃ³ con una cuenta que ya existe con otra contraseÃ±a,
-      // lleva al usuario directo a la pestaÃ±a de ingreso con los datos cargados
-      // en lugar de dejarlo en un callejÃ³n sin salida.
-      if (authTab === 'register' && /cuenta con otra contraseÃ±a/i.test(message)) {
+      // Si el registro chocó con una cuenta que ya existe con otra contraseña,
+      // lleva al usuario directo a la pestaña de ingreso con los datos cargados
+      // en lugar de dejarlo en un callejón sin salida.
+      if (authTab === 'register' && /cuenta con otra contraseña/i.test(message)) {
         setAuthTab('login');
         setLoginForm(prev => ({
           identifier: prev.identifier || authForm.email || authForm.phone || '',
@@ -2334,7 +2334,7 @@ const videoRef = useRef(null);
           </div>
         )}
 
-        {/* â”€â”€ Animated Ambient Spotlights (Auroras) â”€â”€ */}
+        {/* ── Animated Ambient Spotlights (Auroras) ── */}
         {isDesktop && (
           <>
             <div className="absolute inset-0 pointer-events-none z-1 aurora-gold" />
@@ -2342,16 +2342,16 @@ const videoRef = useRef(null);
           </>
         )}
 
-        {/* â”€â”€ HERO MINIMALISTA SIN FOTO DE MARCA â”€â”€ */}
+        {/* ── HERO MINIMALISTA SIN FOTO DE MARCA ── */}
 
-        {/* â”€â”€ Left-side text legibility gradient â”€â”€ */}
+        {/* ── Left-side text legibility gradient ── */}
         {isDesktop && (
           <div className="absolute inset-0 pointer-events-none z-10" style={{
             background: 'var(--bg-secondary)',
           }} />
         )}
 
-        {/* â”€â”€ Bottom legibility gradient for buttons â”€â”€ */}
+        {/* ── Bottom legibility gradient for buttons ── */}
         {isDesktop && (
           <div className="absolute inset-x-0 bottom-0 pointer-events-none z-10" style={{
             height: '40%',
@@ -2359,14 +2359,14 @@ const videoRef = useRef(null);
           }} />
         )}
 
-        {/* â”€â”€ Cinematic vignette â”€â”€ */}
+        {/* ── Cinematic vignette ── */}
         {isDesktop && (
           <div className="absolute inset-0 pointer-events-none z-10" style={{
             background: 'var(--bg-secondary)',
           }} />
         )}
 
-        {/* â”€â”€ Grain/noise texture â”€â”€ */}
+        {/* ── Grain/noise texture ── */}
         <div className="absolute inset-0 pointer-events-none z-15 hero-grain" />
 
 
@@ -2379,7 +2379,7 @@ const videoRef = useRef(null);
           className="w-full max-w-[1440px] mx-auto flex flex-col justify-center items-start gap-5 lg:gap-8 relative z-20 px-6 lg:px-12 text-left pt-6 lg:pt-0 lg:my-auto"
         >
           
-          {/* Trust/Reputation Badge â€” promedio dinÃ¡mico desde google_reviews (oculto sin datos) */}
+          {/* Trust/Reputation Badge — promedio dinámico desde google_reviews (oculto sin datos) */}
           {googleReviews.length > 0 && (
           <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 w-full mb-2">
             <div className="flex items-center gap-2 bg-[#f7f7f5] border border-[#d9c08f]/20 px-3 py-1.5 rounded-full w-fit">
@@ -2392,7 +2392,7 @@ const videoRef = useRef(null);
               <div className="flex items-center gap-1.5 shrink-0">
                 <span className="text-[12px] font-black text-[#0f172a] leading-none mt-0.5">{googleRating}</span>
                 <span className="text-[11px] text-[#FBBC05] font-black tracking-widest flex items-center leading-none">
-                  â˜… â˜… â˜… â˜… â˜…
+                  ★ ★ ★ ★ ★
                 </span>
               </div>
             </div>
@@ -2405,14 +2405,14 @@ const videoRef = useRef(null);
               <span className="text-[10px] lg:text-[13px] font-black uppercase tracking-[0.35em] text-[#111111] block mb-1 animate-float-subtle">
                 {isLoggedIn && loggedInClient?.name ? 'HOLA DE NUEVO' : 'BIENVENIDO A'}
               </span>
-              <h1 className="text-[40px] sm:text-5xl lg:text-6xl font-black uppercase tracking-tight leading-[0.95] mb-1 font-sans text-[#0f172a]">CENTRO ODONTOLÃ“GICO</h1>
+              <h1 className="text-[40px] sm:text-5xl lg:text-6xl font-black uppercase tracking-tight leading-[0.95] mb-1 font-sans text-[#0f172a]">CENTRO ODONTOLÓGICO</h1>
               <h1 className="text-[40px] sm:text-5xl lg:text-6xl font-black uppercase tracking-tight leading-[0.95] mb-2 font-sans text-[#111111]">DIENTES SANOS</h1>
             </div>
 
             <div className="flex flex-col gap-2.5">
               {isLoggedIn && loggedInClient?.name ? (
                 <p className="text-[#0f172a] text-sm sm:text-xl lg:text-[22px] font-extrabold leading-snug font-sans tracking-wide">
-                  {loggedInClient.name.split(' ')[0]}, <span className="whitespace-nowrap text-[#111111] animate-text-glow-breath">Â¿agendamos tu prÃ³xima cita?</span>
+                  {loggedInClient.name.split(' ')[0]}, <span className="whitespace-nowrap text-[#111111] animate-text-glow-breath">¿agendamos tu próxima cita?</span>
                 </p>
               ) : (
                 <p className="text-[#0f172a] text-sm sm:text-xl lg:text-[22px] font-extrabold leading-snug font-sans tracking-wide">
@@ -2420,7 +2420,7 @@ const videoRef = useRef(null);
                 </p>
               )}
               <p className="text-[#64748b] text-sm sm:text-lg lg:text-[17px] leading-relaxed font-normal font-sans max-w-[580px] lg:max-w-[480px]">
-                OdontologÃ­a integral en un espacio creado para cuidar cada detalle de tu{'\u00A0'}sonrisa.
+                Odontología integral en un espacio creado para cuidar cada detalle de tu{'\u00A0'}sonrisa.
               </p>
             </div>
           </div>
@@ -2432,7 +2432,7 @@ const videoRef = useRef(null);
               className="btn-gold w-full sm:w-auto py-4 px-8 rounded-xl font-extrabold text-[12px] lg:text-[13px] uppercase tracking-widest transition-all cursor-pointer flex items-center justify-center gap-2"
               style={{ borderRadius: '10px' }}
             >
-              <CalendarIcon size={16} /> <span>{isLoggedIn && loggedInClient?.name ? 'Reservar de nuevo' : 'Reservar mi visita'}</span> <span>â†’</span>
+              <CalendarIcon size={16} /> <span>{isLoggedIn && loggedInClient?.name ? 'Reservar de nuevo' : 'Reservar mi visita'}</span> <span>→</span>
             </button>
             {isLoggedIn && loggedInClient?.name && (
               <p className="text-[#94a3b8] text-[11px] font-medium -mt-1">Toma menos de 1 minuto, ya tenemos tus datos</p>
@@ -2458,7 +2458,7 @@ const videoRef = useRef(null);
               {isLoggedIn ? (
                 <span>Ver mi perfil</span>
               ) : (
-                <span className="text-[#475569] font-medium">Â¿Ya tienes cuenta? <span className="text-[#111111] font-bold">Inicia sesiÃ³n</span></span>
+                <span className="text-[#475569] font-medium">¿Ya tienes cuenta? <span className="text-[#111111] font-bold">Inicia sesión</span></span>
               )}
             </button>
           </div>
@@ -2484,10 +2484,10 @@ const videoRef = useRef(null);
           </div>
         )}
 
-        {/* â”€â”€ HERO CONFIGURATOR (hidden debug tool) â”€â”€ */}
+        {/* ── HERO CONFIGURATOR (hidden debug tool) ── */}
         {isResting && (
           <>
-            {/* Toggle button â€” tiny, bottom-left corner */}
+            {/* Toggle button — tiny, bottom-left corner */}
             <button
               onClick={() => setShowConfigurator(v => !v)}
               style={{
@@ -2499,7 +2499,7 @@ const videoRef = useRef(null);
                 cursor: 'pointer', backdropFilter: 'blur(6px)',
               }}
               title="Configurador"
-            >âš™</button>
+            >⚙</button>
 
             {/* Configurator panel */}
             {showConfigurator && (
@@ -2527,8 +2527,8 @@ const videoRef = useRef(null);
                   <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
                     {[
                       { label: 'Altura foto %', val: posterHeight, set: setPosterHeight, min: 30, max: 120, step: 1, key: 'poster_height' },
-                      { label: 'PosiciÃ³n X foto %', val: posterXOffset, set: setPosterXOffset, min: 0, max: 100, step: 1, key: 'poster_x_offset' },
-                      { label: 'PosiciÃ³n Y foto %', val: posterYOffset, set: setPosterYOffset, min: 0, max: 100, step: 1, key: 'poster_y_offset' },
+                      { label: 'Posición X foto %', val: posterXOffset, set: setPosterXOffset, min: 0, max: 100, step: 1, key: 'poster_x_offset' },
+                      { label: 'Posición Y foto %', val: posterYOffset, set: setPosterYOffset, min: 0, max: 100, step: 1, key: 'poster_y_offset' },
                       { label: 'Zoom foto', val: posterZoom, set: setPosterZoom, min: 0.8, max: 2.5, step: 0.01, key: 'poster_zoom' },
                     ].map(({ label, val, set, min, max, step, key }) => (
                       <div key={key}>
@@ -2553,7 +2553,7 @@ const videoRef = useRef(null);
                   <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
                     {[
                       { label: 'Altura hero %', val: heroHeight, set: setHeroHeight, min: 30, max: 120, step: 1, key: 'hero_height' },
-                      { label: 'PosiciÃ³n Y video %', val: videoYOffset, set: setVideoYOffset, min: 0, max: 100, step: 1, key: 'hero_y_offset' },
+                      { label: 'Posición Y video %', val: videoYOffset, set: setVideoYOffset, min: 0, max: 100, step: 1, key: 'hero_y_offset' },
                       { label: 'Zoom video', val: videoZoom, set: setVideoZoom, min: 0.8, max: 1.6, step: 0.01, key: 'hero_zoom' },
                       { label: 'Degradado stop %', val: gradientStop, set: setGradientStop, min: 30, max: 100, step: 1, key: 'hero_gradient_stop' },
                     ].map(({ label, val, set, min, max, step, key }) => (
@@ -2582,11 +2582,11 @@ const videoRef = useRef(null);
                       { label: 'Escala oso', val: activeBearCfg.scale, stateKey: 'scale', min: 0.3, max: 2.5, step: 0.01, storageKey: 'bear_scale' },
                       { label: 'Oso X (right %)', val: activeBearCfg.x, stateKey: 'x', min: -30, max: 80, step: 0.5, storageKey: 'bear_x' },
                       { label: 'Oso Y (bottom %)', val: activeBearCfg.y, stateKey: 'y', min: -20, max: 80, step: 0.5, storageKey: 'bear_y' },
-                      { label: 'RotaciÃ³n oso Â°', val: activeBearCfg.rotate, stateKey: 'rotate', min: -180, max: 180, step: 1, storageKey: 'bear_rotate' },
+                      { label: 'Rotación oso °', val: activeBearCfg.rotate, stateKey: 'rotate', min: -180, max: 180, step: 1, storageKey: 'bear_rotate' },
                       { label: 'Escala mano', val: activeBearCfg.handScale, stateKey: 'handScale', min: 0.1, max: 1.5, step: 0.01, storageKey: 'hand_scale' },
                       { label: 'Mano X (right %)', val: activeBearCfg.handX, stateKey: 'handX', min: -30, max: 80, step: 0.5, storageKey: 'hand_x' },
                       { label: 'Mano Y (bottom %)', val: activeBearCfg.handY, stateKey: 'handY', min: -20, max: 100, step: 0.5, storageKey: 'hand_y' },
-                      { label: 'RotaciÃ³n mano Â°', val: activeBearCfg.handRotate, stateKey: 'handRotate', min: -180, max: 180, step: 1, storageKey: 'hand_rotate' },
+                      { label: 'Rotación mano °', val: activeBearCfg.handRotate, stateKey: 'handRotate', min: -180, max: 180, step: 1, storageKey: 'hand_rotate' },
                     ].map(({ label, val, stateKey, min, max, step, storageKey }) => (
                       <div key={stateKey}>
                         <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 3 }}>
@@ -2644,15 +2644,15 @@ const videoRef = useRef(null);
               <div className="flex items-center gap-5 w-full md:justify-center md:border-r md:border-[#d9c08f]/15 px-6 reveal-item delay-200 animate-float-subtle" style={{ animationDelay: '300ms' }}>
                 <span className="text-[22px] font-bold text-[#d9c08f] bg-[#d9c08f]/15 px-3 py-1.5 rounded-full font-sans tracking-tight leading-none select-none">02</span>
                 <div className="flex flex-col text-left">
-                  <span className="text-xl lg:text-2xl font-extrabold text-[#111111] tracking-tight leading-tight" style={{ animationDelay: '1.2s' }}>PRECISIÃ“N</span>
-                  <span className="text-xs text-[#64748b] font-medium">Cada detalle trabajado con intenciÃ³n</span>
+                  <span className="text-xl lg:text-2xl font-extrabold text-[#111111] tracking-tight leading-tight" style={{ animationDelay: '1.2s' }}>PRECISIÓN</span>
+                  <span className="text-xs text-[#64748b] font-medium">Cada detalle trabajado con intención</span>
                 </div>
               </div>
               {/* Stat 3 */}
               <div className="flex items-center gap-5 w-full md:justify-center md:border-r md:border-[#d9c08f]/15 px-6 reveal-item delay-300 animate-float-subtle" style={{ animationDelay: '600ms' }}>
                 <span className="text-[22px] font-bold text-[#d9c08f] bg-[#d9c08f]/15 px-3 py-1.5 rounded-full font-sans tracking-tight leading-none select-none">03</span>
                 <div className="flex flex-col text-left">
-                  <span className="text-xl lg:text-2xl font-extrabold text-[#111111] tracking-tight leading-tight" style={{ animationDelay: '2.4s' }}>SALUD & DISEÃ‘O</span>
+                  <span className="text-xl lg:text-2xl font-extrabold text-[#111111] tracking-tight leading-tight" style={{ animationDelay: '2.4s' }}>SALUD & DISEÑO</span>
                   <span className="text-xs text-[#64748b] font-medium">Especialistas en un solo lugar</span>
                 </div>
               </div>
@@ -2661,7 +2661,7 @@ const videoRef = useRef(null);
                 <span className="text-[22px] font-bold text-[#d9c08f] bg-[#d9c08f]/15 px-3 py-1.5 rounded-full font-sans tracking-tight leading-none select-none">04</span>
                 <div className="flex flex-col text-left">
                   <span className="text-xl lg:text-2xl font-extrabold text-[#111111] tracking-tight leading-tight" style={{ animationDelay: '3.6s' }}>EXPERIENCIA DIENTES SANOS</span>
-                  <span className="text-xs text-[#64748b] font-medium">AtenciÃ³n, tecnologÃ­a y confianza en cada visita</span>
+                  <span className="text-xs text-[#64748b] font-medium">Atención, tecnología y confianza en cada visita</span>
                 </div>
               </div>
             </div>
@@ -2680,7 +2680,7 @@ const videoRef = useRef(null);
               </FadeInUp>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-[1440px] mx-auto">
-              {/* Card 1: EstÃ©tica */}
+              {/* Card 1: Estética */}
               <FadeInUp delay={0.1}
 
                   className="relative rounded-2xl overflow-hidden h-[420px] flex flex-col justify-end p-6 lg:p-8 text-left border border-[rgba(17, 17, 17,0.18)] group cursor-pointer reveal-item delay-100"
@@ -2701,10 +2701,10 @@ const videoRef = useRef(null);
                       <Sparkles size={20} className="text-white" />
                     </div>
                     <div>
-                      <h3 className="text-xl font-extrabold text-white mb-2 uppercase tracking-wide">ESTÃ‰TICA</h3>
-                      <p className="text-white/75 text-sm leading-relaxed mb-4">Blanqueamiento, limpieza profunda y diseÃ±o de sonrisa.</p>
+                      <h3 className="text-xl font-extrabold text-white mb-2 uppercase tracking-wide">ESTÉTICA</h3>
+                      <p className="text-white/75 text-sm leading-relaxed mb-4">Blanqueamiento, limpieza profunda y diseño de sonrisa.</p>
                       <span className="text-white text-sm font-extrabold uppercase tracking-wider flex items-center gap-1 hover:underline cursor-pointer">
-                        EXPLORAR SERVICIOS <span className="text-[14px]">â†’</span>
+                        EXPLORAR SERVICIOS <span className="text-[14px]">→</span>
                       </span>
                     </div>
                   </div>
@@ -2733,13 +2733,13 @@ const videoRef = useRef(null);
                       <h3 className="text-xl font-extrabold text-white mb-2 uppercase tracking-wide">ORTODONCIA</h3>
                       <p className="text-white/75 text-sm leading-relaxed mb-4">Alinea tu sonrisa con opciones discretas y efectivas.</p>
                       <span className="text-white text-sm font-extrabold uppercase tracking-wider flex items-center gap-1 hover:underline cursor-pointer">
-                        CONOCER ESPECIALISTAS <span className="text-[14px]">â†’</span>
+                        CONOCER ESPECIALISTAS <span className="text-[14px]">→</span>
                       </span>
                     </div>
                   </div>
                 </FadeInUp>
 
-                {/* Card 3: OdontopediatrÃ­a */}
+                {/* Card 3: Odontopediatría */}
                 <FadeInUp delay={0.3}
                   className="relative rounded-2xl overflow-hidden h-[420px] flex flex-col justify-end p-6 lg:p-8 text-left border border-[rgba(17, 17, 17,0.18)] group cursor-pointer reveal-item delay-300"
                   onClick={() => document.getElementById('pandakids')?.scrollIntoView({ behavior: 'smooth' })}
@@ -2755,10 +2755,10 @@ const videoRef = useRef(null);
                       <Heart size={20} className="text-white" fill="white" />
                     </div>
                     <div>
-                      <h3 className="text-xl font-extrabold text-white mb-2 uppercase tracking-wide">ODONTOPEDIATRÃA</h3>
-                      <p className="text-white/75 text-sm leading-relaxed mb-4">Cuidamos las sonrisas de los mÃ¡s pequeÃ±os. Paciencia y confianza garantizadas.</p>
+                      <h3 className="text-xl font-extrabold text-white mb-2 uppercase tracking-wide">ODONTOPEDIATRÍA</h3>
+                      <p className="text-white/75 text-sm leading-relaxed mb-4">Cuidamos las sonrisas de los más pequeños. Paciencia y confianza garantizadas.</p>
                       <span className="text-white text-sm font-extrabold uppercase tracking-wider flex items-center gap-1 hover:underline cursor-pointer">
-                        VER SERVICIOS INFANTILES <span className="text-[14px]">â†’</span>
+                        VER SERVICIOS INFANTILES <span className="text-[14px]">→</span>
                       </span>
                     </div>
                   </div>
@@ -2781,9 +2781,9 @@ const videoRef = useRef(null);
                     </div>
                     <div>
                       <h3 className="text-xl font-extrabold text-white mb-2 uppercase tracking-wide">EXPERIENCIA DIENTES SANOS</h3>
-                      <p className="text-white/75 text-sm leading-relaxed mb-4">Ambiente confortable, tecnologÃ­a moderna y trato cercano.</p>
+                      <p className="text-white/75 text-sm leading-relaxed mb-4">Ambiente confortable, tecnología moderna y trato cercano.</p>
                       <span className="text-white text-sm font-extrabold uppercase tracking-wider flex items-center gap-1 hover:underline cursor-pointer">
-                        DESCUBRIR MÃS <span className="text-[14px]">â†’</span>
+                        DESCUBRIR MÁS <span className="text-[14px]">→</span>
                       </span>
                     </div>
                   </div>
@@ -2800,7 +2800,7 @@ const videoRef = useRef(null);
                 </h2>
               </FadeInUp>
                 
-              {/* CategorÃ­as de Equipo con estilo de BarberÃ­a Premium */}
+              {/* Categorías de Equipo con estilo de Barbería Premium */}
               <FadeInUp delay={0.1} className="relative flex items-center p-1.5 bg-white border border-[#d9c08f]/20 rounded-full w-[310px] sm:w-[380px] md:w-[460px] mx-auto shadow-[0_10px_30px_rgba(0,0,0,0.06)] md:backdrop-blur-md backdrop-blur-sm">
                 {/* Fondo deslizante con efecto de Barber Pole animado en dorado */}
                 <div 
@@ -2827,7 +2827,7 @@ const videoRef = useRef(null);
                   }`}
                 >
                   <HeartPulse size={15} className={artistFilter === 'Odontologos' ? 'animate-spin-slow' : ''} />
-                  <span>OdontÃ³logos</span>
+                  <span>Odontólogos</span>
                 </button>
                 
                 <button 
@@ -2898,11 +2898,11 @@ const videoRef = useRef(null);
                       ))
                     ) : (
                       barbers.filter(barber => staffMatchesArtistFilter(barber, artistFilter)).map((barber, idx) => {
-                       const isAngel = barber.name === 'Ãngel Serrano';
+                       const isAngel = barber.name === 'Ángel Serrano';
                        const isMarko = barber.name === 'Marko Cardozo';
-                        const isAbraham = barber.name === 'Abraham DÃ­az';
-                        const isAlejandro = barber.name === 'Alejandro RamÃ­rez';
-                        const isJose = barber.name === 'JosÃ© Cordero';
+                        const isAbraham = barber.name === 'Abraham Díaz';
+                        const isAlejandro = barber.name === 'Alejandro Ramírez';
+                        const isJose = barber.name === 'José Cordero';
                         
                         const displayName = barber.name;
                        const rawRole = (barber.role?.split('|')[0] || 'Especialista').trim();
@@ -2914,13 +2914,13 @@ const videoRef = useRef(null);
                        
                        const specialtyText = (barber.specialty || '').trim() 
                           ? barber.specialty.trim().toUpperCase() 
-                          : (isAbraham ? 'MASTER DENTAL' : isAlejandro ? 'ODONTÃ“LOGO' : isAngel ? 'ODONTÃ“LOGO' : isJose ? 'ESTÃ‰TICA' : isMarko ? 'ESTÃ‰TICA' : (isBarista ? 'ASISTENTE CLÃNICO' : isAsistente ? 'ASISTENTE CLÃNICO' : (isRawRolePermissions ? 'ASISTENTE' : roleLabel(rawRole).toUpperCase())));
+                          : (isAbraham ? 'MASTER DENTAL' : isAlejandro ? 'ODONTÓLOGO' : isAngel ? 'ODONTÓLOGO' : isJose ? 'ESTÉTICA' : isMarko ? 'ESTÉTICA' : (isBarista ? 'ASISTENTE CLÍNICO' : isAsistente ? 'ASISTENTE CLÍNICO' : (isRawRolePermissions ? 'ASISTENTE' : roleLabel(rawRole).toUpperCase())));
                        const cleanTags = (barber.role?.split('|')[1] || '').trim();
                        const isRawPermissions = cleanTags.includes(',') || cleanTags.includes('barber') || cleanTags.includes('schedule') || !cleanTags;
-                       const defaultTags = isBarista ? 'HidrataciÃ³n â€¢ Confort â€¢ Experiencia' : (isAsistente ? 'Higiene â€¢ Confort â€¢ Cuidado' : (specialtyText.includes('TATUA') || rawRole.toLowerCase().includes('tatu') ? 'EstÃ©tica â€¢ Blanqueamiento â€¢ Sonrisa' : (specialtyText.includes('MANICUR') || specialtyText.includes('UÃ‘A') ? 'EstÃ©tica â€¢ DiseÃ±o â€¢ Sonrisa' : 'PrevenciÃ³n â€¢ EstÃ©tica â€¢ Confort')));
+                       const defaultTags = isBarista ? 'Hidratación • Confort • Experiencia' : (isAsistente ? 'Higiene • Confort • Cuidado' : (specialtyText.includes('TATUA') || rawRole.toLowerCase().includes('tatu') ? 'Estética • Blanqueamiento • Sonrisa' : (specialtyText.includes('MANICUR') || specialtyText.includes('UÑA') ? 'Estética • Diseño • Sonrisa' : 'Prevención • Estética • Confort')));
                        const tagsText = !isRawPermissions 
                          ? cleanTags 
-                         : (isAbraham ? 'PrevenciÃ³n â€¢ EstÃ©tica â€¢ Control' : isAlejandro ? 'Ortodoncia â€¢ EstÃ©tica â€¢ Control' : isAngel ? 'Endodoncia â€¢ Urgencias â€¢ Confort' : isJose ? 'EstÃ©tica â€¢ Blanqueamiento' : isMarko ? 'EstÃ©tica â€¢ Blanqueamiento' : defaultTags);
+                         : (isAbraham ? 'Prevención • Estética • Control' : isAlejandro ? 'Ortodoncia • Estética • Control' : isAngel ? 'Endodoncia • Urgencias • Confort' : isJose ? 'Estética • Blanqueamiento' : isMarko ? 'Estética • Blanqueamiento' : defaultTags);
                        
                        return (
                          <div key={barber.id} className="shrink-0 px-3 animate-[premiumFadeUp_0.6s_cubic-bezier(0.16,1,0.3,1)_both]" style={{ width: `${100 / visibleCount}%`, animationDelay: `${idx * 60}ms` }}>
@@ -3045,7 +3045,7 @@ const videoRef = useRef(null);
               </FadeInUp>
             </div>
 
-            {/* SECTION: ODONTOPEDIATRÃA â€” Premium responsive grid layout */}
+            {/* SECTION: ODONTOPEDIATRÍA — Premium responsive grid layout */}
             <FadeInUp id="pandakids" className="w-full reveal-item scroll-mt-24 py-12">
               {/* CSS for micro-animations inside this section */}
               <style>{`
@@ -3116,7 +3116,7 @@ const videoRef = useRef(null);
                     {/* Floating badge inside video */}
                     <div className="absolute top-6 left-6 z-10 bg-black/60 md:backdrop-blur-md backdrop-blur-sm border border-white/10 py-1.5 px-3 rounded-lg flex items-center gap-1.5">
                       <Heart size={12} className="text-[#111111]" fill="#111111" />
-                      <span className="text-[9px] font-extrabold text-white tracking-widest uppercase">ODONTOPEDIATRÃA</span>
+                      <span className="text-[9px] font-extrabold text-white tracking-widest uppercase">ODONTOPEDIATRÍA</span>
                     </div>
                   </div>
                 </div>
@@ -3127,28 +3127,28 @@ const videoRef = useRef(null);
                     <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-[#111111] block">SU PRIMERA SONRISA</span>
                     <h2 className="text-3xl lg:text-4xl font-extrabold text-[#111111] tracking-tight uppercase leading-tight font-sans title-loop-pulse">
                       SONRISAS QUE HACEN<br />
-                      <span className="text-[#111111]">FELICES A LOS PEQUEÃ‘OS</span>
+                      <span className="text-[#111111]">FELICES A LOS PEQUEÑOS</span>
                     </h2>
                     
                     {/* Minimalist, high-end indicators */}
                     <div className="flex items-center gap-3 text-[10px] sm:text-[11px] font-bold tracking-[0.2em] text-[#111111] uppercase pt-1">
-                      <span>EDADES: 1 A 12 AÃ‘OS</span>
-                      <span className="text-[#cbd5e1] select-none">â€¢</span>
+                      <span>EDADES: 1 A 12 AÑOS</span>
+                      <span className="text-[#cbd5e1] select-none">•</span>
                       <span>SALA INFANTIL</span>
                     </div>
 
                     <p className="text-[#475569] text-[15px] leading-relaxed pt-1">
-                       En Dientes Sanos los niÃ±os son parte de nuestra familia. Nuestros odontÃ³logos saben exactamente cÃ³mo crear una experiencia divertida, cÃ³moda y especial para ellos.
+                       En Dientes Sanos los niños son parte de nuestra familia. Nuestros odontólogos saben exactamente cómo crear una experiencia divertida, cómoda y especial para ellos.
                     </p>
                   </div>
 
-                  {/* Feature List â€” Interactive hover styling */}
+                  {/* Feature List — Interactive hover styling */}
                   <div className="space-y-4 pt-1">
                     {[
-                      { icon: <HeartPulse size={15} />, class: 'icon-scissors', title: 'Butaca dental infantil', desc: 'Asiento adaptado para que estÃ©n cÃ³modos' },
-                      { icon: <Sparkles size={15} />, class: 'icon-sparkles', title: 'Productos suaves', desc: 'Formulados para la boca de los niÃ±os' },
+                      { icon: <HeartPulse size={15} />, class: 'icon-scissors', title: 'Butaca dental infantil', desc: 'Asiento adaptado para que estén cómodos' },
+                      { icon: <Sparkles size={15} />, class: 'icon-sparkles', title: 'Productos suaves', desc: 'Formulados para la boca de los niños' },
                       { icon: <Gamepad2 size={15} />, class: 'icon-gamepad', title: 'Ambiente divertido', desc: 'Una experiencia que les va a encantar' },
-                      { icon: <Heart size={15} />, class: 'icon-heart', title: 'OdontÃ³logos pacientes', desc: 'Con experiencia en atenciÃ³n a niÃ±os' },
+                      { icon: <Heart size={15} />, class: 'icon-heart', title: 'Odontólogos pacientes', desc: 'Con experiencia en atención a niños' },
                     ].map((feat, i) => (
                       <div key={i} className="flex gap-3 kids-feature-item group/feat cursor-pointer">
                         <div className={`w-8 h-8 rounded-lg bg-[#111111]/10 border border-[#111111]/15 flex items-center justify-center flex-shrink-0 text-[#111111] mt-0.5 transition-all duration-300 group-hover/feat:bg-[#111111] group-hover/feat:text-white ${feat.class}`}>
@@ -3167,9 +3167,9 @@ const videoRef = useRef(null);
                 <div className="w-full md:col-span-2 lg:col-span-4 text-left flex flex-col justify-between py-2 space-y-6 md:border-t md:border-[#d9c08f]/15 md:pt-6 lg:border-t-0 lg:border-l lg:pt-2 lg:pl-10 xl:pl-14 md:max-w-2xl md:mx-auto lg:max-w-none z-10">
                   {/* Premium Floating Testimonial Card */}
                   <div className="bg-white border border-[#d9c08f]/15 rounded-2xl p-6 relative flex-1 flex flex-col justify-center space-y-4">
-                    <span className="text-[3rem] text-[#111111]/15 font-serif absolute -top-2 -left-1 select-none pointer-events-none">â€œ</span>
+                    <span className="text-[3rem] text-[#111111]/15 font-serif absolute -top-2 -left-1 select-none pointer-events-none">“</span>
                     <p className="text-[#334155] text-[14px] leading-relaxed italic relative z-1">
-                      Me gustÃ³ mucho la cita, el odontÃ³logo fue muy paciente y amable, y lo tratÃ³ sÃºper bien. Â¡Volveremos pronto sin duda!
+                      Me gustó mucho la cita, el odontólogo fue muy paciente y amable, y lo trató súper bien. ¡Volveremos pronto sin duda!
                     </p>
                     <div className="border-t border-[#d9c08f]/15 pt-4 flex items-center gap-3">
                       {/* Avatar Initials Badge */}
@@ -3177,7 +3177,7 @@ const videoRef = useRef(null);
                         <span className="text-[#111111] text-[10px] font-extrabold tracking-wider">PM</span>
                       </div>
                       <div className="text-left">
-                        <p className="text-[#0f172a] text-[13px] font-bold">PapÃ¡ de Mateo</p>
+                        <p className="text-[#0f172a] text-[13px] font-bold">Papá de Mateo</p>
                         <div className="flex items-center gap-0.5 mt-0.5">
                           {Array.from({ length: 5 }).map((_, i) => (
                             <Star key={i} size={11} className="text-[#111111]" fill="#111111" />
@@ -3190,7 +3190,7 @@ const videoRef = useRef(null);
                   {/* CTA Buttons stack */}
                   <div className="flex flex-col sm:flex-row lg:flex-col gap-3 w-full">
                     <button
-                      onClick={() => handleStartBooking('OdontopediatrÃ­a')}
+                      onClick={() => handleStartBooking('Odontopediatría')}
                       className="btn-gold w-full sm:w-auto sm:flex-1 py-3.5 px-6 rounded-xl font-extrabold text-[12px] uppercase tracking-wider flex items-center justify-center gap-2 whitespace-nowrap"
                       style={{ borderRadius: '12px' }}
                     >
@@ -3235,7 +3235,7 @@ const videoRef = useRef(null);
                         <span className="text-[10px] font-extrabold tracking-widest text-[#475569] uppercase">
                           ESPECIALISTA DENTAL
                         </span>
-                        <span className="text-[#cbd5e1]">â€¢</span>
+                        <span className="text-[#cbd5e1]">•</span>
                         <span className="text-[10px] font-extrabold tracking-widest text-[#111111] uppercase">
                           TOP DEL MES
                         </span>
@@ -3244,7 +3244,7 @@ const videoRef = useRef(null);
 
                     {/* Biography Quote */}
                     <p className="text-[#334155] text-[15px] leading-relaxed italic border-l-2 border-[#111111]/30 pl-4">
-                      "{topBarber.biography || 'Especializado en tratamientos estÃ©ticos y preventivos, con precisiÃ³n y cuidado en cada detalle.'}"
+                      "{topBarber.biography || 'Especializado en tratamientos estéticos y preventivos, con precisión y cuidado en cada detalle.'}"
                     </p>
 
                     {/* Bottom Stats Grid */}
@@ -3254,7 +3254,7 @@ const videoRef = useRef(null);
                           <Check size={14} className="text-[#111111]" />
                         </div>
                         <div className="flex flex-col text-left">
-                          <span className="text-sm font-extrabold text-[#0f172a] leading-tight">+8 aÃ±os</span>
+                          <span className="text-sm font-extrabold text-[#0f172a] leading-tight">+8 años</span>
                           <span className="text-[11px] lg:text-[12px] text-[#475569]">de experiencia</span>
                         </div>
                       </div>
@@ -3318,13 +3318,13 @@ const videoRef = useRef(null);
 
             <div id="experiencia-section" className="w-full reveal-item scroll-mt-24 py-12 flex flex-col gap-8">
               
-              {/* Header Title for the Mural â€” Mobile only */}
+              {/* Header Title for the Mural — Mobile only */}
               <div className="text-center space-y-3 block md:hidden">
                 <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-[#111111] tracking-tight uppercase font-sans title-loop-pulse">
                   EXPERIENCIA <span className="text-[#d9c08f]">DIENTES SANOS</span>
                 </h2>
                 <p className="text-[#64748b] text-[13px] sm:text-[14px] max-w-xl mx-auto leading-relaxed font-medium">
-                  Cuidamos tu sonrisa en un entorno diseÃ±ado para que te sientas cÃ³modo. Explora nuestro espacio y los momentos que hacen de cada visita una experiencia distinta.
+                  Cuidamos tu sonrisa en un entorno diseñado para que te sientas cómodo. Explora nuestro espacio y los momentos que hacen de cada visita una experiencia distinta.
                 </p>
               </div>
 
@@ -3336,19 +3336,19 @@ const videoRef = useRef(null);
                   
                   {/* === HERO: 2 Vertical Videos Side by Side === */}
                   <div className="flex gap-2 w-full">
-                    {/* Video 1 â€” Experiencia principal */}
+                    {/* Video 1 — Experiencia principal */}
                     <div ref={muralVideoRef} className="flex-1 rounded-2xl overflow-hidden shadow-2xl border border-[#111111]/20 relative bg-white">
                       <div className="w-full aspect-[9/16]" style={{ background: 'linear-gradient(135deg,#f7f4ee 0%,#efe6d5 50%,#e8d4b0 100%)' }} />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
                     </div>
-                    {/* Video 2 â€” Consultorio */}
+                    {/* Video 2 — Consultorio */}
                     <div ref={cafeVideoRef} className="flex-1 rounded-2xl overflow-hidden shadow-2xl border border-[#111111]/20 relative bg-white">
                       <div className="w-full aspect-[9/16]" style={{ background: 'linear-gradient(135deg,#f7f4ee 0%,#efe6d5 50%,#e8d4b0 100%)' }} />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
                     </div>
                   </div>
 
-                  {/* === STRIP 1: Marquee scrolling LEFT â€” larger photos === */}
+                  {/* === STRIP 1: Marquee scrolling LEFT — larger photos === */}
                   <div className="relative w-full overflow-hidden" style={{ maskImage: 'linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)', WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)' }}>
                     <div className="marquee-strip-left flex gap-2 w-max">
                       {/* Original set */}
@@ -3366,7 +3366,7 @@ const videoRef = useRef(null);
                     </div>
                   </div>
 
-                  {/* === STRIP 2: Marquee scrolling RIGHT â€” slightly smaller photos === */}
+                  {/* === STRIP 2: Marquee scrolling RIGHT — slightly smaller photos === */}
                   <div className="relative w-full overflow-hidden" style={{ maskImage: 'linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)', WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)' }}>
                     <div className="marquee-strip-right flex gap-2 w-max">
                       {/* Original set */}
@@ -3400,7 +3400,7 @@ const videoRef = useRef(null);
                       EXPERIENCIA <span className="text-[#d9c08f]">DIENTES SANOS</span>
                     </h2>
                     <p className="text-[#64748b] text-[13px] sm:text-[14px] max-w-xl mx-auto leading-relaxed font-medium">
-                      Cuidamos tu sonrisa en un entorno diseÃ±ado para que te sientas cÃ³modo. Explora nuestro espacio y los momentos que hacen de cada visita una experiencia distinta.
+                      Cuidamos tu sonrisa en un entorno diseñado para que te sientas cómodo. Explora nuestro espacio y los momentos que hacen de cada visita una experiencia distinta.
                     </p>
                   </div>
 
@@ -3408,14 +3408,14 @@ const videoRef = useRef(null);
                   {bentoEditMode && (
                     <div className="flex justify-between items-center mb-4 bg-white p-4 rounded-xl border border-[#111111]/50 backdrop-blur-sm">
                       <div>
-                        <p className="text-[#111111] text-[11px] font-bold tracking-[0.2em] uppercase">Modo EdiciÃ³n Activo</p>
+                        <p className="text-[#111111] text-[11px] font-bold tracking-[0.2em] uppercase">Modo Edición Activo</p>
                         <p className="text-[#64748b] text-[10px] mt-1">Pasa el cursor sobre cada imagen para ajustar. Al terminar, haz clic en copiar.</p>
                       </div>
                       <button 
                         onClick={() => {
                           const conf = bentoGridItems.map(({id, colSpan, rowSpan, posX, posY}) => ({id, colSpan, rowSpan, posX, posY}));
                           navigator.clipboard.writeText(JSON.stringify(conf, null, 2));
-                          alert('Â¡ConfiguraciÃ³n copiada al portapapeles! PÃ©gala en el chat.');
+                          alert('¡Configuración copiada al portapapeles! Pégala en el chat.');
                         }}
                         className="bg-[#111111] text-white px-4 py-2 rounded-lg text-[10px] font-black uppercase tracking-widest hover:bg-white hover:text-black transition-colors"
                       >
@@ -3424,10 +3424,10 @@ const videoRef = useRef(null);
                     </div>
                   )}
 
-                  {/* Overlays CinemÃ¡ticos (Lightbox y Cursor) movidos a un Portal para evitar problemas de transform/perspective del parent */}
+                  {/* Overlays Cinemáticos (Lightbox y Cursor) movidos a un Portal para evitar problemas de transform/perspective del parent */}
                   {createPortal(
                     <>
-                      {/* Lightbox CinemÃ¡tico */}
+                      {/* Lightbox Cinemático */}
                       <AnimatePresence>
                         {selectedMuralItem && (
                           <motion.div
@@ -3489,7 +3489,7 @@ const videoRef = useRef(null);
                     document.body
                   )}
 
-                  {/* Bento Grid â€” Videos vertical 9:16, photos proportional */}
+                  {/* Bento Grid — Videos vertical 9:16, photos proportional */}
                   <motion.div 
                     ref={muralGridRef}
                     className={`grid grid-cols-12 gap-3 auto-rows-[80px] ${!bentoEditMode ? 'cursor-none' : ''}`}
@@ -3638,7 +3638,7 @@ const videoRef = useRef(null);
                       <svg key={star} className="w-4 h-4 fill-current drop-shadow-[0_0_8px_rgba(250,187,5,0.4)]" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
                     ))}
                   </div>
-                  <span className="text-xs font-bold text-[#0f172a] uppercase tracking-wider">{googleReviews.length} ReseÃ±as en Google</span>
+                  <span className="text-xs font-bold text-[#0f172a] uppercase tracking-wider">{googleReviews.length} Reseñas en Google</span>
                 </div>
                 )}
               </div>
@@ -3656,13 +3656,13 @@ const videoRef = useRef(null);
                 <style dangerouslySetInnerHTML={{__html: `
                   .hide-scrollbar::-webkit-scrollbar { display: none; }
                 `}} />
-                {/* REVIEWS DE GOOGLE â€” desde la tabla `google_reviews`, lista para las reseÃ±as reales */}
-                {/* TODO(reseÃ±as): conectar la API de Google Places o insertar filas en google_reviews */}
+                {/* REVIEWS DE GOOGLE — desde la tabla `google_reviews`, lista para las reseñas reales */}
+                {/* TODO(reseñas): conectar la API de Google Places o insertar filas en google_reviews */}
                 {googleReviews.length === 0 && (
                   <div className="min-w-full flex flex-col items-center justify-center gap-4 py-12 text-center">
                     <svg viewBox="0 0 48 48" className="w-9 h-9"><path fill="#FFC107" d="M43.611,20.083H42V20H24v8h11.303c-1.649,4.657-6.08,8-11.303,8c-6.627,0-12-5.373-12-12c0-6.627,5.373-12,12-12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C12.955,4,4,12.955,4,24c0,11.045,8.955,20,20,20c11.045,0,20-8.955,20-20C44,22.659,43.862,21.35,43.611,20.083z"/><path fill="#FF3D00" d="M6.306,14.691l6.571,4.819C14.655,15.108,18.961,12,24,12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C16.318,4,9.656,8.337,6.306,14.691z"/><path fill="#4CAF50" d="M24,44c5.166,0,9.86-1.977,13.409-5.192l-6.19-5.238C29.211,35.091,26.715,36,24,36c-5.202,0-9.619-3.317-11.283-7.946l-6.522,5.025C9.505,39.556,16.227,44,24,44z"/><path fill="#1976D2" d="M43.611,20.083H42V20H24v8h11.303c-0.792,2.237-2.231,4.166-4.087,5.571c0.001-0.001,0.002-0.001,0.003-0.002l6.19,5.238C36.971,39.205,44,34,44,24C44,22.659,43.862,21.35,43.611,20.083z"/></svg>
-                    <p className="text-[#334155] text-[15px] font-medium max-w-md">AquÃ­ aparecerÃ¡n las reseÃ±as reales de <strong>Centro OdontolÃ³gico Dientes Sanos</strong> en Google.</p>
-                    <p className="text-[#94a3b8] text-[12px] max-w-sm">PrÃ³ximamente: sincronizaciÃ³n con tu perfil de Google.</p>
+                    <p className="text-[#334155] text-[15px] font-medium max-w-md">Aquí aparecerán las reseñas reales de <strong>Centro Odontológico Dientes Sanos</strong> en Google.</p>
+                    <p className="text-[#94a3b8] text-[12px] max-w-sm">Próximamente: sincronización con tu perfil de Google.</p>
                   </div>
                 )}
                 {googleReviews.map((review, idx) => (
@@ -3696,22 +3696,22 @@ const videoRef = useRef(null);
             </div>
           </FadeInUp>
 
-            {/* SECTION: Â¿POR QUÃ‰ ELEGIR DIENTES SANOS? & UBICACIÃ“N */}
+            {/* SECTION: ¿POR QUÉ ELEGIR DIENTES SANOS? & UBICACIÓN */}
             <FadeInUp className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-stretch" id="ubicacion">
               
               {/* Left Column: Why Choose Us (Redesigned as premium cards) */}
               <div className="lg:col-span-6 flex flex-col justify-center text-left">
-                <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-[#111111] block mb-2">Â¿POR QUÃ‰ ELEGIR</span>
+                <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-[#111111] block mb-2">¿POR QUÉ ELEGIR</span>
                 <h2 className="text-3xl lg:text-4xl font-extrabold text-[#111111] tracking-tight uppercase font-sans mb-8 title-loop-pulse">
                   <span className="text-[#d9c08f]">DIENTES SANOS?</span>
                 </h2>
                 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {[
-                    { icon: <User size={18} />, title: 'Profesionales', desc: 'Especialistas experimentados en salud y estÃ©tica dental.' },
+                    { icon: <User size={18} />, title: 'Profesionales', desc: 'Especialistas experimentados en salud y estética dental.' },
                     { icon: <Award size={18} />, title: 'Calidad Premium', desc: 'Usamos insumos y equipos de alta gama para el cuidado dental.' },
-                    { icon: <CalendarIcon size={18} />, title: 'Reserva FÃ¡cil', desc: 'Agenda tu cita en segundos las 24 horas del dÃ­a.' },
-                    { icon: <Users size={18} />, title: 'Ambiente Ãšnico', desc: 'Un espacio cÃ³modo y una sala de espera pensada para tu tranquilidad.' },
+                    { icon: <CalendarIcon size={18} />, title: 'Reserva Fácil', desc: 'Agenda tu cita en segundos las 24 horas del día.' },
+                    { icon: <Users size={18} />, title: 'Ambiente Único', desc: 'Un espacio cómodo y una sala de espera pensada para tu tranquilidad.' },
                   ].map((item, idx) => (
                     <div key={idx} className="p-5 rounded-2xl bg-white border border-[#d9c08f]/15 hover:border-[#111111]/20 hover:bg-[#f7f7f5] transition-all duration-300 flex flex-col gap-3 group">
                       <div className="w-9 h-9 rounded-lg bg-[#111111]/10 border border-[#111111]/25 flex items-center justify-center text-[#111111] transition-colors group-hover:bg-[#111111] group-hover:text-white">
@@ -3730,7 +3730,7 @@ const videoRef = useRef(null);
               <div className="lg:col-span-6 flex flex-col justify-center text-left">
                 <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-[#111111] block mb-2">NUESTRA SEDE</span>
                 <h2 className="text-3xl lg:text-4xl font-extrabold text-[#111111] tracking-tight uppercase font-sans mb-8 title-loop-pulse">
-                  NUESTRA <span className="text-[#d9c08f]">UBICACIÃ“N</span>
+                  NUESTRA <span className="text-[#d9c08f]">UBICACIÓN</span>
                 </h2>
 
                 <div className="bg-white border border-[#d9c08f]/15 rounded-3xl p-6 lg:p-8 flex flex-col justify-between h-full min-h-[350px] relative overflow-hidden group hover:border-[#111111]/20 transition-all duration-300">
@@ -3747,7 +3747,7 @@ const videoRef = useRef(null);
                           <MapPin size={18} />
                         </div>
                         <div>
-                          <h4 className="text-sm font-extrabold text-[#0f172a] uppercase tracking-wider">SEDE ÃšNICA</h4>
+                          <h4 className="text-sm font-extrabold text-[#0f172a] uppercase tracking-wider">SEDE ÚNICA</h4>
                           <span className="text-[10px] text-[#111111] font-bold uppercase tracking-wider">{CLINIC.addressShort}</span>
                         </div>
                       </div>
@@ -3829,7 +3829,7 @@ const videoRef = useRef(null);
             {/* SECTION: INSTAGRAM FEED & CTA */}
             <FadeInUp className="w-full text-center space-y-8 pt-8 reveal-item">
               <div>
-                <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-[#111111] block mb-2">SÃGUENOS EN REDES</span>
+                <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-[#111111] block mb-2">SÍGUENOS EN REDES</span>
                 <h2 className="text-3xl lg:text-4xl font-extrabold text-[#111111] tracking-tight uppercase font-sans mb-3 title-loop-pulse">INSTAGRAM <span className="text-[#d9c08f]">FEED</span></h2>
                 <a 
                   href={CLINIC.instagramUrl} 
@@ -3846,7 +3846,7 @@ const videoRef = useRef(null);
                 </a>
               </div>
 
-              {/* Grid of 4 posts â€” fotos locales descargadas del Instagram real; fallback a cards con link */}
+              {/* Grid of 4 posts — fotos locales descargadas del Instagram real; fallback a cards con link */}
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-[1200px] mx-auto">
                 {(getInstagramPosts(4).length > 0
                   ? getInstagramPosts(4)
@@ -3890,7 +3890,7 @@ const videoRef = useRef(null);
                 {/* Left links */}
                 <div className="flex flex-wrap justify-start gap-5 text-[10px] font-black tracking-[0.25em] text-[#94a3b8] uppercase">
                   <a href={CLINIC.instagramUrl} target="_blank" rel="noopener noreferrer" className="hover:text-[#111111] transition-colors no-underline">@{CLINIC.instagramHandle}</a>
-                  <span className="text-[#cbd5e1] select-none">â€¢</span>
+                  <span className="text-[#cbd5e1] select-none">•</span>
                   <a href={CLINIC.whatsappUrl} target="_blank" rel="noopener noreferrer" className="hover:text-[#111111] transition-colors no-underline">WhatsApp</a>
                 </div>
 
@@ -3904,12 +3904,12 @@ const videoRef = useRef(null);
                 {/* Right links */}
                 <div className="flex flex-wrap justify-end gap-5 text-[10px] font-black tracking-[0.25em] text-[#94a3b8] uppercase">
                   <span className="cursor-pointer hover:text-[#111111] transition-colors" onClick={() => document.getElementById('servicios')?.scrollIntoView({ behavior: 'smooth' })}>Servicios</span>
-                  <span className="text-[#cbd5e1] select-none">â€¢</span>
-                  <span className="cursor-pointer hover:text-[#111111] transition-colors" onClick={() => document.getElementById('ubicacion')?.scrollIntoView({ behavior: 'smooth' })}>UbicaciÃ³n</span>
+                  <span className="text-[#cbd5e1] select-none">•</span>
+                  <span className="cursor-pointer hover:text-[#111111] transition-colors" onClick={() => document.getElementById('ubicacion')?.scrollIntoView({ behavior: 'smooth' })}>Ubicación</span>
                 </div>
               </div>
 
-              {/* Mobile Footer â€” Cosmos-style centered stacked layout */}
+              {/* Mobile Footer — Cosmos-style centered stacked layout */}
               <div className="flex md:hidden flex-col items-center gap-8 mb-16">
                 {/* Logo */}
                 <div className="w-14 h-14 flex items-center justify-center">
@@ -3927,9 +3927,9 @@ const videoRef = useRef(null);
 
                 {/* More Section */}
                 <div className="flex flex-col items-center gap-2.5">
-                  <span className="text-[11px] font-black text-[#475569] uppercase tracking-[0.2em]">MÃ¡s</span>
+                  <span className="text-[11px] font-black text-[#475569] uppercase tracking-[0.2em]">Más</span>
                   <span className="text-[12px] text-[#94a3b8] cursor-pointer hover:text-[#111111] transition-colors" onClick={() => document.getElementById('servicios')?.scrollIntoView({ behavior: 'smooth' })}>Servicios</span>
-                  <span className="text-[12px] text-[#94a3b8] cursor-pointer hover:text-[#111111] transition-colors" onClick={() => document.getElementById('ubicacion')?.scrollIntoView({ behavior: 'smooth' })}>UbicaciÃ³n</span>
+                  <span className="text-[12px] text-[#94a3b8] cursor-pointer hover:text-[#111111] transition-colors" onClick={() => document.getElementById('ubicacion')?.scrollIntoView({ behavior: 'smooth' })}>Ubicación</span>
                 </div>
               </div>
 
@@ -4028,7 +4028,7 @@ const videoRef = useRef(null);
           <div className="ambient-aurora-bronze"></div>
         </div>
 
-        {/* â”€â”€ WELCOME SCREEN â”€â”€ */}
+        {/* ── WELCOME SCREEN ── */}
         {/* Render welcome screen while showWelcome is true, adding fade-out class during transitions */}
         {showWelcome && (
           <>
@@ -4041,7 +4041,7 @@ const videoRef = useRef(null);
                 className="fixed bottom-6 right-6 z-[100] bg-[#111111] text-white font-extrabold px-6 py-3.5 rounded-full shadow-[0_10px_30px_rgba(0,0,0,0.06)] hover:scale-105 transition-all flex items-center gap-2 cursor-pointer text-xs tracking-widest uppercase border border-black/10 animate-pulse"
                 style={{ boxShadow: '0 10px 25px -5px rgba(17, 17, 17,0.4), 0 8px 10px -6px rgba(17, 17, 17,0.4)' }}
               >
-                <span>Volver a la reserva</span> <span className="text-[14px]">â†’</span>
+                <span>Volver a la reserva</span> <span className="text-[14px]">→</span>
               </button>
             )}
             <AnimatePresence>
@@ -4097,7 +4097,7 @@ const videoRef = useRef(null);
           <div className="quiet-fade-overlay" />
         )}
 
-        {/* â”€â”€ SUCCESS VIEW SCREEN â”€â”€ */}
+        {/* ── SUCCESS VIEW SCREEN ── */}
         {!showWelcome && success && (() => {
           const isTattoo = (selectedService?.category || '').toLowerCase().includes('tatuaj');
           const barberPhone = selectedBarber?.phone?.replace(/[^0-9]/g, '') || '';
@@ -4112,9 +4112,9 @@ const videoRef = useRef(null);
             if (tattooIdea) whatsappMsg += `*Caso:* ${tattooIdea}\n`;
             if (tattooSize) whatsappMsg += `*Intensidad:* ${tattooSize}\n`;
             if (tattooZone) whatsappMsg += `*Zona:* ${tattooZone}\n`;
-            if (tattooStyle) whatsappMsg += `*SÃ­ntomas:* ${tattooStyle}\n`;
+            if (tattooStyle) whatsappMsg += `*Síntomas:* ${tattooStyle}\n`;
             if (tattooTheme) whatsappMsg += `*Detalles:* ${tattooTheme}\n`;
-            if (hasDesign !== null) whatsappMsg += `*ValoraciÃ³n:* ${hasDesign ? 'Ya tengo presupuesto' : 'Necesito valoraciÃ³n'}\n`;
+            if (hasDesign !== null) whatsappMsg += `*Valoración:* ${hasDesign ? 'Ya tengo presupuesto' : 'Necesito valoración'}\n`;
             if (isOfLegalAge !== null) whatsappMsg += `*Mayor de edad:* ${isOfLegalAge ? 'Si' : 'No (menor de edad)'}\n`;
           }
           
@@ -4137,10 +4137,10 @@ const videoRef = useRef(null);
               <div className="w-20 h-20 rounded-full bg-emerald-500/15 flex items-center justify-center mx-auto mb-6 border border-emerald-500/30">
                 <Check size={40} className="text-emerald-600" />
               </div>
-              <h2 className="text-3xl font-extrabold mb-3 text-[#111111] tracking-tight">Â¡Reserva Hecha!</h2>
+              <h2 className="text-3xl font-extrabold mb-3 text-[#111111] tracking-tight">¡Reserva Hecha!</h2>
               <p className="text-[var(--text-secondary)] mb-8 text-sm leading-relaxed">
                 {isTattoo 
-                  ? 'Tu reserva ha sido registrada. Ahora envÃ­a los detalles a tu especialista por WhatsApp.'
+                  ? 'Tu reserva ha sido registrada. Ahora envía los detalles a tu especialista por WhatsApp.'
                   : 'Tu reserva ha sido registrada exitosamente. Hemos preparado todo para tu llegada.'}
               </p>
 
@@ -4177,7 +4177,7 @@ const videoRef = useRef(null);
                     </a>
                   ) : (
                     <div className="text-center py-3 px-4 rounded-xl bg-[#f7f7f5] border border-[#d9c08f]/20">
-                      <p className="text-xs text-[#475569]">Tu especialista recibirÃ¡ los datos de tu cita por nuestro sistema.</p>
+                      <p className="text-xs text-[#475569]">Tu especialista recibirá los datos de tu cita por nuestro sistema.</p>
                     </div>
                   )}
                   <button
@@ -4200,13 +4200,13 @@ const videoRef = useRef(null);
           );
         })()}
 
-        {/* â”€â”€ INTERACTIVE WIZARD FLOW SCREEN (STEPS 1-6) â”€â”€ */}
+        {/* ── INTERACTIVE WIZARD FLOW SCREEN (STEPS 1-6) ── */}
         {(!showWelcome || isTransitioning) && !success && (
           // Same max-w-7xl the expanded barber profile uses. No breakpoint prefix needed:
           // on phone/tablet viewports (< 1280px) the content is still bounded by w-full and
           // never actually reaches 1280px, so this only widens things on real desktops.
           // Below lg the `lg:grid` never applies, so this stays the original single-column
-          // flex layout â€” phone/tablet markup and behavior are untouched.
+          // flex layout — phone/tablet markup and behavior are untouched.
           <div 
             className={`w-full mx-auto px-4 ${isEmbedded ? 'pb-4' : 'pb-28 md:pb-16'} relative z-10 ${step === 2 && expandedBarber ? 'max-w-7xl 2xl:max-w-[1600px] px-4 md:px-8 flex flex-col flex-1' : isEmbedded ? 'max-w-6xl flex flex-col flex-1 xl:grid xl:grid-cols-[1fr_380px] xl:gap-12 xl:items-start' : 'max-w-6xl flex flex-col flex-1 lg:grid lg:grid-cols-[1fr_380px] lg:gap-14 lg:items-start'}`}
             style={{ paddingTop: (step === 2 && expandedBarber) ? '0px' : 'calc(max(env(safe-area-inset-top, 0px), 32px))' }}
@@ -4221,7 +4221,7 @@ const videoRef = useRef(null);
             {/* Wizard Header: PASO X DE 6 with title/subtitle and back button */}
             {!(step === 2 && expandedBarber) && (
             <div className="mb-4 relative text-center">
-              {/* Circular back button on the left â€” hidden on step 1 when embedded (nothing to go back to) */}
+              {/* Circular back button on the left — hidden on step 1 when embedded (nothing to go back to) */}
               {(!isEmbedded || step > 1) && (
               <div className="absolute left-0 top-0">
                 <button 
@@ -4277,17 +4277,17 @@ const videoRef = useRef(null);
                 className="mt-2 space-y-1"
               >
                 <h1 className="text-xl sm:text-2xl lg:text-3xl font-extrabold tracking-tight text-[#0f172a] leading-tight">
-                  {step === 1 && "Â¿QuÃ© servicio buscas hoy?"}
+                  {step === 1 && "¿Qué servicio buscas hoy?"}
                   {step === 2 && <>Elige tu <span className="text-[var(--champagne)]">especialista</span></>}
                   {step === 3 && <>Elige tu <span className="text-[var(--champagne)]">fecha y hora</span></>}
                   {step === 4 && <>Detalles de tu <span className="text-[var(--champagne)]">caso</span></>}
                   {step === 5 && <>Completa tu <span className="text-[var(--champagne)]">Reserva</span></>}
                 </h1>
                 <p className="text-[var(--text-secondary)] text-xs sm:text-sm font-medium max-w-sm mx-auto mt-2">
-                  {step === 1 && "Elige la categorÃ­a que mejor se adapte a tu sonrisa."}
-                  {step === 2 && "Cada especialista tiene su Ã¡rea. Escoge el que mejor va contigo."}
-                  {step === 3 && "Selecciona el dÃ­a y la hora que mejor se adapten a ti."}
-                  {step === 4 && "CuÃ©ntanos los detalles necesarios para preparar tu atenciÃ³n."}
+                  {step === 1 && "Elige la categoría que mejor se adapte a tu sonrisa."}
+                  {step === 2 && "Cada especialista tiene su área. Escoge el que mejor va contigo."}
+                  {step === 3 && "Selecciona el día y la hora que mejor se adapten a ti."}
+                  {step === 4 && "Cuéntanos los detalles necesarios para preparar tu atención."}
                   {step === 5 && "Ingresa tus datos para asegurar tu cita en 1 clic."}
                 </p>
               </motion.div>
@@ -4312,7 +4312,7 @@ const videoRef = useRef(null);
                 
                 {/* STEP 1: Categories & Services (Accordion) */}
                 {step === 1 && (
-                  // Fixed 2-column grid from lg up, always â€” an open card just grows taller
+                  // Fixed 2-column grid from lg up, always — an open card just grows taller
                   // within its own column (its row's height auto-expands to fit it; the
                   // sibling card next to it stays put, top-aligned via items-start). No
                   // col-span here: spanning the open card across both columns is what caused
@@ -4320,14 +4320,14 @@ const videoRef = useRef(null);
                   // it, since Grid can't fit a 2-col item in a row with only 1 free column.
                   <div className="space-y-3 w-full md:space-y-0 md:grid md:grid-cols-2 md:gap-4 md:items-start lg:grid-cols-1 xl:grid-cols-2">
                     {[
-                      { key: 'EstÃ©tica', label: 'EstÃ©tica', sub: 'Blanqueamiento y limpieza', icon: <Sparkles size={22} strokeWidth={1.5} />, img: null },
+                      { key: 'Estética', label: 'Estética', sub: 'Blanqueamiento y limpieza', icon: <Sparkles size={22} strokeWidth={1.5} />, img: null },
                       { key: 'Ortodoncia', label: 'Ortodoncia', sub: 'Alinea tu sonrisa', icon: <Activity size={22} strokeWidth={1.5} />, img: null },
                       { key: 'Endodoncia', label: 'Endodoncia', sub: 'Salva tu diente natural', icon: <HeartPulse size={22} strokeWidth={1.5} />, img: null },
-                      { key: 'OdontopediatrÃ­a', label: 'OdontopediatrÃ­a', sub: 'Sonrisas desde pequeÃ±os', icon: <Baby size={22} strokeWidth={1.5} />, img: null, isKids: true },
+                      { key: 'Odontopediatría', label: 'Odontopediatría', sub: 'Sonrisas desde pequeños', icon: <Baby size={22} strokeWidth={1.5} />, img: null, isKids: true },
                     ].map((cat, catIndex) => {
                       const isOpen = openCategory === cat.key;
                       const catServices = cat.isKids
-                        ? getServicesForCategory('OdontopediatrÃ­a')
+                        ? getServicesForCategory('Odontopediatría')
                         : getServicesForCategory(cat.key);
                       return (
                         <div
@@ -4336,7 +4336,7 @@ const videoRef = useRef(null);
                             isOpen ? 'is-open' : ''
                           } ${cat.isKids ? 'border-[rgba(17, 17, 17,0.3)]' : ''}`}
                         >
-                          {/* Header card â€” click to toggle */}
+                          {/* Header card — click to toggle */}
                           <button 
                             onClick={() => setOpenCategory(isOpen ? null : cat.key)}
                             className="accordion-category-header"
@@ -4381,12 +4381,12 @@ const videoRef = useRef(null);
                               {cat.isKids && (
                                 <div className="px-4 py-2 bg-[#111111]/5 border-b border-[#111111]/10 flex items-center gap-2">
                                   <Heart size={11} className="text-[#111111]" fill="currentColor" />
-                                  <span className="text-[10px] text-[#111111] font-bold uppercase tracking-wider">Servicios especiales para niÃ±os</span>
+                                  <span className="text-[10px] text-[#111111] font-bold uppercase tracking-wider">Servicios especiales para niños</span>
                                 </div>
                               )}
                               {catServices.length === 0 ? (
                                 <div className="text-center py-6 text-[#94a3b8] text-xs font-semibold">
-                                  No hay servicios disponibles en esta categorÃ­a.
+                                  No hay servicios disponibles en esta categoría.
                                 </div>
                               ) : (
                                 catServices.map(service => {
@@ -4443,7 +4443,7 @@ const videoRef = useRef(null);
                         barbers={barbers}
                         onClose={() => {
                           if (location.state?.exploreBarbers) {
-                            // Navigate immediately â€” don't clear expandedBarber first
+                            // Navigate immediately — don't clear expandedBarber first
                             // or the Step 2 grid will flash behind.
                             navigate('/perfil/explorar', { replace: true });
                           } else {
@@ -4624,12 +4624,12 @@ const videoRef = useRef(null);
                                               : 'bg-white text-[#475569] hover:bg-[#f7f7f5] hover:text-[#0f172a] border border-[#d9c08f]/20'
                                           }`}
                                         >
-                                          {isSelected ? 'âœ“ Elegido' : 'Elegir'}
+                                          {isSelected ? '✓ Elegido' : 'Elegir'}
                                         </button>
-                                        {/* Tap hint â€” only when not selected */}
+                                        {/* Tap hint — only when not selected */}
                                         {!isSelected && (
                                           <p className="text-center text-[8px] text-[#cbd5e1] font-medium tracking-wide -mt-0.5">
-                                            TÃ³came para escoger
+                                            Tócame para escoger
                                           </p>
                                         )}
                                       </div>
@@ -4700,7 +4700,7 @@ const videoRef = useRef(null);
                       
                       {/* Weekday abbreviations */}
                       <div className="grid grid-cols-7 gap-1 text-center">
-                        {['LUN', 'MAR', 'MIÃ‰', 'JUE', 'VIE', 'SÃB', 'DOM'].map(d => (
+                        {['LUN', 'MAR', 'MIÉ', 'JUE', 'VIE', 'SÁB', 'DOM'].map(d => (
                           <span key={d} className="text-[10px] font-black text-[#94a3b8] tracking-wider">
                             {d}
                           </span>
@@ -4777,7 +4777,7 @@ const videoRef = useRef(null);
                       
                       {!selectedDate ? (
                         <div className="text-center py-10 bg-[#f7f7f5] border border-[#d9c08f]/15 rounded-2xl text-[#94a3b8] text-xs">
-                          Selecciona un dÃ­a en el calendario para ver las horas disponibles.
+                          Selecciona un día en el calendario para ver las horas disponibles.
                         </div>
                       ) : loadingSlots ? (
                         <div className="space-y-2.5">
@@ -4795,8 +4795,8 @@ const videoRef = useRef(null);
                                 <Lock size={17} className="text-red-400" />
                               </div>
                               <div className="text-left min-w-0">
-                                 <p className="text-red-400 text-[11px] font-black uppercase tracking-wider leading-tight">ClÃ­nica cerrada</p>
-                                <p className="text-red-300/70 text-[11px] font-medium mt-0.5 leading-snug">Las reservas estÃ¡n bloqueadas por ahora. Vuelve mÃ¡s tarde.</p>
+                                 <p className="text-red-400 text-[11px] font-black uppercase tracking-wider leading-tight">Clínica cerrada</p>
+                                <p className="text-red-300/70 text-[11px] font-medium mt-0.5 leading-snug">Las reservas están bloqueadas por ahora. Vuelve más tarde.</p>
                               </div>
                             </div>
                           )}
@@ -4838,7 +4838,7 @@ const videoRef = useRef(null);
                       )}
                     </div>
                     
-                    {/* TU SELECCIÃ“N Card â€” solo en mÃ³vil/tablet, en desktop el sidebar ya muestra esto */}
+                    {/* TU SELECCIÓN Card — solo en móvil/tablet, en desktop el sidebar ya muestra esto */}
                     {selectedDate && selectedTime && (
                       <div ref={bookingSummaryRef} className="relative rounded-3xl overflow-hidden animate-fade-in lg:hidden" style={{
                         background: 'linear-gradient(135deg, rgba(17, 17, 17,0.10) 0%, rgba(255,255,255,0.98) 50%, rgba(17, 17, 17,0.05) 100%)',
@@ -4956,20 +4956,20 @@ const videoRef = useRef(null);
                     {!isTattooBooking && (
                       <div className="space-y-2 text-left">
                         <label htmlFor="booking-notes" className="text-xs font-bold uppercase tracking-widest text-[#0f172a]">
-                          Â¿Algo mÃ¡s que debamos saber? <span className="normal-case tracking-normal text-[#94a3b8]">(opcional)</span>
+                          ¿Algo más que debamos saber? <span className="normal-case tracking-normal text-[#94a3b8]">(opcional)</span>
                         </label>
                         <textarea
                           id="booking-notes"
                           value={notes}
                           onChange={(e) => setNotes(e.target.value.slice(0, 200))}
-                          placeholder="Alergias, sensibilidades u otra informaciÃ³n importante..."
+                          placeholder="Alergias, sensibilidades u otra información importante..."
                           className="w-full h-20 bg-white border border-[#d9c08f]/15 rounded-xl p-3 text-xs text-[#0f172a] placeholder-[#94a3b8] focus:outline-none focus:border-[var(--champagne)]/40 transition-all resize-none"
                         />
                         <p className="text-right text-[9px] font-bold text-[#94a3b8]">{notes.length}/200</p>
                       </div>
                     )}
 
-                    {/* Big Gold CONTINUAR Button â€” solo visible en mÃ³vil, en desktop usa el Siguiente del sidebar */}
+                    {/* Big Gold CONTINUAR Button — solo visible en móvil, en desktop usa el Siguiente del sidebar */}
                     <div className="pt-2 lg:hidden" ref={step3ContinueBtnRef} style={{ scrollMarginBottom: isEmbedded ? '120px' : '40px' }}>
                       <button
                         type="button"
@@ -5004,10 +5004,10 @@ const videoRef = useRef(null);
                     <div className="space-y-4">
                       <div className="flex items-center gap-2 text-[#0f172a] text-left">
                         <MessageSquare size={18} className="text-[var(--champagne)]" />
-                        <h3 className="text-xs lg:text-sm font-bold uppercase tracking-widest">Â¿Algo que debamos saber?</h3>
+                        <h3 className="text-xs lg:text-sm font-bold uppercase tracking-widest">¿Algo que debamos saber?</h3>
                       </div>
                       <p className="text-[10px] text-[#94a3b8] -mt-1 text-left">
-                        CuÃ©ntanos cualquier detalle especial.
+                        Cuéntanos cualquier detalle especial.
                       </p>
                       <div className="relative">
                         <textarea
@@ -5027,12 +5027,12 @@ const videoRef = useRef(null);
                       <div className="space-y-4">
                         <div className="flex items-center gap-2 text-[#0f172a] text-left">
                           <PenTool size={18} className="text-[var(--champagne)]" />
-                          <h3 className="text-xs lg:text-sm font-bold uppercase tracking-widest">CuÃ©ntanos tu caso</h3>
+                          <h3 className="text-xs lg:text-sm font-bold uppercase tracking-widest">Cuéntanos tu caso</h3>
                         </div>
                         <textarea
                           value={tattooIdea}
                           onChange={(e) => setTattooIdea(e.target.value)}
-                          placeholder="Describe los sÃ­ntomas o molestias que sientes..."
+                          placeholder="Describe los síntomas o molestias que sientes..."
                           className="w-full h-20 bg-white border border-[#d9c08f]/15 rounded-xl p-3 text-xs text-[#0f172a] placeholder-[#94a3b8] focus:outline-none focus:border-[var(--champagne)]/40 focus:bg-white transition-all resize-none text-left"
                         />
                       </div>
@@ -5063,13 +5063,13 @@ const videoRef = useRef(null);
                       {/* Zona */}
                       <div className="space-y-3">
                         <div className="flex items-center gap-2 text-[#0f172a] text-left">
-                          <h3 className="text-xs lg:text-sm font-bold uppercase tracking-widest">Â¿En quÃ© zona sientes molestia?</h3>
+                          <h3 className="text-xs lg:text-sm font-bold uppercase tracking-widest">¿En qué zona sientes molestia?</h3>
                         </div>
                         <input
                           type="text"
                           value={tattooZone}
                           onChange={(e) => setTattooZone(e.target.value)}
-                          placeholder="Ej: Muela superior, encÃ­a, mandÃ­bula..."
+                          placeholder="Ej: Muela superior, encía, mandíbula..."
                           className="w-full bg-white border border-[#d9c08f]/15 rounded-xl p-3 text-xs text-[#0f172a] placeholder-[#94a3b8] focus:outline-none focus:border-[var(--champagne)]/40 focus:bg-white transition-all text-left"
                         />
                       </div>
@@ -5077,10 +5077,10 @@ const videoRef = useRef(null);
                       {/* Estilo */}
                       <div className="space-y-3">
                         <div className="flex items-center gap-2 text-[#0f172a] text-left">
-                          <h3 className="text-xs lg:text-sm font-bold uppercase tracking-widest">SÃ­ntomas principales</h3>
+                          <h3 className="text-xs lg:text-sm font-bold uppercase tracking-widest">Síntomas principales</h3>
                         </div>
                         <div className="flex flex-wrap gap-2">
-                          {['Dolor', 'Sensibilidad', 'HinchazÃ³n', 'Sangrado', 'Mal sabor', 'Movilidad', 'Fractura', 'Manchado'].map(style => (
+                          {['Dolor', 'Sensibilidad', 'Hinchazón', 'Sangrado', 'Mal sabor', 'Movilidad', 'Fractura', 'Manchado'].map(style => (
                             <button
                               key={style}
                               type="button"
@@ -5097,7 +5097,7 @@ const videoRef = useRef(null);
                         </div>
                       </div>
 
-                      {/* TemÃ¡tica */}
+                      {/* Temática */}
                       <div className="space-y-3">
                         <div className="flex items-center gap-2 text-[#0f172a] text-left">
                           <h3 className="text-xs lg:text-sm font-bold uppercase tracking-widest">Detalles adicionales</h3>
@@ -5106,15 +5106,15 @@ const videoRef = useRef(null);
                           type="text"
                           value={tattooTheme}
                           onChange={(e) => setTattooTheme(e.target.value)}
-                          placeholder="Ej: desde cuÃ¡ndo, quÃ© lo empeora, tratamientos previos..."
+                          placeholder="Ej: desde cuándo, qué lo empeora, tratamientos previos..."
                           className="w-full bg-white border border-[#d9c08f]/15 rounded-xl p-3 text-xs text-[#0f172a] placeholder-[#94a3b8] focus:outline-none focus:border-[var(--champagne)]/40 focus:bg-white transition-all text-left"
                         />
                       </div>
 
-                      {/* DiseÃ±o */}
+                      {/* Diseño */}
                       <div className="space-y-3">
                         <div className="flex items-center gap-2 text-[#0f172a] text-left">
-                          <h3 className="text-xs lg:text-sm font-bold uppercase tracking-widest">Â¿Ya tienes un presupuesto previo?</h3>
+                          <h3 className="text-xs lg:text-sm font-bold uppercase tracking-widest">¿Ya tienes un presupuesto previo?</h3>
                         </div>
                         <div className="flex gap-3">
                           <button
@@ -5138,9 +5138,9 @@ const videoRef = useRef(null);
                                   : 'bg-white text-[#334155] border-[#d9c08f]/20 hover:border-[#d9c08f]/50 hover:bg-[#d9c08f]/10'
                               }`}
                             >
-                              Necesito valoraciÃ³n
+                              Necesito valoración
                             </button>
-                            <span className="absolute -bottom-4 left-0 right-0 text-[9px] text-[#94a3b8] text-center">Costo a confirmar en la valoraciÃ³n</span>
+                            <span className="absolute -bottom-4 left-0 right-0 text-[9px] text-[#94a3b8] text-center">Costo a confirmar en la valoración</span>
                           </div>
                         </div>
                       </div>
@@ -5148,7 +5148,7 @@ const videoRef = useRef(null);
                       {/* Edad y Consentimiento */}
                       <div className="space-y-3">
                         <div className="flex items-center gap-2 text-[#0f172a] text-left">
-                          <h3 className="text-xs font-bold uppercase tracking-widest">Â¿Eres mayor de edad?</h3>
+                          <h3 className="text-xs font-bold uppercase tracking-widest">¿Eres mayor de edad?</h3>
                         </div>
                         <div className="flex gap-3">
                           <button
@@ -5160,7 +5160,7 @@ const videoRef = useRef(null);
                                 : 'bg-[#f7f7f5] text-[#64748b] border-[#d9c08f]/15 hover:border-[#d9c08f]/30'
                             }`}
                           >
-                            SÃ­, soy mayor de edad
+                            Sí, soy mayor de edad
                           </button>
                           <button
                             type="button"
@@ -5178,7 +5178,7 @@ const videoRef = useRef(null);
                         {isOfLegalAge === true && (
                           <div className="mt-3 p-3 rounded-xl bg-white border border-[#d9c08f]/20 text-left">
                             <p className="text-[10px] text-[#64748b] mb-3">
-                              Al continuar, aceptas un descargo de responsabilidad que se firmarÃ¡ digitalmente. Este documento quedarÃ¡ guardado en tu perfil.
+                              Al continuar, aceptas un descargo de responsabilidad que se firmará digitalmente. Este documento quedará guardado en tu perfil.
                             </p>
                             <label className="flex items-start gap-2 cursor-pointer">
                               <input
@@ -5197,7 +5197,7 @@ const videoRef = useRef(null);
                         {isOfLegalAge === false && (
                           <div className="mt-3 p-3 rounded-xl bg-white border border-[#d9c08f]/20 text-left">
                             <p className="text-[10px] text-[#64748b] mb-3">
-                              Se requiere consentimiento de un padre o tutor legal. DespuÃ©s de agendar la cita, se generarÃ¡ un documento de consentimiento que deberÃ¡ ser firmado digitalmente por tu padre/tutor y quedarÃ¡ guardado en tu perfil.
+                              Se requiere consentimiento de un padre o tutor legal. Después de agendar la cita, se generará un documento de consentimiento que deberá ser firmado digitalmente por tu padre/tutor y quedará guardado en tu perfil.
                             </p>
                             <label className="flex items-start gap-2 cursor-pointer">
                               <input
@@ -5207,7 +5207,7 @@ const videoRef = useRef(null);
                                 className="mt-0.5 accent-[var(--champagne)]"
                               />
                               <span className="text-[10px] text-[#334155]">
-                                Mi padre/tutor legal serÃ¡ notificado para firmar el consentimiento correspondiente.
+                                Mi padre/tutor legal será notificado para firmar el consentimiento correspondiente.
                               </span>
                             </label>
                           </div>
@@ -5218,7 +5218,7 @@ const videoRef = useRef(null);
                       <div className="space-y-4">
                         <div className="flex items-center gap-2 text-[#0f172a] text-left">
                           <MessageSquare size={18} className="text-[var(--champagne)]" />
-                          <h3 className="text-xs font-bold uppercase tracking-widest">Â¿Algo mÃ¡s que debamos saber?</h3>
+                          <h3 className="text-xs font-bold uppercase tracking-widest">¿Algo más que debamos saber?</h3>
                         </div>
                         <div className="relative">
                           <textarea
@@ -5239,7 +5239,7 @@ const videoRef = useRef(null);
                   );
                 })()}
 
-                {/* STEP 5: Confirmation & Cierre MÃ¡gico (Registration) */}
+                {/* STEP 5: Confirmation & Cierre Mágico (Registration) */}
                 {step === 5 && (
                   <div className="space-y-6 w-full animate-fade-in">
                     {/* PREMIUM BOOKING SUMMARY CARD (Mobile/Tablet Only) */}
@@ -5286,7 +5286,7 @@ const videoRef = useRef(null);
                       {/* Content section */}
                       <div className="p-4 space-y-2.5" style={{background: 'var(--bg-secondary)'}}>
                         
-                        {/* Service chip â€” champagne */}
+                        {/* Service chip — champagne */}
                         <div className="flex items-center gap-3 p-3 rounded-2xl" style={{
                           background: 'rgba(17, 17, 17,0.06)',
                           border: '1px solid rgba(17, 17, 17,0.14)'
@@ -5300,7 +5300,7 @@ const videoRef = useRef(null);
                           </div>
                         </div>
 
-                        {/* Date & Time chip â€” champagne slightly lighter */}
+                        {/* Date & Time chip — champagne slightly lighter */}
                         <div className="flex items-center gap-3 p-3 rounded-2xl" style={{
                           background: 'rgba(17, 17, 17,0.04)',
                           border: '1px solid rgba(17, 17, 17,0.10)'
@@ -5312,7 +5312,7 @@ const videoRef = useRef(null);
                             <p className="text-[8px] font-black uppercase tracking-widest" style={{color: 'rgba(17, 17, 17,0.55)'}}>Fecha y Hora</p>
                             <p className="text-sm font-extrabold text-[#0f172a]">
                               {selectedDate?.toLocaleDateString('es-ES', { weekday: 'short', day: 'numeric', month: 'short' })}
-                              <span className="mx-1.5 text-[#cbd5e1]">Â·</span>
+                              <span className="mx-1.5 text-[#cbd5e1]">·</span>
                               <span style={{color: '#111111'}}>{formatTime12(selectedTime)}</span>
                             </p>
                           </div>
@@ -5345,7 +5345,7 @@ const videoRef = useRef(null);
                     {!isLoggedIn && (
                       <div className="bg-white md:backdrop-blur-md backdrop-blur-sm border border-[#d9c08f]/15 rounded-3xl p-6 space-y-6 shadow-[0_10px_30px_rgba(0,0,0,0.06)]">
                         <div className="text-center space-y-1">
-                          <h4 className="font-bold text-[#0f172a] text-lg tracking-tight">Cierre MÃ¡gico</h4>
+                          <h4 className="font-bold text-[#0f172a] text-lg tracking-tight">Cierre Mágico</h4>
                           <p className="text-xs text-[#94a3b8]">Agenda tu cita y crea tu perfil express en un paso.</p>
                         </div>
 
@@ -5363,7 +5363,7 @@ const videoRef = useRef(null);
                             onClick={() => { setAuthTab('register'); setAuthError(''); }}
                             className={`flex-1 py-2.5 rounded-lg text-xs font-black transition-all duration-300 cursor-pointer ${authTab === 'register' ? 'bg-[var(--champagne)] text-black shadow-[0_4px_16px_rgba(0,0,0,0.05)]' : 'text-[#94a3b8] hover:text-[#0f172a]'}`}
                           >
-                            Registro RÃ¡pido
+                            Registro Rápido
                           </button>
                           <button
                             type="button"
@@ -5401,7 +5401,7 @@ const videoRef = useRef(null);
                                   value={authForm.lastname}
                                   onChange={(e) => setAuthForm({ ...authForm, lastname: e.target.value })}
                                   className="w-full bg-white border border-[#d9c08f]/15 rounded-xl px-4 py-3 text-xs text-[#0f172a] focus:border-[var(--champagne)] focus:bg-white focus:shadow-[0_0_12px_rgba(17, 17, 17,0.1)] transition-all duration-200 outline-none"
-                                  placeholder="PÃ©rez"
+                                  placeholder="Pérez"
                                   required
                                 />
                               </div>
@@ -5409,7 +5409,7 @@ const videoRef = useRef(null);
 
                             <div className="grid grid-cols-2 gap-3">
                               <div className="space-y-1">
-                                <label className="text-[10px] font-extrabold text-[#64748b] uppercase tracking-widest">TelÃ©fono</label>
+                                <label className="text-[10px] font-extrabold text-[#64748b] uppercase tracking-widest">Teléfono</label>
                                 <input
                                   type="tel"
                                   value={authForm.phone}
@@ -5420,7 +5420,7 @@ const videoRef = useRef(null);
                                 />
                               </div>
                               <div className="space-y-1">
-                                <label className="text-[10px] font-extrabold text-[#64748b] uppercase tracking-widest">CÃ©dula</label>
+                                <label className="text-[10px] font-extrabold text-[#64748b] uppercase tracking-widest">Cédula</label>
                                 <input
                                   type="text"
                                   value={authForm.id_card}
@@ -5463,14 +5463,14 @@ const videoRef = useRef(null);
                                 />
                               </div>
                               <div className="space-y-1">
-                                <label className="text-[10px] font-extrabold text-[#64748b] uppercase tracking-widest">ContraseÃ±a</label>
+                                <label className="text-[10px] font-extrabold text-[#64748b] uppercase tracking-widest">Contraseña</label>
                                 <div className="relative">
                                   <input
                                     type={showPassword ? 'text' : 'password'}
                                     value={authForm.password}
                                     onChange={(e) => setAuthForm({ ...authForm, password: e.target.value })}
                                     className="w-full bg-white border border-[#d9c08f]/15 rounded-xl pl-4 pr-10 py-3 text-xs text-[#0f172a] focus:border-[var(--champagne)] focus:bg-white focus:shadow-[0_0_12px_rgba(17, 17, 17,0.1)] transition-all duration-200 outline-none"
-                                    placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢"
+                                    placeholder="••••••••"
                                     autoComplete="new-password"
                                     required
                                   />
@@ -5497,7 +5497,7 @@ const videoRef = useRef(null);
                         ) : (
                           <form onSubmit={handleCheckout} className="space-y-4 text-left">
                             <div className="space-y-1">
-                              <label className="text-[10px] font-extrabold text-[#64748b] uppercase tracking-widest">Email o TelÃ©fono</label>
+                              <label className="text-[10px] font-extrabold text-[#64748b] uppercase tracking-widest">Email o Teléfono</label>
                               <input
                                 type="text"
                                 value={loginForm.identifier}
@@ -5509,14 +5509,14 @@ const videoRef = useRef(null);
                             </div>
 
                             <div className="space-y-1">
-                              <label className="text-[10px] font-extrabold text-[#64748b] uppercase tracking-widest">ContraseÃ±a</label>
+                              <label className="text-[10px] font-extrabold text-[#64748b] uppercase tracking-widest">Contraseña</label>
                               <div className="relative">
                                 <input
                                   type={showPassword ? 'text' : 'password'}
                                   value={loginForm.password}
                                   onChange={(e) => setLoginForm({ ...loginForm, password: e.target.value })}
                                   className="w-full bg-white border border-[#d9c08f]/15 rounded-xl pl-4 pr-10 py-3 text-xs text-[#0f172a] focus:border-[var(--champagne)] focus:bg-white focus:shadow-[0_0_12px_rgba(17, 17, 17,0.1)] transition-all duration-200 outline-none"
-                                  placeholder="ContraseÃ±a"
+                                  placeholder="Contraseña"
                                   required
                                 />
                                 <button
@@ -5535,7 +5535,7 @@ const videoRef = useRef(null);
                               disabled={submitting}
                               className="btn-gold w-full py-4 mt-3 rounded-full font-bold uppercase tracking-wider text-xs shadow-[0_4px_16px_rgba(0,0,0,0.05)] cursor-pointer haptic-bounce"
                             >
-                              {submitting ? 'Verificando...' : 'Iniciar SesiÃ³n & Confirmar'}
+                              {submitting ? 'Verificando...' : 'Iniciar Sesión & Confirmar'}
                             </button>
                           </form>
                         )}
@@ -5548,7 +5548,7 @@ const videoRef = useRef(null);
               </AnimatePresence>
             </div>
 
-            {/* Footer Navigation Buttons â€” hidden when barber profile is expanded or when in Step 3 (which has its own button) */}
+            {/* Footer Navigation Buttons — hidden when barber profile is expanded or when in Step 3 (which has its own button) */}
             <div ref={nextBtnRef} className={`mt-8 sm:mt-20 pb-10 ${(step === 2 && expandedBarber) || step === 3 ? 'hidden' : ''} ${isEmbedded ? 'xl:hidden' : 'lg:hidden'}`} style={{ scrollMarginBottom: isEmbedded ? '120px' : '40px' }}>
               {step < 5 ? (
                 <button
@@ -5587,16 +5587,16 @@ const videoRef = useRef(null);
 
             </div>
             {/* Right column on desktop: live booking summary. Hidden below lg (still in the
-                DOM but display:none â€” harmless) and skipped entirely for the expanded barber
+                DOM but display:none — harmless) and skipped entirely for the expanded barber
                 profile, which already has its own wide multi-column layout. */}
             {!(step === 2 && expandedBarber) && (() => {
               const barberLabel = 'Especialista';
               const timeline = [
                 { key: 'service', label: 'Servicio', icon: ToothIcon, done: !!selectedService, value: selectedService?.name, activeAt: 1 },
                 { key: 'barber', label: barberLabel, icon: User, done: !!selectedBarber, value: selectedBarber?.name, activeAt: 2 },
-                { key: 'datetime', label: 'Fecha y hora', icon: CalendarIcon, done: !!(selectedDate && selectedTime), value: selectedDate && selectedTime ? `${selectedDate.toLocaleDateString('es-ES', { weekday: 'short', day: 'numeric', month: 'short' })} Â· ${formatTime12(selectedTime)}` : null, activeAt: 3 },
+                { key: 'datetime', label: 'Fecha y hora', icon: CalendarIcon, done: !!(selectedDate && selectedTime), value: selectedDate && selectedTime ? `${selectedDate.toLocaleDateString('es-ES', { weekday: 'short', day: 'numeric', month: 'short' })} · ${formatTime12(selectedTime)}` : null, activeAt: 3 },
                 ...(isTattooBooking ? [{ key: 'case', label: 'Detalles del caso', icon: PenTool, done: !!(tattooSize && tattooZone && tattooStyle), value: null, activeAt: 4 }] : []),
-                { key: 'confirm', label: 'ConfirmaciÃ³n', icon: Check, done: step === 5 && success, value: null, activeAt: 5 },
+                { key: 'confirm', label: 'Confirmación', icon: Check, done: step === 5 && success, value: null, activeAt: 5 },
               ];
               return (
               <aside className={`${isEmbedded ? 'hidden xl:block' : 'hidden lg:block'} sticky top-14 self-start`}>
@@ -5650,7 +5650,7 @@ const videoRef = useRef(null);
                           style={{ background: 'var(--bg-secondary)' }}
                         >
                           <Crown size={26} style={{ color: 'rgba(17, 17, 17,0.35)' }} />
-                           <span className="text-[10px] font-bold tracking-widest uppercase" style={{ color: 'rgba(17, 17, 17,0.3)' }}>Centro OdontolÃ³gico Dientes Sanos</span>
+                           <span className="text-[10px] font-bold tracking-widest uppercase" style={{ color: 'rgba(17, 17, 17,0.3)' }}>Centro Odontológico Dientes Sanos</span>
                         </motion.div>
                       )}
                     </AnimatePresence>
@@ -5717,7 +5717,7 @@ const videoRef = useRef(null);
                                 transition={{ duration: 0.3 }}
                                 className={`text-sm font-extrabold leading-snug truncate ${item.value ? 'text-[#0f172a]' : 'text-[#cbd5e1] font-medium'}`}
                               >
-                                {item.value || (isCurrent ? 'Eligiendo ahoraâ€¦' : 'Pendiente')}
+                                {item.value || (isCurrent ? 'Eligiendo ahora…' : 'Pendiente')}
                               </motion.p>
                             </AnimatePresence>
                           </div>
@@ -5744,7 +5744,7 @@ const videoRef = useRef(null);
                         WebkitTextFillColor: selectedService?.price != null ? 'transparent' : 'unset',
                         color: selectedService?.price != null ? undefined : 'rgba(0,0,0,0.2)'
                       }}>
-                        {selectedService?.price != null ? `$${selectedService.price}` : 'â€”'}
+                        {selectedService?.price != null ? `$${selectedService.price}` : '—'}
                       </span>
                     </div>
 
@@ -5786,7 +5786,7 @@ const videoRef = useRef(null);
                     </div>
 
                     <div className="flex items-center justify-center gap-1.5 text-center mt-2.5">
-                      <span className="text-[10px] font-medium text-[#94a3b8]">ConfirmaciÃ³n instantÃ¡nea al finalizar</span>
+                      <span className="text-[10px] font-medium text-[#94a3b8]">Confirmación instantánea al finalizar</span>
                     </div>
                   </div>
                 </div>
@@ -5876,7 +5876,7 @@ const videoRef = useRef(null);
                           <BarberAvatar url={b.image_url} name={b.name} />
                           {isSelected && (
                             <div className="absolute -bottom-1 -right-1 w-4.5 h-4.5 rounded-full bg-[var(--champagne)] text-black flex items-center justify-center text-[8px] font-black border border-[#e9eae8]">
-                              âœ“
+                              ✓
                             </div>
                           )}
                         </div>
@@ -5910,7 +5910,7 @@ const videoRef = useRef(null);
                             ? 'bg-[var(--champagne)] text-black scale-100' 
                             : 'bg-white text-transparent border border-[#d9c08f]/20 scale-90'
                         }`}>
-                          âœ“
+                          ✓
                         </div>
 
                         <div className="pr-4">
@@ -5981,7 +5981,7 @@ const videoRef = useRef(null);
               </div>
               <div>
                 <h3 className="text-lg md:text-xl font-black text-[#111111] tracking-tight uppercase">EXPERIENCIA DIENTES SANOS</h3>
-                <p className="text-[#94a3b8] text-[10px] md:text-xs font-bold tracking-wider uppercase">Salud, tecnologÃ­a y cercanÃ­a en cada visita</p>
+                <p className="text-[#94a3b8] text-[10px] md:text-xs font-bold tracking-wider uppercase">Salud, tecnología y cercanía en cada visita</p>
               </div>
             </div>
             
@@ -6000,7 +6000,7 @@ const videoRef = useRef(null);
           {/* Description details */}
           <div className="space-y-4 text-[#475569] text-xs md:text-sm leading-relaxed">
             <p>
-               En <strong className="text-[#111111] font-semibold">Dientes Sanos</strong> cuidamos tu salud bucal con tecnologÃ­a moderna y trato cercano. Cada tratamiento se diseÃ±a para que salgas sonriendo y con total confianza.
+               En <strong className="text-[#111111] font-semibold">Dientes Sanos</strong> cuidamos tu salud bucal con tecnología moderna y trato cercano. Cada tratamiento se diseña para que salgas sonriendo y con total confianza.
             </p>
             
             <div className="grid grid-cols-1 gap-4 pt-2">
@@ -6010,7 +6010,7 @@ const videoRef = useRef(null);
                 </div>
                 <div className="space-y-1">
                   <h4 className="text-[#0f172a] font-extrabold text-[11px] uppercase tracking-wider">Sala de espera</h4>
-                  <p className="text-[#475569] text-[10px] leading-normal">Un espacio cÃ³modo para que esperes tranquilo mientras llega tu turno.</p>
+                  <p className="text-[#475569] text-[10px] leading-normal">Un espacio cómodo para que esperes tranquilo mientras llega tu turno.</p>
                 </div>
               </div>
             </div>
@@ -6025,7 +6025,7 @@ const videoRef = useRef(null);
               }}
               className="btn-gold px-5 py-2.5 rounded-full text-[10px] uppercase tracking-widest font-extrabold flex items-center gap-1 cursor-pointer"
             >
-              Reservar visita <span className="text-[12px]">â†’</span>
+              Reservar visita <span className="text-[12px]">→</span>
             </button>
           </div>
         </div>
@@ -6033,4 +6033,3 @@ const videoRef = useRef(null);
     </div>
   );
 }
-

@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { useNotifs } from '../context/NotificationContext';
 import { defaultCommissionPct, isOdontologoRole, roleLabel } from '../utils/staffRoles';
@@ -80,7 +80,7 @@ import FieldLabel from './FieldLabel';
 import { useScrollLock } from '../hooks/useScrollLock';
 
 const SETTLEMENT_ACCOUNTS = [
-  'Efectivo ($)', 'Efectivo (Bs)', 'Pago MÃ³vil', 'Punto de venta',
+  'Efectivo ($)', 'Efectivo (Bs)', 'Pago Móvil', 'Punto de venta',
   'Zelle', 'Zinli', 'Binance / USDT', 'Transferencia'
 ];
 
@@ -101,9 +101,9 @@ const availableModules = [
   { id: 'my-profile', label: 'Mi Perfil' },
   { id: 'dashboard', label: 'Inicio' },
   { id: 'scheduling', label: 'Agenda' },
-  { id: 'reception', label: 'RecepciÃ³n' },
+  { id: 'reception', label: 'Recepción' },
   { id: 'checkout', label: 'Caja' },
-  { id: 'barber', label: 'Mi sillÃ³n' },
+  { id: 'barber', label: 'Mi sillón' },
   { id: 'clients', label: 'Pacientes' },
   { id: 'personnel', label: 'Equipo' },
   { id: 'services', label: 'Servicios' },
@@ -114,7 +114,7 @@ const availableModules = [
   { id: 'history', label: 'Historial' },
 ];
 
-// PequeÃ±o menÃº que aparece junto al avatar para elegir cÃ¡mara o galerÃ­a,
+// Pequeño menú que aparece junto al avatar para elegir cámara o galería,
 // sin tener que abrir el modal completo de PandaCamera solo para preguntar.
 const PhotoSourceMenu = ({ isOpen, onCamera, onGallery, onClose }) => {
   const [mounted, setMounted] = useState(isOpen);
@@ -158,7 +158,7 @@ const PhotoSourceMenu = ({ isOpen, onCamera, onGallery, onClose }) => {
           type="button"
           onClick={onCamera}
           className="tap-scale menu-row-hover"
-          style={{ width: '100%', padding: '12px 14px', display: 'flex', alignItems: 'center', gap: '10px', background: 'none', border: 'none', color: '#111111', fontSize: '13px', fontWeight: '700', cursor: 'pointer', textAlign: 'left' }}
+          style={{ width: '100%', padding: '12px 14px', display: 'flex', alignItems: 'center', gap: '10px', background: 'none', border: 'none', color: 'white', fontSize: '13px', fontWeight: '700', cursor: 'pointer', textAlign: 'left' }}
         >
           <Camera size={16} color="var(--gold-primary)" /> Tomar foto
         </button>
@@ -167,16 +167,16 @@ const PhotoSourceMenu = ({ isOpen, onCamera, onGallery, onClose }) => {
           type="button"
           onClick={onGallery}
           className="tap-scale menu-row-hover"
-          style={{ width: '100%', padding: '12px 14px', display: 'flex', alignItems: 'center', gap: '10px', background: 'none', border: 'none', color: '#111111', fontSize: '13px', fontWeight: '700', cursor: 'pointer', textAlign: 'left' }}
+          style={{ width: '100%', padding: '12px 14px', display: 'flex', alignItems: 'center', gap: '10px', background: 'none', border: 'none', color: 'white', fontSize: '13px', fontWeight: '700', cursor: 'pointer', textAlign: 'left' }}
         >
-          <Upload size={16} color="var(--gold-primary)" /> Subir de galerÃ­a
+          <Upload size={16} color="var(--gold-primary)" /> Subir de galería
         </button>
       </div>
     </>
   );
 };
 
-// Modal de historial de asistencia: racha + estadÃ­sticas + mapa semanal de 35 dÃ­as + historial detallado de turnos
+// Modal de historial de asistencia: racha + estadísticas + mapa semanal de 35 días + historial detallado de turnos
 const AttendanceHistoryModal = ({ member, dates, logs, streak, onClose, overlayClass, cardClass, isMobile }) => {
   const memberLogs = (logs || [])
     .filter(l => l.staff_id === member.id)
@@ -184,7 +184,7 @@ const AttendanceHistoryModal = ({ member, dates, logs, streak, onClose, overlayC
 
   const activeSession = memberLogs.find(l => !l.check_out);
 
-  // EstadÃ­sticas calculadas
+  // Estadísticas calculadas
   let totalMinutes = 0;
   let closedSessionsCount = 0;
   memberLogs.forEach(l => {
@@ -203,7 +203,7 @@ const AttendanceHistoryModal = ({ member, dates, logs, streak, onClose, overlayC
   const avgShiftMins = avgMinutesPerShift % 60;
   const avgShiftFormatted = avgShiftHours > 0 ? `${avgShiftHours}h ${avgShiftMins}m` : `${avgShiftMins}m`;
 
-  // Matriz de los Ãºltimos 35 dÃ­as alineados por dÃ­a de la semana (Lunes a Domingo)
+  // Matriz de los últimos 35 días alineados por día de la semana (Lunes a Domingo)
   const today = new Date();
   today.setHours(0, 0, 0, 0);
 
@@ -305,7 +305,7 @@ const AttendanceHistoryModal = ({ member, dates, logs, streak, onClose, overlayC
             </div>
             <div style={{ minWidth: 0 }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '6px', flexWrap: 'wrap' }}>
-                <h3 style={{ fontSize: isMobile ? '16px' : '19px', fontWeight: '900', color: '#111111', margin: 0, letterSpacing: '-0.3px', wordBreak: 'break-word' }}>
+                <h3 style={{ fontSize: isMobile ? '16px' : '19px', fontWeight: '900', color: 'white', margin: 0, letterSpacing: '-0.3px', wordBreak: 'break-word' }}>
                   {member.name}
                 </h3>
                 <span style={{ 
@@ -361,7 +361,7 @@ const AttendanceHistoryModal = ({ member, dates, logs, streak, onClose, overlayC
           </button>
         </div>
 
-        {/* Tarjetas KPI de Resumen (Responsive 4 col en desktop, 2 col en mÃ³vil) */}
+        {/* Tarjetas KPI de Resumen (Responsive 4 col en desktop, 2 col en móvil) */}
         <div className="att-kpi-grid">
           <div className="att-kpi-card" style={{ 
             background: 'linear-gradient(135deg, rgba(255,149,0,0.12) 0%, rgba(255,149,0,0.02) 100%)', 
@@ -375,7 +375,7 @@ const AttendanceHistoryModal = ({ member, dates, logs, streak, onClose, overlayC
             justifyContent: 'center'
           }}>
             <Flame size={isMobile ? 16 : 18} color="#ff9500" fill="#ff9500" style={{ marginBottom: '2px' }} />
-            <div style={{ fontSize: isMobile ? '15px' : '16px', fontWeight: '900', color: '#111111' }}>{streak} {streak === 1 ? 'dÃ­a' : 'dÃ­as'}</div>
+            <div style={{ fontSize: isMobile ? '15px' : '16px', fontWeight: '900', color: 'white' }}>{streak} {streak === 1 ? 'día' : 'días'}</div>
             <div style={{ fontSize: '9.5px', fontWeight: '800', color: '#ff9500', textTransform: 'uppercase', letterSpacing: '0.4px', marginTop: '2px' }}>Racha actual</div>
           </div>
 
@@ -391,8 +391,8 @@ const AttendanceHistoryModal = ({ member, dates, logs, streak, onClose, overlayC
             justifyContent: 'center'
           }}>
             <CheckCircle2 size={isMobile ? 16 : 18} color="#32d74b" style={{ marginBottom: '2px' }} />
-            <div style={{ fontSize: isMobile ? '15px' : '16px', fontWeight: '900', color: '#111111' }}>{uniquePresentDays} / 35</div>
-            <div style={{ fontSize: '9.5px', fontWeight: '800', color: '#32d74b', textTransform: 'uppercase', letterSpacing: '0.4px', marginTop: '2px' }}>DÃ­as asistidos</div>
+            <div style={{ fontSize: isMobile ? '15px' : '16px', fontWeight: '900', color: 'white' }}>{uniquePresentDays} / 35</div>
+            <div style={{ fontSize: '9.5px', fontWeight: '800', color: '#32d74b', textTransform: 'uppercase', letterSpacing: '0.4px', marginTop: '2px' }}>Días asistidos</div>
           </div>
 
           <div className="att-kpi-card" style={{ 
@@ -407,7 +407,7 @@ const AttendanceHistoryModal = ({ member, dates, logs, streak, onClose, overlayC
             justifyContent: 'center'
           }}>
             <Clock size={isMobile ? 16 : 18} color="var(--gold-primary)" style={{ marginBottom: '2px' }} />
-            <div style={{ fontSize: isMobile ? '15px' : '16px', fontWeight: '900', color: '#111111' }}>{totalHours}h</div>
+            <div style={{ fontSize: isMobile ? '15px' : '16px', fontWeight: '900', color: 'white' }}>{totalHours}h</div>
             <div style={{ fontSize: '9.5px', fontWeight: '800', color: 'var(--gold-primary)', textTransform: 'uppercase', letterSpacing: '0.4px', marginTop: '2px' }}>Total horas</div>
           </div>
 
@@ -423,12 +423,12 @@ const AttendanceHistoryModal = ({ member, dates, logs, streak, onClose, overlayC
             justifyContent: 'center'
           }}>
             <Timer size={isMobile ? 16 : 18} color="#64d2ff" style={{ marginBottom: '2px' }} />
-            <div style={{ fontSize: isMobile ? '15px' : '16px', fontWeight: '900', color: '#111111' }}>{avgShiftFormatted}</div>
+            <div style={{ fontSize: isMobile ? '15px' : '16px', fontWeight: '900', color: 'white' }}>{avgShiftFormatted}</div>
             <div style={{ fontSize: '9.5px', fontWeight: '800', color: '#64d2ff', textTransform: 'uppercase', letterSpacing: '0.4px', marginTop: '2px' }}>Promedio/Turno</div>
           </div>
         </div>
 
-        {/* Mapa de Asistencia (Ãšltimos 35 DÃ­as) */}
+        {/* Mapa de Asistencia (Últimos 35 Días) */}
         <div style={{ 
           background: 'rgba(0, 0, 0, 0.04)', 
           border: '1px solid rgba(0, 0, 0, 0.08)', 
@@ -439,7 +439,7 @@ const AttendanceHistoryModal = ({ member, dates, logs, streak, onClose, overlayC
             <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
               <Calendar size={13} color="var(--gold-primary)" />
               <span style={{ fontSize: '10.5px', fontWeight: '900', color: 'var(--gold-primary)', letterSpacing: '0.8px', textTransform: 'uppercase' }}>
-                Mapa de Asistencia (35 dÃ­as)
+                Mapa de Asistencia (35 días)
               </span>
             </div>
             
@@ -447,7 +447,7 @@ const AttendanceHistoryModal = ({ member, dates, logs, streak, onClose, overlayC
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '9.5px', color: 'var(--text-muted)', fontWeight: '700' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '3px' }}>
                 <span style={{ width: '7px', height: '7px', borderRadius: '2px', background: '#32d74b' }} />
-                <span>AsistiÃ³</span>
+                <span>Asistió</span>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '3px' }}>
                 <span style={{ width: '7px', height: '7px', borderRadius: '2px', background: 'rgba(0, 0, 0, 0.04)' }} />
@@ -457,7 +457,7 @@ const AttendanceHistoryModal = ({ member, dates, logs, streak, onClose, overlayC
           </div>
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(7, minmax(0, 1fr))', gap: isMobile ? '4px' : '6px' }}>
-            {['Lun', 'Mar', 'MiÃ©', 'Jue', 'Vie', 'SÃ¡b', 'Dom'].map(name => (
+            {['Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb', 'Dom'].map(name => (
               <div key={name} style={{ fontSize: isMobile ? '9px' : '10px', fontWeight: '800', color: 'rgba(255,255,255,0.4)', textAlign: 'center', paddingBottom: '2px' }}>
                 {name}
               </div>
@@ -485,7 +485,7 @@ const AttendanceHistoryModal = ({ member, dates, logs, streak, onClose, overlayC
               return (
                 <div
                   key={d.key}
-                  title={`${d.date.toLocaleDateString('es-VE', { weekday: 'long', day: 'numeric', month: 'long' })} â€” ${d.active ? 'En turno actual' : d.present ? 'AsistiÃ³' : 'Sin registro'}`}
+                  title={`${d.date.toLocaleDateString('es-VE', { weekday: 'long', day: 'numeric', month: 'long' })} — ${d.active ? 'En turno actual' : d.present ? 'Asistió' : 'Sin registro'}`}
                   style={{
                     height: isMobile ? '28px' : '32px',
                     borderRadius: '7px',
@@ -536,7 +536,7 @@ const AttendanceHistoryModal = ({ member, dates, logs, streak, onClose, overlayC
               color: 'var(--text-muted)'
             }}>
               <Calendar size={24} style={{ margin: '0 auto 6px', opacity: 0.4 }} />
-              <p style={{ fontSize: '12px', fontWeight: '700', margin: 0 }}>No hay turnos registrados todavÃ­a</p>
+              <p style={{ fontSize: '12px', fontWeight: '700', margin: 0 }}>No hay turnos registrados todavía</p>
             </div>
           ) : (
             <div style={{ 
@@ -570,9 +570,9 @@ const AttendanceHistoryModal = ({ member, dates, logs, streak, onClose, overlayC
                       flexWrap: 'wrap'
                     }}
                   >
-                    {/* Fecha y DÃ­a */}
+                    {/* Fecha y Día */}
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '1px', minWidth: isMobile ? '85px' : '110px' }}>
-                      <span style={{ fontSize: isMobile ? '11.5px' : '12px', color: '#111111', fontWeight: '800', textTransform: 'capitalize' }}>
+                      <span style={{ fontSize: isMobile ? '11.5px' : '12px', color: 'white', fontWeight: '800', textTransform: 'capitalize' }}>
                         {inDate.toLocaleDateString('es-VE', { weekday: 'short', day: 'numeric', month: 'short' })}
                       </span>
                       <span style={{ fontSize: '9.5px', color: 'var(--text-muted)', fontWeight: '600' }}>
@@ -589,7 +589,7 @@ const AttendanceHistoryModal = ({ member, dates, logs, streak, onClose, overlayC
                         </span>
                       </div>
 
-                      <span style={{ color: 'rgba(255,255,255,0.2)', fontSize: '11px' }}>â†’</span>
+                      <span style={{ color: 'rgba(255,255,255,0.2)', fontSize: '11px' }}>→</span>
 
                       <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
                         <span style={{ width: '5px', height: '5px', borderRadius: '50%', background: isOngoing ? '#ff9f0a' : '#ff453a', flexShrink: 0 }} />
@@ -599,7 +599,7 @@ const AttendanceHistoryModal = ({ member, dates, logs, streak, onClose, overlayC
                       </div>
                     </div>
 
-                    {/* DuraciÃ³n */}
+                    {/* Duración */}
                     <div style={{ 
                       padding: '3px 8px', 
                       borderRadius: '7px', 
@@ -688,7 +688,7 @@ const InfoTooltip = ({ text }) => {
   );
 };
 
-// Presets de mÃ³dulos de los 3 roles canÃ³nicos (sin tildes en el valor interno).
+// Presets de módulos de los 3 roles canónicos (sin tildes en el valor interno).
 const rolePresets = {
   'Administrador': availableModules.map(m => m.id),
   'Odontologo': ['my-profile', 'barber', 'scheduling', 'clients', 'history'],
@@ -703,7 +703,7 @@ const StaffSettlementPanel = ({ modal, setModal, isMobile, loading, onPay, onSki
   const pendingBs = Math.max(0, Number(settlement.balanceBs || 0));
   const afterPaymentBs = Math.max(0, pendingBs - allocatedBs);
   const visibleAccounts = SETTLEMENT_ACCOUNTS.filter(account =>
-    Number(settlement.accountBalances?.[account] || 0) > 0 || ['Efectivo ($)', 'Pago MÃ³vil', 'Punto de venta'].includes(account)
+    Number(settlement.accountBalances?.[account] || 0) > 0 || ['Efectivo ($)', 'Pago Móvil', 'Punto de venta'].includes(account)
   );
 
   const metric = (label, value, color) => (
@@ -733,8 +733,8 @@ const StaffSettlementPanel = ({ modal, setModal, isMobile, loading, onPay, onSki
       {/* Breakdown Row */}
         <div style={{ padding: '12px', borderRadius: '14px', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', gap: '10px', marginBottom: '9px' }}>
-            <span style={{ fontSize: '10px', color: 'var(--text-muted)', fontWeight: '900', textTransform: 'uppercase' }}>CÃ³mo se generÃ³</span>
-            <span style={{ fontSize: '10px', color: 'var(--text-secondary)' }}>{settlement.payrollFrequency === 'daily' ? 'Pago diario' : 'Pago semanal'} Â· tasa {formatSettlementBs(settlement.rate)}</span>
+            <span style={{ fontSize: '10px', color: 'var(--text-muted)', fontWeight: '900', textTransform: 'uppercase' }}>Cómo se generó</span>
+            <span style={{ fontSize: '10px', color: 'var(--text-secondary)' }}>{settlement.payrollFrequency === 'daily' ? 'Pago diario' : 'Pago semanal'} · tasa {formatSettlementBs(settlement.rate)}</span>
           </div>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
             {Object.entries(settlement.methodBreakdown || {}).map(([method, amount]) => {
@@ -742,7 +742,7 @@ const StaffSettlementPanel = ({ modal, setModal, isMobile, loading, onPay, onSki
               const usdAmount = Number(settlement.methodBreakdownUsd?.[method] || 0);
               return (
                 <span key={method} style={{ padding: '6px 8px', borderRadius: '9px', background: 'rgba(0, 0, 0, 0.04)', fontSize: '10px', color: 'var(--text-secondary)' }}>
-                  {method} <strong style={{ color: '#111111' }}>{isUsdAccount ? `$${formatSettlementBs(usdAmount)}` : `${formatSettlementBs(amount)} Bs`}</strong>
+                  {method} <strong style={{ color: 'white' }}>{isUsdAccount ? `$${formatSettlementBs(usdAmount)}` : `${formatSettlementBs(amount)} Bs`}</strong>
                 </span>
               );
             })}
@@ -757,9 +757,9 @@ const StaffSettlementPanel = ({ modal, setModal, isMobile, loading, onPay, onSki
             <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) 1.1fr auto', gap: '8px', paddingBottom: '8px', borderBottom: '1px solid rgba(0, 0, 0, 0.08)', color: 'var(--text-muted)', fontSize: '10px', fontWeight: '800', textTransform: 'uppercase' }}><span>Cliente</span><span>Servicio</span><span>Monto</span></div>
             {settlement.recentEarnings?.length ? settlement.recentEarnings.map(item => (
               <div key={item.id} style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) 1.1fr auto', gap: '8px', padding: '10px 0', borderBottom: '1px solid rgba(0, 0, 0, 0.08)', fontSize: '11px', alignItems: 'center' }}>
-                <span title={item.clientName} style={{ color: '#111111', fontWeight: '600', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{item.clientName}</span>
+                <span title={item.clientName} style={{ color: 'white', fontWeight: '600', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{item.clientName}</span>
                 <span title={item.serviceName} style={{ color: 'var(--text-secondary)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{item.serviceName}</span>
-                <strong style={{ color: '#111111', whiteSpace: 'nowrap', fontWeight: '800' }}>{formatSettlementBs(item.amountBs + item.tipBs)} Bs</strong>
+                <strong style={{ color: 'white', whiteSpace: 'nowrap', fontWeight: '800' }}>{formatSettlementBs(item.amountBs + item.tipBs)} Bs</strong>
               </div>
             )) : <span style={{ display: 'block', marginTop: '12px', fontSize: '12px', color: 'var(--text-muted)', fontWeight: '500' }}>Sin servicios registrados.</span>}
           </div>
@@ -769,10 +769,10 @@ const StaffSettlementPanel = ({ modal, setModal, isMobile, loading, onPay, onSki
           <div style={{ marginTop: '12px', display: 'flex', flexDirection: 'column', gap: '10px', maxHeight: '180px', overflowY: 'auto' }}>
             {settlement.paymentHistory?.length ? settlement.paymentHistory.map(item => (
               <div key={item.id} style={{ display: 'flex', justifyContent: 'space-between', gap: '8px', fontSize: '11px' }}>
-                <span style={{ color: 'var(--text-secondary)', fontWeight: '600' }}>{item.type} Â· {new Date(item.date).toLocaleDateString('es-VE')}</span>
+                <span style={{ color: 'var(--text-secondary)', fontWeight: '600' }}>{item.type} · {new Date(item.date).toLocaleDateString('es-VE')}</span>
                 <strong style={{ color: '#ff9f0a', whiteSpace: 'nowrap', fontWeight: '800' }}>-{formatSettlementBs(item.amountBs)} Bs</strong>
               </div>
-            )) : <span style={{ display: 'block', marginTop: '12px', fontSize: '12px', color: 'var(--text-muted)', fontWeight: '500' }}>AÃºn no registra pagos.</span>}
+            )) : <span style={{ display: 'block', marginTop: '12px', fontSize: '12px', color: 'var(--text-muted)', fontWeight: '500' }}>Aún no registra pagos.</span>}
           </div>
         </div>
       </div>
@@ -782,7 +782,7 @@ const StaffSettlementPanel = ({ modal, setModal, isMobile, loading, onPay, onSki
       {/* Payment Action Section */}
       <section style={{ padding: '24px 24px 32px 24px', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', borderRadius: '24px', display: 'flex', flexDirection: 'column', gap: '16px' }}>
         <div>
-          <span style={{ fontSize: '12px', color: '#111111', fontWeight: '900', textTransform: 'uppercase', letterSpacing: '1px' }}>Distribuir Pago</span>
+          <span style={{ fontSize: '12px', color: 'white', fontWeight: '900', textTransform: 'uppercase', letterSpacing: '1px' }}>Distribuir Pago</span>
           <p style={{ marginTop: '4px', fontSize: '12px', color: 'var(--text-secondary)', fontWeight: '500' }}>Montos en Bs. Puedes pagar completo o registrar un abono parcial.</p>
         </div>
         
@@ -795,13 +795,13 @@ const StaffSettlementPanel = ({ modal, setModal, isMobile, loading, onPay, onSki
             return (
               <label key={account} style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) 120px', alignItems: 'center', gap: '12px', padding: '12px 16px', borderRadius: '16px', background: 'var(--bg-secondary)', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
                 <span style={{ minWidth: 0 }}>
-                  <strong style={{ display: 'block', fontSize: '13px', fontWeight: '700', color: '#111111' }}>{account}</strong>
+                  <strong style={{ display: 'block', fontSize: '13px', fontWeight: '700', color: 'white' }}>{account}</strong>
                   <small style={{ display: 'block', marginTop: '4px', color: 'var(--text-muted)', fontSize: '11px', fontWeight: '600' }}>Disponible {isUsdCash ? `$${formatSettlementBs(displayAvailable)}` : `${formatSettlementBs(displayAvailable)} Bs`}</small>
                 </span>
                 <input type="number" min="0" max={displayAvailable} step="0.01" value={displayAllocation}
                   onChange={event => setModal(previous => ({ ...previous, allocations: { ...previous.allocations, [account]: event.target.value === '' ? '' : Number(event.target.value) * (isUsdCash ? settlement.rate : 1) } }))}
                   placeholder={isUsdCash ? '$0.00' : '0.00'} aria-label={`Monto desde ${account}`}
-                  style={{ width: '100%', height: '44px', padding: '0 12px', borderRadius: '12px', border: '1px solid rgba(0, 0, 0, 0.08)', background: 'var(--bg-secondary)', color: '#111111', textAlign: 'right', fontWeight: '800', fontSize: '14px', outline: 'none', transition: 'border-color 0.2s ease' }} 
+                  style={{ width: '100%', height: '44px', padding: '0 12px', borderRadius: '12px', border: '1px solid rgba(0, 0, 0, 0.08)', background: 'var(--bg-secondary)', color: 'white', textAlign: 'right', fontWeight: '800', fontSize: '14px', outline: 'none', transition: 'border-color 0.2s ease' }} 
                   onFocus={e => e.target.style.borderColor = 'var(--gold-primary)'}
                   onBlur={e => e.target.style.borderColor = 'rgba(255,255,255,0.05)'}
                 />
@@ -813,10 +813,10 @@ const StaffSettlementPanel = ({ modal, setModal, isMobile, loading, onPay, onSki
         <div style={{ marginTop: 'auto', paddingTop: '16px', borderTop: '1px solid rgba(0, 0, 0, 0.08)' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '13px', color: 'var(--text-secondary)', fontWeight: '600' }}>
             <span>Pago a registrar</span>
-            <strong style={{ color: '#111111', fontSize: '15px', fontWeight: '800' }}>{formatSettlementBs(allocatedBs)} Bs</strong>
+            <strong style={{ color: 'white', fontSize: '15px', fontWeight: '800' }}>{formatSettlementBs(allocatedBs)} Bs</strong>
           </div>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '14px', fontWeight: '800', marginTop: '12px' }}>
-            <span>QuedarÃ¡ pendiente</span>
+            <span>Quedará pendiente</span>
             <strong style={{ color: afterPaymentBs > 0 ? '#ff9f0a' : '#32d74b', fontSize: '18px', fontWeight: '900' }}>{formatSettlementBs(afterPaymentBs)} Bs</strong>
           </div>
         </div>
@@ -833,7 +833,7 @@ const StaffSettlementPanel = ({ modal, setModal, isMobile, loading, onPay, onSki
         <div style={{ display: 'flex', gap: '8px' }}>
           <button onClick={onSkip} style={{ 
               flex: 1, minHeight: '50px', borderRadius: '16px', 
-              background: 'var(--bg-secondary)', color: '#111111', border: '1px solid rgba(0, 0, 0, 0.08)', 
+              background: 'var(--bg-secondary)', color: 'white', border: '1px solid rgba(0, 0, 0, 0.08)', 
               fontWeight: '800', fontSize: '15px',
               cursor: 'pointer', transition: 'all 0.2s ease'
             }}
@@ -878,7 +878,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
 
   const [personnelView, setPersonnelView] = useState(() => {
     return localStorage.getItem('panda_personnelView') || 'cards';
-  }); // 'cards' | 'table' â€” vista de GestiÃ³n de Personal
+  }); // 'cards' | 'table' — vista de Gestión de Personal
   
   useEffect(() => {
     localStorage.setItem('panda_personnelView', personnelView);
@@ -895,11 +895,11 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
   const [hoveredMetricInfo, setHoveredMetricInfo] = useState(null); // key del tile en hover (desktop, temporal)
   const [staffSearch, setStaffSearch] = useState(''); // buscador global del equipo (Personal, Asistencia y Reportes)
   const [kioskMode, setKioskMode] = useState(false);
-  const [attendanceLogs, setAttendanceLogs] = useState([]); // historial (Ãºltimos 90 dÃ­as) para racha y calendario
+  const [attendanceLogs, setAttendanceLogs] = useState([]); // historial (últimos 90 días) para racha y calendario
   const [historyModalMember, setHistoryModalMember] = useState(null); // miembro con el modal de historial abierto
-  const [displayedHistoryMember, setDisplayedHistoryMember] = useState(null); // conserva los datos durante la animaciÃ³n de salida
+  const [displayedHistoryMember, setDisplayedHistoryMember] = useState(null); // conserva los datos durante la animación de salida
   useEffect(() => { if (historyModalMember) setDisplayedHistoryMember(historyModalMember); }, [historyModalMember]);
-  const [justCheckedIn, setJustCheckedIn] = useState(null); // { id, name } â€” para el aviso de "deshacer"
+  const [justCheckedIn, setJustCheckedIn] = useState(null); // { id, name } — para el aviso de "deshacer"
   const justCheckedInTimerRef = useRef(null);
 
   // Form & Editing State
@@ -940,10 +940,10 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
   const [photoMenuOpen, setPhotoMenuOpen] = useState(false);
   const [editSections, setEditSections] = useState({ basics: true, permissions: false, profile: false, credentials: false });
   const toggleEditSection = (key) => setEditSections(prev => ({ ...prev, [key]: !prev[key] }));
-  // Cambia en cada apertura para forzar una instancia nueva de PandaCamera (ver key mÃ¡s abajo).
+  // Cambia en cada apertura para forzar una instancia nueva de PandaCamera (ver key más abajo).
   // Si el usuario cierra sin elegir foto y el navegador no avisa (el evento "cancel" del selector
   // de archivos no es confiable en todos los navegadores), el componente puede quedar "abierto"
-  // pero invisible; sin este key, la prÃ³xima apertura no harÃ­a nada porque showCamera ya era true.
+  // pero invisible; sin este key, la próxima apertura no haría nada porque showCamera ya era true.
   const [cameraKey, setCameraKey] = useState(0);
 
   const openPhotoAction = (action) => {
@@ -977,8 +977,8 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
     const name = formData.name?.toLowerCase() || '';
     return name.includes('jeff') || name.includes('juan') || name.includes('moret') || name.includes('alejandro') || 
            name.includes('mark') || name.includes('marco') || name.includes('cardozo') || name.includes('abraham') || 
-           name.includes('Ã¡ngel') || name.includes('angel') || name.includes('josÃ©') || name.includes('jose') || 
-           name.includes('cordero') || name.includes('kevin') || name.includes('farias') || name.includes('farÃ­as') || 
+           name.includes('ángel') || name.includes('angel') || name.includes('josé') || name.includes('jose') || 
+           name.includes('cordero') || name.includes('kevin') || name.includes('farias') || name.includes('farías') || 
            name.includes('israel') || name.includes('reina');
   })();
 
@@ -1124,12 +1124,12 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
     if (!files || files.length === 0 || !staffId) return;
     const remaining = MAX_PORTFOLIO - portfolio.length;
     if (remaining <= 0) {
-      showToast(`MÃ¡ximo ${MAX_PORTFOLIO} fotos por portafolio.`, 'error');
+      showToast(`Máximo ${MAX_PORTFOLIO} fotos por portafolio.`, 'error');
       return;
     }
     const toUpload = Array.from(files).slice(0, remaining);
     if (files.length > remaining) {
-      showToast(`Solo puedes agregar ${remaining} foto(s) mÃ¡s. Subiendo las primeras ${remaining}.`, 'error');
+      showToast(`Solo puedes agregar ${remaining} foto(s) más. Subiendo las primeras ${remaining}.`, 'error');
     }
     setPortfolioUploading(true);
     let uploaded = 0;
@@ -1162,7 +1162,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
         if (cleanupError) console.error('Portfolio storage rollback error:', cleanupError);
       }
       console.error('Portfolio upload error:', e);
-      showToast(`Error despuÃ©s de ${uploaded} foto(s). Intenta de nuevo.`, 'error');
+      showToast(`Error después de ${uploaded} foto(s). Intenta de nuevo.`, 'error');
     } finally {
       setPortfolioUploading(false);
     }
@@ -1432,7 +1432,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
   };
 
   const handleDeleteCustomRole = async (name) => {
-    if (!await confirm(`Â¿EstÃ¡s seguro de eliminar el rol "${name}"? Los miembros actuales que tengan este rol mantendrÃ¡n sus permisos individuales, pero el rol ya no podrÃ¡ ser asignado a nuevos artistas.`)) return;
+    if (!await confirm(`¿Estás seguro de eliminar el rol "${name}"? Los miembros actuales que tengan este rol mantendrán sus permisos individuales, pero el rol ya no podrá ser asignado a nuevos artistas.`)) return;
     
     const updated = { ...customRolePresets };
     delete updated[name];
@@ -1458,11 +1458,11 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
       return;
     }
     if (!isEditing && !formData.password) {
-      showToast('Por favor ingresa la contraseÃ±a para el nuevo miembro.', 'error');
+      showToast('Por favor ingresa la contraseña para el nuevo miembro.', 'error');
       return;
     }
     if (formData.password && formData.password.length < 6) {
-      showToast('La contraseÃ±a debe tener al menos 6 caracteres.', 'error');
+      showToast('La contraseña debe tener al menos 6 caracteres.', 'error');
       return;
     }
     const usesServiceCommission = supportsServiceCommission(formData.roles);
@@ -1565,9 +1565,9 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
           const existingStaff = await dataService.getStaffByEmail(trimmedEmail);
           if (existingStaff) {
             if (existingStaff.role?.startsWith('ARCHIVED|')) {
-              showToast(`El email ${formData.email} pertenece a un usuario archivado (${existingStaff.name}). ElimÃ­nalo primero desde Supabase.`, 'error');
+              showToast(`El email ${formData.email} pertenece a un usuario archivado (${existingStaff.name}). Elimínalo primero desde Supabase.`, 'error');
             } else {
-              showToast(`El email ${formData.email} ya estÃ¡ registrado para ${existingStaff.name}.`, 'error');
+              showToast(`El email ${formData.email} ya está registrado para ${existingStaff.name}.`, 'error');
             }
             setLoading(false);
             return;
@@ -1579,7 +1579,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
             submissionData.auth_user_id = authUser.id;
           } catch (authError) {
             if (authError.message?.includes('already') || authError.message?.includes('exist')) {
-              showToast(`El email ${formData.email} ya tiene una cuenta de acceso. ElimÃ­nala desde Supabase â†’ Authentication â†’ Users.`, 'error');
+              showToast(`El email ${formData.email} ya tiene una cuenta de acceso. Elimínala desde Supabase → Authentication → Users.`, 'error');
             } else {
               showToast(`Error al crear cuenta de acceso: ${authError.message}`, 'error');
             }
@@ -1592,7 +1592,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
           if (submissionData.auth_user_id) {
             const existingByAuth = await dataService.getStaffByAuthUserId(submissionData.auth_user_id);
             if (existingByAuth) {
-              // Trigger already created it â€” update instead of insert
+              // Trigger already created it — update instead of insert
               await dataService.updateStaff(existingByAuth.id, submissionData);
             } else {
               await dataService.addStaff(submissionData);
@@ -1606,7 +1606,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
           }
           throw staffError;
         }
-        showToast(`Â¡${formData.name} se ha unido al equipo!`);
+        showToast(`¡${formData.name} se ha unido al equipo!`);
       }
       handleCloseForm();
       await fetchStaff();
@@ -1619,7 +1619,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
   };
 
   const handleDeleteStaff = async (id, name) => {
-    if (!await confirm(`Â¿EstÃ¡s seguro de archivar a ${name}? Ya no aparecerÃ¡ en las listas activas pero su historial se mantendrÃ¡.`)) return;
+    if (!await confirm(`¿Estás seguro de archivar a ${name}? Ya no aparecerá en las listas activas pero su historial se mantendrá.`)) return;
     try {
       setLoading(true);
       await dataService.deleteStaff(id);
@@ -1646,7 +1646,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
     try {
       setLoading(true);
       await dataService.checkInBarber(staffId);
-      showToast('Llegada registrada con Ã©xito');
+      showToast('Llegada registrada con éxito');
       await fetchStaff();
 
       // Mostramos un aviso de "deshacer" por 5s, por si fue un toque accidental
@@ -1687,7 +1687,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
         });
       } else {
         await dataService.checkOutBarber(staffId);
-        showToast('Salida registrada con Ã©xito');
+        showToast('Salida registrada con éxito');
         await fetchStaff();
       }
     } catch (e) {
@@ -1698,7 +1698,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
     }
   };
 
-  // Deshace una llegada reciÃ©n registrada por error (sin pasar por el flujo de pago de salida)
+  // Deshace una llegada recién registrada por error (sin pasar por el flujo de pago de salida)
   const undoCheckIn = async (staffId) => {
     try {
       clearTimeout(justCheckedInTimerRef.current);
@@ -1715,7 +1715,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
     }
   };
 
-  // DÃ­as (YYYY-MM-DD) en los que un miembro registrÃ³ al menos una llegada
+  // Días (YYYY-MM-DD) en los que un miembro registró al menos una llegada
   const getAttendanceDates = (staffId) => {
     const dates = new Set();
     attendanceLogs.forEach(log => {
@@ -1726,8 +1726,8 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
     return dates;
   };
 
-  // Racha de dÃ­as consecutivos asistiendo, contando hacia atrÃ¡s desde hoy
-  // (o desde ayer si hoy aÃºn no tiene registro, para no "romper" la racha antes de que llegue)
+  // Racha de días consecutivos asistiendo, contando hacia atrás desde hoy
+  // (o desde ayer si hoy aún no tiene registro, para no "romper" la racha antes de que llegue)
   const getAttendanceStreak = (staffId) => {
     const dates = getAttendanceDates(staffId);
     if (dates.size === 0) return 0;
@@ -1756,11 +1756,11 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
       const payableBalance = Math.max(0, Number(earnings?.balanceBs || 0));
 
       if (totalPaymentBs <= 0) {
-        showToast('Indica cuÃ¡nto se pagarÃ¡ desde al menos una cuenta', 'warning');
+        showToast('Indica cuánto se pagará desde al menos una cuenta', 'warning');
         return;
       }
       if (totalPaymentBs > payableBalance + 0.01) {
-        showToast('La distribuciÃ³n supera el saldo pendiente', 'warning');
+        showToast('La distribución supera el saldo pendiente', 'warning');
         return;
       }
       const unavailableAccount = paymentDistribution.find(item => (
@@ -1773,10 +1773,10 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
 
       const paymentMethod = paymentDistribution.length === 1 ? paymentDistribution[0].method : 'Mixto';
       await dataService.addTransaction({
-        description: `Pago NÃ³mina: ${staffName} (Cierre Asistencia) [${paymentMethod}]`,
+        description: `Pago Nómina: ${staffName} (Cierre Asistencia) [${paymentMethod}]`,
         amount: totalPaymentBs / earnings.rate,
         type: 'expense',
-        category: 'Pago NÃ³mina',
+        category: 'Pago Nómina',
         currency: 'USD',
         exchange_rate: earnings.rate,
         metadata: {
@@ -1814,10 +1814,10 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
       if (earnings.balanceBs > 0) {
         const amountUsd = earnings.balanceBs / earnings.rate;
         const newTx = {
-          description: `Pago NÃ³mina Diaria: ${staffName} (Cierre Asistencia) [${paymentMethod}]`,
+          description: `Pago Nómina Diaria: ${staffName} (Cierre Asistencia) [${paymentMethod}]`,
           amount: amountUsd,
           type: 'expense',
-          category: 'Pago NÃ³mina',
+          category: 'Pago Nómina',
           currency: 'USD',
           exchange_rate: earnings.rate,
           metadata: {
@@ -1860,7 +1860,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
   };
 
   const handleVoidShift = async () => {
-    if (!await confirm('Â¿EstÃ¡s seguro de anular este turno? Se borrarÃ¡ completamente del historial como si nunca hubiera iniciado.')) return;
+    if (!await confirm('¿Estás seguro de anular este turno? Se borrará completamente del historial como si nunca hubiera iniciado.')) return;
     try {
       setLoading(true);
       await dataService.voidShift(dailyPaymentModal.staffId);
@@ -2084,8 +2084,8 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
 
   const handleDeleteReview = async (id) => {
     const isConfirmed = await confirm(
-      'Â¿EstÃ¡s seguro de que quieres eliminar permanentemente esta valoraciÃ³n?\n\nEsta acciÃ³n no se puede deshacer.', 
-      'Eliminar ValoraciÃ³n', 
+      '¿Estás seguro de que quieres eliminar permanentemente esta valoración?\n\nEsta acción no se puede deshacer.', 
+      'Eliminar Valoración', 
       {
         confirmText: 'Eliminar',
         cancelText: 'Cancelar',
@@ -2103,10 +2103,10 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
         }
 
         setAllReviews(prev => prev.filter(r => r.id !== id));
-        showToast('ValoraciÃ³n eliminada correctamente', 'success');
+        showToast('Valoración eliminada correctamente', 'success');
       } catch (error) {
-        console.error('Error al eliminar valoraciÃ³n:', error);
-        showToast('Error al eliminar la valoraciÃ³n: ' + (error.message || 'Desconocido'), 'error');
+        console.error('Error al eliminar valoración:', error);
+        showToast('Error al eliminar la valoración: ' + (error.message || 'Desconocido'), 'error');
       }
     }
   };
@@ -2145,7 +2145,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
           </h3>
           <button 
             onClick={handleCloseForm}
-            style={{ background: 'rgba(0, 0, 0, 0.04)', border: 'none', borderRadius: '50%', color: '#111111', width: '32px', height: '32px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+            style={{ background: 'rgba(0, 0, 0, 0.04)', border: 'none', borderRadius: '50%', color: 'white', width: '32px', height: '32px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
           >
             <X size={16} />
           </button>
@@ -2189,7 +2189,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
             {formData.image_url && (
               <button
                 onClick={(e) => { e.stopPropagation(); setFormData({ ...formData, image_url: '' }); }}
-                style={{ position: 'absolute', top: '-10px', right: '-10px', backgroundColor: '#ff453a', border: 'none', borderRadius: '50%', color: '#111111', width: '28px', height: '28px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 4px 12px rgba(0,0,0,0.3)', zIndex: 10 }}
+                style={{ position: 'absolute', top: '-10px', right: '-10px', backgroundColor: '#ff453a', border: 'none', borderRadius: '50%', color: 'white', width: '28px', height: '28px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 4px 12px rgba(0,0,0,0.3)', zIndex: 10 }}
               >
                 <X size={14} />
               </button>
@@ -2212,8 +2212,8 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                      <button
                        type="button"
                        onClick={() => removePortfolioPhoto(photo)}
-                       style={{ position: 'absolute', top: '-6px', right: '-6px', width: '20px', height: '20px', borderRadius: '50%', background: '#ff453a', border: 'none', color: '#111111', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '10px', fontWeight: '900', boxShadow: '0 2px 8px rgba(0,0,0,0.4)' }}
-                     >Ã—</button>
+                       style={{ position: 'absolute', top: '-6px', right: '-6px', width: '20px', height: '20px', borderRadius: '50%', background: '#ff453a', border: 'none', color: 'white', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '10px', fontWeight: '900', boxShadow: '0 2px 8px rgba(0,0,0,0.4)' }}
+                     >×</button>
                   </div>
                 ))}
                 {portfolio.length < MAX_PORTFOLIO && (
@@ -2243,12 +2243,12 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
         {/* Fields Section with Collapsible Panels */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', width: '100%' }}>
 
-          {/* â•â•â• SECTION 1: Datos BÃ¡sicos (always open) â•â•â• */}
+          {/* ═══ SECTION 1: Datos Básicos (always open) ═══ */}
           <div style={{ borderRadius: '16px', border: '1px solid rgba(0, 0, 0, 0.08)', overflow: 'hidden' }}>
-            <button onClick={() => toggleEditSection('basics')} style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '14px 16px', background: 'rgba(0, 0, 0, 0.04)', border: 'none', cursor: 'pointer', color: '#111111' }}>
+            <button onClick={() => toggleEditSection('basics')} style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '14px 16px', background: 'rgba(0, 0, 0, 0.04)', border: 'none', cursor: 'pointer', color: 'white' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                 <User size={16} color="var(--gold-primary)" />
-                <span style={{ fontSize: '12px', fontWeight: '900', letterSpacing: '1px' }}>DATOS BÃSICOS</span>
+                <span style={{ fontSize: '12px', fontWeight: '900', letterSpacing: '1px' }}>DATOS BÁSICOS</span>
               </div>
               <ChevronDown size={16} style={{ transition: 'transform 0.3s', transform: editSections.basics ? 'rotate(180deg)' : 'rotate(0)' }} />
             </button>
@@ -2305,7 +2305,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                               setNewRoleName(''); 
                               setFormData({ ...formData, roles: ['Odontologo'], permissions: allRolePresets['Odontologo'] || [] });
                             }}
-                            style={{ background: '#ffffff', border: 'none', color: 'var(--text-muted)', fontSize: '10px', cursor: 'pointer', fontWeight: '800' }}
+                            style={{ background: 'transparent', border: 'none', color: 'var(--text-muted)', fontSize: '10px', cursor: 'pointer', fontWeight: '800' }}
                           >
                             DESCARTAR
                           </button>
@@ -2327,7 +2327,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                     <label style={{ display: 'block', fontSize: '11px', fontWeight: '900', color: 'var(--text-muted)', marginBottom: '8px', letterSpacing: '1px' }}>FRECUENCIA DE PAGO</label>
                     <PandaSelect 
                       options={[
-                        { value: 'weekly', label: 'Semanal (SÃ¡bados)' },
+                        { value: 'weekly', label: 'Semanal (Sábados)' },
                         { value: 'daily', label: 'Diario (Al marcar salida)' }
                       ]}
                       value={formData.payroll_frequency || 'weekly'}
@@ -2365,7 +2365,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                         <label style={{ fontSize: '11px', fontWeight: '900', color: 'var(--gold-primary)', letterSpacing: '1px' }}>TARIFA POR LIMPIEZA ($)</label>
                         {formData.washing_rate > 0 && (
                           <span style={{ fontSize: '11px', color: 'var(--text-muted)', fontWeight: '700' }}>
-                            â‰ˆ {(formData.washing_rate * exchangeRate).toLocaleString('es-VE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} Bs.
+                            ≈ {(formData.washing_rate * exchangeRate).toLocaleString('es-VE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} Bs.
                           </span>
                         )}
                       </div>
@@ -2388,12 +2388,12 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
             )}
           </div>
 
-          {/* â•â•â• SECTION 2: Permisos (collapsed) â•â•â• */}
+          {/* ═══ SECTION 2: Permisos (collapsed) ═══ */}
           <div style={{ borderRadius: '16px', border: '1px solid rgba(0, 0, 0, 0.08)', overflow: 'hidden' }}>
-            <button onClick={() => toggleEditSection('permissions')} style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '14px 16px', background: 'rgba(0, 0, 0, 0.04)', border: 'none', cursor: 'pointer', color: '#111111' }}>
+            <button onClick={() => toggleEditSection('permissions')} style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '14px 16px', background: 'rgba(0, 0, 0, 0.04)', border: 'none', cursor: 'pointer', color: 'white' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                 <Key size={16} color="var(--gold-primary)" />
-                <span style={{ fontSize: '12px', fontWeight: '900', letterSpacing: '1px' }}>PERMISOS Y MÃ“DULOS</span>
+                <span style={{ fontSize: '12px', fontWeight: '900', letterSpacing: '1px' }}>PERMISOS Y MÓDULOS</span>
               </div>
               <ChevronDown size={16} style={{ transition: 'transform 0.3s', transform: editSections.permissions ? 'rotate(180deg)' : 'rotate(0)' }} />
             </button>
@@ -2402,7 +2402,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                 <div style={{ padding: '20px', backgroundColor: 'rgba(0, 0, 0, 0.04)', borderRadius: '16px', border: '1px solid var(--border-color)' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '16px' }}>
                     <Key size={18} color="var(--gold-primary)" />
-                    <label style={{ fontSize: '12px', fontWeight: '900', color: '#111111', letterSpacing: '1px' }}>MÃ“DULOS ACCESIBLES</label>
+                    <label style={{ fontSize: '12px', fontWeight: '900', color: 'white', letterSpacing: '1px' }}>MÓDULOS ACCESIBLES</label>
                   </div>
                   <div style={{ display: 'grid', gridTemplateColumns: isMobile ? 'minmax(0, 1fr) minmax(0, 1fr)' : 'repeat(3, minmax(0, 1fr))', gap: '12px' }}>
                     {availableModules.map(mod => (
@@ -2447,12 +2447,12 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
             )}
           </div>
 
-          {/* â•â•â• SECTION 3: InformaciÃ³n Personal (collapsed) â•â•â• */}
+          {/* ═══ SECTION 3: Información Personal (collapsed) ═══ */}
           <div style={{ borderRadius: '16px', border: '1px solid rgba(0, 0, 0, 0.08)', overflow: 'hidden' }}>
-            <button onClick={() => toggleEditSection('profile')} style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '14px 16px', background: 'rgba(0, 0, 0, 0.04)', border: 'none', cursor: 'pointer', color: '#111111' }}>
+            <button onClick={() => toggleEditSection('profile')} style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '14px 16px', background: 'rgba(0, 0, 0, 0.04)', border: 'none', cursor: 'pointer', color: 'white' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                 <Star size={16} color="var(--gold-primary)" />
-                <span style={{ fontSize: '12px', fontWeight: '900', letterSpacing: '1px' }}>PERFIL PÃšBLICO Y CONTACTO</span>
+                <span style={{ fontSize: '12px', fontWeight: '900', letterSpacing: '1px' }}>PERFIL PÚBLICO Y CONTACTO</span>
               </div>
               <ChevronDown size={16} style={{ transition: 'transform 0.3s', transform: editSections.profile ? 'rotate(180deg)' : 'rotate(0)' }} />
             </button>
@@ -2464,7 +2464,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '12px' }}>
                       <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                         <Film size={14} color="var(--gold-primary)" />
-                        <span style={{ fontSize: '11px', fontWeight: '800', color: 'var(--text-muted)', letterSpacing: '0.5px' }}>VIDEO DE PRESENTACIÃ“N</span>
+                        <span style={{ fontSize: '11px', fontWeight: '800', color: 'var(--text-muted)', letterSpacing: '0.5px' }}>VIDEO DE PRESENTACIÓN</span>
                       </div>
                       {formData.video_url && (
                         <button
@@ -2500,8 +2500,8 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                         ) : (
                           <>
                             <Upload size={18} color="var(--gold-primary)" />
-                            <span style={{ fontSize: '11px', color: 'var(--text-muted)', marginTop: '6px' }}>Subir video (se comprimirÃ¡ a 720p)</span>
-                            <span style={{ fontSize: '10px', color: 'rgba(255,255,255,0.2)', marginTop: '2px' }}>MP4, MOV, WebM â€” mÃ¡x 100MB</span>
+                            <span style={{ fontSize: '11px', color: 'var(--text-muted)', marginTop: '6px' }}>Subir video (se comprimirá a 720p)</span>
+                            <span style={{ fontSize: '10px', color: 'rgba(255,255,255,0.2)', marginTop: '2px' }}>MP4, MOV, WebM — máx 100MB</span>
                           </>
                         )}
                         <input
@@ -2518,21 +2518,21 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
 
                 <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(auto-fill, minmax(220px, 1fr))', gap: '16px' }}>
                   <div className="form-group">
-                    <label style={{ display: 'block', fontSize: '11px', fontWeight: '900', color: 'var(--text-muted)', marginBottom: '8px', letterSpacing: '1px' }}>TELÃ‰FONO</label>
+                    <label style={{ display: 'block', fontSize: '11px', fontWeight: '900', color: 'var(--text-muted)', marginBottom: '8px', letterSpacing: '1px' }}>TELÉFONO</label>
                     <div style={{ position: 'relative' }}>
                       <Phone size={18} style={{ position: 'absolute', left: '16px', top: '16px', color: 'var(--gold-primary)' }} />
                       <input className="form-input" placeholder="+58 412..." value={formData.phone} onChange={e => setFormData({...formData, phone: e.target.value})} style={{ width: '100%', height: '50px', paddingLeft: '48px' }} />
                     </div>
                   </div>
                   <div className="form-group">
-                    <label style={{ display: 'block', fontSize: '11px', fontWeight: '900', color: 'var(--text-muted)', marginBottom: '8px', letterSpacing: '1px' }}>CUMPLEAÃ‘OS</label>
+                    <label style={{ display: 'block', fontSize: '11px', fontWeight: '900', color: 'var(--text-muted)', marginBottom: '8px', letterSpacing: '1px' }}>CUMPLEAÑOS</label>
                     <div style={{ position: 'relative' }}>
                       <Cake size={18} style={{ position: 'absolute', left: '16px', top: '16px', color: 'var(--gold-primary)' }} />
                       <DateMaskInput className="form-input" placeholder="DD/MM/AAAA" value={formData.birth_date} onChange={val => setFormData({...formData, birth_date: val})} style={{ width: '100%', height: '50px', paddingLeft: '48px' }} />
                     </div>
                   </div>
                   <div className="form-group">
-                    <label style={{ display: 'block', fontSize: '11px', fontWeight: '900', color: 'var(--text-muted)', marginBottom: '8px', letterSpacing: '1px' }}>DIRECCIÃ“N DE HABITACIÃ“N</label>
+                    <label style={{ display: 'block', fontSize: '11px', fontWeight: '900', color: 'var(--text-muted)', marginBottom: '8px', letterSpacing: '1px' }}>DIRECCIÓN DE HABITACIÓN</label>
                     <div style={{ position: 'relative' }}>
                       <MapPin size={18} style={{ position: 'absolute', left: '16px', top: '16px', color: 'var(--gold-primary)' }} />
                       <input className="form-input" placeholder="Av. Principal, Edif..." value={formData.address} onChange={e => setFormData({...formData, address: e.target.value})} style={{ width: '100%', height: '50px', paddingLeft: '48px' }} />
@@ -2541,15 +2541,15 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                 </div>
                 <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'minmax(0, 1fr) minmax(0, 1fr)', gap: '16px' }}>
                   <div className="form-group">
-                  <FieldLabel>Â¿EN QUÃ‰ SE ESPECIALIZA? (PUESTO / ENFOQUE)</FieldLabel>
+                  <FieldLabel>¿EN QUÉ SE ESPECIALIZA? (PUESTO / ENFOQUE)</FieldLabel>
                     <div style={{ position: 'relative' }}>
                       <ToothIcon size={18} style={{ position: 'absolute', left: '16px', top: '16px', color: 'var(--gold-primary)' }} />
-                      <input className="form-input" placeholder="Ej. Especialista en estÃ©tica dental y blanqueamiento" value={formData.specialty} onChange={e => setFormData({...formData, specialty: e.target.value})} style={{ width: '100%', height: '50px', paddingLeft: '48px' }} />
+                      <input className="form-input" placeholder="Ej. Especialista en estética dental y blanqueamiento" value={formData.specialty} onChange={e => setFormData({...formData, specialty: e.target.value})} style={{ width: '100%', height: '50px', paddingLeft: '48px' }} />
                     </div>
                   </div>
                 </div>
                 <div style={{ marginTop: '16px', borderTop: '1px solid rgba(0, 0, 0, 0.08)', paddingTop: '16px' }}>
-                  <h4 style={{ fontSize: '11px', fontWeight: '900', color: 'var(--gold-primary)', marginBottom: '12px', letterSpacing: '1px', textTransform: 'uppercase' }}>EstadÃ­sticas de Perfil PÃºblico</h4>
+                  <h4 style={{ fontSize: '11px', fontWeight: '900', color: 'var(--gold-primary)', marginBottom: '12px', letterSpacing: '1px', textTransform: 'uppercase' }}>Estadísticas de Perfil Público</h4>
                   <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr 1fr' : 'repeat(auto-fill, minmax(180px, 1fr))', gap: '16px' }}>
                     <div className="form-group">
                   <FieldLabel>CANT. SERVICIOS</FieldLabel>
@@ -2569,11 +2569,11 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                   <FieldLabel>EXPERIENCIA</FieldLabel>
                       <div style={{ position: 'relative' }}>
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--gold-primary)" strokeWidth="2" style={{ position: 'absolute', left: '16px', top: '16px' }}><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                        <input className="form-input" placeholder="Ej. 5 aÃ±os" value={formData.experience} onChange={e => setFormData({...formData, experience: e.target.value})} style={{ width: '100%', height: '50px', paddingLeft: '48px' }} />
+                        <input className="form-input" placeholder="Ej. 5 años" value={formData.experience} onChange={e => setFormData({...formData, experience: e.target.value})} style={{ width: '100%', height: '50px', paddingLeft: '48px' }} />
                       </div>
                     </div>
                     <div className="form-group">
-                  <FieldLabel>SEDE / UBICACIÃ“N</FieldLabel>
+                  <FieldLabel>SEDE / UBICACIÓN</FieldLabel>
                       <div style={{ position: 'relative' }}>
                         <MapPin size={16} style={{ position: 'absolute', left: '16px', top: '16px', color: 'var(--gold-primary)' }} />
                         <input className="form-input" placeholder="Ej. Consultorio Central" value={formData.location} onChange={e => setFormData({...formData, location: e.target.value})} style={{ width: '100%', height: '50px', paddingLeft: '48px' }} />
@@ -2582,12 +2582,12 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                   </div>
                 </div>
                 <div className="form-group" style={{ marginTop: '16px', marginBottom: '16px' }}>
-                <FieldLabel>SOBRE MÃ (DESCRIPCIÃ“N DE TU ESTILO O TRAYECTORIA)</FieldLabel>
+                <FieldLabel>SOBRE MÍ (DESCRIPCIÓN DE TU ESTILO O TRAYECTORIA)</FieldLabel>
                   <div style={{ position: 'relative' }}>
                     <FileText size={18} style={{ position: 'absolute', left: '16px', top: '16px', color: 'var(--gold-primary)' }} />
                     <textarea 
                       className="form-input" 
-                      placeholder="Ej. Especialista en ortodoncia y estÃ©tica dental..." 
+                      placeholder="Ej. Especialista en ortodoncia y estética dental..." 
                       value={formData.biography} 
                       onChange={e => setFormData({...formData, biography: e.target.value})} 
                       style={{ width: '100%', minHeight: '90px', padding: '12px 12px 12px 48px', resize: 'vertical' }} 
@@ -2598,9 +2598,9 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
             )}
           </div>
 
-          {/* â•â•â• SECTION 4: Credenciales (collapsed) â•â•â• */}
+          {/* ═══ SECTION 4: Credenciales (collapsed) ═══ */}
           <div style={{ borderRadius: '16px', border: '1px solid rgba(0, 0, 0, 0.08)', overflow: 'hidden' }}>
-            <button onClick={() => toggleEditSection('credentials')} style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '14px 16px', background: 'rgba(0, 0, 0, 0.04)', border: 'none', cursor: 'pointer', color: '#111111' }}>
+            <button onClick={() => toggleEditSection('credentials')} style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '14px 16px', background: 'rgba(0, 0, 0, 0.04)', border: 'none', cursor: 'pointer', color: 'white' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                 <Lock size={16} color="var(--gold-primary)" />
                 <span style={{ fontSize: '12px', fontWeight: '900', letterSpacing: '1px' }}>CREDENCIALES DE ACCESO</span>
@@ -2618,13 +2618,13 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                     </div>
                   </div>
                   <div className="form-group">
-                    <label style={{ display: 'block', fontSize: '11px', fontWeight: '900', color: 'var(--gold-primary)', marginBottom: '8px', letterSpacing: '1px' }}>NUEVA CONTRASEÃ‘A</label>
+                    <label style={{ display: 'block', fontSize: '11px', fontWeight: '900', color: 'var(--gold-primary)', marginBottom: '8px', letterSpacing: '1px' }}>NUEVA CONTRASEÑA</label>
                     <div style={{ position: 'relative' }}>
                       <Lock size={18} style={{ position: 'absolute', left: '16px', top: '16px', color: 'var(--gold-primary)' }} />
                       <input 
                         className="form-input" 
                         type="password" 
-                        placeholder="VacÃ­o para no cambiar" 
+                        placeholder="Vacío para no cambiar" 
                         value={formData.password} 
                         onChange={e => setFormData({...formData, password: e.target.value})} 
                         autoComplete="new-password"
@@ -2660,7 +2660,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
       }}>
         <div>
           <h2 style={{ fontSize: isMobile ? '28px' : '32px', fontWeight: '800', letterSpacing: '-0.5px' }}><span className="text-gold">Equipo</span></h2>
-          <p style={{ color: 'var(--text-secondary)', marginTop: '4px' }}>GestiÃ³n de talento, asistencia y reseÃ±as.</p>
+          <p style={{ color: 'var(--text-secondary)', marginTop: '4px' }}>Gestión de talento, asistencia y reseñas.</p>
         </div>
         {activeTab === 'management' && (
           <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
@@ -2700,7 +2700,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
               <button
                 className="btn-gold"
                 onClick={() => setIsRoleModalOpen(true)}
-                style={{ backgroundColor: 'rgba(0, 0, 0, 0.04)', color: '#111111', border: '1px solid rgba(0, 0, 0, 0.08)' }}
+                style={{ backgroundColor: 'rgba(0, 0, 0, 0.04)', color: 'white', border: '1px solid rgba(0, 0, 0, 0.08)' }}
               >
                 <Shield size={18} style={{ marginRight: '8px' }} /> Roles
               </button>
@@ -2770,7 +2770,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
               whiteSpace: 'nowrap'
             }}
           >
-            <User size={isMobile ? 14 : 16} /> {isMobile ? 'Personal' : 'GestiÃ³n de Personal'}
+            <User size={isMobile ? 14 : 16} /> {isMobile ? 'Personal' : 'Gestión de Personal'}
           </button>
           <button
             onClick={() => { setActiveTab('attendance'); handleCloseForm(); }}
@@ -2812,7 +2812,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
               whiteSpace: 'nowrap'
             }}
           >
-            <Star size={isMobile ? 14 : 16} /> {isMobile ? 'ReseÃ±as' : 'ReseÃ±as de Pacientes'}
+            <Star size={isMobile ? 14 : 16} /> {isMobile ? 'Reseñas' : 'Reseñas de Pacientes'}
           </button>
           <button
             onClick={() => { setActiveTab('performance'); handleCloseForm(); }}
@@ -2833,7 +2833,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
               whiteSpace: 'nowrap'
             }}
           >
-            <BarChart2 size={isMobile ? 14 : 16} /> {isMobile ? 'DesempeÃ±o' : 'Reportes de DesempeÃ±o'}
+            <BarChart2 size={isMobile ? 14 : 16} /> {isMobile ? 'Desempeño' : 'Reportes de Desempeño'}
           </button>
             <div style={{ position: 'relative', flex: isMobile ? '1 1 100%' : '0 1 280px', minWidth: isMobile ? '100%' : '200px', marginLeft: isMobile ? '0' : 'auto' }}>
               <Search size={16} color="var(--text-muted)" style={{ position: 'absolute', left: '14px', top: '50%', transform: 'translateY(-50%)' }} />
@@ -2849,7 +2849,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                   borderRadius: '12px',
                   background: 'rgba(0, 0, 0, 0.04)',
                   border: '1px solid rgba(0, 0, 0, 0.08)',
-                  color: '#111111',
+                  color: 'white',
                   fontSize: '13px',
                   outline: 'none',
                   boxSizing: 'border-box'
@@ -2911,7 +2911,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
               {formData.image_url && (
                 <button
                   onClick={(e) => { e.stopPropagation(); setFormData({ ...formData, image_url: '' }); }}
-                  style={{ position: 'absolute', top: '-10px', right: '-10px', backgroundColor: '#ff453a', border: 'none', borderRadius: '50%', color: '#111111', width: '28px', height: '28px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 4px 12px rgba(0,0,0,0.3)', zIndex: 10 }}
+                  style={{ position: 'absolute', top: '-10px', right: '-10px', backgroundColor: '#ff453a', border: 'none', borderRadius: '50%', color: 'white', width: '28px', height: '28px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 4px 12px rgba(0,0,0,0.3)', zIndex: 10 }}
                 >
                   <X size={14} />
                 </button>
@@ -2935,8 +2935,8 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                          <button
                            type="button"
                            onClick={() => removePortfolioPhoto(photo)}
-                           style={{ position: 'absolute', top: '-6px', right: '-6px', width: '20px', height: '20px', borderRadius: '50%', background: '#ff453a', border: 'none', color: '#111111', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '10px', fontWeight: '900', boxShadow: '0 2px 8px rgba(0,0,0,0.4)' }}
-                         >Ã—</button>
+                           style={{ position: 'absolute', top: '-6px', right: '-6px', width: '20px', height: '20px', borderRadius: '50%', background: '#ff453a', border: 'none', color: 'white', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '10px', fontWeight: '900', boxShadow: '0 2px 8px rgba(0,0,0,0.4)' }}
+                         >×</button>
                       </div>
                     ))}
                     {portfolio.length < MAX_PORTFOLIO && (
@@ -3020,7 +3020,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                             setNewRoleName(''); 
                             setFormData({ ...formData, roles: ['Odontologo'], permissions: allRolePresets['Odontologo'] || [] });
                           }}
-                          style={{ background: '#ffffff', border: 'none', color: 'var(--text-muted)', fontSize: '10px', cursor: 'pointer', fontWeight: '800' }}
+                          style={{ background: 'transparent', border: 'none', color: 'var(--text-muted)', fontSize: '10px', cursor: 'pointer', fontWeight: '800' }}
                         >
                           DESCARTAR
                         </button>
@@ -3043,7 +3043,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                   <FieldLabel>FRECUENCIA DE PAGO</FieldLabel>
                   <PandaSelect 
                     options={[
-                      { value: 'weekly', label: 'Semanal (SÃ¡bados)' },
+                      { value: 'weekly', label: 'Semanal (Sábados)' },
                       { value: 'daily', label: 'Diario (Al marcar salida)' }
                     ]}
                     value={formData.payroll_frequency || 'weekly'}
@@ -3081,7 +3081,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                       <label style={{ fontSize: '11px', fontWeight: '900', color: 'var(--gold-primary)', letterSpacing: '1px' }}>TARIFA POR LIMPIEZA ($)</label>
                       {formData.washing_rate > 0 && (
                         <span style={{ fontSize: '11px', color: 'var(--text-muted)', fontWeight: '700' }}>
-                          â‰ˆ {(formData.washing_rate * exchangeRate).toLocaleString('es-VE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} Bs.
+                          ≈ {(formData.washing_rate * exchangeRate).toLocaleString('es-VE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} Bs.
                         </span>
                       )}
                     </div>
@@ -3105,7 +3105,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
               <div style={{ padding: '24px', backgroundColor: 'rgba(0, 0, 0, 0.04)', borderRadius: '20px', border: '1px solid var(--border-color)' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '16px' }}>
                   <Key size={18} color="var(--gold-primary)" />
-                  <label style={{ fontSize: '12px', fontWeight: '900', color: '#111111', letterSpacing: '1px' }}>MÃ“DULOS ACCESIBLES</label>
+                  <label style={{ fontSize: '12px', fontWeight: '900', color: 'white', letterSpacing: '1px' }}>MÓDULOS ACCESIBLES</label>
                 </div>
                 
                 <div style={{ display: 'grid', gridTemplateColumns: isMobile ? 'minmax(0, 1fr) minmax(0, 1fr)' : 'repeat(3, minmax(0, 1fr))', gap: '12px' }}>
@@ -3151,21 +3151,21 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
               {/* Contact & Birthday Info */}
               <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'minmax(0, 1fr) minmax(0, 1fr) 2fr', gap: '16px' }}>
                 <div className="form-group">
-                  <FieldLabel>TELÃ‰FONO</FieldLabel>
+                  <FieldLabel>TELÉFONO</FieldLabel>
                   <div style={{ position: 'relative' }}>
                     <Phone size={18} style={{ position: 'absolute', left: '16px', top: '16px', color: 'var(--gold-primary)' }} />
                     <input className="form-input" placeholder="+58 412..." value={formData.phone} onChange={e => setFormData({...formData, phone: e.target.value})} style={{ width: '100%', height: '50px', paddingLeft: '48px' }} />
                   </div>
                 </div>
                 <div className="form-group">
-                  <FieldLabel>CUMPLEAÃ‘OS</FieldLabel>
+                  <FieldLabel>CUMPLEAÑOS</FieldLabel>
                   <div style={{ position: 'relative' }}>
                     <Cake size={18} style={{ position: 'absolute', left: '16px', top: '16px', color: 'var(--gold-primary)' }} />
                     <DateMaskInput className="form-input" placeholder="DD/MM/AAAA" value={formData.birth_date} onChange={val => setFormData({...formData, birth_date: val})} style={{ width: '100%', height: '50px', paddingLeft: '48px' }} />
                   </div>
                 </div>
                 <div className="form-group">
-                  <FieldLabel>DIRECCIÃ“N DE HABITACIÃ“N</FieldLabel>
+                  <FieldLabel>DIRECCIÓN DE HABITACIÓN</FieldLabel>
                   <div style={{ position: 'relative' }}>
                     <MapPin size={18} style={{ position: 'absolute', left: '16px', top: '16px', color: 'var(--gold-primary)' }} />
                     <input className="form-input" placeholder="Av. Principal, Edif..." value={formData.address} onChange={e => setFormData({...formData, address: e.target.value})} style={{ width: '100%', height: '50px', paddingLeft: '48px' }} />
@@ -3176,17 +3176,17 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
               {/* Specialty & Badge Info */}
               <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'minmax(0, 1fr) minmax(0, 1fr)', gap: '16px' }}>
                 <div className="form-group">
-                  <label style={{ display: 'block', fontSize: '11px', fontWeight: '900', color: 'var(--text-muted)', marginBottom: '8px', letterSpacing: '1px' }}>Â¿EN QUÃ‰ SE ESPECIALIZA? (PUESTO / ENFOQUE)</label>
+                  <label style={{ display: 'block', fontSize: '11px', fontWeight: '900', color: 'var(--text-muted)', marginBottom: '8px', letterSpacing: '1px' }}>¿EN QUÉ SE ESPECIALIZA? (PUESTO / ENFOQUE)</label>
                   <div style={{ position: 'relative' }}>
                     <ToothIcon size={18} style={{ position: 'absolute', left: '16px', top: '16px', color: 'var(--gold-primary)' }} />
-                    <input className="form-input" placeholder="Ej. Especialista en estÃ©tica dental y blanqueamiento" value={formData.specialty} onChange={e => setFormData({...formData, specialty: e.target.value})} style={{ width: '100%', height: '50px', paddingLeft: '48px' }} />
+                    <input className="form-input" placeholder="Ej. Especialista en estética dental y blanqueamiento" value={formData.specialty} onChange={e => setFormData({...formData, specialty: e.target.value})} style={{ width: '100%', height: '50px', paddingLeft: '48px' }} />
                   </div>
                 </div>
                 </div>
 
                 {/* Profile Stats Configuration */}
               <div style={{ marginTop: '16px', borderTop: '1px solid rgba(0, 0, 0, 0.08)', paddingTop: '16px' }}>
-                <h4 style={{ fontSize: '11px', fontWeight: '900', color: 'var(--gold-primary)', marginBottom: '12px', letterSpacing: '1px', textTransform: 'uppercase' }}>EstadÃ­sticas de Perfil PÃºblico (Opcional)</h4>
+                <h4 style={{ fontSize: '11px', fontWeight: '900', color: 'var(--gold-primary)', marginBottom: '12px', letterSpacing: '1px', textTransform: 'uppercase' }}>Estadísticas de Perfil Público (Opcional)</h4>
                 <div style={{ display: 'grid', gridTemplateColumns: isMobile ? 'minmax(0, 1fr) minmax(0, 1fr)' : 'repeat(4, minmax(0, 1fr))', gap: '16px' }}>
                   <div className="form-group">
                     <label style={{ display: 'block', fontSize: '10px', fontWeight: '900', color: 'var(--text-muted)', marginBottom: '8px', letterSpacing: '1px' }}>CANT. SERVICIOS</label>
@@ -3206,11 +3206,11 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                     <label style={{ display: 'block', fontSize: '10px', fontWeight: '900', color: 'var(--text-muted)', marginBottom: '8px', letterSpacing: '1px' }}>EXPERIENCIA</label>
                     <div style={{ position: 'relative' }}>
                       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--gold-primary)" strokeWidth="2" style={{ position: 'absolute', left: '16px', top: '16px' }}><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                      <input className="form-input" placeholder="Ej. 5 aÃ±os" value={formData.experience} onChange={e => setFormData({...formData, experience: e.target.value})} style={{ width: '100%', height: '50px', paddingLeft: '48px' }} />
+                      <input className="form-input" placeholder="Ej. 5 años" value={formData.experience} onChange={e => setFormData({...formData, experience: e.target.value})} style={{ width: '100%', height: '50px', paddingLeft: '48px' }} />
                     </div>
                   </div>
                   <div className="form-group">
-                    <label style={{ display: 'block', fontSize: '10px', fontWeight: '900', color: 'var(--text-muted)', marginBottom: '8px', letterSpacing: '1px' }}>SEDE / UBICACIÃ“N</label>
+                    <label style={{ display: 'block', fontSize: '10px', fontWeight: '900', color: 'var(--text-muted)', marginBottom: '8px', letterSpacing: '1px' }}>SEDE / UBICACIÓN</label>
                     <div style={{ position: 'relative' }}>
                       <MapPin size={16} style={{ position: 'absolute', left: '16px', top: '16px', color: 'var(--gold-primary)' }} />
                       <input className="form-input" placeholder="Ej. Consultorio Central" value={formData.location} onChange={e => setFormData({...formData, location: e.target.value})} style={{ width: '100%', height: '50px', paddingLeft: '48px' }} />
@@ -3221,12 +3221,12 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
 
               {/* Biography Info */}
               <div className="form-group" style={{ marginTop: '16px' }}>
-                <label style={{ display: 'block', fontSize: '11px', fontWeight: '900', color: 'var(--text-muted)', marginBottom: '8px', letterSpacing: '1px' }}>SOBRE MÃ (DESCRIPCIÃ“N DE TU ESTILO O TRAYECTORIA)</label>
+                <label style={{ display: 'block', fontSize: '11px', fontWeight: '900', color: 'var(--text-muted)', marginBottom: '8px', letterSpacing: '1px' }}>SOBRE MÍ (DESCRIPCIÓN DE TU ESTILO O TRAYECTORIA)</label>
                 <div style={{ position: 'relative' }}>
                   <FileText size={18} style={{ position: 'absolute', left: '16px', top: '16px', color: 'var(--gold-primary)' }} />
                   <textarea 
                     className="form-input" 
-                    placeholder="Ej. Especialista en estÃ©tica dental. Me enfoco en resaltar la salud y belleza de tu sonrisa con cada detalle." 
+                    placeholder="Ej. Especialista en estética dental. Me enfoco en resaltar la salud y belleza de tu sonrisa con cada detalle." 
                     value={formData.biography} 
                     onChange={e => setFormData({...formData, biography: e.target.value})} 
                     style={{ width: '100%', minHeight: '90px', padding: '12px 12px 12px 48px', resize: 'vertical' }} 
@@ -3244,13 +3244,13 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                   </div>
                 </div>
                 <div className="form-group">
-                  <FieldLabel>CONTRASEÃ‘A</FieldLabel>
+                  <FieldLabel>CONTRASEÑA</FieldLabel>
                   <div style={{ position: 'relative' }}>
                     <Lock size={18} style={{ position: 'absolute', left: '16px', top: '16px', color: 'var(--gold-primary)' }} />
                     <input 
                       className="form-input" 
                       type="password" 
-                      placeholder="MÃ­nimo 6 caracteres" 
+                      placeholder="Mínimo 6 caracteres" 
                       value={formData.password} 
                       onChange={e => setFormData({...formData, password: e.target.value})} 
                       autoComplete="new-password"
@@ -3284,15 +3284,15 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
       ) : staff.length === 0 ? (
         <div className="glass-card" style={{ textAlign: 'center', padding: '80px', borderRadius: '32px' }}>
           <User size={64} color="rgba(255, 255, 255, 0.1)" style={{ marginBottom: '24px' }} />
-          <h3 style={{ fontSize: '20px', color: 'var(--text-primary)' }}>El equipo estÃ¡ esperando</h3>
-          <p style={{ color: 'var(--text-muted)', marginTop: '8px' }}>Comienza agregando a los miembros que harÃ¡n brillar tu marca.</p>
+          <h3 style={{ fontSize: '20px', color: 'var(--text-primary)' }}>El equipo está esperando</h3>
+          <p style={{ color: 'var(--text-muted)', marginTop: '8px' }}>Comienza agregando a los miembros que harán brillar tu marca.</p>
         </div>
       ) : filteredStaff.length === 0 ? (
         <div style={{ textAlign: 'center', padding: '60px 20px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
           <div style={{ width: '64px', height: '64px', borderRadius: '50%', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px' }}>
             <Search size={24} color="rgba(255,255,255,0.3)" />
           </div>
-          <h3 style={{ fontSize: '18px', fontWeight: '800', color: '#111111', marginBottom: '8px' }}>Sin resultados</h3>
+          <h3 style={{ fontSize: '18px', fontWeight: '800', color: 'white', marginBottom: '8px' }}>Sin resultados</h3>
           <p style={{ color: 'var(--text-muted)', fontSize: '14px', maxWidth: '300px', lineHeight: '1.5' }}>No encontramos a nadie con ese nombre en tu equipo.</p>
         </div>
       ) : (
@@ -3326,8 +3326,8 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                 <>
                   <div>MIEMBRO</div>
                   <div>NOMBRE / ROL</div>
-                  <div>TELÃ‰FONO</div>
-                  <div>DIRECCIÃ“N</div>
+                  <div>TELÉFONO</div>
+                  <div>DIRECCIÓN</div>
                   <div>ACCESO</div>
                   <div style={{ textAlign: 'right' }}>ACCIONES</div>
                 </>
@@ -3389,7 +3389,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                              )}
                           </div>
                           <div style={{ textAlign: 'center', position: 'relative', zIndex: 2, width: '100%' }}>
-                            <h4 style={{ fontSize: isMobile ? '16px' : '18px', fontWeight: '900', color: '#111111', margin: 0, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                            <h4 style={{ fontSize: isMobile ? '16px' : '18px', fontWeight: '900', color: 'white', margin: 0, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                               {person.name}
                             </h4>
                             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', color: 'var(--gold-primary)', fontSize: isMobile ? '11px' : '12px', fontWeight: '700', marginTop: '4px' }}>
@@ -3400,7 +3400,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                           <div style={{ width: '100%', display: 'flex', flexDirection: 'column', gap: '8px', marginTop: '20px', position: 'relative', zIndex: 2 }}>
                             <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '12px', color: person.phone ? 'var(--text-secondary)' : 'var(--text-muted)', background: 'rgba(0, 0, 0, 0.04)', padding: '10px 12px', borderRadius: '12px' }}>
                               <Phone size={14} color={person.phone ? 'var(--gold-primary)' : 'rgba(255,255,255,0.2)'} style={{ flexShrink: 0 }} />
-                              <span style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{person.phone || 'Sin telÃ©fono'}</span>
+                              <span style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{person.phone || 'Sin teléfono'}</span>
                             </div>
                             <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '12px', color: person.email ? 'var(--text-secondary)' : 'var(--text-muted)', background: 'rgba(0, 0, 0, 0.04)', padding: '10px 12px', borderRadius: '12px' }}>
                               {person.email ? <Mail size={14} color="var(--gold-primary)" style={{ flexShrink: 0 }} /> : <Lock size={14} style={{ flexShrink: 0 }} />}
@@ -3470,7 +3470,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                       
                       {/* Name and Role */}
                       <div style={{ minWidth: 0 }}>
-                        <h4 style={{ fontSize: '15px', fontWeight: '800', color: '#111111', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{person.name}</h4>
+                        <h4 style={{ fontSize: '15px', fontWeight: '800', color: 'white', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{person.name}</h4>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '4px', color: 'var(--gold-primary)', fontSize: '11px', fontWeight: '700', marginTop: '2px' }}>
                           {getRoleIcon(person.role?.split('|')[0]?.split(', ')[0])}
                           <span style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{roleLabel(person.role?.split('|')[0])}</span>
@@ -3497,14 +3497,14 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                     {/* Phone */}
                     <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: person.phone ? 'var(--text-secondary)' : 'var(--text-muted)' }}>
                       <Phone size={13} color={person.phone ? "var(--gold-primary)" : "rgba(255,255,255,0.2)"} style={{ flexShrink: 0 }} />
-                      <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{person.phone || 'Sin telÃ©fono'}</span>
+                      <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{person.phone || 'Sin teléfono'}</span>
                     </div>
 
                     {/* Address */}
                     <div style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', color: person.address ? 'var(--text-secondary)' : 'var(--text-muted)' }}>
                       <MapPin size={13} color={person.address ? "var(--gold-primary)" : "rgba(255,255,255,0.2)"} style={{ marginTop: '2px', flexShrink: 0 }} />
                       <span style={{ display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden', textOverflow: 'ellipsis' }}>
-                        {person.address || 'Sin direcciÃ³n'}
+                        {person.address || 'Sin dirección'}
                       </span>
                     </div>
 
@@ -3553,7 +3553,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                   
                   {/* Name/Role Column */}
                   <div style={{ minWidth: 0, overflow: 'hidden' }}>
-                    <h4 style={{ fontSize: '16px', fontWeight: '800', color: '#111111', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{person.name}</h4>
+                    <h4 style={{ fontSize: '16px', fontWeight: '800', color: 'white', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{person.name}</h4>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: 'var(--gold-primary)', fontSize: '11px', fontWeight: '700', marginTop: '2px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                       {getRoleIcon(person.role?.split('|')[0]?.split(', ')[0])}
                       <span>{roleLabel(person.role?.split('|')[0])}</span>
@@ -3577,7 +3577,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                   <div style={{ color: person.phone ? 'var(--text-secondary)' : 'var(--text-muted)', fontSize: '14px', minWidth: 0, overflow: 'hidden' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                       <Phone size={14} color={person.phone ? "var(--gold-primary)" : "rgba(255,255,255,0.2)"} style={{ flexShrink: 0 }} />
-                      <span style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{person.phone || 'Sin telÃ©fono'}</span>
+                      <span style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{person.phone || 'Sin teléfono'}</span>
                     </div>
                     {person.birth_date && (
                       <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginTop: '6px', fontSize: '11px', color: 'var(--gold-primary)' }}>
@@ -3592,7 +3592,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                     <div style={{ display: 'flex', alignItems: 'flex-start', gap: '8px' }}>
                       <MapPin size={14} color={person.address ? "var(--gold-primary)" : "rgba(255,255,255,0.2)"} style={{ marginTop: '2px', flexShrink: 0 }} />
                       <span style={{ display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden', textOverflow: 'ellipsis' }}>
-                        {person.address || 'Sin direcciÃ³n'}
+                        {person.address || 'Sin dirección'}
                       </span>
                     </div>
                   </div>
@@ -3714,13 +3714,13 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
         const checkedInCount = checkedInOrder.length;
         const totalCount = eligibleStaff.length;
 
-        // Agrupa por categorÃ­a de rol, conservando el orden de llegada real dentro de cada grupo
+        // Agrupa por categoría de rol, conservando el orden de llegada real dentro de cada grupo
         const getCategory = (roleName) => {
           const r = (roleName || '').toLowerCase();
-          if (r.includes('odontolog') || r.includes('barbero') || r.includes('barber') || r.includes('tatu') || r.includes('estilista')) return 'OdontÃ³logos';
+          if (r.includes('odontolog') || r.includes('barbero') || r.includes('barber') || r.includes('tatu') || r.includes('estilista')) return 'Odontólogos';
           return 'Asistentes';
         };
-        const categoryOrder = ['OdontÃ³logos', 'Asistentes'];
+        const categoryOrder = ['Odontólogos', 'Asistentes'];
         const grouped = categoryOrder
           .map(category => ({
             category,
@@ -3786,7 +3786,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                 {/* Top Right Badges */}
                 <div style={{ position: 'absolute', top: '12px', right: '12px', display: 'flex', gap: '6px', zIndex: 2 }}>
                   {isCheckedIn && queueIndex >= 0 ? (
-                    <div style={{ width: '28px', height: '28px', borderRadius: '50%', background: 'rgba(255, 255, 255, 0.9)', backdropFilter: 'blur(8px)', border: '1px solid rgba(0, 0, 0, 0.08)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '13px', fontWeight: '800', color: '#111111' }}>
+                    <div style={{ width: '28px', height: '28px', borderRadius: '50%', background: 'rgba(255, 255, 255, 0.9)', backdropFilter: 'blur(8px)', border: '1px solid rgba(0, 0, 0, 0.08)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '13px', fontWeight: '800', color: 'white' }}>
                       {queueIndex + 1}
                     </div>
                   ) : (
@@ -3798,11 +3798,11 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
 
                 {/* Bottom Left Text over gradient */}
                 <div style={{ position: 'absolute', bottom: '16px', left: '16px', right: '16px' }}>
-                  <h4 style={{ fontSize: '18px', fontWeight: '800', color: '#111111', margin: '0 0 2px 0', letterSpacing: '-0.4px', wordBreak: 'break-word', lineHeight: '1.2' }}>
+                  <h4 style={{ fontSize: '18px', fontWeight: '800', color: 'white', margin: '0 0 2px 0', letterSpacing: '-0.4px', wordBreak: 'break-word', lineHeight: '1.2' }}>
                     {member.name}
                   </h4>
                   <p style={{ fontSize: '11px', color: 'var(--gold-primary)', fontWeight: '800', margin: '0 0 8px 0', letterSpacing: '0.5px' }}>
-                    {(roleLabel(member.role?.split('|')[0]) || 'OdontÃ³logo')}
+                    {(roleLabel(member.role?.split('|')[0]) || 'Odontólogo')}
                   </p>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
                     <span style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: isCheckedIn ? '#32d74b' : 'rgba(255,255,255,0.4)', boxShadow: isCheckedIn ? '0 0 8px rgba(50,215,75,0.6)' : 'none', flexShrink: 0 }} />
@@ -3899,7 +3899,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                 borderRadius: '12px',
                 background: 'rgba(0, 0, 0, 0.04)',
                 border: '1px solid rgba(0, 0, 0, 0.08)',
-                color: '#111111',
+                color: 'white',
                 fontSize: '13px',
                 outline: 'none',
                 boxSizing: 'border-box'
@@ -3912,7 +3912,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
           <div className="animate-fade-in" style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', gap: '16px', flexWrap: 'wrap', borderBottom: '1px solid rgba(0, 0, 0, 0.08)', paddingBottom: '20px', paddingRight: '48px' }}>
               <div style={{ flex: 1 }}>
-                <h3 style={{ fontSize: '24px', fontWeight: '800', color: '#111111', letterSpacing: '-0.8px', margin: '0 0 4px 0' }}>
+                <h3 style={{ fontSize: '24px', fontWeight: '800', color: 'white', letterSpacing: '-0.8px', margin: '0 0 4px 0' }}>
                   Asistencia
                 </h3>
                 <p style={{ color: 'var(--text-secondary)', fontSize: '13px', margin: 0 }}>
@@ -3933,7 +3933,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                 padding: '12px 18px', borderRadius: '14px',
                 background: 'rgba(50,215,75,0.08)', border: '1px solid rgba(50,215,75,0.25)'
               }}>
-                <span style={{ fontSize: '13px', color: '#111111', fontWeight: '600' }}>
+                <span style={{ fontSize: '13px', color: 'white', fontWeight: '600' }}>
                   Registraste la llegada de <strong>{justCheckedIn.name}</strong>
                 </span>
                 <button
@@ -3950,7 +3950,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                 <div style={{ width: '64px', height: '64px', borderRadius: '50%', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px' }}>
                   <Search size={24} color="rgba(255,255,255,0.3)" />
                 </div>
-                <h3 style={{ fontSize: '18px', fontWeight: '800', color: '#111111', marginBottom: '8px' }}>Sin resultados</h3>
+                <h3 style={{ fontSize: '18px', fontWeight: '800', color: 'white', marginBottom: '8px' }}>Sin resultados</h3>
                 <p style={{ color: 'var(--text-muted)', fontSize: '14px', maxWidth: '300px', lineHeight: '1.5' }}>No encontramos a nadie con ese nombre en tu equipo.</p>
               </div>
             ) : (
@@ -3968,8 +3968,8 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                 <div className={overlayClass} style={{ position: 'fixed', inset: 0, zIndex: 20000, background: '#f4f5f3', overflowY: 'auto', padding: isMobile ? '24px 16px' : '48px', paddingTop: isMobile ? 'max(24px, env(safe-area-inset-top, 24px))' : 'max(48px, env(safe-area-inset-top, 48px))' }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '16px', flexWrap: 'wrap', maxWidth: '1400px', margin: '0 auto 32px' }}>
                     <div>
-                      <h2 style={{ fontSize: isMobile ? '24px' : '32px', fontWeight: '800', color: '#111111' }}>ClÃ­nica Hoy</h2>
-                      <p style={{ color: 'var(--text-secondary)', marginTop: '4px' }}>{checkedInCount} de {totalCount} en la clÃ­nica</p>
+                      <h2 style={{ fontSize: isMobile ? '24px' : '32px', fontWeight: '800', color: 'white' }}>Clínica Hoy</h2>
+                      <p style={{ color: 'var(--text-secondary)', marginTop: '4px' }}>{checkedInCount} de {totalCount} en la clínica</p>
                     </div>
                     <button
                       onClick={() => setKioskMode(false)}
@@ -4066,17 +4066,17 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
 
             return (
               <>
-                {/* â”€â”€ HEADER CARD â”€â”€ */}
+                {/* ── HEADER CARD ── */}
                 <div style={{ borderBottom: '1px solid rgba(0, 0, 0, 0.08)', paddingBottom: '20px', marginBottom: '8px' }}>
-                  <h3 style={{ fontSize: '24px', fontWeight: '800', color: '#111111', letterSpacing: '-0.8px', margin: '0 0 4px 0' }}>
+                  <h3 style={{ fontSize: '24px', fontWeight: '800', color: 'white', letterSpacing: '-0.8px', margin: '0 0 4px 0' }}>
                     Control de Calidad y Feedback
                   </h3>
                   <p style={{ color: 'var(--text-secondary)', fontSize: '13px', margin: 0 }}>
-                    Calificaciones y opiniones de tus clientes sobre cada odontÃ³logo.
+                    Calificaciones y opiniones de tus clientes sobre cada odontólogo.
                   </p>
                 </div>
 
-                {/* â”€â”€ GENERAL STATS & STAR BARBER ROW â”€â”€ */}
+                {/* ── GENERAL STATS & STAR BARBER ROW ── */}
                 <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '2fr minmax(0, 1fr)', gap: '24px' }}>
                   {/* Global Quality Indicators */}
                   <div 
@@ -4099,28 +4099,28 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                       {/* Rating General */}
                       <div style={{ textAlign: 'center', padding: '16px', borderRadius: '16px', background: 'rgba(17, 17, 17, 0.06)', border: '1px solid rgba(17, 17, 17, 0.15)' }}>
                         <Star size={20} color="var(--gold-primary)" fill="var(--gold-primary)" style={{ margin: '0 auto 8px' }} />
-                        <div style={{ fontSize: '24px', fontWeight: '900', color: '#111111' }}>{avgGeneral}</div>
+                        <div style={{ fontSize: '24px', fontWeight: '900', color: 'white' }}>{avgGeneral}</div>
                         <div style={{ fontSize: '11px', color: 'var(--text-muted)', fontWeight: '700', marginTop: '4px' }}>GLOBAL</div>
                       </div>
 
                       {/* Rapidez */}
                       <div style={{ textAlign: 'center', padding: '16px', borderRadius: '16px', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
                         <Clock size={20} color="var(--text-muted)" style={{ margin: '0 auto 8px' }} />
-                        <div style={{ fontSize: '24px', fontWeight: '900', color: '#111111' }}>{avgRapidez}</div>
+                        <div style={{ fontSize: '24px', fontWeight: '900', color: 'white' }}>{avgRapidez}</div>
                         <div style={{ fontSize: '11px', color: 'var(--text-muted)', fontWeight: '700', marginTop: '4px' }}>RAPIDEZ</div>
                       </div>
 
                       {/* Limpieza */}
                       <div style={{ textAlign: 'center', padding: '16px', borderRadius: '16px', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
                         <Droplets size={20} color="var(--text-muted)" style={{ margin: '0 auto 8px' }} />
-                        <div style={{ fontSize: '24px', fontWeight: '900', color: '#111111' }}>{avgLimpieza}</div>
+                        <div style={{ fontSize: '24px', fontWeight: '900', color: 'white' }}>{avgLimpieza}</div>
                         <div style={{ fontSize: '11px', color: 'var(--text-muted)', fontWeight: '700', marginTop: '4px' }}>LIMPIEZA</div>
                       </div>
 
                       {/* Habilidad */}
                       <div style={{ textAlign: 'center', padding: '16px', borderRadius: '16px', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
                         <ToothIcon size={20} color="var(--text-muted)" style={{ margin: '0 auto 8px' }} />
-                        <div style={{ fontSize: '24px', fontWeight: '900', color: '#111111' }}>{avgHabilidad}</div>
+                        <div style={{ fontSize: '24px', fontWeight: '900', color: 'white' }}>{avgHabilidad}</div>
                         <div style={{ fontSize: '11px', color: 'var(--text-muted)', fontWeight: '700', marginTop: '4px' }}>HABILIDAD</div>
                       </div>
                     </div>
@@ -4221,14 +4221,14 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                             borderRadius: '20px',
                             border: '1px solid rgba(17, 17, 17, 0.15)'
                           }}>
-                            OdontÃ³logo Estrella del Mes
+                            Odontólogo Estrella del Mes
                           </span>
 
                           <div style={{ marginTop: '4px' }}>
                             <h5 style={{ 
                               fontSize: '20px', 
                               fontWeight: '900', 
-                              color: '#111111', 
+                              color: 'white', 
                               margin: 0,
                               letterSpacing: '-0.3px',
                               lineHeight: '1.2'
@@ -4258,7 +4258,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                             border: '1px solid rgba(0, 0, 0, 0.08)',
                             marginTop: '2px'
                           }}>
-                            <span style={{ fontSize: '14px', fontWeight: '900', color: '#111111' }}>
+                            <span style={{ fontSize: '14px', fontWeight: '900', color: 'white' }}>
                               {starBarber.avg.toFixed(1)}
                             </span>
                             <Star size={13} fill="var(--gold-primary)" color="var(--gold-primary)" />
@@ -4277,7 +4277,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                   </div>
                 </div>
 
-                {/* â”€â”€ FILTER & TOOLBAR BAR â”€â”€ */}
+                {/* ── FILTER & TOOLBAR BAR ── */}
                 <div 
                   className="glass-card"
                   style={{ 
@@ -4295,10 +4295,10 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                   <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', alignItems: 'center' }}>
                     {/* Filter by Staff */}
                     <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                      <span style={{ fontSize: '11px', color: 'var(--text-secondary)', fontWeight: '700', textTransform: 'uppercase' }}>OdontÃ³logo:</span>
+                      <span style={{ fontSize: '11px', color: 'var(--text-secondary)', fontWeight: '700', textTransform: 'uppercase' }}>Odontólogo:</span>
                       <PandaSelect
                         options={[
-                          { value: 'all', label: 'Todos', imageUrl: '/panda-team-avatar.png', avatarFallback: 'EQ', subtitle: 'Todos los OdontÃ³logos' },
+                          { value: 'all', label: 'Todos', imageUrl: '/panda-team-avatar.png', avatarFallback: 'EQ', subtitle: 'Todos los Odontólogos' },
                           ...staff.filter(member => {
                             const roleName = (member.role?.split('|')[0] || '').toLowerCase();
                             return roleName.includes('barbero') || roleName.includes('odontolog');
@@ -4324,7 +4324,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                           { value: 'all', label: 'Todos' },
                           { value: 'this-month', label: 'Este mes' },
                           { value: 'last-month', label: 'Mes anterior' },
-                          { value: 'last-3-months', label: 'Ãšltimos 3 meses' }
+                          { value: 'last-3-months', label: 'Últimos 3 meses' }
                         ]}
                         value={filterPeriod}
                         onChange={(val) => setFilterPeriod(val)}
@@ -4336,8 +4336,8 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                     <div style={{ display: 'flex', background: 'rgba(0, 0, 0, 0.04)', padding: '3px', borderRadius: '10px', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
                       {[
                         { key: 'all', label: 'Todas' },
-                        { key: 'high', label: 'Destacadas (4.5â˜…+)' },
-                        { key: 'low', label: 'CrÃ­ticas (<3.5â˜…)' }
+                        { key: 'high', label: 'Destacadas (4.5★+)' },
+                        { key: 'low', label: 'Críticas (<3.5★)' }
                       ].map(seg => (
                         <button
                           key={seg.key}
@@ -4361,11 +4361,11 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                   </div>
 
                   <div style={{ fontSize: '12px', color: 'var(--text-muted)', fontWeight: '700' }}>
-                    {filteredReviews.length} {filteredReviews.length === 1 ? 'reseÃ±a encontrada' : 'reseÃ±as encontradas'}
+                    {filteredReviews.length} {filteredReviews.length === 1 ? 'reseña encontrada' : 'reseñas encontradas'}
                   </div>
                 </div>
 
-                {/* â”€â”€ REVIEWS FEED (3-Column Grid) â”€â”€ */}
+                {/* ── REVIEWS FEED (3-Column Grid) ── */}
                 <div style={{ 
                   display: 'grid', 
                   gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, minmax(0, 1fr))', 
@@ -4412,9 +4412,9 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                                 </div>
                                 <div>
                                   <div style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
-                                    <span style={{ fontWeight: '800', fontSize: '13px', color: '#111111' }}>{clientName}</span>
+                                    <span style={{ fontWeight: '800', fontSize: '13px', color: 'white' }}>{clientName}</span>
                                     <span style={{ fontSize: '11px', color: 'var(--text-muted)' }}>
-                                      evaluÃ³ a <span style={{ color: 'var(--gold-primary)', fontWeight: '700' }}>{barber?.name || 'OdontÃ³logo'}</span>
+                                      evaluó a <span style={{ color: 'var(--gold-primary)', fontWeight: '700' }}>{barber?.name || 'Odontólogo'}</span>
                                     </span>
                                   </div>
                                   <span style={{ fontSize: '10px', color: 'var(--text-muted)', display: 'block', marginTop: '2px' }}>{dateFormatted}</span>
@@ -4429,7 +4429,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                                 </div>
                                 <button 
                                   onClick={() => handleDeleteReview(rev.id)}
-                                  title="Eliminar valoraciÃ³n"
+                                  title="Eliminar valoración"
                                   style={{
                                     background: 'rgba(255,59,48,0.1)',
                                     border: 'none',
@@ -4454,15 +4454,15 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                             <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', background: 'rgba(0, 0, 0, 0.04)', padding: '12px', borderRadius: '12px', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
                               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                                 <span style={{ fontSize: '12px', color: 'var(--text-secondary)', fontWeight: '600' }}>Rapidez</span>
-                                <span style={{ fontSize: '12px', fontWeight: '800', color: '#111111' }}>{rev.rapidez || rev.rating || 5} / 5</span>
+                                <span style={{ fontSize: '12px', fontWeight: '800', color: 'white' }}>{rev.rapidez || rev.rating || 5} / 5</span>
                               </div>
                               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                                 <span style={{ fontSize: '12px', color: 'var(--text-secondary)', fontWeight: '600' }}>Limpieza</span>
-                                <span style={{ fontSize: '12px', fontWeight: '800', color: '#111111' }}>{rev.limpieza || rev.rating || 5} / 5</span>
+                                <span style={{ fontSize: '12px', fontWeight: '800', color: 'white' }}>{rev.limpieza || rev.rating || 5} / 5</span>
                               </div>
                               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                                 <span style={{ fontSize: '12px', color: 'var(--text-secondary)', fontWeight: '600' }}>Habilidad</span>
-                                <span style={{ fontSize: '12px', fontWeight: '800', color: '#111111' }}>{rev.habilidad || rev.rating || 5} / 5</span>
+                                <span style={{ fontSize: '12px', fontWeight: '800', color: 'white' }}>{rev.habilidad || rev.rating || 5} / 5</span>
                               </div>
                             </div>
 
@@ -4480,7 +4480,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                   ) : (
                     <div className="glass-card" style={{ gridColumn: '1 / -1', padding: '40px', borderRadius: '20px', textAlign: 'center', border: '1px solid rgba(0, 0, 0, 0.08)', background: 'rgba(0, 0, 0, 0.04)' }}>
                       <MessageSquare size={32} color="var(--text-muted)" style={{ margin: '0 auto 12px' }} />
-                      <p style={{ color: 'var(--text-secondary)', fontSize: '14px', fontWeight: '700', margin: 0 }}>No hay valoraciones que coincidan con la bÃºsqueda o filtro</p>
+                      <p style={{ color: 'var(--text-secondary)', fontSize: '14px', fontWeight: '700', margin: 0 }}>No hay valoraciones que coincidan con la búsqueda o filtro</p>
                     </div>
                   )}
                 </div>
@@ -4497,21 +4497,21 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
           ) : performanceData ? (() => {
             const { summary, topPerformers, allStaff, weeklyAttendance, insights } = performanceData;
             const trendColor = (val) => val >= 0 ? '#32d74b' : '#ff453a';
-            const trendIcon = (val) => val >= 0 ? 'â†‘' : 'â†“';
+            const trendIcon = (val) => val >= 0 ? '↑' : '↓';
 
             return (
               <>
-                {/* â”€â”€ HEADER â”€â”€ */}
+                {/* ── HEADER ── */}
                 <div style={{ borderBottom: '1px solid rgba(0, 0, 0, 0.08)', paddingBottom: '20px', marginBottom: '4px' }}>
-                  <h3 style={{ fontSize: '24px', fontWeight: '800', color: '#111111', letterSpacing: '-0.8px', margin: '0 0 4px 0' }}>
-                    Reportes de DesempeÃ±o
+                  <h3 style={{ fontSize: '24px', fontWeight: '800', color: 'white', letterSpacing: '-0.8px', margin: '0 0 4px 0' }}>
+                    Reportes de Desempeño
                   </h3>
                   <p style={{ color: 'var(--text-secondary)', fontSize: '13px', margin: 0 }}>
-                    MÃ©tricas de asistencia, puntualidad y productividad de tu equipo.
+                    Métricas de asistencia, puntualidad y productividad de tu equipo.
                   </p>
                 </div>
 
-                {/* â”€â”€ TOP STAT CARDS â”€â”€ */}
+                {/* ── TOP STAT CARDS ── */}
                 <div style={{ display: 'grid', gridTemplateColumns: isMobile ? 'minmax(0, 1fr) minmax(0, 1fr)' : 'repeat(4, minmax(0, 1fr))', gap: '16px' }}>
                   {/* Asistencia Promedio */}
                   <div className="glass-card" style={{ padding: '20px', borderRadius: '20px', background: 'rgba(0, 0, 0, 0.04)', transition: 'none' }}>
@@ -4520,9 +4520,9 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                         <Users size={20} color="#32d74b" />
                       </div>
                       <span style={{ fontSize: '11px', fontWeight: '800', color: 'var(--text-muted)', letterSpacing: '0.5px', textTransform: 'uppercase' }}>Asistencia Promedio</span>
-                      <InfoTooltip text="Porcentaje de dÃ­as que el equipo asistiÃ³ este mes sobre los dÃ­as laborables totales del mes." />
+                      <InfoTooltip text="Porcentaje de días que el equipo asistió este mes sobre los días laborables totales del mes." />
                     </div>
-                    <div style={{ fontSize: '32px', fontWeight: '900', color: '#111111', letterSpacing: '-1px' }}>{summary.attendance}%</div>
+                    <div style={{ fontSize: '32px', fontWeight: '900', color: 'white', letterSpacing: '-1px' }}>{summary.attendance}%</div>
                     <div style={{ fontSize: '11px', fontWeight: '700', color: trendColor(summary.attendanceTrend), marginTop: '4px' }}>
                       {trendIcon(summary.attendanceTrend)} {Math.abs(summary.attendanceTrend)}% vs. mes anterior
                     </div>
@@ -4537,7 +4537,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                       <span style={{ fontSize: '11px', fontWeight: '800', color: 'var(--text-muted)', letterSpacing: '0.5px', textTransform: 'uppercase' }}>Puntualidad</span>
                       <InfoTooltip text="Porcentaje de registros de entrada que fueron antes o a las 10:00 AM (hora de apertura)." />
                     </div>
-                    <div style={{ fontSize: '32px', fontWeight: '900', color: '#111111', letterSpacing: '-1px' }}>{summary.punctuality}%</div>
+                    <div style={{ fontSize: '32px', fontWeight: '900', color: 'white', letterSpacing: '-1px' }}>{summary.punctuality}%</div>
                     <div style={{ fontSize: '11px', fontWeight: '700', color: trendColor(summary.punctualityTrend), marginTop: '4px' }}>
                       {trendIcon(summary.punctualityTrend)} {Math.abs(summary.punctualityTrend)}% vs. mes anterior
                     </div>
@@ -4552,7 +4552,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                        <span style={{ fontSize: '11px', fontWeight: '800', color: 'var(--text-muted)', letterSpacing: '0.5px', textTransform: 'uppercase' }}>Servicios Completados</span>
                       <InfoTooltip text="Total de citas con estado 'Completado' registradas por todo el equipo en el mes actual." />
                     </div>
-                    <div style={{ fontSize: '32px', fontWeight: '900', color: '#111111', letterSpacing: '-1px' }}>{summary.totalServices}</div>
+                    <div style={{ fontSize: '32px', fontWeight: '900', color: 'white', letterSpacing: '-1px' }}>{summary.totalServices}</div>
                     <div style={{ fontSize: '11px', fontWeight: '700', color: trendColor(summary.servicesTrend), marginTop: '4px' }}>
                       {trendIcon(summary.servicesTrend)} {Math.abs(summary.servicesTrend)}% vs. mes anterior
                     </div>
@@ -4567,19 +4567,19 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                        <span style={{ fontSize: '11px', fontWeight: '800', color: 'var(--text-muted)', letterSpacing: '0.5px', textTransform: 'uppercase' }}>Gasto Promedio</span>
                       <InfoTooltip text="Monto promedio en USD que deja cada cliente por visita en caja este mes." />
                     </div>
-                    <div style={{ fontSize: '32px', fontWeight: '900', color: '#111111', letterSpacing: '-1px' }}>${summary.avgTicket.toFixed(2)}</div>
+                    <div style={{ fontSize: '32px', fontWeight: '900', color: 'white', letterSpacing: '-1px' }}>${summary.avgTicket.toFixed(2)}</div>
                     <div style={{ fontSize: '11px', fontWeight: '700', color: trendColor(summary.avgTicketTrend), marginTop: '4px' }}>
                       {trendIcon(summary.avgTicketTrend)} ${Math.abs(summary.avgTicketTrend).toFixed(2)} vs. mes anterior
                     </div>
                   </div>
                 </div>
 
-                {/* â”€â”€ MAIN GRID: Top Performers + Weekly Attendance + Punctuality â”€â”€ */}
+                {/* ── MAIN GRID: Top Performers + Weekly Attendance + Punctuality ── */}
                 <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'minmax(0, 1fr) 1.2fr minmax(0, 1fr)', gap: '20px' }}>
 
-                  {/* TOP DESEMPEÃ‘O DEL MES */}
+                  {/* TOP DESEMPEÑO DEL MES */}
                   <div className="glass-card" style={{ padding: '24px', borderRadius: '24px', background: 'rgba(0, 0, 0, 0.04)', transition: 'none' }}>
-                     <h4 style={{ fontSize: '14px', fontWeight: '900', color: '#111111', margin: '0 0 20px', letterSpacing: '0.3px', display: 'flex', alignItems: 'center' }}>Top desempeÃ±o del mes <InfoTooltip text="Score calculado con: servicios completados (30%), puntualidad (25%), asistencia (25%) y calificaciÃ³n de clientes (20%)." /></h4>
+                     <h4 style={{ fontSize: '14px', fontWeight: '900', color: 'white', margin: '0 0 20px', letterSpacing: '0.3px', display: 'flex', alignItems: 'center' }}>Top desempeño del mes <InfoTooltip text="Score calculado con: servicios completados (30%), puntualidad (25%), asistencia (25%) y calificación de clientes (20%)." /></h4>
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
                       {topPerformers.map((p, i) => (
                         <div key={p.id} style={{ display: 'flex', alignItems: 'center', gap: '12px', padding: '10px', borderRadius: '14px', background: i === 0 ? 'rgba(17, 17, 17,0.06)' : 'rgba(255,255,255,0.02)', border: i === 0 ? '1px solid rgba(17, 17, 17,0.15)' : '1px solid rgba(0, 0, 0, 0.08)' }}>
@@ -4594,7 +4594,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                              )}
                            </div>
                            <div style={{ flex: 1, minWidth: 0 }}>
-                            <div style={{ fontSize: '12px', fontWeight: '800', color: '#111111', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{p.name}</div>
+                            <div style={{ fontSize: '12px', fontWeight: '800', color: 'white', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{p.name}</div>
                             <div style={{ fontSize: '10px', color: 'var(--text-muted)', marginTop: '1px' }}>Score: {p.perfScore}</div>
                           </div>
                           <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
@@ -4611,8 +4611,8 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                     {/* ASISTENCIA POR SEMANA */}
                     <div className="glass-card" style={{ padding: '24px', borderRadius: '24px', background: 'rgba(0, 0, 0, 0.04)', transition: 'none' }}>
                       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
-                         <h4 style={{ fontSize: '14px', fontWeight: '900', color: '#111111', margin: 0, letterSpacing: '0.3px', display: 'flex', alignItems: 'center' }}>Asistencia por semana <InfoTooltip text="Porcentaje de entradas puntuales (antes de las 10:00 AM) de todo el equipo, agrupadas por semana." /></h4>
-                        <span style={{ fontSize: '10px', fontWeight: '700', color: 'var(--text-muted)', background: 'rgba(0, 0, 0, 0.04)', padding: '4px 10px', borderRadius: '8px' }}>Ãšltimas 4 semanas</span>
+                         <h4 style={{ fontSize: '14px', fontWeight: '900', color: 'white', margin: 0, letterSpacing: '0.3px', display: 'flex', alignItems: 'center' }}>Asistencia por semana <InfoTooltip text="Porcentaje de entradas puntuales (antes de las 10:00 AM) de todo el equipo, agrupadas por semana." /></h4>
+                        <span style={{ fontSize: '10px', fontWeight: '700', color: 'var(--text-muted)', background: 'rgba(0, 0, 0, 0.04)', padding: '4px 10px', borderRadius: '8px' }}>Últimas 4 semanas</span>
                       </div>
                       <div style={{ display: 'flex', alignItems: 'flex-end', gap: '16px', height: '160px', paddingBottom: '28px', position: 'relative' }}>
                         {/* Y-axis labels */}
@@ -4628,7 +4628,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                               <span style={{ fontSize: '11px', fontWeight: '800', color: 'var(--gold-primary)' }}>{w.pct}%</span>
                               <div style={{ width: '100%', maxWidth: '50px', height: `${w.pct}%`, background: `linear-gradient(180deg, var(--gold-primary) 0%, rgba(255, 255, 255, 0.9) 100%)`, borderRadius: '8px 8px 0 0', transition: 'height 0.5s ease' }} />
                               <div style={{ textAlign: 'center' }}>
-                                <div style={{ fontSize: '10px', fontWeight: '700', color: '#111111' }}>{w.label}</div>
+                                <div style={{ fontSize: '10px', fontWeight: '700', color: 'white' }}>{w.label}</div>
                                 <div style={{ fontSize: '8px', color: 'var(--text-muted)' }}>{w.range}</div>
                               </div>
                             </div>
@@ -4637,9 +4637,9 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                       </div>
                     </div>
 
-                    {/* PRODUCTIVIDAD POR ODONTÃ“LOGO */}
+                    {/* PRODUCTIVIDAD POR ODONTÓLOGO */}
                     <div className="glass-card" style={{ padding: '24px', borderRadius: '24px', background: 'rgba(0, 0, 0, 0.04)', transition: 'none' }}>
-                       <h4 style={{ fontSize: '14px', fontWeight: '900', color: '#111111', margin: '0 0 16px', letterSpacing: '0.3px', display: 'flex', alignItems: 'center' }}>Productividad por odontÃ³logo <InfoTooltip text="Servicios completados y gasto promedio (USD) de cada colaborador en el mes actual." /></h4>
+                       <h4 style={{ fontSize: '14px', fontWeight: '900', color: 'white', margin: '0 0 16px', letterSpacing: '0.3px', display: 'flex', alignItems: 'center' }}>Productividad por odontólogo <InfoTooltip text="Servicios completados y gasto promedio (USD) de cada colaborador en el mes actual." /></h4>
                       <div style={{ overflowX: 'auto' }}>
                         <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '12px' }}>
                           <thead>
@@ -4660,15 +4660,15 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                                        <span style={{ fontSize: '10px', fontWeight: '900', color: 'var(--gold-primary)', opacity: 0.5 }}>{p.name.charAt(0)}</span>
                                      )}
                                    </div>
-                                   <span style={{ fontWeight: '700', color: '#111111', fontSize: '12px' }}>{p.name}</span>
+                                   <span style={{ fontWeight: '700', color: 'white', fontSize: '12px' }}>{p.name}</span>
                                 </td>
                                 <td style={{ padding: '10px 4px', textAlign: 'center' }}>
-                                  <span style={{ fontWeight: '800', color: '#111111' }}>{p.servicesCount}</span>
+                                  <span style={{ fontWeight: '800', color: 'white' }}>{p.servicesCount}</span>
                                   <div style={{ display: 'flex', justifyContent: 'center', marginTop: '3px' }}>
                                     <div style={{ width: `${Math.min(100, (p.servicesCount / Math.max(1, allStaff[0]?.servicesCount || 1)) * 100)}%`, height: '4px', borderRadius: '2px', background: 'var(--gold-primary)', maxWidth: '60px' }} />
                                   </div>
                                 </td>
-                                <td style={{ padding: '10px 4px', textAlign: 'center', fontWeight: '800', color: '#111111' }}>
+                                <td style={{ padding: '10px 4px', textAlign: 'center', fontWeight: '800', color: 'white' }}>
                                   ${p.ticketAvg.toFixed(2)}
                                 </td>
                               </tr>
@@ -4681,7 +4681,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
 
                   {/* PUNTUALIDAD POR COLABORADOR */}
                   <div className="glass-card" style={{ padding: '24px', borderRadius: '24px', background: 'rgba(0, 0, 0, 0.04)', transition: 'none' }}>
-                     <h4 style={{ fontSize: '14px', fontWeight: '900', color: '#111111', margin: '0 0 20px', letterSpacing: '0.3px', display: 'flex', alignItems: 'center' }}>Puntualidad por colaborador <InfoTooltip text="Porcentaje de veces que cada persona marcÃ³ entrada antes de las 10:00 AM sobre el total de sus registros." /></h4>
+                     <h4 style={{ fontSize: '14px', fontWeight: '900', color: 'white', margin: '0 0 20px', letterSpacing: '0.3px', display: 'flex', alignItems: 'center' }}>Puntualidad por colaborador <InfoTooltip text="Porcentaje de veces que cada persona marcó entrada antes de las 10:00 AM sobre el total de sus registros." /></h4>
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
                       {allStaff.map((p) => (
                         <div key={p.id}>
@@ -4694,7 +4694,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                                   <span style={{ fontSize: '9px', fontWeight: '900', color: 'var(--gold-primary)', opacity: 0.5 }}>{p.name.charAt(0)}</span>
                                 )}
                               </div>
-                              <span style={{ fontSize: '11px', fontWeight: '700', color: '#111111', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{p.name}</span>
+                              <span style={{ fontSize: '11px', fontWeight: '700', color: 'white', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{p.name}</span>
                             </div>
                             <span style={{ fontSize: '12px', fontWeight: '800', color: p.punctualityPct >= 90 ? '#32d74b' : p.punctualityPct >= 75 ? '#ff9f0a' : '#ff453a', marginLeft: '8px', flexShrink: 0 }}>{p.punctualityPct}%</span>
                           </div>
@@ -4707,9 +4707,9 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                   </div>
                 </div>
 
-                {/* â”€â”€ INSIGHTS DEL MES â”€â”€ */}
+                {/* ── INSIGHTS DEL MES ── */}
                 <div className="glass-card" style={{ padding: '28px', borderRadius: '24px', background: 'rgba(0, 0, 0, 0.04)', transition: 'none' }}>
-                   <h4 style={{ fontSize: '14px', fontWeight: '900', color: 'var(--gold-primary)', margin: '0 0 24px', letterSpacing: '0.5px', textTransform: 'uppercase', display: 'flex', alignItems: 'center' }}>Insights del mes <InfoTooltip text="Resumen automÃ¡tico: mejores y peores mÃ©tricas del equipo basado en datos reales del mes." /></h4>
+                   <h4 style={{ fontSize: '14px', fontWeight: '900', color: 'var(--gold-primary)', margin: '0 0 24px', letterSpacing: '0.5px', textTransform: 'uppercase', display: 'flex', alignItems: 'center' }}>Insights del mes <InfoTooltip text="Resumen automático: mejores y peores métricas del equipo basado en datos reales del mes." /></h4>
                   <div style={{ display: 'grid', gridTemplateColumns: isMobile ? 'minmax(0, 1fr) minmax(0, 1fr)' : 'repeat(4, minmax(0, 1fr))', gap: '16px' }}>
 
                     {/* Mejor asistencia */}
@@ -4748,7 +4748,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                             <Star size={12} color="#32d74b" fill="#32d74b" />
                             <span style={{ fontSize: '10px', fontWeight: '800', color: '#32d74b', letterSpacing: '0.5px', textTransform: 'uppercase' }}>Mejor asistencia</span>
                           </div>
-                          <div style={{ fontSize: '14px', fontWeight: '800', color: '#111111', lineHeight: 1.2 }}>{insights.bestAttendance.name}</div>
+                          <div style={{ fontSize: '14px', fontWeight: '800', color: 'white', lineHeight: 1.2 }}>{insights.bestAttendance.name}</div>
                         </div>
                         <div style={{
                           fontSize: '22px', fontWeight: '900', color: '#32d74b',
@@ -4758,7 +4758,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                       </div>
                     )}
 
-                    {/* MÃ¡s puntual */}
+                    {/* Más puntual */}
                     {insights.mostPunctual && (
                       <div style={{
                         padding: '24px 16px',
@@ -4792,9 +4792,9 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                         <div>
                           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '5px', marginBottom: '4px' }}>
                             <Clock size={12} color="var(--gold-primary)" />
-                            <span style={{ fontSize: '10px', fontWeight: '800', color: 'var(--gold-primary)', letterSpacing: '0.5px', textTransform: 'uppercase' }}>MÃ¡s puntual</span>
+                            <span style={{ fontSize: '10px', fontWeight: '800', color: 'var(--gold-primary)', letterSpacing: '0.5px', textTransform: 'uppercase' }}>Más puntual</span>
                           </div>
-                          <div style={{ fontSize: '14px', fontWeight: '800', color: '#111111', lineHeight: 1.2 }}>{insights.mostPunctual.name}</div>
+                          <div style={{ fontSize: '14px', fontWeight: '800', color: 'white', lineHeight: 1.2 }}>{insights.mostPunctual.name}</div>
                         </div>
                         <div style={{
                           fontSize: '22px', fontWeight: '900', color: 'var(--gold-primary)',
@@ -4840,7 +4840,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                             <DollarSign size={12} color="#ff9f0a" />
                             <span style={{ fontSize: '10px', fontWeight: '800', color: '#ff9f0a', letterSpacing: '0.5px', textTransform: 'uppercase' }}>Mayor gasto promedio</span>
                           </div>
-                          <div style={{ fontSize: '14px', fontWeight: '800', color: '#111111', lineHeight: 1.2 }}>{insights.highestTicket.name}</div>
+                          <div style={{ fontSize: '14px', fontWeight: '800', color: 'white', lineHeight: 1.2 }}>{insights.highestTicket.name}</div>
                         </div>
                         <div style={{
                           fontSize: '22px', fontWeight: '900', color: '#ff9f0a',
@@ -4886,7 +4886,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                             <Target size={12} color="#ff453a" />
                             <span style={{ fontSize: '10px', fontWeight: '800', color: '#ff453a', letterSpacing: '0.5px', textTransform: 'uppercase' }}>Necesita seguimiento</span>
                           </div>
-                          <div style={{ fontSize: '14px', fontWeight: '800', color: '#111111', lineHeight: 1.2 }}>{insights.needsFollowUp.name}</div>
+                          <div style={{ fontSize: '14px', fontWeight: '800', color: 'white', lineHeight: 1.2 }}>{insights.needsFollowUp.name}</div>
                         </div>
                         <div style={{
                           fontSize: '22px', fontWeight: '900', color: '#ff453a',
@@ -4898,13 +4898,13 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                   </div>
                 </div>
 
-                <p style={{ fontSize: '11px', color: 'var(--text-muted)', textAlign: 'center', marginTop: '4px' }}>Los datos se actualizan al cargar la pestaÃ±a.</p>
+                <p style={{ fontSize: '11px', color: 'var(--text-muted)', textAlign: 'center', marginTop: '4px' }}>Los datos se actualizan al cargar la pestaña.</p>
               </>
             );
           })() : (
             <div style={{ textAlign: 'center', padding: '48px 24px', color: 'var(--text-muted)' }}>
               <BarChart2 size={40} style={{ margin: '0 auto 16px', opacity: 0.3 }} />
-              <p style={{ fontSize: '14px', fontWeight: '700' }}>Cargando datos de desempeÃ±o...</p>
+              <p style={{ fontSize: '14px', fontWeight: '700' }}>Cargando datos de desempeño...</p>
             </div>
           )}
         </div>
@@ -4991,7 +4991,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
               display: 'flex',
               flexDirection: 'column',
               gap: '24px',
-              color: '#111111',
+              color: 'white',
               margin: 'auto'
             }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', borderBottom: '1px solid rgba(17, 17, 17,0.15)', paddingBottom: '20px', marginBottom: '4px' }}>
@@ -5014,16 +5014,16 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                   
                   {/* Title & Name */}
                   <div>
-                    <h3 style={{ fontSize: '22px', fontWeight: '900', color: '#111111', marginBottom: '4px', display: 'flex', alignItems: 'center', gap: '8px', letterSpacing: '-0.5px' }}>
+                    <h3 style={{ fontSize: '22px', fontWeight: '900', color: 'white', marginBottom: '4px', display: 'flex', alignItems: 'center', gap: '8px', letterSpacing: '-0.5px' }}>
                       Cierre de Asistencia <Banknote size={22} color="var(--gold-primary)" />
                     </h3>
                     <p style={{ color: 'var(--text-secondary)', fontSize: '14px', margin: 0 }}>
-                      Resumen y liquidaciÃ³n de <strong style={{ color: 'var(--gold-primary)', fontWeight: '800' }}>{dailyPaymentModal.staffName}</strong>
+                      Resumen y liquidación de <strong style={{ color: 'var(--gold-primary)', fontWeight: '800' }}>{dailyPaymentModal.staffName}</strong>
                     </p>
                   </div>
                 </div>
                 
-                <button onClick={() => setDailyPaymentModal(emptySettlementModal())} style={{ width: '34px', height: '34px', borderRadius: '50%', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', color: 'rgba(255,255,255,0.5)', fontSize: '16px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'all 0.2s ease', flexShrink: 0 }} onMouseEnter={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.1)'; e.currentTarget.style.color = 'white'; }} onMouseLeave={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.06)'; e.currentTarget.style.color = 'rgba(255,255,255,0.5)'; }}>Ã—</button>
+                <button onClick={() => setDailyPaymentModal(emptySettlementModal())} style={{ width: '34px', height: '34px', borderRadius: '50%', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', color: 'rgba(255,255,255,0.5)', fontSize: '16px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'all 0.2s ease', flexShrink: 0 }} onMouseEnter={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.1)'; e.currentTarget.style.color = 'white'; }} onMouseLeave={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.06)'; e.currentTarget.style.color = 'rgba(255,255,255,0.5)'; }}>×</button>
               </div>
 
               <StaffSettlementPanel
@@ -5044,12 +5044,12 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                     <span style={{ fontWeight: '700' }}>{dailyPaymentModal.earnings.earnedBs.toLocaleString('es-VE')} Bs</span>
                   </div>
                   <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '13px' }}>
-                    <span style={{ color: 'var(--text-secondary)' }}>Propinas del dÃ­a:</span>
+                    <span style={{ color: 'var(--text-secondary)' }}>Propinas del día:</span>
                     <span style={{ fontWeight: '700', color: '#32d74b' }}>+{dailyPaymentModal.earnings.propinasBs.toLocaleString('es-VE')} Bs</span>
                   </div>
                   {dailyPaymentModal.earnings.lavadoDeductionBs > 0 && (
                     <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '13px' }}>
-                      <span style={{ color: 'var(--text-secondary)' }}>DeducciÃ³n por limpiezas ({dailyPaymentModal.earnings.lavadosCount}):</span>
+                      <span style={{ color: 'var(--text-secondary)' }}>Deducción por limpiezas ({dailyPaymentModal.earnings.lavadosCount}):</span>
                       <span style={{ fontWeight: '700', color: '#ff453a' }}>-{dailyPaymentModal.earnings.lavadoDeductionBs.toLocaleString('es-VE')} Bs</span>
                     </div>
                   )}
@@ -5061,7 +5061,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                   )}
                   {dailyPaymentModal.earnings.paidBs > 0 && (
                     <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '13px' }}>
-                      <span style={{ color: 'var(--text-secondary)' }}>NÃ³mina pagada hoy:</span>
+                      <span style={{ color: 'var(--text-secondary)' }}>Nómina pagada hoy:</span>
                       <span style={{ fontWeight: '700', color: '#ff453a' }}>-{dailyPaymentModal.earnings.paidBs.toLocaleString('es-VE')} Bs</span>
                     </div>
                   )}
@@ -5073,7 +5073,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                         {dailyPaymentModal.earnings.balanceBs.toLocaleString('es-VE')} Bs
                       </span>
                       <span style={{ display: 'block', fontSize: '11px', color: 'var(--text-secondary)', marginTop: '2px' }}>
-                        â‰ˆ ${(dailyPaymentModal.earnings.balanceBs / dailyPaymentModal.earnings.rate).toFixed(2)} USD (Tasa: {dailyPaymentModal.earnings.rate})
+                        ≈ ${(dailyPaymentModal.earnings.balanceBs / dailyPaymentModal.earnings.rate).toFixed(2)} USD (Tasa: {dailyPaymentModal.earnings.rate})
                       </span>
                     </div>
                   </div>
@@ -5082,12 +5082,12 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
 
               {showLegacyDailyPaymentUi && dailyPaymentModal.earnings && dailyPaymentModal.earnings.balanceBs > 0 && (
                 <div className="form-group">
-                  <label style={{ display: 'block', fontSize: '11px', fontWeight: '900', color: 'var(--text-muted)', marginBottom: '8px', letterSpacing: '1px' }}>MÃ‰TODO DE PAGO</label>
+                  <label style={{ display: 'block', fontSize: '11px', fontWeight: '900', color: 'var(--text-muted)', marginBottom: '8px', letterSpacing: '1px' }}>MÉTODO DE PAGO</label>
                   <PandaSelect 
                     options={[
                       { value: 'Efectivo ($)', label: 'Efectivo ($)' },
                       { value: 'Efectivo (Bs)', label: 'Efectivo (Bs)' },
-                      { value: 'Pago MÃ³vil', label: 'Pago MÃ³vil' },
+                      { value: 'Pago Móvil', label: 'Pago Móvil' },
                       { value: 'Zelle', label: 'Zelle' },
                       { value: 'Zinli', label: 'Zinli' },
                       { value: 'Binance', label: 'Binance / USDT' },
@@ -5134,7 +5134,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                       padding: '12px',
                       borderRadius: '12px',
                       backgroundColor: 'rgba(0, 0, 0, 0.04)',
-                      color: '#111111',
+                      color: 'white',
                       border: '1px solid rgba(0, 0, 0, 0.08)',
                       fontWeight: '700',
                       fontSize: '13px',
@@ -5149,7 +5149,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                       flex: 1,
                       padding: '12px',
                       borderRadius: '12px',
-                      backgroundColor: '#ffffff',
+                      backgroundColor: 'transparent',
                       color: 'var(--text-muted)',
                       border: 'none',
                       fontWeight: '700',
@@ -5173,24 +5173,24 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
             <div style={{ width: '48px', height: '48px', borderRadius: '50%', background: 'rgba(255,159,10,0.1)', border: '1px solid rgba(255,159,10,0.25)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 16px' }}>
               <Film size={22} color="#ff9f0a" />
             </div>
-            <h3 style={{ fontSize: '16px', fontWeight: '800', color: '#111111', margin: '0 0 8px' }}>Reemplazar video</h3>
+            <h3 style={{ fontSize: '16px', fontWeight: '800', color: 'white', margin: '0 0 8px' }}>Reemplazar video</h3>
             <p style={{ fontSize: '13px', color: 'var(--text-muted)', margin: '0 0 20px', lineHeight: '1.5' }}>
               {hasHardcodedVideo && !formData.video_url
-                ? 'Este odontÃ³logo tiene un video predefinido en la landing. El video nuevo lo reemplazarÃ¡ completamente.'
-                : 'Ya existe un video subido para este odontÃ³logo. El nuevo lo reemplazarÃ¡ permanentemente.'}
+                ? 'Este odontólogo tiene un video predefinido en la landing. El video nuevo lo reemplazará completamente.'
+                : 'Ya existe un video subido para este odontólogo. El nuevo lo reemplazará permanentemente.'}
             </p>
             <div style={{ display: 'flex', gap: '10px' }}>
               <button
                 onClick={() => { setShowVideoConfirm(false); setPendingVideoFile(null); }}
-                style={{ flex: 1, padding: '10px', borderRadius: '10px', border: '1px solid rgba(0, 0, 0, 0.08)', background: 'rgba(0, 0, 0, 0.04)', color: '#111111', fontSize: '12px', fontWeight: '700', cursor: 'pointer' }}
+                style={{ flex: 1, padding: '10px', borderRadius: '10px', border: '1px solid rgba(0, 0, 0, 0.08)', background: 'rgba(0, 0, 0, 0.04)', color: 'white', fontSize: '12px', fontWeight: '700', cursor: 'pointer' }}
               >
                 Cancelar
               </button>
               <button
                 onClick={async () => { setShowVideoConfirm(false); if (pendingVideoFile) await doVideoUpload(pendingVideoFile); setPendingVideoFile(null); }}
-                style={{ flex: 1, padding: '10px', borderRadius: '10px', border: 'none', background: 'linear-gradient(135deg, #ff9f0a, #e68a00)', color: '#111111', fontSize: '12px', fontWeight: '700', cursor: 'pointer' }}
+                style={{ flex: 1, padding: '10px', borderRadius: '10px', border: 'none', background: 'linear-gradient(135deg, #ff9f0a, #e68a00)', color: 'white', fontSize: '12px', fontWeight: '700', cursor: 'pointer' }}
               >
-                SÃ­, reemplazar
+                Sí, reemplazar
               </button>
             </div>
           </div>
@@ -5202,5 +5202,3 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
 };
 
 export default PersonnelModule;
-
-

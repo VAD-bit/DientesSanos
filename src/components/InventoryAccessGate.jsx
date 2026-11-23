@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { LockKeyhole, Unlock, Delete } from 'lucide-react';
 import { notificationService } from '../services/notificationService';
 import { supabase } from '../lib/supabase';
@@ -87,8 +87,8 @@ const InventoryAccessGate = ({ children }) => {
         setLockedUntil(now + LOCKOUT_MS);
         notificationService.broadcastNotification(
           supabase,
-          'âš ï¸ Intentos de PIN â€” Inventario',
-          `Se intentÃ³ acceder al inventario ${newCount} veces con PIN incorrecto. Acceso bloqueado 5 minutos.`,
+          '⚠️ Intentos de PIN — Inventario',
+          `Se intentó acceder al inventario ${newCount} veces con PIN incorrecto. Acceso bloqueado 5 minutos.`,
           { recipientRole: 'admin' }
         );
       }
@@ -227,15 +227,15 @@ const InventoryAccessGate = ({ children }) => {
             </button>
           ))}
           
-          <button className="numpad-btn" style={{ background: '#ffffff', border: 'none', boxShadow: 'none', cursor: 'default' }} disabled>
-            {/* Espacio vacÃ­o intencional para alinear el 0 */}
+          <button className="numpad-btn" style={{ background: 'transparent', border: 'none', boxShadow: 'none', cursor: 'default' }} disabled>
+            {/* Espacio vacío intencional para alinear el 0 */}
           </button>
           
           <button className="numpad-btn" onClick={() => handlePress('0')}>
             0
           </button>
           
-          <button className="numpad-btn" onClick={handleDelete} style={{ background: '#ffffff', border: 'none', boxShadow: 'none' }}>
+          <button className="numpad-btn" onClick={handleDelete} style={{ background: 'transparent', border: 'none', boxShadow: 'none' }}>
             <Delete size={30} strokeWidth={1.5} style={{ opacity: pin.length > 0 ? 0.9 : 0.2, transition: 'opacity 0.2s' }} />
           </button>
         </div>
@@ -245,5 +245,3 @@ const InventoryAccessGate = ({ children }) => {
 };
 
 export default InventoryAccessGate;
-
-

@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { createPortal } from 'react-dom';
 import { 
   X, 
@@ -72,7 +72,7 @@ const RoleManagerModal = ({ isOpen, onClose, roles, onSaveRole, onDeleteRole, av
   };
 
   const handleDeleteRole = async (roleName) => {
-    const accepted = await confirm(`Â¿Seguro que deseas eliminar el rol "${roleLabel(roleName)}"? Esta acciÃ³n puede afectar permisos del equipo.`);
+    const accepted = await confirm(`¿Seguro que deseas eliminar el rol "${roleLabel(roleName)}"? Esta acción puede afectar permisos del equipo.`);
     if (!accepted) return;
     onDeleteRole(roleName);
   };
@@ -115,7 +115,7 @@ const RoleManagerModal = ({ isOpen, onClose, roles, onSaveRole, onDeleteRole, av
                   <Shield size={22} color="var(--gold-primary)" />
                 </div>
                 <div>
-                  <h2 style={{ fontSize: '19px', fontWeight: '900', margin: 0, letterSpacing: '-0.3px' }}>GestiÃ³n de Roles</h2>
+                  <h2 style={{ fontSize: '19px', fontWeight: '900', margin: 0, letterSpacing: '-0.3px' }}>Gestión de Roles</h2>
                   <p style={{ fontSize: '12px', color: 'var(--text-muted)', margin: '2px 0 0', fontWeight: '500' }}>Define accesos y permisos por cargo</p>
                 </div>
               </div>
@@ -182,7 +182,7 @@ const RoleManagerModal = ({ isOpen, onClose, roles, onSaveRole, onDeleteRole, av
 
                         {/* Role info */}
                         <div style={{ flex: 1, minWidth: 0 }}>
-                          <div style={{ fontWeight: '800', fontSize: '15px', marginBottom: '6px', color: '#111111' }}>{roleLabel(name)}</div>
+                          <div style={{ fontWeight: '800', fontSize: '15px', marginBottom: '6px', color: 'white' }}>{roleLabel(name)}</div>
                           <div style={{ display: 'flex', gap: '5px', flexWrap: 'wrap' }}>
                             {perms.slice(0, 4).map(p => (
                               <span key={p} style={{
@@ -204,7 +204,7 @@ const RoleManagerModal = ({ isOpen, onClose, roles, onSaveRole, onDeleteRole, av
                                 background: 'rgba(0, 0, 0, 0.04)',
                                 padding: '2px 10px', borderRadius: '50px',
                                 fontWeight: '700', border: '1px solid rgba(0, 0, 0, 0.08)'
-                              }}>+{perms.length - 4} mÃ¡s</span>
+                              }}>+{perms.length - 4} más</span>
                             )}
                           </div>
                         </div>
@@ -215,7 +215,7 @@ const RoleManagerModal = ({ isOpen, onClose, roles, onSaveRole, onDeleteRole, av
                             onClick={() => handleEditClick(name, perms)}
                             style={{
                               background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)',
-                              padding: '8px 10px', borderRadius: '10px', cursor: 'pointer', color: '#111111',
+                              padding: '8px 10px', borderRadius: '10px', cursor: 'pointer', color: 'white',
                               transition: 'all 0.2s', display: 'flex', alignItems: 'center'
                             }}
                             onMouseOver={e => e.currentTarget.style.background = 'rgba(255,255,255,0.1)'}
@@ -256,7 +256,7 @@ const RoleManagerModal = ({ isOpen, onClose, roles, onSaveRole, onDeleteRole, av
                   <div style={{ padding: '20px', backgroundColor: 'rgba(0, 0, 0, 0.04)', borderRadius: '20px', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '16px' }}>
                       <Key size={16} color="var(--gold-primary)" />
-                      <label style={{ fontSize: '11px', fontWeight: '900', color: '#111111', letterSpacing: '1px', textTransform: 'uppercase' }}>Permisos</label>
+                      <label style={{ fontSize: '11px', fontWeight: '900', color: 'white', letterSpacing: '1px', textTransform: 'uppercase' }}>Permisos</label>
                     </div>
 
                     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: '8px' }}>
@@ -294,7 +294,7 @@ const RoleManagerModal = ({ isOpen, onClose, roles, onSaveRole, onDeleteRole, av
                   <div style={{ display: 'flex', gap: '10px', marginTop: '24px' }}>
                     <button
                       onClick={() => setEditingRole(null)}
-                      style={{ flex: 1, height: '50px', borderRadius: '14px', border: '1px solid rgba(0, 0, 0, 0.08)', background: 'rgba(0, 0, 0, 0.04)', color: '#111111', fontWeight: '700', cursor: 'pointer', transition: 'all 0.2s' }}
+                      style={{ flex: 1, height: '50px', borderRadius: '14px', border: '1px solid rgba(0, 0, 0, 0.08)', background: 'rgba(0, 0, 0, 0.04)', color: 'white', fontWeight: '700', cursor: 'pointer', transition: 'all 0.2s' }}
                       onMouseOver={e => e.currentTarget.style.background = 'rgba(255,255,255,0.08)'}
                       onMouseOut={e => e.currentTarget.style.background = 'rgba(255,255,255,0.04)'}
                     >
@@ -321,7 +321,7 @@ const RoleManagerModal = ({ isOpen, onClose, roles, onSaveRole, onDeleteRole, av
             }}>
               <Info size={15} color="var(--gold-primary)" style={{ flexShrink: 0 }} />
               <p style={{ fontSize: '11px', color: 'rgba(255, 255, 255,0.8)', margin: 0, fontWeight: '600' }}>
-                Los cambios en los permisos se aplicarÃ¡n a los nuevos miembros que se unan con este rol.
+                Los cambios en los permisos se aplicarán a los nuevos miembros que se unan con este rol.
               </p>
             </div>
 
@@ -334,4 +334,3 @@ const RoleManagerModal = ({ isOpen, onClose, roles, onSaveRole, onDeleteRole, av
 };
 
 export default RoleManagerModal;
-

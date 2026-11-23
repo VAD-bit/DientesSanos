@@ -1,4 +1,4 @@
-﻿import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { Cake, PartyPopper, Gift, Sparkles } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { publicService } from '../services/publicService';
@@ -156,10 +156,10 @@ export default function PrizeWheel({ clientId, onWin, externalPrizes, onGenerate
 
       <div className="vw-header">
         <PartyPopper size={18} color="#111111" />
-        <h2 className="vw-shimmer-text">REGALO DE CUMPLEAÃ‘OS</h2>
+        <h2 className="vw-shimmer-text">REGALO DE CUMPLEAÑOS</h2>
         <Cake size={18} color="#111111" />
       </div>
-      <p className="vw-subtitle">Â¡Gira la ruleta y descubre tu premio especial!</p>
+      <p className="vw-subtitle">¡Gira la ruleta y descubre tu premio especial!</p>
 
       <div className="vw-content">
         {!wonPrize ? (
@@ -232,7 +232,7 @@ export default function PrizeWheel({ clientId, onWin, externalPrizes, onGenerate
 
             <div className="vw-ticket-header">
               <Sparkles size={28} className="vw-star-pulse" color="#111111" style={{ margin: '0 auto 8px', display: 'block' }} />
-              <h3>Â¡FELIZ CUMPLEAÃ‘OS!</h3>
+              <h3>¡FELIZ CUMPLEAÑOS!</h3>
               <p>Tu regalo de hoy te espera</p>
             </div>
 
@@ -242,9 +242,9 @@ export default function PrizeWheel({ clientId, onWin, externalPrizes, onGenerate
 
             {coupon && (
               <div className="vw-ticket-coupon">
-                <div className="vw-tc-label">TU CUPÃ“N</div>
+                <div className="vw-tc-label">TU CUPÓN</div>
                 <div className="vw-tc-code">{coupon.id?.substring(0, 8).toUpperCase()}</div>
-                <div className="vw-tc-desc">MuÃ©strale este cÃ³digo a tu odontÃ³logo al llegar.</div>
+                <div className="vw-tc-desc">Muéstrale este código a tu odontólogo al llegar.</div>
               </div>
             )}
           </div>
@@ -252,7 +252,7 @@ export default function PrizeWheel({ clientId, onWin, externalPrizes, onGenerate
       </div>
 
       <style>{`
-        /* â”€â”€ CONTAINER â”€â”€ */
+        /* ── CONTAINER ── */
         .vip-wheel-container {
           position: relative;
           background: linear-gradient(145deg, #121014, #060408);
@@ -266,7 +266,7 @@ export default function PrizeWheel({ clientId, onWin, externalPrizes, onGenerate
           text-align: center;
         }
 
-        /* â”€â”€ BIRTHDAY CONFETTI PARTICLES â”€â”€ */
+        /* ── BIRTHDAY CONFETTI PARTICLES ── */
         .vw-confetti {
           position: absolute;
           top: -10px;
@@ -290,7 +290,7 @@ export default function PrizeWheel({ clientId, onWin, externalPrizes, onGenerate
           100% { transform: translateY(600px) rotate(540deg); opacity: 0; }
         }
 
-        /* â”€â”€ GLOWS (React to mouse) â”€â”€ */
+        /* ── GLOWS (React to mouse) ── */
         .vw-glow {
           position: absolute;
           width: 300px; height: 300px;
@@ -309,7 +309,7 @@ export default function PrizeWheel({ clientId, onWin, externalPrizes, onGenerate
           bottom: -80px; right: -80px;
         }
 
-        /* â”€â”€ HEADER & SHIMMER â”€â”€ */
+        /* ── HEADER & SHIMMER ── */
         .vw-header {
           position: relative; z-index: 2;
           display: flex; justify-content: center; alignItems: center; gap: 12px;
@@ -348,7 +348,7 @@ export default function PrizeWheel({ clientId, onWin, externalPrizes, onGenerate
           display: flex; justify-content: center;
         }
 
-        /* â”€â”€ WHEEL WRAPPER â”€â”€ */
+        /* ── WHEEL WRAPPER ── */
         .vw-wheel-wrapper {
           position: relative;
           width: 320px; height: 320px;
@@ -363,7 +363,7 @@ export default function PrizeWheel({ clientId, onWin, externalPrizes, onGenerate
           40%, 60% { transform: translate3d(4px, 0, 0); }
         }
 
-        /* â”€â”€ OUTER BEZEL (Rolex Metal) â”€â”€ */
+        /* ── OUTER BEZEL (Rolex Metal) ── */
         .vw-wheel-outer-bezel {
           position: absolute; inset: 0;
           border-radius: 50%;
@@ -372,7 +372,7 @@ export default function PrizeWheel({ clientId, onWin, externalPrizes, onGenerate
           box-shadow: 0 30px 60px rgba(0,0,0,0.9), inset 0 2px 5px rgba(255,255,255,0.2), inset 0 -2px 5px rgba(0,0,0,0.8);
         }
 
-        /* â”€â”€ WATCH TICKS â”€â”€ */
+        /* ── WATCH TICKS ── */
         .vw-ticks-container {
           position: absolute; inset: 4px;
           border-radius: 50%;
@@ -393,7 +393,7 @@ export default function PrizeWheel({ clientId, onWin, externalPrizes, onGenerate
           box-shadow: 0 0 4px rgba(17, 17, 17, 0.8);
         }
 
-        /* â”€â”€ THE WHEEL â”€â”€ */
+        /* ── THE WHEEL ── */
         .vw-wheel {
           width: 100%; height: 100%;
           border-radius: 50%;
@@ -403,7 +403,7 @@ export default function PrizeWheel({ clientId, onWin, externalPrizes, onGenerate
           overflow: hidden;
         }
 
-        /* â”€â”€ SECTOR TEXT â”€â”€ */
+        /* ── SECTOR TEXT ── */
         .vw-sector-text {
           position: absolute;
           top: 50%; left: 50%;
@@ -420,7 +420,7 @@ export default function PrizeWheel({ clientId, onWin, externalPrizes, onGenerate
           text-shadow: 0 4px 6px rgba(0,0,0,1);
         }
 
-        /* â”€â”€ MECHANICAL POINTER â”€â”€ */
+        /* ── MECHANICAL POINTER ── */
         .vw-pointer {
           position: absolute;
           top: -28px;
@@ -464,7 +464,7 @@ export default function PrizeWheel({ clientId, onWin, externalPrizes, onGenerate
           pointer-events: none;
         }
 
-        /* â”€â”€ REACTOR BUTTON â”€â”€ */
+        /* ── REACTOR BUTTON ── */
         .vw-spin-btn {
           position: absolute;
           inset: 0;
@@ -517,7 +517,7 @@ export default function PrizeWheel({ clientId, onWin, externalPrizes, onGenerate
           100% { transform: scale(1.2); opacity: 1; }
         }
 
-        /* â”€â”€ BIRTHDAY CANDLES â”€â”€ */
+        /* ── BIRTHDAY CANDLES ── */
         .vw-candles-row {
           display: flex; justify-content: center; gap: 18px;
           margin-bottom: 24px;
@@ -545,7 +545,7 @@ export default function PrizeWheel({ clientId, onWin, externalPrizes, onGenerate
           100% { transform: scaleX(1.05) scaleY(0.95) rotate(-2deg); opacity: 1; }
         }
 
-        /* â”€â”€ VIP TICKET (VICTORY) â”€â”€ */
+        /* ── VIP TICKET (VICTORY) ── */
         .vw-golden-ticket {
           width: 100%;
           background: linear-gradient(135deg, #161618 0%, #050507 100%);
@@ -624,4 +624,3 @@ export default function PrizeWheel({ clientId, onWin, externalPrizes, onGenerate
     </div>
   );
 }
-

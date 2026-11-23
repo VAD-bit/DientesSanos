@@ -1,22 +1,22 @@
-﻿import { publicSupabase as supabase } from '../../lib/supabase';
+import { publicSupabase as supabase } from '../../lib/supabase';
 import { isBookableStaff } from '../../utils/staffRoles';
 
 const authenticatedApi = async (url, payload) => {
   const { data: { session } } = await supabase.auth.getSession();
-  if (!session?.access_token) throw new Error('Debes iniciar sesiÃ³n para completar esta operaciÃ³n.');
+  if (!session?.access_token) throw new Error('Debes iniciar sesión para completar esta operación.');
   const response = await fetch(url, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${session.access_token}` },
     body: JSON.stringify(payload)
   });
   const result = await response.json().catch(() => ({}));
-  if (!response.ok) throw new Error(result.error || 'No se pudo completar la operaciÃ³n.');
+  if (!response.ok) throw new Error(result.error || 'No se pudo completar la operación.');
   return result;
 };
 
-// Busca el cliente existente por cÃ©dula/email/telÃ©fono. La normalizaciÃ³n (quitar
-// todo lo que no sea dÃ­gito) y el desempate viven ahora en el RPC SECURITY DEFINER
-// odontosonrisa.find_existing_client, que devuelve 0 o 1 fila. Antes esto traÃ­a la
+// Busca el cliente existente por cédula/email/teléfono. La normalización (quitar
+// todo lo que no sea dígito) y el desempate viven ahora en el RPC SECURITY DEFINER
+// odontosonrisa.find_existing_client, que devuelve 0 o 1 fila. Antes esto traía la
 // tabla completa de clientes al navegador y filtraba en JS (fuga de datos).
 const findExistingClientRecord = async ({ id_card, email, phone }) => {
   const { data, error } = await supabase.rpc('find_existing_client', {
@@ -28,9 +28,9 @@ const findExistingClientRecord = async ({ id_card, email, phone }) => {
   return (data && data[0]) || null;
 };
 
-// Registros que pertenecen a la misma persona (misma cÃ©dula normalizada) para
-// sumar puntos y citas. El filtrado por cÃ©dula normalizada ocurre en el RPC
-// odontosonrisa.find_related_clients; antes traÃ­a la tabla completa.
+// Registros que pertenecen a la misma persona (misma cédula normalizada) para
+// sumar puntos y citas. El filtrado por cédula normalizada ocurre en el RPC
+// odontosonrisa.find_related_clients; antes traía la tabla completa.
 const findRelatedClientRecords = async clientId => {
   const { data, error } = await supabase.rpc('find_related_clients', {
     p_client_id: String(clientId)
@@ -41,7 +41,7 @@ const findRelatedClientRecords = async clientId => {
 
 const linkClientRecord = async (existing, userId, incoming) => {
   if (existing.auth_user_id && String(existing.auth_user_id) !== String(userId)) {
-    throw new Error('Esta cÃ©dula ya estÃ¡ vinculada a otra cuenta. Contacta a la clÃ­nica dental.');
+    throw new Error('Esta cédula ya está vinculada a otra cuenta. Contacta a la clínica dental.');
   }
 
   const { client } = await authenticatedApi('/api/public/client-profile', {
@@ -88,7 +88,7 @@ export const publicService = {
   // takes bookings 24h; while closed nobody can book. Unset => treated as open so nothing
   // breaks before the owner uses the switch. On a read error we fail OPEN so a transient
   // hiccup doesn't block all bookings. Goes through /api/public/store-status (service key)
-  // because the anon role has no SELECT grant on system_settings â€” a direct client-side
+  // because the anon role has no SELECT grant on system_settings — a direct client-side
   // query here always fails silently and was masking the toggle having no real effect.
   async getStoreOpen() {
     try {
@@ -101,7 +101,7 @@ export const publicService = {
     }
   },
 
-  // Get active staff (barbers) â€” uses authClient (service role) because anon has no RLS policy on staff table
+  // Get active staff (barbers) — uses authClient (service role) because anon has no RLS policy on staff table
   async getStaff() {
     const response = await fetch('/api/public/staff');
     const result = await response.json().catch(() => ({}));
@@ -170,10 +170,10 @@ export const publicService = {
     return [...occupied];
   },
 
-  // Crea (o repara y confirma) la cuenta de auth vÃ­a el endpoint serverless
-  // api/public/signup. Ver el comentario de ese archivo: el signUp pÃºblico
-  // directo desde el navegador estaba limitado por rate limit, no devolvÃ­a
-  // sesiÃ³n con "confirmar correo" activo y dejaba cuentas inutilizables.
+  // Crea (o repara y confirma) la cuenta de auth vía el endpoint serverless
+  // api/public/signup. Ver el comentario de ese archivo: el signUp público
+  // directo desde el navegador estaba limitado por rate limit, no devolvía
+  // sesión con "confirmar correo" activo y dejaba cuentas inutilizables.
   async signupConfirmed({ email, password, name, id_card }) {
     const response = await fetch('/api/public/signup', {
       method: 'POST',
@@ -190,13 +190,13 @@ export const publicService = {
     const effectiveEmail = String(email || `${phone}@odontosonrisa.app`).trim().toLowerCase();
 
     // Step 1: cuenta creada/confirmada en el servidor (sin rate limit, sin
-    // depender del correo de confirmaciÃ³n).
+    // depender del correo de confirmación).
     await this.signupConfirmed({ email: effectiveEmail, password, name, id_card });
 
-    // Step 2: sesiÃ³n ANTES de cualquier endpoint autenticado. Antes el orden
-    // estaba invertido: el registro sin sesiÃ³n se estrellaba contra
-    // authenticatedApi con "Debes iniciar sesiÃ³n para completar esta
-    // operaciÃ³n" y dejaba el auth user huÃ©rfano sin perfil de cliente.
+    // Step 2: sesión ANTES de cualquier endpoint autenticado. Antes el orden
+    // estaba invertido: el registro sin sesión se estrellaba contra
+    // authenticatedApi con "Debes iniciar sesión para completar esta
+    // operación" y dejaba el auth user huérfano sin perfil de cliente.
     const { data: signInData, error: signInError } = await supabase.auth.signInWithPassword({
       email: effectiveEmail,
       password
@@ -204,17 +204,17 @@ export const publicService = {
     if (signInError || !signInData?.session) {
       const message = String(signInError?.message || '');
       if (/invalid login credentials/i.test(message)) {
-        throw new Error('Este correo ya tenÃ­a una cuenta con otra contraseÃ±a. Inicia sesiÃ³n con tu contraseÃ±a o usa otra distinta.');
+        throw new Error('Este correo ya tenía una cuenta con otra contraseña. Inicia sesión con tu contraseña o usa otra distinta.');
       }
-      throw new Error(`No se pudo iniciar sesiÃ³n con la cuenta creada.${message ? ` (${message})` : ''}`);
+      throw new Error(`No se pudo iniciar sesión con la cuenta creada.${message ? ` (${message})` : ''}`);
     }
     const userId = signInData.user.id;
 
-    // Step 3: Check if a client record already exists (by cÃ©dula/phone/email)
+    // Step 3: Check if a client record already exists (by cédula/phone/email)
     const existing = await findExistingClientRecord({ id_card, email, phone });
 
     if (existing) {
-      // If the existing record already belongs to a DIFFERENT auth user â€” don't block,
+      // If the existing record already belongs to a DIFFERENT auth user — don't block,
       // just create a fresh independent client record for this new account.
       if (existing.auth_user_id && String(existing.auth_user_id) !== String(userId)) {
         // Fall through to create a new record below
@@ -242,24 +242,24 @@ export const publicService = {
     const email = isEmail ? identifier : `${identifier}@odontosonrisa.app`;
     let { data, error } = await supabase.auth.signInWithPassword({ email, password });
 
-    // Auto-reparaciÃ³n: cuentas creadas cuando "confirmar correo" estaba activo
+    // Auto-reparación: cuentas creadas cuando "confirmar correo" estaba activo
     // quedaron sin confirmar y Supabase las rechaza para siempre. Si la
-    // contraseÃ±a es vÃ¡lida el endpoint serverless confirma el correo y el
+    // contraseña es válida el endpoint serverless confirma el correo y el
     // segundo intento entra sin problemas.
     if (error && /email not confirmed/i.test(String(error.message || '')) && String(password || '').length >= 6) {
       try {
         await this.signupConfirmed({ email, password });
         ({ data, error } = await supabase.auth.signInWithPassword({ email, password }));
       } catch {
-        // Se mantiene el error original de mÃ¡s abajo
+        // Se mantiene el error original de más abajo
       }
     }
 
     if (error) {
       const message = String(error.message || '');
-      if (/invalid login credentials/i.test(message)) throw new Error('Correo o contraseÃ±a incorrectos.');
-      if (/email not confirmed/i.test(message)) throw new Error('No se pudo confirmar el correo de la cuenta. Contacta a la clÃ­nica.');
-      throw new Error(message || 'No se pudo iniciar sesiÃ³n.');
+      if (/invalid login credentials/i.test(message)) throw new Error('Correo o contraseña incorrectos.');
+      if (/email not confirmed/i.test(message)) throw new Error('No se pudo confirmar el correo de la cuenta. Contacta a la clínica.');
+      throw new Error(message || 'No se pudo iniciar sesión.');
     }
     return data;
   },
@@ -286,14 +286,14 @@ export const publicService = {
   async updateClientProfile(clientId, data) {
     if (!clientId) throw new Error("Client ID required");
     const { client } = await authenticatedApi('/api/public/client-profile', data);
-    if (String(client?.id) !== String(clientId)) throw new Error('El perfil actualizado no coincide con la sesiÃ³n.');
+    if (String(client?.id) !== String(clientId)) throw new Error('El perfil actualizado no coincide con la sesión.');
     return client;
   },
 
   // Reset password
   async resetPassword(email) {
     const { error } = await supabase.auth.resetPasswordForEmail(email, {
-      redirectTo: window.location.origin + '/#/restablecer-contraseÃ±a'
+      redirectTo: window.location.origin + '/#/restablecer-contraseña'
     });
     if (error) throw error;
     return true;
@@ -370,7 +370,7 @@ export const publicService = {
   async createAppointment({ client_id, service_id, staff_id, scheduled_at, notes, tattoo_data }) {
     const bookableStaff = await this.getStaff();
     if (!bookableStaff.some(member => String(member.id) === String(staff_id))) {
-      throw new Error('Este profesional no estÃ¡ disponible para agendar citas.');
+      throw new Error('Este profesional no está disponible para agendar citas.');
     }
 
     const { data: service } = await supabase
@@ -408,7 +408,7 @@ export const publicService = {
         throw new Error('Lo sentimos, este horario acaba de ser reservado por otra persona. Por favor elige otro.');
       }
       if (errorText.includes('APPOINTMENT_CAPACITY_CONFLICT')) {
-        throw new Error('Lo sentimos, los sillones disponibles para ese horario ya estÃ¡n ocupados. Por favor elige otro.');
+        throw new Error('Lo sentimos, los sillones disponibles para ese horario ya están ocupados. Por favor elige otro.');
       }
       throw error;
     }
@@ -515,8 +515,8 @@ export const publicService = {
         type: 'broadcast',
         event: 'crm-notification',
         payload: {
-          title: 'ðŸŽ‰ Â¡Ruleta de cumpleaÃ±os ganada!',
-          body: `${clientName || 'Un cliente'} ganÃ³ "${prizeName}" en su ruleta de cumpleaÃ±os.`,
+          title: '🎉 ¡Ruleta de cumpleaños ganada!',
+          body: `${clientName || 'Un cliente'} ganó "${prizeName}" en su ruleta de cumpleaños.`,
           recipientRole: null,
           recipientId: null,
           senderId: null
@@ -652,9 +652,9 @@ export const publicService = {
     };
   },
 
-  // ReseÃ±as de Google del consultorio.
-  // TODO(reseÃ±as): conectar la API de Google Places para sincronizar automÃ¡ticamente;
-  // por ahora se leen de la tabla `google_reviews` (vacÃ­o = la secciÃ³n queda en espera).
+  // Reseñas de Google del consultorio.
+  // TODO(reseñas): conectar la API de Google Places para sincronizar automáticamente;
+  // por ahora se leen de la tabla `google_reviews` (vacío = la sección queda en espera).
   async getGoogleReviews() {
     try {
       const { data, error } = await supabase
@@ -665,9 +665,8 @@ export const publicService = {
       if (error) throw error;
       return Array.isArray(data) ? data : [];
     } catch (e) {
-      console.warn('google_reviews no disponible todavÃ­a:', e?.message);
+      console.warn('google_reviews no disponible todavía:', e?.message);
       return [];
     }
   }
 };
-

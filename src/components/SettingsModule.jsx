@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Search, Plus, Ticket, Users, Check, Trash2, Pencil, Loader2, Gift, MessageCircle, X } from 'lucide-react';
 import { dataService } from '../services/dataService';
 import { SkeletonList } from './Skeleton';
@@ -36,7 +36,7 @@ const PrizeRow = ({ prize, idx, onRemove, onUpdate }) => {
             onBlur={handleSave}
             onKeyDown={e => e.key === 'Enter' && handleSave()}
             autoFocus
-            style={{ flex: 1, background: 'rgba(0, 0, 0, 0.04)', border: '1px solid var(--gold-primary)', color: '#111111', borderRadius: '8px', padding: '8px 12px', fontSize: '15px', outline: 'none' }}
+            style={{ flex: 1, background: 'rgba(0, 0, 0, 0.04)', border: '1px solid var(--gold-primary)', color: 'white', borderRadius: '8px', padding: '8px 12px', fontSize: '15px', outline: 'none' }}
           />
         ) : (
           <div 
@@ -44,7 +44,7 @@ const PrizeRow = ({ prize, idx, onRemove, onUpdate }) => {
             style={{ flex: 1, padding: '8px 0', border: '1px solid transparent', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '8px' }}
             title="Haz clic para editar"
           >
-            <span style={{ fontSize: '15px', fontWeight: '600', color: '#111111' }}>
+            <span style={{ fontSize: '15px', fontWeight: '600', color: 'white' }}>
               {prize.name?.replace('ROULETTE_PRIZE:', '')}
             </span>
             <span style={{ fontSize: '11px', fontWeight: '500', color: 'rgba(255,255,255,0.3)' }}>
@@ -106,7 +106,7 @@ const SettingsModule = ({ isMobile, clients, onRefresh }) => {
       setWhatsappSettings({
         followUp: settings.whatsapp_template_followup || '',
         birthday: settings.whatsapp_template_birthday || '',
-        thankYou: settings.whatsapp_template_thank_you || 'Gracias por tu visita, es muy importante para nosotros tu fidelidad. Â¡Espero que vuelvas pronto!',
+        thankYou: settings.whatsapp_template_thank_you || 'Gracias por tu visita, es muy importante para nosotros tu fidelidad. ¡Espero que vuelvas pronto!',
         businessNumber: settings.whatsapp_business_number || ''
       });
     } catch (e) {
@@ -131,13 +131,13 @@ const SettingsModule = ({ isMobile, clients, onRefresh }) => {
     try {
       setCreating(true);
       await dataService.generateCoupon(null, finalPrizeName); // client is null at creation
-      showToast('CupÃ³n creado exitosamente');
+      showToast('Cupón creado exitosamente');
       setNewCoupon({ type: 'descuento', value: '', prize_name: '' });
       setShowAddForm(false);
       await loadCoupons();
     } catch (e) {
       console.error(e);
-      showToast('Error al crear cupÃ³n', 'error');
+      showToast('Error al crear cupón', 'error');
     } finally {
       setCreating(false);
     }
@@ -163,34 +163,34 @@ const SettingsModule = ({ isMobile, clients, onRefresh }) => {
   };
 
   const handleDeleteCoupon = async (id) => {
-    const isConfirmed = await confirm("Â¿Seguro que deseas eliminar este cupÃ³n?", "Eliminar CupÃ³n");
+    const isConfirmed = await confirm("¿Seguro que deseas eliminar este cupón?", "Eliminar Cupón");
     if (isConfirmed) {
       try {
         await dataService.deleteCoupon(id);
-        showToast("CupÃ³n eliminado", "success");
+        showToast("Cupón eliminado", "success");
         loadCoupons();
       } catch (e) {
-        showToast("Error al eliminar cupÃ³n", "error");
+        showToast("Error al eliminar cupón", "error");
       }
     }
   };
 
   const handleAssignCoupon = async () => {
     if (!assignCouponId || !assignClientId) {
-      showToast('Selecciona un cliente para asignar el cupÃ³n', 'warning');
+      showToast('Selecciona un cliente para asignar el cupón', 'warning');
       return;
     }
     try {
       setAssigning(true);
       await dataService.assignCoupon(assignCouponId, assignClientId);
-      showToast('CupÃ³n asignado exitosamente', 'success');
+      showToast('Cupón asignado exitosamente', 'success');
       setShowAssignModal(false);
       setAssignCouponId(null);
       setAssignClientId('');
       await loadCoupons();
     } catch (e) {
       console.error(e);
-      showToast('Error al asignar cupÃ³n', 'error');
+      showToast('Error al asignar cupón', 'error');
     } finally {
       setAssigning(false);
     }
@@ -203,10 +203,10 @@ const SettingsModule = ({ isMobile, clients, onRefresh }) => {
       await dataService.addRoulettePrize(newPrizeName);
       setNewPrizeName('');
       await loadCoupons();
-      showToast('Premio aÃ±adido a la ruleta');
+      showToast('Premio añadido a la ruleta');
     } catch(e) {
       console.error(e);
-      showToast('Error al aÃ±adir premio', 'error');
+      showToast('Error al añadir premio', 'error');
     } finally {
       setLoading(false);
     }
@@ -224,7 +224,7 @@ const SettingsModule = ({ isMobile, clients, onRefresh }) => {
   };
 
   const handleRemovePrize = async (id) => {
-    confirm('Â¿Eliminar este premio de la ruleta?', async () => {
+    confirm('¿Eliminar este premio de la ruleta?', async () => {
       try {
         setLoading(true);
         await dataService.removeRoulettePrize(id);
@@ -246,10 +246,10 @@ const SettingsModule = ({ isMobile, clients, onRefresh }) => {
       await dataService.updateSystemSetting('whatsapp_template_birthday', whatsappSettings.birthday);
       await dataService.updateSystemSetting('whatsapp_template_thank_you', whatsappSettings.thankYou);
       await dataService.updateSystemSetting('whatsapp_business_number', whatsappSettings.businessNumber);
-      showToast('ConfiguraciÃ³n de WhatsApp guardada', 'success');
+      showToast('Configuración de WhatsApp guardada', 'success');
     } catch (e) {
       console.error(e);
-      showToast('Error guardando configuraciÃ³n', 'error');
+      showToast('Error guardando configuración', 'error');
     } finally {
       setSavingWhatsapp(false);
     }
@@ -274,7 +274,7 @@ const SettingsModule = ({ isMobile, clients, onRefresh }) => {
       }}>
         <div>
           <h2 style={{ fontSize: isMobile ? '26px' : '28px', fontWeight: '800', letterSpacing: '-0.5px', lineHeight: '1.2' }}>Ajustes y <span className="text-gold">Recompensas</span></h2>
-          <p style={{ color: 'var(--text-secondary)', marginTop: '6px', fontSize: isMobile ? '13px' : '15px' }}>GestiÃ³n de cupones, regalos y parÃ¡metros del sistema.</p>
+          <p style={{ color: 'var(--text-secondary)', marginTop: '6px', fontSize: isMobile ? '13px' : '15px' }}>Gestión de cupones, regalos y parámetros del sistema.</p>
         </div>
         
         <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', width: isMobile ? '100%' : 'auto' }}>
@@ -290,7 +290,7 @@ const SettingsModule = ({ isMobile, clients, onRefresh }) => {
             onClick={() => setActiveTab('roulette')}
             style={{ borderRadius: '12px', padding: '10px 16px', fontSize: '13px', display: 'flex', alignItems: 'center', gap: '8px', flex: isMobile ? '1' : 'auto', justifyContent: 'center', border: activeTab === 'roulette' ? '1px solid rgba(0, 0, 0, 0.08)' : '1px solid transparent', background: activeTab === 'roulette' ? 'var(--gold-gradient)' : 'transparent', color: activeTab === 'roulette' ? '#090909' : 'var(--text-secondary)', boxShadow: activeTab === 'roulette' ? '0 6px 18px rgba(17, 17, 17,0.18)' : 'none', fontWeight: '750', cursor: 'pointer', transition: 'background 180ms ease, border-color 180ms ease, box-shadow 180ms ease, transform 150ms ease' }}
           >
-            <Gift size={16} /> Ruleta de CumpleaÃ±os
+            <Gift size={16} /> Ruleta de Cumpleaños
           </button>
           <button 
             className="settings-reward-tab"
@@ -317,18 +317,18 @@ const SettingsModule = ({ isMobile, clients, onRefresh }) => {
               }}
             >
               {showAddForm ? <X size={16} /> : <Plus size={16} />}
-              {showAddForm ? 'Cancelar' : 'Emitir CupÃ³n'}
+              {showAddForm ? 'Cancelar' : 'Emitir Cupón'}
             </button>
           </div>
 
           {(showAddForm || isFormExiting) && (
         <div className={`glass-card ${isFormExiting ? 'animate-slide-down-fade' : 'animate-fade-in'}`} style={{ marginBottom: '40px', padding: '32px', borderRadius: '24px' }}>
           <h3 style={{ marginBottom: '24px', fontSize: '20px', display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <Ticket size={24} color="var(--gold-primary)" /> Emitir CupÃ³n de Regalo
+            <Ticket size={24} color="var(--gold-primary)" /> Emitir Cupón de Regalo
           </h3>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '24px' }}>
             <PandaSelect
-              label="Tipo de CupÃ³n"
+              label="Tipo de Cupón"
               value={newCoupon.type}
               onChange={(val) => setNewCoupon({...newCoupon, type: val})}
               options={[{ value: 'descuento', label: 'Descuento (%)' }, { value: 'premio', label: 'Premio / Regalo' }]}
@@ -348,7 +348,7 @@ const SettingsModule = ({ isMobile, clients, onRefresh }) => {
               </div>
             ) : (
               <div className="form-group">
-                <label style={{ display: 'block', marginBottom: '8px', fontSize: '13px', color: 'var(--text-secondary)' }}>DescripciÃ³n del Premio</label>
+                <label style={{ display: 'block', marginBottom: '8px', fontSize: '13px', color: 'var(--text-secondary)' }}>Descripción del Premio</label>
                 <input 
                   className="form-input" 
                   placeholder="Ej. Limpieza Gratis, Blanqueamiento, Consulta..." 
@@ -366,7 +366,7 @@ const SettingsModule = ({ isMobile, clients, onRefresh }) => {
                 disabled={creating || (newCoupon.type === 'descuento' && !newCoupon.value) || (newCoupon.type === 'premio' && !newCoupon.prize_name)} 
                 style={{ width: '100%', height: '48px', borderRadius: '12px' }}
               >
-                {creating ? <Loader2 className="animate-spin" /> : 'Emitir CupÃ³n'}
+                {creating ? <Loader2 className="animate-spin" /> : 'Emitir Cupón'}
               </button>
             </div>
           </div>
@@ -387,7 +387,7 @@ const SettingsModule = ({ isMobile, clients, onRefresh }) => {
         <Search size={20} color="var(--text-muted)" />
         <input 
           type="text" 
-          placeholder="Buscar por cliente, premio o ID del cupÃ³n..." 
+          placeholder="Buscar por cliente, premio o ID del cupón..." 
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           style={{
@@ -411,22 +411,22 @@ const SettingsModule = ({ isMobile, clients, onRefresh }) => {
       ) : (
         <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
           <div>
-            <h4 style={{ color: '#111111', fontSize: '18px', fontWeight: '700', marginBottom: '16px' }}>Plantillas de Cupones (Para Asignar)</h4>
+            <h4 style={{ color: 'white', fontSize: '18px', fontWeight: '700', marginBottom: '16px' }}>Plantillas de Cupones (Para Asignar)</h4>
             <div className="animate-slide-up" style={{ background: 'var(--bg-secondary)', padding: '0', borderRadius: '24px', overflow: 'hidden', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
               <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', tableLayout: 'auto' }}>
                 <thead>
                   <tr style={{ backgroundColor: 'rgba(0, 0, 0, 0.04)', borderBottom: '1px solid rgba(0, 0, 0, 0.08)' }}>
-                    <th style={{ padding: isMobile ? '12px' : '16px 24px', fontSize: '11px', fontWeight: '900', color: 'var(--text-muted)', textTransform: 'uppercase' }}>CÃ³digo / Fecha</th>
-                    <th style={{ padding: isMobile ? '12px' : '16px 24px', fontSize: '11px', fontWeight: '900', color: 'var(--text-muted)', textTransform: 'uppercase' }}>AcciÃ³n</th>
+                    <th style={{ padding: isMobile ? '12px' : '16px 24px', fontSize: '11px', fontWeight: '900', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Código / Fecha</th>
+                    <th style={{ padding: isMobile ? '12px' : '16px 24px', fontSize: '11px', fontWeight: '900', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Acción</th>
                     <th style={{ padding: isMobile ? '12px' : '16px 24px', fontSize: '11px', fontWeight: '900', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Premio</th>
-                    <th style={{ padding: isMobile ? '12px' : '16px 24px', fontSize: '11px', fontWeight: '900', color: 'var(--text-muted)', textTransform: 'uppercase', textAlign: 'right' }}>GestiÃ³n</th>
+                    <th style={{ padding: isMobile ? '12px' : '16px 24px', fontSize: '11px', fontWeight: '900', color: 'var(--text-muted)', textTransform: 'uppercase', textAlign: 'right' }}>Gestión</th>
                   </tr>
                 </thead>
                 <tbody>
                   {filteredCoupons.filter(c => !c.client_id).length === 0 ? (
                     <tr>
                       <td colSpan="4" style={{ padding: '24px', textAlign: 'center', color: 'var(--text-muted)', fontSize: '13px' }}>
-                        No hay plantillas que coincidan con la bÃºsqueda.
+                        No hay plantillas que coincidan con la búsqueda.
                       </td>
                     </tr>
                   ) : filteredCoupons.filter(c => !c.client_id).map((coupon) => (
@@ -436,12 +436,12 @@ const SettingsModule = ({ isMobile, clients, onRefresh }) => {
                           {coupon.id?.substring(0, 8).toUpperCase()}
                         </div>
                       </td>
-                      <td style={{ padding: isMobile ? '12px' : '16px 24px', fontSize: isMobile ? '12px' : '14px', color: '#111111', fontWeight: '600' }}>
+                      <td style={{ padding: isMobile ? '12px' : '16px 24px', fontSize: isMobile ? '12px' : '14px', color: 'white', fontWeight: '600' }}>
                         <button 
                           onClick={() => { setAssignCouponId(coupon.id); setShowAssignModal(true); }}
                           style={{ background: 'var(--gold-primary)', color: 'black', border: 'none', padding: '6px 12px', borderRadius: '4px', fontSize: '11px', fontWeight: '800', cursor: 'pointer' }}
                         >
-                          Asignar CupÃ³n
+                          Asignar Cupón
                         </button>
                       </td>
                       <td style={{ padding: isMobile ? '12px' : '16px 24px', fontSize: isMobile ? '12px' : '14px', color: 'var(--text-secondary)' }}>
@@ -449,7 +449,7 @@ const SettingsModule = ({ isMobile, clients, onRefresh }) => {
                       </td>
                       <td style={{ padding: isMobile ? '12px' : '16px 24px', textAlign: 'right' }}>
                         <div style={{ display: 'flex', gap: '8px', justifyContent: 'flex-end' }}>
-                          <button onClick={() => openEditModal(coupon)} style={{ background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', padding: '6px', borderRadius: '6px', color: '#111111', cursor: 'pointer' }} title="Editar">
+                          <button onClick={() => openEditModal(coupon)} style={{ background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', padding: '6px', borderRadius: '6px', color: 'white', cursor: 'pointer' }} title="Editar">
                             <Pencil size={14} />
                           </button>
                           <button onClick={() => handleDeleteCoupon(coupon.id)} style={{ background: 'rgba(255,69,58,0.1)', border: '1px solid rgba(255,69,58,0.2)', padding: '6px', borderRadius: '6px', color: '#ff453a', cursor: 'pointer' }} title="Eliminar">
@@ -465,12 +465,12 @@ const SettingsModule = ({ isMobile, clients, onRefresh }) => {
           </div>
 
           <div>
-            <h4 style={{ color: '#111111', fontSize: '18px', fontWeight: '700', marginBottom: '16px' }}>Cupones Asignados a Pacientes</h4>
+            <h4 style={{ color: 'white', fontSize: '18px', fontWeight: '700', marginBottom: '16px' }}>Cupones Asignados a Pacientes</h4>
             <div className="animate-slide-up" style={{ background: 'var(--bg-secondary)', padding: '0', borderRadius: '24px', overflow: 'hidden', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
               <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', tableLayout: 'auto' }}>
                 <thead>
                   <tr style={{ backgroundColor: 'rgba(0, 0, 0, 0.04)', borderBottom: '1px solid rgba(0, 0, 0, 0.08)' }}>
-                    <th style={{ padding: isMobile ? '12px' : '16px 24px', fontSize: '11px', fontWeight: '900', color: 'var(--text-muted)', textTransform: 'uppercase' }}>CÃ³digo / Fecha Asign.</th>
+                    <th style={{ padding: isMobile ? '12px' : '16px 24px', fontSize: '11px', fontWeight: '900', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Código / Fecha Asign.</th>
                     <th style={{ padding: isMobile ? '12px' : '16px 24px', fontSize: '11px', fontWeight: '900', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Cliente</th>
                     <th style={{ padding: isMobile ? '12px' : '16px 24px', fontSize: '11px', fontWeight: '900', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Premio</th>
                     <th style={{ padding: isMobile ? '12px' : '16px 24px', fontSize: '11px', fontWeight: '900', color: 'var(--text-muted)', textTransform: 'uppercase', textAlign: 'right' }}>Estado</th>
@@ -480,7 +480,7 @@ const SettingsModule = ({ isMobile, clients, onRefresh }) => {
                   {filteredCoupons.filter(c => c.client_id).length === 0 ? (
                     <tr>
                       <td colSpan="4" style={{ padding: '24px', textAlign: 'center', color: 'var(--text-muted)', fontSize: '13px' }}>
-                        No hay cupones asignados a clientes aÃºn.
+                        No hay cupones asignados a clientes aún.
                       </td>
                     </tr>
                   ) : filteredCoupons.filter(c => c.client_id).map((coupon) => (
@@ -493,7 +493,7 @@ const SettingsModule = ({ isMobile, clients, onRefresh }) => {
                           {new Date(coupon.generated_at).toLocaleDateString()}
                         </div>
                       </td>
-                      <td style={{ padding: isMobile ? '12px' : '16px 24px', fontSize: isMobile ? '12px' : '14px', color: '#111111', fontWeight: '600' }}>
+                      <td style={{ padding: isMobile ? '12px' : '16px 24px', fontSize: isMobile ? '12px' : '14px', color: 'white', fontWeight: '600' }}>
                         {coupon.clients?.name || 'Cliente Eliminado'}
                       </td>
                       <td style={{ padding: isMobile ? '12px' : '16px 24px', fontSize: isMobile ? '12px' : '14px', color: 'var(--text-secondary)' }}>
@@ -503,7 +503,7 @@ const SettingsModule = ({ isMobile, clients, onRefresh }) => {
                         {coupon.status === 'UNUSED' ? (
                           <div style={{ display: 'flex', gap: '8px', justifyContent: 'flex-end', alignItems: 'center' }}>
                             <span style={{ fontSize: '11px', fontWeight: '800', color: 'var(--success-color)', background: 'rgba(0,255,0,0.1)', padding: '4px 8px', borderRadius: '4px' }}>DISPONIBLE</span>
-                            <button onClick={() => handleDeleteCoupon(coupon.id)} style={{ background: 'rgba(255,69,58,0.1)', border: '1px solid rgba(255,69,58,0.2)', padding: '6px', borderRadius: '6px', color: '#ff453a', cursor: 'pointer' }} title="Revocar CupÃ³n">
+                            <button onClick={() => handleDeleteCoupon(coupon.id)} style={{ background: 'rgba(255,69,58,0.1)', border: '1px solid rgba(255,69,58,0.2)', padding: '6px', borderRadius: '6px', color: '#ff453a', cursor: 'pointer' }} title="Revocar Cupón">
                               <Trash2 size={14} />
                             </button>
                           </div>
@@ -528,11 +528,11 @@ const SettingsModule = ({ isMobile, clients, onRefresh }) => {
         <div className="animate-fade-in" style={{ maxWidth: '1000px', margin: '0 auto' }}>
           <div className="glass-card" style={{ padding: '32px', borderRadius: '24px' }}>
             <h3 style={{ marginBottom: '16px', fontSize: '20px', display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <Gift size={24} color="var(--gold-primary)" /> Configurar Ruleta de CumpleaÃ±os
+              <Gift size={24} color="var(--gold-primary)" /> Configurar Ruleta de Cumpleaños
             </h3>
             <p style={{ color: 'var(--text-secondary)', fontSize: '14px', marginBottom: '24px', lineHeight: '1.5' }}>
-              Los premios listados aquÃ­ aparecerÃ¡n en la ruleta del cliente el dÃ­a de su cumpleaÃ±os. 
-              Al girarla, ganarÃ¡n uno de estos premios y se generarÃ¡ un cupÃ³n automÃ¡ticamente.
+              Los premios listados aquí aparecerán en la ruleta del cliente el día de su cumpleaños. 
+              Al girarla, ganarán uno de estos premios y se generará un cupón automáticamente.
             </p>
 
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))', gap: '48px', alignItems: 'flex-start' }}>
@@ -547,14 +547,14 @@ const SettingsModule = ({ isMobile, clients, onRefresh }) => {
                     onKeyDown={(e) => e.key === 'Enter' && handleAddPrize()}
                   />
                   <button className="btn-gold" onClick={handleAddPrize} disabled={!newPrizeName || loading} style={{ borderRadius: '12px', padding: '0 24px' }}>
-                    <Plus size={20} /> AÃ±adir
+                    <Plus size={20} /> Añadir
                   </button>
                 </div>
 
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
                   {roulettePrizes.length === 0 ? (
                     <div style={{ padding: '40px', textAlign: 'center', color: 'var(--text-muted)', border: '1px dashed var(--border-color)', borderRadius: '16px' }}>
-                      No hay premios configurados. AÃ±ade premios arriba.
+                      No hay premios configurados. Añade premios arriba.
                     </div>
                   ) : (
                     roulettePrizes.map((prize, idx) => (
@@ -588,13 +588,13 @@ const SettingsModule = ({ isMobile, clients, onRefresh }) => {
               <MessageCircle size={24} color="var(--gold-primary)" /> Configurar Mensajes de WhatsApp
             </h3>
             <p style={{ color: 'var(--text-secondary)', fontSize: '14px', marginBottom: '24px', lineHeight: '1.5' }}>
-              Estos son los textos que el bot enviarÃ¡ automÃ¡ticamente. Puedes usar la etiqueta <b>{`{{nombre}}`}</b> y el bot la reemplazarÃ¡ por el nombre del cliente.
+              Estos son los textos que el bot enviará automáticamente. Puedes usar la etiqueta <b>{`{{nombre}}`}</b> y el bot la reemplazará por el nombre del cliente.
             </p>
 
             <div style={{ marginBottom: '24px' }}>
-              <label style={{ display: 'block', fontSize: '14px', fontWeight: '600', color: '#111111', marginBottom: '8px' }}>NÃºmero de WhatsApp de la ClÃ­nica</label>
+              <label style={{ display: 'block', fontSize: '14px', fontWeight: '600', color: 'white', marginBottom: '8px' }}>Número de WhatsApp de la Clínica</label>
               <p style={{ color: 'var(--text-muted)', fontSize: '12px', marginBottom: '8px' }}>
-                Incluye el cÃ³digo del paÃ­s sin el sÃ­mbolo +. Ejemplo: 584129206984
+                Incluye el código del país sin el símbolo +. Ejemplo: 584129206984
               </p>
               <input 
                 className="form-input" 
@@ -607,7 +607,7 @@ const SettingsModule = ({ isMobile, clients, onRefresh }) => {
             </div>
 
             <div style={{ marginBottom: '24px' }}>
-              <label style={{ display: 'block', fontSize: '14px', fontWeight: '600', color: '#111111', marginBottom: '8px' }}>Recordatorio de Recurrencia</label>
+              <label style={{ display: 'block', fontSize: '14px', fontWeight: '600', color: 'white', marginBottom: '8px' }}>Recordatorio de Recurrencia</label>
               <textarea 
                 className="form-input" 
                 rows={6}
@@ -618,12 +618,12 @@ const SettingsModule = ({ isMobile, clients, onRefresh }) => {
             </div>
 
             <div style={{ marginBottom: '32px' }}>
-              <label style={{ display: 'block', fontSize: '14px', fontWeight: '600', color: '#111111', marginBottom: '8px' }}>Mensaje despuÃ©s del cobro</label>
+              <label style={{ display: 'block', fontSize: '14px', fontWeight: '600', color: 'white', marginBottom: '8px' }}>Mensaje después del cobro</label>
               <textarea className="form-input" rows={6} value={whatsappSettings.thankYou} onChange={(e) => setWhatsappSettings({...whatsappSettings, thankYou: e.target.value})} style={{ width: '100%', resize: 'vertical' }} />
             </div>
 
             <div style={{ marginBottom: '32px' }}>
-              <label style={{ display: 'block', fontSize: '14px', fontWeight: '600', color: '#111111', marginBottom: '8px' }}>FelicitaciÃ³n de CumpleaÃ±os</label>
+              <label style={{ display: 'block', fontSize: '14px', fontWeight: '600', color: 'white', marginBottom: '8px' }}>Felicitación de Cumpleaños</label>
               <textarea 
                 className="form-input" 
                 rows={6}
@@ -650,8 +650,8 @@ const SettingsModule = ({ isMobile, clients, onRefresh }) => {
 
       <PandaDialog 
         isOpen={showEditModal}
-        title="Editar CupÃ³n"
-        message="Actualiza los detalles del cupÃ³n o premio."
+        title="Editar Cupón"
+        message="Actualiza los detalles del cupón o premio."
         type="custom"
         onCancel={() => setShowEditModal(false)}
         customFooter={
@@ -713,11 +713,11 @@ const SettingsModule = ({ isMobile, clients, onRefresh }) => {
                   setSavingEdit(true);
                   try {
                     await dataService.updateCoupon(editCouponId, finalPrizeName);
-                    showToast("CupÃ³n actualizado", "success");
+                    showToast("Cupón actualizado", "success");
                     setShowEditModal(false);
                     loadCoupons();
                   } catch (e) {
-                    showToast("Error al actualizar cupÃ³n", "error");
+                    showToast("Error al actualizar cupón", "error");
                   } finally {
                     setSavingEdit(false);
                   }
@@ -734,8 +734,8 @@ const SettingsModule = ({ isMobile, clients, onRefresh }) => {
 
       <PandaDialog
         isOpen={showAssignModal}
-        title={<div style={{display: 'flex', alignItems: 'center', gap: '8px'}}><Users size={24} color="var(--gold-primary)"/> Asignar CupÃ³n</div>}
-        message="Busca y selecciona el cliente que recibirÃ¡ este cupÃ³n."
+        title={<div style={{display: 'flex', alignItems: 'center', gap: '8px'}}><Users size={24} color="var(--gold-primary)"/> Asignar Cupón</div>}
+        message="Busca y selecciona el cliente que recibirá este cupón."
         type="custom"
         onCancel={() => { setShowAssignModal(false); setAssignClientId(''); setAssignSearch(''); setAssignCouponId(null); }}
         customFooter={
@@ -745,7 +745,7 @@ const SettingsModule = ({ isMobile, clients, onRefresh }) => {
               <input 
                 type="text" 
                 className="search-input" 
-                placeholder="Buscar cliente por nombre, cÃ©dula o telÃ©fono..." 
+                placeholder="Buscar cliente por nombre, cédula o teléfono..." 
                 value={assignSearch}
                 onChange={e => setAssignSearch(e.target.value)}
                 autoFocus
@@ -755,7 +755,7 @@ const SettingsModule = ({ isMobile, clients, onRefresh }) => {
                   border: '1px solid rgba(0, 0, 0, 0.08)',
                   borderRadius: '12px',
                   padding: '12px 12px 12px 40px',
-                  color: '#111111',
+                  color: 'white',
                   fontSize: '14px'
                 }}
               />
@@ -793,7 +793,7 @@ const SettingsModule = ({ isMobile, clients, onRefresh }) => {
                   }}
                 >
                   <div style={{ fontWeight: '600', color: assignClientId === c.id ? 'var(--gold-primary)' : 'white' }}>{c.name}</div>
-                  <div style={{ fontSize: '12px', color: 'var(--text-secondary)' }}>V-{c.id_card || 'S/C'} â€¢ {c.phone || 'S/T'}</div>
+                  <div style={{ fontSize: '12px', color: 'var(--text-secondary)' }}>V-{c.id_card || 'S/C'} • {c.phone || 'S/T'}</div>
                 </div>
               ))}
               {clients.filter(c => 
@@ -820,7 +820,7 @@ const SettingsModule = ({ isMobile, clients, onRefresh }) => {
                   fontSize: '15px'
                 }}
               >
-                {assigning ? <Loader2 className="animate-spin" size={16} /> : 'Asignar CupÃ³n'}
+                {assigning ? <Loader2 className="animate-spin" size={16} /> : 'Asignar Cupón'}
               </button>
             </div>
           </div>
@@ -831,4 +831,3 @@ const SettingsModule = ({ isMobile, clients, onRefresh }) => {
 };
 
 export default SettingsModule;
-

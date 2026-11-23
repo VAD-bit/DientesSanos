@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { createPortal } from 'react-dom';
 import { X, User, Phone, CreditCard, Tag, Loader2 } from 'lucide-react';
 import { dataService } from '../services/dataService';
@@ -39,21 +39,21 @@ const NewClientModal = ({ isOpen, onClose, onSuccess }) => {
       // Check for duplicate id_card
       const existing = await dataService.checkClientExists(formData.id_card);
       if (existing) {
-        showToast(`La cÃ©dula ${formData.id_card} ya estÃ¡ registrada a nombre de ${existing.name}.`, 'warning');
+        showToast(`La cédula ${formData.id_card} ya está registrada a nombre de ${existing.name}.`, 'warning');
         setLoading(false);
         return;
       }
 
       const newClient = await dataService.addClient(formData);
       
-      showToast(`Cliente ${newClient.name} registrado con Ã©xito`);
+      showToast(`Cliente ${newClient.name} registrado con éxito`);
       if (onSuccess) onSuccess(newClient);
       onClose();
     } catch (error) {
       if (error.code === '23505') { // PostgreSQL unique violation code
-        showToast('Esta cÃ©dula ya estÃ¡ registrada en el sistema.', 'error');
+        showToast('Esta cédula ya está registrada en el sistema.', 'error');
       } else {
-        showToast('Error de conexiÃ³n con la base de datos.', 'error');
+        showToast('Error de conexión con la base de datos.', 'error');
       }
     } finally {
       setLoading(false);
@@ -97,7 +97,7 @@ const NewClientModal = ({ isOpen, onClose, onSuccess }) => {
                   right: '24px', 
                   background: 'rgba(0, 0, 0, 0.04)', 
                   border: 'none', 
-                  color: '#111111', 
+                  color: 'white', 
                   width: '36px', 
                   height: '36px', 
                   borderRadius: '50%', 
@@ -114,7 +114,7 @@ const NewClientModal = ({ isOpen, onClose, onSuccess }) => {
                 <h2 style={{ 
                   fontSize: '24px', 
                   fontWeight: '900', 
-                  color: '#111111', 
+                  color: 'white', 
                   marginBottom: '8px',
                   display: 'flex',
                   alignItems: 'center',
@@ -136,7 +136,7 @@ const NewClientModal = ({ isOpen, onClose, onSuccess }) => {
                     <input 
                       autoFocus
                       type="text" 
-                      placeholder="Ej. Juan PÃ©rez" 
+                      placeholder="Ej. Juan Pérez" 
                       value={formData.name}
                       onChange={(e) => setFormData({...formData, name: e.target.value})}
                       onBlur={() => setFormData({...formData, name: formatName(formData.name)})}
@@ -146,7 +146,7 @@ const NewClientModal = ({ isOpen, onClose, onSuccess }) => {
                 </div>
 
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                  <FieldLabel required>TelÃ©fono</FieldLabel>
+                  <FieldLabel required>Teléfono</FieldLabel>
                   <div style={{ position: 'relative' }}>
                     <Phone style={{ position: 'absolute', left: '16px', top: '14px' }} size={18} color="var(--gold-primary)" />
                     <input 
@@ -160,7 +160,7 @@ const NewClientModal = ({ isOpen, onClose, onSuccess }) => {
                 </div>
 
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                  <FieldLabel required>CÃ©dula de Identidad</FieldLabel>
+                  <FieldLabel required>Cédula de Identidad</FieldLabel>
                   <div style={{ position: 'relative' }}>
                     <CreditCard style={{ position: 'absolute', left: '16px', top: '14px' }} size={18} color="var(--gold-primary)" />
                     <input 
@@ -185,7 +185,7 @@ const NewClientModal = ({ isOpen, onClose, onSuccess }) => {
                 </div>
 
                 <PandaSelect
-                  label="Â¿CÃ³mo conociÃ³ Dientes Sanos?"
+                  label="¿Cómo conoció Dientes Sanos?"
                   value={formData.origin}
                   onChange={(val) => setFormData({ ...formData, origin: val })}
                   placeholder="Seleccionar origen"
@@ -195,7 +195,7 @@ const NewClientModal = ({ isOpen, onClose, onSuccess }) => {
                     { label: 'Google / Google Maps', value: 'Google' },
                     { label: 'TikTok', value: 'TikTok' },
                     { label: 'Facebook', value: 'Facebook' },
-                    { label: 'PasÃ³ por el local', value: 'Presencial' },
+                    { label: 'Pasó por el local', value: 'Presencial' },
                     { label: 'Otro', value: 'Otro' }
                   ]}
                 />
@@ -222,4 +222,3 @@ const NewClientModal = ({ isOpen, onClose, onSuccess }) => {
 };
 
 export default NewClientModal;
-
