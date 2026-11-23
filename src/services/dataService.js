@@ -1,18 +1,18 @@
-import { supabase as anonClient } from '../lib/supabase';
+﻿import { supabase as anonClient } from '../lib/supabase';
 const supabase = anonClient;
 import { notificationService } from './notificationService';
 import { pushService } from './pushService';
 import { defaultCommissionPct, isBookableStaff, isOperationalReceptionStaff, isAsistenteRole } from '../utils/staffRoles';
 import { formatName, formatProductName, formatServiceName } from '../utils/stringUtils';
 
-// ─── Smart In-Memory Cache ────────────────────────────────────────────────────
+// â”€â”€â”€ Smart In-Memory Cache â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 // Reduces redundant Supabase calls from ~35+ per session to ~8.
 // Static data (inventory, clients, staff, services, extras) caches 45s.
 // Operational data (appointments) caches 15s since it changes more often.
 const _cache = {};
 const STAFF_PUBLIC_SELECT = 'id, auth_user_id, email, name, role, commission_pct, active, created_at, image_url, phone, address, username, tools, washing_rate, birth_date, skipped_count, specialty, badge, biography, payroll_frequency, monthly_salary, show_on_landing, video_url';
-// Same as STAFF_PUBLIC_SELECT but WITHOUT image_url — the avatars are base64 blobs
-// (~113–173 KB each, ~1.3 MB across the team) and getStaff() runs on nearly every
+// Same as STAFF_PUBLIC_SELECT but WITHOUT image_url â€” the avatars are base64 blobs
+// (~113â€“173 KB each, ~1.3 MB across the team) and getStaff() runs on nearly every
 // screen. The list fetches this lite shape; avatars come from a separate long-lived
 // cache (see _getStaffAvatars) and get merged back in, so callers still receive
 // image_url unchanged but the heavy payload only downloads ~once per 10 min.
@@ -21,7 +21,7 @@ const STAFF_LITE_SELECT = 'id, auth_user_id, email, name, role, commission_pct, 
 // the sellable/inventory lists load on Reception, Scheduling, Checkout and Inventory.
 // The lists fetch this lite shape; images come from a separate long-lived cache and are
 // merged back in. Cache key deliberately does NOT start with 'inventory_' so a stock
-// change (every sale) doesn't wipe the image cache — only editing an item does.
+// change (every sale) doesn't wipe the image cache â€” only editing an item does.
 const INVENTORY_LITE_SELECT = 'id, name, stock, price, is_for_sale, updated_at, category, cost_price, commission_pct, code, unit, min_stock, inventory_type, owner_staff_id, purchase_price, sale_price, item_type';
 
 function _cacheGet(key) {
@@ -43,9 +43,9 @@ function _cacheInvalidate(...keys) {
 }
 
 // clients.birth_date es tipo `date` en Postgres: cualquier string que no sea
-// YYYY-MM-DD válido revienta el INSERT/UPDATE con 22007/22008 (p. ej. el
-// vacío '' que dejan los inputs enmascarados, o 'DD/MM/AAAA' a medias).
-// Devuelve ISO válido o null.
+// YYYY-MM-DD vÃ¡lido revienta el INSERT/UPDATE con 22007/22008 (p. ej. el
+// vacÃ­o '' que dejan los inputs enmascarados, o 'DD/MM/AAAA' a medias).
+// Devuelve ISO vÃ¡lido o null.
 function _normalizeBirthDate(value) {
   if (value === undefined || value === null) return value;
   const raw = String(value).trim();
@@ -137,7 +137,7 @@ async function _assertAppointmentAvailability({ scheduledAt, staffId, serviceId,
   if (!scheduledAt || !staffId) return;
 
   const targetStart = new Date(scheduledAt);
-  if (Number.isNaN(targetStart.getTime())) throw new Error('La fecha u hora de la cita no es válida.');
+  if (Number.isNaN(targetStart.getTime())) throw new Error('La fecha u hora de la cita no es vÃ¡lida.');
 
   const dayStart = new Date(targetStart);
   dayStart.setHours(0, 0, 0, 0);
@@ -206,7 +206,7 @@ async function _getInventoryImages() {
 
 async function _adminAuthRequest(payload) {
   const { data: { session } } = await supabase.auth.getSession();
-  if (!session?.access_token) throw new Error('Tu sesión expiró. Inicia sesión nuevamente.');
+  if (!session?.access_token) throw new Error('Tu sesiÃ³n expirÃ³. Inicia sesiÃ³n nuevamente.');
   const response = await fetch('/api/admin/auth-users', {
     method: 'POST',
     headers: {
@@ -219,7 +219,7 @@ async function _adminAuthRequest(payload) {
   if (!response.ok) throw new Error(result.error || 'No se pudo administrar el acceso del miembro');
   return result;
 }
-// ─────────────────────────────────────────────────────────────────────────────
+// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 export const dataService = {
   supabase: anonClient,
@@ -232,7 +232,7 @@ export const dataService = {
     if (cached) return cached;
 
     // Explicit column list on purpose: `*` used to pull `work_gallery` (base64 photos,
-    // ~90% of each client row) into this list — downloaded on 5 different screens
+    // ~90% of each client row) into this list â€” downloaded on 5 different screens
     // (Clients, Checkout, Reception, Scheduling, New Appointment). Galleries are loaded
     // on demand per-client via getClientGalleries() when a client's detail opens, so
     // they don't belong in the list. Keep every other column; only work_gallery is dropped.
@@ -273,7 +273,7 @@ export const dataService = {
     return result;
   },
 
-  // Lightweight clients list — no joins, fast for initial load
+  // Lightweight clients list â€” no joins, fast for initial load
   async getClientsLite() {
     const cached = _cacheGet('clients_lite');
     if (cached) return cached;
@@ -319,7 +319,7 @@ export const dataService = {
     // Notificar registro de nuevo cliente
     try {
       notificationService.sendNotification(
-        'Nuevo Cliente Registrado 👤',
+        'Nuevo Cliente Registrado ðŸ‘¤',
         `Se ha registrado a ${data.name || 'un nuevo cliente'} (Tlf: ${data.phone || 'No registrado'}) en el sistema.`
       );
     } catch (e) {
@@ -557,7 +557,7 @@ export const dataService = {
       .select(STAFF_PUBLIC_SELECT);
     if (error) throw error;
     if (!data || data.length === 0) {
-      console.warn('updateStaff: 0 rows returned — RLS may be filtering the result');
+      console.warn('updateStaff: 0 rows returned â€” RLS may be filtering the result');
     }
     return data?.[0] || null;
   },
@@ -716,17 +716,17 @@ export const dataService = {
     return data;
   },
 
-  // Catálogo base odontológico. Precio 0 = "a convenir con el odontólogo".
+  // CatÃ¡logo base odontolÃ³gico. Precio 0 = "a convenir con el odontÃ³logo".
   DENTAL_SERVICES_SEED: [
-    { name: 'Limpieza dental', price: 30, duration: 30, category: 'Prevención', description: 'Profilaxis y eliminación de placa y sarro.' },
-    { name: 'Examen y diagnóstico', price: 15, duration: 20, category: 'Diagnóstico', description: 'Evaluación clínica completa y diagnóstico.' },
-    { name: 'Blanqueamiento dental', price: 80, duration: 45, category: 'Estética', description: 'Blanqueamiento profesional de consultorio.' },
-    { name: 'Diseño de sonrisa', price: 0, duration: 60, category: 'Estética', description: 'Diseño personalizado de sonrisa. Precio a convenir con el odontólogo.' },
-    { name: 'Ortodoncia', price: 120, duration: 60, category: 'Ortodoncia', description: 'Consulta y control de ortodoncia. Precio según plan de tratamiento.' },
-    { name: 'Prótesis e implantes', price: 0, duration: 90, category: 'Prótesis', description: 'Prótesis dentales e implantes. Precio a convenir con el odontólogo.' },
+    { name: 'Limpieza dental', price: 30, duration: 30, category: 'PrevenciÃ³n', description: 'Profilaxis y eliminaciÃ³n de placa y sarro.' },
+    { name: 'Examen y diagnÃ³stico', price: 15, duration: 20, category: 'DiagnÃ³stico', description: 'EvaluaciÃ³n clÃ­nica completa y diagnÃ³stico.' },
+    { name: 'Blanqueamiento dental', price: 80, duration: 45, category: 'EstÃ©tica', description: 'Blanqueamiento profesional de consultorio.' },
+    { name: 'DiseÃ±o de sonrisa', price: 0, duration: 60, category: 'EstÃ©tica', description: 'DiseÃ±o personalizado de sonrisa. Precio a convenir con el odontÃ³logo.' },
+    { name: 'Ortodoncia', price: 120, duration: 60, category: 'Ortodoncia', description: 'Consulta y control de ortodoncia. Precio segÃºn plan de tratamiento.' },
+    { name: 'PrÃ³tesis e implantes', price: 0, duration: 90, category: 'PrÃ³tesis', description: 'PrÃ³tesis dentales e implantes. Precio a convenir con el odontÃ³logo.' },
     { name: 'Endodoncia', price: 70, duration: 60, category: 'Endodoncia', description: 'Tratamiento de conducto.' },
-    { name: 'Empastes u obturaciones', price: 40, duration: 30, category: 'Restauración', description: 'Obturaciones con resina composite.' },
-    { name: 'Extracciones dentales', price: 50, duration: 40, category: 'Cirugía', description: 'Extracción simple de pieza dental.' }
+    { name: 'Empastes u obturaciones', price: 40, duration: 30, category: 'RestauraciÃ³n', description: 'Obturaciones con resina composite.' },
+    { name: 'Extracciones dentales', price: 50, duration: 40, category: 'CirugÃ­a', description: 'ExtracciÃ³n simple de pieza dental.' }
   ],
 
   async ensureDentalServices() {
@@ -815,10 +815,10 @@ export const dataService = {
     if (categories.length === 0) {
       // Seed default categories
       const defaults = [
-        { name: 'Estética', icon: 'Sparkles' },
+        { name: 'EstÃ©tica', icon: 'Sparkles' },
         { name: 'Ortodoncia', icon: 'Activity' },
         { name: 'Endodoncia', icon: 'HeartPulse' },
-        { name: 'Odontopediatría', icon: 'Baby' }
+        { name: 'OdontopediatrÃ­a', icon: 'Baby' }
       ];
       await Promise.all(
         defaults.map(cat =>
@@ -919,10 +919,10 @@ export const dataService = {
       // Seed default strategies
       const defaults = [
         { value: 'MVP', label: 'MVP (Estrella)' },
-        { value: 'Entrada', label: 'Comodín Entrada' },
-        { value: 'Upsell', label: 'Comodín Upsell' },
+        { value: 'Entrada', label: 'ComodÃ­n Entrada' },
+        { value: 'Upsell', label: 'ComodÃ­n Upsell' },
         { value: 'Mantenimiento', label: 'Mantenimiento' },
-        { value: 'Rápido', label: 'Rápido' },
+        { value: 'RÃ¡pido', label: 'RÃ¡pido' },
         { value: 'Promo', label: 'Promo' }
       ];
       await Promise.all(
@@ -1217,14 +1217,14 @@ export const dataService = {
       .filter(Boolean);
 
     // Solo productos de inventario reales (id uuid) para restaurar stock; excluye
-    // cart-extras (id "extra_...") u otros ítems sin producto de inventario.
+    // cart-extras (id "extra_...") u otros Ã­tems sin producto de inventario.
     const uuidRe = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
     const products = (metadata.products_sold || [])
       .filter(p => p && p.type !== 'extra' && uuidRe.test(String(p.id || '')))
       .map(p => ({ id: p.id, quantity: Number(p.quantity || 1) }));
 
-    // Atómico: un solo RPC (restaura stock + reverso, borra citas en orden FK, borra
-    // la transacción). Si algo falla, revierte todo.
+    // AtÃ³mico: un solo RPC (restaura stock + reverso, borra citas en orden FK, borra
+    // la transacciÃ³n). Si algo falla, revierte todo.
     const { error } = await supabase.rpc('delete_transaction_cascade', {
       p_transaction_id: transactionId,
       p_appointment_ids: appointmentIds,
@@ -1253,7 +1253,7 @@ export const dataService = {
 
   async collectReceivable(transaction, payment) {
     if (!transaction?.id || transaction.category !== 'Cuentas por Cobrar') {
-      throw new Error('La cuenta por cobrar no es válida.');
+      throw new Error('La cuenta por cobrar no es vÃ¡lida.');
     }
     if (transaction.metadata?.receivableStatus === 'paid') {
       throw new Error('Esta cuenta ya fue cobrada.');
@@ -1303,7 +1303,7 @@ export const dataService = {
       .contains('metadata', { receivableStatus: 'pending' })
       .select('id');
     if (markError) throw markError;
-    if (!_asArray(markedRows).length) throw new Error('Esta cuenta ya fue cobrada o cambió en otro dispositivo.');
+    if (!_asArray(markedRows).length) throw new Error('Esta cuenta ya fue cobrada o cambiÃ³ en otro dispositivo.');
 
     try {
       const collected = await this.addTransaction({
@@ -1331,7 +1331,7 @@ export const dataService = {
         }));
         if (staffRows.length) {
           const { error: staffError } = await supabase.from('appointment_staff').insert(staffRows);
-          if (staffError) console.error('Error registrando nómina del fiado cobrado:', staffError);
+          if (staffError) console.error('Error registrando nÃ³mina del fiado cobrado:', staffError);
         }
       }
       _cacheInvalidate('transactions');
@@ -1383,7 +1383,7 @@ export const dataService = {
       .filter(item => {
         const type = (item.inventory_type || '').toLowerCase();
         const cat = (item.category || '').toLowerCase();
-        const isToolOrSupply = type === 'tools' || cat.includes('herramienta') || cat.includes('uso clínico') || cat.includes('accesorios');
+        const isToolOrSupply = type === 'tools' || cat.includes('herramienta') || cat.includes('uso clÃ­nico') || cat.includes('accesorios');
         return type !== 'cafe' && !isToolOrSupply;
       })
       .map(i => ({ ...i, image_url: images[i.id] ?? null }));
@@ -1544,7 +1544,7 @@ export const dataService = {
   // Like getAppointmentsByState but scoped to reservations in a date window.
   // Operational/walk-in rows without scheduled_at belong to history/queue views,
   // never to the booking calendar.
-  // Used by views that only render one day/week/month at a time — pulling
+  // Used by views that only render one day/week/month at a time â€” pulling
   // every appointment ever made (with base64 client galleries) on every
   // navigation was the main cause of slow local loads.
   async getAppointmentsInRangeFull(startDate, endDate, states = []) {
@@ -1562,8 +1562,8 @@ export const dataService = {
       appointment_staff(*, staff(name, role, image_url))
     `)
       // Incluye: citas agendadas en el rango (por scheduled_at) Y los walk-ins
-      // (sin hora agendada, scheduled_at null) creados ese día (por created_at).
-      // Antes solo tomaba scheduled_at, así que los walk-ins no aparecían en la agenda.
+      // (sin hora agendada, scheduled_at null) creados ese dÃ­a (por created_at).
+      // Antes solo tomaba scheduled_at, asÃ­ que los walk-ins no aparecÃ­an en la agenda.
       .or(`and(scheduled_at.gte.${startDate},scheduled_at.lt.${endDate}),and(scheduled_at.is.null,created_at.gte.${startDate},created_at.lt.${endDate})`);
     if (states.length > 0) query = query.in('status', states);
     const { data, error } = await query.order('created_at', { ascending: true });
@@ -1589,7 +1589,7 @@ export const dataService = {
       appointment_staff(*, staff(name, role, image_url))
     `)
       // Agendadas por scheduled_at + walk-ins (scheduled_at null) por created_at,
-      // para que los puntos del calendario cuenten también las citas sin hora agendada.
+      // para que los puntos del calendario cuenten tambiÃ©n las citas sin hora agendada.
       .or(`and(scheduled_at.gte.${startDate},scheduled_at.lt.${endDate}),and(scheduled_at.is.null,created_at.gte.${startDate},created_at.lt.${endDate})`)
       .order('created_at', { ascending: true });
 
@@ -1598,7 +1598,7 @@ export const dataService = {
   },
 
   // Web Push helper: builds a rich message for an appointment event and fires it
-  // to the right barber/roles. Fire-and-forget — never blocks the caller.
+  // to the right barber/roles. Fire-and-forget â€” never blocks the caller.
   async _pushAppointment(appId, kind) {
     try {
       const { data: app } = await supabase.from('appointments')
@@ -1609,37 +1609,37 @@ export const dataService = {
       const clientName = formatName(app.clients?.name) || 'Cliente';
       const svc = formatServiceName(app.services?.name) || app.services?.name;
       const price = app.services?.price ?? app.total_price;
-      const priceStr = price ? ` • $${price}` : '';
+      const priceStr = price ? ` â€¢ $${price}` : '';
       let when = '';
       if (app.scheduled_at) {
         const d = new Date(app.scheduled_at);
         const fecha = d.toLocaleDateString('es-VE', { timeZone: 'America/Caracas', day: '2-digit', month: '2-digit' });
         const hora = d.toLocaleTimeString('es-VE', { timeZone: 'America/Caracas', hour: '2-digit', minute: '2-digit', hour12: true });
-        when = ` • ${fecha} ${hora}`;
+        when = ` â€¢ ${fecha} ${hora}`;
       }
       if (kind === 'agendada') {
-        pushService.notify({ staffId: app.staff_id }, '📅 Nueva cita agendada',
-          `${clientName}${svc ? ' • ' + svc : ''}${when}${priceStr}`, { appId, kind });
+        pushService.notify({ staffId: app.staff_id }, 'ðŸ“… Nueva cita agendada',
+          `${clientName}${svc ? ' â€¢ ' + svc : ''}${when}${priceStr}`, { appId, kind });
       } else if (kind === 'ensilla') {
-        pushService.notify({ staffId: app.staff_id }, '🦷 Cliente en tu silla',
-          `${clientName} está en tu silla${svc ? ' • ' + svc : ''}${priceStr}`, { appId, kind });
+        pushService.notify({ staffId: app.staff_id }, 'ðŸ¦· Cliente en tu silla',
+          `${clientName} estÃ¡ en tu silla${svc ? ' â€¢ ' + svc : ''}${priceStr}`, { appId, kind });
         if (app.beverage_selection) {
-          pushService.notify({ roles: ['asistente', 'admin'] }, 'Preparar hidratación',
-            `${clientName} ya llegó y quiere ${formatProductName(app.beverage_selection) || app.beverage_selection}`, { appId, kind, beverage: app.beverage_selection });
+          pushService.notify({ roles: ['asistente', 'admin'] }, 'Preparar hidrataciÃ³n',
+            `${clientName} ya llegÃ³ y quiere ${formatProductName(app.beverage_selection) || app.beverage_selection}`, { appId, kind, beverage: app.beverage_selection });
         }
       } else if (kind === 'caja') {
-        pushService.notify({ roles: ['admin'] }, '💳 Cobrar cliente',
-          `${clientName}${svc ? ' • ' + svc : ''}${priceStr} — listo para cobrar`, { appId, kind });
+        pushService.notify({ roles: ['admin'] }, 'ðŸ’³ Cobrar cliente',
+          `${clientName}${svc ? ' â€¢ ' + svc : ''}${priceStr} â€” listo para cobrar`, { appId, kind });
       } else if (kind === 'lavado') {
-        pushService.notify({ roles: ['asistente'] }, '💧 Nuevo lavado',
-          `${clientName} está listo para lavado`, { appId, kind });
+        pushService.notify({ roles: ['asistente'] }, 'ðŸ’§ Nuevo lavado',
+          `${clientName} estÃ¡ listo para lavado`, { appId, kind });
       }
     } catch (e) {
       console.error('push appointment error', e);
     }
   },
 
-  // Web Push helper: product sale → barista, asistentes y administración.
+  // Web Push helper: product sale â†’ barista, asistentes y administraciÃ³n.
   async _pushProduct(appointmentId, productId, quantity) {
     try {
       const [prodRes, appRes] = await Promise.all([
@@ -1649,7 +1649,7 @@ export const dataService = {
       const prodName = formatProductName(prodRes.data?.name) || 'Producto';
       const clientName = formatName(appRes.data?.clients?.name) || 'Cliente';
       const qty = quantity && quantity > 1 ? ` x${quantity}` : '';
-      pushService.notify({ roles: ['asistente', 'admin'] }, '🦷 Venta de producto',
+      pushService.notify({ roles: ['asistente', 'admin'] }, 'ðŸ¦· Venta de producto',
         `${prodName}${qty} para ${clientName}`, { appointmentId, productId });
     } catch (e) {
       console.error('push product error', e);
@@ -1676,8 +1676,8 @@ export const dataService = {
         .maybeSingle();
       if (staffError) throw staffError;
       const isScheduledAppointment = appointment.scheduled_at || ['Agendado', 'Confirmado'].includes(appointment.status);
-      // Cita agendada: odontólogos (sillón) o asistentes (turno asignado).
-      // Sin horario ("En Silla"/"Por Pagar" desde recepción): cualquier operativo.
+      // Cita agendada: odontÃ³logos (sillÃ³n) o asistentes (turno asignado).
+      // Sin horario ("En Silla"/"Por Pagar" desde recepciÃ³n): cualquier operativo.
       const canReceiveAppointment = isScheduledAppointment
         ? (isBookableStaff(staffMember) || isAsistenteRole(staffMember))
         : isOperationalReceptionStaff(staffMember);
@@ -1810,7 +1810,7 @@ export const dataService = {
 
           notificationService.broadcastNotification(
             supabase,
-            '🦷 Nuevo Cliente en Silla',
+            'ðŸ¦· Nuevo Cliente en Silla',
             `Hey, te toca atender a ${clientName} para el servicio: ${serviceName}${includedList}.`,
             { recipientId: appDetails.staff_id, recipientRole: 'Barbero' }
           );
@@ -1820,7 +1820,7 @@ export const dataService = {
       }
     }
 
-    // Web Push por transición de estado
+    // Web Push por transiciÃ³n de estado
     if (newStatus === 'En Silla') this._pushAppointment(id, 'ensilla');
     else if (newStatus === 'En Lavado') this._pushAppointment(id, 'lavado');
     else if (newStatus === 'Por Pagar') this._pushAppointment(id, 'caja');
@@ -1925,7 +1925,7 @@ export const dataService = {
     const hasContent = (a) => !!a.service_id
       || _asArray(a.appointment_extras).length > 0
       || _asArray(a.appointment_products).length > 0;
-    if (!rows.some(hasContent)) return 0; // only the pending shell exists — leave it be
+    if (!rows.some(hasContent)) return 0; // only the pending shell exists â€” leave it be
     const shellIds = rows.filter(a => !hasContent(a)).map(a => a.id);
     if (shellIds.length === 0) return 0;
     const { error: delErr } = await supabase.from('appointments').delete().in('id', shellIds);
@@ -1995,12 +1995,12 @@ export const dataService = {
     apps.forEach(app => {
       const sPrice = app.services?.price || 0;
       const ePrice = app.appointment_extras?.reduce((sum, e) => sum + (e.price || 0), 0) || 0;
-      // Los productos NO son del barbero (son 100% de Panda): no cuentan en su producción.
+      // Los productos NO son del barbero (son 100% de Panda): no cuentan en su producciÃ³n.
       totalUsd += (sPrice + ePrice);
 
       const myStaffRecord = app.appointment_staff?.find(as => String(as.staff_id) === String(staffId));
       if (myStaffRecord) {
-        // Sin comisión de productos: el barbero no gana por productos.
+        // Sin comisiÃ³n de productos: el barbero no gana por productos.
         earningsUsd += Number(myStaffRecord.commission_earned || 0);
         tipsUsd += Number(myStaffRecord.tip_amount || 0);
       } else {
@@ -2025,7 +2025,7 @@ export const dataService = {
 
     // Steps 2-4 are secondary bookkeeping (commissions, stock, transaction log).
     // Wrapped so a failure here (e.g. a bad product id) can't swallow step 5
-    // (loyalty points) below — the appointment is already marked completed at
+    // (loyalty points) below â€” the appointment is already marked completed at
     // this point, so losing the rest of the pipeline silently is worse than
     // logging and moving on.
     const primaryAppId = paymentRecord.appointmentId || paymentRecord.appointmentIds?.[0] || null;
@@ -2040,8 +2040,8 @@ export const dataService = {
       }
 
       // Register only participants with a real payroll value.
-      // Preferimos el desglose por-cita (appointmentStaff): cada comisión queda bajo la
-      // cita que la generó, así en un pago grupal cada barbero ve SU comisión en su panel.
+      // Preferimos el desglose por-cita (appointmentStaff): cada comisiÃ³n queda bajo la
+      // cita que la generÃ³, asÃ­ en un pago grupal cada barbero ve SU comisiÃ³n en su panel.
       // Si no viene (colas offline viejas o llamadas legacy), caemos al comportamiento
       // anterior de agrupar todo bajo la cita principal.
       if (paymentRecord.appointmentStaff && paymentRecord.appointmentStaff.length > 0) {
@@ -2104,12 +2104,12 @@ export const dataService = {
     const nonCashCategory = settlementType === 'receivable'
       ? 'Cuentas por Cobrar'
       : settlementType === 'courtesy'
-        ? 'Cortesía Barbería'
+        ? 'CortesÃ­a BarberÃ­a'
         : 'Intercambio Barbero';
     const transactionDescription = settlementType === 'receivable'
       ? `FIADO - Cliente: ${paymentRecord.clientName} - Servi: ${paymentRecord.serviceName}`
       : settlementType === 'courtesy'
-        ? `CORTESÍA - Cliente: ${paymentRecord.clientName} - Servi: ${paymentRecord.serviceName}`
+        ? `CORTESÃA - Cliente: ${paymentRecord.clientName} - Servi: ${paymentRecord.serviceName}`
         : settlementType === 'exchange'
           ? `INTERCAMBIO - Responsable: ${paymentRecord.exchangeStaffName} - Cliente: ${paymentRecord.clientName} - Servi: ${paymentRecord.serviceName}`
           : (paymentRecord.appointmentId
@@ -2249,7 +2249,7 @@ export const dataService = {
       staffIdsToNotify.forEach(staffId => {
         notificationService.broadcastNotification(
           supabase,
-          '💰 ¡Cobro Finalizado!',
+          'ðŸ’° Â¡Cobro Finalizado!',
           `El pago de ${clientName} (${serviceName}) ha sido procesado exitosamente en Caja.`,
           { recipientId: staffId }
         );
@@ -2358,8 +2358,8 @@ export const dataService = {
       .order('position', { ascending: true });
     if (err) throw err;
 
-    // Autolimpieza: si por una condición de carrera (doble clic) quedaron varias
-    // filas para el mismo barbero, nos quedamos con la más antigua y borramos el resto.
+    // Autolimpieza: si por una condiciÃ³n de carrera (doble clic) quedaron varias
+    // filas para el mismo barbero, nos quedamos con la mÃ¡s antigua y borramos el resto.
     const existing = existingRows?.[0] || null;
     if (existingRows && existingRows.length > 1) {
       const staleIds = existingRows.slice(1).map(r => r.id);
@@ -2547,7 +2547,7 @@ export const dataService = {
       }
     }
 
-    // Borra el registro de asistencia que quedó abierto
+    // Borra el registro de asistencia que quedÃ³ abierto
     await supabase.from('attendance_log').delete()
       .eq('staff_id', staffId)
       .is('check_out', null);
@@ -2741,8 +2741,8 @@ export const dataService = {
 
   async getStaffSettlement(staffId) {
     // Las 3 consultas (staff, tasa de cambio, transacciones) son independientes: se corren
-    // EN PARALELO para que el modal de cierre de nómina abra rápido. Antes iban en serie y
-    // en un VPS lento eso tardaba varios segundos (el botón parecía no responder).
+    // EN PARALELO para que el modal de cierre de nÃ³mina abra rÃ¡pido. Antes iban en serie y
+    // en un VPS lento eso tardaba varios segundos (el botÃ³n parecÃ­a no responder).
     const FALLBACK_START = '2026-01-01T00:00:00.000Z';
     const [staffResult, exchangeRates, txResult] = await Promise.all([
       supabase.from('staff').select('id, name, role, payroll_frequency, created_at').eq('id', staffId).single(),
@@ -2802,8 +2802,8 @@ export const dataService = {
       const washRate = Number(transaction.metadata?.washRate || staffMember.washing_rate || 1);
       const assistantShare = Number(transaction.metadata?.washAssistantSharePct || 60) / 100;
       // La tarifa del lavado pertenece al servicio: 60% para la asistente y
-      // 40% para mantener el área de lavado. También normaliza registros
-      // históricos creados antes de guardar explícitamente este reparto.
+      // 40% para mantener el Ã¡rea de lavado. TambiÃ©n normaliza registros
+      // histÃ³ricos creados antes de guardar explÃ­citamente este reparto.
       const commissionBs = isAssistant && washCount > 0
         ? (washCount * washRate * assistantShare * rate) + productCommissionBs
         : serviceCommissionBs + productCommissionBs;
@@ -2835,7 +2835,7 @@ export const dataService = {
       if (method.includes('zelle')) return 'Zelle';
       if (method.includes('binance') || method.includes('usdt')) return 'Binance / USDT';
       if (method.includes('zinli')) return 'Zinli';
-      if (method.includes('pago') || method.includes('móvil') || method.includes('movil')) return 'Pago Móvil';
+      if (method.includes('pago') || method.includes('mÃ³vil') || method.includes('movil')) return 'Pago MÃ³vil';
       if (method.includes('punto')) return 'Punto de venta';
       if (method.includes('efectivo') && (method.includes('bs') || method.includes('ves'))) return 'Efectivo (Bs)';
       if (method.includes('efectivo') || method.includes('$')) return 'Efectivo ($)';
@@ -2843,11 +2843,11 @@ export const dataService = {
     };
     const accountBalances = Object.fromEntries([
       'Efectivo ($)', 'Zelle', 'Zinli', 'Binance / USDT',
-      'Pago Móvil', 'Efectivo (Bs)', 'Punto de venta', 'Transferencia'
+      'Pago MÃ³vil', 'Efectivo (Bs)', 'Punto de venta', 'Transferencia'
     ].map(method => [method, 0]));
     const methodBreakdown = {};
-    // Igual que methodBreakdown pero en USD ORIGINAL (usando la tasa de cada transacción,
-    // no la de hoy). Las cuentas en dólares (Efectivo $, Zelle, Binance…) representan un
+    // Igual que methodBreakdown pero en USD ORIGINAL (usando la tasa de cada transacciÃ³n,
+    // no la de hoy). Las cuentas en dÃ³lares (Efectivo $, Zelle, Binanceâ€¦) representan un
     // monto fijo en USD; reconvertir Bs/tasa-de-hoy inflaba el valor cuando la tasa bajaba.
     const methodBreakdownUsd = {};
     const addAmount = (target, method, amountBs) => {
@@ -2865,7 +2865,7 @@ export const dataService = {
     transactions.forEach(transaction => {
       const metadata = transaction.metadata || {};
       const rate = txRate(transaction);
-      // Conversión: transferencia interna entre cuentas (Bs↔USD), no un gasto. Mueve el
+      // ConversiÃ³n: transferencia interna entre cuentas (Bsâ†”USD), no un gasto. Mueve el
       // saldo de la cuenta origen a la destino (todo en Bs, como el resto de accountBalances).
       if (metadata.conversion) {
         const convRate = Number(metadata.rate || rate) || 1;
@@ -2882,9 +2882,9 @@ export const dataService = {
         const bs = Number(metadata.transfer_bs || metadata.transferBs || 0);
         if (metadata.mixed_payment || (usdBs > 0 && bs > 0)) {
           addAmount(accountBalances, metadata.method_usd || 'Efectivo ($)', usdBs);
-          addAmount(accountBalances, metadata.method_bs || 'Pago Móvil', bs);
+          addAmount(accountBalances, metadata.method_bs || 'Pago MÃ³vil', bs);
         } else if (bs > 0) {
-          addAmount(accountBalances, metadata.method_bs || 'Pago Móvil', bs);
+          addAmount(accountBalances, metadata.method_bs || 'Pago MÃ³vil', bs);
         } else {
           addAmount(accountBalances, metadata.method_usd || 'Efectivo ($)', Number(transaction.amount || 0) * rate);
         }
@@ -2907,18 +2907,18 @@ export const dataService = {
       const staffShareBs = row.commissionBs + row.tipBs;
       const saleBs = Number(row.transaction.amount || 0) * row.rate;
       if (staffShareBs <= 0 || saleBs <= 0) return;
-      // USD original de esta fila (a la tasa de SU transacción), no a la tasa de hoy.
+      // USD original de esta fila (a la tasa de SU transacciÃ³n), no a la tasa de hoy.
       const staffShareUsd = staffShareBs / row.rate;
       const usdBs = Number(metadata.cash_usd || metadata.cashUsd || 0) * row.rate;
       const bs = Number(metadata.transfer_bs || metadata.transferBs || 0);
       if (metadata.mixed_payment || (usdBs > 0 && bs > 0)) {
         addAmount(methodBreakdown, metadata.method_usd || 'Efectivo ($)', staffShareBs * (usdBs / saleBs));
-        addAmount(methodBreakdown, metadata.method_bs || 'Pago Móvil', staffShareBs * (bs / saleBs));
+        addAmount(methodBreakdown, metadata.method_bs || 'Pago MÃ³vil', staffShareBs * (bs / saleBs));
         addUsd(metadata.method_usd || 'Efectivo ($)', staffShareUsd * (usdBs / saleBs));
-        addUsd(metadata.method_bs || 'Pago Móvil', staffShareUsd * (bs / saleBs));
+        addUsd(metadata.method_bs || 'Pago MÃ³vil', staffShareUsd * (bs / saleBs));
       } else if (bs > 0) {
-        addAmount(methodBreakdown, metadata.method_bs || 'Pago Móvil', staffShareBs);
-        addUsd(metadata.method_bs || 'Pago Móvil', staffShareUsd);
+        addAmount(methodBreakdown, metadata.method_bs || 'Pago MÃ³vil', staffShareBs);
+        addUsd(metadata.method_bs || 'Pago MÃ³vil', staffShareUsd);
       } else {
         addAmount(methodBreakdown, metadata.method_usd || 'Efectivo ($)', staffShareBs);
         addUsd(metadata.method_usd || 'Efectivo ($)', staffShareUsd);
@@ -2928,7 +2928,7 @@ export const dataService = {
     const cashAssignedBs = Object.entries(methodBreakdown).reduce((sum, [method, amount]) => (
       method.startsWith('Efectivo') ? sum + amount : sum
     ), 0);
-    // Efectivo ($) es una cuenta en dólares: usamos el USD original acumulado, no Bs/tasa-hoy.
+    // Efectivo ($) es una cuenta en dÃ³lares: usamos el USD original acumulado, no Bs/tasa-hoy.
     const cashAssignedUsd = Number(methodBreakdownUsd['Efectivo ($)'] || 0);
     const cashAssignedVesBs = Number(methodBreakdown['Efectivo (Bs)'] || 0);
     const paymentHistory = [...payments, ...advances, ...consumptions]
@@ -2988,7 +2988,7 @@ export const dataService = {
     const valesTransactions = txs.filter(t => t.type === 'expense' && t.category === 'Vales Odontologos' && String(t.metadata?.staffId) === String(staffId));
     const consumptionTransactions = txs.filter(t => t.type === 'expense' && t.category === 'Consumo Personal' && String(t.metadata?.staffId) === String(staffId));
     const exchangeChargeTransactions = txs.filter(t => t.category === 'Intercambio Barbero' && String(t.metadata?.exchangeStaffId) === String(staffId));
-    const payrollTransactions = txs.filter(t => t.type === 'expense' && t.category === 'Pago Nómina' && String(t.metadata?.staffId) === String(staffId));
+    const payrollTransactions = txs.filter(t => t.type === 'expense' && t.category === 'Pago NÃ³mina' && String(t.metadata?.staffId) === String(staffId));
 
     const earnedBs = serviceTransactions.reduce((sum, t) => {
       const s = t.metadata?.staffInvolved?.find(x => String(x.staffId) === String(staffId));
@@ -3066,7 +3066,7 @@ export const dataService = {
     if (import.meta.env.PROD || import.meta.env.VITE_ENABLE_DATABASE_RESET !== 'true') {
       throw new Error('Database reset is disabled outside explicit local maintenance mode.');
     }
-    if (!window.confirm('¿ESTÁS ABSOLUTAMENTE SEGURO? Se borrarán todos los clientes, personal y ventas. Esta acción es irreversible.')) return;
+    if (!window.confirm('Â¿ESTÃS ABSOLUTAMENTE SEGURO? Se borrarÃ¡n todos los clientes, personal y ventas. Esta acciÃ³n es irreversible.')) return;
     try {
       await supabase.from('appointment_staff').delete().neq('id', 0);
       await supabase.from('appointments').delete().neq('id', 0);
@@ -3108,8 +3108,8 @@ export const dataService = {
     } catch (error) { console.error('Error updating setting:', error); throw error; }
   },
 
-  // Contador secuencial de órdenes para el recibo (system_settings.order_counter). Empieza en 1.
-  // Lectura-incremento-escritura (no atómico, pero suficiente para un solo local).
+  // Contador secuencial de Ã³rdenes para el recibo (system_settings.order_counter). Empieza en 1.
+  // Lectura-incremento-escritura (no atÃ³mico, pero suficiente para un solo local).
   async getNextOrderNumber() {
     try {
       const settings = await this.getSystemSettings();
@@ -3120,3 +3120,4 @@ export const dataService = {
     } catch (error) { console.error('Error getting next order number:', error); return null; }
   }
 };
+

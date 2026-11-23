@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+﻿import React, { useEffect, useMemo, useState } from 'react';
 import { User, ArrowLeft, Droplets, Megaphone } from 'lucide-react';
 import ToothIcon from './icons/ToothIcon';
 import { dataService } from '../services/dataService';
@@ -12,7 +12,7 @@ const MAX_RECENTS = 4;
 const roleOf = staff => String(staff?.role || '').split('|')[0].toLowerCase();
 
 const ROLE_META = {
-  odontologo: { label: 'Odontólogo', color: 'var(--gold-primary)', Icon: ToothIcon, filter: 'odontologo' },
+  odontologo: { label: 'OdontÃ³logo', color: 'var(--gold-primary)', Icon: ToothIcon, filter: 'odontologo' },
   asistente: { label: 'Asistente', color: '#6fb8e0', Icon: Droplets, filter: 'asistente' },
   support: { label: 'Personal de apoyo', color: '#e0a36f', Icon: Megaphone, filter: 'apoyo' }
 };
@@ -34,7 +34,7 @@ const initials = name => String(name || '')
 
 const greeting = () => {
   const hour = new Date().getHours();
-  if (hour < 12) return 'Buenos días';
+  if (hour < 12) return 'Buenos dÃ­as';
   if (hour < 19) return 'Buenas tardes';
   return 'Buenas noches';
 };
@@ -53,7 +53,7 @@ const pushRecent = id => {
     current.unshift(id);
     localStorage.setItem(RECENTS_KEY, JSON.stringify(current.slice(0, MAX_RECENTS)));
   } catch {
-    // localStorage unavailable — recents are a nice-to-have, safe to skip
+    // localStorage unavailable â€” recents are a nice-to-have, safe to skip
   }
 };
 
@@ -82,7 +82,7 @@ export default function PanelsModule({ isMobile, rates }) {
     const present = new Set(staff.map(member => metaFor(member).filter));
     return [
       { key: 'all', label: 'Todos' },
-      present.has('odontologo') && { key: 'odontologo', label: 'Odontólogos' },
+      present.has('odontologo') && { key: 'odontologo', label: 'OdontÃ³logos' },
       present.has('asistente') && { key: 'asistente', label: 'Asistentes' },
       present.has('apoyo') && { key: 'apoyo', label: 'Apoyo' }
     ].filter(Boolean);
@@ -98,7 +98,7 @@ export default function PanelsModule({ isMobile, rates }) {
     const isSupport = isSupportStaff(selected);
     return (
       <section style={{ width: '100%' }}>
-        <button type="button" onClick={() => setSelected(null)} style={{ display: 'inline-flex', alignItems: 'center', gap: 8, marginBottom: 18, padding: '10px 14px', borderRadius: 12, border: '1px solid var(--border-color)', background: 'rgba(0, 0, 0, 0.04)', color: 'white', cursor: 'pointer', fontWeight: 800 }}>
+        <button type="button" onClick={() => setSelected(null)} style={{ display: 'inline-flex', alignItems: 'center', gap: 8, marginBottom: 18, padding: '10px 14px', borderRadius: 12, border: '1px solid var(--border-color)', background: 'rgba(0, 0, 0, 0.04)', color: '#111111', cursor: 'pointer', fontWeight: 800 }}>
           <ArrowLeft size={17} /> Volver a Paneles
         </button>
         {isSupport
@@ -113,7 +113,7 @@ export default function PanelsModule({ isMobile, rates }) {
       <div style={{ maxWidth: 1080, margin: '0 auto' }}>
         <div className="panels-topbar" style={{ marginBottom: 24 }}>
           <p style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--gold-primary)', margin: '0 0 8px' }}>Paneles de trabajo</p>
-          <h1 style={{ fontSize: 'clamp(22px, 5vw, 34px)', fontWeight: 800, letterSpacing: '-0.02em', margin: '0 0 6px' }}>{greeting()}. ¿A quién abrimos?</h1>
+          <h1 style={{ fontSize: 'clamp(22px, 5vw, 34px)', fontWeight: 800, letterSpacing: '-0.02em', margin: '0 0 6px' }}>{greeting()}. Â¿A quiÃ©n abrimos?</h1>
           <p style={{ fontSize: 14, color: 'var(--text-secondary)', margin: 0, maxWidth: '46ch' }}>Selecciona a alguien del equipo para abrir su panel de trabajo.</p>
         </div>
 
@@ -160,7 +160,7 @@ export default function PanelsModule({ isMobile, rates }) {
                     <span style={{ width: 30, height: 30, borderRadius: '50%', display: 'grid', placeItems: 'center', fontSize: 12, fontWeight: 800, color: '#17140d', background: meta.color, overflow: 'hidden', flexShrink: 0 }}>
                       {member.image_url ? <img src={member.image_url} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} /> : initials(member.name)}
                     </span>
-                    <span style={{ fontSize: 13, fontWeight: 700, color: 'white', whiteSpace: 'nowrap' }}>{member.name}</span>
+                    <span style={{ fontSize: 13, fontWeight: 700, color: '#111111', whiteSpace: 'nowrap' }}>{member.name}</span>
                   </button>
                 );
               })}
@@ -172,7 +172,7 @@ export default function PanelsModule({ isMobile, rates }) {
           {visibleStaff.length === 0 ? (
             <div style={{ gridColumn: '1 / -1', padding: '48px 20px', textAlign: 'center', color: 'var(--text-muted)' }}>
               <User size={28} style={{ opacity: 0.3, marginBottom: 10 }} />
-              <div>No hay personal en esta categoría.</div>
+              <div>No hay personal en esta categorÃ­a.</div>
             </div>
           ) : visibleStaff.map((member, index) => {
             const meta = metaFor(member);
@@ -282,3 +282,4 @@ export default function PanelsModule({ isMobile, rates }) {
     </section>
   );
 }
+

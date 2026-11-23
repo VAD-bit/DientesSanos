@@ -1,7 +1,7 @@
-import React from 'react';
+﻿import React from 'react';
 
 // Icono de diente con el mismo contrato visual que los iconos de lucide-react
-// (svg 24×24, trazo `currentColor`, extremos redondos) para que se integre en
+// (svg 24Ã—24, trazo `currentColor`, extremos redondos) para que se integre en
 // cualquier sitio donde antes se usaba el icono de tijera.
 // Props: size, color, strokeWidth, className, style + props nativas del svg.
 const ToothIcon = ({ size = 24, color = 'currentColor', strokeWidth = 2, className, style, ...rest }) => (
@@ -25,3 +25,4 @@ const ToothIcon = ({ size = 24, color = 'currentColor', strokeWidth = 2, classNa
 );
 
 export default ToothIcon;
+

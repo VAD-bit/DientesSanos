@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight, Star, User, Heart } from 'lucide-react';
 import ToothIcon from '../../components/icons/ToothIcon';
 import { publicService } from '../services/publicService';
@@ -29,16 +29,16 @@ const profileItemVariants = {
 const getBarberVideo = () => null;
 
 const BARBER_DETAILS = {
-  'ángel serrano': { rating: '4.9', reviews_count: 512, specialties: ['Estética dental', 'Ortodoncia', 'Endodoncia', 'Odontopediatría'], testimonials: [{ client: 'Carlos M.', text: 'Excelente atención y mucha precisión en el tratamiento. 100% recomendado.', service: 'Limpieza dental' }, { client: 'Andrés V.', text: 'La experiencia completa es de otro nivel. Volveré sin duda.', service: 'Blanqueamiento' }] },
-  'moret serrano': { rating: '4.8', reviews_count: 240, specialties: ['Ortodoncia', 'Estética dental', 'Endodoncia', 'Odontopediatría'], testimonials: [{ client: 'José P.', text: 'El tratamiento quedó impecable, muy detallista el equipo.', service: 'Ortodoncia' }, { client: 'Mateo L.', text: 'Los resultados hablan por sí solos. Muy recomendado.', service: 'Estética dental' }] },
-  'abraham díaz': { rating: '4.9', reviews_count: 310, specialties: ['Endodoncia', 'Estética dental', 'Ortodoncia', 'Odontopediatría'], testimonials: [{ client: 'Javier M.', text: 'Gran profesional. Sabe exactamente lo que necesitas.', service: 'Endodoncia' }, { client: 'Felipe D.', text: 'Excelente servicio, una experiencia muy relajante.', service: 'Limpieza dental' }] },
-  'alejandro ramírez': { rating: '4.7', reviews_count: 156, specialties: ['Odontopediatría', 'Estética dental', 'Ortodoncia', 'Endodoncia'], testimonials: [{ client: 'Lucas B.', text: 'El equipo es súper creativo con los planes de tratamiento. Son únicos.', service: 'Odontopediatría' }] },
-  'jeff carrero': { rating: '4.8', reviews_count: 189, specialties: ['Estética dental', 'Ortodoncia', 'Endodoncia', 'Odontopediatría'], testimonials: [{ client: 'Marcos A.', text: 'Excelente especialista y el tratamiento quedó perfecto.', service: 'Blanqueamiento' }] },
-  'juan herrera': { rating: '4.9', reviews_count: 324, specialties: ['Endodoncia', 'Estética dental', 'Ortodoncia', 'Odontopediatría'], testimonials: [{ client: 'Sebastián L.', text: 'Juan es sumamente meticuloso. La limpieza fue una maravilla.', service: 'Limpieza dental' }] },
-  'marko cardozo': { rating: '4.9', reviews_count: 420, specialties: ['Ortodoncia', 'Estética dental', 'Endodoncia', 'Odontopediatría'], testimonials: [{ client: 'Fabián K.', text: 'Las sonrisas de Marko son de cirujano. Un trabajo minimalista impecable.', service: 'Ortodoncia' }] },
-  'josé cordero': { rating: '4.9', reviews_count: 380, specialties: ['Endodoncia', 'Estética dental', 'Ortodoncia', 'Odontopediatría'], testimonials: [{ client: 'Julián G.', text: 'El resultado es increíble, cuidó cada detalle de mi tratamiento.', service: 'Endodoncia' }] },
-  'kevin farías': { rating: '4.8', reviews_count: 215, specialties: ['Estética dental', 'Blanqueamiento', 'Ortodoncia', 'Odontopediatría'], testimonials: [{ client: 'Samuel D.', text: 'El blanqueamiento y la limpieza con Kevin son espectaculares.', service: 'Blanqueamiento' }] },
-  'cesia zuleta': { rating: '4.9', reviews_count: 142, specialties: ['Prevención', 'Limpieza', 'Odontopediatría', 'Tratamientos'], testimonials: [{ client: 'Gabriel J.', text: 'La limpieza profesional durante la consulta es de otro planeta.', service: 'Limpieza dental' }] }
+  'Ã¡ngel serrano': { rating: '4.9', reviews_count: 512, specialties: ['EstÃ©tica dental', 'Ortodoncia', 'Endodoncia', 'OdontopediatrÃ­a'], testimonials: [{ client: 'Carlos M.', text: 'Excelente atenciÃ³n y mucha precisiÃ³n en el tratamiento. 100% recomendado.', service: 'Limpieza dental' }, { client: 'AndrÃ©s V.', text: 'La experiencia completa es de otro nivel. VolverÃ© sin duda.', service: 'Blanqueamiento' }] },
+  'moret serrano': { rating: '4.8', reviews_count: 240, specialties: ['Ortodoncia', 'EstÃ©tica dental', 'Endodoncia', 'OdontopediatrÃ­a'], testimonials: [{ client: 'JosÃ© P.', text: 'El tratamiento quedÃ³ impecable, muy detallista el equipo.', service: 'Ortodoncia' }, { client: 'Mateo L.', text: 'Los resultados hablan por sÃ­ solos. Muy recomendado.', service: 'EstÃ©tica dental' }] },
+  'abraham dÃ­az': { rating: '4.9', reviews_count: 310, specialties: ['Endodoncia', 'EstÃ©tica dental', 'Ortodoncia', 'OdontopediatrÃ­a'], testimonials: [{ client: 'Javier M.', text: 'Gran profesional. Sabe exactamente lo que necesitas.', service: 'Endodoncia' }, { client: 'Felipe D.', text: 'Excelente servicio, una experiencia muy relajante.', service: 'Limpieza dental' }] },
+  'alejandro ramÃ­rez': { rating: '4.7', reviews_count: 156, specialties: ['OdontopediatrÃ­a', 'EstÃ©tica dental', 'Ortodoncia', 'Endodoncia'], testimonials: [{ client: 'Lucas B.', text: 'El equipo es sÃºper creativo con los planes de tratamiento. Son Ãºnicos.', service: 'OdontopediatrÃ­a' }] },
+  'jeff carrero': { rating: '4.8', reviews_count: 189, specialties: ['EstÃ©tica dental', 'Ortodoncia', 'Endodoncia', 'OdontopediatrÃ­a'], testimonials: [{ client: 'Marcos A.', text: 'Excelente especialista y el tratamiento quedÃ³ perfecto.', service: 'Blanqueamiento' }] },
+  'juan herrera': { rating: '4.9', reviews_count: 324, specialties: ['Endodoncia', 'EstÃ©tica dental', 'Ortodoncia', 'OdontopediatrÃ­a'], testimonials: [{ client: 'SebastiÃ¡n L.', text: 'Juan es sumamente meticuloso. La limpieza fue una maravilla.', service: 'Limpieza dental' }] },
+  'marko cardozo': { rating: '4.9', reviews_count: 420, specialties: ['Ortodoncia', 'EstÃ©tica dental', 'Endodoncia', 'OdontopediatrÃ­a'], testimonials: [{ client: 'FabiÃ¡n K.', text: 'Las sonrisas de Marko son de cirujano. Un trabajo minimalista impecable.', service: 'Ortodoncia' }] },
+  'josÃ© cordero': { rating: '4.9', reviews_count: 380, specialties: ['Endodoncia', 'EstÃ©tica dental', 'Ortodoncia', 'OdontopediatrÃ­a'], testimonials: [{ client: 'JuliÃ¡n G.', text: 'El resultado es increÃ­ble, cuidÃ³ cada detalle de mi tratamiento.', service: 'Endodoncia' }] },
+  'kevin farÃ­as': { rating: '4.8', reviews_count: 215, specialties: ['EstÃ©tica dental', 'Blanqueamiento', 'Ortodoncia', 'OdontopediatrÃ­a'], testimonials: [{ client: 'Samuel D.', text: 'El blanqueamiento y la limpieza con Kevin son espectaculares.', service: 'Blanqueamiento' }] },
+  'cesia zuleta': { rating: '4.9', reviews_count: 142, specialties: ['PrevenciÃ³n', 'Limpieza', 'OdontopediatrÃ­a', 'Tratamientos'], testimonials: [{ client: 'Gabriel J.', text: 'La limpieza profesional durante la consulta es de otro planeta.', service: 'Limpieza dental' }] }
 };
 
 const getBarberDetails = (barberName) => {
@@ -46,7 +46,7 @@ const getBarberDetails = (barberName) => {
   for (const [key, val] of Object.entries(BARBER_DETAILS)) {
     if (name.includes(key) || key.includes(name)) return val;
   }
-  return { rating: '4.8', reviews_count: 120, specialties: ['Estética', 'Ortodoncia', 'Endodoncia'], testimonials: [{ client: 'Cliente', text: 'Excelente servicio.', service: 'Limpieza dental' }] };
+  return { rating: '4.8', reviews_count: 120, specialties: ['EstÃ©tica', 'Ortodoncia', 'Endodoncia'], testimonials: [{ client: 'Cliente', text: 'Excelente servicio.', service: 'Limpieza dental' }] };
 };
 
 const parseBarberBioObj = (barber) => {
@@ -58,32 +58,32 @@ const parseBarberBioObj = (barber) => {
 
 const getBarberBiography = (barber) => {
   const name = barber?.name?.toLowerCase() || '';
-  if (name.includes('kevin')) return 'Especialista certificado en estética dental y tratamientos de sonrisa. Apasionado por la simetría y por diseñar el plan de atención ideal para cada paciente.';
-  if (name.includes('ángel') || name.includes('angel')) return 'Equipo fundador de Centro Odontológico Dientes Sanos. Con años de experiencia, me especializo en odontología integral y en el cuidado de la salud bucal de la más alta calidad.';
-  if (name.includes('moret')) return 'Especialista en ortodoncia, tratamientos estéticos y soluciones personalizadas. Apasionado por la precisión clínica y los detalles que marcan la diferencia.';
+  if (name.includes('kevin')) return 'Especialista certificado en estÃ©tica dental y tratamientos de sonrisa. Apasionado por la simetrÃ­a y por diseÃ±ar el plan de atenciÃ³n ideal para cada paciente.';
+  if (name.includes('Ã¡ngel') || name.includes('angel')) return 'Equipo fundador de Centro OdontolÃ³gico Dientes Sanos. Con aÃ±os de experiencia, me especializo en odontologÃ­a integral y en el cuidado de la salud bucal de la mÃ¡s alta calidad.';
+  if (name.includes('moret')) return 'Especialista en ortodoncia, tratamientos estÃ©ticos y soluciones personalizadas. Apasionado por la precisiÃ³n clÃ­nica y los detalles que marcan la diferencia.';
   
   const bioObj = parseBarberBioObj(barber);
   if (bioObj && bioObj.bio) return bioObj.bio;
   if (barber?.biography && !barber.biography.trim().startsWith('{') && barber.biography.trim().length > 10) return barber.biography;
   
-  return 'Especialista en odontología integral y atención personalizada. Enfocado en brindar una experiencia dental premium a través de la prevención y el cuidado de tu sonrisa.';
+  return 'Especialista en odontologÃ­a integral y atenciÃ³n personalizada. Enfocado en brindar una experiencia dental premium a travÃ©s de la prevenciÃ³n y el cuidado de tu sonrisa.';
 };
 
 const getBarberStats = (barber) => {
   const bioObj = parseBarberBioObj(barber);
   const name = barber?.name?.toLowerCase() || '';
   
-  let defServices = '324'; let defHappy = '98%'; let defExp = '5 años'; let defLoc = barber?.location || 'Consultorio';
-  if (name.includes('ángel') || name.includes('angel')) { defServices = '780+'; defHappy = '99%'; defExp = '8 años'; }
-  else if (name.includes('moret')) { defServices = '520+'; defHappy = '98%'; defExp = '4 años'; }
-  else if (name.includes('abraham')) { defServices = '310+'; defHappy = '98.5%'; defExp = '5 años'; }
-  else if (name.includes('alejandro')) { defServices = '280+'; defHappy = '96%'; defExp = '3 años'; }
-  else if (name.includes('jeff')) { defServices = '340+'; defHappy = '97.5%'; defExp = '4 años'; }
-  else if (name.includes('juan')) { defServices = '460+'; defHappy = '98.8%'; defExp = '6 años'; }
-  else if (name.includes('mark') || name.includes('marco')) { defServices = '220+'; defHappy = '99.2%'; defExp = '5 años'; }
-  else if (name.includes('josé') || name.includes('jose')) { defServices = '410+'; defHappy = '98.6%'; defExp = '7 años'; }
-  else if (name.includes('kevin')) { defServices = '290+'; defHappy = '97.8%'; defExp = '3 años'; }
-  else if (name.includes('cesia')) { defServices = '640+'; defHappy = '99.5%'; defExp = '2 años'; }
+  let defServices = '324'; let defHappy = '98%'; let defExp = '5 aÃ±os'; let defLoc = barber?.location || 'Consultorio';
+  if (name.includes('Ã¡ngel') || name.includes('angel')) { defServices = '780+'; defHappy = '99%'; defExp = '8 aÃ±os'; }
+  else if (name.includes('moret')) { defServices = '520+'; defHappy = '98%'; defExp = '4 aÃ±os'; }
+  else if (name.includes('abraham')) { defServices = '310+'; defHappy = '98.5%'; defExp = '5 aÃ±os'; }
+  else if (name.includes('alejandro')) { defServices = '280+'; defHappy = '96%'; defExp = '3 aÃ±os'; }
+  else if (name.includes('jeff')) { defServices = '340+'; defHappy = '97.5%'; defExp = '4 aÃ±os'; }
+  else if (name.includes('juan')) { defServices = '460+'; defHappy = '98.8%'; defExp = '6 aÃ±os'; }
+  else if (name.includes('mark') || name.includes('marco')) { defServices = '220+'; defHappy = '99.2%'; defExp = '5 aÃ±os'; }
+  else if (name.includes('josÃ©') || name.includes('jose')) { defServices = '410+'; defHappy = '98.6%'; defExp = '7 aÃ±os'; }
+  else if (name.includes('kevin')) { defServices = '290+'; defHappy = '97.8%'; defExp = '3 aÃ±os'; }
+  else if (name.includes('cesia')) { defServices = '640+'; defHappy = '99.5%'; defExp = '2 aÃ±os'; }
   
   return {
     services_count: bioObj?.services_count || defServices,
@@ -145,7 +145,7 @@ export default function BarberProfileOverlay({ isOpen, barber, onClose, onBook }
                 <span>Volver a Explorar</span>
               </button>
           <div className="flex items-center justify-center">
-            <img src={logo} alt="Centro Odontológico Dientes Sanos" className="h-10 object-contain opacity-90" />
+            <img src={logo} alt="Centro OdontolÃ³gico Dientes Sanos" className="h-10 object-contain opacity-90" />
           </div>
           <div className="w-[150px]"></div> {/* Spacer */}
           </motion.div>
@@ -230,7 +230,7 @@ export default function BarberProfileOverlay({ isOpen, barber, onClose, onBook }
                       {[1, 2, 3, 4, 5].map(star => <Star key={star} size={11} className="text-amber-400 fill-amber-400" />)}
                     </div>
                     <span className="text-[10px] text-[#334155] font-bold">{details.rating}</span>
-                    <span className="text-[10px] text-[#64748b]">({details.reviews_count} reseñas verificadas)</span>
+                    <span className="text-[10px] text-[#64748b]">({details.reviews_count} reseÃ±as verificadas)</span>
                   </div>
                   
                   <p className="text-[12px] text-[#334155] leading-relaxed font-medium mb-4 max-w-xl">
@@ -247,12 +247,12 @@ export default function BarberProfileOverlay({ isOpen, barber, onClose, onBook }
                   <div className="flex flex-col items-center text-center flex-1 border-l border-[#d9c08f]/15">
                     <CalendarIcon size={20} className="text-[#111111] mb-1.5" />
                     <span className="text-xl font-black text-[#0f172a] leading-none mb-1">{stats.experience.split(' ')[0]}</span>
-                    <span className="text-[8px] text-[#64748b] font-black uppercase tracking-widest leading-tight">AÑOS<br/>DE EXPERIENCIA</span>
+                    <span className="text-[8px] text-[#64748b] font-black uppercase tracking-widest leading-tight">AÃ‘OS<br/>DE EXPERIENCIA</span>
                   </div>
                   <div className="flex flex-col items-center text-center flex-1 border-l border-[#d9c08f]/15">
                     <Star size={20} className="text-[#111111] mb-1.5" />
                     <span className="text-xl font-black text-[#0f172a] leading-none mb-1">{details.rating}</span>
-                    <span className="text-[8px] text-[#64748b] font-black uppercase tracking-widest leading-tight">VALORACIÓN<br/>PROMEDIO</span>
+                    <span className="text-[8px] text-[#64748b] font-black uppercase tracking-widest leading-tight">VALORACIÃ“N<br/>PROMEDIO</span>
                   </div>
                 </div>
               </div>
@@ -348,7 +348,7 @@ export default function BarberProfileOverlay({ isOpen, barber, onClose, onBook }
               <div className="bg-white border border-[#d9c08f]/15 rounded-xl p-3 flex flex-row items-center gap-2 h-[68px]">
                 <div className="flex items-baseline gap-1">
                   <span className="text-3xl font-black leading-none text-[#0f172a]">{stats.experience.split(' ')[0]}</span>
-                  <span className="text-xs font-bold text-[#334155] lowercase">años</span>
+                  <span className="text-xs font-bold text-[#334155] lowercase">aÃ±os</span>
                 </div>
                 <div className="flex flex-col min-w-0">
                   <span className="text-[8px] text-[#64748b] font-black uppercase tracking-widest leading-none mb-0.5">// PERFIL</span>
@@ -358,7 +358,7 @@ export default function BarberProfileOverlay({ isOpen, barber, onClose, onBook }
               <div className="bg-white border border-[#d9c08f]/15 rounded-xl p-3 flex flex-row items-center gap-3 h-[68px]">
                 <div className="text-xs font-black text-[#0f172a] leading-none uppercase tracking-tight">{stats.location && stats.location.toLowerCase().includes('sede') ? 'Consultorio' : stats.location}</div>
                 <div className="flex flex-col min-w-0">
-                  <span className="text-[8px] text-[#64748b] font-black uppercase tracking-widest leading-none mb-0.5">// UBICACIÓN</span>
+                  <span className="text-[8px] text-[#64748b] font-black uppercase tracking-widest leading-none mb-0.5">// UBICACIÃ“N</span>
                   <span className="text-[10px] text-[#334155] font-bold uppercase tracking-wider leading-tight">Principal</span>
                 </div>
               </div>
@@ -390,3 +390,4 @@ export default function BarberProfileOverlay({ isOpen, barber, onClose, onBook }
 </AnimatePresence>
   );
 }
+

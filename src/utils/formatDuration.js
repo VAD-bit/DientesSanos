@@ -1,4 +1,4 @@
-export const formatDuration = (minutes) => {
+﻿export const formatDuration = (minutes) => {
   const total = Number(minutes) || 0;
   if (total < 60) return `${total} min`;
 
@@ -7,3 +7,4 @@ export const formatDuration = (minutes) => {
   const hoursLabel = `${hours} ${hours === 1 ? 'hora' : 'horas'}`;
   return remaining === 0 ? hoursLabel : `${hoursLabel} ${remaining} min`;
 };
+

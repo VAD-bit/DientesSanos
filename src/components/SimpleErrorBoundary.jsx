@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import pandaLogo from '../assets/panda_logo_nobg.png';
 
 export class SimpleErrorBoundary extends React.Component {
@@ -22,7 +22,7 @@ export class SimpleErrorBoundary extends React.Component {
         <div style={{
           minHeight: '100vh',
           background: 'var(--bg-secondary)',
-          color: 'white',
+          color: '#111111',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
@@ -59,10 +59,10 @@ export class SimpleErrorBoundary extends React.Component {
               fontSize: '22px',
               fontWeight: '800',
               margin: '0 0 10px',
-              color: 'white',
+              color: '#111111',
               letterSpacing: '-0.3px'
             }}>
-              Algo salió mal
+              Algo saliÃ³ mal
             </h2>
 
             {/* Description */}
@@ -75,7 +75,7 @@ export class SimpleErrorBoundary extends React.Component {
               marginLeft: 'auto',
               marginRight: 'auto'
             }}>
-              La aplicación encontró un error inesperado. No te preocupes, puedes recargar para continuar.
+              La aplicaciÃ³n encontrÃ³ un error inesperado. No te preocupes, puedes recargar para continuar.
             </p>
 
             {/* Reload Button */}
@@ -103,7 +103,7 @@ export class SimpleErrorBoundary extends React.Component {
                 e.currentTarget.style.boxShadow = '0 4px 20px rgba(17, 17, 17, 0.25)';
               }}
             >
-              Recargar página
+              Recargar pÃ¡gina
             </button>
 
             {/* Error Details */}
@@ -145,3 +145,4 @@ export class SimpleErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
+

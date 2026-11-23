@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { 
   BarChart3, 
   Users, 
@@ -35,20 +35,20 @@ const MobileBottomNav = ({ activeTab, setActiveTab }) => {
     const res = await notificationService.requestPermission();
     setNotifPermission(res);
     if (res === 'granted') {
-      notificationService.sendNotification('🔔 Notificaciones Activadas', '¡Excelente! Ahora recibirás alertas en tiempo real.');
+      notificationService.sendNotification('ðŸ”” Notificaciones Activadas', 'Â¡Excelente! Ahora recibirÃ¡s alertas en tiempo real.');
     }
   };
 
   const allMasterItems = [
     { id: 'panels', label: 'Paneles', icon: ToothIcon },
-    { id: 'barber', label: 'Mi sillón', icon: ToothIcon },
+    { id: 'barber', label: 'Mi sillÃ³n', icon: ToothIcon },
     { id: 'scheduling', label: 'Agenda', icon: Calendar },
     { id: 'my-profile', label: 'Mi Perfil', icon: UserCircle },
     { id: 'clients', label: 'Pacientes', icon: Users },
     { id: 'dashboard', label: 'Inicio', icon: BarChart3 },
     { id: 'inventory', label: 'Stock', icon: Package },
     { id: 'checkout', label: 'Caja', icon: CreditCard },
-    { id: 'reception', label: 'Recepción', icon: ClipboardList },
+    { id: 'reception', label: 'RecepciÃ³n', icon: ClipboardList },
     { id: 'finance', label: 'Finanzas', icon: Wallet },
     { id: 'personnel', label: 'Equipo', icon: UserCheck },
     { id: 'reports', label: 'Reportes', icon: PieChart },
@@ -61,7 +61,7 @@ const MobileBottomNav = ({ activeTab, setActiveTab }) => {
   const allowedIds = getAllowedMenuIds(userRole);
   const isAdminRole = getRoleCategory(userRole) === 'admin';
 
-  // Pestañas principales (máx. 4) según categoría; el resto va a "más".
+  // PestaÃ±as principales (mÃ¡x. 4) segÃºn categorÃ­a; el resto va a "mÃ¡s".
   const MAIN_IDS_BY_CATEGORY = {
     admin: ['dashboard', 'clients', 'inventory', 'checkout'],
     odontologo: ['barber', 'scheduling', 'my-profile', 'clients'],
@@ -73,11 +73,11 @@ const MobileBottomNav = ({ activeTab, setActiveTab }) => {
 
   const canShowItem = (item) => item
     && allowedIds.includes(item.id)
-    // En móvil el admin sí ve "Mi Perfil" (como antes); "Mi sillón" entra desde Paneles.
+    // En mÃ³vil el admin sÃ­ ve "Mi Perfil" (como antes); "Mi sillÃ³n" entra desde Paneles.
     && !(isAdminRole && item.id === 'barber');
 
   let mainItems = mainIds.map(id => allMasterItems.find(i => i.id === id)).filter(canShowItem);
-  // Seguro: nunca dejar la barra principal vacía (roles atípicos).
+  // Seguro: nunca dejar la barra principal vacÃ­a (roles atÃ­picos).
   if (mainItems.length === 0) mainItems = allMasterItems.filter(canShowItem).slice(0, 4);
   const secondaryItems = allMasterItems.filter(item => canShowItem(item) && !mainItems.includes(item));
 
@@ -219,7 +219,7 @@ const MobileBottomNav = ({ activeTab, setActiveTab }) => {
               }}
             >
               <motion.div layout style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '24px' }}>
-                <h3 style={{ margin: 0, fontSize: '18px', fontWeight: '900', color: '#111827' }}>Más Opciones</h3>
+                <h3 style={{ margin: 0, fontSize: '18px', fontWeight: '900', color: '#111827' }}>MÃ¡s Opciones</h3>
                 <button onClick={() => setIsMenuOpen(false)} style={{ background: '#f5f7fa', border: 'none', borderRadius: '50%', width: '32px', height: '32px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#374151', cursor: 'pointer' }}>
                   <X size={18} />
                 </button>
@@ -306,3 +306,4 @@ const MobileBottomNav = ({ activeTab, setActiveTab }) => {
 };
 
 export default MobileBottomNav;
+

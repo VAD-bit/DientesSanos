@@ -1,7 +1,7 @@
-import React from 'react';
+﻿import React from 'react';
 
-// Fondo de mármol blanco con vetas grises, estilo la imagen de referencia.
-// Generado en SVG sin depender de imágenes externas.
+// Fondo de mÃ¡rmol blanco con vetas grises, estilo la imagen de referencia.
+// Generado en SVG sin depender de imÃ¡genes externas.
 export default function MarbleBackground() {
   return (
     <div
@@ -23,7 +23,7 @@ export default function MarbleBackground() {
         style={{ display: 'block' }}
       >
         <defs>
-          {/* Ruido orgánico que genera las vetas del mármol */}
+          {/* Ruido orgÃ¡nico que genera las vetas del mÃ¡rmol */}
           <filter id="marbleVeins" x="-10%" y="-10%" width="120%" height="120%">
             <feTurbulence
               type="fractalNoise"
@@ -46,10 +46,10 @@ export default function MarbleBackground() {
           </filter>
         </defs>
 
-        {/* Base blanca / gris muy clara (mármol blanco) */}
+        {/* Base blanca / gris muy clara (mÃ¡rmol blanco) */}
         <rect width="100%" height="100%" fill="#fafafa" />
 
-        {/* Vetras principales de mármol gris suave */}
+        {/* Vetras principales de mÃ¡rmol gris suave */}
         <rect
           width="100%"
           height="100%"
@@ -58,7 +58,7 @@ export default function MarbleBackground() {
           opacity="0.5"
         />
 
-        {/* Vetas suaves adicionales para profundidad orgánica */}
+        {/* Vetas suaves adicionales para profundidad orgÃ¡nica */}
         <path
           d="M 60 240 Q 400 140 740 260 T 60 660"
           fill="none"
@@ -87,3 +87,4 @@ export default function MarbleBackground() {
     </div>
   );
 }
+

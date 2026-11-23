@@ -1,4 +1,4 @@
-import Dexie from 'dexie';
+﻿import Dexie from 'dexie';
 import { dataService } from './dataService';
 import { supabase } from '../lib/supabase';
 
@@ -82,7 +82,7 @@ async function processQueue() {
         console.error('[OfflineService] Failed to process payment:', err);
         if (_isPermanentError(err)) {
           await db.pendingPayments.delete(item.id);
-          console.warn('[OfflineService] Permanent error — removed from queue:', err.message);
+          console.warn('[OfflineService] Permanent error â€” removed from queue:', err.message);
         } else {
           await db.pendingPayments.update(item.id, { processing: false, lastError: err.message });
         }
@@ -129,7 +129,7 @@ export async function clearQueue() {
 }
 
 // Returns the queued payments (oldest first) with just what the UI needs to show
-// what's pending — client, amount, when it was queued, and the last error if any.
+// what's pending â€” client, amount, when it was queued, and the last error if any.
 export async function listPendingPayments() {
   const items = await db.pendingPayments.toArray();
   return items
@@ -181,3 +181,4 @@ export function initOfflineService() {
     processQueue();
   }
 }
+

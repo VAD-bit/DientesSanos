@@ -1,4 +1,4 @@
-import { Home, Calendar, Crown, User, Plus, Compass } from 'lucide-react';
+﻿import { Home, Calendar, Crown, User, Plus, Compass } from 'lucide-react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from 'framer-motion';
 import { useState, useRef } from 'react';
@@ -232,3 +232,4 @@ export default function BottomNav() {
     </motion.div>
   );
 }
+

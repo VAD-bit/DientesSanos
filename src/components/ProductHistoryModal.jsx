@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+﻿import React, { useState, useMemo } from 'react';
 import { 
   X, 
   ShoppingBag, 
@@ -116,7 +116,7 @@ export default function ProductHistoryModal({
                     Historial de Productos Vendidos
                   </h2>
                   <p style={{ margin: '2px 0 0', fontSize: '11.5px', color: 'var(--text-secondary)' }}>
-                    Desglose de productos e insumos vendidos, ganancia neta para la clínica y costo de reposición.
+                    Desglose de productos e insumos vendidos, ganancia neta para la clÃ­nica y costo de reposiciÃ³n.
                   </p>
                 </div>
               </div>
@@ -176,7 +176,7 @@ export default function ProductHistoryModal({
                 </div>
               </div>
 
-              {/* Ganancia de la clínica */}
+              {/* Ganancia de la clÃ­nica */}
               <div style={{ 
                 padding: '12px 14px', 
                 borderRadius: '14px', 
@@ -188,7 +188,7 @@ export default function ProductHistoryModal({
               }}>
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                   <span style={{ fontSize: '10.5px', color: 'var(--gold-primary)', fontWeight: '900', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
-                    Ganancia Neta de la clínica
+                    Ganancia Neta de la clÃ­nica
                   </span>
                   <Banknote size={15} color="var(--gold-primary)" />
                 </div>
@@ -243,7 +243,7 @@ export default function ProductHistoryModal({
                   type="text" 
                   value={search}
                   onChange={e => setSearch(e.target.value)}
-                  placeholder="Buscar producto, cliente u odontólogo..."
+                  placeholder="Buscar producto, cliente u odontÃ³logo..."
                   style={{ 
                     width: '100%', 
                     boxSizing: 'border-box', 
@@ -298,7 +298,7 @@ export default function ProductHistoryModal({
                 <div style={{ padding: '48px 24px', textAlign: 'center', color: 'var(--text-muted)', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px' }}>
                   <Package size={36} style={{ opacity: 0.35 }} />
                   <p style={{ margin: 0, fontSize: '13px', fontWeight: '600' }}>
-                    {search || filterCost !== 'all' ? 'No hay productos que coincidan con la búsqueda.' : 'Aún no hay productos vendidos en este período.'}
+                    {search || filterCost !== 'all' ? 'No hay productos que coincidan con la bÃºsqueda.' : 'AÃºn no hay productos vendidos en este perÃ­odo.'}
                   </p>
                 </div>
               ) : (
@@ -308,25 +308,25 @@ export default function ProductHistoryModal({
                       <th style={{ ...thBaseStyle, textAlign: 'left', padding: '11px 18px' }}>Producto</th>
                       <th style={{ ...thBaseStyle, textAlign: 'left', padding: '11px 14px' }}>Cliente / Servicio</th>
                       <th style={{ ...thBaseStyle, textAlign: 'right', padding: '11px 14px' }}>Venta</th>
-                      <th style={{ ...thBaseStyle, textAlign: 'right', padding: '11px 14px' }}>Ganancia de la clínica</th>
+                      <th style={{ ...thBaseStyle, textAlign: 'right', padding: '11px 14px' }}>Ganancia de la clÃ­nica</th>
                       <th style={{ ...thBaseStyle, textAlign: 'right', padding: '11px 18px' }}>Costo (Deuda)</th>
                     </tr>
                   </thead>
                   <tbody>
                     {filteredHistory.map((r, idx) => {
                       // Extract product name and quantity
-                      const rawName = r.product?.replace(/ ×\d+$/, '') || 'Producto';
-                      const qtyMatch = r.product?.match(/ ×(\d+)$/);
+                      const rawName = r.product?.replace(/ Ã—\d+$/, '') || 'Producto';
+                      const qtyMatch = r.product?.match(/ Ã—(\d+)$/);
                       const qty = qtyMatch ? qtyMatch[1] : '1';
                       const formattedName = capitalize(rawName);
 
                       // Date formatting
                       const dateFormatted = new Date(r.date).toLocaleDateString('es-VE', { day: '2-digit', month: 'short' });
 
-                      // Context split: Client · Service
-                      const contextParts = (r.context || '').split(' · ');
+                      // Context split: Client Â· Service
+                      const contextParts = (r.context || '').split(' Â· ');
                       const clientName = contextParts[0] || 'Cliente';
-                      const serviceName = contextParts.slice(1).join(' · ');
+                      const serviceName = contextParts.slice(1).join(' Â· ');
 
                       return (
                         <tr 
@@ -353,11 +353,11 @@ export default function ProductHistoryModal({
                                 padding: '1px 6px', 
                                 borderRadius: '6px' 
                               }}>
-                                ×{qty}
+                                Ã—{qty}
                               </span>
                             </div>
                             <div style={{ fontSize: '10.5px', color: 'var(--text-muted)', marginTop: '3px', display: 'flex', alignItems: 'center', gap: '5px' }}>
-                              <Calendar size={11} /> {dateFormatted} {r.seller ? `· ${r.seller}` : ''}
+                              <Calendar size={11} /> {dateFormatted} {r.seller ? `Â· ${r.seller}` : ''}
                             </div>
                           </td>
 
@@ -383,7 +383,7 @@ export default function ProductHistoryModal({
                             </div>
                           </td>
 
-                          {/* Ganancia de la clínica */}
+                          {/* Ganancia de la clÃ­nica */}
                           <td style={{ padding: '12px 14px', textAlign: 'right', whiteSpace: 'nowrap' }}>
                             <div style={{ color: 'var(--gold-primary)', fontWeight: '900', fontSize: '13px' }}>
                               {formatMoney(r.marginBs)} Bs
@@ -439,7 +439,7 @@ export default function ProductHistoryModal({
             }}>
               <div style={{ fontSize: '11px', color: 'var(--text-muted)', display: 'flex', alignItems: 'center', gap: '6px' }}>
                 <AlertCircle size={13} color="#ff9f0a" />
-                El costo (deuda de reposición) solo aplica a productos con precio de compra configurado en Inventario.
+                El costo (deuda de reposiciÃ³n) solo aplica a productos con precio de compra configurado en Inventario.
               </div>
               <div style={{ fontSize: '11px', color: 'var(--text-secondary)', fontWeight: '750', whiteSpace: 'nowrap' }}>
                 {filteredHistory.length} {filteredHistory.length === 1 ? 'registro' : 'registros'}
@@ -478,3 +478,4 @@ const getChipStyle = (active) => ({
   whiteSpace: 'nowrap',
   transition: 'all 0.15s ease'
 });
+

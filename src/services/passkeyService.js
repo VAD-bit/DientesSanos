@@ -1,4 +1,4 @@
-import {
+﻿import {
   browserSupportsWebAuthn,
   startAuthentication,
   startRegistration,
@@ -11,7 +11,7 @@ const request = async (path, { method = 'GET', body, authenticated = false } = {
   const headers = { 'Content-Type': 'application/json' };
   if (authenticated) {
     const { data: { session } } = await supabase.auth.getSession();
-    if (!session?.access_token) throw new Error('Inicia sesión para administrar tus dispositivos');
+    if (!session?.access_token) throw new Error('Inicia sesiÃ³n para administrar tus dispositivos');
     headers.Authorization = `Bearer ${session.access_token}`;
   }
   const response = await fetch(`/api/passkeys/${path}`, {
@@ -20,7 +20,7 @@ const request = async (path, { method = 'GET', body, authenticated = false } = {
     body: body ? JSON.stringify(body) : undefined,
   });
   const payload = await response.json().catch(() => ({}));
-  if (!response.ok) throw new Error(payload.error || 'No se pudo completar la operación');
+  if (!response.ok) throw new Error(payload.error || 'No se pudo completar la operaciÃ³n');
   return payload;
 };
 
@@ -40,7 +40,7 @@ export const passkeyService = {
       token_hash: result.tokenHash,
       type: 'magiclink',
     });
-    if (error || !data?.session) throw new Error(error?.message || 'No se pudo iniciar la sesión');
+    if (error || !data?.session) throw new Error(error?.message || 'No se pudo iniciar la sesiÃ³n');
     return data;
   },
 
@@ -67,3 +67,4 @@ export const passkeyService = {
     });
   },
 };
+

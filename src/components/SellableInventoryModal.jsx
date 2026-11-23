@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+﻿import React, { useEffect, useMemo, useState } from 'react';
 import { X, Search, Plus, Minus, ShoppingBag } from 'lucide-react';
 import { 
   GiCoffeeCup, GiBeerBottle, GiWaterBottle, GiChocolateBar, 
@@ -29,7 +29,7 @@ const SellableInventoryModal = ({
   loading = false,
   mode = 'single',
   initialSelection = [],
-  title = 'Productos y Cortesías',
+  title = 'Productos y CortesÃ­as',
   subtitle = 'Selecciona un producto para agregarlo a la orden'
 }) => {
   const [search, setSearch] = useState('');
@@ -97,7 +97,7 @@ const SellableInventoryModal = ({
                     <p style={{ margin: '3px 0 0', color: 'var(--text-secondary)', fontSize: '11px', lineHeight: 1.4 }}>{subtitle}</p>
                   </div>
                 </div>
-                <button type="button" onClick={onClose} aria-label="Cerrar catálogo" style={{ width: '40px', height: '40px', display: 'grid', placeItems: 'center', flexShrink: 0, borderRadius: '12px', border: '1px solid rgba(0, 0, 0, 0.08)', background: 'rgba(0, 0, 0, 0.04)', color: '#d8d8da', cursor: 'pointer' }}><X size={18} /></button>
+                <button type="button" onClick={onClose} aria-label="Cerrar catÃ¡logo" style={{ width: '40px', height: '40px', display: 'grid', placeItems: 'center', flexShrink: 0, borderRadius: '12px', border: '1px solid rgba(0, 0, 0, 0.08)', background: 'rgba(0, 0, 0, 0.04)', color: '#d8d8da', cursor: 'pointer' }}><X size={18} /></button>
               </div>
 
               <div style={{ marginTop: '13px', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(240px, 100%), 1fr))', gap: '8px', alignItems: 'center' }}>
@@ -131,7 +131,7 @@ const SellableInventoryModal = ({
                         if (cleanName.includes('refresco') || cleanName.includes('coca') || cleanName.includes('pepsi')) return GiSodaCan;
                         if (cleanName.includes('chocolate') || cleanName.includes('dulce')) return GiChocolateBar;
                         if (cleanName.includes('snack') || cleanName.includes('papas') || cleanName.includes('pepito')) return GiChipsBag;
-                        if (cleanName.includes('cafe') || cleanName.includes('café') || cleanName.includes('capuchino')) return GiCoffeeCup;
+                        if (cleanName.includes('cafe') || cleanName.includes('cafÃ©') || cleanName.includes('capuchino')) return GiCoffeeCup;
                         return MdLocalDrink;
                       } else {
                         if (cleanName.includes('pomada') || cleanName.includes('cera') || cleanName.includes('gel')) return GiOpenedFoodCan;
@@ -157,7 +157,7 @@ const SellableInventoryModal = ({
                             <span style={{ color: isCafe ? 'var(--gold-primary)' : '#54d37b', fontSize: '9px', fontWeight: 950, textTransform: 'uppercase', letterSpacing: '.55px' }}>{getInventorySalesLabel(item)}</span>
                             <h3 style={{ margin: '4px 0 6px', color: '#fff', fontSize: '13px', lineHeight: 1.2, fontWeight: 900, textTransform: 'capitalize' }}>{item.name}</h3>
                             <strong style={{ color: 'var(--gold-primary)', fontSize: '18px', lineHeight: 1 }}>${money(item.price)}</strong>
-                            {rate > 0 && <span style={{ marginTop: '4px', display: 'block', color: 'rgba(255,255,255,0.5)', fontSize: '11.5px', fontWeight: 500 }}>≈ {money(Number(item.price || 0) * rate)} Bs</span>}
+                            {rate > 0 && <span style={{ marginTop: '4px', display: 'block', color: 'rgba(255,255,255,0.5)', fontSize: '11.5px', fontWeight: 500 }}>â‰ˆ {money(Number(item.price || 0) * rate)} Bs</span>}
                           </div>
                         </button>
                         {mode === 'multiple' && (
@@ -171,7 +171,7 @@ const SellableInventoryModal = ({
                     );
                   })}
                 </div>
-              ) : <div style={{ minHeight: '260px', display: 'grid', placeItems: 'center', textAlign: 'center', color: 'var(--text-muted)' }}><div><ShoppingBag size={38} style={{ opacity: .35, marginBottom: '10px' }} /><p>Sin productos disponibles para esta búsqueda.</p></div></div>}
+              ) : <div style={{ minHeight: '260px', display: 'grid', placeItems: 'center', textAlign: 'center', color: 'var(--text-muted)' }}><div><ShoppingBag size={38} style={{ opacity: .35, marginBottom: '10px' }} /><p>Sin productos disponibles para esta bÃºsqueda.</p></div></div>}
             </div>
 
             {mode === 'multiple' && (
@@ -188,3 +188,4 @@ const SellableInventoryModal = ({
 };
 
 export default SellableInventoryModal;
+

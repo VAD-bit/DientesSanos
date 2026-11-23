@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import { 
   X, 
   Calendar as CalendarIcon, 
@@ -111,11 +111,11 @@ const ScheduleModal = ({ isOpen, onClose, client, service, staff, onSchedule, de
                    </div>
                 )}
                 <div>
-                  <h2 style={{ fontSize: '22px', fontWeight: '950', letterSpacing: '-0.5px', margin: 0, color: 'white', fontFamily: 'Outfit, sans-serif' }}>
+                  <h2 style={{ fontSize: '22px', fontWeight: '950', letterSpacing: '-0.5px', margin: 0, color: '#111111', fontFamily: 'Outfit, sans-serif' }}>
                     Agendar <span style={{ color: 'var(--gold-primary)' }}>Turno</span>
                   </h2>
                   <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '13px', margin: '4px 0 0 0', fontWeight: '500' }}>
-                    {service?.name || 'Servicio'} con <span style={{ color: 'white', fontWeight: '700' }}>{staff?.name || 'Odontólogo'}</span>
+                    {service?.name || 'Servicio'} con <span style={{ color: '#111111', fontWeight: '700' }}>{staff?.name || 'OdontÃ³logo'}</span>
                   </p>
                 </div>
               </div>
@@ -131,11 +131,11 @@ const ScheduleModal = ({ isOpen, onClose, client, service, staff, onSchedule, de
                   const prev = new Date(selectedDate);
                   prev.setDate(selectedDate.getDate() - 1);
                   setSelectedDate(prev);
-                }} style={{ background: 'rgba(0, 0, 0, 0.04)', border: 'none', color: 'white', width: '36px', height: '36px', borderRadius: '12px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'all 0.2s' }} onMouseEnter={e => e.currentTarget.style.background = 'rgba(255,255,255,0.1)'} onMouseLeave={e => e.currentTarget.style.background = 'rgba(255,255,255,0.05)'}><ChevronLeft size={20} /></button>
+                }} style={{ background: 'rgba(0, 0, 0, 0.04)', border: 'none', color: '#111111', width: '36px', height: '36px', borderRadius: '12px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'all 0.2s' }} onMouseEnter={e => e.currentTarget.style.background = 'rgba(255,255,255,0.1)'} onMouseLeave={e => e.currentTarget.style.background = 'rgba(255,255,255,0.05)'}><ChevronLeft size={20} /></button>
                 
                 <div style={{ textAlign: 'center', flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                   <div style={{ fontSize: '11px', color: 'var(--gold-primary)', fontWeight: '800', letterSpacing: '1px', textTransform: 'uppercase', marginBottom: '4px' }}>Fecha de Cita</div>
-                  <div style={{ fontWeight: '800', fontSize: '18px', color: 'white', textTransform: 'capitalize' }}>
+                  <div style={{ fontWeight: '800', fontSize: '18px', color: '#111111', textTransform: 'capitalize' }}>
                     {selectedDate.toLocaleDateString('es-ES', { weekday: 'long', day: 'numeric', month: 'long' })}
                   </div>
                 </div>
@@ -144,7 +144,7 @@ const ScheduleModal = ({ isOpen, onClose, client, service, staff, onSchedule, de
                   const next = new Date(selectedDate);
                   next.setDate(selectedDate.getDate() + 1);
                   setSelectedDate(next);
-                }} style={{ background: 'rgba(0, 0, 0, 0.04)', border: 'none', color: 'white', width: '36px', height: '36px', borderRadius: '12px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'all 0.2s' }} onMouseEnter={e => e.currentTarget.style.background = 'rgba(255,255,255,0.1)'} onMouseLeave={e => e.currentTarget.style.background = 'rgba(255,255,255,0.05)'}><ChevronRight size={20} /></button>
+                }} style={{ background: 'rgba(0, 0, 0, 0.04)', border: 'none', color: '#111111', width: '36px', height: '36px', borderRadius: '12px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'all 0.2s' }} onMouseEnter={e => e.currentTarget.style.background = 'rgba(255,255,255,0.1)'} onMouseLeave={e => e.currentTarget.style.background = 'rgba(255,255,255,0.05)'}><ChevronRight size={20} /></button>
               </div>
 
               {/* Slots Section */}
@@ -162,7 +162,7 @@ const ScheduleModal = ({ isOpen, onClose, client, service, staff, onSchedule, de
                 ) : availableSlots.length === 0 ? (
                   <div style={{ textAlign: 'center', padding: '40px 20px', background: 'rgba(0, 0, 0, 0.04)', borderRadius: '20px', border: '1px dashed rgba(0, 0, 0, 0.08)' }}>
                     <CalendarIcon size={32} color="rgba(255,255,255,0.2)" style={{ marginBottom: '12px' }} />
-                    <div style={{ color: 'white', fontWeight: '800', fontSize: '15px', marginBottom: '6px' }}>No hay horarios disponibles</div>
+                    <div style={{ color: '#111111', fontWeight: '800', fontSize: '15px', marginBottom: '6px' }}>No hay horarios disponibles</div>
                     <div style={{ color: 'rgba(255,255,255,0.5)', fontSize: '13px' }}>Selecciona otra fecha.</div>
                   </div>
                 ) : (
@@ -265,3 +265,4 @@ const ScheduleModal = ({ isOpen, onClose, client, service, staff, onSchedule, de
 };
 
 export default ScheduleModal;
+

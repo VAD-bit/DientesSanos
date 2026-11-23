@@ -1,9 +1,9 @@
-import React, { useState, useRef, useEffect } from 'react';
+﻿import React, { useState, useRef, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { ChevronDown } from 'lucide-react';
 
 /**
- * PandaSelect - Un componente de selección premium que evita los estilos nativos de Windows.
+ * PandaSelect - Un componente de selecciÃ³n premium que evita los estilos nativos de Windows.
  * El dropdown usa position:fixed para siempre renderizarse por encima de todo.
  */
 const PandaSelect = ({ 
@@ -316,3 +316,4 @@ const PandaSelect = ({
 };
 
 export default PandaSelect;
+

@@ -1,74 +1,74 @@
-/**
+﻿/**
  * stringUtils.js
- * Utilidades para procesamiento de texto, capitalización inteligente y búsquedas sin acentos.
+ * Utilidades para procesamiento de texto, capitalizaciÃ³n inteligente y bÃºsquedas sin acentos.
  */
 
-// Diccionario de los nombres y apellidos hispanos más comunes que llevan tilde.
+// Diccionario de los nombres y apellidos hispanos mÃ¡s comunes que llevan tilde.
 const ACCENT_DICT = {
   // Nombres comunes
-  "jose": "José",
-  "maria": "María",
-  "jesus": "Jesús",
-  "hector": "Héctor",
-  "victor": "Víctor",
-  "ramon": "Ramón",
-  "raul": "Raúl",
-  "angel": "Ángel",
-  "joaquin": "Joaquín",
-  "andres": "Andrés",
-  "tomas": "Tomás",
-  "martin": "Martín",
-  "nicolas": "Nicolás",
-  "sebastian": "Sebastián",
-  "julian": "Julián",
-  "ruben": "Rubén",
-  "cesar": "César",
-  "oscar": "Óscar",
-  "ivan": "Iván",
-  "simon": "Simón",
-  "matias": "Matías",
-  "lucia": "Lucía",
-  "sofia": "Sofía",
-  "belen": "Belén",
-  "ines": "Inés",
-  "noemi": "Noemí",
+  "jose": "JosÃ©",
+  "maria": "MarÃ­a",
+  "jesus": "JesÃºs",
+  "hector": "HÃ©ctor",
+  "victor": "VÃ­ctor",
+  "ramon": "RamÃ³n",
+  "raul": "RaÃºl",
+  "angel": "Ãngel",
+  "joaquin": "JoaquÃ­n",
+  "andres": "AndrÃ©s",
+  "tomas": "TomÃ¡s",
+  "martin": "MartÃ­n",
+  "nicolas": "NicolÃ¡s",
+  "sebastian": "SebastiÃ¡n",
+  "julian": "JuliÃ¡n",
+  "ruben": "RubÃ©n",
+  "cesar": "CÃ©sar",
+  "oscar": "Ã“scar",
+  "ivan": "IvÃ¡n",
+  "simon": "SimÃ³n",
+  "matias": "MatÃ­as",
+  "lucia": "LucÃ­a",
+  "sofia": "SofÃ­a",
+  "belen": "BelÃ©n",
+  "ines": "InÃ©s",
+  "noemi": "NoemÃ­",
   "arantxa": "Arantxa",
   
   // Apellidos comunes
-  "perez": "Pérez",
-  "gomez": "Gómez",
-  "rodriguez": "Rodríguez",
+  "perez": "PÃ©rez",
+  "gomez": "GÃ³mez",
+  "rodriguez": "RodrÃ­guez",
   "garcia": "Garcia",
-  "fernandez": "Fernández",
-  "gonzalez": "González",
-  "lopez": "López",
-  "martinez": "Martínez",
-  "sanchez": "Sánchez",
-  "ramirez": "Ramírez",
+  "fernandez": "FernÃ¡ndez",
+  "gonzalez": "GonzÃ¡lez",
+  "lopez": "LÃ³pez",
+  "martinez": "MartÃ­nez",
+  "sanchez": "SÃ¡nchez",
+  "ramirez": "RamÃ­rez",
   "ruiz": "Ruiz",
-  "diaz": "Díaz",
+  "diaz": "DÃ­az",
   "alvarez": "Alvarez",
   "romero": "Romero",
-  "suarez": "Suárez",
-  "gutierrez": "Gutiérrez",
-  "marquez": "Márquez",
+  "suarez": "SuÃ¡rez",
+  "gutierrez": "GutiÃ©rrez",
+  "marquez": "MÃ¡rquez",
   "navarro": "Navarro",
-  "dominguez": "Domínguez",
-  "vazquez": "Vázquez",
+  "dominguez": "DomÃ­nguez",
+  "vazquez": "VÃ¡zquez",
   "ramos": "Ramos",
   "gil": "Gil",
   "ortiz": "Ortiz",
-  "gimenez": "Giménez",
+  "gimenez": "GimÃ©nez",
   "cruz": "Cruz",
-  "cortes": "Cortés",
-  "nunez": "Núñez",
-  "mendez": "Méndez",
-  "chavez": "Chávez",
-  "rios": "Ríos"
+  "cortes": "CortÃ©s",
+  "nunez": "NÃºÃ±ez",
+  "mendez": "MÃ©ndez",
+  "chavez": "ChÃ¡vez",
+  "rios": "RÃ­os"
 };
 
 /**
- * Normaliza un string para búsqueda: lo pasa a minúsculas y le quita todos los acentos.
+ * Normaliza un string para bÃºsqueda: lo pasa a minÃºsculas y le quita todos los acentos.
  * @param {string} str Texto original
  * @returns {string} Texto normalizado
  */
@@ -79,8 +79,8 @@ export const normalizeForSearch = (str) => {
 
 /**
  * Formatea un nombre completo:
- * 1. Pone en mayúscula la primera letra de cada palabra.
- * 2. Si la palabra está en nuestro diccionario de acentos comunes, le añade el acento.
+ * 1. Pone en mayÃºscula la primera letra de cada palabra.
+ * 2. Si la palabra estÃ¡ en nuestro diccionario de acentos comunes, le aÃ±ade el acento.
  * @param {string} fullName Nombre completo introducido por el usuario
  * @returns {string} Nombre formateado perfectamente
  */
@@ -95,7 +95,7 @@ export const formatName = (fullName) => {
   if (words.length === 1 && words[0] === "") return suffix;
   
   const formattedWords = words.map(word => {
-    // Si la palabra está en nuestro diccionario, usamos la versión con tilde
+    // Si la palabra estÃ¡ en nuestro diccionario, usamos la versiÃ³n con tilde
     const cleanWord = normalizeForSearch(word); // quitamos tilde por si la pusieron mal
     if (ACCENT_DICT[cleanWord]) {
       word = ACCENT_DICT[cleanWord];
@@ -122,11 +122,11 @@ export const formatProductName = (name) => {
   let formatted = name.toLowerCase().trim().replace(/\s+/g, ' ');
 
   const corrections = {
-    'cafe': 'café',
-    'te': 'té',
-    'mani': 'maní',
-    'maracuya': 'maracuyá',
-    'limon': 'limón',
+    'cafe': 'cafÃ©',
+    'te': 'tÃ©',
+    'mani': 'manÃ­',
+    'maracuya': 'maracuyÃ¡',
+    'limon': 'limÃ³n',
     'fresa': 'fresa',
     'machiato': 'macchiato',
     'capuchino': 'capuccino',
@@ -151,7 +151,7 @@ export const formatProductName = (name) => {
 };
 
 /**
- * Formatea nombres de servicios y aplica correcciones ortográficas de barbería/salón
+ * Formatea nombres de servicios y aplica correcciones ortogrÃ¡ficas de barberÃ­a/salÃ³n
  */
 export const formatServiceName = (name) => {
   if (!name) return "";
@@ -163,19 +163,19 @@ export const formatServiceName = (name) => {
   const corrections = {
     'empaste': 'Empaste',
     'muela': 'Muela',
-    'encías': 'Encías',
+    'encÃ­as': 'EncÃ­as',
     'cerquillo': 'Cerquillo',
-    'cirugia': 'Cirugía',
+    'cirugia': 'CirugÃ­a',
     'fluor': 'Fluor',
     'blanqueamiento': 'Blanqueamiento',
-    'obturacion': 'Obturación',
+    'obturacion': 'ObturaciÃ³n',
     'endodoncia': 'Endodoncia',
     'tinte': 'Blanqueamiento',
-    'pigmentacion': 'Pigmentación',
-    'exfoliacion': 'Exfoliación',
-    'hidratacion': 'Hidratación',
+    'pigmentacion': 'PigmentaciÃ³n',
+    'exfoliacion': 'ExfoliaciÃ³n',
+    'hidratacion': 'HidrataciÃ³n',
     'spa': 'Spa',
-    'depilacion': 'Depilación',
+    'depilacion': 'DepilaciÃ³n',
     'limpieza': 'Limpieza',
     'facial': 'Facial',
     'masaje': 'Masaje',
@@ -191,7 +191,7 @@ export const formatServiceName = (name) => {
 
   // Capitalizar el resto
   formatted = formatted.split(' ').map(word => word ? word.charAt(0).toUpperCase() + word.slice(1) : '').join(' ');
-  // Asegurarnos que VIP se quede en mayúscula siempre
+  // Asegurarnos que VIP se quede en mayÃºscula siempre
   formatted = formatted.replace(/\bVip\b/g, 'VIP');
   
   return formatted + suffix;
@@ -203,3 +203,4 @@ export default {
   formatProductName,
   formatServiceName
 };
+

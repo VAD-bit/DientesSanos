@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import pandaLogo from '../assets/panda_logo_black.png';
 
 const ReceiptTicket = ({ transaction }) => {
@@ -10,8 +10,8 @@ const ReceiptTicket = ({ transaction }) => {
     paymentMethodLabel, reference, generated_at, preview
   } = transaction;
 
-  // Formatea un monto (en USD) según la moneda del recibo: $ si se pagó en dólares,
-  // Bs si en bolívares, ambas si el pago fue mixto.
+  // Formatea un monto (en USD) segÃºn la moneda del recibo: $ si se pagÃ³ en dÃ³lares,
+  // Bs si en bolÃ­vares, ambas si el pago fue mixto.
   const fmtMoney = (usd) => {
     const n = Number(usd) || 0;
     const usdStr = `$${n.toFixed(2)}`;
@@ -27,7 +27,7 @@ const ReceiptTicket = ({ transaction }) => {
 
   return (
     <div className="receipt-ticket" style={preview ? { display: 'block', margin: '0 auto', borderRadius: '4px' } : undefined}>
-      {preview && <p style={{ textAlign: 'center', fontWeight: 'bold', fontSize: '11px', letterSpacing: '2px', margin: '0 0 8px', color: '#b00' }}>— VISTA PREVIA —</p>}
+      {preview && <p style={{ textAlign: 'center', fontWeight: 'bold', fontSize: '11px', letterSpacing: '2px', margin: '0 0 8px', color: '#b00' }}>â€” VISTA PREVIA â€”</p>}
       {/* HEADER */}
       <div className="receipt-header">
         <img src={pandaLogo} alt="Dientes Sanos" className="receipt-logo" />
@@ -76,14 +76,14 @@ const ReceiptTicket = ({ transaction }) => {
 
       {/* PAYMENT */}
       <div className="receipt-payments">
-        {paymentMethodLabel && <p><strong>Método de pago:</strong> {paymentMethodLabel}</p>}
+        {paymentMethodLabel && <p><strong>MÃ©todo de pago:</strong> {paymentMethodLabel}</p>}
         {reference && <p><strong>Ref:</strong> {reference}</p>}
       </div>
 
       {/* FOOTER */}
       <div className="receipt-footer">
         <div className="receipt-divider">================================</div>
-        <p className="receipt-thanks">Gracias por tu visita te espero pronto que Dios te lleve con bien 🙏🏻</p>
+        <p className="receipt-thanks">Gracias por tu visita te espero pronto que Dios te lleve con bien ðŸ™ðŸ»</p>
         {/* TODO(contacto): pendiente datos del cliente */}
         <p className="receipt-contact"><a href="#">Por confirmar</a></p>
       </div>
@@ -92,3 +92,4 @@ const ReceiptTicket = ({ transaction }) => {
 };
 
 export default ReceiptTicket;
+

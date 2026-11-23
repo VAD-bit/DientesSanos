@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+﻿import React, { useEffect } from 'react';
 import { LogOut } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 import MobileBottomNav from './MobileBottomNav';
@@ -38,19 +38,19 @@ const MobileLayout = ({ children, activeTab, setActiveTab, onOpenSale }) => {
         top: 0,
       }}>
         <div style={{ width: '40px' }} /> {/* Spacer */}
-        <img src={logo} alt="Centro Odontológico Dientes Sanos" style={{ height: '34px', width: 'auto', filter: 'brightness(0) invert(0) drop-shadow(0 0 8px rgba(0,0,0,0.15))' }} />
+        <img src={logo} alt="Centro OdontolÃ³gico Dientes Sanos" style={{ height: '34px', width: 'auto', filter: 'brightness(0) invert(0) drop-shadow(0 0 8px rgba(0,0,0,0.15))' }} />
         <button 
           onClick={logout}
           type="button"
-          aria-label="Cerrar sesión"
-          title="Cerrar sesión"
+          aria-label="Cerrar sesiÃ³n"
+          title="Cerrar sesiÃ³n"
           style={{ background: 'rgba(232, 212, 176, 0.12)', border: '1px solid rgba(232, 212, 176, 0.3)', borderRadius: '12px', color: '#92400e', padding: '11px', minWidth: '44px', minHeight: '44px', display: 'grid', placeItems: 'center', position: 'relative', zIndex: 102, cursor: 'pointer' }}
         >
           <LogOut size={20} />
         </button>
       </header>
       
-      {/* Main content — scrollable area */}
+      {/* Main content â€” scrollable area */}
       <div style={{
         flex: 1,
         padding: '10px 20px 100px 20px',
@@ -89,3 +89,4 @@ const MobileLayout = ({ children, activeTab, setActiveTab, onOpenSale }) => {
 };
 
 export default MobileLayout;
+

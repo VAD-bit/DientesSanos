@@ -1,4 +1,4 @@
-export const BUSINESS_TIME_ZONE = 'America/Caracas';
+﻿export const BUSINESS_TIME_ZONE = 'America/Caracas';
 export const BUSINESS_UTC_OFFSET = '-04:00';
 
 export const getBusinessDateKey = (date = new Date()) => {
@@ -49,7 +49,7 @@ export const isoToDisplay = (iso) => {
 
 // Formats digits-as-typed into "dd/mm/aaaa", inserting the slashes automatically instead of
 // requiring the user to type them. Returns both the display string and, once all 8 digits
-// are in, the ISO value to actually store — birth_date stays empty (it's optional) until the
+// are in, the ISO value to actually store â€” birth_date stays empty (it's optional) until the
 // date is complete.
 export const formatBirthDateInput = (rawValue) => {
   const digits = rawValue.replace(/\D/g, '').slice(0, 8);
@@ -66,3 +66,4 @@ export const formatBirthDateInput = (rawValue) => {
   }
   return { display, iso };
 };
+

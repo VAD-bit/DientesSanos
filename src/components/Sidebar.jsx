@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect } from 'react';
+﻿import { useRef, useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import {
   BarChart3, 
@@ -29,8 +29,8 @@ import { useModal } from '../context/ModalContext';
 import { notificationService } from '../services/notificationService';
 import { getAllowedMenuIds, roleNameOf } from '../utils/staffRoles';
 
-// Tooltip de íconos del sidebar: se porta al body con posición fija calculada
-// a partir del botón, para que el overflow del sidebar no lo corte.
+// Tooltip de Ã­conos del sidebar: se porta al body con posiciÃ³n fija calculada
+// a partir del botÃ³n, para que el overflow del sidebar no lo corte.
 const SidebarTooltip = ({ targetRef, label, danger }) => {
   if (!targetRef.current) return null;
   const rect = targetRef.current.getBoundingClientRect();
@@ -55,16 +55,16 @@ const Sidebar = ({ activeTab, setActiveTab, isMobile, rates, isCollapsed, setIsC
     const res = await notificationService.requestPermission();
     setNotifPermission(res);
     if (res === 'granted') {
-      notificationService.sendNotification('🔔 Notificaciones Activadas', '¡Excelente! Ahora recibirás alertas en tiempo real de citas y avisos.');
+      notificationService.sendNotification('ðŸ”” Notificaciones Activadas', 'Â¡Excelente! Ahora recibirÃ¡s alertas en tiempo real de citas y avisos.');
     }
   };
 
   const allMenuItems = [
     { id: 'my-profile', label: 'Mi Perfil', icon: UserCircle },
     { id: 'dashboard', label: 'Inicio', icon: BarChart3 },
-    { id: 'dentista', label: 'Mi sillón dental', icon: ToothIcon },
+    { id: 'dentista', label: 'Mi sillÃ³n dental', icon: ToothIcon },
     { id: 'scheduling', label: 'Agenda', icon: Calendar },
-    { id: 'reception', label: 'Recepción', icon: ClipboardList },
+    { id: 'reception', label: 'RecepciÃ³n', icon: ClipboardList },
     { id: 'checkout', label: 'Caja', icon: CreditCard },
     { id: 'panels', label: 'Paneles', icon: ToothIcon },
     { id: 'clients', label: 'Pacientes', icon: Users },
@@ -192,13 +192,13 @@ const Sidebar = ({ activeTab, setActiveTab, isMobile, rates, isCollapsed, setIsC
             {isCollapsed ? <PanelLeftOpen size={17} /> : <PanelLeftClose size={17} />}
           </button>
           {isToggleHovered && (
-            <SidebarTooltip targetRef={toggleBtnRef} label={isCollapsed ? 'Expandir menú' : 'Minimizar menú'} />
+            <SidebarTooltip targetRef={toggleBtnRef} label={isCollapsed ? 'Expandir menÃº' : 'Minimizar menÃº'} />
           )}
 
           {!isCollapsed && (
             <img
               src={sidebarLogo}
-              alt="Centro Odontológico Dientes Sanos"
+              alt="Centro OdontolÃ³gico Dientes Sanos"
               className="sidebar-logo-img"
               style={{
                 width: '85%', height: 'auto', maxWidth: '185px', marginTop: '8px',
@@ -374,7 +374,7 @@ const Sidebar = ({ activeTab, setActiveTab, isMobile, rates, isCollapsed, setIsC
                   {userRoleName}
                 </div>
               </div>
-              <span style={{ fontSize: '9px', color: 'rgba(255,255,255,0.18)', fontWeight: '700' }}>▼</span>
+              <span style={{ fontSize: '9px', color: 'rgba(255,255,255,0.18)', fontWeight: '700' }}>â–¼</span>
             </div>
           )}
 
@@ -412,10 +412,10 @@ const Sidebar = ({ activeTab, setActiveTab, isMobile, rates, isCollapsed, setIsC
               position: 'relative',
             }}
           >
-            <LogOut size={isCollapsed ? 15 : 13} /> {!isCollapsed && "Cerrar Sesión"}
+            <LogOut size={isCollapsed ? 15 : 13} /> {!isCollapsed && "Cerrar SesiÃ³n"}
           </button>
           {isCollapsed && isLogoutHovered && (
-            <SidebarTooltip targetRef={logoutBtnRef} label="Cerrar Sesión" danger />
+            <SidebarTooltip targetRef={logoutBtnRef} label="Cerrar SesiÃ³n" danger />
           )}
         </div>
       )}    </div>
@@ -423,3 +423,4 @@ const Sidebar = ({ activeTab, setActiveTab, isMobile, rates, isCollapsed, setIsC
 };
 
 export default Sidebar;
+

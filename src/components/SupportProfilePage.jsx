@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+﻿import React, { useEffect, useMemo, useState } from 'react';
 import {
   Shield,
   Smartphone,
@@ -30,8 +30,8 @@ const monthLabel = () =>
   new Date().toLocaleDateString('es-VE', { month: 'long', year: 'numeric' });
 
 /**
- * Perfil para personal de apoyo (Editor, Marketing, etc.): no atiende clientes, así que
- * en vez del panel de "sillón" ve su salario mensual asignado, cuánto le han pagado este
+ * Perfil para personal de apoyo (Editor, Marketing, etc.): no atiende clientes, asÃ­ que
+ * en vez del panel de "sillÃ³n" ve su salario mensual asignado, cuÃ¡nto le han pagado este
  * mes, el historial de pagos y su consumo de productos.
  */
 const SupportProfilePage = ({ staffMember, isMobile }) => {
@@ -97,13 +97,13 @@ const SupportProfilePage = ({ staffMember, isMobile }) => {
               {staffMember?.image_url ? (
                 <img src={staffMember.image_url} alt={staffMember.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
               ) : (
-                <span style={{ fontSize: 38, fontWeight: 950, color: 'white', fontFamily: 'Outfit, var(--font-sans), system-ui' }}>{initial}</span>
+                <span style={{ fontSize: 38, fontWeight: 950, color: '#111111', fontFamily: 'Outfit, var(--font-sans), system-ui' }}>{initial}</span>
               )}
             </div>
             <span style={{ position: 'absolute', bottom: 4, right: 4, width: 16, height: 16, borderRadius: '50%', background: '#30d158', border: '3px solid rgba(0, 0, 0, 0.15)' }} />
           </div>
           <div style={{ flex: 1 }}>
-            <h2 style={{ fontSize: isMobile ? 26 : 30, fontWeight: 950, color: 'white', letterSpacing: '-0.6px', margin: '0 0 8px', fontFamily: 'Outfit, var(--font-sans), system-ui' }}>{staffMember?.name}</h2>
+            <h2 style={{ fontSize: isMobile ? 26 : 30, fontWeight: 950, color: '#111111', letterSpacing: '-0.6px', margin: '0 0 8px', fontFamily: 'Outfit, var(--font-sans), system-ui' }}>{staffMember?.name}</h2>
             <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', justifyContent: isMobile ? 'center' : 'flex-start', alignItems: 'center' }}>
               <span style={{ fontSize: 11, fontWeight: 900, color: '#121212', background: 'var(--gold-primary)', padding: '5px 12px', borderRadius: 20, textTransform: 'uppercase', letterSpacing: 1, display: 'inline-flex', alignItems: 'center', gap: 6 }}>
                 <Shield size={12} /> {roleName}
@@ -132,7 +132,7 @@ const SupportProfilePage = ({ staffMember, isMobile }) => {
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 12, flexWrap: 'wrap' }}>
               <div>
                 <span style={{ color: 'var(--gold-primary)', fontSize: 11, fontWeight: 900, letterSpacing: 0.8, textTransform: 'uppercase' }}>Salario mensual asignado</span>
-                <h3 style={{ margin: '6px 0 2px', fontSize: isMobile ? 30 : 36, color: 'white', fontFamily: 'Outfit, var(--font-sans), system-ui', fontWeight: 950 }}>{fmtUsd(monthlySalaryUsd)}</h3>
+                <h3 style={{ margin: '6px 0 2px', fontSize: isMobile ? 30 : 36, color: '#111111', fontFamily: 'Outfit, var(--font-sans), system-ui', fontWeight: 950 }}>{fmtUsd(monthlySalaryUsd)}</h3>
                 <span style={{ color: 'var(--text-secondary)', fontSize: 12, textTransform: 'capitalize' }}>{monthLabel()}</span>
               </div>
               <div style={{ width: 46, height: 46, borderRadius: 14, background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', display: 'grid', placeItems: 'center', flexShrink: 0 }}>
@@ -149,36 +149,36 @@ const SupportProfilePage = ({ staffMember, isMobile }) => {
                 <div style={{ height: 10, borderRadius: 999, background: 'rgba(0, 0, 0, 0.04)', overflow: 'hidden' }}>
                   <div style={{ width: `${salaryPct}%`, height: '100%', borderRadius: 999, background: salaryPct >= 100 ? '#30d158' : 'var(--gold-gradient, linear-gradient(90deg,#e8d4b0,#f5e9d5))', transition: 'width .5s ease' }} />
                 </div>
-                <div style={{ marginTop: 6, fontSize: 11, color: 'var(--text-muted)' }}>{salaryPct}% del salario cubierto · {fmtBs(paidMonthBs)} Bs pagados este mes</div>
+                <div style={{ marginTop: 6, fontSize: 11, color: 'var(--text-muted)' }}>{salaryPct}% del salario cubierto Â· {fmtBs(paidMonthBs)} Bs pagados este mes</div>
               </div>
             ) : (
               <div style={{ marginTop: 14, fontSize: 12, color: 'var(--text-muted)' }}>
-                Aún no tienes un salario mensual asignado. El administrador puede configurarlo desde Finanzas.
+                AÃºn no tienes un salario mensual asignado. El administrador puede configurarlo desde Finanzas.
               </div>
             )}
           </div>
 
-          {/* KPIs rápidos */}
+          {/* KPIs rÃ¡pidos */}
           <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr 1fr' : 'repeat(3, 1fr)', gap: 12 }}>
             <div className="glass-card" style={{ padding: 18, borderRadius: 18, textAlign: isMobile ? 'center' : 'left' }}>
               <div style={{ display: 'inline-flex', width: 40, height: 40, borderRadius: 12, background: 'rgba(48,209,88,.12)', alignItems: 'center', justifyContent: 'center', marginBottom: 10 }}>
                 <TrendingUp size={18} color="#30d158" />
               </div>
-              <div style={{ color: 'white', fontSize: 22, fontWeight: 900 }}>{fmtUsd(paidMonthUsd)}</div>
+              <div style={{ color: '#111111', fontSize: 22, fontWeight: 900 }}>{fmtUsd(paidMonthUsd)}</div>
               <div style={{ color: 'var(--text-muted)', fontSize: 10, fontWeight: 800, textTransform: 'uppercase', letterSpacing: 0.5, marginTop: 4 }}>Pagado este mes</div>
             </div>
             <div className="glass-card" style={{ padding: 18, borderRadius: 18, textAlign: isMobile ? 'center' : 'left' }}>
               <div style={{ display: 'inline-flex', width: 40, height: 40, borderRadius: 12, background: 'rgba(255,159,10,.12)', alignItems: 'center', justifyContent: 'center', marginBottom: 10 }}>
                 <Package size={18} color="#ff9f0a" />
               </div>
-              <div style={{ color: 'white', fontSize: 22, fontWeight: 900 }}>{fmtBs(consumoMonthBs)} <span style={{ fontSize: 12, color: 'var(--text-muted)' }}>Bs</span></div>
+              <div style={{ color: '#111111', fontSize: 22, fontWeight: 900 }}>{fmtBs(consumoMonthBs)} <span style={{ fontSize: 12, color: 'var(--text-muted)' }}>Bs</span></div>
               <div style={{ color: 'var(--text-muted)', fontSize: 10, fontWeight: 800, textTransform: 'uppercase', letterSpacing: 0.5, marginTop: 4 }}>Consumo este mes</div>
             </div>
             <div className="glass-card" style={{ padding: 18, borderRadius: 18, textAlign: isMobile ? 'center' : 'left', gridColumn: isMobile ? '1 / -1' : 'auto' }}>
               <div style={{ display: 'inline-flex', width: 40, height: 40, borderRadius: 12, background: 'rgba(17, 17, 17,.14)', alignItems: 'center', justifyContent: 'center', marginBottom: 10 }}>
                 <CalendarClock size={18} color="var(--gold-primary)" />
               </div>
-              <div style={{ color: 'white', fontSize: 22, fontWeight: 900 }}>{fmtBs(consumoTotalBs)} <span style={{ fontSize: 12, color: 'var(--text-muted)' }}>Bs</span></div>
+              <div style={{ color: '#111111', fontSize: 22, fontWeight: 900 }}>{fmtBs(consumoTotalBs)} <span style={{ fontSize: 12, color: 'var(--text-muted)' }}>Bs</span></div>
               <div style={{ color: 'var(--text-muted)', fontSize: 10, fontWeight: 800, textTransform: 'uppercase', letterSpacing: 0.5, marginTop: 4 }}>Consumo acumulado</div>
             </div>
           </div>
@@ -188,8 +188,8 @@ const SupportProfilePage = ({ staffMember, isMobile }) => {
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 16, flexWrap: 'wrap' }}>
               <div>
                 <span style={{ color: 'var(--gold-primary)', fontSize: 11, fontWeight: 900, letterSpacing: 0.8, textTransform: 'uppercase' }}>Historial</span>
-                <h3 style={{ margin: '6px 0 3px', fontSize: isMobile ? 20 : 24, color: 'white' }}>Pagos y consumo</h3>
-                <span style={{ color: 'var(--text-secondary)', fontSize: 12 }}>Cada pago de nómina, abono y producto consumido.</span>
+                <h3 style={{ margin: '6px 0 3px', fontSize: isMobile ? 20 : 24, color: '#111111' }}>Pagos y consumo</h3>
+                <span style={{ color: 'var(--text-secondary)', fontSize: 12 }}>Cada pago de nÃ³mina, abono y producto consumido.</span>
               </div>
               <button type="button" onClick={() => setShowHistory((v) => !v)} className="btn-gold" style={{ padding: '11px 16px', borderRadius: 12, display: 'inline-flex', alignItems: 'center', gap: 8 }}>
                 <History size={16} /> {showHistory ? 'Ocultar' : 'Ver historial'}
@@ -199,7 +199,7 @@ const SupportProfilePage = ({ staffMember, isMobile }) => {
             {showHistory && (
               <div className="animate-fade-in" style={{ marginTop: 16, paddingTop: 14, borderTop: '1px solid rgba(0, 0, 0, 0.08)', display: 'grid', gap: 8 }}>
                 {history.length === 0 ? (
-                  <div style={{ padding: 18, textAlign: 'center', color: 'var(--text-muted)', fontSize: 12 }}>Aún no hay pagos ni consumo registrados.</div>
+                  <div style={{ padding: 18, textAlign: 'center', color: 'var(--text-muted)', fontSize: 12 }}>AÃºn no hay pagos ni consumo registrados.</div>
                 ) : (
                   history.map((item) => {
                     const isDebit = item.type === 'Consumo' || item.type === 'Adelanto';
@@ -239,10 +239,11 @@ const SupportProfilePage = ({ staffMember, isMobile }) => {
         </>
       )}
 
-      {/* Seguridad / contraseña */}
+      {/* Seguridad / contraseÃ±a */}
       <PasskeySettings showToast={showToast} />
     </div>
   );
 };
 
 export default SupportProfilePage;
+

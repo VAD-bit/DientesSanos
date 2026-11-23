@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
+﻿import React, { useState, useEffect, useMemo } from 'react';
 import { 
   User, 
   Clock, 
@@ -50,8 +50,8 @@ const isBirthdayToday = (birthDate) => {
   return Number(parts[1]) === today.getMonth() + 1 && Number(parts[2]) === today.getDate();
 };
 
-// Vista previa temporal: activa el banner de cumpleaños con ?previewBday=1 en la URL.
-// Sirve para revisar el diseño sin tener que iniciar sesion con otra cuenta. Quitar cuando ya no se use.
+// Vista previa temporal: activa el banner de cumpleaÃ±os con ?previewBday=1 en la URL.
+// Sirve para revisar el diseÃ±o sin tener que iniciar sesion con otra cuenta. Quitar cuando ya no se use.
 const isBirthdayPreview = () => {
   try {
     return new URLSearchParams(window.location.search).get('previewBday') === '1';
@@ -202,7 +202,7 @@ const UserProfilePage = ({ staffMember, inventory = [], onUpdate, isMobile }) =>
   const addPortfolioPhoto = async (file) => {
     if (!file || !staffMember?.id) return;
     if (portfolio.length >= MAX_PORTFOLIO) {
-      showToast(`Máximo ${MAX_PORTFOLIO} fotos por portafolio.`, 'error');
+      showToast(`MÃ¡ximo ${MAX_PORTFOLIO} fotos por portafolio.`, 'error');
       return;
     }
     setPortfolioUploading(true);
@@ -336,7 +336,7 @@ const UserProfilePage = ({ staffMember, inventory = [], onUpdate, isMobile }) =>
       });
     } catch (error) {
       console.error('Error loading stats:', error);
-      showToast('Error cargando métricas del perfil', 'error');
+      showToast('Error cargando mÃ©tricas del perfil', 'error');
     } finally {
       setLoading(false);
     }
@@ -347,12 +347,12 @@ const UserProfilePage = ({ staffMember, inventory = [], onUpdate, isMobile }) =>
     let adjustedInventoryItem = null;
     if (newTool.ownership === 'Propia') {
       if (!newTool.name.trim()) {
-        showToast('Ingresa el nombre del artículo', 'warning');
+        showToast('Ingresa el nombre del artÃ­culo', 'warning');
         return;
       }
     } else {
       if (!newTool.inventory_id) {
-        showToast('Selecciona un artículo del inventario', 'warning');
+        showToast('Selecciona un artÃ­culo del inventario', 'warning');
         return;
       }
     }
@@ -400,7 +400,7 @@ const UserProfilePage = ({ staffMember, inventory = [], onUpdate, isMobile }) =>
         quantity: 1
       });
       setShowAddTool(false);
-      showToast('Artículo registrado con éxito');
+      showToast('ArtÃ­culo registrado con Ã©xito');
       if (onUpdate) {
         try {
           await onUpdate();
@@ -417,14 +417,14 @@ const UserProfilePage = ({ staffMember, inventory = [], onUpdate, isMobile }) =>
           console.error('Error restoring inventory stock:', rollbackError);
         }
       }
-      showToast('Error al guardar el artículo', 'error');
+      showToast('Error al guardar el artÃ­culo', 'error');
     } finally {
       setLoading(false);
     }
   };
 
   const handleRemoveTool = async (toolId) => {
-    if (!await confirm('¿Seguro que deseas eliminar este artículo del inventario personal?')) return;
+    if (!await confirm('Â¿Seguro que deseas eliminar este artÃ­culo del inventario personal?')) return;
     try {
       setLoading(true);
       const toolToRemove = tools.find(t => t.id === toolId);
@@ -455,8 +455,8 @@ const UserProfilePage = ({ staffMember, inventory = [], onUpdate, isMobile }) =>
         );
       }
       showToast(toolToRemove?.inventory_id
-        ? 'Artículo removido y devuelto al inventario general'
-        : 'Artículo removido del perfil');
+        ? 'ArtÃ­culo removido y devuelto al inventario general'
+        : 'ArtÃ­culo removido del perfil');
       if (onUpdate) {
         try {
           await onUpdate();
@@ -489,7 +489,7 @@ const UserProfilePage = ({ staffMember, inventory = [], onUpdate, isMobile }) =>
 
     const currentQuantity = Math.max(0, Number(tool.quantity) || 0);
     if (amount < 0 && currentQuantity === 0) {
-      showToast('Este producto ya está agotado.', 'warning');
+      showToast('Este producto ya estÃ¡ agotado.', 'warning');
       return;
     }
 
@@ -499,7 +499,7 @@ const UserProfilePage = ({ staffMember, inventory = [], onUpdate, isMobile }) =>
       if (amount > 0 && tool.inventory_id) {
         const invItem = inventory.find(item => item.id === tool.inventory_id);
         if (!invItem || Number(invItem.stock || 0) < 1) {
-          showToast('No quedan unidades disponibles en el almacén.', 'warning');
+          showToast('No quedan unidades disponibles en el almacÃ©n.', 'warning');
           return;
         }
         await dataService.updateStock(invItem.id, Number(invItem.stock) - 1);
@@ -584,14 +584,14 @@ const UserProfilePage = ({ staffMember, inventory = [], onUpdate, isMobile }) =>
     const mapping = {
       'DASHBOARD': 'Panel Principal',
       'SCHEDULING': 'Agenda',
-      'RECEPTION': 'Recepción',
+      'RECEPTION': 'RecepciÃ³n',
       'CHECKOUT': 'Caja Chica',
-      'BARBER': 'Panel Odontólogo',
+      'BARBER': 'Panel OdontÃ³logo',
       'CLIENTS': 'Pacientes',
       'PERSONNEL': 'Equipo de Personal',
       'SERVICES': 'Servicios',
       'INVENTORY': 'Inventario',
-      'FINANCE': 'Reportes y Métricas',
+      'FINANCE': 'Reportes y MÃ©tricas',
       'HISTORY': 'Historial de Operaciones'
     };
     return mapping[perm.toUpperCase()] || perm;
@@ -957,7 +957,7 @@ const UserProfilePage = ({ staffMember, inventory = [], onUpdate, isMobile }) =>
           .profile-empty-state { min-width: 0 !important; grid-column: 1 / -1; }
           .profile-payroll { padding: 18px !important; }
         }
-        /* ===== Cumpleaños: hero fusionado en una sola tarjeta ===== */
+        /* ===== CumpleaÃ±os: hero fusionado en una sola tarjeta ===== */
         .profile-hero--bday {
           background:
             radial-gradient(circle at 26% -15%, rgba(255, 255, 255, 0.9), transparent 55%),
@@ -995,7 +995,7 @@ const UserProfilePage = ({ staffMember, inventory = [], onUpdate, isMobile }) =>
           box-shadow: 0 0 26px rgba(17, 17, 17,.55), 0 0 55px rgba(17, 17, 17,.22) !important;
         }
         .profile-avatar-shell.is-bday > div:first-child { animation: bdayCounterspin 5s linear infinite; }
-        /* La foto es protagonista en cumpleaños: avatar mas grande que en el perfil normal */
+        /* La foto es protagonista en cumpleaÃ±os: avatar mas grande que en el perfil normal */
         .profile-hero--bday .profile-avatar-shell { padding: 5px !important; }
         .profile-hero--bday .profile-avatar-shell > div:first-child { width: 128px !important; height: 128px !important; }
         @keyframes bdaySpin { to { transform: rotate(360deg); } }
@@ -1033,7 +1033,7 @@ const UserProfilePage = ({ staffMember, inventory = [], onUpdate, isMobile }) =>
         }
       `}</style>
 
-      {/* 1. Header Banner & Profile Info Card (se vuelve festivo en cumpleaños) */}
+      {/* 1. Header Banner & Profile Info Card (se vuelve festivo en cumpleaÃ±os) */}
       <div className={`glass-card premium-profile-card anim-0 profile-hero${isCelebratingBirthday ? ' profile-hero--bday' : ''}`} style={{
         padding: '0',
         borderRadius: '32px',
@@ -1066,10 +1066,10 @@ const UserProfilePage = ({ staffMember, inventory = [], onUpdate, isMobile }) =>
                 />
               ))}
             </div>
-            <div className="bday-corner-badge"><PartyPopper size={13} /> día especial</div>
+            <div className="bday-corner-badge"><PartyPopper size={13} /> dÃ­a especial</div>
           </>
         )}
-        {/* Banner con aurora dorada (se apaga en cumpleaños para dejar ver el fondo festivo) */}
+        {/* Banner con aurora dorada (se apaga en cumpleaÃ±os para dejar ver el fondo festivo) */}
         <div className="profile-hero-banner" style={{ height: '150px', position: 'relative', overflow: 'hidden' }}>
           {!isCelebratingBirthday && <div className="animated-aurora" />}
           <div style={{
@@ -1108,7 +1108,7 @@ const UserProfilePage = ({ staffMember, inventory = [], onUpdate, isMobile }) =>
               {staffMember?.image_url ? (
                 <img src={staffMember.image_url} alt={staffMember.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
               ) : (
-                <div style={{ fontSize: '46px', fontWeight: '950', color: 'white', fontFamily: 'Outfit, var(--font-sans), system-ui', textShadow: '0 0 10px rgba(255,255,255,0.2)' }}>
+                <div style={{ fontSize: '46px', fontWeight: '950', color: '#111111', fontFamily: 'Outfit, var(--font-sans), system-ui', textShadow: '0 0 10px rgba(255,255,255,0.2)' }}>
                   {staffMember?.name ? staffMember.name.charAt(0) : 'A'}
                 </div>
               )}
@@ -1136,10 +1136,10 @@ const UserProfilePage = ({ staffMember, inventory = [], onUpdate, isMobile }) =>
                 {isCelebratingBirthday ? (
                   <h2 className="bday-inline-title">
                     <Cake size={28} className="bday-cake-icon" />
-                    <span className="bday-title-text">¡Feliz cumpleaños, {String(staffMember.name || '').trim().split(' ')[0]}!</span>
+                    <span className="bday-title-text">Â¡Feliz cumpleaÃ±os, {String(staffMember.name || '').trim().split(' ')[0]}!</span>
                   </h2>
                 ) : (
-                  <h2 style={{ fontSize: '32px', fontWeight: '950', color: 'white', letterSpacing: '-0.8px', marginBottom: '8px', fontFamily: 'Outfit, var(--font-sans), system-ui' }}>
+                  <h2 style={{ fontSize: '32px', fontWeight: '950', color: '#111111', letterSpacing: '-0.8px', marginBottom: '8px', fontFamily: 'Outfit, var(--font-sans), system-ui' }}>
                     {staffMember.name}
                   </h2>
                 )}
@@ -1198,11 +1198,11 @@ const UserProfilePage = ({ staffMember, inventory = [], onUpdate, isMobile }) =>
                   )}
                 </div>
                 {isCelebratingBirthday && (
-                  <p className="bday-inline-sub">Hoy todo el equipo de Dientes Sanos brinda por ti. Que este nuevo año venga cargado de cosas increíbles.</p>
+                  <p className="bday-inline-sub">Hoy todo el equipo de Dientes Sanos brinda por ti. Que este nuevo aÃ±o venga cargado de cosas increÃ­bles.</p>
                 )}
               </div>
               <div className="profile-command-meta">
-                <span className="profile-sync-pill"><span style={{ width: 7, height: 7, borderRadius: '50%', background: '#30d158', boxShadow: '0 0 10px rgba(48,209,88,.65)' }} /> Perfil público sincronizado</span>
+                <span className="profile-sync-pill"><span style={{ width: 7, height: 7, borderRadius: '50%', background: '#30d158', boxShadow: '0 0 10px rgba(48,209,88,.65)' }} /> Perfil pÃºblico sincronizado</span>
                 <button type="button" className="profile-quick-button" onClick={() => document.getElementById('profile-agenda')?.scrollIntoView({ behavior: 'smooth', block: 'center' })}>
                   <Calendar size={14} /> Ver agenda
                 </button>
@@ -1268,14 +1268,14 @@ const UserProfilePage = ({ staffMember, inventory = [], onUpdate, isMobile }) =>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 16, flexWrap: 'wrap' }}>
                 <div>
                   <span style={{ color: 'var(--gold-primary)', fontSize: 11, fontWeight: 900, letterSpacing: .8, textTransform: 'uppercase' }}>Historial de pagos</span>
-                  <h3 style={{ margin: '6px 0 3px', fontSize: isMobile ? 22 : 27, color: 'white' }}>Pagos y vales de nómina</h3>
+                  <h3 style={{ margin: '6px 0 3px', fontSize: isMobile ? 22 : 27, color: '#111111' }}>Pagos y vales de nÃ³mina</h3>
                   <span style={{ color: 'var(--text-secondary)', fontSize: 12 }}>Consulta cada pago, abono o adelanto registrado.</span>
                 </div>
                 <button type="button" onClick={() => showPaymentHistory ? handleClosePaymentHistory() : setShowPaymentHistory(true)} className="btn-gold" style={{ padding: '12px 18px', borderRadius: 12, display: 'inline-flex', alignItems: 'center', gap: 8 }}><History size={17} /> {showPaymentHistory ? 'Ocultar historial' : 'Ver historial'}</button>
               </div>
               {(showPaymentHistory || isPaymentHistoryExiting) && (
                 <div className={isPaymentHistoryExiting ? 'animate-slide-down-fade' : 'animate-fade-in'} style={{ marginTop: 18, paddingTop: 14, borderTop: '1px solid rgba(0, 0, 0, 0.08)', display: 'grid', gap: 8 }}>
-                  {asArray(settlement?.paymentHistory).length === 0 ? <div style={{ padding: 18, textAlign: 'center', color: 'var(--text-muted)', fontSize: 12 }}>Aún no hay pagos ni vales registrados.</div> : asArray(settlement?.paymentHistory).map(item => (
+                  {asArray(settlement?.paymentHistory).length === 0 ? <div style={{ padding: 18, textAlign: 'center', color: 'var(--text-muted)', fontSize: 12 }}>AÃºn no hay pagos ni vales registrados.</div> : asArray(settlement?.paymentHistory).map(item => (
                     <div key={item.id} style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr auto' : '120px minmax(0, 1fr) 150px auto', gap: 10, alignItems: 'center', padding: isMobile ? '12px' : '11px 12px', borderRadius: 12, background: 'rgba(0, 0, 0, 0.04)' }}>
                       <div><span style={{ display: 'block', color: 'var(--text-muted)', fontSize: 11 }}>{new Date(item.date).toLocaleDateString('es-VE')}</span>{isMobile && <span style={{ display: 'block', marginTop: 3, color: 'var(--text-secondary)', fontSize: 10 }}>{item.paymentMethod}</span>}</div>
                       {isMobile ? (
@@ -1300,8 +1300,8 @@ const UserProfilePage = ({ staffMember, inventory = [], onUpdate, isMobile }) =>
 
           <div style={{ display: 'grid', gridTemplateColumns: isMobile ? 'minmax(0, 1fr) minmax(0, 1fr)' : 'repeat(4, minmax(0, 1fr))', gap: '12px' }} className="anim-1 profile-finance-grid">
             {[
-              { icon: BadgeDollarSign, label: isAssistant ? 'Ingresos por limpiezas' : 'Comisión servicios', amount: stats.totalServiceComm },
-              { icon: Package, label: 'Comisión productos', amount: stats.totalProductComm },
+              { icon: BadgeDollarSign, label: isAssistant ? 'Ingresos por limpiezas' : 'ComisiÃ³n servicios', amount: stats.totalServiceComm },
+              { icon: Package, label: 'ComisiÃ³n productos', amount: stats.totalProductComm },
               { icon: TrendingUp, label: 'Total propinas', amount: stats.totalTips },
               { icon: WalletCards, label: 'Vales este mes', amount: Number(settlement?.valesMonthBs || 0) / Math.max(1, Number(settlement?.rate || 1)), bs: Number(settlement?.valesMonthBs || 0), pill: 'Por descontar' }
             ].map((card, i) => {
@@ -1326,7 +1326,7 @@ const UserProfilePage = ({ staffMember, inventory = [], onUpdate, isMobile }) =>
           <div id="profile-portfolio" className="glass-card anim-2 profile-portfolio" style={{ borderRadius: '22px', border: '1px solid rgba(0, 0, 0, 0.08)', padding: isMobile ? '18px' : '22px' }}>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '16px' }}>
               <div>
-                <h3 style={{ fontSize: '16px', fontWeight: '900', color: 'white', margin: 0, letterSpacing: '-0.3px' }}>Portafolio de Trabajos</h3>
+                <h3 style={{ fontSize: '16px', fontWeight: '900', color: '#111111', margin: 0, letterSpacing: '-0.3px' }}>Portafolio de Trabajos</h3>
                 <p style={{ fontSize: '12px', color: 'var(--text-muted)', margin: '4px 0 0' }}>Tus mejores trabajos para que los clientes los vean</p>
               </div>
               <span style={{ fontSize: '11px', color: 'var(--text-muted)', fontWeight: '700' }}>{portfolio.length}/{MAX_PORTFOLIO}</span>
@@ -1342,7 +1342,7 @@ const UserProfilePage = ({ staffMember, inventory = [], onUpdate, isMobile }) =>
                     <img src={photo.image_url} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                     <button
                       onClick={() => removePortfolioPhoto(photo)}
-                      style={{ position: 'absolute', top: '4px', right: '4px', width: '20px', height: '20px', borderRadius: '50%', background: 'rgba(255,69,58,0.9)', border: 'none', color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', fontSize: '10px' }}
+                      style={{ position: 'absolute', top: '4px', right: '4px', width: '20px', height: '20px', borderRadius: '50%', background: 'rgba(255,69,58,0.9)', border: 'none', color: '#111111', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', fontSize: '10px' }}
                     >
                       <X size={10} />
                     </button>
@@ -1369,7 +1369,7 @@ const UserProfilePage = ({ staffMember, inventory = [], onUpdate, isMobile }) =>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '18px' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '9px' }}>
                   <Calendar size={17} color="var(--gold-primary)" />
-                  <h4 style={{ fontSize: '13px', fontWeight: '900', color: 'white', textTransform: 'uppercase', letterSpacing: '0.6px' }}>
+                  <h4 style={{ fontSize: '13px', fontWeight: '900', color: '#111111', textTransform: 'uppercase', letterSpacing: '0.6px' }}>
                     {isAssistant ? 'Servicios asignados hoy' : 'Agenda de hoy'}
                   </h4>
                 </div>
@@ -1390,7 +1390,7 @@ const UserProfilePage = ({ staffMember, inventory = [], onUpdate, isMobile }) =>
                         <span style={{ width: '62px', flexShrink: 0, color: active ? 'var(--gold-primary)' : 'rgba(255,255,255,0.4)', fontSize: '11px', fontWeight: '700' }}>{formatTime(appointment.scheduled_at || appointment.created_at)}</span>
                         <span style={{ width: 7, height: 7, flexShrink: 0, borderRadius: '50%', background: completed ? '#30d158' : active ? 'var(--gold-primary)' : '#555' }} />
                         <div style={{ flex: 1, minWidth: 0 }}>
-                          <div style={{ color: 'white', fontSize: '13px', fontWeight: '750', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{appointment.clients?.name || 'Cliente'}</div>
+                          <div style={{ color: '#111111', fontSize: '13px', fontWeight: '750', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{appointment.clients?.name || 'Cliente'}</div>
                           <div style={{ color: 'rgba(255,255,255,0.35)', fontSize: '11px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{appointment.services?.name || 'Servicio'}</div>
                         </div>
                         <span style={{ flexShrink: 0, padding: '4px 9px', borderRadius: '20px', color: completed ? '#30d158' : active ? 'var(--gold-primary)' : '#888', background: completed ? 'rgba(48,209,88,0.1)' : active ? 'rgba(17, 17, 17,0.1)' : 'rgba(255,255,255,0.05)', fontSize: '10px', fontWeight: '800' }}>{appointment.status}</span>
@@ -1405,7 +1405,7 @@ const UserProfilePage = ({ staffMember, inventory = [], onUpdate, isMobile }) =>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '22px' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '9px' }}>
                   <Target size={17} color="var(--gold-primary)" />
-                  <h4 style={{ fontSize: '13px', fontWeight: '900', color: 'white', textTransform: 'uppercase', letterSpacing: '0.6px' }}>Metas del mes</h4>
+                  <h4 style={{ fontSize: '13px', fontWeight: '900', color: '#111111', textTransform: 'uppercase', letterSpacing: '0.6px' }}>Metas del mes</h4>
                 </div>
                 {!editingGoals ? (
                   <button onClick={openGoalEditor} style={{ border: '1px solid rgba(0, 0, 0, 0.08)', background: 'rgba(0, 0, 0, 0.04)', color: '#999', borderRadius: '8px', padding: '5px 9px', cursor: 'pointer', display: 'flex', gap: '5px', alignItems: 'center', fontSize: '10px', fontWeight: '800' }}><Pencil size={10} /> Editar</button>
@@ -1429,9 +1429,9 @@ const UserProfilePage = ({ staffMember, inventory = [], onUpdate, isMobile }) =>
                     { label: 'Ingresos', value: `$${monthlyStats.income.toFixed(2)} / $${monthlyGoalIncome.toFixed(2)}`, progress: incomeProgress, color: '#30d158' }
                   ].map(goal => (
                     <div key={goal.label}>
-                      <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px', color: '#aaa', fontSize: '12px' }}><span>{goal.label}</span><strong style={{ color: 'white' }}>{goal.value}</strong></div>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px', color: '#aaa', fontSize: '12px' }}><span>{goal.label}</span><strong style={{ color: '#111111' }}>{goal.value}</strong></div>
                       <div style={{ height: 6, borderRadius: 6, overflow: 'hidden', background: 'rgba(0, 0, 0, 0.04)' }}><div style={{ height: '100%', width: `${goal.progress}%`, background: goal.color, borderRadius: 6 }} /></div>
-                      <div style={{ marginTop: '5px', textAlign: 'right', color: goal.progress >= 100 ? goal.color : '#555', fontSize: '10px' }}>{goal.progress >= 100 ? '¡Meta alcanzada!' : `${goal.progress}% completado`}</div>
+                      <div style={{ marginTop: '5px', textAlign: 'right', color: goal.progress >= 100 ? goal.color : '#555', fontSize: '10px' }}>{goal.progress >= 100 ? 'Â¡Meta alcanzada!' : `${goal.progress}% completado`}</div>
                     </div>
                   ))}
                 </div>
@@ -1447,7 +1447,7 @@ const UserProfilePage = ({ staffMember, inventory = [], onUpdate, isMobile }) =>
               
               <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                 <Activity size={18} color="var(--gold-primary)" />
-                <h4 style={{ fontSize: '15px', fontWeight: '900', color: 'white', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Rendimiento Histórico</h4>
+                <h4 style={{ fontSize: '15px', fontWeight: '900', color: '#111111', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Rendimiento HistÃ³rico</h4>
               </div>
 
               {/* Service & Time Stats */}
@@ -1456,13 +1456,13 @@ const UserProfilePage = ({ staffMember, inventory = [], onUpdate, isMobile }) =>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: 'rgba(255,255,255,0.4)', fontSize: '11px', fontWeight: '800', letterSpacing: '0.5px' }}>
                     <Star size={12} color="var(--gold-primary)" /> {isAssistant ? 'LIMPIEZAS' : 'SERVICIOS'}
                   </div>
-                  <div style={{ fontSize: '32px', fontWeight: '950', color: 'white', marginTop: '8px', fontFamily: 'Outfit, var(--font-sans), system-ui' }}>{stats.totalAppointments}</div>
+                  <div style={{ fontSize: '32px', fontWeight: '950', color: '#111111', marginTop: '8px', fontFamily: 'Outfit, var(--font-sans), system-ui' }}>{stats.totalAppointments}</div>
                 </div>
                 <div style={{ padding: '20px', backgroundColor: 'var(--bg-secondary)', borderRadius: '20px', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: 'rgba(255,255,255,0.4)', fontSize: '11px', fontWeight: '800', letterSpacing: '0.5px' }}>
                     <Clock size={12} color="var(--gold-primary)" /> TIEMPO PROMEDIO
                   </div>
-                  <div style={{ fontSize: '32px', fontWeight: '950', color: 'white', marginTop: '8px', fontFamily: 'Outfit, var(--font-sans), system-ui' }}>
+                  <div style={{ fontSize: '32px', fontWeight: '950', color: '#111111', marginTop: '8px', fontFamily: 'Outfit, var(--font-sans), system-ui' }}>
                     {stats.avgDurationMin} <span style={{ fontSize: '14px', color: 'rgba(255,255,255,0.4)', fontWeight: '800' }}>min</span>
                   </div>
                 </div>
@@ -1470,15 +1470,15 @@ const UserProfilePage = ({ staffMember, inventory = [], onUpdate, isMobile }) =>
 
               {/* Top Services ranking list */}
               <div>
-                <label style={{ display: 'block', fontSize: '11px', fontWeight: '850', color: 'rgba(255,255,255,0.4)', marginBottom: '16px', textTransform: 'uppercase', letterSpacing: '0.8px' }}>{isAssistant ? 'Limpiezas más realizadas' : 'Servicios más realizados'}</label>
+                <label style={{ display: 'block', fontSize: '11px', fontWeight: '850', color: 'rgba(255,255,255,0.4)', marginBottom: '16px', textTransform: 'uppercase', letterSpacing: '0.8px' }}>{isAssistant ? 'Limpiezas mÃ¡s realizadas' : 'Servicios mÃ¡s realizados'}</label>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
                   {stats.topServices.length === 0 ? (
-                    <div style={{ padding: '30px 20px', textAlign: 'center', color: 'rgba(255,255,255,0.3)', fontSize: '12px', border: '1px dashed rgba(0, 0, 0, 0.08)', borderRadius: '16px' }}>No hay registros de servicios aún</div>
+                    <div style={{ padding: '30px 20px', textAlign: 'center', color: 'rgba(255,255,255,0.3)', fontSize: '12px', border: '1px dashed rgba(0, 0, 0, 0.08)', borderRadius: '16px' }}>No hay registros de servicios aÃºn</div>
                   ) : (
                     stats.topServices.map((srv, idx) => (
                       <div key={idx} className="rank-row" style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
                         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '13px' }}>
-                          <span style={{ fontWeight: '750', color: 'white' }}>{srv.service_name}</span>
+                          <span style={{ fontWeight: '750', color: '#111111' }}>{srv.service_name}</span>
                           <span style={{ fontWeight: '900', color: 'var(--gold-primary)', backgroundColor: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', padding: '3px 8px', borderRadius: '8px', fontSize: '10px' }}>{srv.count} veces</span>
                         </div>
                         <div style={{ height: '5px', backgroundColor: 'rgba(0, 0, 0, 0.04)', borderRadius: '3px', overflow: 'hidden' }}>
@@ -1502,7 +1502,7 @@ const UserProfilePage = ({ staffMember, inventory = [], onUpdate, isMobile }) =>
               <div style={{ display: 'flex', flexDirection: isMobile ? 'column' : 'row', justifyContent: 'space-between', alignItems: isMobile ? 'stretch' : 'center', gap: isMobile ? '14px' : 0 }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                   <Wrench size={18} color="var(--gold-primary)" style={{ flexShrink: 0 }} />
-                  <h4 style={{ fontSize: '15px', fontWeight: '900', color: 'white', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Inventario Personal</h4>
+                  <h4 style={{ fontSize: '15px', fontWeight: '900', color: '#111111', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Inventario Personal</h4>
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px', width: isMobile ? '100%' : 'auto' }}>
                 <button
@@ -1511,7 +1511,7 @@ const UserProfilePage = ({ staffMember, inventory = [], onUpdate, isMobile }) =>
                     backgroundColor: 'rgba(0, 0, 0, 0.04)',
                     border: '1px solid rgba(0, 0, 0, 0.08)',
                     borderRadius: '10px',
-                    color: 'white',
+                    color: '#111111',
                     padding: '9px 11px',
                     fontSize: '11px',
                     fontWeight: '800',
@@ -1657,7 +1657,7 @@ const UserProfilePage = ({ staffMember, inventory = [], onUpdate, isMobile }) =>
                         >
                           <span style={{ color: newTool.inventory_id ? 'white' : 'rgba(255, 255, 255, 0.4)' }}>
                             {newTool.inventory_id 
-                              ? `${availableInventoryTools.find(t => t.id === newTool.inventory_id)?.name} · Stock: ${availableInventoryTools.find(t => t.id === newTool.inventory_id)?.stock}`
+                              ? `${availableInventoryTools.find(t => t.id === newTool.inventory_id)?.name} Â· Stock: ${availableInventoryTools.find(t => t.id === newTool.inventory_id)?.stock}`
                               : `Selecciona ${newTool.item_type === 'Producto' ? 'un producto' : 'una herramienta'}...`}
                           </span>
                           <ChevronDown size={16} color="var(--gold-primary)" style={{ transform: dropdownOpen ? 'rotate(180deg)' : 'none', transition: 'transform 0.2s ease' }} />
@@ -1710,7 +1710,7 @@ const UserProfilePage = ({ staffMember, inventory = [], onUpdate, isMobile }) =>
                                     e.currentTarget.style.color = newTool.inventory_id === t.id ? 'var(--gold-primary)' : 'white';
                                   }}
                                 >
-                                  {t.name} · Stock: {t.stock}
+                                  {t.name} Â· Stock: {t.stock}
                                 </div>
                               ))
                             )}
@@ -1748,7 +1748,7 @@ const UserProfilePage = ({ staffMember, inventory = [], onUpdate, isMobile }) =>
                         boxShadow: '0 5px 15px rgba(255, 255, 255, 0.25)' 
                       }}
                     >
-                      CONFIRMAR ASIGNACIÓN
+                      CONFIRMAR ASIGNACIÃ“N
                     </button>
                   </div>
                 </div>
@@ -1758,7 +1758,7 @@ const UserProfilePage = ({ staffMember, inventory = [], onUpdate, isMobile }) =>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', maxHeight: '350px', overflowY: 'auto', paddingRight: '4px' }}>
                 {tools.length === 0 ? (
                   <div style={{ padding: '30px 20px', textAlign: 'center', color: 'rgba(255,255,255,0.3)', fontSize: '12px', border: '1px dashed rgba(0, 0, 0, 0.08)', borderRadius: '16px' }}>
-                    Ningún artículo registrado en este perfil.
+                    NingÃºn artÃ­culo registrado en este perfil.
                   </div>
                 ) : (
                   tools.map(tool => {
@@ -1775,11 +1775,11 @@ const UserProfilePage = ({ staffMember, inventory = [], onUpdate, isMobile }) =>
                           ? <Package size={16} color="var(--gold-primary)" />
                           : <Wrench size={16} color="var(--gold-primary)" />}
                         <div>
-                        <div style={{ fontWeight: '800', fontSize: '13px', color: 'white' }}>
-                          {tool.name} <span style={{ color: 'var(--gold-primary)', fontSize: '11px' }}>× {tool.quantity || 1}</span>
+                        <div style={{ fontWeight: '800', fontSize: '13px', color: '#111111' }}>
+                          {tool.name} <span style={{ color: 'var(--gold-primary)', fontSize: '11px' }}>Ã— {tool.quantity || 1}</span>
                         </div>
                         <div style={{ fontSize: '11px', color: 'rgba(255,255,255,0.4)', marginTop: '4px' }}>
-                          {itemType}{tool.brand ? ` · ${tool.brand}` : ''} · <span style={{ color: tool.ownership === 'Propia' ? 'var(--gold-primary)' : '#30d158', fontWeight: '800' }}>{tool.ownership}</span>
+                          {itemType}{tool.brand ? ` Â· ${tool.brand}` : ''} Â· <span style={{ color: tool.ownership === 'Propia' ? 'var(--gold-primary)' : '#30d158', fontWeight: '800' }}>{tool.ownership}</span>
                         </div>
                         </div>
                       </div>
@@ -1806,7 +1806,7 @@ const UserProfilePage = ({ staffMember, inventory = [], onUpdate, isMobile }) =>
                                 gap: '4px'
                               }}
                             >
-                              <Minus size={11} /> Gasté 1
+                              <Minus size={11} /> GastÃ© 1
                             </button>
                             <button
                               onClick={() => handleAdjustPersonalProduct(tool.id, 1)}
@@ -1886,3 +1886,4 @@ const UserProfilePage = ({ staffMember, inventory = [], onUpdate, isMobile }) =>
 };
 
 export default UserProfilePage;
+

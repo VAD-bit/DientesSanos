@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+﻿import React, { useState, useRef, useEffect } from 'react';
 import { Clock, ChevronUp, ChevronDown } from 'lucide-react';
 
 /**
@@ -79,7 +79,7 @@ const PandaTimePicker = ({ value, onChange, label = "HORA" }) => {
         }}
       >
         <Clock size={16} color={isOpen ? 'var(--gold-primary)' : 'var(--text-muted)'} />
-        <span style={{ fontSize: '15px', fontWeight: '700', color: 'white' }}>
+        <span style={{ fontSize: '15px', fontWeight: '700', color: '#111111' }}>
           {displayHour}:{minutes} {ampm}
         </span>
       </div>
@@ -162,9 +162,10 @@ const scrollBtnStyle = {
 const timeValueStyle = {
   fontSize: '28px',
   fontWeight: '950',
-  color: 'white',
+  color: '#111111',
   fontFamily: 'monospace',
   lineHeight: 1
 };
 
 export default PandaTimePicker;
+

@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+﻿import React, { useRef, useEffect } from 'react';
 import { ChevronLeft, Check, Star, Calendar as CalendarIcon, User, Lock } from 'lucide-react';
 import ToothIcon from '../../components/icons/ToothIcon';
 import { getNormalizedSpecialty, getBarberBiography, getBarberDetails, getBarberStats, getBarberVideo } from '../pages/BookAppointment';
@@ -107,7 +107,7 @@ export default function BarberProfileView({
                                 
                                 <div className="flex items-center justify-center">
                                   {/* Logo Centrado */}
-                                  <img src={logo} alt="Centro Odontológico Dientes Sanos" className="h-10 object-contain opacity-90" />
+                                  <img src={logo} alt="Centro OdontolÃ³gico Dientes Sanos" className="h-10 object-contain opacity-90" />
                                 </div>
                                 
                                 <div className="flex items-center gap-6">
@@ -128,9 +128,9 @@ export default function BarberProfileView({
                                   </button>
                                 </div>
                                 </motion.div>
-                                {/* ── MÓVIL: Immersive Cinematic Hero Video/Photo Header (Oculto en desktop) ── */}
+                                {/* â”€â”€ MÃ“VIL: Immersive Cinematic Hero Video/Photo Header (Oculto en desktop) â”€â”€ */}
                                 <motion.div variants={profileItemVariants} className="relative h-[420px] -mx-4 -mt-8 mb-6 overflow-hidden rounded-b-[2rem] border border-[#d9c08f]/15 shadow-2xl bg-[#0a0a0d] profile-video-hero z-10 md:hidden">
-                                  {/* Botón Volver Flotante en Móvil */}
+                                  {/* BotÃ³n Volver Flotante en MÃ³vil */}
                                   <button
                                     onClick={onClose}
                                     className="absolute left-6 z-[30] w-10 h-10 rounded-full bg-black/60 md:backdrop-blur-md backdrop-blur-sm border border-white/10 flex items-center justify-center text-white/80 hover:text-white cursor-pointer active:scale-95 transition-all md:hidden"
@@ -211,7 +211,7 @@ export default function BarberProfileView({
                                   </div>
                                 </motion.div>
 
-                                {/* ── MÓVIL: Creative Manifesto (Oculto en desktop) ── */}
+                                {/* â”€â”€ MÃ“VIL: Creative Manifesto (Oculto en desktop) â”€â”€ */}
                                 <motion.div variants={profileItemVariants} className="relative urban-industrial-panel overflow-visible p-5 mb-6 profile-bio-enter md:hidden">
                                   <div className="absolute -top-3 left-4">
                                     <span className="urban-tape urban-tape-accent text-[9px]">
@@ -226,7 +226,7 @@ export default function BarberProfileView({
                                 <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start w-full text-left">
                                 {/* Left Column: Especialidades, Portafolio, Testimonios */}
                                 <div className="md:col-span-8 space-y-8 w-full">
-{/* ── ESCRITORIO: Vista Horizontal Unificada (Oculto en móvil) ── */}
+{/* â”€â”€ ESCRITORIO: Vista Horizontal Unificada (Oculto en mÃ³vil) â”€â”€ */}
                                 {(() => {
                                   const details = getBarberDetails(expandedBarber.name);
                                   const ratings = details.rating;
@@ -306,13 +306,13 @@ export default function BarberProfileView({
                                           
                                           {/* Ratings removed */}
                                           
-                                          {/* Biografía de Escritorio */}
+                                          {/* BiografÃ­a de Escritorio */}
                                           <p className="text-[12px] text-[#334155] leading-relaxed font-medium mb-4 max-w-xl">
                                             {getBarberBiography(expandedBarber)}
                                           </p>
                                         </div>
 
-                                        {/* Barra de 4 Estadísticas Compactas (Estilo vertical de Foto 2) */}
+                                        {/* Barra de 4 EstadÃ­sticas Compactas (Estilo vertical de Foto 2) */}
                                         <div className="flex items-center justify-between border-t border-b border-[#d9c08f]/15 py-4 w-full">
                                           <div className="flex flex-col items-center text-center flex-1">
                                             <ToothIcon size={20} className="text-[#111111] mb-1.5" />
@@ -323,7 +323,7 @@ export default function BarberProfileView({
                                           <div className="flex flex-col items-center text-center flex-1 border-l border-[#d9c08f]/15">
                                             <CalendarIcon size={20} className="text-[#111111] mb-1.5" />
                                             <span className="text-xl font-black text-[#0f172a] leading-none mb-1">5</span>
-                                            <span className="text-[8px] text-[#64748b] font-black uppercase tracking-widest leading-tight">AÑOS<br/>DE EXPERIENCIA</span>
+                                            <span className="text-[8px] text-[#64748b] font-black uppercase tracking-widest leading-tight">AÃ‘OS<br/>DE EXPERIENCIA</span>
                                           </div>
 
                                           <div className="flex flex-col items-center text-center flex-1 border-l border-[#d9c08f]/15">
@@ -335,14 +335,14 @@ export default function BarberProfileView({
                                           <div className="flex flex-col items-center text-center flex-1 border-l border-[#d9c08f]/15">
                                             <Star size={20} className="text-[#111111] mb-1.5" />
                                             <span className="text-xl font-black text-[#0f172a] leading-none mb-1">{ratings}</span>
-                                            <span className="text-[8px] text-[#64748b] font-black uppercase tracking-widest leading-tight">VALORACIÓN<br/>PROMEDIO</span>
+                                            <span className="text-[8px] text-[#64748b] font-black uppercase tracking-widest leading-tight">VALORACIÃ“N<br/>PROMEDIO</span>
                                           </div>
                                         </div>
                                       </div>
                                     </div>
                                   );
                                 })()}
-                                                                  {/* ── ESCRITORIO: Especialidades (Oculto en móvil) ── */}
+                                                                  {/* â”€â”€ ESCRITORIO: Especialidades (Oculto en mÃ³vil) â”€â”€ */}
                                 {(() => {
                                   const details = getBarberDetails(expandedBarber.name);
                                   return (
@@ -413,7 +413,7 @@ export default function BarberProfileView({
                             {/* Right Column: Stats panel, Services menu, Booking CTA (sticky on desktop conditionally) */}
                             <div className="md:col-span-4 profile-sticky-sidebar space-y-6 w-full">
                               
-                              {/* ── MÓVIL: Vista Clásica (Oculto en computadoras) ── */}
+                              {/* â”€â”€ MÃ“VIL: Vista ClÃ¡sica (Oculto en computadoras) â”€â”€ */}
                               <div className="md:hidden space-y-6 w-full">
                                 {/* Brutalist Asymmetric Stats Section */}
                                 {(() => {
@@ -439,7 +439,7 @@ export default function BarberProfileView({
                                       <div className="urban-industrial-panel p-3 flex flex-row items-center gap-2 h-[68px]">
                                         <div className="flex items-baseline gap-1">
                                           <span className="urban-stat-num text-3xl font-black leading-none">{stats.experience.split(' ')[0]}</span>
-                                          <span className="text-xs font-bold text-[#334155] lowercase">años</span>
+                                          <span className="text-xs font-bold text-[#334155] lowercase">aÃ±os</span>
                                         </div>
                                         <div className="flex flex-col min-w-0">
                                           <span className="text-[8px] text-[#64748b] font-black uppercase tracking-widest leading-none mb-0.5">// PERFIL</span>
@@ -450,7 +450,7 @@ export default function BarberProfileView({
                                       <div className="urban-industrial-panel p-3 flex flex-row items-center gap-3 h-[68px]">
                                         <div className="text-xs font-black text-[#0f172a] leading-none uppercase tracking-tight">{stats.location && stats.location.toLowerCase().includes('sede') ? 'Consultorio' : stats.location}</div>
                                         <div className="flex flex-col min-w-0">
-                                          <span className="text-[8px] text-[#64748b] font-black uppercase tracking-widest leading-none mb-0.5">// UBICACIÓN</span>
+                                          <span className="text-[8px] text-[#64748b] font-black uppercase tracking-widest leading-none mb-0.5">// UBICACIÃ“N</span>
                                           <span className="text-[10px] text-[#334155] font-bold uppercase tracking-wider leading-tight">Principal</span>
                                         </div>
                                       </div>
@@ -463,13 +463,13 @@ export default function BarberProfileView({
                                     {/* Brutalist Chalkboard Services Menu */}
                                 <motion.div variants={profileItemVariants} className="mb-8">
                                   <div className="flex items-center justify-between mb-4">
-                                    <h4 className="font-extrabold text-sm text-[#111111] uppercase tracking-widest">// MENÚ DE SERVICIOS</h4>
+                                    <h4 className="font-extrabold text-sm text-[#111111] uppercase tracking-widest">// MENÃš DE SERVICIOS</h4>
                                     <span className="text-[9px] text-[#64748b] font-bold tracking-wider uppercase">TARIFA PREMIUM</span>
                                   </div>
                                   <div className="flex flex-col bg-white border border-[#d9c08f]/15 rounded-2xl p-4 gap-1">
                                     {(() => {
                                       const isTattoo = expandedBarber.role?.toLowerCase().includes('tatuador') || specialty.toLowerCase().includes('tatuador');
-                                      const DENTAL_CATEGORIES = ['estética', 'ortodoncia', 'endodoncia', 'odontopediatría'];
+                                      const DENTAL_CATEGORIES = ['estÃ©tica', 'ortodoncia', 'endodoncia', 'odontopediatrÃ­a'];
                                       const filtered = services.filter(s => {
                                         const cat = (s.category || '').toLowerCase();
                                         if (isTattoo) {
@@ -479,9 +479,9 @@ export default function BarberProfileView({
                                       }).slice(0, 4);
 
                                       const itemsToRender = filtered.length > 0 ? filtered : [
-                                        { name: 'Limpieza dental', price: 40, duration: 40, category: 'Estética' },
-                                        { name: 'Blanqueamiento', price: 90, duration: 60, category: 'Estética' },
-                                        { name: 'Aplicación de flúor', price: 25, duration: 30, category: 'Odontopediatría' },
+                                        { name: 'Limpieza dental', price: 40, duration: 40, category: 'EstÃ©tica' },
+                                        { name: 'Blanqueamiento', price: 90, duration: 60, category: 'EstÃ©tica' },
+                                        { name: 'AplicaciÃ³n de flÃºor', price: 25, duration: 30, category: 'OdontopediatrÃ­a' },
                                         { name: 'Consulta de ortodoncia', price: 50, duration: 45, category: 'Ortodoncia' }
                                       ];
 
@@ -567,7 +567,7 @@ export default function BarberProfileView({
                               </div>
 
                               <div className="hidden md:flex flex-col space-y-6 w-full bg-white border border-[#d9c08f]/15 rounded-3xl p-6 shadow-2xl h-fit md:col-span-4">
-                                {/* ── ESCRITORIO: Ficha de Reserva Unificada en 1 Paso (Oculto en móvil) ── */}
+                                {/* â”€â”€ ESCRITORIO: Ficha de Reserva Unificada en 1 Paso (Oculto en mÃ³vil) â”€â”€ */}
                                 <div>
                                   <h4 className="font-extrabold text-sm text-[#111111] uppercase tracking-widest leading-none mb-1">RESERVA TU CITA</h4>
                                   <span className="text-[8px] text-[#64748b] font-black uppercase tracking-widest">PROCESO DE RESERVA DIRECTO</span>
@@ -583,7 +583,7 @@ export default function BarberProfileView({
                                   <div className="flex flex-col gap-2">
                                     {(() => {
                                       const isTattoo = expandedBarber.role?.toLowerCase().includes('tatuador') || specialty.toLowerCase().includes('tatuador');
-                                      const DENTAL_CATEGORIES = ['estética', 'ortodoncia', 'endodoncia', 'odontopediatría'];
+                                      const DENTAL_CATEGORIES = ['estÃ©tica', 'ortodoncia', 'endodoncia', 'odontopediatrÃ­a'];
                                       const filtered = services.filter(s => {
                                         const cat = (s.category || '').toLowerCase();
                                         if (isTattoo) return cat === 'tatuajes';
@@ -591,9 +591,9 @@ export default function BarberProfileView({
                                       }).slice(0, 4);
 
                                       const itemsToRender = filtered.length > 0 ? filtered : [
-                                        { id: 'fs-1', name: 'Limpieza dental', price: 40, duration: 40, category: 'Estética' },
-                                        { id: 'fs-2', name: 'Blanqueamiento', price: 90, duration: 60, category: 'Estética' },
-                                        { id: 'fs-3', name: 'Aplicación de flúor', price: 25, duration: 30, category: 'Odontopediatría' },
+                                        { id: 'fs-1', name: 'Limpieza dental', price: 40, duration: 40, category: 'EstÃ©tica' },
+                                        { id: 'fs-2', name: 'Blanqueamiento', price: 90, duration: 60, category: 'EstÃ©tica' },
+                                        { id: 'fs-3', name: 'AplicaciÃ³n de flÃºor', price: 25, duration: 30, category: 'OdontopediatrÃ­a' },
                                         { id: 'fs-4', name: 'Consulta de ortodoncia', price: 50, duration: 45, category: 'Ortodoncia' }
                                       ];
 
@@ -679,14 +679,14 @@ export default function BarberProfileView({
                                  <div className="space-y-3">
                                    <div className="flex items-center justify-between">
                                      <span className="text-[10px] text-[#64748b] font-black uppercase tracking-widest block">3. Selecciona horario</span>
-                                     {/* Selector de periodo (Mañana / Tarde / Noche) */}
+                                     {/* Selector de periodo (MaÃ±ana / Tarde / Noche) */}
                                      <div className="flex bg-[#f7f7f5] border border-[#d9c08f]/15 rounded-lg p-0.5 text-[8px] sm:text-[9px] font-bold">
                                        <button 
                                          type="button"
-                                         onClick={() => setProfileActivePeriod('mañana')}
-                                         className={`px-1.5 py-0.5 rounded-md transition-all cursor-pointer ${profileActivePeriod === 'mañana' ? 'bg-[#111111] text-white font-black' : 'text-[#64748b] hover:text-[#111111]'}`}
+                                         onClick={() => setProfileActivePeriod('maÃ±ana')}
+                                         className={`px-1.5 py-0.5 rounded-md transition-all cursor-pointer ${profileActivePeriod === 'maÃ±ana' ? 'bg-[#111111] text-white font-black' : 'text-[#64748b] hover:text-[#111111]'}`}
                                        >
-                                         MAÑANA
+                                         MAÃ‘ANA
                                        </button>
                                        <button 
                                          type="button"
@@ -711,20 +711,20 @@ export default function BarberProfileView({
                                           <Lock size={12} className="text-red-500" />
                                         </div>
                                         <div className="text-left min-w-0">
-                                          <p className="text-red-600 text-[9px] font-black uppercase tracking-wider leading-tight">Clínica cerrada</p>
+                                          <p className="text-red-600 text-[9px] font-black uppercase tracking-wider leading-tight">ClÃ­nica cerrada</p>
                                           <p className="text-red-500/80 text-[9px] font-medium mt-0.5 leading-snug">Reservas bloqueadas por ahora</p>
                                         </div>
                                       </div>
                                    )}
 
-                                   {/* Grid de horarios correspondientes al período activo */}
+                                   {/* Grid de horarios correspondientes al perÃ­odo activo */}
                                    <div className="grid grid-cols-3 gap-2">
                                      {(() => {
                                        const periodSlots = visibleSlots.filter(({ time }) => {
                                          const hour = parseInt(time.split(':')[0], 10);
-                                         // "Mañana" also covers the early-morning/madrugada hours (00:00-08:59)
+                                         // "MaÃ±ana" also covers the early-morning/madrugada hours (00:00-08:59)
                                          // now that booking isn't limited to a fixed daytime window.
-                                         if (profileActivePeriod === 'mañana') return hour < 12;
+                                         if (profileActivePeriod === 'maÃ±ana') return hour < 12;
                                          if (profileActivePeriod === 'tarde') return hour >= 12 && hour < 18;
                                          if (profileActivePeriod === 'noche') return hour >= 18;
                                          return false;
@@ -775,7 +775,7 @@ export default function BarberProfileView({
                                       <BarberAvatar url={expandedBarber.image_url} name={expandedBarber.name} className="w-10 h-10 rounded-xl" />
                                       <div className="flex flex-col min-w-0">
                                         <span className="text-xs font-bold text-[#0f172a] truncate leading-none mb-1">{expandedBarber.name}</span>
-                                        <span className="text-[10px] text-[#334155] truncate leading-none mb-1">{selectedService.name} • {formatDuration(selectedService.duration)}</span>
+                                        <span className="text-[10px] text-[#334155] truncate leading-none mb-1">{selectedService.name} â€¢ {formatDuration(selectedService.duration)}</span>
                                         <span className="text-[9px] text-[#111111] font-bold leading-none">
                                           {selectedDate.toLocaleDateString('es-ES', { weekday: 'short', day: 'numeric', month: 'short' })} a las {formatTime12(selectedTime)}
                                         </span>
@@ -790,7 +790,7 @@ export default function BarberProfileView({
                                   </>
                                 )}
 
-                                {/* Botón de Reserva Directa de Escritorio */}
+                                {/* BotÃ³n de Reserva Directa de Escritorio */}
                                 <button
                                   onClick={(e) => {
                                     createRipple(e);
@@ -813,9 +813,9 @@ export default function BarberProfileView({
                                   <span className="text-[#111111] font-black">RESERVAR CON {expandedBarber.name.split(' ')[0]}</span>
                                 </button>
 
-                                {/* Colaboradores recomendados ("También podrías reservar con") */}
+                                {/* Colaboradores recomendados ("TambiÃ©n podrÃ­as reservar con") */}
                                 <div className="border-t border-[#d9c08f]/15 pt-4 mt-2">
-                                  <span className="text-[10px] text-[#64748b] font-bold uppercase tracking-wider block mb-3">TAMBIÉN PODRÍAS RESERVAR CON</span>
+                                  <span className="text-[10px] text-[#64748b] font-bold uppercase tracking-wider block mb-3">TAMBIÃ‰N PODRÃAS RESERVAR CON</span>
                                   <div className="flex items-center gap-3 overflow-x-auto pb-1.5 scrollbar-none w-full">
                                     {barbers
                                       .filter(b => {
@@ -863,3 +863,4 @@ export default function BarberProfileView({
     </>
   );
 }
+

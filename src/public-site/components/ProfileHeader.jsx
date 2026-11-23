@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+﻿import { useState, useRef } from 'react';
 import { Phone, Mail, Crown } from 'lucide-react';
 import pandaLogo from '../../assets/panda_logo_nobg.png';
 
@@ -12,9 +12,9 @@ export default function ProfileHeader({ client, points, isTopClient, className =
     { min: 300, label: 'Oro' },
     { min: 200, label: 'Plata' },
     { min: 100, label: 'Bronce' },
-    { min: 0, label: 'Básico' },
+    { min: 0, label: 'BÃ¡sico' },
   ];
-  const getRank = (points) => RANKS.find(r => points >= r.min)?.label || 'Básico';
+  const getRank = (points) => RANKS.find(r => points >= r.min)?.label || 'BÃ¡sico';
   const rank = getRank(points);
   
   const initials = client?.name?.trim()
@@ -26,7 +26,7 @@ export default function ProfileHeader({ client, points, isTopClient, className =
   return (
     <div className={`new-dashboard-header ${className}`}>
       
-      {/* ── IZQUIERDA: Info de Usuario ── */}
+      {/* â”€â”€ IZQUIERDA: Info de Usuario â”€â”€ */}
       <div className="header-left">
         <div className="header-avatar">
           {client?.image_url ? (
@@ -197,3 +197,4 @@ export default function ProfileHeader({ client, points, isTopClient, className =
     </div>
   );
 }
+

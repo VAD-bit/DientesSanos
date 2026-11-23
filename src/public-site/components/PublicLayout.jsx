@@ -1,4 +1,4 @@
-import { Outlet, Link, useLocation, useNavigate } from 'react-router-dom';
+﻿import { Outlet, Link, useLocation, useNavigate } from 'react-router-dom';
 import { useState, useEffect, Suspense } from 'react';
 import { Menu, X, Phone, MapPin, Calendar, User, ChevronRight, Check, ArrowRight, Star, Gift } from 'lucide-react';
 import ToothIcon from '../../components/icons/ToothIcon';
@@ -29,7 +29,7 @@ export default function PublicLayout() {
   const [showOnboarding, setShowOnboarding] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
-  // Show onboarding the first time a new user actually lands on /perfil — not the
+  // Show onboarding the first time a new user actually lands on /perfil â€” not the
   // moment registration finishes. Registration can complete mid-booking (e.g. Google
   // sign-in from step 5), and that flow redirects back to /agendar to let the visitor
   // finish the reservation they were already in the middle of; showing the profile
@@ -84,15 +84,15 @@ export default function PublicLayout() {
     { id: 'servicios', label: 'Servicios' },
     { id: 'equipo', label: 'Equipo' },
     { id: 'experiencia-section', label: 'Experiencia' },
-    { id: 'resenas', label: 'Reseñas' },
-    { id: 'ubicacion', label: 'Ubicación' }
+    { id: 'resenas', label: 'ReseÃ±as' },
+    { id: 'ubicacion', label: 'UbicaciÃ³n' }
   ];
 
   const isActive = (path) => location.pathname === path;
 
   // Navbar links target sections that only exist on the landing ('/'). From any other route
   // (e.g. /perfil) document.getElementById(id) finds nothing and used to
-  // silently do nothing — clicking "Inicio"/"Servicios"/etc. looked completely dead and left
+  // silently do nothing â€” clicking "Inicio"/"Servicios"/etc. looked completely dead and left
   // the user stranded with no way out of that page. Now: navigate home first, then scroll
   // once the landing has actually rendered.
   const goToSection = (id) => {
@@ -116,13 +116,13 @@ export default function PublicLayout() {
   // Kept for the mobile menu call sites below; same landing-aware behavior as goToSection.
   const handleScrollTo = (id) => goToSection(id);
 
-  // Focused onboarding step, not a browsable page — the full site nav here would just be
+  // Focused onboarding step, not a browsable page â€” the full site nav here would just be
   // distracting chrome competing with the one thing the user needs to do. The page itself
-  // provides its own way out ("Volver al inicio" / cerrar sesión).
-  // Also hide on /perfil (and sub-routes) — the profile is an authenticated view that
-  // should not show the landing nav. Hide on /reservar and /agendar too — BookAppointment
+  // provides its own way out ("Volver al inicio" / cerrar sesiÃ³n).
+  // Also hide on /perfil (and sub-routes) â€” the profile is an authenticated view that
+  // should not show the landing nav. Hide on /reservar and /agendar too â€” BookAppointment
   // has its own navigation and showing the landing nav causes a flash.
-  const hideNav = ['/login', '/registro', '/olvidar-contraseña', '/restablecer-contraseña', '/reset-password', '/perfil', '/reservar', '/agendar'].some(p => decodeURIComponent(location.pathname).startsWith(p));
+  const hideNav = ['/login', '/registro', '/olvidar-contraseÃ±a', '/restablecer-contraseÃ±a', '/reset-password', '/perfil', '/reservar', '/agendar'].some(p => decodeURIComponent(location.pathname).startsWith(p));
 
   // Skip auth loading screen if onboarding is showing or just finished
   // Also show loader (prevent flash) if we are on the landing page and have a session, because we will redirect to /perfil
@@ -173,7 +173,7 @@ export default function PublicLayout() {
           {/* Link (client-side nav), not a plain <a href="/">: a full page reload here
               re-runs the Google-session auth guard below, which sees the session is still
               active and the profile is still incomplete, and immediately bounces back to
-              /completar-registro — so the logo looked like it did nothing. */}
+              /completar-registro â€” so the logo looked like it did nothing. */}
           <Link to="/" className="flex items-center no-underline">
             <img src={logo} alt="Dientes Sanos" className="h-[48px] object-contain" style={{ filter: 'brightness(1.15)' }} />
           </Link>
@@ -213,14 +213,14 @@ export default function PublicLayout() {
               onClick={(e) => { e.preventDefault(); goToSection('resenas'); }}
               className="text-[#111111] hover:text-[#8a7355] transition-colors text-xs uppercase font-extrabold tracking-widest no-underline"
             >
-              Reseñas
+              ReseÃ±as
             </a>
             <a
               href="#ubicacion"
               onClick={(e) => { e.preventDefault(); goToSection('ubicacion'); }}
               className="text-[#111111] hover:text-[#8a7355] transition-colors text-xs uppercase font-extrabold tracking-widest no-underline"
             >
-              Ubicación
+              UbicaciÃ³n
             </a>
           </div>
  
@@ -243,7 +243,7 @@ export default function PublicLayout() {
             ) : (
               <>
                 <Link to="/login" className="btn-outline flex items-center gap-2" style={{ padding: '8px 20px', fontSize: '11px', fontWeight: 800, textTransform: 'uppercase', tracking: '0.15em', borderRadius: '100px' }}>
-                  <User size={13} /> Iniciar Sesión
+                  <User size={13} /> Iniciar SesiÃ³n
                 </Link>
                 <Link to="/registro" className="btn-gold flex items-center gap-2" style={{ padding: '8px 20px', fontSize: '11px', fontWeight: 800, textTransform: 'uppercase', tracking: '0.15em', borderRadius: '100px' }}>
                   <Calendar size={13} /> Reservar mi visita
@@ -348,7 +348,7 @@ export default function PublicLayout() {
         </AnimatePresence>
       </nav>}
 
-      {/* Main Content — hidden while onboarding is active */}
+      {/* Main Content â€” hidden while onboarding is active */}
       {!showOnboarding && (
         <main style={{ flex: 1 }}>
           <Suspense fallback={<RouteFallback />}>
@@ -357,7 +357,7 @@ export default function PublicLayout() {
         </main>
       )}
 
-      {/* ── Floating WhatsApp Button ── */}
+      {/* â”€â”€ Floating WhatsApp Button â”€â”€ */}
       {!showOnboarding && !menuOpen && location.pathname === '/' && (
         <a
           href={CLINIC.whatsappUrl}
@@ -370,7 +370,7 @@ export default function PublicLayout() {
             <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/>
           </svg>
           <span className="absolute left-full ml-4 bg-white/95 text-[#111111] text-[11px] font-bold py-2 px-3 rounded-xl border border-[#d9c08f]/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap shadow-lg">
-            ¡Háblanos por WhatsApp!
+            Â¡HÃ¡blanos por WhatsApp!
           </span>
         </a>
       )}
@@ -378,3 +378,4 @@ export default function PublicLayout() {
     </div>
   );
 }
+

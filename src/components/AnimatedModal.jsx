@@ -1,10 +1,10 @@
-import React, { useState, useEffect, useRef } from 'react';
+﻿import React, { useState, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { ModalShield } from '../context/ModalContext';
 import { useScrollLock } from '../hooks/useScrollLock';
 
 /**
- * AnimatedModal — transparent animation wrapper with render-prop pattern.
+ * AnimatedModal â€” transparent animation wrapper with render-prop pattern.
  *
  * Usage:
  *   <AnimatedModal isOpen={show}>
@@ -17,8 +17,8 @@ import { useScrollLock } from '../hooks/useScrollLock';
  *     )}
  *   </AnimatedModal>
  *
- * overlayClass — 'modal-overlay-enter' or 'modal-overlay-exit'
- * cardClass    — 'modal-card-enter'    or 'modal-card-exit'
+ * overlayClass â€” 'modal-overlay-enter' or 'modal-overlay-exit'
+ * cardClass    â€” 'modal-card-enter'    or 'modal-card-exit'
  */
 const AnimatedModal = ({ isOpen, children }) => {
   // Keep mounted=true during exit animation so CSS can run
@@ -32,7 +32,7 @@ const AnimatedModal = ({ isOpen, children }) => {
     clearTimeout(timer.current);
     if (isOpen) {
       setMounted(true);
-      // Set the enter phase in the same tick as mounted — deferring it to the
+      // Set the enter phase in the same tick as mounted â€” deferring it to the
       // next frame let the stale 'exit' phase (from the previous close) render
       // for one frame first, which snapped opacity to 1 before fadeInModal
       // restarted it at 0, producing a visible flicker on every reopen.
@@ -60,3 +60,4 @@ const AnimatedModal = ({ isOpen, children }) => {
 };
 
 export default AnimatedModal;
+

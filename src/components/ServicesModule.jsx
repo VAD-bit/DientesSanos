@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import { 
   Plus, Search, Edit2, Trash2, Clock, Rocket,
   Droplets, Zap, Check, X,
@@ -39,17 +39,17 @@ const BeardIcon = ({ size = 20 }) => (
 );
 
 const AVAILABLE_ICONS = [
-  { name: 'Stethoscope', label: 'Diagnóstico' },
-  { name: 'Smile',       label: 'Diseño de sonrisa' },
+  { name: 'Stethoscope', label: 'DiagnÃ³stico' },
+  { name: 'Smile',       label: 'DiseÃ±o de sonrisa' },
   { name: 'Droplets',    label: 'Limpieza dental' },
   { name: 'Activity',    label: 'Ortodoncia' },
   { name: 'HeartPulse',  label: 'Endodoncia' },
-  { name: 'Baby',        label: 'Odontopediatría' },
-  { name: 'Anchor',      label: 'Prótesis e implantes' },
-  { name: 'Scissors',    label: 'Cirugía dental' },
-  { name: 'Shield',      label: 'Prevención' },
+  { name: 'Baby',        label: 'OdontopediatrÃ­a' },
+  { name: 'Anchor',      label: 'PrÃ³tesis e implantes' },
+  { name: 'Scissors',    label: 'CirugÃ­a dental' },
+  { name: 'Shield',      label: 'PrevenciÃ³n' },
   { name: 'Zap',         label: 'Tratamiento express' },
-  { name: 'Crown',       label: 'Atención premium' },
+  { name: 'Crown',       label: 'AtenciÃ³n premium' },
   { name: 'Gem',         label: 'Servicio especializado' },
   { name: 'Star',        label: 'Otros servicios' }
 ];
@@ -156,7 +156,7 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
       setBaseItems(items || []);
     } catch (e) {
       console.error('Error fetching base items:', e);
-      showToast('Error al cargar ítems incluidos.', 'error');
+      showToast('Error al cargar Ã­tems incluidos.', 'error');
     }
   };
 
@@ -174,7 +174,7 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
       const data = await dataService.getServiceCategories();
       setCategories(data || []);
     } catch (e) {
-      showToast('Error al cargar categorías.', 'error');
+      showToast('Error al cargar categorÃ­as.', 'error');
     }
   };
 
@@ -197,18 +197,18 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
           newCategoryName.trim(), 
           selectedCategoryIcon
         );
-        showToast('Categoría actualizada.');
+        showToast('CategorÃ­a actualizada.');
         setEditingCategory(null);
       } else {
         await dataService.addServiceCategory(newCategoryName.trim(), selectedCategoryIcon);
-        showToast('Nueva categoría creada.');
+        showToast('Nueva categorÃ­a creada.');
       }
       setNewCategoryName('');
       setSelectedCategoryIcon('Scissors');
       await fetchCategories();
       await fetchServices();
     } catch (e) {
-      showToast(editingCategory ? 'Error al actualizar categoría.' : 'Error al crear categoría.', 'error');
+      showToast(editingCategory ? 'Error al actualizar categorÃ­a.' : 'Error al crear categorÃ­a.', 'error');
     }
   };
 
@@ -225,13 +225,13 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
   };
 
   const handleDeleteCategory = async (catObj) => {
-    if (!await confirm(`¿Estás seguro de eliminar la categoría "${catObj.name}"?`)) return;
+    if (!await confirm(`Â¿EstÃ¡s seguro de eliminar la categorÃ­a "${catObj.name}"?`)) return;
     try {
       await dataService.deleteServiceCategory(catObj.name, catObj.icon);
       await fetchCategories();
-      showToast('Categoría eliminada.');
+      showToast('CategorÃ­a eliminada.');
     } catch (e) {
-      showToast('Error al eliminar categoría.', 'error');
+      showToast('Error al eliminar categorÃ­a.', 'error');
     }
   };
 
@@ -252,7 +252,7 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
   };
 
   const handleDeleteStrategy = async (value) => {
-    if (!await confirm('¿Estás seguro de eliminar esta estrategia?')) return;
+    if (!await confirm('Â¿EstÃ¡s seguro de eliminar esta estrategia?')) return;
     try {
       await dataService.deleteServiceStrategy(value);
       await fetchStrategies();
@@ -280,21 +280,21 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
     try {
       await dataService.updateChecklistItem(id, { name, base_cost: Number(base_cost) });
       await fetchBaseItems();
-      showToast('Ítem del checklist actualizado.');
+      showToast('Ãtem del checklist actualizado.');
     } catch (e) {
-      showToast('Error al actualizar ítem.', 'error');
+      showToast('Error al actualizar Ã­tem.', 'error');
     }
   };
 
   const handleDeleteMasterItem = async (e, id, name) => {
     e.stopPropagation();
-    if (!await confirm(`¿Eliminar "${name}" del checklist maestro?`)) return;
+    if (!await confirm(`Â¿Eliminar "${name}" del checklist maestro?`)) return;
     try {
       await dataService.deleteChecklistItem(id);
       await fetchBaseItems();
-      showToast('Ítem eliminado.');
+      showToast('Ãtem eliminado.');
     } catch (e) {
-      showToast('Error al eliminar ítem.', 'error');
+      showToast('Error al eliminar Ã­tem.', 'error');
     }
   };
 
@@ -319,7 +319,7 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
   const handleUpdateBillableExtra = async (id, updates) => {
     const normalizedName = String(updates.name || '').trim();
     if (!normalizedName) {
-      showToast('El nombre del extra no puede quedar vacío.', 'warning');
+      showToast('El nombre del extra no puede quedar vacÃ­o.', 'warning');
       return false;
     }
     try {
@@ -335,7 +335,7 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
 
   const handleDeleteBillableExtra = async (e, id, name) => {
     e.stopPropagation();
-    if (!await confirm(`¿Archivar el extra "${name}"? Se mantendrá en el historial pero ya no se podrá seleccionar para nuevos servicios.`)) return;
+    if (!await confirm(`Â¿Archivar el extra "${name}"? Se mantendrÃ¡ en el historial pero ya no se podrÃ¡ seleccionar para nuevos servicios.`)) return;
     try {
       await dataService.deleteExtra(id);
       await fetchBillableExtras();
@@ -346,7 +346,7 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
   };
 
   const handleDeleteService = async (id, name) => {
-    if (!await confirm(`¿Archivar el servicio "${name}"? Se mantendrá en el historial pero ya no se podrá seleccionar.`)) return;
+    if (!await confirm(`Â¿Archivar el servicio "${name}"? Se mantendrÃ¡ en el historial pero ya no se podrÃ¡ seleccionar.`)) return;
     try {
       setLoading(true);
       await dataService.deleteService(id);
@@ -367,7 +367,7 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
     name: '', 
     price: '', 
     icon: 'Stethoscope',
-    category: 'Prevención',
+    category: 'PrevenciÃ³n',
     strategy_type: 'MVP',
     duration: 30,
     insumo_cost: 0,
@@ -401,15 +401,15 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
       const serviceToSave = { ...newService, price: newService.price || 0 };
       if (isEditing && serviceToSave.id) {
         await dataService.updateService(serviceToSave.id, serviceToSave);
-        showToast(`¡Servicio ${serviceToSave.name} actualizado!`);
+        showToast(`Â¡Servicio ${serviceToSave.name} actualizado!`);
       } else {
         await dataService.addService(serviceToSave);
-        showToast(`¡Servicio ${serviceToSave.name} agregado al catálogo!`);
+        showToast(`Â¡Servicio ${serviceToSave.name} agregado al catÃ¡logo!`);
       }
       setNewService({ 
         name: '', 
         price: '', 
-        category: 'Prevención',
+        category: 'PrevenciÃ³n',
         strategy_type: 'MVP',
         duration: 30,
         insumo_cost: 0,
@@ -444,10 +444,10 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
     const name = (catName || '').toLowerCase();
     const srvName = (serviceName || '').toLowerCase();
     
-    if (srvName.includes('obturacion y extraccion') || srvName.includes('obturación y extracción')) return 'ObturacionExtraccionIcon';
-    if (name.includes('muela') || name.includes('extraccion') || name.includes('extracción')) return 'MuelaIcon';
+    if (srvName.includes('obturacion y extraccion') || srvName.includes('obturaciÃ³n y extracciÃ³n')) return 'ObturacionExtraccionIcon';
+    if (name.includes('muela') || name.includes('extraccion') || name.includes('extracciÃ³n')) return 'MuelaIcon';
     if (name.includes('tatu')) return 'PenTool';
-    if (name.includes('empaste') || name.includes('obturacion') || name.includes('obturación')) return 'DienteIcon';
+    if (name.includes('empaste') || name.includes('obturacion') || name.includes('obturaciÃ³n')) return 'DienteIcon';
     if (name.includes('color') || name.includes('tinte') || name.includes('blanqueamiento')) return 'Palette';
     if (name.includes('profilaxis') || name.includes('lavado')) return 'Droplets';
     return 'DienteIcon';
@@ -529,11 +529,11 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
             </div>
           )}
 
-          <button onClick={() => setIsCategoriesModalOpen(true)} style={{ backgroundColor: 'rgba(0, 0, 0, 0.04)', color: 'white', border: '1px solid rgba(0, 0, 0, 0.08)', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', width: isMobile ? '100%' : 'auto', padding: '10px 16px', fontSize: '13px', fontWeight: '600', transition: 'background 0.2s', cursor: 'pointer' }}>
+          <button onClick={() => setIsCategoriesModalOpen(true)} style={{ backgroundColor: 'rgba(0, 0, 0, 0.04)', color: '#111111', border: '1px solid rgba(0, 0, 0, 0.08)', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', width: isMobile ? '100%' : 'auto', padding: '10px 16px', fontSize: '13px', fontWeight: '600', transition: 'background 0.2s', cursor: 'pointer' }}>
             <Settings size={16} style={{ marginRight: '6px', color: 'var(--text-muted)' }} />
-            Categorías
+            CategorÃ­as
           </button>
-          <button onClick={() => setIsBillableExtrasModalOpen(true)} style={{ backgroundColor: 'rgba(0, 0, 0, 0.04)', color: 'white', border: '1px solid rgba(0, 0, 0, 0.08)', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', width: isMobile ? '100%' : 'auto', padding: '10px 16px', fontSize: '13px', fontWeight: '600', transition: 'background 0.2s', cursor: 'pointer' }}>
+          <button onClick={() => setIsBillableExtrasModalOpen(true)} style={{ backgroundColor: 'rgba(0, 0, 0, 0.04)', color: '#111111', border: '1px solid rgba(0, 0, 0, 0.08)', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', width: isMobile ? '100%' : 'auto', padding: '10px 16px', fontSize: '13px', fontWeight: '600', transition: 'background 0.2s', cursor: 'pointer' }}>
             <Rocket size={16} style={{ marginRight: '6px', color: 'var(--text-muted)' }} />
             Extras
           </button>
@@ -549,7 +549,7 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
                   name: '', 
                   price: '', 
                   icon: 'Stethoscope',
-                  category: 'Prevención',
+                  category: 'PrevenciÃ³n',
                   strategy_type: 'MVP',
                   duration: 30,
                   insumo_cost: 0,
@@ -602,7 +602,7 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
                 <input className="form-input glow-input" placeholder="Ej. Limpieza Sonrisa" value={newService.name} onChange={e => setNewService({...newService, name: e.target.value})} onBlur={() => setNewService({...newService, name: formatServiceName(newService.name)})} style={{ width: '100%', height: '54px', fontSize: '16px', fontWeight: '600' }} />
               </div>
               <div className="form-group" style={{ flex: 1 }}>
-                <FieldLabel required>DURACIÓN (MIN)</FieldLabel>
+                <FieldLabel required>DURACIÃ“N (MIN)</FieldLabel>
                 <input className="form-input glow-input" type="number" placeholder="45" value={newService.duration === 0 ? '' : newService.duration} onChange={e => setNewService({...newService, duration: e.target.value === '' ? '' : Number(e.target.value)})} style={{ width: '100%', height: '54px', fontSize: '16px', fontWeight: '600', textAlign: 'center' }} />
               </div>
             </div>
@@ -610,7 +610,7 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
             <div style={{ display: 'flex', gap: '16px', flexDirection: isMobile ? 'column' : 'row' }}>
               <div style={{ flex: 1 }}>
                 <PandaSelect 
-                  label="CATEGORÍA"
+                  label="CATEGORÃA"
                   value={newService.category}
                   onChange={val => setNewService({...newService, category: val})}
                   options={categories.map(c => ({ label: c.name, value: c.name }))}
@@ -644,7 +644,7 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
             </div>
 
             <div className="form-group">
-              <label style={{ display: 'block', fontSize: '11px', fontWeight: '900', color: 'var(--text-muted)', marginBottom: '8px', letterSpacing: '1px' }}>ÍCONO</label>
+              <label style={{ display: 'block', fontSize: '11px', fontWeight: '900', color: 'var(--text-muted)', marginBottom: '8px', letterSpacing: '1px' }}>ÃCONO</label>
               <div className="mac-dock-container panda-scrollbar" style={{ padding: '24px 12px 12px 12px', background: 'var(--bg-secondary)', borderRadius: '20px', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
                 {AVAILABLE_ICONS.map(ic => (
                   <button
@@ -660,7 +660,7 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
             </div>
 
             <div className="form-group">
-              <FieldLabel>DESCRIPCIÓN</FieldLabel>
+              <FieldLabel>DESCRIPCIÃ“N</FieldLabel>
               <textarea 
                 className="form-input glow-input" 
                 placeholder="Beneficios premium del servicio..." 
@@ -725,8 +725,8 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
       ) : services.length === 0 ? (
         <div className="glass-card" style={{ textAlign: 'center', padding: '80px', borderRadius: '32px' }}>
           <Star size={64} color="rgba(255, 255, 255, 0.1)" style={{ marginBottom: '24px' }} />
-          <h3 style={{ fontSize: '20px', color: 'var(--text-primary)' }}>Tu catálogo está vacío</h3>
-          <p style={{ color: 'var(--text-muted)', marginTop: '8px' }}>Comienza agregando los servicios que definirán tu marca.</p>
+          <h3 style={{ fontSize: '20px', color: 'var(--text-primary)' }}>Tu catÃ¡logo estÃ¡ vacÃ­o</h3>
+          <p style={{ color: 'var(--text-muted)', marginTop: '8px' }}>Comienza agregando los servicios que definirÃ¡n tu marca.</p>
         </div>
       ) : (
         <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
@@ -826,7 +826,7 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
                               <span>${service.price}</span>
                               {rates?.usd > 0 && (
                                 <span style={{ fontSize: '12px', color: 'var(--gold-primary)', fontWeight: '700' }}>
-                                  ≈ {Math.round(service.price * rates.usd).toLocaleString()} Bs.
+                                  â‰ˆ {Math.round(service.price * rates.usd).toLocaleString()} Bs.
                                 </span>
                               )}
                             </div>
@@ -912,13 +912,13 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
                           )}
                         </div>
                         <div style={{ textAlign: 'right' }}>
-                          <div style={{ fontSize: '24px', fontWeight: '900', color: 'white', letterSpacing: '-0.5px', lineHeight: 1 }}>
+                          <div style={{ fontSize: '24px', fontWeight: '900', color: '#111111', letterSpacing: '-0.5px', lineHeight: 1 }}>
                             {(service.category || '').toLowerCase().includes('tatuaj') && <span style={{ fontSize: '12px', fontWeight: '700', color: 'var(--gold-primary)', marginRight: '4px', verticalAlign: 'middle' }}>Desde</span>}
                             ${service.price}
                           </div>
                           {rates?.usd > 0 && (
                             <div style={{ fontSize: '11px', color: 'var(--text-muted)', fontWeight: '600', marginTop: '4px' }}>
-                              ≈ {Math.round(service.price * rates.usd).toLocaleString()} Bs.
+                              â‰ˆ {Math.round(service.price * rates.usd).toLocaleString()} Bs.
                             </div>
                           )}
                         </div>
@@ -934,8 +934,8 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
                 <thead>
                   <tr style={{ backgroundColor: 'var(--bg-tertiary)', borderBottom: '1px solid var(--border-color)' }}>
                     <th style={{ padding: '16px 24px', fontSize: '11px', fontWeight: '900', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Servicio</th>
-                    <th style={{ padding: '16px 24px', fontSize: '11px', fontWeight: '900', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Categoría</th>
-                    <th style={{ padding: '16px 24px', fontSize: '11px', fontWeight: '900', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Duración</th>
+                    <th style={{ padding: '16px 24px', fontSize: '11px', fontWeight: '900', color: 'var(--text-muted)', textTransform: 'uppercase' }}>CategorÃ­a</th>
+                    <th style={{ padding: '16px 24px', fontSize: '11px', fontWeight: '900', color: 'var(--text-muted)', textTransform: 'uppercase' }}>DuraciÃ³n</th>
                     <th style={{ padding: '16px 24px', fontSize: '11px', fontWeight: '900', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Precio</th>
                     <th style={{ padding: '16px 24px', fontSize: '11px', fontWeight: '900', color: 'var(--text-muted)', textTransform: 'uppercase', textAlign: 'right' }}>Acciones</th>
                   </tr>
@@ -1002,7 +1002,7 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
                 </div>
                 <button 
                   onClick={() => setIsExtrasModalOpen(false)} 
-                  style={{ background: 'rgba(0, 0, 0, 0.04)', border: 'none', color: 'white', cursor: 'pointer', width: '36px', height: '36px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+                  style={{ background: 'rgba(0, 0, 0, 0.04)', border: 'none', color: '#111111', cursor: 'pointer', width: '36px', height: '36px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
                 >
                   <X size={20} />
                 </button>
@@ -1051,7 +1051,7 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
                 <div style={{ display: 'flex', gap: '8px' }}>
                   <input 
                     className="form-input" 
-                    placeholder="Nuevo ítem..." 
+                    placeholder="Nuevo Ã­tem..." 
                     value={newItemName}
                     onChange={e => setNewItemName(e.target.value)}
                     style={{ flex: 1, height: '40px', fontSize: '13px', minWidth: 0 }}
@@ -1077,9 +1077,9 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
                   <h3 style={{ fontSize: '20px', fontWeight: '800', display: 'flex', alignItems: 'center', gap: '10px' }}>
                     <Rocket size={24} color="var(--gold-primary)" /> Servicios Extras
                   </h3>
-                  <p style={{ fontSize: '12px', color: 'var(--text-secondary)', marginTop: '4px' }}>Servicios con costo extra que se añaden en caja.</p>
+                  <p style={{ fontSize: '12px', color: 'var(--text-secondary)', marginTop: '4px' }}>Servicios con costo extra que se aÃ±aden en caja.</p>
                 </div>
-                <button onClick={() => setIsBillableExtrasModalOpen(false)} style={{ background: 'rgba(0, 0, 0, 0.04)', border: 'none', borderRadius: '50%', width: '36px', height: '36px', color: 'white', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <button onClick={() => setIsBillableExtrasModalOpen(false)} style={{ background: 'rgba(0, 0, 0, 0.04)', border: 'none', borderRadius: '50%', width: '36px', height: '36px', color: '#111111', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                   <X size={20} />
                 </button>
               </div>
@@ -1108,13 +1108,13 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
                               borderRadius: '9px',
                               border: '1px solid var(--gold-primary)',
                               background: 'var(--bg-secondary)',
-                              color: 'white',
+                              color: '#111111',
                               fontSize: '14px',
                               fontWeight: '800'
                             }}
                           />
                         ) : (
-                          <div style={{ color: 'white', fontSize: '14px', fontWeight: '800', lineHeight: '38px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{extra.name}</div>
+                          <div style={{ color: '#111111', fontSize: '14px', fontWeight: '800', lineHeight: '38px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{extra.name}</div>
                         )}
                         <div style={{ fontSize: '11px', color: 'var(--gold-primary)', marginTop: '4px', fontWeight: '800' }}>PRECIO EN CAJA</div>
                       </div>
@@ -1149,7 +1149,7 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
                           </button>
                         ) : (
                           <div style={{ display: 'flex', gap: '8px' }}>
-                            <button onClick={() => setEditingExtra({ ...extra, name: String(extra.name || ''), price: String(extra.price ?? '') })} className="action-btn" style={{ backgroundColor: 'rgba(0, 0, 0, 0.04)', color: 'white', flexShrink: 0 }}>
+                            <button onClick={() => setEditingExtra({ ...extra, name: String(extra.name || ''), price: String(extra.price ?? '') })} className="action-btn" style={{ backgroundColor: 'rgba(0, 0, 0, 0.04)', color: '#111111', flexShrink: 0 }}>
                               <Pencil size={14} />
                             </button>
                             <button onClick={(e) => handleDeleteBillableExtra(e, extra.id, extra.name)} className="action-btn" style={{ backgroundColor: 'rgba(255,69,58,0.1)', color: '#ff453a', flexShrink: 0 }}>
@@ -1204,7 +1204,7 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
               }}>
                 <button 
                   onClick={() => setSelectedServiceDetail(null)} 
-                  style={{ position: 'absolute', right: isMobile ? '32px' : '48px', top: '20px', background: 'rgba(0, 0, 0, 0.04)', border: 'none', color: 'white', cursor: 'pointer', width: '36px', height: '36px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+                  style={{ position: 'absolute', right: isMobile ? '32px' : '48px', top: '20px', background: 'rgba(0, 0, 0, 0.04)', border: 'none', color: '#111111', cursor: 'pointer', width: '36px', height: '36px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
                 >
                   <X size={20} />
                 </button>
@@ -1223,18 +1223,18 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
                   </div>
                 </div>
 
-                <h3 style={{ fontSize: '22px', fontWeight: '800', color: 'white', marginBottom: '16px', paddingRight: '40px' }}>{selectedServiceDetail.name}</h3>
+                <h3 style={{ fontSize: '22px', fontWeight: '800', color: '#111111', marginBottom: '16px', paddingRight: '40px' }}>{selectedServiceDetail.name}</h3>
 
                 <div style={{ display: 'flex', gap: '16px', marginBottom: '20px', fontSize: '13px', color: 'var(--text-secondary)' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '6px', backgroundColor: 'rgba(0, 0, 0, 0.04)', padding: '6px 12px', borderRadius: '10px' }}>
                     <Clock size={14} color="var(--gold-primary)" />
-                    <strong>Duración:</strong> {selectedServiceDetail.duration || 30} min
+                    <strong>DuraciÃ³n:</strong> {selectedServiceDetail.duration || 30} min
                   </div>
                 </div>
 
                 {selectedServiceDetail.description && (
                   <div style={{ marginBottom: '20px' }}>
-                    <div style={{ fontSize: '11px', fontWeight: '800', color: 'var(--text-muted)', marginBottom: '6px', textTransform: 'uppercase' }}>Guión de Venta / Descripción</div>
+                    <div style={{ fontSize: '11px', fontWeight: '800', color: 'var(--text-muted)', marginBottom: '6px', textTransform: 'uppercase' }}>GuiÃ³n de Venta / DescripciÃ³n</div>
                     <p style={{ fontSize: '13px', color: 'rgba(255,255,255,0.7)', lineHeight: '1.5', margin: 0, padding: '12px', borderRadius: '12px', backgroundColor: 'var(--bg-secondary)', fontStyle: 'italic', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
                       "{selectedServiceDetail.description}"
                     </p>
@@ -1246,7 +1246,7 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
                     <div style={{ fontSize: '11px', fontWeight: '800', color: 'var(--text-muted)', marginBottom: '8px', textTransform: 'uppercase' }}>Checklist Incluido ({selectedServiceDetail.included_items.length})</div>
                     <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
                       {selectedServiceDetail.included_items.map((item, idx) => (
-                        <span key={idx} style={{ fontSize: '11px', padding: '6px 12px', borderRadius: '8px', backgroundColor: 'rgba(0, 0, 0, 0.04)', color: 'white', border: '1px solid rgba(0, 0, 0, 0.08)', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                        <span key={idx} style={{ fontSize: '11px', padding: '6px 12px', borderRadius: '8px', backgroundColor: 'rgba(0, 0, 0, 0.04)', color: '#111111', border: '1px solid rgba(0, 0, 0, 0.08)', display: 'flex', alignItems: 'center', gap: '6px' }}>
                           <Check size={12} color="var(--gold-primary)" strokeWidth={3} /> {item}
                         </span>
                       ))}
@@ -1257,14 +1257,14 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
                 <div className="details-price-row">
                   <div>
                     <div style={{ fontSize: '10px', fontWeight: '700', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Precio Base</div>
-                    <div style={{ fontSize: '24px', fontWeight: '900', color: 'white' }}>
+                    <div style={{ fontSize: '24px', fontWeight: '900', color: '#111111' }}>
                       {(selectedServiceDetail.category || '').toLowerCase().includes('tatuaj') && <span style={{ fontSize: '13px', fontWeight: '800', color: 'var(--gold-primary)', marginRight: '4px' }}>Desde</span>}
                       ${selectedServiceDetail.price}
                     </div>
                   </div>
                   {rates?.usd > 0 && (
                     <div style={{ textAlign: 'right' }}>
-                      <div style={{ fontSize: '10px', fontWeight: '700', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Precio en Bolívares</div>
+                      <div style={{ fontSize: '10px', fontWeight: '700', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Precio en BolÃ­vares</div>
                       <div style={{ fontSize: '24px', fontWeight: '900', color: 'var(--gold-primary)' }}>
                         {Math.round(selectedServiceDetail.price * rates.usd).toLocaleString()} Bs.
                       </div>
@@ -1285,7 +1285,7 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
                   </button>
                   <button
                     onClick={() => setSelectedServiceDetail(null)}
-                    style={{ flex: '1', height: '44px', borderRadius: '12px', backgroundColor: 'rgba(0, 0, 0, 0.04)', border: 'none', color: 'white', cursor: 'pointer', fontWeight: '700', fontSize: '14px', whiteSpace: 'nowrap', transition: 'background-color 0.2s' }}
+                    style={{ flex: '1', height: '44px', borderRadius: '12px', backgroundColor: 'rgba(0, 0, 0, 0.04)', border: 'none', color: '#111111', cursor: 'pointer', fontWeight: '700', fontSize: '14px', whiteSpace: 'nowrap', transition: 'background-color 0.2s' }}
                     onMouseEnter={e => e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.1)'}
                     onMouseLeave={e => e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.05)'}
                   >
@@ -1298,7 +1298,7 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
         )}
       </AnimatedModal>
 
-      {/* Modal de Categorías */}
+      {/* Modal de CategorÃ­as */}
       <AnimatedModal isOpen={isCategoriesModalOpen}>
         {(overlayClass, cardClass) => (
           <div className={overlayClass.replace('global-modal-overlay', '')} style={{
@@ -1316,20 +1316,20 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
             }}>
               <button 
                 onClick={() => setIsCategoriesModalOpen(false)} 
-                style={{ position: 'absolute', right: '20px', top: '20px', background: 'rgba(0, 0, 0, 0.04)', border: 'none', color: 'white', cursor: 'pointer', width: '36px', height: '36px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+                style={{ position: 'absolute', right: '20px', top: '20px', background: 'rgba(0, 0, 0, 0.04)', border: 'none', color: '#111111', cursor: 'pointer', width: '36px', height: '36px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
               >
                 <X size={20} />
               </button>
 
-              <h3 style={{ fontSize: '20px', fontWeight: '800', color: 'white', marginBottom: '8px', display: 'flex', alignItems: 'center', gap: '8px', paddingRight: '40px' }}>
-                <Settings size={20} color="var(--gold-primary)" /> Categorías
+              <h3 style={{ fontSize: '20px', fontWeight: '800', color: '#111111', marginBottom: '8px', display: 'flex', alignItems: 'center', gap: '8px', paddingRight: '40px' }}>
+                <Settings size={20} color="var(--gold-primary)" /> CategorÃ­as
               </h3>
-              <p style={{ color: 'var(--text-muted)', fontSize: '12px', marginBottom: '20px' }}>Agrega o elimina las categorías disponibles para clasificar tus servicios.</p>
+              <p style={{ color: 'var(--text-muted)', fontSize: '12px', marginBottom: '20px' }}>Agrega o elimina las categorÃ­as disponibles para clasificar tus servicios.</p>
 
-              {/* Agregar Categoría */}
+              {/* Agregar CategorÃ­a */}
               <div style={{ marginBottom: '24px', backgroundColor: 'rgba(0, 0, 0, 0.04)', padding: '16px', borderRadius: '16px', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
                 <label style={{ display: 'block', fontSize: '10px', fontWeight: '900', color: 'var(--text-muted)', marginBottom: '8px', letterSpacing: '0.5px' }}>
-                  {editingCategory ? 'EDITAR CATEGORÍA' : 'NUEVA CATEGORÍA'}
+                  {editingCategory ? 'EDITAR CATEGORÃA' : 'NUEVA CATEGORÃA'}
                 </label>
                 <div style={{ display: 'flex', gap: '8px', marginBottom: '16px' }}>
                   <input 
@@ -1343,7 +1343,7 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
                     <button 
                       onClick={handleCancelEditCategory} 
                       className="btn-gold" 
-                      style={{ height: '44px', width: '44px', borderRadius: '12px', padding: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', color: 'white' }}
+                      style={{ height: '44px', width: '44px', borderRadius: '12px', padding: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', color: '#111111' }}
                       type="button"
                     >
                       <X size={20} />
@@ -1361,7 +1361,7 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
 
               </div>
 
-              {/* Listado de Categorías */}
+              {/* Listado de CategorÃ­as */}
               <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
                 {categories.map((catObj, idx) => (
                   <div key={idx} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 16px', borderRadius: '12px', backgroundColor: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
@@ -1369,7 +1369,7 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
                       <div style={{ color: 'var(--gold-primary)' }}>
                         {getIconComponent(catObj.icon || getFallbackIconName(catObj.name), 20)}
                       </div>
-                      <span style={{ fontSize: '14px', fontWeight: '700', color: 'white' }}>{catObj.name}</span>
+                      <span style={{ fontSize: '14px', fontWeight: '700', color: '#111111' }}>{catObj.name}</span>
                     </div>
                     <div style={{ display: 'flex', gap: '8px' }}>
                       <button 
@@ -1413,15 +1413,15 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
             }}>
               <button 
                 onClick={() => setIsStrategiesModalOpen(false)} 
-                style={{ position: 'absolute', right: '20px', top: '20px', background: 'rgba(0, 0, 0, 0.04)', border: 'none', color: 'white', cursor: 'pointer', width: '36px', height: '36px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+                style={{ position: 'absolute', right: '20px', top: '20px', background: 'rgba(0, 0, 0, 0.04)', border: 'none', color: '#111111', cursor: 'pointer', width: '36px', height: '36px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
               >
                 <X size={20} />
               </button>
 
-              <h3 style={{ fontSize: '20px', fontWeight: '800', color: 'white', marginBottom: '8px', display: 'flex', alignItems: 'center', gap: '8px', paddingRight: '40px' }}>
+              <h3 style={{ fontSize: '20px', fontWeight: '800', color: '#111111', marginBottom: '8px', display: 'flex', alignItems: 'center', gap: '8px', paddingRight: '40px' }}>
                 <Crown size={20} color="var(--gold-primary)" /> Estrategias de Venta
               </h3>
-              <p style={{ color: 'var(--text-muted)', fontSize: '12px', marginBottom: '20px' }}>Configura los tipos de estrategias de venta cruzada y retención para tus servicios.</p>
+              <p style={{ color: 'var(--text-muted)', fontSize: '12px', marginBottom: '20px' }}>Configura los tipos de estrategias de venta cruzada y retenciÃ³n para tus servicios.</p>
 
               {/* Agregar Estrategia */}
               <div style={{ marginBottom: '24px', backgroundColor: 'rgba(0, 0, 0, 0.04)', padding: '16px', borderRadius: '16px', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
@@ -1461,7 +1461,7 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
                 {strategies.map((strat, idx) => (
                   <div key={idx} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 16px', borderRadius: '12px', backgroundColor: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
                     <div style={{ display: 'flex', flexDirection: 'column' }}>
-                      <span style={{ fontSize: '14px', fontWeight: '700', color: 'white' }}>{strat.label}</span>
+                      <span style={{ fontSize: '14px', fontWeight: '700', color: '#111111' }}>{strat.label}</span>
                       <span style={{ fontSize: '11px', color: 'var(--gold-primary)', fontWeight: '900' }}>VALOR: {strat.value}</span>
                     </div>
                     <button 
@@ -1485,3 +1485,4 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
 };
 
 export default ServicesModule;
+

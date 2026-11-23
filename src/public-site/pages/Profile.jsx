@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+﻿import { useState, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from 'framer-motion';
@@ -140,7 +140,7 @@ export default function Profile() {
       });
       setAllBarbers(activeBarbers);
       
-      // null means the key was never written (true first-time visitor) — only then do
+      // null means the key was never written (true first-time visitor) â€” only then do
       // we seed defaults. An empty array means the user deliberately cleared their
       // favorites, and that choice must stick across reloads instead of being reseeded.
       const rawFavs = localStorage.getItem('favorite_barbers');
@@ -190,11 +190,11 @@ export default function Profile() {
   
 
 
-  // Sort completed appointments descending — used by the history modal
+  // Sort completed appointments descending â€” used by the history modal
   const historyAppointments = [...completedAppointments].sort((a,b) => new Date(b.scheduled_at) - new Date(a.scheduled_at));
 
   const RANKS = [
-    { min: 0, label: 'Básico' },
+    { min: 0, label: 'BÃ¡sico' },
     { min: 100, label: 'Bronce' },
     { min: 200, label: 'Plata' },
     { min: 300, label: 'Oro' },
@@ -219,8 +219,8 @@ export default function Profile() {
     const diffTime = Math.abs(new Date() - new Date(dateStr));
     const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
     if (diffDays === 0) return 'Hoy';
-    if (diffDays === 1) return 'Hace 1 día';
-    return `Hace ${diffDays} días`;
+    if (diffDays === 1) return 'Hace 1 dÃ­a';
+    return `Hace ${diffDays} dÃ­as`;
   };
 
   const handlePrizeClick = (prize) => {
@@ -233,11 +233,11 @@ export default function Profile() {
     setIsRedeeming(true);
     try {
       await publicService.redeemPrize(client.id, selectedPrize.points, selectedPrize.name);
-      alert(`¡Felicidades! Has canjeado ${selectedPrize.name}. Hemos enviado los detalles a tu correo.`);
+      alert(`Â¡Felicidades! Has canjeado ${selectedPrize.name}. Hemos enviado los detalles a tu correo.`);
       loadData(client.id);
       setSelectedPrize(null);
     } catch (e) {
-      alert("Hubo un error al canjear el premio. Inténtalo de nuevo.");
+      alert("Hubo un error al canjear el premio. IntÃ©ntalo de nuevo.");
       console.error(e);
     } finally {
       setIsRedeeming(false);
@@ -246,7 +246,7 @@ export default function Profile() {
 
   const favoriteBarbersData = allBarbers.filter(b => favorites.includes(b.id));
 
-  // ── STAR LOGIC: based on most visits, not favorites ──
+  // â”€â”€ STAR LOGIC: based on most visits, not favorites â”€â”€
   const pastAppointments = appointments.filter(a => {
     const date = new Date(a.scheduled_at);
     return date < new Date() && (a.status === 'completed' || a.status === 'confirmed' || !a.status);
@@ -282,7 +282,7 @@ export default function Profile() {
     <div className="new-dashboard-container px-4 md:px-8 lg:px-10">
       {createPortal(
         <AnimatePresence>
-          {/* Birthday Roulette — only shows on client's birthday and only once per year */}
+          {/* Birthday Roulette â€” only shows on client's birthday and only once per year */}
           {(() => {
             if (!client?.birth_date) return null;
             const today = new Date();
@@ -294,7 +294,7 @@ export default function Profile() {
             const hasCouponThisYear = coupons.some(c => c.generated_at && new Date(c.generated_at).getFullYear() === currentYear);
             if (!isBirthday || hasSpun || hasCouponThisYear) return null;
             const bdayKey = `panda_bday_spun_${client.id}_${currentYear}`;
-            // Winning must NOT hide the wheel immediately — PrizeWheel shows a victory
+            // Winning must NOT hide the wheel immediately â€” PrizeWheel shows a victory
             // ticket with the coupon code after a win, and this component re-renders
             // the moment `hasSpun` flips true, which would unmount that ticket before
             // the client ever sees it. So a win only persists to localStorage; only the
@@ -349,7 +349,7 @@ export default function Profile() {
       )}
 
 
-      {/* ── PAGE HEADER ── */}
+      {/* â”€â”€ PAGE HEADER â”€â”€ */}
       <div className="panda-club-header animate-fade-in-up">
         <div className="pch-left">
           <div className="pch-eyebrow">
@@ -357,7 +357,7 @@ export default function Profile() {
             <span>Programa de Lealtad</span>
           </div>
           <h1 className="pch-title">Club Sonrisa</h1>
-          <p className="pch-subtitle">Acumula puntos en cada visita y canjéalos por servicios exclusivos. Mientras más visites, mayor tu rango y mejores tus beneficios.</p>
+          <p className="pch-subtitle">Acumula puntos en cada visita y canjÃ©alos por servicios exclusivos. Mientras mÃ¡s visites, mayor tu rango y mejores tus beneficios.</p>
         </div>
         <div className="pch-stats">
           <div className="pch-stat">
@@ -372,10 +372,10 @@ export default function Profile() {
         </div>
       </div>
 
-      {/* ── MAIN 2-COLUMN LAYOUT ── */}
+      {/* â”€â”€ MAIN 2-COLUMN LAYOUT â”€â”€ */}
       <div className="club-grid">
 
-        {/* ── TARJETA VIP TITANIO ── */}
+        {/* â”€â”€ TARJETA VIP TITANIO â”€â”€ */}
 
           {/* TARJETA VIP TITANIO (Now 3D Glassmorphism) */}
           <div className="titanium-card-wrapper animate-fade-in-up" style={{ animationDelay: '0ms' }}>
@@ -483,7 +483,7 @@ export default function Profile() {
             </div>
           </div>
 
-        {/* ── BENEFICIOS ── */}
+        {/* â”€â”€ BENEFICIOS â”€â”€ */}
           <div className="dash-card animate-fade-in-up" style={{ animationDelay: '120ms', padding: '24px' }}>
             <div className="dash-header-flex" style={{ marginBottom: 20 }}>
               <h3 className="dash-section-title" style={{ fontSize: '18px', fontWeight: 800 }}>Tus Beneficios</h3>
@@ -527,7 +527,7 @@ export default function Profile() {
             </div>
           </div>
 
-          {/* ── BÓVEDA VIP (Cupones) ── */}
+          {/* â”€â”€ BÃ“VEDA VIP (Cupones) â”€â”€ */}
           {/* touchAction: 'pan-y' works around an iOS Safari quirk where a
               backdrop-filter element (this card) containing nested rounded/
               overflow-hidden children (the coupon items below) can swallow
@@ -536,7 +536,7 @@ export default function Profile() {
             <div className="dash-header-flex" style={{ marginBottom: 20 }}>
               <h3 className="dash-section-title flex items-center gap-2" style={{ fontSize: '18px', fontWeight: 800 }}>
                 <Diamond size={18} className="text-[#111111]" />
-                La Bóveda VIP
+                La BÃ³veda VIP
               </h3>
             </div>
             
@@ -560,7 +560,7 @@ export default function Profile() {
                     <div className={`font-bold text-lg mb-4 ${isUsed ? 'text-[#94a3b8] line-through' : 'text-[#0f172a]'}`}>{coupon.prize_name}</div>
 
                     <div className="bg-[#f7f7f5] rounded-lg p-3 border border-[#d9c08f]/15 flex flex-col items-center">
-                      <div className="text-[9px] text-[#94a3b8] uppercase font-bold tracking-widest mb-1">Código Clasificado</div>
+                      <div className="text-[9px] text-[#94a3b8] uppercase font-bold tracking-widest mb-1">CÃ³digo Clasificado</div>
                       <div className="font-mono text-xl text-[#0f172a] font-black tracking-[4px]">{coupon.id.substring(0, 8).toUpperCase()}</div>
                     </div>
                   </div>
@@ -570,7 +570,7 @@ export default function Profile() {
             ) : (
               <div className="text-center py-8 border border-dashed border-[#d9c08f]/15 rounded-xl bg-white">
                 <Diamond size={24} className="mx-auto mb-3 text-[#cbd5e1]" />
-                <p className="text-[#94a3b8] text-sm font-semibold">Tu Bóveda está vacía.</p>
+                <p className="text-[#94a3b8] text-sm font-semibold">Tu BÃ³veda estÃ¡ vacÃ­a.</p>
                 <p className="text-[#cbd5e1] text-xs mt-1">Acumula puntos y gira la ruleta VIP.</p>
               </div>
             );
@@ -579,7 +579,7 @@ export default function Profile() {
 
       </div> {/* END CLUB GRID */}
 
-      {/* ── MODALS ── */}
+      {/* â”€â”€ MODALS â”€â”€ */}
       {showHistoryModal && (
         <div className="dash-modal-overlay" onClick={() => setShowHistoryModal(false)}>
           <div className="dash-modal" onClick={e => e.stopPropagation()}>
@@ -616,8 +616,8 @@ export default function Profile() {
             </div>
             <div className="dash-modal-body" style={{ textAlign: 'center', padding: '10px 0 20px' }}>
               <Gift size={48} color="var(--champagne)" style={{ marginBottom: 16 }} />
-              <p style={{ fontSize: 16, color: '#0f172a', marginBottom: 8, fontWeight: 600 }}>¿Deseas canjear {selectedPrize.name}?</p>
-              <p style={{ fontSize: 14, color: '#64748b', marginBottom: 24 }}>Se descontarán {selectedPrize.points} puntos de tu saldo.</p>
+              <p style={{ fontSize: 16, color: '#0f172a', marginBottom: 8, fontWeight: 600 }}>Â¿Deseas canjear {selectedPrize.name}?</p>
+              <p style={{ fontSize: 14, color: '#64748b', marginBottom: 24 }}>Se descontarÃ¡n {selectedPrize.points} puntos de tu saldo.</p>
               <button 
                 onClick={confirmPrizeRedemption} 
                 disabled={isRedeeming}
@@ -653,7 +653,7 @@ export default function Profile() {
           grid-template-columns: 1fr;
           gap: 20px;
         }
-        /* Tablet (portrait & landscape both land here — even iPad Pro landscape
+        /* Tablet (portrait & landscape both land here â€” even iPad Pro landscape
            is under 1200px, so without this step every tablet fell through to the
            single-column layout below and looked stretched/empty). Narrower left
            column than desktop since the content area itself is narrower here. */
@@ -916,7 +916,7 @@ export default function Profile() {
           height: 32px;
           background: #e2e8f0;
         }
-        /* Stacks through tablet too — side-by-side only once there's genuinely
+        /* Stacks through tablet too â€” side-by-side only once there's genuinely
            enough room, otherwise the title/eyebrow column gets squeezed and
            wraps awkwardly (was only stacking below 640px, leaving every tablet
            width fighting for space). */
@@ -977,7 +977,7 @@ export default function Profile() {
           flex: 1;
         }
 
-        /* ── CARDS GLOBALES (APPLE UX) ── */
+        /* â”€â”€ CARDS GLOBALES (APPLE UX) â”€â”€ */
         .dash-card {
           background: #ffffff;
           backdrop-filter: blur(24px);
@@ -989,7 +989,7 @@ export default function Profile() {
           flex-direction: column;
           box-shadow: 0 8px 24px rgba(0,0,0,0.10);
           /* Every dash-card combines backdrop-filter with nested rounded/
-             overflow-hidden children — the same iOS combination fixed on the
+             overflow-hidden children â€” the same iOS combination fixed on the
              VIP vault card specifically. Setting it here once covers every
              card built on this shared class instead of patching each one. */
           touch-action: pan-y;
@@ -1034,7 +1034,7 @@ export default function Profile() {
         .stat-value small { font-size: 14px; color: #64748b; font-weight: 500; margin-left: 4px; }
         .stat-desc { font-size: 12px; color: #94a3b8; }
 
-        /* ── ROW 2: NEXT APPT APPLE COUNTDOWN CARD ── */
+        /* â”€â”€ ROW 2: NEXT APPT APPLE COUNTDOWN CARD â”€â”€ */
         .next-appt-card-v2 {
           padding: 0 !important;
           border-radius: 24px;
@@ -1247,7 +1247,7 @@ export default function Profile() {
           .appt-status-badge { top: auto; bottom: 20px; right: 20px; }
         }
 
-        /* ── ROW 2: VIP RING (APPLE WATCH STYLE) ── */
+        /* â”€â”€ ROW 2: VIP RING (APPLE WATCH STYLE) â”€â”€ */
         .vip-ring-card {
           padding: 24px !important;
         }
@@ -1309,7 +1309,7 @@ export default function Profile() {
         }
         .vp-text strong { color: #0f172a; font-weight: 500; }
 
-        /* ── ROW 3: HISTORIAL APPLE UX ── */
+        /* â”€â”€ ROW 3: HISTORIAL APPLE UX â”€â”€ */
         .history-card-v2 {
           padding: 24px !important;
           border: 1px solid rgba(217, 192, 143, 0.15);
@@ -1533,7 +1533,7 @@ export default function Profile() {
            -webkit-background-clip: text;
         }
 
-        /* ── RESERVA RÁPIDA V2 (APPLE UX PILLS) ── */
+        /* â”€â”€ RESERVA RÃPIDA V2 (APPLE UX PILLS) â”€â”€ */
         .quick-book-card-v2 {
           padding: 20px 24px !important;
           background: linear-gradient(180deg, rgba(17,17,17,0.06) 0%, rgba(17,17,17,0) 100%);
@@ -1661,7 +1661,7 @@ export default function Profile() {
           color: #64748b;
         }
 
-        /* ── SPLIT PHOTO + VIDEO FAVORITE BARBER ── */
+        /* â”€â”€ SPLIT PHOTO + VIDEO FAVORITE BARBER â”€â”€ */
         .hero-fav-card {
           padding: 0 !important;
           overflow: hidden;
@@ -1895,7 +1895,7 @@ export default function Profile() {
           border-color: var(--champagne);
         }
 
-        /* ── MODALS ── */
+        /* â”€â”€ MODALS â”€â”€ */
         .dash-modal-overlay {
           position: fixed;
           top: 0; left: 0; right: 0; bottom: 0;
@@ -1937,7 +1937,7 @@ export default function Profile() {
           padding: 24px;
         }
 
-        /* ── BUTTONS ── */
+        /* â”€â”€ BUTTONS â”€â”€ */
         .dash-btn {
           background: #e8d4b0;
           color: #111111;
@@ -2368,3 +2368,4 @@ export default function Profile() {
     </div>
   );
 }
+

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Lock, Eye, EyeOff, Check } from 'lucide-react';
 import { publicService } from '../services/publicService';
@@ -31,11 +31,11 @@ export default function ResetPassword() {
     setError('');
 
     if (password.length < 6) {
-      setError('La contraseña debe tener al menos 6 caracteres');
+      setError('La contraseÃ±a debe tener al menos 6 caracteres');
       return;
     }
     if (password !== confirmPassword) {
-      setError('Las contraseñas no coinciden');
+      setError('Las contraseÃ±as no coinciden');
       return;
     }
 
@@ -45,7 +45,7 @@ export default function ResetPassword() {
       setSuccess(true);
     } catch (e) {
       console.error('Reset error:', e);
-      setError(e.message || 'Error al actualizar la contraseña');
+      setError(e.message || 'Error al actualizar la contraseÃ±a');
     } finally {
       setLoading(false);
     }
@@ -68,10 +68,10 @@ export default function ResetPassword() {
             <Check size={32} style={{ color: '#22c55e' }} />
           </div>
           <h1 className="section-title" style={{ fontSize: '1.8rem' }}>
-            Contraseña <span className="text-gold">Actualizada</span>
+            ContraseÃ±a <span className="text-gold">Actualizada</span>
           </h1>
           <p style={{ color: 'var(--text-secondary)', fontSize: 14, marginTop: 12, marginBottom: 24 }}>
-            Tu contraseña ha sido cambiada exitosamente
+            Tu contraseÃ±a ha sido cambiada exitosamente
           </p>
           <button onClick={() => navigate('/login')} className="btn-gold" style={{ padding: '12px 32px', borderRadius: 'var(--radius-pill)' }}>
             Ir al Login
@@ -98,10 +98,10 @@ export default function ResetPassword() {
       <div style={{ width: '100%', maxWidth: 420 }}>
         <div style={{ textAlign: 'center', marginBottom: 32 }}>
           <h1 className="section-title" style={{ fontSize: '1.8rem' }}>
-            Nueva <span className="text-gold">Contraseña</span>
+            Nueva <span className="text-gold">ContraseÃ±a</span>
           </h1>
           <p style={{ color: 'var(--text-secondary)', fontSize: 14, marginTop: 8 }}>
-            Ingresa tu nueva contraseña
+            Ingresa tu nueva contraseÃ±a
           </p>
         </div>
 
@@ -115,7 +115,7 @@ export default function ResetPassword() {
           <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
             <div>
               <label style={{ display: 'block', fontSize: 13, fontWeight: 600, color: 'var(--text-secondary)', marginBottom: 8 }}>
-                Nueva Contraseña
+                Nueva ContraseÃ±a
               </label>
               <div style={{ position: 'relative' }}>
                 <Lock size={16} style={{ position: 'absolute', left: 14, top: '50%', transform: 'translateY(-50%)', color: 'var(--text-muted)' }} />
@@ -124,7 +124,7 @@ export default function ResetPassword() {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   className="input-field"
-                  placeholder="••••••••"
+                  placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢"
                   style={{ paddingRight: 44 }}
                   required
                   minLength={6}
@@ -141,7 +141,7 @@ export default function ResetPassword() {
 
             <div>
               <label style={{ display: 'block', fontSize: 13, fontWeight: 600, color: 'var(--text-secondary)', marginBottom: 8 }}>
-                Confirmar Contraseña
+                Confirmar ContraseÃ±a
               </label>
               <div style={{ position: 'relative' }}>
                 <Lock size={16} style={{ position: 'absolute', left: 14, top: '50%', transform: 'translateY(-50%)', color: 'var(--text-muted)' }} />
@@ -150,7 +150,7 @@ export default function ResetPassword() {
                   value={confirmPassword}
                   onChange={(e) => setConfirmPassword(e.target.value)}
                   className="input-field"
-                  placeholder="••••••••"
+                  placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢"
                   required
                   minLength={6}
                 />
@@ -159,10 +159,11 @@ export default function ResetPassword() {
           </div>
 
           <button type="submit" className="btn-gold" disabled={loading} style={{ width: '100%', marginTop: 20, padding: '14px', fontSize: 15, borderRadius: 'var(--radius-pill)', opacity: loading ? 0.6 : 1 }}>
-            {loading ? 'Actualizando...' : 'Actualizar Contraseña'}
+            {loading ? 'Actualizando...' : 'Actualizar ContraseÃ±a'}
           </button>
         </form>
       </div>
     </div>
   );
 }
+

@@ -1,15 +1,15 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 
 /**
- * Detecta automáticamente si el dispositivo es de bajos recursos
+ * Detecta automÃ¡ticamente si el dispositivo es de bajos recursos
  * y retorna { reduceMotion, isLowEnd } para que los componentes
  * desactiven blur, animaciones pesadas, etc.
  *
- * Detección basada en:
+ * DetecciÃ³n basada en:
  * - prefers-reduced-motion del SO
- * - Número de cores del CPU
- * - Memoria disponible (si está disponible)
- * - Si es dispositivo móvil
+ * - NÃºmero de cores del CPU
+ * - Memoria disponible (si estÃ¡ disponible)
+ * - Si es dispositivo mÃ³vil
  */
 const usePerformanceMode = () => {
   const [perf, setPerf] = useState({ reduceMotion: false, isLowEnd: false });
@@ -68,3 +68,4 @@ const usePerformanceMode = () => {
 };
 
 export default usePerformanceMode;
+

@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { Fingerprint, Loader2 } from 'lucide-react';
 import { passkeyService } from '../services/passkeyService';
 
 const friendlyError = (error) => {
-  if (error?.name === 'NotAllowedError') return 'Se canceló la verificación o no hay una passkey registrada.';
-  return error?.message || 'No se pudo usar la biometría.';
+  if (error?.name === 'NotAllowedError') return 'Se cancelÃ³ la verificaciÃ³n o no hay una passkey registrada.';
+  return error?.message || 'No se pudo usar la biometrÃ­a.';
 };
 
 export default function PasskeyLoginButton({ onSuccess, onError }) {
@@ -32,3 +32,4 @@ export default function PasskeyLoginButton({ onSuccess, onError }) {
     </button>
   );
 }
+

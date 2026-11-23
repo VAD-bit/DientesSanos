@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+﻿import React, { useCallback, useEffect, useState } from 'react';
 import { Fingerprint, KeyRound, Loader2, ShieldCheck, Trash2 } from 'lucide-react';
 import { passkeyService } from '../services/passkeyService';
 import { SkeletonList } from './Skeleton';
@@ -47,7 +47,7 @@ export default function PasskeySettings({ showToast }) {
     try {
       const suggestedName = /iphone|ipad/i.test(navigator.userAgent) ? 'iPhone / iPad' : /android/i.test(navigator.userAgent) ? 'Android' : 'Este dispositivo';
       await passkeyService.register(suggestedName);
-      showToast?.('Acceso biométrico activado', 'success');
+      showToast?.('Acceso biomÃ©trico activado', 'success');
       await load();
     } catch (error) {
       if (error?.name !== 'NotAllowedError') showToast?.(error.message || 'No se pudo registrar el dispositivo', 'error');
@@ -75,7 +75,7 @@ export default function PasskeySettings({ showToast }) {
       <div style={{ display: 'flex', justifyContent: 'space-between', gap: '16px', flexWrap: 'wrap', alignItems: 'center' }}>
         <div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '10px', color: '#fff', fontWeight: 900, fontSize: '18px' }}>
-            <ShieldCheck size={21} color="#d4bd94" /> Seguridad y biometría
+            <ShieldCheck size={21} color="#d4bd94" /> Seguridad y biometrÃ­a
             <span style={{
               padding: '4px 8px', borderRadius: '999px', fontSize: '9px',
               letterSpacing: '.08em', color: '#d4bd94',
@@ -95,14 +95,14 @@ export default function PasskeySettings({ showToast }) {
       </div>
       <div style={{ marginTop: '18px', display: 'grid', gap: '10px' }}>
         {loading && <SkeletonList rows={2} rowHeight={52} />}
-        {!loading && !credentials.length && <div style={{ color: 'rgba(255,255,255,.45)', padding: '14px 0' }}>Aún no tienes dispositivos registrados.</div>}
+        {!loading && !credentials.length && <div style={{ color: 'rgba(255,255,255,.45)', padding: '14px 0' }}>AÃºn no tienes dispositivos registrados.</div>}
         {credentials.map(item => (
           <div key={item.id} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '12px', padding: '14px', border: '1px solid rgba(0, 0, 0, 0.08)', borderRadius: '15px', background: 'rgba(0, 0, 0, 0.04)' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px', minWidth: 0 }}>
               <KeyRound size={19} color="#d4bd94" />
               <div style={{ minWidth: 0 }}>
                 <strong style={{ color: '#fff' }}>{item.name}</strong>
-                <div style={{ color: 'rgba(255,255,255,.45)', fontSize: '11px', marginTop: '3px' }}>Último uso: {formatDate(item.last_used_at)}</div>
+                <div style={{ color: 'rgba(255,255,255,.45)', fontSize: '11px', marginTop: '3px' }}>Ãšltimo uso: {formatDate(item.last_used_at)}</div>
               </div>
             </div>
             <button type="button" onClick={() => revoke(item.id)} disabled={busy} aria-label="Revocar dispositivo" style={{ border: '1px solid rgba(255,69,58,.25)', background: 'rgba(255,69,58,.08)', color: '#ff453a', borderRadius: '10px', padding: '9px', display: 'grid', placeItems: 'center' }}>
@@ -112,8 +112,9 @@ export default function PasskeySettings({ showToast }) {
         ))}
       </div>
       <p style={{ color: 'rgba(255,255,255,.35)', fontSize: '11px', margin: '16px 0 0' }}>
-        Dientes Sanos no guarda tu rostro ni tu huella; el dispositivo conserva la passkey y el servidor solo almacena su clave pública.
+        Dientes Sanos no guarda tu rostro ni tu huella; el dispositivo conserva la passkey y el servidor solo almacena su clave pÃºblica.
       </p>
     </section>
   );
 }
+
