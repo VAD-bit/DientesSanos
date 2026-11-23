@@ -31,15 +31,44 @@ function withVercelShims(res) {
 export default function localApiPlugin(apiDir = 'api') {
   const root = path.resolve(process.cwd(), apiDir);
 
+  // ── Cargar variables privadas de .env.local para el servidor local ──
+  // Los handlers de api/ leen process.env directamente (no import.meta.env).
+  // En Vercel estas vienen de Settings → Environment Variables.
+  // En localhost las leemos de .env.local (que tiene SUPABASE_URL y
+  // SUPABASE_SERVICE_ROLE_KEY sin prefijo VITE_).
+  function loadLocalEnv() {
+    const envPath = path.resolve(process.cwd(), '.env.local');
+    if (!fs.existsSync(envPath)) return;
+    try {
+      const raw = fs.readFileSync(envPath, 'utf8');
+      for (const line of raw.split(/\r?\n/)) {
+        const trimmed = line.trim();
+        if (!trimmed || trimmed.startsWith('#')) continue;
+        const eq = trimmed.indexOf('=');
+        if (eq === -1) continue;
+        const key = trimmed.slice(0, eq).trim();
+        let val = trimmed.slice(eq + 1).trim();
+        // Quitar comillas circundantes
+        if ((val.startsWith('"') && val.endsWith('"')) || (val.startsWith("'") && val.endsWith("'"))) {
+          val = val.slice(1, -1);
+        }
+        if (key && !process.env[key]) {
+          process.env[key] = val;
+        }
+      }
+    } catch (e) {
+      console.warn('[local-api] No se pudo leer .env.local:', e.message);
+    }
+  }
+  loadLocalEnv();
+
   return {
     name: 'local-api-shim',
     apply: 'serve',
     configureServer(server) {
-      // Non-VITE_-prefixed vars the handlers expect (process.env, not
-      // import.meta.env) - mirror them from the VITE_ ones already in .env
-      // so we don't need a second copy of the same secrets.
-      process.env.SUPABASE_URL ||= process.env.VITE_SUPABASE_URL;
-      process.env.SUPABASE_SERVICE_ROLE_KEY ||= process.env.VITE_SUPABASE_SERVICE_ROLE_KEY;
+      // Diagnostic de variables de entorno (se ve en la terminal de vite)
+      console.log('[local-api] SUPABASE_URL:', process.env.SUPABASE_URL ? 'configurada' : 'FALTA');
+      console.log('[local-api] SUPABASE_SERVICE_ROLE_KEY:', process.env.SUPABASE_SERVICE_ROLE_KEY ? 'configurada' : 'FALTA');
 
       server.middlewares.use(async (req, res, next) => {
         if (!req.url?.startsWith('/api/')) return next();
