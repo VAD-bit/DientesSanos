@@ -216,7 +216,14 @@ async function _adminAuthRequest(payload) {
     body: JSON.stringify(payload)
   });
   const result = await response.json().catch(() => ({}));
-  if (!response.ok) throw new Error(result.error || 'No se pudo administrar el acceso del miembro');
+  if (!response.ok) {
+    const msg = result.error || 'Error en la operación de administración';
+    // Detectar si es error de configuración del servidor (falta SERVICE_ROLE_KEY)
+    if (msg.includes('variables privadas') || msg.includes('SERVICE_ROLE') || msg.includes('service role')) {
+      throw new Error('Configuración del servidor incompleta: falta SUPABASE_SERVICE_ROLE_KEY en variables de entorno de Vercel');
+    }
+    throw new Error(msg);
+  }
   return result;
 }
 // ─────────────────────────────────────────────────────────────────────────────

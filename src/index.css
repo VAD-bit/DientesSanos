@@ -52,7 +52,7 @@
   --radius-pill: 100px;
 
   /* Shadows & Glass - Tema claro */
-  --glass-bg: rgba(255, 255, 255, 0.95);
+  --glass-bg: rgba(182, 181, 181, 0.501);
   --glass-border: 1px solid rgba(0, 0, 0, 0.08);
   --shadow-apple: 0 8px 40px 0 rgba(0, 0, 0, 0.10);
   --shadow-glow-gold: 0 0 20px rgba(232, 212, 176, 0.25), 0 4px 20px rgba(217, 192, 143, 0.15);

@@ -1,5 +1,5 @@
 import { requireAdmin } from '../server/auth/admin.js';
-import { handleError, json, parseBody, requireMethod } from '../server/passkeys/http.js';
+import { json, parseBody, requireMethod } from '../server/passkeys/http.js';
 
 // Router para endpoints de administraci�n.
 // Reduce 1 Serverless Function a 1 (se mantiene, pero unificado).
@@ -67,6 +67,10 @@ export default async function handler(request, response) {
 
     return json(response, 404, { error: 'Ruta no encontrada' });
   } catch (error) {
-    return handleError(response, error);
+    // Manejo de errores específico para admin (sin mensaje genérico de biometría)
+    const status = Number(error?.statusCode) || 500;
+    const message = error?.message || 'Error en la operación de administración';
+    console.error('[admin-auth-users]', error);
+    return json(response, status, { error: message });
   }
 }
