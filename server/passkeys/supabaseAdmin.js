@@ -1,25 +1,52 @@
 import { createClient } from '@supabase/supabase-js';
+import fs from 'node:fs';
+import path from 'node:path';
 
 let adminClient;
+
+function loadEnvFile() {
+  const envPath = path.resolve(process.cwd(), '.env.local');
+  if (!fs.existsSync(envPath)) return {};
+  try {
+    const raw = fs.readFileSync(envPath, 'utf8');
+    const env = {};
+    for (const line of raw.split(/\r?\n/)) {
+      const trimmed = line.trim();
+      if (!trimmed || trimmed.startsWith('#')) continue;
+      const eq = trimmed.indexOf('=');
+      if (eq === -1) continue;
+      const key = trimmed.slice(0, eq).trim();
+      let val = trimmed.slice(eq + 1).trim();
+      if ((val.startsWith('"') && val.endsWith('"')) || (val.startsWith("'") && val.endsWith("'"))) {
+        val = val.slice(1, -1);
+      }
+      env[key] = val;
+    }
+    return env;
+  } catch (e) {
+    console.warn('[supabaseAdmin] No se pudo leer .env.local:', e.message);
+    return {};
+  }
+}
 
 export const getAdminClient = () => {
   if (adminClient) return adminClient;
   
-  // En localhost (Vite dev server), las variables VITE_ están disponibles en process.env
-  // gracias a loadEnv() en vite.config.js. En Vercel serverless, usamos SUPABASE_URL directo.
-  const rawUrl = process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL;
-  const rawKey = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.VITE_SUPABASE_ANON_KEY;
+  // Leer variables de entorno (process.env primero, .env.local como fallback para localhost)
+  const envFile = loadEnvFile();
+  const rawUrl = process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL || envFile.SUPABASE_URL || envFile.VITE_SUPABASE_URL;
+  const rawKey = process.env.SUPABASE_SERVICE_ROLE_KEY || envFile.SUPABASE_SERVICE_ROLE_KEY;
   
   // Limpiar comillas y espacios
   const url = rawUrl ? String(rawUrl).replace(/^["']|["']$/g, '').trim() : '';
   const key = rawKey ? String(rawKey).replace(/^["']|["']$/g, '').trim() : '';
   
-  // Debug logging (se ve en la terminal de vite y en Vercel Function Logs)
+  // Debug logging (se ve en la terminal de vite)
   console.log('[getAdminClient] SUPABASE_URL:', url ? 'PRESENTE (' + url.substring(0, 40) + '...)' : 'FALTA');
   console.log('[getAdminClient] SERVICE_ROLE_KEY:', key ? 'PRESENTE (' + key.substring(0, 20) + '...)' : 'FALTA');
   
-  if (!url) throw new Error('Falta SUPABASE_URL / VITE_SUPABASE_URL en variables de entorno. Revisa .env.local o Vercel Settings → Environment Variables.');
-  if (!key) throw new Error('Falta SUPABASE_SERVICE_ROLE_KEY en variables de entorno. VITE_SUPABASE_ANON_KEY no tiene permisos de administrador.');
+  if (!url) throw new Error('Falta SUPABASE_URL / VITE_SUPABASE_URL en variables de entorno. Revisa .env.local.');
+  if (!key) throw new Error('Falta SUPABASE_SERVICE_ROLE_KEY en variables de entorno. Este endpoint requiere service role key.');
   
   // Validar formato de URL
   let parsedUrl;
