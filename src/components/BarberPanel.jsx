@@ -42,6 +42,7 @@ import StaffTransactionHistory from './StaffTransactionHistory';
 import FieldLabel from './FieldLabel';
 import OrderCatalogModal from './OrderCatalogModal';
 import SellableInventoryModal from './SellableInventoryModal';
+import ClinicalHistoryModal from './ClinicalHistoryModal';
 
 const renderBeverageIcon = (beverageName, size = 16, className = "text-[var(--champagne)]") => {
   if (!beverageName) return null;
@@ -112,7 +113,8 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
   const [cameraTarget, setCameraTarget] = useState({ appId: null, type: 'Antes' });
   const [editingExtraPriceId, setEditingExtraPriceId] = useState(null);
   const [visibleCompletedCount, setVisibleCompletedCount] = useState(5);
-  const [showWashModal, setShowWashModal] = useState(false);
+  const [showOdontogramaModal, setShowOdontogramaModal] = useState(false);
+  const [odontogramaClient, setOdontogramaClient] = useState(null);
   const [washAppId, setWashAppId] = useState(null);
   const [washGroupApps, setWashGroupApps] = useState([]);
   const [assistantQueue, setAssistantQueue] = useState([]);
@@ -184,12 +186,12 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
 
   // Sync modal state with global context to hide sidebar
   useEffect(() => {
-    const isAnyModalOpen = !!selectedCompletedApp || showAddModal || showCamera || showWashModal;
+    const isAnyModalOpen = !!selectedCompletedApp || showAddModal || showCamera || showOdontogramaModal;
     if (isAnyModalOpen) {
       pushModal();
       return () => popModal();
     }
-  }, [selectedCompletedApp, showAddModal, showCamera, showWashModal, pushModal, popModal]);
+  }, [selectedCompletedApp, showAddModal, showCamera, showOdontogramaModal, pushModal, popModal]);
 
   // Lazy-load base64 galleries only for the clients actually shown, then merge them
   // into the already-rendered cards. Keeps the initial fetch light on slow WiFi.
@@ -305,7 +307,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
               showToast("ðŸš€ ¡Cliente listo en sillón!", "success");
               triggerRocket();
             } else if (payload.eventType === 'UPDATE' && payload.new.status === 'En Lavado') {
-              showToast("ðŸ’§ Cliente en profilaxis", "info");
+              showToast("ðŸ’§ Cliente en odontograma", "info");
             } else if (payload.eventType === 'UPDATE' && payload.new.status === 'Completado') {
               showToast("ðŸ’° ¡Cobro finalizado por Caja!", "success");
             } else {
@@ -424,7 +426,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
       loadStats();
       loadCompletedToday();
     } catch (err) {
-      showToast("Error al recuperar de profilaxis", "error");
+      showToast("Error al recuperar de odontograma", "error");
     } finally {
       setLoading(false);
     }
@@ -466,14 +468,14 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
 
       const idsToWash = washGroupApps.length ? washGroupApps : [washAppId];
       await Promise.all(idsToWash.map(id => dataService.updateAppointmentStatus(id, 'En Lavado')));
-      showToast("¡Cliente enviado a profilaxis!");
+      showToast("¡Cliente enviado a odontograma!");
       triggerRocket();
       setShowWashModal(false);
       
       notificationService.broadcastNotification(
         supabase,
-        'ðŸ’§ Nuevo Cliente para Profilaxis',
-        `Hey, toca una profilaxis con ${clientName}. (Enviado por: ${selectedBarber.name})`,
+        'ðŸ’§ Nuevo Cliente para Odontograma',
+        `Hey, toca una odontograma con ${clientName}. (Enviado por: ${selectedBarber.name})`,
         assistantId ? { recipientId: assistantId } : { recipientRole: 'Asistente' }
       );
 
@@ -481,7 +483,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
       loadStats();
       loadCompletedToday();
     } catch (err) {
-      showToast("Error al enviar a profilaxis", "error");
+      showToast("Error al enviar a odontograma", "error");
     } finally {
       setLoading(false);
     }
@@ -515,7 +517,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
       notificationService.broadcastNotification(
         supabase,
         'ðŸ¦· Cliente listo',
-        `El cliente ${clientName} terminó su profilaxis y est¡ listo para pasar a sillón.`,
+        `El cliente ${clientName} terminó su odontograma y est¡ listo para pasar a sillón.`,
         { recipientRole: 'Barbero' }
       );
 
@@ -539,14 +541,14 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
       await dataService.assignAssistantToAppointment(serviceId, selectedBarber.id);
       // Update status to 'Por Pagar' (sent to checkout)
       await dataService.updateAppointmentStatus(serviceId, 'Por Pagar');
-      showToast("¡Profilaxis completada! Enviado a caja.");
+      showToast("¡Odontograma completado! Enviado a caja.");
       triggerConfetti();
 
       // Broadcast to Admin / Caja
       notificationService.broadcastNotification(
         supabase,
         'ðŸ’³ Cliente enviado a Caja',
-        `El cliente ${clientName} terminó su profilaxis y fue enviado a caja.`,
+        `El cliente ${clientName} terminó su odontograma y fue enviado a caja.`,
         { recipientRole: 'Admin' }
       );
 
@@ -554,7 +556,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
       loadStats();
       loadCompletedToday();
     } catch (err) {
-      showToast("Error al procesar la profilaxis", "error");
+      showToast("Error al procesar el odontograma", "error");
     } finally {
       setLoading(false);
     }
@@ -904,7 +906,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
       loadStats();
       loadCompletedToday();
     } catch (err) {
-      showToast("Error al recuperar de profilaxis", "error");
+      showToast("Error al recuperar de odontograma", "error");
     } finally {
       setLoading(false);
     }
@@ -1246,7 +1248,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
             {/* 1. Clientes Listos para Lavar (En Lavado) */}
             <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '12px' }}>
               <Droplets size={18} color="#007aff" fill="#007aff" />
-              <span style={{ fontWeight: '800', fontSize: '14px', letterSpacing: '1px', textTransform: 'uppercase' }}>En Profilaxis</span>
+              <span style={{ fontWeight: '800', fontSize: '14px', letterSpacing: '1px', textTransform: 'uppercase' }}>En Odontograma</span>
               <span style={{ 
                 marginLeft: 'auto', 
                 fontSize: '12px', 
@@ -1289,7 +1291,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
                   <div key={app.id} className="glass-card animate-slide-up" style={{ borderRadius: '28px', padding: '24px', border: '1px solid rgba(0, 122, 255, 0.25)', background: 'var(--bg-secondary)' }}>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '16px' }}>
                       <div>
-                        <span style={{ fontSize: '10px', fontWeight: '900', color: '#007aff', textTransform: 'uppercase', letterSpacing: '1px' }}>Listo en Profilaxis</span>
+                        <span style={{ fontSize: '10px', fontWeight: '900', color: '#007aff', textTransform: 'uppercase', letterSpacing: '1px' }}>Listo en Odontograma</span>
                         <h3 style={{ fontSize: '20px', fontWeight: '900', marginTop: '4px' }}>{app.clients?.name}</h3>
                         <div style={{ color: 'var(--text-secondary)', fontSize: '14px', marginTop: '4px' }}>
                                                          Odontólogo: <span style={{ color: '#111111', fontWeight: '700' }}>{app.staff?.name || 'Otro'}</span> · Servicio: <span style={{ color: 'var(--gold-primary)', fontWeight: '700' }}>{app.services?.name}</span>
@@ -1557,7 +1559,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
                             alignItems: 'center',
                             gap: '6px'
                           }}>
-                            {app.status === 'En Silla' ? 'En sillón' : app.status === 'En Lavado' ? 'En profilaxis' : app.status} 
+                            {app.status === 'En Silla' ? 'En sillón' : app.status === 'En Lavado' ? 'En Odontograma' : app.status} 
                             {app.status === 'En Lavado' ? 'ðŸ’§' : (
                                <img 
                                  loading="lazy"
@@ -2377,7 +2379,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
                     <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
                       {isAssistant ? <Droplets size={16} color="#007aff" /> : <CheckCircle size={16} color="#32d74b" />}
                       <span style={{ fontSize: '10px', fontWeight: '900', color: isAssistant ? '#007aff' : '#32d74b', letterSpacing: '1.5px', textTransform: 'uppercase' }}>
-                        {isAssistant ? "PROFILAXIS COMPLETADA" : "SERVICIO COMPLETADO"}
+                        {isAssistant ? "ODONTOGRAMA COMPLETADO" : "SERVICIO COMPLETADO"}
                       </span>
                     </div>
                     <h3 style={{ fontSize: '22px', fontWeight: '900', color: '#111111', margin: 0 }}>{app.clients?.name || 'Cliente'}</h3>
@@ -2390,6 +2392,12 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
                     style={{ background: 'rgba(0, 0, 0, 0.04)', border: 'none', color: '#111111', width: '36px', height: '36px', borderRadius: '10px', cursor: 'pointer', fontSize: '18px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
                   >
                     âœ•
+                  </button>
+                  <button 
+                    onClick={() => { setOdontogramaClient(app.clients); setShowOdontogramaModal(true); }}
+                    style={{ marginLeft: '8px', background: 'var(--gold-primary)', border: 'none', color: '#111111', width: '36px', height: '36px', borderRadius: '10px', cursor: 'pointer', fontSize: '14px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+                  >
+                    <ToothIcon size={14} />
                   </button>
                 </div>
               </div>
@@ -2535,173 +2543,18 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
         }}
       </AnimatedModal>
 
-      {/* Modal Enviar a Profilaxis con Cola de Asistentes */}
-      <AnimatedModal isOpen={showWashModal}>
-        {(overlayClass, cardClass) => (
-          <div
-            className={overlayClass.replace('global-modal-overlay', '')}
-            onClick={() => setShowWashModal(false)}
-            style={{ 
-              position: 'fixed', 
-              top: 0, 
-              left: 0, 
-              right: 0, 
-              bottom: 0, 
-              backgroundColor: 'rgba(255, 255, 255, 0.9)', 
-              backdropFilter: 'blur(10px)', 
-              zIndex: 99999, 
-              display: 'flex', 
-              justifyContent: 'center',
-              alignItems: 'center',
-              padding: '20px',
-              paddingTop: 'max(20px, env(safe-area-inset-top, 20px))'
-            }}
-          >
-            <div
-              className={`glass-card ${cardClass.replace('global-modal-card', '')}`}
-              onClick={(e) => e.stopPropagation()}
-              style={{ 
-                padding: '20px', 
-                color: '#111111', 
-                width: '100%', 
-                maxWidth: '360px', 
-                borderRadius: '24px', 
-                maxHeight: '90vh', 
-                overflowY: 'auto',
-                boxSizing: 'border-box',
-                border: '1.5px solid rgba(0, 0, 0, 0.08)'
-              }}
-            >
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
-                <h3 style={{ fontSize: '16px', fontWeight: '900', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  <Droplets size={18} color="#64d2ff" /> Enviar a profilaxis
-                </h3>
-                <button 
-                  onClick={() => setShowWashModal(false)} 
-                  style={{ background: 'none', border: 'none', color: '#111111', fontSize: '20px', cursor: 'pointer', padding: '4px' }}
-                >
-                  &times;
-                </button>
-              </div>
-
-              <p style={{ fontSize: '12px', color: 'var(--text-secondary)', marginBottom: '16px', lineHeight: '1.4' }}>
-                Selecciona el asistente dental:
-              </p>
-
-              {loadingAssistantQueue ? (
-                <SkeletonList rows={3} rowHeight={44} />
-              ) : assistantQueue.length === 0 ? (
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-                  <div style={{ padding: '20px', textAlign: 'center', color: 'rgba(255,255,255,0.4)', fontSize: '13px', border: '1px dashed rgba(0, 0, 0, 0.08)', borderRadius: '16px' }}>
-                    No hay asistentes dentales activos/disponibles hoy.
-                  </div>
-                  <button
-                    onClick={() => confirmSendToWash(null)}
-                    style={{
-                      height: '48px',
-                      borderRadius: '14px',
-                      background: 'linear-gradient(135deg, #007aff, #00d2ff)',
-                      color: '#111111',
-                      border: 'none',
-                      fontSize: '13px',
-                      fontWeight: '900',
-                      cursor: 'pointer'
-                    }}
-                  >
-                    Enviar a profilaxis sin Asignar
-                  </button>
-                </div>
-              ) : (
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', maxHeight: '280px', overflowY: 'auto', paddingRight: '4px' }}>
-                  {assistantQueue.map((q, idx) => {
-                    const isActuallyBusy = q.status === 'BUSY';
-                    return (
-                      <div 
-                        key={q.id}
-                        className="selection-modal-item"
-                        style={{
-                          padding: '10px 14px',
-                          borderRadius: '16px',
-                          border: '1px solid rgba(0, 0, 0, 0.08)',
-                          background: 'rgba(0, 0, 0, 0.04)',
-                          display: 'flex',
-                          alignItems: 'center',
-                          gap: '12px',
-                          width: '100%',
-                          transition: 'all 0.25s cubic-bezier(0.16, 1, 0.3, 1)'
-                        }}
-                      >
-                        <div style={{ 
-                          width: '36px', 
-                          height: '36px', 
-                          borderRadius: '10px', 
-                          background: 'rgba(0, 0, 0, 0.04)', 
-                          display: 'flex', 
-                          alignItems: 'center', 
-                          justifyContent: 'center', 
-                          flexShrink: 0,
-                          fontWeight: '900',
-                          color: 'var(--gold-primary)',
-                          fontSize: '13px',
-                          border: '1px solid rgba(0, 0, 0, 0.08)'
-                        }}>
-                          #{idx + 1}
-                        </div>
-                        
-                        <div style={{ flex: 1, minWidth: 0 }}>
-                          <div style={{ fontSize: '13px', fontWeight: '750', color: '#111111', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{q.staff?.name}</div>
-                          <div style={{ display: 'flex', alignItems: 'center', gap: '5px', marginTop: '2px' }}>
-                            <span style={{ display: 'inline-block', width: '5px', height: '5px', borderRadius: '50%', backgroundColor: !isActuallyBusy ? '#32d74b' : '#ff9500' }}></span>
-                            <span style={{ fontSize: '10px', color: !isActuallyBusy ? '#32d74b' : '#ff9500', fontWeight: '700' }}>
-                              {!isActuallyBusy ? 'Disponible' : 'Atendiendo'}
-                            </span>
-                          </div>
-                        </div>
-
-                        <div style={{ display: 'flex', gap: '6px', flexShrink: 0 }}>
-                          <button
-                            onClick={() => skipAssistantTurn(q.staff_id)}
-                            style={{
-                              padding: '6px 10px',
-                              borderRadius: '8px',
-                              background: 'rgba(255, 69, 58, 0.1)',
-                              border: '1px solid rgba(255, 69, 58, 0.15)',
-                              color: '#ff453a',
-                              fontSize: '10px',
-                              fontWeight: '850',
-                              cursor: 'pointer',
-                              transition: 'all 0.2s'
-                            }}
-                          >
-                            Saltar
-                          </button>
-                          <button
-                            onClick={() => confirmSendToWash(q.staff_id)}
-                            style={{
-                              padding: '6px 12px',
-                              borderRadius: '8px',
-                              background: 'var(--gold-primary)',
-                              border: 'none',
-                              color: 'black',
-                              fontSize: '10px',
-                              fontWeight: '900',
-                              cursor: 'pointer',
-                              boxShadow: '0 3px 8px rgba(17, 17, 17, 0.2)',
-                              transition: 'all 0.2s'
-                            }}
-                          >
-                            Asignar
-                          </button>
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
-              )}
-            </div>
-          </div>
-        )}
-      </AnimatedModal>
+      {/* Modal Odontograma - llenar odontograma directo al historial clínico */}
+      <ClinicalHistoryModal
+        isOpen={showOdontogramaModal}
+        client={odontogramaClient}
+        onClose={() => setShowOdontogramaModal(false)}
+        onSaved={() => {
+          showToast('Odontograma guardado en historial clínico.');
+          setShowOdontogramaModal(false);
+          setOdontogramaClient(null);
+        }}
+        mandatory={false}
+      />
 
 
       <style>{`

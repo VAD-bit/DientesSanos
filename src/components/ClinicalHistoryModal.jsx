@@ -71,8 +71,8 @@ function Field({ label, value, onChange, placeholder, rows = 3, multiline = true
   );
 }
 
-export default function ClinicalHistoryModal({ isOpen, client, onClose, mandatory = false, onSaved }) {
-  const [tab, setTab] = useState('manual');
+export default function ClinicalHistoryModal({ isOpen, client, onClose, mandatory = false, onSaved, odontoMode = false }) {
+  const [tab, setTab] = useState(odontoMode ? 'odontograma' : 'manual');
   const [form, setForm] = useState(EMPTY_FORM);
   const [imagenes, setImagenes] = useState([]);
   const [odontograma, setOdontograma] = useState({ marks: [] });
@@ -158,8 +158,17 @@ export default function ClinicalHistoryModal({ isOpen, client, onClose, mandator
   const handleSave = async () => {
     if (!clientId) return;
     if (!canSave()) {
-      setError('Completa al menos el motivo de consulta, el diagnóstico, el odontograma o adjunta una foto.');
-      return;
+      if (odontoMode) {
+        // En modo odontograma, guardar aunque solo haya marcas en el odontograma
+        const hasOdonto = Array.isArray(odontograma?.marks) && odontograma.marks.length > 0;
+        if (!hasOdonto) {
+          setError('Marca al menos un diente en el odontograma.');
+          return;
+        }
+      } else {
+        setError('Completa al menos el motivo de consulta, el diagnóstico, el odontograma o adjunta una foto.');
+        return;
+      }
     }
     setSaving(true);
     setError('');
@@ -170,7 +179,9 @@ export default function ClinicalHistoryModal({ isOpen, client, onClose, mandator
         odontograma: { marks: Array.isArray(odontograma?.marks) ? odontograma.marks : [] }
       }, { completed: true });
       if (typeof onSaved === 'function') onSaved({ clientId, form, imagenes, odontograma });
-      if (!mandatory && typeof onClose === 'function') onClose();
+      if (odontoMode || (!mandatory && typeof onClose === 'function')) {
+        onClose();
+      }
     } catch (e) {
       console.error('Error guardando historial clínico', e);
       setError('No se pudo guardar. Revisa la conexión o el esquema de la tabla clinical_records.');
