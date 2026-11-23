@@ -734,7 +734,7 @@ const StaffSettlementPanel = ({ modal, setModal, isMobile, loading, onPay, onSki
         <div style={{ padding: '12px', borderRadius: '14px', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', gap: '10px', marginBottom: '9px' }}>
             <span style={{ fontSize: '10px', color: 'var(--text-muted)', fontWeight: '900', textTransform: 'uppercase' }}>Cómo se generó</span>
-            <span style={{ fontSize: '10px', color: 'var(--text-secondary)' }}>{settlement.payrollFrequency === 'daily' ? 'Pago diario' : 'Pago semanal'} · tasa {formatSettlementBs(settlement.rate)}</span>
+            <span style={{ fontSize: '10px', color: 'var(--text-secondary)' }}>{settlement.payrollFrequency === 'daily' ? 'Pago diario' : settlement.payrollFrequency === 'biweekly' ? 'Pago quincenal' : 'Pago semanal'} · tasa {formatSettlementBs(settlement.rate)}</span>
           </div>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
             {Object.entries(settlement.methodBreakdown || {}).map(([method, amount]) => {
@@ -2328,6 +2328,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                     <PandaSelect 
                       options={[
                         { value: 'weekly', label: 'Semanal (Sábados)' },
+                        { value: 'biweekly', label: 'Quincenal (Cada 15 días)' },
                         { value: 'daily', label: 'Diario (Al marcar salida)' }
                       ]}
                       value={formData.payroll_frequency || 'weekly'}
@@ -3044,6 +3045,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                   <PandaSelect 
                     options={[
                       { value: 'weekly', label: 'Semanal (Sábados)' },
+                      { value: 'biweekly', label: 'Quincenal (Cada 15 días)' },
                       { value: 'daily', label: 'Diario (Al marcar salida)' }
                     ]}
                     value={formData.payroll_frequency || 'weekly'}
