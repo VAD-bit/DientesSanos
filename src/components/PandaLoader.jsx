@@ -9,15 +9,15 @@ const loadingTexts = [
   "Calibrando la unidad dental...",
   "Preparando la profilaxis perfecta...",
   "Calculando la sonrisa ideal...",
-  "Encendiendo las luces de la estaciÃ³n..."
+  "Encendiendo las luces de la estación..."
 ];
 
 const pandaTips = [
-  "Consejo: Actualiza tu catÃ¡logo.",
-  "Consejo: Revisa los cumpleaÃ±os de hoy.",
-  "Consejo: Prepara la sala para el prÃ³ximo paciente.",
-  "Consejo: Confirma las citas del dÃ­a.",
-  "Consejo: MantÃ©n ordenada tu estaciÃ³n de trabajo."
+  "Consejo: Actualiza tu cat¡logo.",
+  "Consejo: Revisa los cumpleaños de hoy.",
+  "Consejo: Prepara la sala para el próximo paciente.",
+  "Consejo: Confirma las citas del día.",
+  "Consejo: Mantén ordenada tu estación de trabajo."
 ];
 
 const LOADER_MIN_DURATION_MS = 1200;

@@ -199,7 +199,7 @@ const InventoryModule = ({ isMobile, currency, rates }) => {
       setShowAddForm(false);
       setNewItem({ name: '', stock: 0, price: 0, cost_price: 0, commission_pct: 10, category: selectedInventory.defaultCategory, image_url: '', owner_staff_id: null, cost_price_dirty: false, price_dirty: false, stock_dirty: false, commission_pct_dirty: false });
       fetchInventory();
-      showToast('Producto agregado al almacÃ©n');
+      showToast('Producto agregado al almacén');
     } catch (error) {
       console.error(error);
       showToast('Error al agregar item de inventario', 'error');
@@ -209,7 +209,7 @@ const InventoryModule = ({ isMobile, currency, rates }) => {
   };
 
   const handleDeleteItem = async (id, name) => {
-    if (!await confirm(`Â¿EstÃ¡s seguro de que quieres eliminar "${name}" del inventario?`)) return;
+    if (!await confirm(`Â¿Est¡s seguro de que quieres eliminar "${name}" del inventario?`)) return;
     try {
       await dataService.deleteInventoryItem(id);
       fetchInventory();
@@ -275,7 +275,7 @@ const InventoryModule = ({ isMobile, currency, rates }) => {
       }}>
         <div>
           <h2 style={{ fontSize: isMobile ? '26px' : '32px', fontWeight: '800', letterSpacing: '-0.5px', lineHeight: '1.2' }}>Control de <span className="text-gold">Stock</span></h2>
-          <p style={{ color: 'var(--text-secondary)', marginTop: '6px', fontSize: isMobile ? '13px' : '15px' }}>GestiÃ³n de productos y suministros crÃ­ticos.</p>
+          <p style={{ color: 'var(--text-secondary)', marginTop: '6px', fontSize: isMobile ? '13px' : '15px' }}>Gestión de productos y suministros críticos.</p>
         </div>
         <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap', width: isMobile ? '100%' : 'auto' }}>
           <button 
@@ -418,18 +418,18 @@ const InventoryModule = ({ isMobile, currency, rates }) => {
               <input type="text" placeholder="Ej. Cera Gold Premium" value={newItem.name} onChange={(e) => setNewItem({...newItem, name: formatProductName(e.target.value)})} onBlur={(e) => setNewItem({...newItem, name: formatProductName(e.target.value).trim()})} style={{ width: '100%', height: '48px' }} />
             </div>
             <PandaSelect 
-              label="CATEGORÃA"
+              label="CATEGORÍA"
               value={newItem.category}
               onChange={(val) => setNewItem({...newItem, category: val})}
               options={[
                 ...(activeInventory === 'retail' ? [
                   { label: <div style={{display: 'flex', alignItems: 'center', gap: '8px'}}><ShoppingCart size={14} color="var(--gold-primary)"/> Para venta</div>, value: 'Venta' },
-                  { label: <div style={{display: 'flex', alignItems: 'center', gap: '8px'}}><Package size={14} color="var(--text-muted)"/> Insumos odontolÃ³gicos</div>, value: 'Insumos dentales' }
+                  { label: <div style={{display: 'flex', alignItems: 'center', gap: '8px'}}><Package size={14} color="var(--text-muted)"/> Insumos odontológicos</div>, value: 'Insumos dentales' }
                 ] : []),
                 ...(activeInventory === 'tools' ? [
                   { label: <div style={{display: 'flex', alignItems: 'center', gap: '8px'}}><Wrench size={14} color="#007aff"/> Herramienta</div>, value: 'Herramienta' },
                   { label: <div style={{display: 'flex', alignItems: 'center', gap: '8px'}}><ToothIcon size={14} color="#ff3b30"/> Accesorio</div>, value: 'Accesorios' },
-                  { label: <div style={{display: 'flex', alignItems: 'center', gap: '8px'}}><Smile size={14} color="var(--gold-primary)"/> Uso clÃ­nico</div>, value: 'Uso ClÃ­nico' }
+                  { label: <div style={{display: 'flex', alignItems: 'center', gap: '8px'}}><Smile size={14} color="var(--gold-primary)"/> Uso clínico</div>, value: 'Uso Clínico' }
                 ] : [])
               ]}
             />
@@ -437,7 +437,7 @@ const InventoryModule = ({ isMobile, currency, rates }) => {
             {activeInventory === 'tools' && (
               <PandaSelect 
                 label="ASIGNAR A"
-                placeholder="Selecciona odontÃ³logo"
+                placeholder="Selecciona odontólogo"
                 value={newItem.owner_staff_id}
                 onChange={(val) => setNewItem({...newItem, owner_staff_id: val})}
                 options={[
@@ -513,7 +513,7 @@ const InventoryModule = ({ isMobile, currency, rates }) => {
 
             {activeInventory === 'retail' && (
               <div>
-                <FieldLabel>ComisiÃ³n</FieldLabel>
+                <FieldLabel>Comisión</FieldLabel>
                 <input 
                   type="number" 
                   placeholder="10" 
@@ -614,7 +614,7 @@ const InventoryModule = ({ isMobile, currency, rates }) => {
               justifyContent: 'center'
             }}
           >
-            <Package size={16} /> CuadrÃ­cula
+            <Package size={16} /> Cuadrícula
           </button>
           <button 
             onClick={() => setViewMode('list')}
@@ -661,7 +661,7 @@ const InventoryModule = ({ isMobile, currency, rates }) => {
                 <thead>
                   <tr style={{ borderBottom: '1px solid rgba(0, 0, 0, 0.08)', backgroundColor: 'rgba(0, 0, 0, 0.04)' }}>
                     <th style={{ padding: isMobile ? '12px 6px 12px 16px' : '20px', fontSize: isMobile ? '10px' : '11px', fontWeight: '900', color: 'var(--text-muted)' }}>PRODUCTO</th>
-                    <th style={{ padding: isMobile ? '12px 6px' : '20px', fontSize: isMobile ? '10px' : '11px', fontWeight: '900', color: 'var(--text-muted)', display: isMobile ? 'none' : 'table-cell' }}>CATEGORÃA</th>
+                    <th style={{ padding: isMobile ? '12px 6px' : '20px', fontSize: isMobile ? '10px' : '11px', fontWeight: '900', color: 'var(--text-muted)', display: isMobile ? 'none' : 'table-cell' }}>CATEGORÍA</th>
                     <th style={{ padding: isMobile ? '12px 6px' : '20px', fontSize: isMobile ? '10px' : '11px', fontWeight: '900', color: 'var(--text-muted)', textAlign: 'center' }}>STOCK</th>
                     <th style={{ padding: isMobile ? '12px 6px' : '20px', fontSize: isMobile ? '10px' : '11px', fontWeight: '900', color: 'var(--text-muted)', textAlign: 'right' }}>PRECIO</th>
                     <th style={{ padding: isMobile ? '12px 16px 12px 6px' : '20px', fontSize: isMobile ? '10px' : '11px', fontWeight: '900', color: 'var(--text-muted)', textAlign: 'right' }}>ACCIONES</th>
@@ -870,7 +870,7 @@ const InventoryModule = ({ isMobile, currency, rates }) => {
                   borderRadius: '16px',
                   border: '1px solid rgba(0, 0, 0, 0.08)'
                 }}>
-                  <div style={{ fontSize: '13px', fontWeight: '700', color: 'var(--text-secondary)' }}>ALMACÃ‰N</div>
+                  <div style={{ fontSize: '13px', fontWeight: '700', color: 'var(--text-secondary)' }}>ALMACÉN</div>
                   <div style={{ 
                     display: 'flex', 
                     alignItems: 'center', 
@@ -998,7 +998,7 @@ const InventoryModule = ({ isMobile, currency, rates }) => {
                       </div>
                       Historial de Movimientos
                     </h2>
-                    <p style={{ color: 'var(--text-muted)', fontSize: '13px', marginTop: '6px', paddingLeft: '52px' }}>Registro completo de entradas y salidas de almacÃ©n.</p>
+                    <p style={{ color: 'var(--text-muted)', fontSize: '13px', marginTop: '6px', paddingLeft: '52px' }}>Registro completo de entradas y salidas de almacén.</p>
                   </div>
                   <button onClick={() => setShowHistoryModal(false)} style={{ background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', color: 'rgba(255,255,255,0.5)', cursor: 'pointer', width: '36px', height: '36px', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, transition: 'all 0.2s' }} onMouseEnter={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.1)'; e.currentTarget.style.color = 'white'; }} onMouseLeave={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.06)'; e.currentTarget.style.color = 'rgba(255,255,255,0.5)'; }}>
                     <X size={18} />
@@ -1075,7 +1075,7 @@ const InventoryModule = ({ isMobile, currency, rates }) => {
                       <div style={{ width: '64px', height: '64px', borderRadius: '20px', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 16px' }}>
                         <Package size={28} color="rgba(255,255,255,0.12)" />
                       </div>
-                      <p style={{ color: 'var(--text-muted)', fontSize: '14px', fontWeight: '600' }}>{historySearch ? `Sin resultados para "${historySearch}"` : 'No hay movimientos en este perÃ­odo.'}</p>
+                      <p style={{ color: 'var(--text-muted)', fontSize: '14px', fontWeight: '600' }}>{historySearch ? `Sin resultados para "${historySearch}"` : 'No hay movimientos en este período.'}</p>
                     </div>
                   ) : (
                     <div style={{ maxHeight: '440px', overflowY: 'auto', overflowX: 'hidden', paddingRight: '4px' }} className="panda-scrollbar">
@@ -1196,13 +1196,13 @@ const EditInventoryModal = ({ isOpen, item, staff = [], onClose, onSave }) => {
               </div>
 
               <PandaSelect 
-                label="CATEGORÃA"
+                label="CATEGORÍA"
                 value={formData.category}
                 onChange={(val) => setFormData({...formData, category: val})}
                 options={[
                   { label: <div style={{display: 'flex', alignItems: 'center', gap: '8px'}}><ShoppingCart size={14} color="var(--gold-primary)"/> Para Venta</div>, value: 'Venta' },
                   { label: <div style={{display: 'flex', alignItems: 'center', gap: '8px'}}><Package size={14} color="var(--gold-primary)"/> Insumos dentales</div>, value: 'Insumos dentales' },
-                  { label: <div style={{display: 'flex', alignItems: 'center', gap: '8px'}}><Smile size={14} color="var(--gold-primary)"/> Uso clÃ­nico</div>, value: 'Uso ClÃ­nico' },
+                  { label: <div style={{display: 'flex', alignItems: 'center', gap: '8px'}}><Smile size={14} color="var(--gold-primary)"/> Uso clínico</div>, value: 'Uso Clínico' },
                   { label: <div style={{display: 'flex', alignItems: 'center', gap: '8px'}}><ToothIcon size={14} color="#ff3b30"/> Accesorios</div>, value: 'Accesorios' },
                   { label: <div style={{display: 'flex', alignItems: 'center', gap: '8px'}}><Wrench size={14} color="#007aff"/> Herramienta</div>, value: 'Herramienta' }
                 ]}
@@ -1211,7 +1211,7 @@ const EditInventoryModal = ({ isOpen, item, staff = [], onClose, onSave }) => {
               {formData.category === 'Herramienta' && (
                 <PandaSelect 
                   label="ASIGNAR A"
-                  placeholder="Selecciona odontÃ³logo"
+                  placeholder="Selecciona odontólogo"
                   value={formData.owner_staff_id}
                   onChange={(val) => setFormData({...formData, owner_staff_id: val})}
                   options={[
@@ -1234,7 +1234,7 @@ const EditInventoryModal = ({ isOpen, item, staff = [], onClose, onSave }) => {
 
               {(formData.category === 'Venta' || formData.category === 'Accesorios') && (
                 <div>
-                  <label style={{ display: 'block', marginBottom: '8px', fontSize: '11px', fontWeight: '800', color: 'var(--text-muted)' }}>COMISIÃ“N VENDEDOR (%)</label>
+                  <label style={{ display: 'block', marginBottom: '8px', fontSize: '11px', fontWeight: '800', color: 'var(--text-muted)' }}>COMISIÓN VENDEDOR (%)</label>
                   <input type="number" className="panda-input" value={formData.commission_pct ?? 10} onChange={(e) => setFormData({...formData, commission_pct: Number(e.target.value)})} style={{ width: '100%', backgroundColor: 'rgba(0, 0, 0, 0.04)' }} />
                 </div>
               )}

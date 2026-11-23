@@ -46,7 +46,7 @@ import SellableInventoryModal from './SellableInventoryModal';
 const renderBeverageIcon = (beverageName, size = 16, className = "text-[var(--champagne)]") => {
   if (!beverageName) return null;
   const name = beverageName.toLowerCase();
-  if (name.includes('cafÃ©') || name.includes('cafe')) return <Coffee size={size} className={className} />;
+  if (name.includes('café') || name.includes('cafe')) return <Coffee size={size} className={className} />;
   if (name.includes('cerveza')) return <Beer size={size} className={className} />;
   if (name.includes('whiskey')) return <GlassWater size={size} className={className} />;
   return <GlassWater size={size} className={className} />;
@@ -204,7 +204,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
           : s
       ));
     } catch (err) {
-      console.error('Error cargando galerÃ­as', err);
+      console.error('Error cargando galerías', err);
     }
   }, []);
 
@@ -302,14 +302,14 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
               showToast("ðŸš€ Â¡Nueva cita asignada!");
               triggerRocket();
             } else if (payload.eventType === 'UPDATE' && payload.new.status === 'En Silla') {
-              showToast("ðŸš€ Â¡Cliente listo en sillÃ³n!", "success");
+              showToast("ðŸš€ Â¡Cliente listo en sillón!", "success");
               triggerRocket();
             } else if (payload.eventType === 'UPDATE' && payload.new.status === 'En Lavado') {
               showToast("ðŸ’§ Cliente en profilaxis", "info");
             } else if (payload.eventType === 'UPDATE' && payload.new.status === 'Completado') {
               showToast("ðŸ’° Â¡Cobro finalizado por Caja!", "success");
             } else {
-              showToast("Actualizando sillÃ³n...", "info");
+              showToast("Actualizando sillón...", "info");
             }
           }
           
@@ -419,7 +419,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
     try {
       setLoading(true);
       await dataService.updateAppointmentStatus(serviceId, 'En Silla');
-      showToast("Â¡Cliente recuperado a tu sillÃ³n!");
+      showToast("Â¡Cliente recuperado a tu sillón!");
       loadMyWork();
       loadStats();
       loadCompletedToday();
@@ -506,16 +506,16 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
       const app = myServices.find(s => s.id === serviceId);
       const clientName = app?.clients?.name || 'Cliente';
       const barberId = app?.staff_id;
-      const barberName = app?.staff?.name || 'OdontÃ³logo';
+      const barberName = app?.staff?.name || 'Odontólogo';
 
       await dataService.updateAppointmentStatus(serviceId, 'En Silla');
-      showToast("Â¡Cliente enviado de regreso al odontÃ³logo!");
+      showToast("Â¡Cliente enviado de regreso al odontólogo!");
       
       // Notify barbers that client is ready
       notificationService.broadcastNotification(
         supabase,
         'ðŸ¦· Cliente listo',
-        `El cliente ${clientName} terminÃ³ su profilaxis y estÃ¡ listo para pasar a sillÃ³n.`,
+        `El cliente ${clientName} terminó su profilaxis y est¡ listo para pasar a sillón.`,
         { recipientRole: 'Barbero' }
       );
 
@@ -546,7 +546,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
       notificationService.broadcastNotification(
         supabase,
         'ðŸ’³ Cliente enviado a Caja',
-        `El cliente ${clientName} terminÃ³ su profilaxis y fue enviado a caja.`,
+        `El cliente ${clientName} terminó su profilaxis y fue enviado a caja.`,
         { recipientRole: 'Admin' }
       );
 
@@ -640,7 +640,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
         }));
       }
 
-      showToast("Â¡Foto guardada con Ã©xito!", "success");
+      showToast("Â¡Foto guardada con éxito!", "success");
       await loadMyWork();
     } catch (err) {
       console.error(err);
@@ -723,12 +723,12 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
       // shell for the same client+barber so it can't show as a phantom duplicate.
       const app = myServices.find(s => s.id === activeAppId);
       if (app?.client_id) await dataService.pruneEmptyShells(app.client_id, app.staff_id).catch(() => {});
-      showToast(`+ ${extra.name} aÃ±adido`);
+      showToast(`+ ${extra.name} añadido`);
       setShowAddModal(false);
       loadMyWork();
       loadStats();
     } catch (err) {
-      showToast("Error al aÃ±adir extra", "error");
+      showToast("Error al añadir extra", "error");
     } finally {
       setLoading(false);
       setAddingItemId(null);
@@ -746,12 +746,12 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
       // Same shell cleanup as when a service/extra is added (see handleAddExtra).
       const app = myServices.find(s => s.id === activeAppId);
       if (app?.client_id) await dataService.pruneEmptyShells(app.client_id, app.staff_id).catch(() => {});
-      showToast(`+ ${product.name} aÃ±adido`);
+      showToast(`+ ${product.name} añadido`);
       setShowAddModal(false);
       loadMyWork();
       loadStats();
     } catch (err) {
-      showToast("Error al aÃ±adir producto", "error");
+      showToast("Error al añadir producto", "error");
     } finally {
       setLoading(false);
       setAddingItemId(null);
@@ -794,16 +794,16 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
 
       // Cleanup: remove any leftover empty $0 "sin servicio" shell for this client+barber.
       // Done against fresh DB state (not the possibly-stale myServices) so a shell that
-      // this handler didn't see â€” e.g. it created a new appointment instead of reusing the
-      // shell â€” still gets pruned and can't linger as a phantom duplicate chair.
+      // this handler didn't see — e.g. it created a new appointment instead of reusing the
+      // shell — still gets pruned and can't linger as a phantom duplicate chair.
       await dataService.pruneEmptyShells(app.client_id, app.staff_id).catch(() => {});
 
-      showToast(`+ ${service.name} aÃ±adido`);
+      showToast(`+ ${service.name} añadido`);
       setShowAddModal(false);
       loadMyWork();
       loadStats();
     } catch (err) {
-      showToast("Error al aÃ±adir servicio", "error");
+      showToast("Error al añadir servicio", "error");
     } finally {
       setLoading(false);
       setAddingItemId(null);
@@ -817,8 +817,8 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
   const handleCancelChair = async (app) => {
     const hasSomething = !!app.service_id || (app.appointment_extras?.length > 0) || (app.appointment_products?.length > 0);
     const message = hasSomething
-      ? "Â¿Cancelar este servicio? Se marcarÃ¡ como cancelado."
-      : "Â¿Quitar este cliente del sillÃ³n?";
+      ? "Â¿Cancelar este servicio? Se marcar¡ como cancelado."
+      : "Â¿Quitar este cliente del sillón?";
     if (!await confirm(message)) return;
     try {
       setLoading(true);
@@ -830,7 +830,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
       if (app.staff_id) {
         await dataService.updateQueueStatus(app.staff_id, 'AVAILABLE').catch(() => {});
       }
-      showToast(hasSomething ? "Servicio cancelado" : "Cliente retirado del sillÃ³n");
+      showToast(hasSomething ? "Servicio cancelado" : "Cliente retirado del sillón");
       loadMyWork();
       loadStats();
       loadCompletedToday();
@@ -871,8 +871,8 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
   const handleCancelGroup = async (group) => {
     const hasContent = groupHasContent(group);
     const message = hasContent
-      ? "Â¿Cancelar la orden de este cliente? Se marcarÃ¡ como cancelada."
-      : "Â¿Quitar este cliente del sillÃ³n?";
+      ? "Â¿Cancelar la orden de este cliente? Se marcar¡ como cancelada."
+      : "Â¿Quitar este cliente del sillón?";
     if (!await confirm(message)) return;
     try {
       setLoading(true);
@@ -884,7 +884,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
       }));
       const staffId = group.apps[0]?.staff_id;
       if (staffId) await dataService.updateQueueStatus(staffId, 'AVAILABLE').catch(() => {});
-      showToast(hasContent ? "Orden cancelada" : "Cliente retirado del sillÃ³n");
+      showToast(hasContent ? "Orden cancelada" : "Cliente retirado del sillón");
       loadMyWork();
       loadStats();
       loadCompletedToday();
@@ -899,7 +899,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
     try {
       setLoading(true);
       await Promise.all(group.apps.map(a => dataService.updateAppointmentStatus(a.id, 'En Silla')));
-      showToast("Â¡Cliente recuperado a tu sillÃ³n!");
+      showToast("Â¡Cliente recuperado a tu sillón!");
       loadMyWork();
       loadStats();
       loadCompletedToday();
@@ -921,7 +921,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
   // with extras/products attached must have those removed first (they live on that row).
   const handleRemoveService = async (app, group) => {
     if (app.appointment_extras?.length > 0 || app.appointment_products?.length > 0) {
-      showToast("Ese servicio tiene extras/productos; quÃ­talos primero", "warning");
+      showToast("Ese servicio tiene extras/productos; quítalos primero", "warning");
       return;
     }
     if (!await confirm(`Â¿Quitar "${app.services?.name || 'servicio'}"?`)) return;
@@ -974,7 +974,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
   if (!selectedBarber) {
     return (
       <div className="animate-fade-in" style={{ padding: '40px 20px 100px 20px', textAlign: 'center' }}>
-        <h2 style={{ fontSize: 'clamp(18px, 5.5vw, 28px)', fontWeight: '900', marginBottom: '10px', whiteSpace: 'nowrap' }}>Panel de <span className="text-gold">OdontÃ³logos / Asistentes</span></h2>
+        <h2 style={{ fontSize: 'clamp(18px, 5.5vw, 28px)', fontWeight: '900', marginBottom: '10px', whiteSpace: 'nowrap' }}>Panel de <span className="text-gold">Odontólogos / Asistentes</span></h2>
         <p style={{ color: 'var(--text-secondary)', marginBottom: '40px' }}>Selecciona tu perfil para comenzar tu turno.</p>
         
         <div className="animate-page-fade-in" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))', gap: '20px', maxWidth: '600px', margin: '0 auto' }}>
@@ -986,7 +986,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
                      !roleName.includes('caja');
             })
             .map(s => {
-              const displayRole = (s.role?.split('|')[0] || 'OdontÃ³logo').trim();
+              const displayRole = (s.role?.split('|')[0] || 'Odontólogo').trim();
               return (
               <button 
                 key={s.id} 
@@ -1029,7 +1029,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
   const getGreeting = () => {
     const options = { timeZone: 'America/Caracas', hour: 'numeric', hour12: false };
     const hour = parseInt(new Date().toLocaleString('en-US', options), 10);
-    if (hour >= 5 && hour < 12) return 'Â¡Buenos dÃ­as,';
+    if (hour >= 5 && hour < 12) return 'Â¡Buenos días,';
     if (hour >= 12 && hour < 19) return 'Â¡Buenas tardes,';
     return 'Â¡Buenas noches,';
   };
@@ -1039,10 +1039,10 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
   const groupedMyServices = groupAppointmentsByClient(myServices);
   const firstUpcomingIndex = groupedMyServices.findIndex(group => !['En Silla', 'En Lavado'].includes(group.apps[0]?.status));
   const chairState = activeChairCount > 0
-    ? { label: isAssistant ? 'EstaciÃ³n activa' : 'Servicio en curso', color: isAssistant ? '#4aa3ff' : '#32d74b', glow: isAssistant ? 'rgba(74,163,255,.22)' : 'rgba(50,215,75,.22)' }
+    ? { label: isAssistant ? 'Estación activa' : 'Servicio en curso', color: isAssistant ? '#4aa3ff' : '#32d74b', glow: isAssistant ? 'rgba(74,163,255,.22)' : 'rgba(50,215,75,.22)' }
     : waitingChairCount > 0
       ? { label: `${waitingChairCount} ${waitingChairCount === 1 ? 'cliente esperando' : 'clientes esperando'}`, color: 'var(--gold-primary)', glow: 'rgba(17, 17, 17,.22)' }
-      : { label: isAssistant ? 'EstaciÃ³n disponible' : 'SillÃ³n disponible', color: '#a9a9ad', glow: 'rgba(255,255,255,.08)' };
+      : { label: isAssistant ? 'Estación disponible' : 'Sillón disponible', color: '#a9a9ad', glow: 'rgba(255,255,255,.08)' };
 
   return (
     <div className="animate-fade-in barber-live-console" style={{ maxWidth: isMobile ? '550px' : '1380px', margin: '0 auto', paddingBottom: '100px' }}>
@@ -1177,7 +1177,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
             <h2 style={{ fontSize: '24px', fontWeight: '900' }}>{getGreeting()} <span className="text-gold">{selectedBarber.name.split(' ')[0]}!</span></h2>
           </div>
           <p style={{ color: 'var(--text-secondary)', fontSize: '14px', marginTop: '4px' }}>
-            {isAssistant ? "Gestiona las estaciones de limpieza del dÃ­a." : "Gestiona tus servicios activos y citas."}
+            {isAssistant ? "Gestiona las estaciones de limpieza del día." : "Gestiona tus servicios activos y citas."}
           </p>
           <span className="barber-chair-status" style={{ '--chair-state-color': chairState.color }}>{chairState.label}</span>
         </div>
@@ -1186,7 +1186,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
             onClick={() => { loadMyWork(); showToast("Sincronizado"); }}
             disabled={loading}
             style={{ background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', color: 'var(--gold-primary)', width: '40px', height: '40px', borderRadius: '12px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
-            title="Sincronizar sillÃ³n"
+            title="Sincronizar sillón"
           >
             <RefreshCw size={18} className={loading ? 'animate-spin' : ''} />
           </button>
@@ -1208,7 +1208,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
 
       <nav className="barber-view-tabs" style={{ display: 'flex', gap: '7px', padding: '4px', marginBottom: '18px', width: 'fit-content', maxWidth: '100%', borderRadius: '13px', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
         {[
-          { id: 'work', label: isAssistant ? 'Panel de limpiezas' : 'Mi sillÃ³n', icon: <LayoutDashboard size={15} /> },
+          { id: 'work', label: isAssistant ? 'Panel de limpiezas' : 'Mi sillón', icon: <LayoutDashboard size={15} /> },
           { id: 'history', label: 'Mi historial', icon: <ReceiptText size={15} /> }
         ].map(view => (
           <button
@@ -1278,10 +1278,10 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
                     <Droplets size={44} color="#007aff" style={{ marginBottom: '16px' }} />
                   </div>
                   <p style={{ fontSize: '15px', color: '#007aff', fontWeight: '800', letterSpacing: '0.3px', textShadow: '0 0 10px rgba(0,122,255,0.3)' }}>
-                    EstaciÃ³n impecable y lista...
+                    Estación impecable y lista...
                   </p>
                   <p style={{ fontSize: '13px', color: 'var(--text-secondary)', marginTop: '6px', fontWeight: '600' }}>
-                    Esperando al prÃ³ximo cliente.
+                    Esperando al próximo cliente.
                   </p>
                 </div>
               ) : (
@@ -1292,7 +1292,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
                         <span style={{ fontSize: '10px', fontWeight: '900', color: '#007aff', textTransform: 'uppercase', letterSpacing: '1px' }}>Listo en Profilaxis</span>
                         <h3 style={{ fontSize: '20px', fontWeight: '900', marginTop: '4px' }}>{app.clients?.name}</h3>
                         <div style={{ color: 'var(--text-secondary)', fontSize: '14px', marginTop: '4px' }}>
-                                                         OdontÃ³logo: <span style={{ color: '#111111', fontWeight: '700' }}>{app.staff?.name || 'Otro'}</span> Â· Servicio: <span style={{ color: 'var(--gold-primary)', fontWeight: '700' }}>{app.services?.name}</span>
+                                                         Odontólogo: <span style={{ color: '#111111', fontWeight: '700' }}>{app.staff?.name || 'Otro'}</span> Â· Servicio: <span style={{ color: 'var(--gold-primary)', fontWeight: '700' }}>{app.services?.name}</span>
                         </div>
                         {app.services?.included_items && app.services.included_items.length > 0 && (
                           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', marginTop: '8px' }}>
@@ -1400,7 +1400,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
                           color: 'var(--text-secondary)'
                         }}
                       >
-                        <RefreshCw size={16} /> REGRESAR A ODONTÃ“LOGO
+                        <RefreshCw size={16} /> REGRESAR A ODONTÓLOGO
                       </button>
                       <button 
                         onClick={() => handleAssistantSendToCheckout(app.id)}
@@ -1440,7 +1440,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
                 style={{ filter: 'drop-shadow(0 1px 3px rgba(255, 255, 255, 0.4))' }} 
               />
               <span style={{ fontWeight: '800', fontSize: '14px', letterSpacing: '1px', textTransform: 'uppercase' }}>
-                {isMobile ? (activeChairCount > 0 ? 'En atenciÃ³n' : 'PrÃ³ximas citas') : 'Tu SillÃ³n Hoy'}
+                {isMobile ? (activeChairCount > 0 ? 'En atención' : 'Próximas citas') : 'Tu Sillón Hoy'}
               </span>
               {!isMobile && myServices.length > 0 && (
                 <span style={{ marginLeft: 'auto', color: 'var(--gold-primary)', fontSize: '10px', fontWeight: '850' }}>
@@ -1477,7 +1477,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
                      <img 
                        loading="lazy"
                        src="/barber-chair.png" 
-                      alt="SillÃ³n" 
+                      alt="Sillón" 
                       style={{ 
                         width: '80px', 
                         height: 'auto',
@@ -1488,9 +1488,9 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
                       }} 
                     />
                   </div>
-                  <p style={{ color: 'var(--text-secondary)', fontWeight: '600' }}>Buscando clientes... El sillÃ³n estÃ¡ libre.</p>
+                  <p style={{ color: 'var(--text-secondary)', fontWeight: '600' }}>Buscando clientes... El sillón est¡ libre.</p>
                   <div className="barber-empty-actions">
-                    <button type="button" className="barber-empty-action primary" onClick={() => { loadMyWork(); showToast('SillÃ³n sincronizado'); }}><RefreshCw size={14} /> Buscar clientes</button>
+                    <button type="button" className="barber-empty-action primary" onClick={() => { loadMyWork(); showToast('Sillón sincronizado'); }}><RefreshCw size={14} /> Buscar clientes</button>
                     <button type="button" className="barber-empty-action" onClick={() => setActiveView('history')}><ReceiptText size={14} /> Ver historial</button>
                   </div>
                 </div>
@@ -1508,7 +1508,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
                     <React.Fragment key={groupKey}>
                     {isMobile && activeChairCount > 0 && groupIndex === firstUpcomingIndex && (
                       <div className="barber-queue-divider">
-                        PrÃ³ximas citas
+                        Próximas citas
                         <small>{groupedMyServices.length - firstUpcomingIndex}</small>
                       </div>
                     )}
@@ -1557,12 +1557,12 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
                             alignItems: 'center',
                             gap: '6px'
                           }}>
-                            {app.status === 'En Silla' ? 'En sillÃ³n' : app.status === 'En Lavado' ? 'En profilaxis' : app.status} 
+                            {app.status === 'En Silla' ? 'En sillón' : app.status === 'En Lavado' ? 'En profilaxis' : app.status} 
                             {app.status === 'En Lavado' ? 'ðŸ’§' : (
                                <img 
                                  loading="lazy"
                                  src="/barber-chair.png" 
-                                alt="SillÃ³n" 
+                                alt="Sillón" 
                                 style={{ 
                                   width: '16px', 
                                   height: '16px', 
@@ -1587,7 +1587,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
                                 border: '1px solid rgba(0, 0, 0, 0.08)'
                               }}>
                                 <span style={{ color: svc.services?.name ? 'var(--gold-primary)' : 'var(--text-muted)', fontSize: '13px', fontWeight: '800' }}>
-                                  {svc.services?.name || 'Sin servicio â€” usa "+ Servicio"'}
+                                  {svc.services?.name || 'Sin servicio — usa "+ Servicio"'}
                                 </span>
                                 {svc.services?.price ? (
                                   <span style={{ color: 'rgba(255,255,255,0.5)', fontSize: '12px', fontWeight: '700' }}>${svc.services.price}</span>
@@ -1598,7 +1598,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
                                     title="Quitar servicio"
                                     style={{ background: 'rgba(255,69,58,0.15)', border: '1px solid rgba(255,69,58,0.35)', color: '#ff453a', borderRadius: '50%', width: '44px', height: '44px', minWidth: '44px', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', padding: 0, fontSize: '16px', fontWeight: '900', lineHeight: 1 }}
                                   >
-                                    Ã—
+                                    Ø
                                   </button>
                                 )}
                               </div>
@@ -1650,7 +1650,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
                       <div className="barber-appointment-details">
                       <div className="barber-work-section-heading">
                         <span><Camera size={14} color="var(--gold-primary)" /> Registro del trabajo</span>
-                        <small>Antes y despuÃ©s</small>
+                        <small>Antes y después</small>
                       </div>
                       <div className="barber-photo-grid" style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) minmax(0, 1fr)', gap: '12px', marginBottom: '20px' }}>
                         {/* Polaroid Antes */}
@@ -1710,9 +1710,9 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
                           )}
                         </div>
 
-                        {/* Polaroid DespuÃ©s */}
+                        {/* Polaroid Después */}
                         <div 
-                          onClick={() => { setCameraTarget({ appId: app.id, type: 'DespuÃ©s' }); setShowCamera(true); }}
+                          onClick={() => { setCameraTarget({ appId: app.id, type: 'Después' }); setShowCamera(true); }}
                           style={{ 
                             height: '120px', 
                             borderRadius: '20px', 
@@ -1730,12 +1730,12 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
                             transition: 'all 0.3s ease'
                           }}
                         >
-                          {app.clients?.work_gallery?.find(p => p.type === 'DespuÃ©s' && p.service_id === app.id) ? (
+                          {app.clients?.work_gallery?.find(p => p.type === 'Después' && p.service_id === app.id) ? (
                             <>
-                               <img loading="lazy" src={app.clients.work_gallery.find(p => p.type === 'DespuÃ©s' && p.service_id === app.id).url} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                              <div style={{ position: 'absolute', top: '8px', left: '8px', background: 'rgba(255, 255, 255, 0.9)', backdropFilter: 'blur(8px)', padding: '4px 10px', borderRadius: '8px', fontSize: '9px', fontWeight: '900', color: '#32d74b', border: '1px solid rgba(50,215,75,0.3)', letterSpacing: '0.5px' }}>DESPUÃ‰S</div>
+                               <img loading="lazy" src={app.clients.work_gallery.find(p => p.type === 'Después' && p.service_id === app.id).url} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                              <div style={{ position: 'absolute', top: '8px', left: '8px', background: 'rgba(255, 255, 255, 0.9)', backdropFilter: 'blur(8px)', padding: '4px 10px', borderRadius: '8px', fontSize: '9px', fontWeight: '900', color: '#32d74b', border: '1px solid rgba(50,215,75,0.3)', letterSpacing: '0.5px' }}>DESPUÉS</div>
                               <button 
-                                onClick={(e) => { e.stopPropagation(); handleDeletePhoto(app.id, 'DespuÃ©s'); }}
+                                onClick={(e) => { e.stopPropagation(); handleDeletePhoto(app.id, 'Después'); }}
                                 style={{ 
                                   position: 'absolute', 
                                   top: '8px', 
@@ -1762,7 +1762,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
                               <div style={{ background: 'rgba(0, 0, 0, 0.04)', padding: '10px', borderRadius: '50%', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
                                 <Camera size={20} color="var(--gold-primary)" />
                               </div>
-                              <span style={{ fontSize: '9px', fontWeight: '900', color: 'var(--text-muted)', letterSpacing: '1px' }}>FOTO DESPUÃ‰S</span>
+                              <span style={{ fontSize: '9px', fontWeight: '900', color: 'var(--text-muted)', letterSpacing: '1px' }}>FOTO DESPUÉS</span>
                             </>
                           )}
                         </div>
@@ -1782,7 +1782,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
                                 {renderBeverageIcon(app.beverage_selection, 15, '')}
                               </span>
                               <div>
-                                <span style={{ fontSize: '9px', color: 'rgba(255,255,255,0.4)', textTransform: 'uppercase', fontWeight: '800', display: 'block', lineHeight: '1.2' }}>HidrataciÃ³n Solicitada</span>
+                                <span style={{ fontSize: '9px', color: 'rgba(255,255,255,0.4)', textTransform: 'uppercase', fontWeight: '800', display: 'block', lineHeight: '1.2' }}>Hidratación Solicitada</span>
                                 <span style={{ fontSize: '12px', color: '#111111', fontWeight: '700' }}>{app.beverage_selection}</span>
                               </div>
                             </div>
@@ -1855,7 +1855,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
 
                       {/* Add Service / Extras / Products */}
                       <div className="barber-work-section-heading add-heading">
-                        <span><Plus size={14} color="var(--gold-primary)" /> AÃ±adir a la cita</span>
+                        <span><Plus size={14} color="var(--gold-primary)" /> Añadir a la cita</span>
                         <small>Opcional</small>
                       </div>
                       <div className="barber-add-actions" style={{ display: 'flex', gap: '12px', marginBottom: '24px' }}>
@@ -1934,7 +1934,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
                           onClick={() => setMobileAddMenuAppId(current => current === app.id ? null : app.id)}
                           aria-expanded={mobileAddMenuAppId === app.id}
                         >
-                          <Plus size={15} /> AÃ±adir a la cita <ChevronDown size={14} style={{ transform: mobileAddMenuAppId === app.id ? 'rotate(180deg)' : 'none', transition: 'transform 160ms ease' }} />
+                          <Plus size={15} /> Añadir a la cita <ChevronDown size={14} style={{ transform: mobileAddMenuAppId === app.id ? 'rotate(180deg)' : 'none', transition: 'transform 160ms ease' }} />
                         </button>
                         {mobileAddMenuAppId === app.id && (
                           <div className="barber-mobile-add-menu">
@@ -2017,7 +2017,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
                           <Clock size={18} color="var(--gold-primary)" />
                           <div>
                             <strong>Esperando al cliente</strong>
-                            <span>La cita permanece agendada hasta que recepciÃ³n la pase al sillÃ³n.</span>
+                            <span>La cita permanece agendada hasta que recepción la pase al sillón.</span>
                           </div>
                         </div>
                       )}
@@ -2044,7 +2044,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
         )}
           </div>
 
-        {/* Shared catalogs: exactly the same components used by RecepciÃ³n and Caja. */}
+        {/* Shared catalogs: exactly the same components used by Recepción and Caja. */}
         <OrderCatalogModal
           isOpen={showAddModal && addMode === 'service'}
           onClose={() => setShowAddModal(false)}
@@ -2072,7 +2072,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
           rates={rates}
           mode="single"
           loading={addingItemId !== null}
-          title="Productos y CortesÃ­as"
+          title="Productos y Cortesías"
           subtitle="Selecciona un producto o insumo para agregarlo a la cuenta"
           onSelect={handleAddProduct}
         />
@@ -2088,7 +2088,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
           )}
         </AnimatedModal>
 
-        {/* RIGHT COL: Stats y Trabajos del dÃ­a */}
+        {/* RIGHT COL: Stats y Trabajos del día */}
         <div className="barber-side-column" style={{ marginTop: isMobile ? '14px' : 0 }}>
         <div className="barber-side-heading">
           Resumen de hoy
@@ -2102,7 +2102,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
           <div className="glass-card barber-stat-card" style={{ padding: '20px 16px', borderRadius: '24px', textAlign: 'center' }}>
             <TrendingUp size={24} color={isAssistant ? '#007aff' : "var(--gold-primary)"} style={{ margin: '0 auto 12px' }} />
             <div className="barber-stat-label" style={{ fontSize: '11px', fontWeight: '800', color: 'var(--text-secondary)', textTransform: 'uppercase' }}>
-              {isAssistant ? "Comisiones Hoy" : "ProducciÃ³n Hoy"}
+              {isAssistant ? "Comisiones Hoy" : "Producción Hoy"}
             </div>
             <div className="barber-stat-value-wrap" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '8px' }}>
               <div className="barber-stat-value" style={{ fontSize: '26px', fontWeight: '900', color: isAssistant ? '#007aff' : 'var(--gold-primary)', textShadow: isAssistant ? '0 0 15px rgba(0,122,255,0.4)' : '0 0 15px rgba(255, 255, 255,0.4)' }}>${stats.production.toFixed(2)}</div>
@@ -2181,7 +2181,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
           {completedToday.length === 0 ? (
             <div className="glass-card" style={{ textAlign: 'center', padding: '40px', borderRadius: '20px', opacity: 0.4 }}>
               <p style={{ fontSize: '13px', color: 'var(--text-muted)' }}>
-                {isAssistant ? "AÃºn no has realizado limpiezas hoy." : "AÃºn no has completado servicios hoy."}
+                {isAssistant ? "Aún no has realizado limpiezas hoy." : "Aún no has completado servicios hoy."}
               </p>
             </div>
           ) : (
@@ -2194,7 +2194,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
                   <>
                     {visibleItems.map(app => {
                 const extrasTotal = app.appointment_extras?.reduce((sum, e) => sum + (Number(e.price) || 0), 0) || 0;
-                // Los productos son 100% de la clÃ­nica: no cuentan en la producciÃ³n del odontÃ³logo.
+                // Los productos son 100% de la clínica: no cuentan en la producción del odontólogo.
                 const totalUsd = (Number(app.services?.price) || 0) + extrasTotal;
                 const completedTime = app.completed_at ? new Date(app.completed_at).toLocaleTimeString('es-VE', { hour: '2-digit', minute: '2-digit', hour12: true }) : '';
                 const startedTime = app.started_at ? new Date(app.started_at).toLocaleTimeString('es-VE', { hour: '2-digit', minute: '2-digit', hour12: true }) : '';
@@ -2241,13 +2241,13 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
                         <div>
                           <div style={{ fontWeight: '900', fontSize: '16px', color: '#111111', letterSpacing: '0.3px' }}>{app.clients?.name || 'Cliente'}</div>
                           <div style={{ fontSize: '13px', color: 'var(--gold-primary)', fontWeight: '800' }}>
-                            {isAssistant ? `${app.services?.name} (${app.staff?.name || 'OdontÃ³logo'})` : app.services?.name}
+                            {isAssistant ? `${app.services?.name} (${app.staff?.name || 'Odontólogo'})` : app.services?.name}
                           </div>
                         </div>
                       </div>
                       <div style={{ textAlign: 'right' }}>
                         <div style={{ fontSize: '18px', fontWeight: '900', color: isAssistant ? '#007aff' : '#32d74b', textShadow: isAssistant ? '0 0 10px rgba(0,122,255,0.4)' : '0 0 10px rgba(50,215,75,0.4)' }}>
-                          ${displayVal.toFixed(2)} {isAssistant && <span style={{ fontSize: '10px', color: 'var(--text-muted)' }}>(ComisiÃ³n)</span>}
+                          ${displayVal.toFixed(2)} {isAssistant && <span style={{ fontSize: '10px', color: 'var(--text-muted)' }}>(Comisión)</span>}
                         </div>
                         {rates?.usd > 0 && (
                           <div style={{ fontSize: '11px', color: 'var(--text-muted)', fontWeight: '800' }}>{(displayVal * rates.usd).toLocaleString('es-VE', { minimumFractionDigits: 0, maximumFractionDigits: 0 })} Bs.</div>
@@ -2301,7 +2301,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
                     e.target.style.transform = 'translateY(0)';
                   }}
                 >
-                  Ver mÃ¡s antiguos ({completedToday.length - visibleCompletedCount})
+                  Ver m¡s antiguos ({completedToday.length - visibleCompletedCount})
                 </button>
               )}
               </>
@@ -2327,14 +2327,14 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
           const servicePrice = Number(app.services?.price) || 0;
           const totalUsd = servicePrice + extrasTotal + productsTotal;
           const totalBs = totalUsd * (rates?.usd || 550);
-          const completedTime = app.completed_at ? new Date(app.completed_at).toLocaleTimeString('es-VE', { hour: '2-digit', minute: '2-digit', hour12: true }) : 'â€”';
-          const startedTime = app.started_at ? new Date(app.started_at).toLocaleTimeString('es-VE', { hour: '2-digit', minute: '2-digit', hour12: true }) : 'â€”';
+          const completedTime = app.completed_at ? new Date(app.completed_at).toLocaleTimeString('es-VE', { hour: '2-digit', minute: '2-digit', hour12: true }) : '—';
+          const startedTime = app.started_at ? new Date(app.started_at).toLocaleTimeString('es-VE', { hour: '2-digit', minute: '2-digit', hour12: true }) : '—';
           let durationMin = 0;
           if (app.started_at && app.completed_at) {
             durationMin = Math.round((new Date(app.completed_at) - new Date(app.started_at)) / 60000);
           }
           const beforePhoto = app.clients?.work_gallery?.find(p => p.type === 'Antes' && p.service_id === app.id);
-          const afterPhoto = app.clients?.work_gallery?.find(p => p.type === 'DespuÃ©s' && p.service_id === app.id);
+          const afterPhoto = app.clients?.work_gallery?.find(p => p.type === 'Después' && p.service_id === app.id);
 
           return (
             <div 
@@ -2405,7 +2405,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
                       <div>
                         <div style={{ fontSize: '16px', fontWeight: '800', color: '#111111' }}>{app.services?.name}</div>
                         <div style={{ fontSize: '11px', color: 'var(--text-muted)', marginTop: '2px' }}>
-                          OdontÃ³logo: {app.staff?.name || 'Otro'}
+                          Odontólogo: {app.staff?.name || 'Otro'}
                         </div>
                         {app.services?.included_items && app.services.included_items.length > 0 && (
                           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '4px', marginTop: '6px' }}>
@@ -2458,7 +2458,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
                 {/* Photos Before/After */}
                 {(beforePhoto || afterPhoto) && (
                   <div style={{ marginBottom: '20px' }}>
-                    <div style={{ fontSize: '10px', fontWeight: '900', color: 'var(--text-secondary)', letterSpacing: '1.5px', textTransform: 'uppercase', marginBottom: '10px' }}>GALERÃA</div>
+                    <div style={{ fontSize: '10px', fontWeight: '900', color: 'var(--text-secondary)', letterSpacing: '1.5px', textTransform: 'uppercase', marginBottom: '10px' }}>GALERÍA</div>
                     <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) minmax(0, 1fr)', gap: '12px' }}>
                       {beforePhoto && (
                         <div style={{ borderRadius: '14px', overflow: 'hidden', position: 'relative', aspectRatio: '1' }}>
@@ -2468,8 +2468,8 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
                       )}
                       {afterPhoto && (
                         <div style={{ borderRadius: '14px', overflow: 'hidden', position: 'relative', aspectRatio: '1' }}>
-                           <img loading="lazy" src={afterPhoto.url} alt="DespuÃ©s" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                          <div style={{ position: 'absolute', bottom: '8px', left: '8px', background: 'rgba(255, 255, 255, 0.9)', padding: '4px 10px', borderRadius: '8px', fontSize: '10px', fontWeight: '800', color: '#32d74b' }}>DESPUÃ‰S</div>
+                           <img loading="lazy" src={afterPhoto.url} alt="Después" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                          <div style={{ position: 'absolute', bottom: '8px', left: '8px', background: 'rgba(255, 255, 255, 0.9)', padding: '4px 10px', borderRadius: '8px', fontSize: '10px', fontWeight: '800', color: '#32d74b' }}>DESPUÉS</div>
                         </div>
                       )}
                     </div>
@@ -2489,8 +2489,8 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
                       <div style={{ fontSize: '14px', fontWeight: '800', color: '#111111' }}>{completedTime}</div>
                     </div>
                     <div style={{ background: 'rgba(0, 0, 0, 0.04)', padding: '12px', borderRadius: '12px', textAlign: 'center', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
-                      <div style={{ fontSize: '10px', color: 'var(--gold-primary)', fontWeight: '700', marginBottom: '4px' }}>DURACIÃ“N</div>
-                      <div style={{ fontSize: '14px', fontWeight: '900', color: 'var(--gold-primary)' }}>{durationMin > 0 ? `${durationMin} min` : 'â€”'}</div>
+                      <div style={{ fontSize: '10px', color: 'var(--gold-primary)', fontWeight: '700', marginBottom: '4px' }}>DURACIÓN</div>
+                      <div style={{ fontSize: '14px', fontWeight: '900', color: 'var(--gold-primary)' }}>{durationMin > 0 ? `${durationMin} min` : '—'}</div>
                     </div>
                   </div>
                 </div>

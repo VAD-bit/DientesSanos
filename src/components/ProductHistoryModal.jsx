@@ -116,7 +116,7 @@ export default function ProductHistoryModal({
                     Historial de Productos Vendidos
                   </h2>
                   <p style={{ margin: '2px 0 0', fontSize: '11.5px', color: 'var(--text-secondary)' }}>
-                    Desglose de productos e insumos vendidos, ganancia neta para la clÃ­nica y costo de reposiciÃ³n.
+                    Desglose de productos e insumos vendidos, ganancia neta para la clínica y costo de reposición.
                   </p>
                 </div>
               </div>
@@ -176,7 +176,7 @@ export default function ProductHistoryModal({
                 </div>
               </div>
 
-              {/* Ganancia de la clÃ­nica */}
+              {/* Ganancia de la clínica */}
               <div style={{ 
                 padding: '12px 14px', 
                 borderRadius: '14px', 
@@ -188,7 +188,7 @@ export default function ProductHistoryModal({
               }}>
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                   <span style={{ fontSize: '10.5px', color: 'var(--gold-primary)', fontWeight: '900', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
-                    Ganancia Neta de la clÃ­nica
+                    Ganancia Neta de la clínica
                   </span>
                   <Banknote size={15} color="var(--gold-primary)" />
                 </div>
@@ -243,7 +243,7 @@ export default function ProductHistoryModal({
                   type="text" 
                   value={search}
                   onChange={e => setSearch(e.target.value)}
-                  placeholder="Buscar producto, cliente u odontÃ³logo..."
+                  placeholder="Buscar producto, cliente u odontólogo..."
                   style={{ 
                     width: '100%', 
                     boxSizing: 'border-box', 
@@ -298,7 +298,7 @@ export default function ProductHistoryModal({
                 <div style={{ padding: '48px 24px', textAlign: 'center', color: 'var(--text-muted)', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px' }}>
                   <Package size={36} style={{ opacity: 0.35 }} />
                   <p style={{ margin: 0, fontSize: '13px', fontWeight: '600' }}>
-                    {search || filterCost !== 'all' ? 'No hay productos que coincidan con la bÃºsqueda.' : 'AÃºn no hay productos vendidos en este perÃ­odo.'}
+                    {search || filterCost !== 'all' ? 'No hay productos que coincidan con la búsqueda.' : 'Aún no hay productos vendidos en este período.'}
                   </p>
                 </div>
               ) : (
@@ -308,15 +308,15 @@ export default function ProductHistoryModal({
                       <th style={{ ...thBaseStyle, textAlign: 'left', padding: '11px 18px' }}>Producto</th>
                       <th style={{ ...thBaseStyle, textAlign: 'left', padding: '11px 14px' }}>Cliente / Servicio</th>
                       <th style={{ ...thBaseStyle, textAlign: 'right', padding: '11px 14px' }}>Venta</th>
-                      <th style={{ ...thBaseStyle, textAlign: 'right', padding: '11px 14px' }}>Ganancia de la clÃ­nica</th>
+                      <th style={{ ...thBaseStyle, textAlign: 'right', padding: '11px 14px' }}>Ganancia de la clínica</th>
                       <th style={{ ...thBaseStyle, textAlign: 'right', padding: '11px 18px' }}>Costo (Deuda)</th>
                     </tr>
                   </thead>
                   <tbody>
                     {filteredHistory.map((r, idx) => {
                       // Extract product name and quantity
-                      const rawName = r.product?.replace(/ Ã—\d+$/, '') || 'Producto';
-                      const qtyMatch = r.product?.match(/ Ã—(\d+)$/);
+                      const rawName = r.product?.replace(/ Ø\d+$/, '') || 'Producto';
+                      const qtyMatch = r.product?.match(/ Ø(\d+)$/);
                       const qty = qtyMatch ? qtyMatch[1] : '1';
                       const formattedName = capitalize(rawName);
 
@@ -353,7 +353,7 @@ export default function ProductHistoryModal({
                                 padding: '1px 6px', 
                                 borderRadius: '6px' 
                               }}>
-                                Ã—{qty}
+                                Ø{qty}
                               </span>
                             </div>
                             <div style={{ fontSize: '10.5px', color: 'var(--text-muted)', marginTop: '3px', display: 'flex', alignItems: 'center', gap: '5px' }}>
@@ -383,7 +383,7 @@ export default function ProductHistoryModal({
                             </div>
                           </td>
 
-                          {/* Ganancia de la clÃ­nica */}
+                          {/* Ganancia de la clínica */}
                           <td style={{ padding: '12px 14px', textAlign: 'right', whiteSpace: 'nowrap' }}>
                             <div style={{ color: 'var(--gold-primary)', fontWeight: '900', fontSize: '13px' }}>
                               {formatMoney(r.marginBs)} Bs
@@ -439,7 +439,7 @@ export default function ProductHistoryModal({
             }}>
               <div style={{ fontSize: '11px', color: 'var(--text-muted)', display: 'flex', alignItems: 'center', gap: '6px' }}>
                 <AlertCircle size={13} color="#ff9f0a" />
-                El costo (deuda de reposiciÃ³n) solo aplica a productos con precio de compra configurado en Inventario.
+                El costo (deuda de reposición) solo aplica a productos con precio de compra configurado en Inventario.
               </div>
               <div style={{ fontSize: '11px', color: 'var(--text-secondary)', fontWeight: '750', whiteSpace: 'nowrap' }}>
                 {filteredHistory.length} {filteredHistory.length === 1 ? 'registro' : 'registros'}

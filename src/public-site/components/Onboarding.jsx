@@ -340,7 +340,7 @@ export default function Onboarding({ onComplete }) {
           />
         </div>
 
-        {/* Content â€” bottom left */}
+        {/* Content — bottom left */}
         <div style={{
           position: 'absolute', bottom: 0, left: 0, right: 0, zIndex: 10,
           padding: isPhoneLandscape ? '0 30px 32px' : isLargeMonitor ? '0 120px 100px' : isSmallDesktop ? '0 50px 60px' : '0 80px 80px',
@@ -424,7 +424,7 @@ export default function Onboarding({ onComplete }) {
                   textTransform: 'uppercase',
                 }}
               >
-                <ChevronLeft size={16} strokeWidth={2.5} /> AtrÃ¡s
+                <ChevronLeft size={16} strokeWidth={2.5} /> Atr¡s
               </motion.button>
             )}
             <motion.button
@@ -559,7 +559,7 @@ export default function Onboarding({ onComplete }) {
       <Vignette intensity={isTablet ? 0.5 : 0.65} />
       <FloatingParticles count={isTablet ? 14 : 12} mobile={true} />
 
-      {/* Content â€” bottom */}
+      {/* Content — bottom */}
       <div style={{
         position: 'absolute', bottom: 0, left: 0, right: 0, zIndex: 10,
         paddingBottom: isLargeTablet ? 140 : isMidTablet ? 115 : isTablet ? 100 : phoneSize === 'lg' ? 90 : phoneSize === 'md' ? 75 : 60,
@@ -692,7 +692,7 @@ export default function Onboarding({ onComplete }) {
                   textTransform: 'uppercase',
                 }}
               >
-                <ChevronLeft size={16} strokeWidth={2.5} /> AtrÃ¡s
+                <ChevronLeft size={16} strokeWidth={2.5} /> Atr¡s
               </motion.button>
             )}
           </div>

@@ -17,24 +17,24 @@ const money = value => Number(value || 0).toLocaleString('es-VE', {
 const getExtraIcon = (name) => {
   const n = (name || '').toLowerCase();
   if (n.includes('endodoncia') || n.includes('limpieza') || n.includes('blanqueamiento')) return GiTooth;
-  if (n.includes('hidrataciÃ³n') || n.includes('hidratacion') || n.includes('fluor')) return GiWaterDrop;
+  if (n.includes('hidratación') || n.includes('hidratacion') || n.includes('fluor')) return GiWaterDrop;
   if (n.includes('profundo')) return Waves;
   if (n.includes('profilaxis') || n.includes('express') || n.includes('sarro')) return GiShower;
   if (n.includes('mask') || n.includes('mascarilla') || n.includes('barrera')) return VenetianMask;
-  if (n.includes('nariz') || n.includes('narÃ­z')) return GiNoseFront;
-  if (n.includes('oido') || n.includes('oÃ­do') || n.includes('oreja')) return TbEar;
-  if (n.includes('exfoliacion') || n.includes('exfoliaciÃ³n') || n.includes('facial') || n.includes('cutis') || n.includes('limpieza')) return GiTowel;
+  if (n.includes('nariz') || n.includes('naríz')) return GiNoseFront;
+  if (n.includes('oido') || n.includes('oído') || n.includes('oreja')) return TbEar;
+  if (n.includes('exfoliacion') || n.includes('exfoliación') || n.includes('facial') || n.includes('cutis') || n.includes('limpieza')) return GiTowel;
   if (n.includes('ceja')) return MdFace3;
-  if (n.includes('muela') || n.includes('extraccion') || n.includes('extracciÃ³n') || n.includes('cirugia') || n.includes('cirugÃ­a')) return GiBeard;
+  if (n.includes('muela') || n.includes('extraccion') || n.includes('extracción') || n.includes('cirugia') || n.includes('cirugía')) return GiBeard;
   return Zap;
 };
 
 const getServiceIcon = (name) => {
   const n = (name || '').toLowerCase();
-  if (n.includes('niÃ±o') || n.includes('niÃ±a') || n.includes('kid')) return FaChild;
+  if (n.includes('niño') || n.includes('niña') || n.includes('kid')) return FaChild;
   if (n.includes('vip') || n.includes('premium')) return MdWorkspacePremium;
   if (n.includes('tatuaje') || n.includes('tattoo') || n.includes('piercing')) return PenTool;
-  if (n.includes('obturacion') || n.includes('obturaciÃ³n') && n.includes('extraccion')) {
+  if (n.includes('obturacion') || n.includes('obturación') && n.includes('extraccion')) {
     return (props) => (
       <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
         <ToothIcon {...props} />
@@ -42,7 +42,7 @@ const getServiceIcon = (name) => {
       </div>
     );
   }
-  if (n.includes('obturacion') || n.includes('obturaciÃ³n') || n.includes('empaste')) return GiTooth;
+  if (n.includes('obturacion') || n.includes('obturación') || n.includes('empaste')) return GiTooth;
   if (n.includes('ceja')) return MdFace3;
   if (n.includes('color') || n.includes('tinte') || n.includes('blanqueamiento')) return GiBottleVapors;
   return ToothIcon;
@@ -58,7 +58,7 @@ const OrderCatalogModal = ({
   rate = 0
 }) => {
   const isService = type === 'service';
-  const title = isService ? 'CatÃ¡logo de Servicios' : 'Servicios Extras';
+  const title = isService ? 'Cat¡logo de Servicios' : 'Servicios Extras';
   const subtitle = `${items.length} ${isService ? 'servicios' : 'extras'} disponibles`;
   const HeaderIcon = isService ? ToothIcon : Zap;
   const getIcon = isService ? getServiceIcon : getExtraIcon;

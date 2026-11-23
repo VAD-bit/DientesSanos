@@ -129,7 +129,7 @@ const ReportsModule = ({ isMobile, rates, staff = [] }) => {
       const textMuted = [130, 130, 138];
       const textSecondary = [180, 180, 186];
 
-      const rangeText = dateRange === 'all' ? 'HistÃ³rico Total' :
+      const rangeText = dateRange === 'all' ? 'Histórico Total' :
                         dateRange === 'today' ? 'Hoy' :
                         dateRange === 'week' ? 'Esta Semana' :
                         dateRange === 'month' ? 'Este Mes' :
@@ -201,7 +201,7 @@ const ReportsModule = ({ isMobile, rates, staff = [] }) => {
       pdf.setFont("helvetica", "normal");
       pdf.setFontSize(13);
       pdf.setTextColor(...champagneLight);
-      pdf.text("Centro de AnalÃ­tica y Rendimiento Operativo", 105, 130, { align: 'center' });
+      pdf.text("Centro de Analítica y Rendimiento Operativo", 105, 130, { align: 'center' });
 
       // Report type badge
       pdf.setFillColor(10, 10, 12);
@@ -225,7 +225,7 @@ const ReportsModule = ({ isMobile, rates, staff = [] }) => {
       let maxCardH = 26;
 
       [
-        { label: 'PERÃODO', value: rangeText },
+        { label: 'PERÍODO', value: rangeText },
         { label: 'SERVICIO', value: serviceName },
         { label: 'EQUIPO', value: staffName }
       ].forEach((item, i) => {
@@ -254,7 +254,7 @@ const ReportsModule = ({ isMobile, rates, staff = [] }) => {
         pdf.text(valLines, cx + coverCardW / 2, coverCardY + 14, { align: 'center' });
       });
 
-      // Bottom cover info â€” positioned below tallest card
+      // Bottom cover info — positioned below tallest card
       const bottomInfoY = Math.min(coverCardY + maxCardH + 12, 255);
       pdf.setFont("helvetica", "normal");
       pdf.setFontSize(9);
@@ -322,7 +322,7 @@ const ReportsModule = ({ isMobile, rates, staff = [] }) => {
       pdf.setFillColor(...champagne);
       pdf.rect(15, 37, 25, 0.5, 'F');
 
-      // KPI Cards â€” 3x2 grid, bigger and more premium
+      // KPI Cards — 3x2 grid, bigger and more premium
       const kpiCardW = 56;
       const kpiCardH = 24;
       const kpiGap = 5;
@@ -382,7 +382,7 @@ const ReportsModule = ({ isMobile, rates, staff = [] }) => {
       pdf.setFont("helvetica", "bold");
       pdf.setFontSize(9);
       pdf.setTextColor(...champagne);
-      pdf.text("Servicios por OdontÃ³logo", 15, leftY);
+      pdf.text("Servicios por Odontólogo", 15, leftY);
 
       let barberY = leftY + 8;
       barberServices.slice(0, 5).forEach((b, i) => {
@@ -415,11 +415,11 @@ const ReportsModule = ({ isMobile, rates, staff = [] }) => {
         barberY += 13;
       });
 
-      // Right: Rendimiento por DÃ­a
+      // Right: Rendimiento por Día
       pdf.setFont("helvetica", "bold");
       pdf.setFontSize(9);
       pdf.setTextColor(...champagne);
-      pdf.text("Rendimiento por DÃ­a", 110, leftY);
+      pdf.text("Rendimiento por Día", 110, leftY);
 
       let dayY = leftY + 8;
       daysFlow.forEach((d, i) => {
@@ -466,7 +466,7 @@ const ReportsModule = ({ isMobile, rates, staff = [] }) => {
         pdf.setFont("helvetica", "normal");
         pdf.setFontSize(8);
         pdf.setTextColor(...textMuted);
-        pdf.text("No hay registros de asistentes para este perÃ­odo.", 15, assistSectionY + 12);
+        pdf.text("No hay registros de asistentes para este período.", 15, assistSectionY + 12);
       } else {
         let assistX = 15;
         assistList.slice(0, 3).forEach(as => {
@@ -484,7 +484,7 @@ const ReportsModule = ({ isMobile, rates, staff = [] }) => {
           pdf.setFontSize(7);
           pdf.setTextColor(...textMuted);
           pdf.text(`Limpiezas: ${Math.round(as.lavados || 0)}`, assistX + 5, assistSectionY + 26);
-          pdf.text(`ComisiÃ³n: $${(as.comision || 0).toFixed(2)}`, assistX + 5, assistSectionY + 32);
+          pdf.text(`Comisión: $${(as.comision || 0).toFixed(2)}`, assistX + 5, assistSectionY + 32);
           pdf.text(`Propinas: $${(as.propinas || 0).toFixed(2)}`, assistX + 5, assistSectionY + 38);
 
           assistX += 60;
@@ -513,7 +513,7 @@ const ReportsModule = ({ isMobile, rates, staff = [] }) => {
       pdf.setFontSize(7);
       pdf.setTextColor(...champagne);
       pdf.text("FECHA", 18, 48);
-      pdf.text("DESCRIPCIÃ“N / SERVICIO", 50, 48);
+      pdf.text("DESCRIPCIÓN / SERVICIO", 50, 48);
       pdf.text("PERSONAL", 125, 48);
       pdf.text("MONTO", 192, 48, { align: 'right' });
 
@@ -592,7 +592,7 @@ const ReportsModule = ({ isMobile, rates, staff = [] }) => {
     }
   };
 
-  // Obtener lista Ãºnica de servicios de las transacciones para el filtro
+  // Obtener lista única de servicios de las transacciones para el filtro
   const uniqueServicesList = (() => {
     const list = new Set();
     transactions.forEach(t => {
@@ -688,7 +688,7 @@ const ReportsModule = ({ isMobile, rates, staff = [] }) => {
       if (!individualServices.includes(selectedService.toLowerCase())) return false;
     }
 
-    // 3. Filtro de Personal (Odontologos, LÃ­deres y Asistentes)
+    // 3. Filtro de Personal (Odontologos, Líderes y Asistentes)
     if (selectedStaff !== 'all') {
       const staffInvolved = [...(t.metadata?.staffInvolved || []), ...(t.metadata?.serviceStaff || [])];
       const isInvolved = staffInvolved.some(s => 
@@ -779,7 +779,7 @@ const ReportsModule = ({ isMobile, rates, staff = [] }) => {
         }
       }
       
-      // Split multiple services (e.g. "Gravedad Cero + En Ã³rbita")
+      // Split multiple services (e.g. "Gravedad Cero + En órbita")
       const individualServices = serviceName.split(/\s*[\+,\/]\s*/).map(s => s.trim()).filter(Boolean);
       
       individualServices.forEach(sName => {
@@ -816,7 +816,7 @@ const ReportsModule = ({ isMobile, rates, staff = [] }) => {
       const staffInvolved = (t.metadata?.serviceStaff?.length ? t.metadata.serviceStaff : t.metadata?.staffInvolved) || [];
       staffInvolved.forEach(involvedMember => {
         // El perfil actual del equipo es la fuente de verdad. Algunas
-        // transacciones antiguas guardaron "barber" tambiÃ©n para asistentes.
+        // transacciones antiguas guardaron "barber" también para asistentes.
         const currentMember = staff.find(member =>
           String(member.id) === String(involvedMember.staffId) ||
           (!involvedMember.staffId && member.name === involvedMember.name)
@@ -838,7 +838,7 @@ const ReportsModule = ({ isMobile, rates, staff = [] }) => {
 
   // 3. DAYS FLOW (Vertical Bar Chart)
   const daysFlow = (() => {
-    const days = ['domingo', 'lunes', 'martes', 'miÃ©rcoles', 'jueves', 'viernes', 'sÃ¡bado'];
+    const days = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 's¡bado'];
     const stats = {};
     filteredTransactions.forEach(t => {
       if (!isCountableService(t)) return;
@@ -846,8 +846,8 @@ const ReportsModule = ({ isMobile, rates, staff = [] }) => {
       stats[day] = (stats[day] || 0) + 1;
     });
     
-    // Sort in specific order matching Looker Studio's graph layout (sÃ¡bado, viernes, jueves, miÃ©rcoles, martes, domingo, lunes)
-    const renderOrder = ['sÃ¡bado', 'viernes', 'jueves', 'miÃ©rcoles', 'martes', 'domingo', 'lunes'];
+    // Sort in specific order matching Looker Studio's graph layout (s¡bado, viernes, jueves, miércoles, martes, domingo, lunes)
+    const renderOrder = ['s¡bado', 'viernes', 'jueves', 'miércoles', 'martes', 'domingo', 'lunes'];
     const list = renderOrder.map(day => ({
       name: day,
       count: stats[day] || 0
@@ -930,9 +930,9 @@ const ReportsModule = ({ isMobile, rates, staff = [] }) => {
         const catalogAssistant = assistantsCatalog.find((item) => String(item.id) === String(id));
         const configuredRate = Number(catalogAssistant?.washing_rate || 0);
         const washingRate = configuredRate > 0 ? configuredRate : DEFAULT_WASHING_RATE_USD;
-        // Cada tarifa de lavado se reparte 60% asistente / 40% barberÃ­a.
-        // Se reconstruye tambiÃ©n para transacciones histÃ³ricas que guardaron
-        // el dÃ³lar completo como comisiÃ³n de la asistente.
+        // Cada tarifa de lavado se reparte 60% asistente / 40% barbería.
+        // Se reconstruye también para transacciones históricas que guardaron
+        // el dólar completo como comisión de la asistente.
         const assistantShare = Number(t.metadata?.washAssistantSharePct || 60) / 100;
         const commission = washesPerAssistant * washingRate * assistantShare;
         const tip = Number(assistant.tip || 0);
@@ -1180,9 +1180,9 @@ const ReportsModule = ({ isMobile, rates, staff = [] }) => {
       }}>
         <div>
           <h2 style={{ fontSize: isMobile ? '28px' : '32px', fontWeight: '800', letterSpacing: '-0.5px' }}>
-            Centro de <span className="text-gold">AnalÃ­tica</span>
+            Centro de <span className="text-gold">Analítica</span>
           </h2>
-          <p style={{ color: 'var(--text-secondary)', marginTop: '4px' }}>AuditorÃ­a y rendimiento operativo.</p>
+          <p style={{ color: 'var(--text-secondary)', marginTop: '4px' }}>Auditoría y rendimiento operativo.</p>
         </div>
         
         <div data-pdf-exclude="true" style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
@@ -1251,7 +1251,7 @@ const ReportsModule = ({ isMobile, rates, staff = [] }) => {
             { value: 'week', label: 'Esta Semana' },
             { value: 'month', label: 'Este Mes' },
             { value: 'custom', label: 'Rango Personalizado' },
-            { value: 'all', label: 'HistÃ³rico Total' }
+            { value: 'all', label: 'Histórico Total' }
           ]}
         />
 
@@ -1272,7 +1272,7 @@ const ReportsModule = ({ isMobile, rates, staff = [] }) => {
           value={selectedStaff}
           onChange={setSelectedStaff}
           options={[
-            { value: 'all', label: 'Todos los OdontÃ³logos', imageUrl: '/panda-team-avatar.png', avatarFallback: 'EQ', subtitle: 'Todo el equipo' },
+            { value: 'all', label: 'Todos los Odontólogos', imageUrl: '/panda-team-avatar.png', avatarFallback: 'EQ', subtitle: 'Todo el equipo' },
             ...reportStaffOptions
           ]}
         />
@@ -1283,7 +1283,7 @@ const ReportsModule = ({ isMobile, rates, staff = [] }) => {
           value={chartGranularity}
           onChange={setChartGranularity}
           options={[
-            { value: 'day', label: 'Por DÃ­a' },
+            { value: 'day', label: 'Por Día' },
             { value: 'week', label: 'Por Semana' },
             { value: 'month', label: 'Por Mes' }
           ]}
@@ -1558,7 +1558,7 @@ const ReportsModule = ({ isMobile, rates, staff = [] }) => {
         <div className="glass-card" style={{ padding: '24px', borderRadius: '24px' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '20px' }}>
             <div style={{ width: '12px', height: '6px', backgroundColor: 'var(--gold-primary)', borderRadius: '2px' }}></div>
-            <span style={{ fontSize: '11px', fontWeight: '900', color: '#b3b3b3', textTransform: 'uppercase', letterSpacing: '1px' }}>Servicios por OdontÃ³logo</span>
+            <span style={{ fontSize: '11px', fontWeight: '900', color: '#b3b3b3', textTransform: 'uppercase', letterSpacing: '1px' }}>Servicios por Odontólogo</span>
           </div>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', height: '170px', justifyContent: 'center' }}>
@@ -1604,11 +1604,11 @@ const ReportsModule = ({ isMobile, rates, staff = [] }) => {
           </div>
         </div>
 
-        {/* CHART 3: DÃ­as Flujo Vertical Bar Chart */}
+        {/* CHART 3: Días Flujo Vertical Bar Chart */}
         <div className="glass-card" style={{ padding: '24px', borderRadius: '24px' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '16px' }}>
             <div style={{ width: '12px', height: '6px', backgroundColor: 'var(--gold-primary)', borderRadius: '2px' }}></div>
-            <span style={{ fontSize: '11px', fontWeight: '900', color: '#b3b3b3', textTransform: 'uppercase', letterSpacing: '1px' }}>DÃ­as Flujo</span>
+            <span style={{ fontSize: '11px', fontWeight: '900', color: '#b3b3b3', textTransform: 'uppercase', letterSpacing: '1px' }}>Días Flujo</span>
           </div>
 
           <div style={{ 

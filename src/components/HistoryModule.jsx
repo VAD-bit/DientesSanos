@@ -183,11 +183,11 @@ const HistoryModule = ({ isMobile, rates, onNavigate }) => {
                 <span style={{ fontSize: '14px', fontWeight: '800', color: 'var(--gold-primary)', textDecoration: 'underline' }}>{item.clients?.name || 'Cliente sin registrar'}</span>
               </div>
               <div>
-                <span style={{ fontSize: '10px', fontWeight: '800', color: 'var(--text-muted)', textTransform: 'uppercase', display: 'block', marginBottom: '2px' }}>CÃ©dula</span>
+                <span style={{ fontSize: '10px', fontWeight: '800', color: 'var(--text-muted)', textTransform: 'uppercase', display: 'block', marginBottom: '2px' }}>Cédula</span>
                 <span style={{ fontSize: '14px', fontWeight: '700', color: '#111111' }}>{item.clients?.id_card || 'No registrada'}</span>
               </div>
               <div>
-                <span style={{ fontSize: '10px', fontWeight: '800', color: 'var(--text-muted)', textTransform: 'uppercase', display: 'block', marginBottom: '2px' }}>TelÃ©fono</span>
+                <span style={{ fontSize: '10px', fontWeight: '800', color: 'var(--text-muted)', textTransform: 'uppercase', display: 'block', marginBottom: '2px' }}>Teléfono</span>
                 <span style={{ fontSize: '14px', fontWeight: '700', color: '#111111' }}>{item.clients?.phone || 'No registrado'}</span>
               </div>
             </div>
@@ -331,7 +331,7 @@ const HistoryModule = ({ isMobile, rates, onNavigate }) => {
               </div>
               <div>
                 <span style={{ fontSize: '12px', fontWeight: '900', color: '#111111', letterSpacing: '1px', textTransform: 'uppercase', display: 'block' }}>
-                  LiquidaciÃ³n de Caja
+                  Liquidación de Caja
                 </span>
                 <span style={{ fontSize: '9px', color: 'var(--text-muted)' }}>
                   Tasa de cambio: {item.exchange_rate || rates?.bcv || rates?.usd || 550} Bs.
@@ -408,7 +408,7 @@ const HistoryModule = ({ isMobile, rates, onNavigate }) => {
             {/* Totales de Liquidacion */}
             {isAdmin ? (
               <div style={{ borderTop: '1px solid rgba(0, 0, 0, 0.08)', paddingTop: '16px' }}>
-                <span style={{ fontSize: '9px', fontWeight: '800', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '12px', display: 'block' }}>DistribuciÃ³n de Fondos</span>
+                <span style={{ fontSize: '9px', fontWeight: '800', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '12px', display: 'block' }}>Distribución de Fondos</span>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
                   {item.appointment_staff?.length > 0 ? item.appointment_staff.map((st, sidx) => {
                     const rate = Number(item.exchange_rate || rates?.bcv || rates?.usd || 550);
@@ -435,7 +435,7 @@ const HistoryModule = ({ isMobile, rates, onNavigate }) => {
                         
                         <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) minmax(0, 1fr)', gap: '8px', marginTop: '10px', borderTop: '1px solid rgba(0, 0, 0, 0.08)', paddingTop: '8px' }}>
                           <div style={{ background: 'var(--bg-secondary)', borderRadius: '8px', padding: '6px' }}>
-                            <div style={{ fontSize: '8px', color: 'var(--text-muted)', fontWeight: '800', textTransform: 'uppercase' }}>ComisiÃ³n</div>
+                            <div style={{ fontSize: '8px', color: 'var(--text-muted)', fontWeight: '800', textTransform: 'uppercase' }}>Comisión</div>
                             <div style={{ fontSize: '10.5px', color: '#111111', fontWeight: '800', marginTop: '2px', whiteSpace: 'nowrap' }}>
                               {formatCurrency(commission * rate)} Bs.
                             </div>
@@ -453,7 +453,7 @@ const HistoryModule = ({ isMobile, rates, onNavigate }) => {
                     <div style={{ fontSize: '12px', color: 'var(--text-muted)', textAlign: 'center' }}>No hay personal registrado en esta venta.</div>
                   )}
 
-                  {/* Beneficio neto de la clÃ­nica */}
+                  {/* Beneficio neto de la clínica */}
                   {(() => {
                     const serviceBase = Number(item.services?.price || 0);
                     const extras = item.appointment_extras?.reduce((sum, e) => sum + Number(e.price || 0), 0) || 0;
@@ -474,7 +474,7 @@ const HistoryModule = ({ isMobile, rates, onNavigate }) => {
                         }}>
                           <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                             <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: 'var(--gold-primary)' }} />
-                            <span style={{ fontSize: '13px', fontWeight: '900', color: 'var(--gold-primary)', letterSpacing: '0.5px' }}>Total ClÃ­nica (Neto)</span>
+                            <span style={{ fontSize: '13px', fontWeight: '900', color: 'var(--gold-primary)', letterSpacing: '0.5px' }}>Total Clínica (Neto)</span>
                           </div>
                           <div style={{ textAlign: isMobile ? 'left' : 'right' }}>
                             <div style={{ fontSize: '14px', fontWeight: '950', color: 'var(--gold-primary)', whiteSpace: 'nowrap' }}>
@@ -493,11 +493,11 @@ const HistoryModule = ({ isMobile, rates, onNavigate }) => {
             ) : (
               /* Staff view */
               <div style={{ borderTop: '1px solid rgba(0, 0, 0, 0.08)', paddingTop: '16px' }}>
-                <span style={{ fontSize: '9px', fontWeight: '800', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '12px', display: 'block' }}>Tu LiquidaciÃ³n</span>
+                <span style={{ fontSize: '9px', fontWeight: '800', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '12px', display: 'block' }}>Tu Liquidación</span>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'rgba(0, 0, 0, 0.04)', padding: '10px 14px', borderRadius: '12px' }}>
                     <span style={{ fontSize: '13px', color: 'var(--text-secondary)', fontWeight: '700' }}>
-                      {getRoleCategory(user.role || '') === 'asistente' ? 'Tarifa de Limpieza' : 'Tu ComisiÃ³n'}
+                      {getRoleCategory(user.role || '') === 'asistente' ? 'Tarifa de Limpieza' : 'Tu Comisión'}
                     </span>
                     <div style={{ textAlign: 'right' }}>
                       <span style={{ fontSize: '14px', fontWeight: '800', color: '#111111', whiteSpace: 'nowrap' }}>
@@ -510,7 +510,7 @@ const HistoryModule = ({ isMobile, rates, onNavigate }) => {
                   </div>
                   {Number(item.product_commission || 0) > 0 && (
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'rgba(48,209,88,0.04)', padding: '10px 14px', borderRadius: '12px' }}>
-                      <span style={{ fontSize: '13px', color: '#30d158', fontWeight: '700' }}>ComisiÃ³n de productos</span>
+                      <span style={{ fontSize: '13px', color: '#30d158', fontWeight: '700' }}>Comisión de productos</span>
                       <div style={{ textAlign: 'right' }}>
                         <span style={{ fontSize: '14px', fontWeight: '800', color: '#111111', whiteSpace: 'nowrap' }}>{formatCurrency(Number(item.product_commission) * Number(item.exchange_rate || rates?.bcv || rates?.usd || 550))} Bs.</span>
                         <div style={{ fontSize: '10px', color: 'var(--text-muted)', fontWeight: '700' }}>Ref: ${formatCurrency(item.product_commission)}</div>

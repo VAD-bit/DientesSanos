@@ -4,10 +4,10 @@ import logo from '../assets/logo.png';
 
 /**
  * PandaCamera - Un componente premium para capturar o subir fotos.
- * DiseÃ±ado para permitir ambas opciones desde el primer momento, con reencuadre interactivo (drag-to-crop).
+ * Diseñado para permitir ambas opciones desde el primer momento, con reencuadre interactivo (drag-to-crop).
  *
- * `initialAction` ('camera' | 'gallery'): si el llamador ya preguntÃ³ de dÃ³nde quiere la foto
- * (ej. un menÃº pequeÃ±o junto al avatar), salta directo a esa acciÃ³n y omite la pantalla de elecciÃ³n.
+ * `initialAction` ('camera' | 'gallery'): si el llamador ya preguntó de dónde quiere la foto
+ * (ej. un menú pequeño junto al avatar), salta directo a esa acción y omite la pantalla de elección.
  */
 const PandaCamera = ({ onCapture, onClose, overlayClass, cardClass, initialAction, aspectRatio }) => {
   const cleanCardClass = cardClass ? cardClass.replace('global-modal-card', '') : '';
@@ -18,8 +18,8 @@ const PandaCamera = ({ onCapture, onClose, overlayClass, cardClass, initialActio
   const galleryTriggeredRef = useRef(false);
   const [capturedImage, setCapturedImage] = useState(null);
   const [error, setError] = useState(null);
-  // 'choice' = pantalla inicial (elegir cÃ¡mara o galerÃ­a), 'camera' = visor en vivo,
-  // 'pending' = ya disparamos el selector de archivos nativo y no hay nada que mostrar todavÃ­a
+  // 'choice' = pantalla inicial (elegir c¡mara o galería), 'camera' = visor en vivo,
+  // 'pending' = ya disparamos el selector de archivos nativo y no hay nada que mostrar todavía
   const [mode, setMode] = useState(
     initialAction === 'camera' ? 'camera' : initialAction === 'gallery' ? 'pending' : 'choice'
   );
@@ -45,7 +45,7 @@ const PandaCamera = ({ onCapture, onClose, overlayClass, cardClass, initialActio
 
   // Zoom digital de la vista en vivo (antes de disparar)
   const [liveZoom, setLiveZoom] = useState(1);
-  // 'environment' = cÃ¡mara trasera, 'user' = cÃ¡mara frontal (selfie)
+  // 'environment' = c¡mara trasera, 'user' = c¡mara frontal (selfie)
   const [facingMode, setFacingMode] = useState('environment');
   const [hasMultipleCameras, setHasMultipleCameras] = useState(false);
 
@@ -82,11 +82,11 @@ const PandaCamera = ({ onCapture, onClose, overlayClass, cardClass, initialActio
         mediaStream.getTracks().forEach(track => track.stop());
       }
 
-      // Detectar si el dispositivo tiene mÃ¡s de una cÃ¡mara (ej. frontal + trasera en celulares)
-      // para solo mostrar el botÃ³n de cambio cuando realmente tenga sentido (no en laptops de 1 cÃ¡mara).
-      // enumerateDevices() no siempre es confiable en mÃ³vil, asÃ­ que lo combinamos con una
-      // detecciÃ³n de pantalla tÃ¡ctil: casi todo celular/tablet con cÃ¡mara trae frontal Y trasera,
-      // mientras que una laptop/computadora normalmente no es tÃ¡ctil y trae solo una cÃ¡mara.
+      // Detectar si el dispositivo tiene m¡s de una c¡mara (ej. frontal + trasera en celulares)
+      // para solo mostrar el botón de cambio cuando realmente tenga sentido (no en laptops de 1 c¡mara).
+      // enumerateDevices() no siempre es confiable en móvil, así que lo combinamos con una
+      // detección de pantalla t¡ctil: casi todo celular/tablet con c¡mara trae frontal Y trasera,
+      // mientras que una laptop/computadora normalmente no es t¡ctil y trae solo una c¡mara.
       const isTouchDevice = (typeof window !== 'undefined') &&
         (('ontouchstart' in window) || navigator.maxTouchPoints > 0);
       try {
@@ -94,11 +94,11 @@ const PandaCamera = ({ onCapture, onClose, overlayClass, cardClass, initialActio
         const cams = devices.filter(d => d.kind === 'videoinput');
         setHasMultipleCameras(cams.length > 1 || isTouchDevice);
       } catch (enumErr) {
-        // Si el navegador no permite enumerar, nos apoyamos solo en la detecciÃ³n tÃ¡ctil
+        // Si el navegador no permite enumerar, nos apoyamos solo en la detección t¡ctil
         setHasMultipleCameras(isTouchDevice);
       }
     } catch (err) {
-      setError("CÃ¡mara no disponible, pero puedes subir fotos.");
+      setError("C¡mara no disponible, pero puedes subir fotos.");
       console.warn("Camera access failed:", err);
     }
   };
@@ -114,8 +114,8 @@ const PandaCamera = ({ onCapture, onClose, overlayClass, cardClass, initialActio
     const video = videoRef.current;
     const canvas = canvasRef.current;
     if (video && canvas) {
-      // Recorta el frame segÃºn el zoom digital en vivo, para que la foto capturada
-      // coincida exactamente con lo que se veÃ­a acercado en el visor
+      // Recorta el frame según el zoom digital en vivo, para que la foto capturada
+      // coincida exactamente con lo que se veía acercado en el visor
       const vw = video.videoWidth;
       const vh = video.videoHeight;
       const cropW = vw / liveZoom;
@@ -153,8 +153,8 @@ const PandaCamera = ({ onCapture, onClose, overlayClass, cardClass, initialActio
     }
   };
 
-  // Si nos abrieron directo a "galerÃ­a" y el usuario cierra el selector nativo sin elegir nada,
-  // no queda nada que mostrar: cerramos el modal completo en vez de dejarlo flotando vacÃ­o.
+  // Si nos abrieron directo a "galería" y el usuario cierra el selector nativo sin elegir nada,
+  // no queda nada que mostrar: cerramos el modal completo en vez de dejarlo flotando vacío.
   const handleFilePickerCancel = () => {
     if (initialAction === 'gallery' && !capturedImage) {
       onClose();
@@ -230,7 +230,7 @@ const PandaCamera = ({ onCapture, onClose, overlayClass, cardClass, initialActio
     });
   };
 
-  // Acerca/aleja la imagen manteniendo fijo el punto que estÃ¡ en el centro del recuadro
+  // Acerca/aleja la imagen manteniendo fijo el punto que est¡ en el centro del recuadro
   const handleZoomChange = (newZoomRaw) => {
     const { naturalWidth: iW, naturalHeight: iH, baseScale, viewportWidth: vW, viewportHeight: vH } = imgDetails;
     if (!iW || !iH) return;
@@ -357,11 +357,11 @@ const PandaCamera = ({ onCapture, onClose, overlayClass, cardClass, initialActio
   };
 
   useEffect(() => {
-    // Si ya nos dijeron quÃ© acciÃ³n tomar (desde un menÃº externo), la ejecutamos de una vez
-    // y nos saltamos la pantalla de elecciÃ³n de pantalla completa.
+    // Si ya nos dijeron qué acción tomar (desde un menú externo), la ejecutamos de una vez
+    // y nos saltamos la pantalla de elección de pantalla completa.
     // Nota: en desarrollo, React.StrictMode ejecuta este efecto dos veces para detectar
     // bugs; sin el "guard" de galleryTriggeredRef, el selector de archivos nativo se
-    // abrÃ­a dos veces seguidas. El guard evita eso sin afectar la limpieza de la cÃ¡mara.
+    // abría dos veces seguidas. El guard evita eso sin afectar la limpieza de la c¡mara.
     if (initialAction === 'camera') {
       startCamera();
     } else if (initialAction === 'gallery' && !galleryTriggeredRef.current) {
@@ -407,7 +407,7 @@ const PandaCamera = ({ onCapture, onClose, overlayClass, cardClass, initialActio
       <div style={{ position: 'absolute', top: 'max(24px, env(safe-area-inset-top, 24px))', left: 0, right: 0, padding: '0 24px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', zIndex: 12 }}>
         {mode === 'camera' && !capturedImage ? (
           <button onClick={goToChoice} className="panda-cam-back-btn">
-            <ChevronLeft size={16} /> AtrÃ¡s
+            <ChevronLeft size={16} /> Atr¡s
           </button>
         ) : (
           <div style={{ width: '40px' }} />
@@ -421,8 +421,8 @@ const PandaCamera = ({ onCapture, onClose, overlayClass, cardClass, initialActio
         </button>
       </div>
 
-      {/* Main Viewport. MÃ¡s alto mientras se elige/encuadra en vivo (mejor visibilidad),
-          y cuadrado 1:1 solo en la etapa final de recorte (asÃ­ coincide con los avatares del CRM). */}
+      {/* Main Viewport. M¡s alto mientras se elige/encuadra en vivo (mejor visibilidad),
+          y cuadrado 1:1 solo en la etapa final de recorte (así coincide con los avatares del CRM). */}
       <div className={cleanCardClass || 'animate-scale-in'} style={{
         position: 'relative',
         width: '100%',
@@ -460,7 +460,7 @@ const PandaCamera = ({ onCapture, onClose, overlayClass, cardClass, initialActio
               </div>
               <div style={{ textAlign: 'left' }}>
                 <div style={{ fontSize: '14px', fontWeight: '800', color: '#111111' }}>Tomar foto</div>
-                <div style={{ fontSize: '11px', color: 'rgba(255,255,255,0.45)', marginTop: '2px' }}>Usar la cÃ¡mara ahora</div>
+                <div style={{ fontSize: '11px', color: 'rgba(255,255,255,0.45)', marginTop: '2px' }}>Usar la c¡mara ahora</div>
               </div>
             </button>
 
@@ -472,7 +472,7 @@ const PandaCamera = ({ onCapture, onClose, overlayClass, cardClass, initialActio
                 <Upload size={20} color="var(--gold-primary)" />
               </div>
               <div style={{ textAlign: 'left' }}>
-                <div style={{ fontSize: '14px', fontWeight: '800', color: '#111111' }}>Subir de galerÃ­a</div>
+                <div style={{ fontSize: '14px', fontWeight: '800', color: '#111111' }}>Subir de galería</div>
                 <div style={{ fontSize: '11px', color: 'rgba(255,255,255,0.45)', marginTop: '2px' }}>Elegir una foto existente</div>
               </div>
             </button>
@@ -507,7 +507,7 @@ const PandaCamera = ({ onCapture, onClose, overlayClass, cardClass, initialActio
               </div>
             )}
 
-            {/* Camera switch (solo si el dispositivo tiene mÃ¡s de una cÃ¡mara) */}
+            {/* Camera switch (solo si el dispositivo tiene m¡s de una c¡mara) */}
             {hasMultipleCameras && !error && (
               <button
                 onClick={switchCamera}

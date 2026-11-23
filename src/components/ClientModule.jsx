@@ -96,9 +96,9 @@ const BirthdayInput = ({ value, onChange, style = {}, className = '' }) => {
 // â”€â”€ Demo data: shown only when the DB has no real clients â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const DEMO_CLIENTS = [
   { id: 'demo-1', name: 'Carlos Mendoza', phone: '+58 412-555-1234', id_card: '28.123.456', birth_date: '1995-03-15', origin: 'Instagram', smile_type: 'Alta', gum_type: 'Sana', total_visits: 12, created_at: '2025-01-10T10:00:00Z', status: 'Activo', points: 120 },
-  { id: 'demo-2', name: 'AndrÃ©s Rivas', phone: '+58 414-777-8899', id_card: '29.876.543', birth_date: '1992-07-22', origin: 'Referido', smile_type: 'Media', gum_type: 'Sana', total_visits: 8, created_at: '2025-02-05T10:00:00Z', status: 'Activo', points: 80 },
-  { id: 'demo-3', name: 'Luis FernÃ¡ndez', phone: '+58 424-333-4455', id_card: '30.555.111', birth_date: '1998-11-03', origin: 'Google', smile_type: 'Baja', gum_type: 'Sana', total_visits: 5, created_at: '2025-03-20T10:00:00Z', status: 'Activo', points: 50 },
-  { id: 'demo-4', name: 'Marcos PÃ©rez', phone: '+58 416-222-3344', id_card: '27.444.777', birth_date: '1990-05-18', origin: 'TikTok', smile_type: 'Invertida', gum_type: 'Sana', total_visits: 15, created_at: '2024-11-15T10:00:00Z', status: 'Activo', points: 150 },
+  { id: 'demo-2', name: 'Andrés Rivas', phone: '+58 414-777-8899', id_card: '29.876.543', birth_date: '1992-07-22', origin: 'Referido', smile_type: 'Media', gum_type: 'Sana', total_visits: 8, created_at: '2025-02-05T10:00:00Z', status: 'Activo', points: 80 },
+  { id: 'demo-3', name: 'Luis Fern¡ndez', phone: '+58 424-333-4455', id_card: '30.555.111', birth_date: '1998-11-03', origin: 'Google', smile_type: 'Baja', gum_type: 'Sana', total_visits: 5, created_at: '2025-03-20T10:00:00Z', status: 'Activo', points: 50 },
+  { id: 'demo-4', name: 'Marcos Pérez', phone: '+58 416-222-3344', id_card: '27.444.777', birth_date: '1990-05-18', origin: 'TikTok', smile_type: 'Invertida', gum_type: 'Sana', total_visits: 15, created_at: '2024-11-15T10:00:00Z', status: 'Activo', points: 150 },
   { id: 'demo-5', name: 'Daniel Torres', phone: '+58 412-999-0011', id_card: '31.222.888', birth_date: '2000-01-30', origin: 'Presencial', smile_type: 'Media', gum_type: 'Sangrante', total_visits: 3, created_at: '2025-06-01T10:00:00Z', status: 'Activo', points: 30 },
 ];
 // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
@@ -168,10 +168,10 @@ const ClientModule = ({ isMobile, clients, onRefresh, initialClientId }) => {
     let msg = localStorage.getItem('panda_default_bday_message');
     const isCorrupted = !msg || 
       msg.includes('\uFFFD') || 
-      msg.includes('Ã¯Â¿Â½') ||
+      msg.includes('îÂ¿Â½') ||
       /[\uD800-\uDBFF](?![\uDC00-\uDFFF])|([^\uD800-\uDBFF]|^)[\uDC00-\uDFFF]/.test(msg);
     if (isCorrupted) {
-      msg = `Â¡Hola {name}! ${String.fromCodePoint(0x1F389)} Te deseamos un muy feliz cumpleaÃ±os de parte de todo el equipo de Dientes Sanos. ${String.fromCodePoint(0x1F488)} Â¡Que tengas un dÃ­a excelente!`;
+      msg = `Â¡Hola {name}! ${String.fromCodePoint(0x1F389)} Te deseamos un muy feliz cumpleaños de parte de todo el equipo de Dientes Sanos. ${String.fromCodePoint(0x1F488)} Â¡Que tengas un día excelente!`;
       localStorage.setItem('panda_default_bday_message', msg);
     }
     return msg;
@@ -233,7 +233,7 @@ const ClientModule = ({ isMobile, clients, onRefresh, initialClientId }) => {
   }, [visibleClients]);
 
   const handleDeleteClient = async (id, name) => {
-    if (!await confirm(`Â¿EstÃ¡s seguro de eliminar a ${name}? Esta acciÃ³n no se puede deshacer.`)) return;
+    if (!await confirm(`Â¿Est¡s seguro de eliminar a ${name}? Esta acción no se puede deshacer.`)) return;
     try {
       setLoading(true);
       await dataService.deleteClient(id);
@@ -271,10 +271,10 @@ const ClientModule = ({ isMobile, clients, onRefresh, initialClientId }) => {
       });
       setShowAddForm(false);
       await onRefresh();
-      showToast('Â¡Ficha de cliente creada con Ã©xito!');
+      showToast('Â¡Ficha de cliente creada con éxito!');
     } catch (error) {
       console.error('Error addClient:', error);
-      showToast('Error tÃ©cnico al agregar cliente.', 'error');
+      showToast('Error técnico al agregar cliente.', 'error');
     } finally {
       setCreating(false);
     }
@@ -294,7 +294,7 @@ const ClientModule = ({ isMobile, clients, onRefresh, initialClientId }) => {
           }}>
             <div>
               <h2 style={{ fontSize: isMobile ? '26px' : '28px', fontWeight: '800', letterSpacing: '-0.5px', lineHeight: '1.2' }}>Archivo de <span className="text-gold">Pacientes</span></h2>
-              <p style={{ color: 'var(--text-secondary)', marginTop: '6px', fontSize: isMobile ? '13px' : '15px' }}>Fichas tÃ©cnicas y galerÃ­a de evoluciÃ³n.</p>
+              <p style={{ color: 'var(--text-secondary)', marginTop: '6px', fontSize: isMobile ? '13px' : '15px' }}>Fichas técnicas y galería de evolución.</p>
             </div>
             <div style={{ display: 'flex', gap: '10px', alignItems: 'center', flexWrap: 'wrap', width: isMobile ? '100%' : 'auto' }}>
               {/* View Toggles */}
@@ -389,8 +389,8 @@ const ClientModule = ({ isMobile, clients, onRefresh, initialClientId }) => {
                   whiteSpace: 'nowrap'
                 }}
               >
-                <MessageCircle size={18} /> {!isMobile && "Mensaje CumpleaÃ±os"}
-                {isMobile && "CumpleaÃ±os"}
+                <MessageCircle size={18} /> {!isMobile && "Mensaje Cumpleaños"}
+                {isMobile && "Cumpleaños"}
               </button>}
 
               {canManageClientAdminActions && <button 
@@ -416,18 +416,18 @@ const ClientModule = ({ isMobile, clients, onRefresh, initialClientId }) => {
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '24px' }}>
                 <div className="form-group">
                   <label style={{ display: 'block', marginBottom: '8px', fontSize: '13px', color: 'var(--text-secondary)' }}>Nombre Completo</label>
-                  <input className="form-input" placeholder="Ej. Juan PÃ©rez" value={newClient.name} onChange={(e) => setNewClient({...newClient, name: formatName(e.target.value)})} style={{ width: '100%' }} />
+                  <input className="form-input" placeholder="Ej. Juan Pérez" value={newClient.name} onChange={(e) => setNewClient({...newClient, name: formatName(e.target.value)})} style={{ width: '100%' }} />
                 </div>
                 <div className="form-group">
-                  <label style={{ display: 'block', marginBottom: '8px', fontSize: '13px', color: 'var(--text-secondary)' }}>CÃ©dula / ID</label>
+                  <label style={{ display: 'block', marginBottom: '8px', fontSize: '13px', color: 'var(--text-secondary)' }}>Cédula / ID</label>
                   <input className="form-input" placeholder="Ej. 28.123.456" value={newClient.id_card} onChange={(e) => setNewClient({...newClient, id_card: e.target.value})} style={{ width: '100%' }} />
                 </div>
                 <div className="form-group">
-                  <label style={{ display: 'block', marginBottom: '8px', fontSize: '13px', color: 'var(--text-secondary)' }}>TelÃ©fono</label>
+                  <label style={{ display: 'block', marginBottom: '8px', fontSize: '13px', color: 'var(--text-secondary)' }}>Teléfono</label>
                   <input className="form-input" placeholder="WhatsApp" value={newClient.phone} onChange={(e) => setNewClient({...newClient, phone: e.target.value})} style={{ width: '100%' }} />
                 </div>
                 <div className="form-group">
-                  <label style={{ display: 'block', marginBottom: '8px', fontSize: '13px', color: 'var(--text-secondary)' }}>CumpleaÃ±os</label>
+                  <label style={{ display: 'block', marginBottom: '8px', fontSize: '13px', color: 'var(--text-secondary)' }}>Cumpleaños</label>
                   <BirthdayInput value={newClient.birth_date} onChange={(v) => setNewClient({...newClient, birth_date: v})} style={{ width: '100%' }} />
                 </div>
                 <PandaSelect
@@ -441,7 +441,7 @@ const ClientModule = ({ isMobile, clients, onRefresh, initialClientId }) => {
                     { label: 'Google / Google Maps', value: 'Google' },
                     { label: 'TikTok', value: 'TikTok' },
                     { label: 'Facebook', value: 'Facebook' },
-                    { label: 'PasÃ³ por el local', value: 'Presencial' },
+                    { label: 'Pasó por el local', value: 'Presencial' },
                     { label: 'Otro', value: 'Otro' }
                   ]}
                 />
@@ -457,19 +457,19 @@ const ClientModule = ({ isMobile, clients, onRefresh, initialClientId }) => {
                   ]}
                 />
                 <PandaSelect
-                  label="Tipo de encÃ­a"
+                  label="Tipo de encía"
                   value={newClient.gum_type}
                   onChange={(val) => setNewClient({...newClient, gum_type: val})}
                   options={[
                     { label: 'Sana', value: 'Sana' },
                     { label: 'Inflamada', value: 'Inflamada' },
                     { label: 'Sangrante', value: 'Sangrante' },
-                    { label: 'RetracciÃ³n', value: 'RetracciÃ³n' }
+                    { label: 'Retracción', value: 'Retracción' }
                   ]}
                 />
                 <div style={{ display: 'flex', alignItems: 'flex-end' }}>
                   <button className="btn-gold" onClick={handleAddClient} disabled={creating} style={{ width: '100%', minHeight: '48px', padding: '8px 12px', borderRadius: '12px', fontSize: '13px', lineHeight: '1.2' }}>
-                    {creating ? <Loader2 className="animate-spin" /> : 'Registrar Ficha TÃ©cnica'}
+                    {creating ? <Loader2 className="animate-spin" /> : 'Registrar Ficha Técnica'}
                   </button>
                 </div>
               </div>
@@ -557,7 +557,7 @@ const ClientModule = ({ isMobile, clients, onRefresh, initialClientId }) => {
                   ? 'Sin Premios Activos'
                   : searchTerm
                     ? 'Sin Resultados'
-                    : 'Archivo VacÃ­o'}
+                    : 'Archivo Vacío'}
               </h3>
               
               <p style={{ 
@@ -569,12 +569,12 @@ const ClientModule = ({ isMobile, clients, onRefresh, initialClientId }) => {
                 fontWeight: '500'
               }}>
                 {viewMode === 'coupons' && visibleClients.length > 0
-                  ? 'AÃºn no hay clientes que hayan ganado o conserven cupones disponibles. Gira la ruleta en la caja para premiarlos.'
+                  ? 'Aún no hay clientes que hayan ganado o conserven cupones disponibles. Gira la ruleta en la caja para premiarlos.'
                   : searchTerm
-                    ? `No encontramos ningÃºn cliente que coincida con "${searchTerm}". Intenta con otro nombre o telÃ©fono.`
+                    ? `No encontramos ningún cliente que coincida con "${searchTerm}". Intenta con otro nombre o teléfono.`
                     : isServiceProfessional
-                      ? 'TodavÃ­a no tienes clientes atendidos registrados en tu historial.'
-                      : 'AÃºn no has registrado a ningÃºn cliente. Comienza agregando su ficha tÃ©cnica.'}
+                      ? 'Todavía no tienes clientes atendidos registrados en tu historial.'
+                      : 'Aún no has registrado a ningún cliente. Comienza agregando su ficha técnica.'}
               </p>
 
               {!searchTerm && viewMode !== 'coupons' && visibleClients.length === 0 && !isServiceProfessional && (
@@ -594,7 +594,7 @@ const ClientModule = ({ isMobile, clients, onRefresh, initialClientId }) => {
                 const visits = client.total_visits || 0;
                 // Loyalty tier: 0=new, 1=regular, 2=loyal, 3=vip
                 const tier = visits === 0 ? 0 : visits < 5 ? 1 : visits < 15 ? 2 : 3;
-                // All gold â€” just different intensities. No rainbow.
+                // All gold — just different intensities. No rainbow.
                 const tierColors = [
                   { bg: 'rgba(232, 212, 176, 0.05)', accent: 'rgba(232, 212, 176, 0.30)', label: 'Nuevo',   strip: 'rgba(232, 212, 176, 0.18)' },
                   { bg: 'rgba(232, 212, 176, 0.08)', accent: 'rgba(232, 212, 176, 0.55)', label: 'Regular', strip: 'rgba(232, 212, 176, 0.35)' },
@@ -602,7 +602,7 @@ const ClientModule = ({ isMobile, clients, onRefresh, initialClientId }) => {
                   { bg: 'rgba(232, 212, 176, 0.20)', accent: '#e8d4b0',                    label: 'VIP',     strip: '#e8d4b0' },
                 ];
                 const tc = tierColors[tier];
-                // Warm dark avatar gradients â€” all complement gold
+                // Warm dark avatar gradients — all complement gold
                 const avatarGradients = [
                   'linear-gradient(135deg,#f7efe2,#e8d4b0)',
                   'linear-gradient(135deg,#faf5ec,#e0c9a0)',
@@ -681,7 +681,7 @@ const ClientModule = ({ isMobile, clients, onRefresh, initialClientId }) => {
                             lineHeight: '1.2', marginBottom: '4px'
                           }}>{client.name}</div>
                           <div style={{ fontSize: '11px', color: 'rgba(255,255,255,0.35)', fontWeight: '600' }}>
-                            {client.id_card ? `V-${client.id_card}` : 'Sin cÃ©dula'}
+                            {client.id_card ? `V-${client.id_card}` : 'Sin cédula'}
                           </div>
                         </div>
 
@@ -699,7 +699,7 @@ const ClientModule = ({ isMobile, clients, onRefresh, initialClientId }) => {
                         <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
                           <Phone size={11} color="rgba(255,255,255,0.3)" />
                           <span style={{ fontSize: '12px', color: 'rgba(255,255,255,0.55)', fontWeight: '600' }}>
-                            {client.phone || 'â€”'}
+                            {client.phone || '—'}
                           </span>
                         </div>
                         <div style={{ marginLeft: 'auto', display: 'flex', alignItems: 'baseline', gap: '3px' }}>
@@ -763,7 +763,7 @@ const ClientModule = ({ isMobile, clients, onRefresh, initialClientId }) => {
                 <thead>
                   <tr style={{ backgroundColor: 'rgba(0, 0, 0, 0.04)', borderBottom: '1px solid rgba(0, 0, 0, 0.08)' }}>
                     <th style={{ padding: isMobile ? '12px 12px' : '16px 24px', fontSize: '11px', fontWeight: '900', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Cliente</th>
-                    {!isMobile && <th style={{ padding: '16px 24px', fontSize: '11px', fontWeight: '900', color: 'var(--text-muted)', textTransform: 'uppercase' }}>CÃ©dula / ID</th>}
+                    {!isMobile && <th style={{ padding: '16px 24px', fontSize: '11px', fontWeight: '900', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Cédula / ID</th>}
                     <th style={{ padding: isMobile ? '12px 12px' : '16px 24px', fontSize: '11px', fontWeight: '900', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Contacto</th>
                     {!isMobile && <th style={{ padding: '16px 24px', fontSize: '11px', fontWeight: '900', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Registrado</th>}
                     <th style={{ padding: isMobile ? '12px 12px' : '16px 24px', fontSize: '11px', fontWeight: '900', color: 'var(--text-muted)', textTransform: 'uppercase', textAlign: isMobile ? 'right' : 'left' }}>Visitas</th>
@@ -814,7 +814,7 @@ const ClientModule = ({ isMobile, clients, onRefresh, initialClientId }) => {
           {filteredClients.length > clientsPerPage && (
             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 14, marginTop: 20 }}>
               <button type="button" className="btn-secondary" disabled={clientPage === 1} onClick={() => setClientPage(page => Math.max(1, page - 1))}>Anterior</button>
-              <span style={{ color: 'var(--text-secondary)', fontSize: 13, fontWeight: 800 }}>PÃ¡gina {clientPage} de {totalClientPages}</span>
+              <span style={{ color: 'var(--text-secondary)', fontSize: 13, fontWeight: 800 }}>P¡gina {clientPage} de {totalClientPages}</span>
               <button type="button" className="btn-secondary" disabled={clientPage === totalClientPages} onClick={() => setClientPage(page => Math.min(totalClientPages, page + 1))}>Siguiente</button>
             </div>
           )}
@@ -881,7 +881,7 @@ const ClientModule = ({ isMobile, clients, onRefresh, initialClientId }) => {
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                 <MessageCircle size={20} color="var(--gold-primary)" />
                 <h3 style={{ margin: 0, fontSize: '16px', fontWeight: '900', color: '#111111' }}>
-                  Mensaje de CumpleaÃ±os Predeterminado
+                  Mensaje de Cumpleaños Predeterminado
                 </h3>
               </div>
               <button 
@@ -905,7 +905,7 @@ const ClientModule = ({ isMobile, clients, onRefresh, initialClientId }) => {
 
             {/* Description */}
             <p style={{ fontSize: '12.5px', color: 'var(--text-secondary)', lineHeight: '1.5', margin: '0 0 16px 0' }}>
-              Define el mensaje que se cargarÃ¡ por defecto al enviar felicitaciones por WhatsApp desde el Dashboard.
+              Define el mensaje que se cargar¡ por defecto al enviar felicitaciones por WhatsApp desde el Dashboard.
             </p>
 
             <div style={{ 
@@ -918,7 +918,7 @@ const ClientModule = ({ isMobile, clients, onRefresh, initialClientId }) => {
               marginBottom: '16px',
               lineHeight: '1.4'
             }}>
-              <strong>ðŸ’¡ Consejo:</strong> Puedes incluir la palabra clave <code>{"{name}"}</code> en el texto y el sistema la reemplazarÃ¡ automÃ¡ticamente con el nombre del cliente al enviar.
+              <strong>👋 Consejo:</strong> Puedes incluir la palabra clave <code>{"{name}"}</code> en el texto y el sistema la reemplazar¡ autom¡ticamente con el nombre del cliente al enviar.
             </div>
 
             {/* Message Template Input */}
@@ -949,7 +949,7 @@ const ClientModule = ({ isMobile, clients, onRefresh, initialClientId }) => {
                 onClick={() => {
                   localStorage.setItem('panda_default_bday_message', defaultBdayMessage);
                   setShowMessageModal(false);
-                  showToast('Mensaje de cumpleaÃ±os guardado');
+                  showToast('Mensaje de cumpleaños guardado');
                 }}
                 style={{
                   flex: 1,
@@ -969,7 +969,7 @@ const ClientModule = ({ isMobile, clients, onRefresh, initialClientId }) => {
               
               <button 
                 onClick={() => {
-                  setDefaultBdayMessage(localStorage.getItem('panda_default_bday_message') || `Â¡Hola {name}! ${String.fromCodePoint(0x1F389)} Te deseamos un muy feliz cumpleaÃ±os de parte de todo el equipo de Dientes Sanos. ${String.fromCodePoint(0x1F488)} Â¡Que tengas un dÃ­a excelente!`);
+                  setDefaultBdayMessage(localStorage.getItem('panda_default_bday_message') || `Â¡Hola {name}! ${String.fromCodePoint(0x1F389)} Te deseamos un muy feliz cumpleaños de parte de todo el equipo de Dientes Sanos. ${String.fromCodePoint(0x1F488)} Â¡Que tengas un día excelente!`);
                   setShowMessageModal(false);
                 }}
                 style={{
@@ -1048,7 +1048,7 @@ const RouletteModal = ({ isOpen, onClose, onFinish, prizes }) => {
           <X size={24} />
         </button>
         
-        <h2 style={{ color: 'var(--gold-primary)', marginBottom: '20px', fontSize: '24px', fontWeight: '800' }}>Ruleta de CumpleaÃ±os ðŸŽ‰</h2>
+        <h2 style={{ color: 'var(--gold-primary)', marginBottom: '20px', fontSize: '24px', fontWeight: '800' }}>Ruleta de Cumpleaños 🏆</h2>
         
         <div style={{ position: 'relative', width: '250px', height: '250px', margin: '0 auto 30px auto' }}>
           {/* Pointer */}
@@ -1152,7 +1152,7 @@ const ClientDetail = ({ isMobile, client, onBack, onDelete, onUpdate }) => {
 
 
   // work_gallery (base64 photos) is intentionally NOT part of the clients list query
-  // anymore â€” it bloated every list load. Load this one client's gallery on demand when
+  // anymore — it bloated every list load. Load this one client's gallery on demand when
   // the detail opens. If the caller already carries work_gallery, use it immediately.
   useEffect(() => {
     let alive = true;
@@ -1258,7 +1258,7 @@ const ClientDetail = ({ isMobile, client, onBack, onDelete, onUpdate }) => {
       ctx.fillStyle = '#ffffff';
       ctx.font = 'bold 20px Inter, sans-serif';
       ctx.fillText('ANTES', 35, height - 33);
-      ctx.fillText('DESPUÃ‰S', width/2 + 35, height - 33);
+      ctx.fillText('DESPUÉS', width/2 + 35, height - 33);
       
       // Add Branding
       ctx.fillStyle = 'white';
@@ -1328,7 +1328,7 @@ const ClientDetail = ({ isMobile, client, onBack, onDelete, onUpdate }) => {
         setGallery(newGallery);
         setPendingPhoto(null);
         setPhotoMeta({ type: 'Normal', serviceId: null });
-        showToast('Foto guardada en galerÃ­a', 'success');
+        showToast('Foto guardada en galería', 'success');
       }
     } catch (e) {
       console.error(e);
@@ -1337,7 +1337,7 @@ const ClientDetail = ({ isMobile, client, onBack, onDelete, onUpdate }) => {
   };
 
   const handlePhotoDelete = async (index) => {
-    if (!await confirm('Â¿Deseas eliminar esta foto de la galerÃ­a?')) return;
+    if (!await confirm('Â¿Deseas eliminar esta foto de la galería?')) return;
     try {
       const newGallery = gallery.filter((_, i) => i !== index);
       setGallery(newGallery);
@@ -1382,7 +1382,7 @@ const ClientDetail = ({ isMobile, client, onBack, onDelete, onUpdate }) => {
               gap: '6px'
             }}
           >
-            <ClipboardPlus size={15} /> Historial ClÃ­nico
+            <ClipboardPlus size={15} /> Historial Clínico
           </button>
           <button
             onClick={onDelete}
@@ -1404,7 +1404,7 @@ const ClientDetail = ({ isMobile, client, onBack, onDelete, onUpdate }) => {
       
       {isMobile ? (
         <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-          {/* Mobile: Combined User Info + Ficha TÃ©cnica Card */}
+          {/* Mobile: Combined User Info + Ficha Técnica Card */}
           <div className="glass-card" style={{ padding: '20px' }}>
             <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) minmax(0, 1fr)', gap: '16px' }}>
               {/* User Info Column */}
@@ -1415,7 +1415,7 @@ const ClientDetail = ({ isMobile, client, onBack, onDelete, onUpdate }) => {
                 {isEditing ? (
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
                     <input className="form-input" value={editData.name} onChange={e => setEditData({...editData, name: formatName(e.target.value)})} placeholder="Nombre" style={{ width: '100%', fontSize: '12px', padding: '8px' }} />
-                    <input className="form-input" value={editData.phone} onChange={e => setEditData({...editData, phone: e.target.value})} placeholder="TelÃ©fono" style={{ width: '100%', fontSize: '12px', padding: '8px' }} />
+                    <input className="form-input" value={editData.phone} onChange={e => setEditData({...editData, phone: e.target.value})} placeholder="Teléfono" style={{ width: '100%', fontSize: '12px', padding: '8px' }} />
                     <button className="btn-gold" onClick={() => { onUpdate(editData); setIsEditing(false); }} style={{ fontSize: '12px', padding: '8px' }}>Guardar</button>
                   </div>
                 ) : (
@@ -1432,12 +1432,12 @@ const ClientDetail = ({ isMobile, client, onBack, onDelete, onUpdate }) => {
                   </>
                 )}
               </div>
-              {/* Ficha TÃ©cnica Column */}
+              {/* Ficha Técnica Column */}
               <div>
-                <h4 style={{ marginBottom: '10px', fontSize: '13px', fontWeight: '800' }}>Ficha TÃ©cnica Dental</h4>
+                <h4 style={{ marginBottom: '10px', fontSize: '13px', fontWeight: '800' }}>Ficha Técnica Dental</h4>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
                   <DetailItem label="Tipo de sonrisa" value={client.smile_type || 'N/A'} />
-                  <DetailItem label="Tipo de encÃ­a" value={client.gum_type || 'N/A'} />
+                  <DetailItem label="Tipo de encía" value={client.gum_type || 'N/A'} />
                   <DetailItem label="Cumple" value={client.birth_date ? new Date(client.birth_date + 'T00:00:00').toLocaleDateString([], {day: '2-digit', month: 'short'}) : 'N/A'} />
                   <DetailItem label="Registro" value={client.created_at ? new Date(client.created_at).toLocaleDateString() : 'N/A'} />
                 </div>
@@ -1453,7 +1453,7 @@ const ClientDetail = ({ isMobile, client, onBack, onDelete, onUpdate }) => {
             </div>
             {isEditing && (
               <div style={{ marginTop: '16px', paddingTop: '16px', borderTop: '1px solid var(--border-color)', display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                <input className="form-input" value={editData.id_card} onChange={e => setEditData({...editData, id_card: e.target.value})} placeholder="CÃ©dula" style={{ width: '100%', fontSize: '12px', padding: '8px' }} />
+                <input className="form-input" value={editData.id_card} onChange={e => setEditData({...editData, id_card: e.target.value})} placeholder="Cédula" style={{ width: '100%', fontSize: '12px', padding: '8px' }} />
                 <BirthdayInput value={editData.birth_date} onChange={(v) => setEditData({...editData, birth_date: v})} style={{ width: '100%' }} />
                 <PandaSelect
                   label="Tipo de sonrisa"
@@ -1467,14 +1467,14 @@ const ClientDetail = ({ isMobile, client, onBack, onDelete, onUpdate }) => {
                   ]}
                 />
                 <PandaSelect
-                  label="Tipo de encÃ­a"
+                  label="Tipo de encía"
                   value={editData.gum_type}
                   onChange={(val) => setEditData({...editData, gum_type: val})}
                   options={[
                     { label: 'Sana', value: 'Sana' },
                     { label: 'Inflamada', value: 'Inflamada' },
                     { label: 'Sangrante', value: 'Sangrante' },
-                    { label: 'RetracciÃ³n', value: 'RetracciÃ³n' }
+                    { label: 'Retracción', value: 'Retracción' }
                   ]}
                 />
               </div>
@@ -1546,7 +1546,7 @@ const ClientDetail = ({ isMobile, client, onBack, onDelete, onUpdate }) => {
                         marginTop: '4px'
                       }}
                     >
-                      {showAllHistory ? 'â†‘ Ver menos' : `â†“ Ver mÃ¡s servicios (${history.length - 5})`}
+                      {showAllHistory ? 'â†‘ Ver menos' : `â†“ Ver m¡s servicios (${history.length - 5})`}
                     </button>
                   )}
                 </>
@@ -1558,7 +1558,7 @@ const ClientDetail = ({ isMobile, client, onBack, onDelete, onUpdate }) => {
           <div className="glass-card">
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
               <h4 style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <ImageIcon size={18} color="var(--gold-primary)" /> GalerÃ­a de Trabajos
+                <ImageIcon size={18} color="var(--gold-primary)" /> Galería de Trabajos
               </h4>
               <div style={{ display: 'flex', gap: '8px' }}>
                 {showCollage && (photoA || photoB) && (
@@ -1600,7 +1600,7 @@ const ClientDetail = ({ isMobile, client, onBack, onDelete, onUpdate }) => {
                     fontWeight: '800'
                   }}
                 >
-                  <ColumnsIcon size={14} /> {showCollage ? 'Ver GalerÃ­a' : 'Crear Comparativa'}
+                  <ColumnsIcon size={14} /> {showCollage ? 'Ver Galería' : 'Crear Comparativa'}
                 </button>
               </div>
             </div>
@@ -1648,10 +1648,10 @@ const ClientDetail = ({ isMobile, client, onBack, onDelete, onUpdate }) => {
                     ) : (
                       <div style={{ height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
                         <ImageIcon size={32} color="rgba(255,255,255,0.05)" />
-                        <span style={{ fontSize: '10px', fontWeight: '800', color: 'var(--text-muted)' }}>FOTO DESPUÃ‰S</span>
+                        <span style={{ fontSize: '10px', fontWeight: '800', color: 'var(--text-muted)' }}>FOTO DESPUÉS</span>
                       </div>
                     )}
-                    <div style={{ position: 'absolute', bottom: '12px', left: '12px', backgroundColor: 'rgba(255, 255, 255, 0.9)', padding: '4px 10px', borderRadius: '4px', fontSize: '10px', fontWeight: '900', color: 'var(--gold-primary)' }}>DESPUÃ‰S</div>
+                    <div style={{ position: 'absolute', bottom: '12px', left: '12px', backgroundColor: 'rgba(255, 255, 255, 0.9)', padding: '4px 10px', borderRadius: '4px', fontSize: '10px', fontWeight: '900', color: 'var(--gold-primary)' }}>DESPUÉS</div>
                   </div>
                 </div>
 
@@ -1697,7 +1697,7 @@ const ClientDetail = ({ isMobile, client, onBack, onDelete, onUpdate }) => {
                         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(100px, 1fr))', gap: '12px', maxHeight: '400px', overflowY: 'auto' }}>
                           {gallery.length === 0 ? (
                             <div style={{ gridColumn: '1 / -1', padding: '40px', textAlign: 'center', color: 'var(--text-muted)', fontSize: '13px' }}>
-                              No hay fotos en la galerÃ­a de este cliente aÃºn. Toma o sube algunas fotos primero.
+                              No hay fotos en la galería de este cliente aún. Toma o sube algunas fotos primero.
                             </div>
                           ) : (
                             gallery.map((img, i) => (
@@ -1823,18 +1823,18 @@ const ClientDetail = ({ isMobile, client, onBack, onDelete, onUpdate }) => {
               {isEditing ? (
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', paddingBottom: '24px' }}>
                   <input className="form-input" value={editData.name} onChange={e => setEditData({...editData, name: formatName(e.target.value)})} placeholder="Nombre" style={{ width: '100%' }} />
-                  <input className="form-input" value={editData.id_card} onChange={e => setEditData({...editData, id_card: e.target.value})} placeholder="CÃ©dula" style={{ width: '100%' }} />
-                  <input className="form-input" value={editData.phone} onChange={e => setEditData({...editData, phone: e.target.value})} placeholder="TelÃ©fono" style={{ width: '100%' }} />
+                  <input className="form-input" value={editData.id_card} onChange={e => setEditData({...editData, id_card: e.target.value})} placeholder="Cédula" style={{ width: '100%' }} />
+                  <input className="form-input" value={editData.phone} onChange={e => setEditData({...editData, phone: e.target.value})} placeholder="Teléfono" style={{ width: '100%' }} />
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
-                    <label style={{ fontSize: '10px', color: 'var(--text-muted)', fontWeight: '800', textTransform: 'uppercase' }}>CumpleaÃ±os</label>
+                    <label style={{ fontSize: '10px', color: 'var(--text-muted)', fontWeight: '800', textTransform: 'uppercase' }}>Cumpleaños</label>
                     <BirthdayInput value={editData.birth_date} onChange={(v) => setEditData({...editData, birth_date: v})} style={{ width: '100%' }} />
                   </div>
                   <PandaSelect label="Tipo de sonrisa" value={editData.smile_type} onChange={(val) => setEditData({...editData, smile_type: val})}
                     options={[{label:'Alta',value:'Alta'},{label:'Media',value:'Media'},{label:'Baja',value:'Baja'},{label:'Invertida',value:'Invertida'}]}
                     style={{ marginBottom: '4px' }}
                   />
-                  <PandaSelect label="Tipo de encÃ­a" value={editData.gum_type} onChange={(val) => setEditData({...editData, gum_type: val})}
-                    options={[{label:'Sana',value:'Sana'},{label:'Inflamada',value:'Inflamada'},{label:'Sangrante',value:'Sangrante'},{label:'RetracciÃ³n',value:'RetracciÃ³n'}]}
+                  <PandaSelect label="Tipo de encía" value={editData.gum_type} onChange={(val) => setEditData({...editData, gum_type: val})}
+                    options={[{label:'Sana',value:'Sana'},{label:'Inflamada',value:'Inflamada'},{label:'Sangrante',value:'Sangrante'},{label:'Retracción',value:'Retracción'}]}
                     style={{ marginBottom: '4px' }}
                   />
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
@@ -1855,7 +1855,7 @@ const ClientDetail = ({ isMobile, client, onBack, onDelete, onUpdate }) => {
               ) : (
                 <>
                   <h2 style={{ fontSize: '22px', fontWeight: '900', margin: '0 0 4px', letterSpacing: '-0.3px' }}>{client.name}</h2>
-                  <p style={{ color: 'var(--text-muted)', fontSize: '12px', fontWeight: '700', letterSpacing: '1px', margin: '0 0 20px', textTransform: 'uppercase' }}>V-{client.id_card || 'â€”'}</p>
+                  <p style={{ color: 'var(--text-muted)', fontSize: '12px', fontWeight: '700', letterSpacing: '1px', margin: '0 0 20px', textTransform: 'uppercase' }}>V-{client.id_card || '—'}</p>
 
                   {/* Info rows */}
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginBottom: '24px' }}>
@@ -1863,7 +1863,7 @@ const ClientDetail = ({ isMobile, client, onBack, onDelete, onUpdate }) => {
                       <div style={{ width: '32px', height: '32px', borderRadius: '10px', background: 'rgba(17, 17, 17,0.08)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                         <Phone size={14} color="#111111" />
                       </div>
-                      <span style={{ fontSize: '14px', color: 'var(--text-secondary)', fontWeight: '600' }}>{client.phone || 'â€”'}</span>
+                      <span style={{ fontSize: '14px', color: 'var(--text-secondary)', fontWeight: '600' }}>{client.phone || '—'}</span>
                     </div>
                     {client.birth_date && (
                       <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
@@ -1882,7 +1882,7 @@ const ClientDetail = ({ isMobile, client, onBack, onDelete, onUpdate }) => {
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginBottom: '24px' }}>
                       {client.origin && (
                         <div style={{ display: 'inline-flex', alignSelf: 'flex-start', alignItems: 'center', gap: '6px', background: 'rgba(0, 0, 0, 0.04)', padding: '6px 12px', borderRadius: '100px', fontSize: '11px', color: 'var(--text-secondary)', fontWeight: '700' }}>
-                          CÃ³mo nos conociÃ³: <span style={{ color: '#111111' }}>{client.origin}</span>
+                          Cómo nos conoció: <span style={{ color: '#111111' }}>{client.origin}</span>
                         </div>
                       )}
                       {client.notes && (
@@ -1909,7 +1909,7 @@ const ClientDetail = ({ isMobile, client, onBack, onDelete, onUpdate }) => {
                 </div>
                 <div style={{ padding: '20px 24px' }}>
                   <div style={{ fontSize: '28px', fontWeight: '900', color: 'var(--text-primary)', lineHeight: 1 }}>
-                    {client.created_at ? new Date(client.created_at).toLocaleDateString('es', {month:'short', year:'2-digit'}) : 'â€”'}
+                    {client.created_at ? new Date(client.created_at).toLocaleDateString('es', {month:'short', year:'2-digit'}) : '—'}
                   </div>
                   <div style={{ fontSize: '10px', color: 'var(--text-muted)', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '1px', marginTop: '4px' }}>Miembro desde</div>
                 </div>
@@ -1944,7 +1944,7 @@ const ClientDetail = ({ isMobile, client, onBack, onDelete, onUpdate }) => {
                     color: 'var(--text-secondary)', borderRadius: '100px', padding: '5px 14px',
                     fontSize: '12px', fontWeight: '700'
                   }}>
-                    EncÃ­a {client.gum_type}
+                    Encía {client.gum_type}
                   </span>
                 )}
               </div>
@@ -1959,7 +1959,7 @@ const ClientDetail = ({ isMobile, client, onBack, onDelete, onUpdate }) => {
           <div className="glass-card">
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
               <h4 style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <ImageIcon size={18} color="var(--gold-primary)" /> GalerÃ­a de Trabajos
+                <ImageIcon size={18} color="var(--gold-primary)" /> Galería de Trabajos
               </h4>
               <div style={{ display: 'flex', gap: '8px' }}>
                 {showCollage && (photoA || photoB) && (
@@ -2001,7 +2001,7 @@ const ClientDetail = ({ isMobile, client, onBack, onDelete, onUpdate }) => {
                     fontWeight: '800'
                   }}
                 >
-                  <ColumnsIcon size={14} /> {showCollage ? 'Ver GalerÃ­a' : 'Crear Comparativa'}
+                  <ColumnsIcon size={14} /> {showCollage ? 'Ver Galería' : 'Crear Comparativa'}
                 </button>
               </div>
             </div>
@@ -2049,10 +2049,10 @@ const ClientDetail = ({ isMobile, client, onBack, onDelete, onUpdate }) => {
                     ) : (
                       <div style={{ height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
                         <ImageIcon size={32} color="rgba(255,255,255,0.05)" />
-                        <span style={{ fontSize: '10px', fontWeight: '800', color: 'var(--text-muted)' }}>FOTO DESPUÃ‰S</span>
+                        <span style={{ fontSize: '10px', fontWeight: '800', color: 'var(--text-muted)' }}>FOTO DESPUÉS</span>
                       </div>
                     )}
-                    <div style={{ position: 'absolute', bottom: '12px', left: '12px', backgroundColor: 'rgba(255, 255, 255, 0.9)', padding: '4px 10px', borderRadius: '4px', fontSize: '10px', fontWeight: '900', color: 'var(--gold-primary)' }}>DESPUÃ‰S</div>
+                    <div style={{ position: 'absolute', bottom: '12px', left: '12px', backgroundColor: 'rgba(255, 255, 255, 0.9)', padding: '4px 10px', borderRadius: '4px', fontSize: '10px', fontWeight: '900', color: 'var(--gold-primary)' }}>DESPUÉS</div>
                   </div>
                 </div>
 
@@ -2089,7 +2089,7 @@ const ClientDetail = ({ isMobile, client, onBack, onDelete, onUpdate }) => {
                         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(100px, 1fr))', gap: '12px', maxHeight: '400px', overflowY: 'auto' }}>
                           {gallery.length === 0 ? (
                             <div style={{ gridColumn: '1 / -1', padding: '40px', textAlign: 'center', color: 'var(--text-muted)', fontSize: '13px' }}>
-                              No hay fotos en la galerÃ­a de este cliente aÃºn. Toma o sube algunas fotos primero.
+                              No hay fotos en la galería de este cliente aún. Toma o sube algunas fotos primero.
                             </div>
                           ) : (
                             gallery.map((img, i) => (
@@ -2265,7 +2265,7 @@ const ClientDetail = ({ isMobile, client, onBack, onDelete, onUpdate }) => {
                         marginTop: '4px'
                       }}
                     >
-                      {showAllHistory ? 'â†‘ Ver menos' : `â†“ Ver mÃ¡s servicios (${history.length - 5})`}
+                      {showAllHistory ? 'â†‘ Ver menos' : `â†“ Ver m¡s servicios (${history.length - 5})`}
                     </button>
                   )}
                 </>
@@ -2284,7 +2284,7 @@ const ClientDetail = ({ isMobile, client, onBack, onDelete, onUpdate }) => {
         {loadingTreatments ? (
           <SkeletonList rows={3} rowHeight={40} gap={8} />
         ) : treatments.length === 0 ? (
-          <p style={{ color: 'var(--text-muted)', fontSize: '14px' }}>Sin tratamientos registrados todavÃ­a.</p>
+          <p style={{ color: 'var(--text-muted)', fontSize: '14px' }}>Sin tratamientos registrados todavía.</p>
         ) : (
           <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
             {treatments.map(t => {
@@ -2294,7 +2294,7 @@ const ClientDetail = ({ isMobile, client, onBack, onDelete, onUpdate }) => {
                   <div style={{ minWidth: 0 }}>
                     <div style={{ fontWeight: '800', color: '#111111', fontSize: '13.5px' }}>{t.services?.name || 'Servicio'}</div>
                     <div style={{ fontSize: '11.5px', color: 'var(--text-muted)', marginTop: '2px' }}>
-                      {when ? new Date(when).toLocaleString('es-VE', { day: 'numeric', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit', hour12: true }) : 'â€”'}
+                      {when ? new Date(when).toLocaleString('es-VE', { day: 'numeric', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit', hour12: true }) : '—'}
                       {t.staff?.name ? ` Â· ${t.staff.name}` : ''}
                       {t.services?.category ? ` Â· ${t.services.category}` : ''}
                     </div>
@@ -2315,7 +2315,7 @@ const ClientDetail = ({ isMobile, client, onBack, onDelete, onUpdate }) => {
         isOpen={showClinical}
         client={client}
         onClose={() => setShowClinical(false)}
-        onSaved={() => showToast('Historial clÃ­nico guardado')}
+        onSaved={() => showToast('Historial clínico guardado')}
       />
 
       <AnimatedModal isOpen={showCamera}>
@@ -2363,7 +2363,7 @@ const ClientDetail = ({ isMobile, client, onBack, onDelete, onUpdate }) => {
                   options={[
                     { label: 'Normal / General', value: 'Normal' },
                     { label: 'Antes (Before)', value: 'Antes' },
-                    { label: 'DespuÃ©s (After)', value: 'DespuÃ©s' }
+                    { label: 'Después (After)', value: 'Después' }
                   ]}
                 />
 
@@ -2430,7 +2430,7 @@ const VisitDetailModal = ({ isOpen, visit, onClose, gallery = [] }) => {
                   </span>
                 </div>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
-                  <span style={{ fontSize: '10px', fontWeight: '800', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '1px' }}>OdontÃ³logo</span>
+                  <span style={{ fontSize: '10px', fontWeight: '800', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '1px' }}>Odontólogo</span>
                   <span style={{ fontSize: '14px', fontWeight: '800', color: '#111111' }}>{visit.barber_name || 'No especificado'}</span>
                 </div>
               </div>
@@ -2486,7 +2486,7 @@ const VisitDetailModal = ({ isOpen, visit, onClose, gallery = [] }) => {
 
               {/* Payment Method */}
               <div style={{ padding: '16px', backgroundColor: 'rgba(0, 0, 0, 0.04)', borderRadius: '16px', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
-                <label style={{ display: 'block', fontSize: '10px', fontWeight: '800', color: 'var(--gold-primary)', marginBottom: '12px', letterSpacing: '1px' }}>MÃ‰TODO DE PAGO</label>
+                <label style={{ display: 'block', fontSize: '10px', fontWeight: '800', color: 'var(--gold-primary)', marginBottom: '12px', letterSpacing: '1px' }}>MÉTODO DE PAGO</label>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                   <span style={{ fontWeight: '700', fontSize: '16px' }}>{visit.payment_method}</span>
                   <span style={{ fontSize: '11px', fontWeight: '900', color: '#34c759', backgroundColor: 'rgba(52,199,89,0.1)', padding: '4px 8px', borderRadius: '6px' }}>{visit.status?.toUpperCase() || 'PAGADO'}</span>
@@ -2506,7 +2506,7 @@ const VisitDetailModal = ({ isOpen, visit, onClose, gallery = [] }) => {
                   <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) minmax(0, 1fr)', gap: '12px' }}>
                     {visit.tattoo_data.size && (
                       <div>
-                        <span style={{ fontSize: '9px', fontWeight: '800', color: 'var(--text-muted)', textTransform: 'uppercase' }}>TamaÃ±o</span>
+                        <span style={{ fontSize: '9px', fontWeight: '800', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Tamaño</span>
                         <div style={{ fontSize: '13px', fontWeight: '700', color: '#111111' }}>{visit.tattoo_data.size}</div>
                       </div>
                     )}
@@ -2524,14 +2524,14 @@ const VisitDetailModal = ({ isOpen, visit, onClose, gallery = [] }) => {
                     )}
                     {visit.tattoo_data.theme && (
                       <div>
-                        <span style={{ fontSize: '9px', fontWeight: '800', color: 'var(--text-muted)', textTransform: 'uppercase' }}>TemÃ¡tica</span>
+                        <span style={{ fontSize: '9px', fontWeight: '800', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Tem¡tica</span>
                         <div style={{ fontSize: '13px', fontWeight: '700', color: '#111111' }}>{visit.tattoo_data.theme}</div>
                       </div>
                     )}
                     {visit.tattoo_data.has_design !== null && (
                       <div>
-                        <span style={{ fontSize: '9px', fontWeight: '800', color: 'var(--text-muted)', textTransform: 'uppercase' }}>DiseÃ±o</span>
-                        <div style={{ fontSize: '13px', fontWeight: '700', color: '#111111' }}>{visit.tattoo_data.has_design ? 'Trae su propio diseÃ±o' : 'DiseÃ±o personalizado (+$10)'}</div>
+                        <span style={{ fontSize: '9px', fontWeight: '800', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Diseño</span>
+                        <div style={{ fontSize: '13px', fontWeight: '700', color: '#111111' }}>{visit.tattoo_data.has_design ? 'Trae su propio diseño' : 'Diseño personalizado (+$10)'}</div>
                       </div>
                     )}
                   </div>
@@ -2614,7 +2614,7 @@ const HistoryItem = ({ date, service, price, barber, products, extras, onClick }
         <span>{date}</span>
         {barber && (
           <>
-            <span style={{ color: 'var(--border-color)' }}>â€¢</span>
+            <span style={{ color: 'var(--border-color)' }}>•</span>
             <span style={{ color: 'var(--gold-primary)' }}>{barber}</span>
           </>
         )}
@@ -2711,7 +2711,7 @@ const BeforeAfterSlider = ({ photoA, photoB, sliderPos, setSliderPos }) => {
 
       {/* Labels */}
       <div style={{ position: 'absolute', top: '12px', left: '12px', backgroundColor: 'var(--bg-secondary)', padding: '4px 10px', borderRadius: '4px', fontSize: '10px', fontWeight: '900', color: '#111111', pointerEvents: 'none' }}>ANTES</div>
-      <div style={{ position: 'absolute', top: '12px', right: '12px', backgroundColor: 'rgba(255, 255, 255,0.8)', padding: '4px 10px', borderRadius: '4px', fontSize: '10px', fontWeight: '900', color: 'black', pointerEvents: 'none' }}>DESPUÃ‰S</div>
+      <div style={{ position: 'absolute', top: '12px', right: '12px', backgroundColor: 'rgba(255, 255, 255,0.8)', padding: '4px 10px', borderRadius: '4px', fontSize: '10px', fontWeight: '900', color: 'black', pointerEvents: 'none' }}>DESPUÉS</div>
     </div>
   );
 };

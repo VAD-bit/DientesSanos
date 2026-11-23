@@ -25,7 +25,7 @@ import {
 } from '../utils/dateTime';
 
 const MONTH_NAMES = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
-const DAY_NAMES = ['do','lu','ma','mi','ju','vi','sÃ¡'];
+const DAY_NAMES = ['do','lu','ma','mi','ju','vi','s¡'];
 
 const toDateStr = (y, m, d) =>
   `${y}-${String(m + 1).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
@@ -261,7 +261,7 @@ const getPaymentMethod = metadata => {
       .filter(method => method && method !== 'N/A')
       .forEach(method => methods.push(method));
   }
-  return [...new Set(methods)].join(' + ') || 'MÃ©todo no registrado';
+  return [...new Set(methods)].join(' + ') || 'Método no registrado';
 };
 
 const getTransactionRate = (transaction, fallbackRate) => {
@@ -652,7 +652,7 @@ const StaffTransactionHistory = ({ staffMember, rates, isMobile }) => {
                               )}
                               {transaction.staffAmounts.productCommission > 0 && (
                                 <span style={{ fontSize: '11px', color: 'var(--gold-primary)', fontWeight: '850' }}>
-                                  Â· ComisiÃ³n productos: +${formatUsd(transaction.staffAmounts.productCommission)}
+                                  Â· Comisión productos: +${formatUsd(transaction.staffAmounts.productCommission)}
                                 </span>
                               )}
                             </div>
@@ -724,7 +724,7 @@ const StaffTransactionHistory = ({ staffMember, rates, isMobile }) => {
                           <MoneyRow label="Total cobrado" usd={transaction.amount} transactionRate={transactionRate} strong />
                           
                           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '12px' }}>
-                            <span style={{ color: 'var(--text-muted)' }}>MÃ©todo de pago</span>
+                            <span style={{ color: 'var(--text-muted)' }}>Método de pago</span>
                             <div style={{ display: 'flex', alignItems: 'center', gap: '6px', flexWrap: 'wrap', justifyContent: 'flex-end' }}>
                               <span style={{ color: '#111111', fontWeight: '850' }}>{method}</span>
                               {referenceNo && (
@@ -736,22 +736,22 @@ const StaffTransactionHistory = ({ staffMember, rates, isMobile }) => {
                           </div>
 
                           {cashUsd > 0 && <MoneyRow label={`Parte en ${metadata.methodUsd || metadata.method_usd || 'USD'}`} usd={cashUsd} transactionRate={transactionRate} />}
-                          {transferBs > 0 && <MoneyRow label={`Parte en ${metadata.methodBs || metadata.method_bs || 'BolÃ­vares'}`} usd={transferBs / transactionRate} transactionRate={transactionRate} />}
+                          {transferBs > 0 && <MoneyRow label={`Parte en ${metadata.methodBs || metadata.method_bs || 'Bolívares'}`} usd={transferBs / transactionRate} transactionRate={transactionRate} />}
 
                           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '11.5px', marginTop: 'auto', paddingTop: '8px', borderTop: '1px solid rgba(0, 0, 0, 0.08)' }}>
-                            <span style={{ color: 'var(--text-muted)' }}>Tasa de la operaciÃ³n:</span>
+                            <span style={{ color: 'var(--text-muted)' }}>Tasa de la operación:</span>
                             <span style={{ color: 'rgba(255,255,255,0.85)', fontWeight: '850' }}>{transactionRate.toLocaleString('es-VE')} Bs./USD</span>
                           </div>
                         </div>
                       </div>
 
-                      {/* DistribuciÃ³n Transparente de la TransacciÃ³n */}
+                      {/* Distribución Transparente de la Transacción */}
                       {(metadata.staffInvolved && metadata.staffInvolved.length > 0) && (
                         <div style={{ padding: '14px 16px', borderRadius: '15px', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
                           <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '10px' }}>
                             <Users size={14} color="var(--gold-primary)" />
                             <span style={{ fontSize: '10.5px', fontWeight: '900', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
-                              DistribuciÃ³n de la TransacciÃ³n
+                              Distribución de la Transacción
                             </span>
                           </div>
 

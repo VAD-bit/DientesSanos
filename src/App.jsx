@@ -137,7 +137,7 @@ function App() {
   const { isModalOpen } = useModal();
   const { reduceMotion, isLowEnd } = usePerformanceMode();
 
-  // Fondo transparente en body/html para que se vea el mÃ¡rmol del tema claro
+  // Fondo transparente en body/html para que se vea el m¡rmol del tema claro
   useEffect(() => {
     document.body.style.background = 'transparent';
     document.documentElement.style.background = 'transparent';
@@ -207,7 +207,7 @@ function App() {
     return () => clearInterval(interval);
   }, []);
 
-  // Set the operational home based on the staff role (mismos mÃ³dulos que el menÃº).
+  // Set the operational home based on the staff role (mismos módulos que el menú).
   useEffect(() => {
     if (!user) return;
     const currentTab = localStorage.getItem('panda_active_tab');
@@ -222,8 +222,8 @@ function App() {
     };
     const allowed = getAllowedMenuIds(user.role);
     const homeTab = HOME_TAB_BY_CATEGORY[getRoleCategory(user.role)] || 'dashboard';
-    // La home siempre debe ser un mÃ³dulo permitido (roles atÃ­picos/permisos
-    // explÃ­citos pueden no incluir la home de su categorÃ­a).
+    // La home siempre debe ser un módulo permitido (roles atípicos/permisos
+    // explícitos pueden no incluir la home de su categoría).
     const nextTab = currentTab && allowed.includes(currentTab)
       ? currentTab
       : (allowed.includes(homeTab) ? homeTab : (allowed[0] || 'my-profile'));
@@ -349,7 +349,7 @@ function App() {
     const handleNavigation = (e) => {
       handleTabChange(e.detail);
     };
-    handleResize(); // Sincroniza de inmediato con el ancho real, por si cambiÃ³ desde el montaje inicial
+    handleResize(); // Sincroniza de inmediato con el ancho real, por si cambió desde el montaje inicial
     window.addEventListener('resize', handleResize);
     window.addEventListener('panda_navigate', handleNavigation);
     
@@ -363,8 +363,8 @@ function App() {
     // Phase 1: Load only what's needed to show the UI (fast)
     // Phase 2: Load heavy data silently in background
     const initApp = async () => {
-      // El odontÃ³logo entra a su sillÃ³n: BarberPanel carga sus propios datos
-      // (igual que hacÃ­an los barberos) y no necesita los cargos globales.
+      // El odontólogo entra a su sillón: BarberPanel carga sus propios datos
+      // (igual que hacían los barberos) y no necesita los cargos globales.
       const isServiceProfessionalOnly = getRoleCategory(user?.role || '') === 'odontologo';
 
       // Barbers already have everything required to enter their own panel in
@@ -433,8 +433,8 @@ function App() {
       if (birthdayClients.length > 0) {
         const names = birthdayClients.map(c => c.name).join(', ');
         notificationService.sendNotification(
-          'ðŸŽ‰ Â¡CumpleaÃ±os de Pacientes hoy! ðŸŽ‚',
-          `Hoy cumplen aÃ±os: ${names}. Â¡Recuerda felicitarlos o enviarles una promociÃ³n especial!`
+          '🏆 Â¡Cumpleaños de Pacientes hoy! 🏈',
+          `Hoy cumplen años: ${names}. Â¡Recuerda felicitarlos o enviarles una promoción especial!`
         );
         whatsappService.sendBirthdayReminders().catch(console.error);
       }
@@ -459,7 +459,7 @@ function App() {
         const lastNotifiedDaily = localStorage.getItem('panda_goal_notified_daily');
         if (lastNotifiedDaily !== todayStr) {
           notificationService.sendNotification(
-            'ðŸŽ¯ Â¡Meta Diaria Alcanzada! ðŸŽ‰',
+            'ðŸŽ¯ Â¡Meta Diaria Alcanzada! 🏆',
             `Â¡Espectacular! Se ha alcanzado la meta diaria de $${dailyGoal} USD (Total hoy: $${computedStats.income.toFixed(2)} USD).`
           );
           localStorage.setItem('panda_goal_notified_daily', todayStr);
@@ -472,7 +472,7 @@ function App() {
         if (lastNotifiedWeekly !== lastSundayStr) {
           notificationService.sendNotification(
             'ðŸ† Â¡Meta Semanal Alcanzada! ðŸŒŸ',
-            `Â¡IncreÃ­ble trabajo equipo! Se alcanzÃ³ la meta semanal de $${weeklyGoal} USD (Total semanal: $${computedStats.weeklyIncome.toFixed(2)} USD).`
+            `Â¡Increíble trabajo equipo! Se alcanzó la meta semanal de $${weeklyGoal} USD (Total semanal: $${computedStats.weeklyIncome.toFixed(2)} USD).`
           );
           localStorage.setItem('panda_goal_notified_weekly', lastSundayStr);
         }
@@ -484,7 +484,7 @@ function App() {
         if (lastNotifiedMonthly !== currentMonthStr) {
           notificationService.sendNotification(
             'ðŸ‘‘ Â¡Objetivo Mensual Completado! ðŸš€',
-            `Â¡HistÃ³rico! Se ha completado el objetivo mensual de $${monthlyGoal} USD (Total mensual: $${computedStats.monthlyIncome.toFixed(2)} USD).`
+            `Â¡Histórico! Se ha completado el objetivo mensual de $${monthlyGoal} USD (Total mensual: $${computedStats.monthlyIncome.toFixed(2)} USD).`
           );
           localStorage.setItem('panda_goal_notified_monthly', currentMonthStr);
         }
@@ -494,7 +494,7 @@ function App() {
     }
   };
 
-  // Phase 1: Ultra-fast â€” only 3 simple queries with NO joins!
+  // Phase 1: Ultra-fast — only 3 simple queries with NO joins!
   async function fetchCriticalData() {
     try {
       const [c, s, st] = await Promise.all([
@@ -514,7 +514,7 @@ function App() {
     } catch (error) { console.error('Error in critical data fetch:', error); }
   }
 
-  // Phase 2: Heavy data â€” runs silently after loader is gone
+  // Phase 2: Heavy data — runs silently after loader is gone
   async function fetchSecondaryData() {
     try {
       const isServiceProfessionalOnly = getRoleCategory(user?.role || '') === 'odontologo';
@@ -674,8 +674,8 @@ function App() {
         newClientsYesterday: clientsCreatedInRange(yesterdayStart, todayStart),
         clientsThisWeek: clientsCreatedInRange(currentWeekStart, tomorrowStart),
         clientsPreviousWeek: clientsCreatedInRange(previousWeekStart, currentWeekStart),
-        noShowsToday: todayApps.filter(app => ['Cancelado', 'No AsistiÃ³', 'No asistiÃ³'].includes(app.status)).length,
-        noShowsYesterday: yesterdayApps.filter(app => ['Cancelado', 'No AsistiÃ³', 'No asistiÃ³'].includes(app.status)).length
+        noShowsToday: todayApps.filter(app => ['Cancelado', 'No Asistió', 'No asistió'].includes(app.status)).length,
+        noShowsYesterday: yesterdayApps.filter(app => ['Cancelado', 'No Asistió', 'No asistió'].includes(app.status)).length
       };
       setStats(computedStats);
 
@@ -687,7 +687,7 @@ function App() {
         return { start, end };
       });
       setChartData({
-        labels: ['Lun', 'Mar', 'MiÃ©', 'Jue', 'Vie', 'SÃ¡b', 'Dom'],
+        labels: ['Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'S¡b', 'Dom'],
         datasets: [{
           label: 'Ventas ($)',
           data: weekDays.map(({ start, end }) => incomeInRange(start, end)),
@@ -729,7 +729,7 @@ function App() {
   }
 
   const handleTabChange = (tabId, params = {}) => {
-    // Blindado de navegaciÃ³n: cada rol solo puede abrir sus mÃ³dulos
+    // Blindado de navegación: cada rol solo puede abrir sus módulos
     // (mismos ids que getAllowedMenuIds â†’ Sidebar y MobileBottomNav).
     if (!getAllowedMenuIds(user?.role || '').includes(tabId)) return;
 
@@ -780,7 +780,7 @@ function App() {
     if (!await confirm('Â¿Quieres cargar datos de prueba para ver el CRM funcionando?')) return;
     try {
       await dataService.addStaff({ name: 'Marco Silva', role: 'Odontologo', commission_pct: 40 });
-      await dataService.addService({ name: 'Blanqueamiento Premium', price: 80, category: 'EstÃ©tica' });
+      await dataService.addService({ name: 'Blanqueamiento Premium', price: 80, category: 'Estética' });
       await dataService.addClient({ name: 'Carlos Demo', phone: '555-0123', smile_type: 'Media' });
       await alert('Datos de demo cargados!');
       fetchInitialData();
@@ -845,7 +845,7 @@ function App() {
       case 'my-profile': {
         const profileStaff = dbData.staff.find(s => String(s.id) === String(user?.id) || String(s.auth_user_id) === String(user?.auth_user_id) || (s.email && s.email.toLowerCase() === String(user?.email || '').toLowerCase())) || user;
         // Personal de apoyo ve una ficha simplificada (salario, pagos, consumo) en vez del
-        // perfil de odontÃ³logo con metas, comisiones, portafolio y silla.
+        // perfil de odontólogo con metas, comisiones, portafolio y silla.
         if (isSupportStaff(profileStaff)) {
           return (
             <div className="p-container">

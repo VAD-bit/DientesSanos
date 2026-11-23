@@ -4,10 +4,10 @@ import bgImageDesktop from '../assets/client_loading_bg.webp';
 import bgImageMobile from '../assets/client_loading_bg_mobile.webp';
 
 const clientTips = [
-  "Consejo: Revisa tu BÃ³veda VIP para descubrir premios ocultos.",
+  "Consejo: Revisa tu Bóveda VIP para descubrir premios ocultos.",
   "Consejo: Acumula puntos en cada visita para subir de nivel.",
   "Consejo: Muestra tu tarjeta VIP digital al pagar en caja.",
-  "Consejo: Agenda tus citas con anticipaciÃ³n desde tu perfil."
+  "Consejo: Agenda tus citas con anticipación desde tu perfil."
 ];
 
 const LOADER_MIN_DURATION_MS = 1500;
@@ -165,7 +165,7 @@ const ClientLoader = ({ visible, onFinish }) => {
         {/* Logo */}
         <img 
           src={logo} 
-          alt="Centro OdontolÃ³gico Dientes Sanos" 
+          alt="Centro Odontológico Dientes Sanos" 
           style={{ 
             height: isMobile ? '100px' : '120px',
             objectFit: 'contain',
@@ -183,7 +183,7 @@ const ClientLoader = ({ visible, onFinish }) => {
           letterSpacing: '-0.5px',
           textAlign: isMobile ? 'center' : 'left'
         }}>
-          Tu espacio estÃ¡ casi listo
+          Tu espacio est¡ casi listo
         </div>
 
         {/* Subtitle */}

@@ -87,8 +87,8 @@ const InventoryAccessGate = ({ children }) => {
         setLockedUntil(now + LOCKOUT_MS);
         notificationService.broadcastNotification(
           supabase,
-          'âš ï¸ Intentos de PIN â€” Inventario',
-          `Se intentÃ³ acceder al inventario ${newCount} veces con PIN incorrecto. Acceso bloqueado 5 minutos.`,
+          'âš ï¸ Intentos de PIN — Inventario',
+          `Se intentó acceder al inventario ${newCount} veces con PIN incorrecto. Acceso bloqueado 5 minutos.`,
           { recipientRole: 'admin' }
         );
       }
@@ -228,7 +228,7 @@ const InventoryAccessGate = ({ children }) => {
           ))}
           
           <button className="numpad-btn" style={{ background: 'transparent', border: 'none', boxShadow: 'none', cursor: 'default' }} disabled>
-            {/* Espacio vacÃ­o intencional para alinear el 0 */}
+            {/* Espacio vacío intencional para alinear el 0 */}
           </button>
           
           <button className="numpad-btn" onClick={() => handlePress('0')}>

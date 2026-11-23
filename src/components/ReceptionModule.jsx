@@ -265,7 +265,7 @@ const ReceptionModule = ({ isMobile, rates }) => {
     try {
       setLoading(true);
       await dataService.updateAppointmentStatus(id, 'En Silla');
-      showToast("Â¡Servicio iniciado! El cliente ya estÃ¡ en sillÃ³n.");
+      showToast("Â¡Servicio iniciado! El cliente ya est¡ en sillón.");
       triggerRocket();
       loadData();
     } catch (error) {
@@ -283,7 +283,7 @@ const ReceptionModule = ({ isMobile, rates }) => {
       if (exact) {
         handleSelectClient(exact);
       } else if (searchResults.length > 1) {
-        showToast("MÃºltiples coincidencias. Selecciona uno de la lista.", "info");
+        showToast("Múltiples coincidencias. Selecciona uno de la lista.", "info");
       } else {
         showToast("Cliente no encontrado. Proceda a registrarlo.", "warning");
       }
@@ -343,7 +343,7 @@ const ReceptionModule = ({ isMobile, rates }) => {
 
   const handleScheduleClick = () => {
     if (!selectedClient || (selectedServices.length === 0 && selectedExtras.length === 0) || !formData.staffId) {
-      showToast("Selecciona cliente, servicio/extra y odontÃ³logo/asistente primero", "warning");
+      showToast("Selecciona cliente, servicio/extra y odontólogo/asistente primero", "warning");
       return;
     }
     setIsScheduleModalOpen(true);
@@ -419,7 +419,7 @@ const ReceptionModule = ({ isMobile, rates }) => {
         appointment_extras: [],
         appointment_products: []
       }, ...current.filter(app => String(app.id) !== String(createdAppointment.id))]);
-      showToast(`${selectedClient.name.split(' ')[0]} enviado a sillÃ³n. El odontÃ³logo cargarÃ¡ el servicio.`);
+      showToast(`${selectedClient.name.split(' ')[0]} enviado a sillón. El odontólogo cargar¡ el servicio.`);
       triggerRocket();
       // Reset selection
       setSelectedClient(null);
@@ -429,7 +429,7 @@ const ReceptionModule = ({ isMobile, rates }) => {
       setFormData({ serviceId: '', staffId: '', status: 'En Silla' });
       loadData();
     } catch (error) {
-      const errorMessage = error?.message || error?.details || 'Error al enviar a sillÃ³n';
+      const errorMessage = error?.message || error?.details || 'Error al enviar a sillón';
       showToast(errorMessage, "error");
       console.error(error);
     } finally {
@@ -454,7 +454,7 @@ const ReceptionModule = ({ isMobile, rates }) => {
 
     const hasStaffRequired = selectedServices.length > 0 || selectedExtras.length > 0;
     if (hasStaffRequired && !formData.staffId) {
-      showToast("Selecciona un odontÃ³logo o asistente", "error");
+      showToast("Selecciona un odontólogo o asistente", "error");
       return;
     }
     if (hasStaffRequired) {
@@ -605,8 +605,8 @@ const ReceptionModule = ({ isMobile, rates }) => {
       type: 'confirm',
       title: appointmentsToDelete.length > 1 ? 'Eliminar orden completa' : 'Eliminar cita',
       message: appointmentsToDelete.length > 1
-        ? `Esta orden contiene ${appointmentsToDelete.length} servicios. Se eliminarÃ¡n todos juntos. Â¿Deseas continuar?`
-        : 'Â¿EstÃ¡s seguro de que deseas eliminar esta cita permanentemente? Esta acciÃ³n no se puede deshacer.',
+        ? `Esta orden contiene ${appointmentsToDelete.length} servicios. Se eliminar¡n todos juntos. Â¿Deseas continuar?`
+        : 'Â¿Est¡s seguro de que deseas eliminar esta cita permanentemente? Esta acción no se puede deshacer.',
       onConfirm: async () => {
         try {
           setLoading(true);
@@ -627,7 +627,7 @@ const ReceptionModule = ({ isMobile, rates }) => {
   };
 
   const staffGroups = [
-    { id: 'barbers', label: 'OdontÃ³logos DISPONIBLES' },
+    { id: 'barbers', label: 'Odontólogos DISPONIBLES' },
     { id: 'assistants', label: 'ASISTENTES DISPONIBLES' },
     { id: 'tattoo', label: ' DISPONIBLES' }
   ].map(group => ({
@@ -653,7 +653,7 @@ const ReceptionModule = ({ isMobile, rates }) => {
       '--text-muted': '#a1a1a6',
       '--text-secondary': '#d1d1d6'
     }}>
-      {/* Background Orbs (desktop only â€” on mobile they can bleed past the narrow viewport) */}
+      {/* Background Orbs (desktop only — on mobile they can bleed past the narrow viewport) */}
       {!isMobile && (
         <>
           <div className="r-orb r-orb-1" />
@@ -662,8 +662,8 @@ const ReceptionModule = ({ isMobile, rates }) => {
       )}
       {!isMobile && (
         <header style={{ marginBottom: '40px', textAlign: 'left', paddingRight: '48px' }}>
-          <h1 style={{ fontSize: '32px', fontWeight: '900' }}>RecepciÃ³n</h1>
-          <p style={{ color: 'var(--text-secondary)' }}>MÃ³dulo de atenciÃ³n y agendamiento rÃ¡pido.</p>
+          <h1 style={{ fontSize: '32px', fontWeight: '900' }}>Recepción</h1>
+          <p style={{ color: 'var(--text-secondary)' }}>Módulo de atención y agendamiento r¡pido.</p>
         </header>
       )}
 
@@ -704,7 +704,7 @@ const ReceptionModule = ({ isMobile, rates }) => {
                       color: 'var(--gold-primary)',
                       letterSpacing: '0.5px'
                     }}>
-                      <span style={{ opacity: 0.6, fontSize: '9px', fontWeight: '900', color: 'var(--text-muted)' }}>CÃ‰DULA:</span> V-{selectedClient.id_card}
+                      <span style={{ opacity: 0.6, fontSize: '9px', fontWeight: '900', color: 'var(--text-muted)' }}>CÉDULA:</span> V-{selectedClient.id_card}
                     </div>
                   </div>
                   <button onClick={() => { setSelectedClient(null); setRecommendationInfo(null); setFormData(prev => ({ ...prev, staffId: '' })); }} style={{ background: 'none', border: 'none', color: '#ff453a', fontWeight: '800', cursor: 'pointer', transition: 'color 0.2s' }} onMouseEnter={e => e.currentTarget.style.color = '#ff6b64'} onMouseLeave={e => e.currentTarget.style.color = '#ff453a'}>Cambiar</button>
@@ -716,7 +716,7 @@ const ReceptionModule = ({ isMobile, rates }) => {
                   <Search style={{ position: 'absolute', left: '16px' }} size={18} color="var(--text-muted)" />
                   <input 
                     type="text" 
-                    placeholder="Escribe nombre o cÃ©dula..." 
+                    placeholder="Escribe nombre o cédula..." 
                     value={idSearch}
                     onChange={(e) => handleSearchInput(e.target.value)}
                     onKeyDown={(e) => e.key === 'Enter' && handleIdSearch()}
@@ -814,8 +814,8 @@ const ReceptionModule = ({ isMobile, rates }) => {
               <div className="reception-order-sheet" style={{ background: 'var(--bg-secondary)', padding: '14px', borderRadius: '20px', marginBottom: '24px', border: '1px solid rgba(17, 17, 17,.18)', boxShadow: '0 18px 48px rgba(0,0,0,.22)' }}>
                 <div style={{ marginBottom: '11px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '12px' }}>
                   <div>
-                    <span style={{ display: 'block', color: 'var(--gold-primary)', fontSize: '9px', fontWeight: 950, letterSpacing: '1px', textTransform: 'uppercase' }}>Orden en preparaciÃ³n</span>
-                    <strong style={{ display: 'block', marginTop: '2px', color: '#111111', fontSize: '14px' }}>{orderItemCount} {orderItemCount === 1 ? 'artÃ­culo' : 'artÃ­culos'}</strong>
+                    <span style={{ display: 'block', color: 'var(--gold-primary)', fontSize: '9px', fontWeight: 950, letterSpacing: '1px', textTransform: 'uppercase' }}>Orden en preparación</span>
+                    <strong style={{ display: 'block', marginTop: '2px', color: '#111111', fontSize: '14px' }}>{orderItemCount} {orderItemCount === 1 ? 'artículo' : 'artículos'}</strong>
                   </div>
                   <span style={{ padding: '5px 9px', borderRadius: '999px', color: '#cfcfd2', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', fontSize: '9px', fontWeight: 850 }}>LISTA PARA ASIGNAR</span>
                 </div>
@@ -871,7 +871,7 @@ const ReceptionModule = ({ isMobile, rates }) => {
                   {selectedProducts.map(p => (
                     <div key={p.id} className="reception-order-row" style={{ minHeight: '66px', padding: '9px 9px 9px 10px', display: 'grid', gridTemplateColumns: '42px minmax(0,1fr) auto 36px', alignItems: 'center', gap: '10px', borderRadius: '14px', background: String(p.inventory_type).toLowerCase() === 'cafe' ? 'rgba(255,159,10,.035)' : 'rgba(48,209,88,.035)', border: `1px solid ${String(p.inventory_type).toLowerCase() === 'cafe' ? 'rgba(255,159,10,.13)' : 'rgba(48,209,88,.13)'}` }}>
                       <span style={{ width: '42px', height: '42px', display: 'grid', placeItems: 'center', overflow: 'hidden', borderRadius: '12px', color: String(p.inventory_type).toLowerCase() === 'cafe' ? '#ff9f0a' : '#30d158', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)' }}>{p.image_url ? <img src={p.image_url} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} /> : <ShoppingBag size={18} />}</span>
-                      <div style={{ minWidth: 0 }}><span style={{ display: 'block', color: String(p.inventory_type).toLowerCase() === 'cafe' ? '#ffad33' : '#54d37b', fontSize: '8px', fontWeight: 950, letterSpacing: '.65px' }}>{getInventorySalesLabel(p).toUpperCase()} {Number(p.quantity || 1) > 1 ? `Â· Ã—${p.quantity}` : ''}</span><strong style={{ display: 'block', marginTop: '2px', color: '#111111', fontSize: '13px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{p.name}</strong></div>
+                      <div style={{ minWidth: 0 }}><span style={{ display: 'block', color: String(p.inventory_type).toLowerCase() === 'cafe' ? '#ffad33' : '#54d37b', fontSize: '8px', fontWeight: 950, letterSpacing: '.65px' }}>{getInventorySalesLabel(p).toUpperCase()} {Number(p.quantity || 1) > 1 ? `Â· Ø${p.quantity}` : ''}</span><strong style={{ display: 'block', marginTop: '2px', color: '#111111', fontSize: '13px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{p.name}</strong></div>
                       <div style={{ textAlign: 'right' }}>
                         <strong style={{ display: 'block', color: '#111111', fontSize: '12px' }}>{formatBs(Number(p.price) * Number(p.quantity || 1) * exchangeRate)} Bs</strong>
                         <small style={{ color: 'var(--text-muted)', fontSize: '9px' }}>${formatUsd(Number(p.price) * Number(p.quantity || 1))}</small>
@@ -912,24 +912,24 @@ const ReceptionModule = ({ isMobile, rates }) => {
                     </div>
                     <span style={{ fontSize: '10px', fontWeight: '800', color: recommendationInfo.isBusy ? '#ff9f0a' : '#32d74b', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
                       {recommendationInfo.type === 'frequent' 
-                        ? 'RecomendaciÃ³n (Cliente Recurrente)' 
-                        : 'RecomendaciÃ³n (Siguiente en Fila)'}
+                        ? 'Recomendación (Cliente Recurrente)' 
+                        : 'Recomendación (Siguiente en Fila)'}
                     </span>
                   </div>
                   <p style={{ margin: 0, fontSize: '12px', color: '#111111', fontWeight: '750', lineHeight: '1.4' }}>
                     {recommendationInfo.type === 'frequent' ? (
                       recommendationInfo.isBusy ? (
                         <span>
-                          Su odontÃ³logo frecuente <strong>{recommendationInfo.name}</strong> estÃ¡ ocupado. Puedes <strong>agendar para despuÃ©s</strong> si el cliente desea esperar, o seleccionar a otro de la fila.
+                          Su odontólogo frecuente <strong>{recommendationInfo.name}</strong> est¡ ocupado. Puedes <strong>agendar para después</strong> si el cliente desea esperar, o seleccionar a otro de la fila.
                         </span>
                       ) : (
                         <span>
-                          Se ha sugerido automÃ¡ticamente a su odontÃ³logo frecuente <strong>{recommendationInfo.name}</strong>.
+                          Se ha sugerido autom¡ticamente a su odontólogo frecuente <strong>{recommendationInfo.name}</strong>.
                         </span>
                       )
                     ) : (
                       <span>
-                        Se sugiere el odontÃ³logo que sigue en la fila por orden de llegada: <strong>{recommendationInfo.name}</strong>.
+                        Se sugiere el odontólogo que sigue en la fila por orden de llegada: <strong>{recommendationInfo.name}</strong>.
                       </span>
                     )}
                   </p>
@@ -1067,7 +1067,7 @@ const ReceptionModule = ({ isMobile, rates }) => {
                           onMouseEnter={(ev) => ev.currentTarget.style.backgroundColor = 'rgba(50,215,75,0.2)'}
                           onMouseLeave={(ev) => ev.currentTarget.style.backgroundColor = 'rgba(50,215,75,0.12)'}
                         >
-                           Enviar a sillÃ³n
+                           Enviar a sillón
                         </button>
                       )}
 
@@ -1106,11 +1106,11 @@ const ReceptionModule = ({ isMobile, rates }) => {
             <div style={{ marginTop: '24px' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '16px' }}>
                 <Calendar size={16} color="var(--gold-primary)" />
-                <span style={{ fontWeight: '800', fontSize: '11px', letterSpacing: '1px', textTransform: 'uppercase', color: 'var(--gold-primary)' }}>PrÃ³ximas Citas (Agenda Hoy)</span>
+                <span style={{ fontWeight: '800', fontSize: '11px', letterSpacing: '1px', textTransform: 'uppercase', color: 'var(--gold-primary)' }}>Próximas Citas (Agenda Hoy)</span>
               </div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
                 {upcomingAppointments.length === 0 ? (
-                  <div style={{ padding: '20px', textAlign: 'center', color: 'rgba(255,255,255,0.4)', fontSize: '12px', border: '1px dashed rgba(0, 0, 0, 0.08)', borderRadius: '16px' }}>No hay mÃ¡s citas para hoy</div>
+                  <div style={{ padding: '20px', textAlign: 'center', color: 'rgba(255,255,255,0.4)', fontSize: '12px', border: '1px dashed rgba(0, 0, 0, 0.08)', borderRadius: '16px' }}>No hay m¡s citas para hoy</div>
                 ) : (
                   upcomingAppointments.map((app, idx) => (
                     <div 
@@ -1223,7 +1223,7 @@ const ReceptionModule = ({ isMobile, rates }) => {
             {!selectedClient ? (
               <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }} className="animate-fade-in">
                 <div className="premium-badge">
-                  <Clock size={10} style={{ marginRight: '2px' }} /> MÃ³dulo de Espera
+                  <Clock size={10} style={{ marginRight: '2px' }} /> Módulo de Espera
                 </div>
                 <div className="radar-container">
                   <div className="radar-circle" />
@@ -1232,13 +1232,13 @@ const ReceptionModule = ({ isMobile, rates }) => {
                 </div>
                 <h3 style={{ color: '#111111', fontWeight: '800', fontSize: '18px' }}>Escaneando Pacientes</h3>
                 <p style={{ fontSize: '13px', color: 'var(--text-secondary)', marginTop: '8px', maxWidth: '280px', lineHeight: '1.5' }}>
-                  Ingresa la cÃ©dula o nombre en el buscador para cargar la ficha y comenzar la atenciÃ³n.
+                  Ingresa la cédula o nombre en el buscador para cargar la ficha y comenzar la atención.
                 </p>
               </div>
             ) : selectedServices.length === 0 && selectedProducts.length === 0 && selectedExtras.length === 0 ? (
               <>
                 <ToothIcon size={48} color="rgba(255, 255, 255,0.2)" style={{ marginBottom: '20px' }} />
-                <h3 style={{ color: 'var(--text-secondary)' }}>AÃ±ade productos o servicios</h3>
+                <h3 style={{ color: 'var(--text-secondary)' }}>Añade productos o servicios</h3>
                 <p style={{ fontSize: '13px', color: 'var(--text-muted)', marginTop: '8px' }}>Selecciona lo que el cliente desea adquirir.</p>
               </>
             ) : (
@@ -1246,12 +1246,12 @@ const ReceptionModule = ({ isMobile, rates }) => {
                 <CheckCircle2 size={56} color="var(--gold-primary)" style={{ marginBottom: '24px' }} />
                 <h3 style={{ fontSize: '24px', marginBottom: '8px' }}>Todo Listo</h3>
                 <p style={{ color: 'var(--text-secondary)', marginBottom: '24px', fontSize: '14px' }}>
-                  ConfirmaciÃ³n para <span style={{ color: '#111111', fontWeight: '800' }}>{selectedClient.name}</span>
+                  Confirmación para <span style={{ color: '#111111', fontWeight: '800' }}>{selectedClient.name}</span>
                 </p>
 
                 {/* Detailed Summary for Confirmation */}
                 <div style={{ backgroundColor: 'rgba(0, 0, 0, 0.04)', borderRadius: '20px', padding: '20px', marginBottom: '32px', textAlign: 'left', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
-                  <div style={{ fontSize: '10px', fontWeight: '900', color: 'var(--gold-primary)', letterSpacing: '1px', marginBottom: '12px', textTransform: 'uppercase' }}>Resumen de AtenciÃ³n</div>
+                  <div style={{ fontSize: '10px', fontWeight: '900', color: 'var(--gold-primary)', letterSpacing: '1px', marginBottom: '12px', textTransform: 'uppercase' }}>Resumen de Atención</div>
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
                     {selectedServices.map(s => (
                       <div key={s.id}>
@@ -1324,7 +1324,7 @@ const ReceptionModule = ({ isMobile, rates }) => {
                       
                       {activeAppointments.some(a => a.staff_id === formData.staffId) && (
                         <p style={{ fontSize: '11px', color: '#ff453a', fontWeight: '700', marginTop: '-4px' }}>
-                          Usa "Agendar para despuÃ©s" para poner al cliente en cola.
+                          Usa "Agendar para después" para poner al cliente en cola.
                         </p>
                       )}
 
@@ -1333,7 +1333,7 @@ const ReceptionModule = ({ isMobile, rates }) => {
                         onClick={handleScheduleClick}
                         style={{ background: 'none', border: '1px solid var(--border-color)', color: '#111111', height: '56px', borderRadius: '18px', fontWeight: '700', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px' }}
                       >
-                        <Calendar size={18} /> AGENDAR PARA DESPUÃ‰S
+                        <Calendar size={18} /> AGENDAR PARA DESPUÉS
                       </button>
                     </>
                   ) : (
@@ -1407,7 +1407,7 @@ const ReceptionModule = ({ isMobile, rates }) => {
         rates={{ usd: exchangeRate }}
         mode="multiple"
         initialSelection={selectedProducts}
-        title="Productos y CortesÃ­as"
+        title="Productos y Cortesías"
         subtitle="Selecciona productos o insumos para agregarlos a la orden"
         onConfirm={applyProductSelection}
       />

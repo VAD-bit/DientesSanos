@@ -39,17 +39,17 @@ const BeardIcon = ({ size = 20 }) => (
 );
 
 const AVAILABLE_ICONS = [
-  { name: 'Stethoscope', label: 'DiagnÃ³stico' },
-  { name: 'Smile',       label: 'DiseÃ±o de sonrisa' },
+  { name: 'Stethoscope', label: 'Diagnóstico' },
+  { name: 'Smile',       label: 'Diseño de sonrisa' },
   { name: 'Droplets',    label: 'Limpieza dental' },
   { name: 'Activity',    label: 'Ortodoncia' },
   { name: 'HeartPulse',  label: 'Endodoncia' },
-  { name: 'Baby',        label: 'OdontopediatrÃ­a' },
-  { name: 'Anchor',      label: 'PrÃ³tesis e implantes' },
-  { name: 'Scissors',    label: 'CirugÃ­a dental' },
-  { name: 'Shield',      label: 'PrevenciÃ³n' },
+  { name: 'Baby',        label: 'Odontopediatría' },
+  { name: 'Anchor',      label: 'Prótesis e implantes' },
+  { name: 'Scissors',    label: 'Cirugía dental' },
+  { name: 'Shield',      label: 'Prevención' },
   { name: 'Zap',         label: 'Tratamiento express' },
-  { name: 'Crown',       label: 'AtenciÃ³n premium' },
+  { name: 'Crown',       label: 'Atención premium' },
   { name: 'Gem',         label: 'Servicio especializado' },
   { name: 'Star',        label: 'Otros servicios' }
 ];
@@ -156,7 +156,7 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
       setBaseItems(items || []);
     } catch (e) {
       console.error('Error fetching base items:', e);
-      showToast('Error al cargar Ã­tems incluidos.', 'error');
+      showToast('Error al cargar ítems incluidos.', 'error');
     }
   };
 
@@ -174,7 +174,7 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
       const data = await dataService.getServiceCategories();
       setCategories(data || []);
     } catch (e) {
-      showToast('Error al cargar categorÃ­as.', 'error');
+      showToast('Error al cargar categorías.', 'error');
     }
   };
 
@@ -197,18 +197,18 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
           newCategoryName.trim(), 
           selectedCategoryIcon
         );
-        showToast('CategorÃ­a actualizada.');
+        showToast('Categoría actualizada.');
         setEditingCategory(null);
       } else {
         await dataService.addServiceCategory(newCategoryName.trim(), selectedCategoryIcon);
-        showToast('Nueva categorÃ­a creada.');
+        showToast('Nueva categoría creada.');
       }
       setNewCategoryName('');
       setSelectedCategoryIcon('Scissors');
       await fetchCategories();
       await fetchServices();
     } catch (e) {
-      showToast(editingCategory ? 'Error al actualizar categorÃ­a.' : 'Error al crear categorÃ­a.', 'error');
+      showToast(editingCategory ? 'Error al actualizar categoría.' : 'Error al crear categoría.', 'error');
     }
   };
 
@@ -225,13 +225,13 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
   };
 
   const handleDeleteCategory = async (catObj) => {
-    if (!await confirm(`Â¿EstÃ¡s seguro de eliminar la categorÃ­a "${catObj.name}"?`)) return;
+    if (!await confirm(`Â¿Est¡s seguro de eliminar la categoría "${catObj.name}"?`)) return;
     try {
       await dataService.deleteServiceCategory(catObj.name, catObj.icon);
       await fetchCategories();
-      showToast('CategorÃ­a eliminada.');
+      showToast('Categoría eliminada.');
     } catch (e) {
-      showToast('Error al eliminar categorÃ­a.', 'error');
+      showToast('Error al eliminar categoría.', 'error');
     }
   };
 
@@ -252,7 +252,7 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
   };
 
   const handleDeleteStrategy = async (value) => {
-    if (!await confirm('Â¿EstÃ¡s seguro de eliminar esta estrategia?')) return;
+    if (!await confirm('Â¿Est¡s seguro de eliminar esta estrategia?')) return;
     try {
       await dataService.deleteServiceStrategy(value);
       await fetchStrategies();
@@ -280,9 +280,9 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
     try {
       await dataService.updateChecklistItem(id, { name, base_cost: Number(base_cost) });
       await fetchBaseItems();
-      showToast('Ãtem del checklist actualizado.');
+      showToast('Ítem del checklist actualizado.');
     } catch (e) {
-      showToast('Error al actualizar Ã­tem.', 'error');
+      showToast('Error al actualizar ítem.', 'error');
     }
   };
 
@@ -292,9 +292,9 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
     try {
       await dataService.deleteChecklistItem(id);
       await fetchBaseItems();
-      showToast('Ãtem eliminado.');
+      showToast('Ítem eliminado.');
     } catch (e) {
-      showToast('Error al eliminar Ã­tem.', 'error');
+      showToast('Error al eliminar ítem.', 'error');
     }
   };
 
@@ -319,7 +319,7 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
   const handleUpdateBillableExtra = async (id, updates) => {
     const normalizedName = String(updates.name || '').trim();
     if (!normalizedName) {
-      showToast('El nombre del extra no puede quedar vacÃ­o.', 'warning');
+      showToast('El nombre del extra no puede quedar vacío.', 'warning');
       return false;
     }
     try {
@@ -335,7 +335,7 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
 
   const handleDeleteBillableExtra = async (e, id, name) => {
     e.stopPropagation();
-    if (!await confirm(`Â¿Archivar el extra "${name}"? Se mantendrÃ¡ en el historial pero ya no se podrÃ¡ seleccionar para nuevos servicios.`)) return;
+    if (!await confirm(`Â¿Archivar el extra "${name}"? Se mantendr¡ en el historial pero ya no se podr¡ seleccionar para nuevos servicios.`)) return;
     try {
       await dataService.deleteExtra(id);
       await fetchBillableExtras();
@@ -346,7 +346,7 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
   };
 
   const handleDeleteService = async (id, name) => {
-    if (!await confirm(`Â¿Archivar el servicio "${name}"? Se mantendrÃ¡ en el historial pero ya no se podrÃ¡ seleccionar.`)) return;
+    if (!await confirm(`Â¿Archivar el servicio "${name}"? Se mantendr¡ en el historial pero ya no se podr¡ seleccionar.`)) return;
     try {
       setLoading(true);
       await dataService.deleteService(id);
@@ -367,7 +367,7 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
     name: '', 
     price: '', 
     icon: 'Stethoscope',
-    category: 'PrevenciÃ³n',
+    category: 'Prevención',
     strategy_type: 'MVP',
     duration: 30,
     insumo_cost: 0,
@@ -404,12 +404,12 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
         showToast(`Â¡Servicio ${serviceToSave.name} actualizado!`);
       } else {
         await dataService.addService(serviceToSave);
-        showToast(`Â¡Servicio ${serviceToSave.name} agregado al catÃ¡logo!`);
+        showToast(`Â¡Servicio ${serviceToSave.name} agregado al cat¡logo!`);
       }
       setNewService({ 
         name: '', 
         price: '', 
-        category: 'PrevenciÃ³n',
+        category: 'Prevención',
         strategy_type: 'MVP',
         duration: 30,
         insumo_cost: 0,
@@ -444,10 +444,10 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
     const name = (catName || '').toLowerCase();
     const srvName = (serviceName || '').toLowerCase();
     
-    if (srvName.includes('obturacion y extraccion') || srvName.includes('obturaciÃ³n y extracciÃ³n')) return 'ObturacionExtraccionIcon';
-    if (name.includes('muela') || name.includes('extraccion') || name.includes('extracciÃ³n')) return 'MuelaIcon';
+    if (srvName.includes('obturacion y extraccion') || srvName.includes('obturación y extracción')) return 'ObturacionExtraccionIcon';
+    if (name.includes('muela') || name.includes('extraccion') || name.includes('extracción')) return 'MuelaIcon';
     if (name.includes('tatu')) return 'PenTool';
-    if (name.includes('empaste') || name.includes('obturacion') || name.includes('obturaciÃ³n')) return 'DienteIcon';
+    if (name.includes('empaste') || name.includes('obturacion') || name.includes('obturación')) return 'DienteIcon';
     if (name.includes('color') || name.includes('tinte') || name.includes('blanqueamiento')) return 'Palette';
     if (name.includes('profilaxis') || name.includes('lavado')) return 'Droplets';
     return 'DienteIcon';
@@ -531,7 +531,7 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
 
           <button onClick={() => setIsCategoriesModalOpen(true)} style={{ backgroundColor: 'rgba(0, 0, 0, 0.04)', color: '#111111', border: '1px solid rgba(0, 0, 0, 0.08)', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', width: isMobile ? '100%' : 'auto', padding: '10px 16px', fontSize: '13px', fontWeight: '600', transition: 'background 0.2s', cursor: 'pointer' }}>
             <Settings size={16} style={{ marginRight: '6px', color: 'var(--text-muted)' }} />
-            CategorÃ­as
+            Categorías
           </button>
           <button onClick={() => setIsBillableExtrasModalOpen(true)} style={{ backgroundColor: 'rgba(0, 0, 0, 0.04)', color: '#111111', border: '1px solid rgba(0, 0, 0, 0.08)', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', width: isMobile ? '100%' : 'auto', padding: '10px 16px', fontSize: '13px', fontWeight: '600', transition: 'background 0.2s', cursor: 'pointer' }}>
             <Rocket size={16} style={{ marginRight: '6px', color: 'var(--text-muted)' }} />
@@ -549,7 +549,7 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
                   name: '', 
                   price: '', 
                   icon: 'Stethoscope',
-                  category: 'PrevenciÃ³n',
+                  category: 'Prevención',
                   strategy_type: 'MVP',
                   duration: 30,
                   insumo_cost: 0,
@@ -602,7 +602,7 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
                 <input className="form-input glow-input" placeholder="Ej. Limpieza Sonrisa" value={newService.name} onChange={e => setNewService({...newService, name: e.target.value})} onBlur={() => setNewService({...newService, name: formatServiceName(newService.name)})} style={{ width: '100%', height: '54px', fontSize: '16px', fontWeight: '600' }} />
               </div>
               <div className="form-group" style={{ flex: 1 }}>
-                <FieldLabel required>DURACIÃ“N (MIN)</FieldLabel>
+                <FieldLabel required>DURACIÓN (MIN)</FieldLabel>
                 <input className="form-input glow-input" type="number" placeholder="45" value={newService.duration === 0 ? '' : newService.duration} onChange={e => setNewService({...newService, duration: e.target.value === '' ? '' : Number(e.target.value)})} style={{ width: '100%', height: '54px', fontSize: '16px', fontWeight: '600', textAlign: 'center' }} />
               </div>
             </div>
@@ -610,7 +610,7 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
             <div style={{ display: 'flex', gap: '16px', flexDirection: isMobile ? 'column' : 'row' }}>
               <div style={{ flex: 1 }}>
                 <PandaSelect 
-                  label="CATEGORÃA"
+                  label="CATEGORÍA"
                   value={newService.category}
                   onChange={val => setNewService({...newService, category: val})}
                   options={categories.map(c => ({ label: c.name, value: c.name }))}
@@ -644,7 +644,7 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
             </div>
 
             <div className="form-group">
-              <label style={{ display: 'block', fontSize: '11px', fontWeight: '900', color: 'var(--text-muted)', marginBottom: '8px', letterSpacing: '1px' }}>ÃCONO</label>
+              <label style={{ display: 'block', fontSize: '11px', fontWeight: '900', color: 'var(--text-muted)', marginBottom: '8px', letterSpacing: '1px' }}>ÍCONO</label>
               <div className="mac-dock-container panda-scrollbar" style={{ padding: '24px 12px 12px 12px', background: 'var(--bg-secondary)', borderRadius: '20px', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
                 {AVAILABLE_ICONS.map(ic => (
                   <button
@@ -660,7 +660,7 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
             </div>
 
             <div className="form-group">
-              <FieldLabel>DESCRIPCIÃ“N</FieldLabel>
+              <FieldLabel>DESCRIPCIÓN</FieldLabel>
               <textarea 
                 className="form-input glow-input" 
                 placeholder="Beneficios premium del servicio..." 
@@ -725,8 +725,8 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
       ) : services.length === 0 ? (
         <div className="glass-card" style={{ textAlign: 'center', padding: '80px', borderRadius: '32px' }}>
           <Star size={64} color="rgba(255, 255, 255, 0.1)" style={{ marginBottom: '24px' }} />
-          <h3 style={{ fontSize: '20px', color: 'var(--text-primary)' }}>Tu catÃ¡logo estÃ¡ vacÃ­o</h3>
-          <p style={{ color: 'var(--text-muted)', marginTop: '8px' }}>Comienza agregando los servicios que definirÃ¡n tu marca.</p>
+          <h3 style={{ fontSize: '20px', color: 'var(--text-primary)' }}>Tu cat¡logo est¡ vacío</h3>
+          <p style={{ color: 'var(--text-muted)', marginTop: '8px' }}>Comienza agregando los servicios que definir¡n tu marca.</p>
         </div>
       ) : (
         <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
@@ -934,8 +934,8 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
                 <thead>
                   <tr style={{ backgroundColor: 'var(--bg-tertiary)', borderBottom: '1px solid var(--border-color)' }}>
                     <th style={{ padding: '16px 24px', fontSize: '11px', fontWeight: '900', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Servicio</th>
-                    <th style={{ padding: '16px 24px', fontSize: '11px', fontWeight: '900', color: 'var(--text-muted)', textTransform: 'uppercase' }}>CategorÃ­a</th>
-                    <th style={{ padding: '16px 24px', fontSize: '11px', fontWeight: '900', color: 'var(--text-muted)', textTransform: 'uppercase' }}>DuraciÃ³n</th>
+                    <th style={{ padding: '16px 24px', fontSize: '11px', fontWeight: '900', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Categoría</th>
+                    <th style={{ padding: '16px 24px', fontSize: '11px', fontWeight: '900', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Duración</th>
                     <th style={{ padding: '16px 24px', fontSize: '11px', fontWeight: '900', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Precio</th>
                     <th style={{ padding: '16px 24px', fontSize: '11px', fontWeight: '900', color: 'var(--text-muted)', textTransform: 'uppercase', textAlign: 'right' }}>Acciones</th>
                   </tr>
@@ -1051,7 +1051,7 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
                 <div style={{ display: 'flex', gap: '8px' }}>
                   <input 
                     className="form-input" 
-                    placeholder="Nuevo Ã­tem..." 
+                    placeholder="Nuevo ítem..." 
                     value={newItemName}
                     onChange={e => setNewItemName(e.target.value)}
                     style={{ flex: 1, height: '40px', fontSize: '13px', minWidth: 0 }}
@@ -1077,7 +1077,7 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
                   <h3 style={{ fontSize: '20px', fontWeight: '800', display: 'flex', alignItems: 'center', gap: '10px' }}>
                     <Rocket size={24} color="var(--gold-primary)" /> Servicios Extras
                   </h3>
-                  <p style={{ fontSize: '12px', color: 'var(--text-secondary)', marginTop: '4px' }}>Servicios con costo extra que se aÃ±aden en caja.</p>
+                  <p style={{ fontSize: '12px', color: 'var(--text-secondary)', marginTop: '4px' }}>Servicios con costo extra que se añaden en caja.</p>
                 </div>
                 <button onClick={() => setIsBillableExtrasModalOpen(false)} style={{ background: 'rgba(0, 0, 0, 0.04)', border: 'none', borderRadius: '50%', width: '36px', height: '36px', color: '#111111', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                   <X size={20} />
@@ -1228,13 +1228,13 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
                 <div style={{ display: 'flex', gap: '16px', marginBottom: '20px', fontSize: '13px', color: 'var(--text-secondary)' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '6px', backgroundColor: 'rgba(0, 0, 0, 0.04)', padding: '6px 12px', borderRadius: '10px' }}>
                     <Clock size={14} color="var(--gold-primary)" />
-                    <strong>DuraciÃ³n:</strong> {selectedServiceDetail.duration || 30} min
+                    <strong>Duración:</strong> {selectedServiceDetail.duration || 30} min
                   </div>
                 </div>
 
                 {selectedServiceDetail.description && (
                   <div style={{ marginBottom: '20px' }}>
-                    <div style={{ fontSize: '11px', fontWeight: '800', color: 'var(--text-muted)', marginBottom: '6px', textTransform: 'uppercase' }}>GuiÃ³n de Venta / DescripciÃ³n</div>
+                    <div style={{ fontSize: '11px', fontWeight: '800', color: 'var(--text-muted)', marginBottom: '6px', textTransform: 'uppercase' }}>Guión de Venta / Descripción</div>
                     <p style={{ fontSize: '13px', color: 'rgba(255,255,255,0.7)', lineHeight: '1.5', margin: 0, padding: '12px', borderRadius: '12px', backgroundColor: 'var(--bg-secondary)', fontStyle: 'italic', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
                       "{selectedServiceDetail.description}"
                     </p>
@@ -1264,7 +1264,7 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
                   </div>
                   {rates?.usd > 0 && (
                     <div style={{ textAlign: 'right' }}>
-                      <div style={{ fontSize: '10px', fontWeight: '700', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Precio en BolÃ­vares</div>
+                      <div style={{ fontSize: '10px', fontWeight: '700', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Precio en Bolívares</div>
                       <div style={{ fontSize: '24px', fontWeight: '900', color: 'var(--gold-primary)' }}>
                         {Math.round(selectedServiceDetail.price * rates.usd).toLocaleString()} Bs.
                       </div>
@@ -1298,7 +1298,7 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
         )}
       </AnimatedModal>
 
-      {/* Modal de CategorÃ­as */}
+      {/* Modal de Categorías */}
       <AnimatedModal isOpen={isCategoriesModalOpen}>
         {(overlayClass, cardClass) => (
           <div className={overlayClass.replace('global-modal-overlay', '')} style={{
@@ -1322,14 +1322,14 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
               </button>
 
               <h3 style={{ fontSize: '20px', fontWeight: '800', color: '#111111', marginBottom: '8px', display: 'flex', alignItems: 'center', gap: '8px', paddingRight: '40px' }}>
-                <Settings size={20} color="var(--gold-primary)" /> CategorÃ­as
+                <Settings size={20} color="var(--gold-primary)" /> Categorías
               </h3>
-              <p style={{ color: 'var(--text-muted)', fontSize: '12px', marginBottom: '20px' }}>Agrega o elimina las categorÃ­as disponibles para clasificar tus servicios.</p>
+              <p style={{ color: 'var(--text-muted)', fontSize: '12px', marginBottom: '20px' }}>Agrega o elimina las categorías disponibles para clasificar tus servicios.</p>
 
-              {/* Agregar CategorÃ­a */}
+              {/* Agregar Categoría */}
               <div style={{ marginBottom: '24px', backgroundColor: 'rgba(0, 0, 0, 0.04)', padding: '16px', borderRadius: '16px', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
                 <label style={{ display: 'block', fontSize: '10px', fontWeight: '900', color: 'var(--text-muted)', marginBottom: '8px', letterSpacing: '0.5px' }}>
-                  {editingCategory ? 'EDITAR CATEGORÃA' : 'NUEVA CATEGORÃA'}
+                  {editingCategory ? 'EDITAR CATEGORÍA' : 'NUEVA CATEGORÍA'}
                 </label>
                 <div style={{ display: 'flex', gap: '8px', marginBottom: '16px' }}>
                   <input 
@@ -1361,7 +1361,7 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
 
               </div>
 
-              {/* Listado de CategorÃ­as */}
+              {/* Listado de Categorías */}
               <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
                 {categories.map((catObj, idx) => (
                   <div key={idx} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 16px', borderRadius: '12px', backgroundColor: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
@@ -1421,7 +1421,7 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
               <h3 style={{ fontSize: '20px', fontWeight: '800', color: '#111111', marginBottom: '8px', display: 'flex', alignItems: 'center', gap: '8px', paddingRight: '40px' }}>
                 <Crown size={20} color="var(--gold-primary)" /> Estrategias de Venta
               </h3>
-              <p style={{ color: 'var(--text-muted)', fontSize: '12px', marginBottom: '20px' }}>Configura los tipos de estrategias de venta cruzada y retenciÃ³n para tus servicios.</p>
+              <p style={{ color: 'var(--text-muted)', fontSize: '12px', marginBottom: '20px' }}>Configura los tipos de estrategias de venta cruzada y retención para tus servicios.</p>
 
               {/* Agregar Estrategia */}
               <div style={{ marginBottom: '24px', backgroundColor: 'rgba(0, 0, 0, 0.04)', padding: '16px', borderRadius: '16px', border: '1px solid rgba(0, 0, 0, 0.08)' }}>

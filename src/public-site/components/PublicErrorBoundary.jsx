@@ -1,10 +1,10 @@
 ﻿import React from 'react';
 
-// Evita que un error de render (p. ej. en el flujo de reservas) deje la pÃ¡gina en
-// negro: muestra un fallback con opciÃ³n de recargar. TambiÃ©n registra el
-// componentStack para diagnÃ³stico, y lo deja visible/copiable en pantalla â€” antes
-// solo iba a la consola del navegador, asÃ­ que reportar un bug significaba abrir
-// devtools; ahora "Ver detalles tÃ©cnicos" + "Copiar error" alcanza.
+// Evita que un error de render (p. ej. en el flujo de reservas) deje la p¡gina en
+// negro: muestra un fallback con opción de recargar. También registra el
+// componentStack para diagnóstico, y lo deja visible/copiable en pantalla — antes
+// solo iba a la consola del navegador, así que reportar un bug significaba abrir
+// devtools; ahora "Ver detalles técnicos" + "Copiar error" alcanza.
 export default class PublicErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
@@ -40,9 +40,9 @@ export default class PublicErrorBoundary extends React.Component {
       const errorText = `${error?.message || 'Error desconocido'}\n\n${error?.stack || ''}\n\nComponent stack:${componentStack}`;
       return (
         <div style={{ minHeight: '100dvh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 16, background: '#f4f5f3', color: '#111111', textAlign: 'center', padding: 24 }}>
-          <h2 style={{ fontWeight: 900, fontSize: 22, margin: 0 }}>Algo saliÃ³ mal</h2>
+          <h2 style={{ fontWeight: 900, fontSize: 22, margin: 0 }}>Algo salió mal</h2>
           <p style={{ color: '#64748b', fontSize: 14, maxWidth: 420, margin: 0 }}>
-            OcurriÃ³ un error al cargar esta pÃ¡gina. RecÃ¡rgala para intentar de nuevo.
+            Ocurrió un error al cargar esta p¡gina. Rec¡rgala para intentar de nuevo.
           </p>
           <div style={{ display: 'flex', gap: 10, marginTop: 4, flexWrap: 'wrap', justifyContent: 'center' }}>
             <button
@@ -55,7 +55,7 @@ export default class PublicErrorBoundary extends React.Component {
               onClick={() => this.setState({ showDetails: !showDetails })}
               style={{ background: 'transparent', color: '#111111', fontWeight: 600, fontSize: 13, padding: '12px 18px', borderRadius: 999, border: '1px solid rgba(217, 192, 143, 0.3)', cursor: 'pointer' }}
             >
-              {showDetails ? 'Ocultar detalles tÃ©cnicos' : 'Ver detalles tÃ©cnicos'}
+              {showDetails ? 'Ocultar detalles técnicos' : 'Ver detalles técnicos'}
             </button>
           </div>
 

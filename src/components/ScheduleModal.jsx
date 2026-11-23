@@ -115,7 +115,7 @@ const ScheduleModal = ({ isOpen, onClose, client, service, staff, onSchedule, de
                     Agendar <span style={{ color: 'var(--gold-primary)' }}>Turno</span>
                   </h2>
                   <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '13px', margin: '4px 0 0 0', fontWeight: '500' }}>
-                    {service?.name || 'Servicio'} con <span style={{ color: '#111111', fontWeight: '700' }}>{staff?.name || 'OdontÃ³logo'}</span>
+                    {service?.name || 'Servicio'} con <span style={{ color: '#111111', fontWeight: '700' }}>{staff?.name || 'Odontólogo'}</span>
                   </p>
                 </div>
               </div>

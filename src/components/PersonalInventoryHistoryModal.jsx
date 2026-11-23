@@ -5,18 +5,18 @@ import { SkeletonList } from './Skeleton';
 import AnimatedModal from './AnimatedModal';
 
 const ACTION_LABELS = {
-  REGISTRO: 'ArtÃ­culo registrado',
-  ASIGNACION: 'Asignado desde el almacÃ©n',
-  CONSUMO: 'GastÃ³ una unidad',
+  REGISTRO: 'Artículo registrado',
+  ASIGNACION: 'Asignado desde el almacén',
+  CONSUMO: 'Gastó una unidad',
   REPOSICION: 'Repuso una unidad',
-  DEVOLUCION: 'Devuelto al almacÃ©n',
+  DEVOLUCION: 'Devuelto al almacén',
   RETIRO: 'Retirado del perfil'
 };
 
 const parsePersonalMovement = (movement, staffId) => {
   const prefix = `[PERSONAL:${staffId}] `;
   if (!String(movement.reason || '').startsWith(prefix)) return null;
-  const [action = '', itemName = 'ArtÃ­culo'] = String(movement.reason).slice(prefix.length).split('|');
+  const [action = '', itemName = 'Artículo'] = String(movement.reason).slice(prefix.length).split('|');
   return {
     ...movement,
     action: action.trim(),
@@ -103,7 +103,7 @@ const PersonalInventoryHistoryModal = ({ isOpen, onClose, staffId }) => {
             <SkeletonList rows={4} rowHeight={44} gap={9} />
           ) : history.length === 0 ? (
             <div style={{ padding: '42px 20px', textAlign: 'center', border: '1px dashed rgba(0, 0, 0, 0.08)', borderRadius: '16px', color: 'var(--text-muted)', fontSize: '13px' }}>
-              TodavÃ­a no hay movimientos registrados.
+              Todavía no hay movimientos registrados.
             </div>
           ) : history.map(movement => {
             const isConsumption = movement.action === 'CONSUMO' || movement.action === 'RETIRO';

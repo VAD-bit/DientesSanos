@@ -19,7 +19,7 @@ const PAYMENT_ACCOUNTS = [
   { key: 'zelle', label: 'Zelle', usd: true, icon: Landmark },
   { key: 'binance', label: 'Binance / USDT', usd: true, icon: Coins },
   { key: 'zinli', label: 'Zinli', usd: true, icon: Smartphone },
-  { key: 'pago_movil', label: 'Pago MÃ³vil', usd: false, icon: Smartphone },
+  { key: 'pago_movil', label: 'Pago Móvil', usd: false, icon: Smartphone },
   { key: 'cash_bs', label: 'Efectivo (Bs)', usd: false, icon: Banknote },
   { key: 'punto_venta', label: 'Punto de venta', usd: false, icon: CreditCard },
   { key: 'transferencia', label: 'Transferencia', usd: false, icon: Layers3 },
@@ -164,7 +164,7 @@ export default function ProviderPaymentModal({
                     Pago a Proveedor
                   </h2>
                   <p style={{ margin: '2px 0 0', fontSize: '11.5px', color: 'var(--text-secondary)' }}>
-                    Salda la reposiciÃ³n de productos vendidos descontando del saldo de tu cuenta.
+                    Salda la reposición de productos vendidos descontando del saldo de tu cuenta.
                   </p>
                 </div>
               </div>
@@ -217,7 +217,7 @@ export default function ProviderPaymentModal({
                 }}>
                   <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '6px' }}>
                     <span style={{ fontSize: '10.5px', fontWeight: '900', color: '#ff9f0a', textTransform: 'uppercase', letterSpacing: '0.6px', display: 'flex', alignItems: 'center', gap: '5px' }}>
-                      <AlertCircle size={13} color="#ff9f0a" /> Deuda Actual por ReposiciÃ³n
+                      <AlertCircle size={13} color="#ff9f0a" /> Deuda Actual por Reposición
                     </span>
                     <span style={{ fontSize: '11px', color: 'rgba(255,255,255,0.5)', fontWeight: '700' }}>
                       Tasa: {Number(rate || 1).toLocaleString('es-VE', { maximumFractionDigits: 2 })} Bs/$
@@ -242,7 +242,7 @@ export default function ProviderPaymentModal({
                 }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
                     <label style={{ fontSize: '11.5px', fontWeight: '900', color: 'var(--gold-primary)', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
-                      Monto a pagar ({selectedAccount.usd ? 'USD $' : 'BolÃ­vares Bs'})
+                      Monto a pagar ({selectedAccount.usd ? 'USD $' : 'Bolívares Bs'})
                     </label>
                     <span style={{ fontSize: '11px', color: isExceedingBalance ? '#ff453a' : 'var(--text-muted)', fontWeight: isExceedingBalance ? '900' : '600' }}>
                       Disponible: {formatMoney(availableBalance, selectedAccount.usd)}
@@ -377,7 +377,7 @@ export default function ProviderPaymentModal({
                     Cuenta de Origen
                   </label>
                   <span style={{ fontSize: '11px', color: 'var(--text-secondary)' }}>
-                    Selecciona de dÃ³nde pagar
+                    Selecciona de dónde pagar
                   </span>
                 </div>
 
@@ -458,7 +458,7 @@ export default function ProviderPaymentModal({
                   color: 'var(--text-secondary)',
                   lineHeight: '1.4'
                 }}>
-                  <strong style={{ color: 'rgba(255,255,255,0.85)' }}>Nota operativa:</strong> Este pago no se contabiliza como gasto operativo nuevo, ya que solo salda la deuda de reposiciÃ³n de inventario previamente vendido.
+                  <strong style={{ color: 'rgba(255,255,255,0.85)' }}>Nota operativa:</strong> Este pago no se contabiliza como gasto operativo nuevo, ya que solo salda la deuda de reposición de inventario previamente vendido.
                 </div>
 
               </div>
@@ -496,7 +496,7 @@ export default function ProviderPaymentModal({
                   transition: 'all 0.2s ease'
                 }}
               >
-                <Truck size={16} /> {loading ? 'Registrando pagoâ€¦' : 'Registrar Pago a Proveedor'}
+                <Truck size={16} /> {loading ? 'Registrando pago…' : 'Registrar Pago a Proveedor'}
               </button>
             </footer>
 

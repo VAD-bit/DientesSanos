@@ -72,7 +72,7 @@ const RoleManagerModal = ({ isOpen, onClose, roles, onSaveRole, onDeleteRole, av
   };
 
   const handleDeleteRole = async (roleName) => {
-    const accepted = await confirm(`Â¿Seguro que deseas eliminar el rol "${roleLabel(roleName)}"? Esta acciÃ³n puede afectar permisos del equipo.`);
+    const accepted = await confirm(`Â¿Seguro que deseas eliminar el rol "${roleLabel(roleName)}"? Esta acción puede afectar permisos del equipo.`);
     if (!accepted) return;
     onDeleteRole(roleName);
   };
@@ -115,7 +115,7 @@ const RoleManagerModal = ({ isOpen, onClose, roles, onSaveRole, onDeleteRole, av
                   <Shield size={22} color="var(--gold-primary)" />
                 </div>
                 <div>
-                  <h2 style={{ fontSize: '19px', fontWeight: '900', margin: 0, letterSpacing: '-0.3px' }}>GestiÃ³n de Roles</h2>
+                  <h2 style={{ fontSize: '19px', fontWeight: '900', margin: 0, letterSpacing: '-0.3px' }}>Gestión de Roles</h2>
                   <p style={{ fontSize: '12px', color: 'var(--text-muted)', margin: '2px 0 0', fontWeight: '500' }}>Define accesos y permisos por cargo</p>
                 </div>
               </div>
@@ -204,7 +204,7 @@ const RoleManagerModal = ({ isOpen, onClose, roles, onSaveRole, onDeleteRole, av
                                 background: 'rgba(0, 0, 0, 0.04)',
                                 padding: '2px 10px', borderRadius: '50px',
                                 fontWeight: '700', border: '1px solid rgba(0, 0, 0, 0.08)'
-                              }}>+{perms.length - 4} mÃ¡s</span>
+                              }}>+{perms.length - 4} m¡s</span>
                             )}
                           </div>
                         </div>
@@ -321,7 +321,7 @@ const RoleManagerModal = ({ isOpen, onClose, roles, onSaveRole, onDeleteRole, av
             }}>
               <Info size={15} color="var(--gold-primary)" style={{ flexShrink: 0 }} />
               <p style={{ fontSize: '11px', color: 'rgba(255, 255, 255,0.8)', margin: 0, fontWeight: '600' }}>
-                Los cambios en los permisos se aplicarÃ¡n a los nuevos miembros que se unan con este rol.
+                Los cambios en los permisos se aplicar¡n a los nuevos miembros que se unan con este rol.
               </p>
             </div>
 

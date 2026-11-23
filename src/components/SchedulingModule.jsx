@@ -50,7 +50,7 @@ const DEFAULT_DAY_TIMELINE_START = 8;
 const DEFAULT_DAY_TIMELINE_END = 24;
 const DAY_TIMELINE_HOUR_HEIGHT = 68;
 const AGENDA_VIEW_OPTIONS = [
-  { value: 'day', label: 'DÃ­a' },
+  { value: 'day', label: 'Día' },
   { value: 'week', label: 'Semana' },
   { value: 'fortnight', label: '2 semanas' },
   { value: 'month', label: 'Mes' }
@@ -214,7 +214,7 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
   const loadAllAppointments = async () => {
     try {
       // Calendar dots only need a reasonable window around "today", not the
-      // barbershop's entire history â€” keeps this cheap on every mount.
+      // barbershop's entire history — keeps this cheap on every mount.
       const rangeStart = new Date();
       rangeStart.setDate(rangeStart.getDate() - 60);
       rangeStart.setHours(0, 0, 0, 0);
@@ -419,7 +419,7 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
       loadFilteredAppointments();
       loadAllAppointments();
     } catch (err) {
-      showToast("Error al procesar acciÃ³n", "error");
+      showToast("Error al procesar acción", "error");
     }
   };
 
@@ -454,7 +454,7 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
   };
 
   const getStatusText = (status) => {
-    if (status === 'En Silla') return 'En sillÃ³n';
+    if (status === 'En Silla') return 'En sillón';
     if (status === 'En Lavado') return 'En profilaxis';
     return status;
   };
@@ -3164,7 +3164,7 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
       <header className="scheduling-header">
         <div className="scheduling-header-title">
           <h1 style={{ fontSize: '32px', fontWeight: '950', letterSpacing: '-0.8px', fontFamily: 'Outfit, var(--font-sans), system-ui' }}>Agenda</h1>
-          <p style={{ color: 'var(--text-secondary)' }}>GestiÃ³n inteligente de citas y disponibilidad.</p>
+          <p style={{ color: 'var(--text-secondary)' }}>Gestión inteligente de citas y disponibilidad.</p>
         </div>
         <div className="scheduling-header-actions">
           <div className="desktop-header-search">
@@ -3172,7 +3172,7 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
             <input
               type="search"
               aria-label="Buscar citas"
-              placeholder="Buscar cliente, cÃ©dula o telÃ©fonoâ€¦"
+              placeholder="Buscar cliente, cédula o teléfono…"
               value={searchTerm}
               onChange={event => setSearchTerm(event.target.value)}
             />
@@ -3180,7 +3180,7 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
               <button
                 type="button"
                 className="desktop-header-search-clear"
-                aria-label="Limpiar bÃºsqueda"
+                aria-label="Limpiar búsqueda"
                 onClick={() => setSearchTerm('')}
               >
                 <X size={13} />
@@ -3358,7 +3358,7 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
                 const isToday = new Date().toDateString() === date.toDateString();
                 const dateStr = date.toISOString().split('T')[0];
                 const hasApps = allAppointments.some(a => (a.scheduled_at || a.created_at)?.startsWith(dateStr));
-                const dayNamesShort = ["Dom", "Lun", "Mar", "MiÃ©", "Jue", "Vie", "SÃ¡b"];
+                const dayNamesShort = ["Dom", "Lun", "Mar", "Mié", "Jue", "Vie", "S¡b"];
                 
                 return (
                   <button
@@ -3391,7 +3391,7 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
               <div className="agenda-summary-metric agenda-summary-metric--appointments">
                 <span className="agenda-summary-icon"><CalendarIcon size={15} /></span>
                 <span className="agenda-summary-copy">
-                  <small>Citas del dÃ­a</small>
+                  <small>Citas del día</small>
                   <strong>{teamScopedAppointments.length}</strong>
                 </span>
               </div>
@@ -3419,7 +3419,7 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
                 <span>
                   {teamMemberFilter === 'all'
                     ? `${professionalStaff.length} profesionales Â· todas las citas en conjunto`
-                    : 'Mostrando Ãºnicamente la agenda seleccionada'}
+                    : 'Mostrando únicamente la agenda seleccionada'}
                 </span>
               </div>
               <PandaSelect
@@ -3492,7 +3492,7 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
             <button
               type="button"
               className={`mobile-agenda-search-toggle${isMobileSearchOpen || searchTerm ? ' is-active' : ''}`}
-              aria-label={isMobileSearchOpen || searchTerm ? 'Ocultar bÃºsqueda' : 'Buscar citas'}
+              aria-label={isMobileSearchOpen || searchTerm ? 'Ocultar búsqueda' : 'Buscar citas'}
               aria-expanded={Boolean(isMobileSearchOpen || searchTerm)}
               onClick={() => setIsMobileSearchOpen(current => !current)}
             >
@@ -3503,7 +3503,7 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
               <input
                 type="search"
                 aria-label="Buscar citas"
-                placeholder="Buscar cliente, cÃ©dula o telÃ©fonoâ€¦"
+                placeholder="Buscar cliente, cédula o teléfono…"
                 value={searchTerm}
                 onChange={event => setSearchTerm(event.target.value)}
               />
@@ -3511,7 +3511,7 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
                 <button
                   type="button"
                   className="mobile-agenda-search-clear"
-                  aria-label={searchTerm ? 'Limpiar bÃºsqueda' : 'Cerrar bÃºsqueda'}
+                  aria-label={searchTerm ? 'Limpiar búsqueda' : 'Cerrar búsqueda'}
                   onClick={() => {
                     setSearchTerm('');
                     setIsMobileSearchOpen(false);
@@ -3549,7 +3549,7 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
               <Search style={{ position: 'absolute', left: '20px', pointerEvents: 'none' }} size={22} color="rgba(255,255,255,0.4)" />
               <input 
                 type="text" 
-                placeholder="Buscar por nombre, cÃ©dula o telÃ©fono..." 
+                placeholder="Buscar por nombre, cédula o teléfono..." 
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 style={{
@@ -3617,21 +3617,21 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
                 </div>
                 <div style={{ color: '#111111', fontSize: '17px', fontWeight: '900', fontFamily: 'Outfit, sans-serif', marginBottom: '8px' }}>
                   {searchTerm
-                    ? 'Sin resultados para tu bÃºsqueda'
+                    ? 'Sin resultados para tu búsqueda'
                     : statusFilter === 'completed'
-                      ? 'AÃºn no hay citas completadas'
+                      ? 'Aún no hay citas completadas'
                       : statusFilter === 'pending'
                         ? 'No hay citas pendientes'
-                        : (isProfessionalAgenda ? 'Tu dÃ­a estÃ¡ disponible' : 'AÃºn no hay citas agendadas')}
+                        : (isProfessionalAgenda ? 'Tu día est¡ disponible' : 'Aún no hay citas agendadas')}
                 </div>
                 <div style={{ color: 'var(--text-muted)', fontSize: '13px', fontWeight: '600', maxWidth: '320px', lineHeight: '1.5' }}>
                   {searchTerm
-                    ? `No encontramos citas que coincidan con "${searchTerm}". Prueba con otro nombre, cÃ©dula o telÃ©fono.`
+                    ? `No encontramos citas que coincidan con "${searchTerm}". Prueba con otro nombre, cédula o teléfono.`
                     : statusFilter !== 'all'
-                      ? 'Selecciona â€œTodasâ€ para volver a ver la agenda completa de esta fecha.'
+                      ? 'Selecciona ÉTodasÊ para volver a ver la agenda completa de esta fecha.'
                     : (isProfessionalAgenda
-                      ? 'No tienes citas para esta fecha. Puedes revisar los prÃ³ximos dÃ­as o actualizar la agenda.'
-                      : 'Este dÃ­a estÃ¡ libre. Crea una nueva cita y aparecerÃ¡ aquÃ­ en tu agenda.')}
+                      ? 'No tienes citas para esta fecha. Puedes revisar los próximos días o actualizar la agenda.'
+                      : 'Este día est¡ libre. Crea una nueva cita y aparecer¡ aquí en tu agenda.')}
                 </div>
                 {!searchTerm && statusFilter === 'all' && isProfessionalAgenda && (
                   <div className="mobile-empty-actions">
@@ -3644,7 +3644,7 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
                       }}
                       style={{ background: 'var(--gold-primary)', color: '#121212', border: 'none' }}
                     >
-                      PrÃ³ximo dÃ­a
+                      Próximo día
                     </button>
                     <button
                       type="button"
@@ -3659,12 +3659,12 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
             ) : (
               <div key={selectedDate.toDateString()} className="panda-day-transition" style={{ display: 'flex', flexDirection: 'column', minHeight: '100%' }}>
                   {!isMobile && filterType === 'day' && isProfessionalAgenda && (
-                    <section className="desktop-day-calendar" aria-label="Agenda horaria del dÃ­a">
+                    <section className="desktop-day-calendar" aria-label="Agenda horaria del día">
                       <header className="desktop-day-calendar-header">
-                        <strong>Horario del dÃ­a</strong>
+                        <strong>Horario del día</strong>
                         <span>
                           {new Date(2000, 0, 1, dayTimelineRange.startHour).toLocaleTimeString([], { hour: 'numeric', minute: '2-digit', hour12: true })}
-                          {' â€” '}
+                          {' — '}
                           {new Date(2000, 0, 1, dayTimelineRange.endHour).toLocaleTimeString([], { hour: 'numeric', minute: '2-digit', hour12: true })}
                         </span>
                       </header>
@@ -3803,7 +3803,7 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
                                 {showCurrentTimeLine && (
                                   <span className="admin-resource-now-line" style={{ top: `${currentTimeLineTop}px` }} />
                                 )}
-                                {memberItems.length === 0 && <span className="admin-resource-empty">Disponible durante el dÃ­a</span>}
+                                {memberItems.length === 0 && <span className="admin-resource-empty">Disponible durante el día</span>}
                                 {memberItems.map(item => {
                                   const statusStyle = getStatusColor(item.app.status);
                                   const top = ((item.startMinute - dayTimelineRange.startHour * 60) / 60) * DAY_TIMELINE_HOUR_HEIGHT;
@@ -3883,7 +3883,7 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
 
                       <div className="mobile-resource-summary">
                         <strong>{mobileFocusedStaff.name || 'Profesional'}</strong>
-                        <span aria-label={`${mobileFocusedStats.total} citas, ${mobileFocusedStats.completed} completadas y ${mobileFocusedStats.estimate.toFixed(2)} dÃ³lares estimados`}>
+                        <span aria-label={`${mobileFocusedStats.total} citas, ${mobileFocusedStats.completed} completadas y ${mobileFocusedStats.estimate.toFixed(2)} dólares estimados`}>
                           <b>{mobileFocusedStats.total}</b> citas&nbsp; Â· &nbsp;
                           <b>{mobileFocusedStats.completed}</b> listas&nbsp; Â· &nbsp;
                           <b>${mobileFocusedStats.estimate.toFixed(0)}</b>
@@ -3892,10 +3892,10 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
 
                       <div className="mobile-resource-calendar-shell">
                         <header className="mobile-resource-calendar-header">
-                          <strong>Horario del dÃ­a</strong>
+                          <strong>Horario del día</strong>
                           <span>
                             {new Date(2000, 0, 1, dayTimelineRange.startHour).toLocaleTimeString([], { hour: 'numeric', minute: '2-digit', hour12: true })}
-                            {' â€” '}
+                            {' — '}
                             {new Date(2000, 0, 1, dayTimelineRange.endHour).toLocaleTimeString([], { hour: 'numeric', minute: '2-digit', hour12: true })}
                           </span>
                         </header>
@@ -3927,7 +3927,7 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
                               <span className="admin-resource-now-line" style={{ top: `${currentTimeLineTop}px` }} />
                             )}
                             {mobileFocusedTimelineItems.length === 0 && (
-                              <span className="admin-resource-empty">Disponible durante el dÃ­a</span>
+                              <span className="admin-resource-empty">Disponible durante el día</span>
                             )}
                             {mobileFocusedTimelineItems.map(item => {
                               const statusStyle = getStatusColor(item.app.status);
@@ -3977,7 +3977,7 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
                   {filterType !== 'day' && (
                     <section className={`period-calendar period-calendar--${filterType}`} aria-label={`Vista de ${filterType}`}>
                       <div className="period-calendar-weekdays" aria-hidden="true">
-                        {['Lunes', 'Martes', 'MiÃ©rcoles', 'Jueves', 'Viernes', 'SÃ¡bado', 'Domingo'].map(day => <span key={day}>{day}</span>)}
+                        {['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'S¡bado', 'Domingo'].map(day => <span key={day}>{day}</span>)}
                       </div>
                       <div className="period-calendar-grid">
                         {periodCalendarDays.map(day => {
@@ -4038,7 +4038,7 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
                                   );
                                 })}
                                 {day.appointments.length > visibleAppointments.length && (
-                                  <span className="period-day-more">+{day.appointments.length - visibleAppointments.length} mÃ¡s</span>
+                                  <span className="period-day-more">+{day.appointments.length - visibleAppointments.length} m¡s</span>
                                 )}
                                 {!day.appointments.length && filterType !== 'month' && <span className="period-day-empty">Sin citas programadas</span>}
                               </div>
@@ -4053,7 +4053,7 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
                   {filterType === 'day' && (
                   <div className="agenda-groups-grid" style={{ position: 'relative', paddingRight: '4px', display: (!isProfessionalAgenda && !searchTerm) || (!isMobile && filterType === 'day') ? 'none' : undefined }}>
                   {[
-                    { key: 'morning', title: 'En la maÃ±ana', apps: morningApps, icon: <Sunrise size={16} />, color: 'var(--gold-primary)' },
+                    { key: 'morning', title: 'En la mañana', apps: morningApps, icon: <Sunrise size={16} />, color: 'var(--gold-primary)' },
                     { key: 'afternoon', title: 'En la tarde', apps: afternoonApps, icon: <Sun size={16} />, color: '#f39c12' },
                     { key: 'evening', title: 'En la noche', apps: eveningApps, icon: <Moon size={16} />, color: '#9b59b6' }
                   ].map((group, groupIdx) => {
@@ -4188,7 +4188,7 @@ return (
         isOpen={dialog.isOpen} 
         type="confirm"
         title="Gestionar Cita" 
-        message="Â¿QuÃ© deseas hacer con esta cita?" 
+        message="Â¿Qué deseas hacer con esta cita?" 
         onCancel={() => setDialog({ isOpen: false, appointmentId: null })}
         customFooter={
           <div style={{ display: 'flex', gap: '12px', width: '100%', marginTop: '20px' }}>
@@ -4269,7 +4269,7 @@ return (
                         <div style={{ position: 'relative' }}>
                           <div style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
                             <Search style={{ position: 'absolute', left: '14px', pointerEvents: 'none' }} size={18} color="rgba(255,255,255,0.35)" />
-                            <input type="text" placeholder="CÃ©dula o nombre..." value={clientSearchTerm} onChange={(e) => handleClientSearch(e.target.value)} style={{ width: '100%', padding: '0 14px 0 42px', height: '46px', fontSize: '14px', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', borderRadius: '14px', color: '#111111', outline: 'none', fontWeight: '500', transition: 'all 0.2s' }} onFocus={e => { e.target.style.borderColor = 'rgba(17, 17, 17,0.4)'; e.target.style.background = 'rgba(255,255,255,0.08)'; }} onBlur={e => { e.target.style.borderColor = 'rgba(255,255,255,0.08)'; e.target.style.background = 'rgba(255,255,255,0.05)'; }} />
+                            <input type="text" placeholder="Cédula o nombre..." value={clientSearchTerm} onChange={(e) => handleClientSearch(e.target.value)} style={{ width: '100%', padding: '0 14px 0 42px', height: '46px', fontSize: '14px', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', borderRadius: '14px', color: '#111111', outline: 'none', fontWeight: '500', transition: 'all 0.2s' }} onFocus={e => { e.target.style.borderColor = 'rgba(17, 17, 17,0.4)'; e.target.style.background = 'rgba(255,255,255,0.08)'; }} onBlur={e => { e.target.style.borderColor = 'rgba(255,255,255,0.08)'; e.target.style.background = 'rgba(255,255,255,0.05)'; }} />
                           </div>
                           {!selectedClient && clientSearchResults.length > 0 && (
                             <div className="animate-scale-in" style={{ position: 'absolute', top: 'calc(100% + 6px)', left: 0, right: 0, background: 'var(--bg-secondary)', border: '1px solid rgba(0, 0, 0, 0.08)', borderRadius: '14px', overflow: 'hidden', zIndex: 200, backdropFilter: 'blur(30px)', boxShadow: '0 16px 40px rgba(0,0,0,0.5)', maxHeight: '200px', overflowY: 'auto' }}>
@@ -4288,7 +4288,7 @@ return (
                       )}
 
                     {/* Barbero */}
-                      <FieldLabel required>OdontÃ³logo</FieldLabel>
+                      <FieldLabel required>Odontólogo</FieldLabel>
                       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, 60px)', gap: '12px', justifyItems: 'center' }}>
                         {staff.filter(isDentistaBookableStaff).map(s => {
                           const isSel = newApp.staffId === s.id;
@@ -4313,7 +4313,7 @@ return (
                       <FieldLabel required>Servicio</FieldLabel>
                       <PandaSelect placeholder="Selecciona el servicio..." value={newApp.serviceId} onChange={(val) => setNewApp({...newApp, serviceId: val})} options={services.map(s => ({ label: `${s.name} ($${s.price})`, value: s.id }))} />
 
-                    {/* Extras â€” Grid 2 columnas */}
+                    {/* Extras — Grid 2 columnas */}
                       <FieldLabel>Extras</FieldLabel>
                       <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) minmax(0, 1fr)', gap: '8px' }}>
                         {allExtras.filter(ex => ex.name && !ex.name.toUpperCase().includes('ROULETTE_PRIZE') && !ex.name.toUpperCase().includes('CORTE GRATIS')).map(ex => {
@@ -4333,7 +4333,7 @@ return (
                     {/* Productos */}
                     <div>
                       <FieldLabel>Productos</FieldLabel>
-                      <PandaSelect placeholder="AÃ±adir producto..." onChange={(val) => { if (!newApp.products.find(p => p.id === val)) setNewApp({ ...newApp, products: [...newApp.products, { id: val, quantity: 1 }] }); }} options={allProducts.filter(p => Number(p.stock || 0) > 0).map(p => ({ label: `${getInventorySalesLabel(p)} Â· ${p.name} ($${p.price})`, value: p.id }))} />
+                      <PandaSelect placeholder="Añadir producto..." onChange={(val) => { if (!newApp.products.find(p => p.id === val)) setNewApp({ ...newApp, products: [...newApp.products, { id: val, quantity: 1 }] }); }} options={allProducts.filter(p => Number(p.stock || 0) > 0).map(p => ({ label: `${getInventorySalesLabel(p)} Â· ${p.name} ($${p.price})`, value: p.id }))} />
                       {newApp.products.length > 0 && (
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', marginTop: '10px' }}>
                           {newApp.products.map(p => {
@@ -4378,7 +4378,7 @@ return (
                   </div>
                     <button onClick={() => {
                       if (!newApp.clientId || !newApp.serviceId || !newApp.staffId) {
-                        showToast("Selecciona cliente, servicio y odontÃ³logo", "error");
+                        showToast("Selecciona cliente, servicio y odontólogo", "error");
                         return;
                       }
                       if (!isDentistaBookableStaff(staff.find(s => String(s.id) === String(newApp.staffId)))) {
@@ -4462,7 +4462,7 @@ return (
 
                 <div style={{ marginBottom: '24px', paddingBottom: '16px', borderBottom: '1px solid rgba(0, 0, 0, 0.08)' }}>
                   <p style={{ fontSize: '11px', color: 'var(--text-muted)', margin: 0, fontWeight: '700' }}>
-                    CÃ©dula: <span style={{ color: '#111111' }}>V-{activeDetail.clients?.id_card || 'S/C'}</span> â€¢ Celular: <span style={{ color: '#111111' }}>{activeDetail.clients?.phone || 'S/N'}</span>
+                    Cédula: <span style={{ color: '#111111' }}>V-{activeDetail.clients?.id_card || 'S/C'}</span> • Celular: <span style={{ color: '#111111' }}>{activeDetail.clients?.phone || 'S/N'}</span>
                   </p>
                 </div>
 
@@ -4543,7 +4543,7 @@ return (
                       <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
                         {activeDetail.appointment_products.map(p => (
                           <div key={p.id} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'rgba(0, 0, 0, 0.04)', padding: '10px 16px', borderRadius: '12px', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
-                            <span style={{ fontSize: '12px', color: 'rgba(255,255,255,0.85)', fontWeight: '600' }}>â€¢ {p.quantity}x {p.inventory?.name}</span>
+                            <span style={{ fontSize: '12px', color: 'rgba(255,255,255,0.85)', fontWeight: '600' }}>• {p.quantity}x {p.inventory?.name}</span>
                             <span style={{ fontSize: '12px', fontWeight: '800', color: 'var(--gold-primary)', fontFamily: 'Outfit, sans-serif' }}>+${(p.price * p.quantity).toFixed(2)}</span>
                           </div>
                         ))}
@@ -4607,12 +4607,12 @@ return (
                     {activeDetail.beverage_selection && (
                       <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                         <span>
-                          {activeDetail.beverage_selection.includes('CafÃ©') ? <Coffee size={14} color="#111111" /> :
+                          {activeDetail.beverage_selection.includes('Café') ? <Coffee size={14} color="#111111" /> :
                            activeDetail.beverage_selection.includes('Cerveza') ? <Beer size={14} color="#ffcc00" /> :
                            activeDetail.beverage_selection.includes('Whiskey') ? <Martini size={14} color="#ff9f0a" /> : <GlassWater size={14} color="#007aff" />}
                         </span>
                         <div>
-                          <span style={{ fontSize: '9px', fontWeight: '900', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.8px', display: 'block' }}>HidrataciÃ³n Solicitada</span>
+                          <span style={{ fontSize: '9px', fontWeight: '900', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.8px', display: 'block' }}>Hidratación Solicitada</span>
                           <span style={{ fontSize: '13px', fontWeight: '800', color: '#111111' }}>{activeDetail.beverage_selection}</span>
                         </div>
                       </div>

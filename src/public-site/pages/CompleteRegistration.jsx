@@ -17,7 +17,7 @@ const isoToDisplay = (iso) => {
 
 // Formats digits-as-typed into "dd/mm/aaaa", inserting the slashes automatically instead of
 // requiring the user to type them. Returns both the display string and, once all 8 digits
-// are in, the ISO value to actually store â€” birth_date stays empty (it's optional) until the
+// are in, the ISO value to actually store — birth_date stays empty (it's optional) until the
 // date is complete.
 const formatBirthDateInput = (rawValue) => {
   const digits = rawValue.replace(/\D/g, '').slice(0, 8);
@@ -42,16 +42,16 @@ const BENEFITS = [
 ];
 
 // Rank thresholds match the points catalog already used in Profile.jsx (100/200/300 unlock
-// the free wash/beard/haircut prizes) â€” BÃ¡sico/Bronce/Plata/Oro is the unified ladder used
+// the free wash/beard/haircut prizes) — B¡sico/Bronce/Plata/Oro is the unified ladder used
 // across the whole app and reuses numbers the rest of the app already treats as meaningful
 // instead of inventing new ones just for this card.
 const RANKS = [
   { min: 300, label: 'Oro' },
   { min: 200, label: 'Plata' },
   { min: 100, label: 'Bronce' },
-  { min: 0, label: 'BÃ¡sico' },
+  { min: 0, label: 'B¡sico' },
 ];
-const getRank = (points) => RANKS.find(r => points >= r.min)?.label || 'BÃ¡sico';
+const getRank = (points) => RANKS.find(r => points >= r.min)?.label || 'B¡sico';
 
 export default function CompleteRegistration() {
   const navigate = useNavigate();
@@ -62,7 +62,7 @@ export default function CompleteRegistration() {
   const [switchingAccount, setSwitchingAccount] = useState(false);
   const [birthDateDisplay, setBirthDateDisplay] = useState('');
 
-  // Real points from an existing (partial) client record, if any â€” someone can land here
+  // Real points from an existing (partial) client record, if any — someone can land here
   // with points already earned if they're missing only phone/id_card. Defaults to 0 for a
   // brand-new signup.
   const [clientPoints, setClientPoints] = useState(0);
@@ -132,7 +132,7 @@ export default function CompleteRegistration() {
   }, [navigate]);
 
   // Signs out of the current Google session, then immediately re-triggers Google login
-  // with the account picker forced â€” without forcing the picker, signInWithGoogle would
+  // with the account picker forced — without forcing the picker, signInWithGoogle would
   // silently reuse whatever Google account the browser still remembers, defeating the
   // point of "switch account". The redirect back lands on '/', so this leaves the page.
   const handleSwitchAccount = async () => {
@@ -162,12 +162,12 @@ export default function CompleteRegistration() {
       return;
     }
     if (!form.phone.trim()) {
-      setError('El telÃ©fono es obligatorio');
+      setError('El teléfono es obligatorio');
       document.getElementById('reg-phone')?.focus();
       return;
     }
     if (!form.id_card.trim()) {
-      setError('La cÃ©dula es obligatoria');
+      setError('La cédula es obligatoria');
       document.getElementById('reg-id-card')?.focus();
       return;
     }
@@ -196,7 +196,7 @@ export default function CompleteRegistration() {
         // Same reliable pattern as email/booking signup (see Login.jsx and
         // BookAppointment.jsx): the onboarding flag is already persisted above,
         // and PublicLayout shows it when /perfil mounts. Using React Router's
-        // navigate â€” instead of a manual window.location.replace â€” keeps this
+        // navigate — instead of a manual window.location.replace — keeps this
         // flow identical to the others and avoids the OAuth-callback race that
         // used to strand the user on the landing page.
         navigate('/perfil', { replace: true });
@@ -212,13 +212,13 @@ export default function CompleteRegistration() {
   const memberSinceRaw = new Date().toLocaleDateString('es-ES', { month: 'short', year: 'numeric' });
   const memberSince = memberSinceRaw.charAt(0).toUpperCase() + memberSinceRaw.slice(1).replace('.', '');
   const rank = getRank(clientPoints);
-  const displayName = form.name.trim() || 'Tu nombre aquÃ­';
+  const displayName = form.name.trim() || 'Tu nombre aquí';
   const initials = form.name.trim()
     ? form.name.trim().split(/\s+/).slice(0, 2).map(w => w[0]).join('').toUpperCase()
     : '?';
 
   // 3D tilt for the membership card: rotation follows the cursor (spring-damped so it settles
-  // smoothly instead of snapping), plus a specular highlight that tracks the same position â€”
+  // smoothly instead of snapping), plus a specular highlight that tracks the same position —
   // together they read as light catching a physical card's surface rather than a flat image.
   const cardRotateX = useMotionValue(0);
   const cardRotateY = useMotionValue(0);
@@ -252,7 +252,7 @@ export default function CompleteRegistration() {
       <div style={{ minHeight: '100vh', background: '#f4f5f3', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
         <div style={{ textAlign: 'center' }}>
           <Loader size={40} style={{ color: 'var(--champagne)', animation: 'spin 1s linear infinite', margin: '0 auto 16px' }} />
-          <p style={{ color: 'var(--text-muted)' }}>Verificando sesiÃ³n...</p>
+          <p style={{ color: 'var(--text-muted)' }}>Verificando sesión...</p>
         </div>
       </div>
     );
@@ -323,13 +323,13 @@ export default function CompleteRegistration() {
             Ya eres parte de <span className="text-gold">Dientes Sanos.</span>
           </h1>
           <p style={{ color: 'var(--text-secondary)', fontSize: 13.5, marginBottom: 20 }}>
-            Completa estos Ãºltimos datos y activa tu perfil.
+            Completa estos últimos datos y activa tu perfil.
           </p>
           <p style={{ color: '#94a3b8', fontSize: 11.5, margin: '-10px 0 20px' }}>
-            La biometrÃ­a no es obligatoria. PodrÃ¡s activarla despuÃ©s si deseas usarla.
+            La biometría no es obligatoria. Podr¡s activarla después si deseas usarla.
           </p>
 
-          {/* 3-step tracker: this screen is always "Perfil" â€” Google is already done to get
+          {/* 3-step tracker: this screen is always "Perfil" — Google is already done to get
               here, and Club Sonrisa (the welcome/rewards screen) comes right after submitting. */}
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 0, maxWidth: 400, margin: '0 auto' }}>
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 7 }}>
@@ -415,7 +415,7 @@ export default function CompleteRegistration() {
                           textDecoration: 'underline', textUnderlineOffset: 2,
                         }}
                       >
-                        {switchingAccount ? 'Abriendo Googleâ€¦' : 'Cambiar cuenta'}
+                        {switchingAccount ? 'Abriendo Google…' : 'Cambiar cuenta'}
                       </motion.button>
                     </div>
                   </div>
@@ -451,7 +451,7 @@ export default function CompleteRegistration() {
                         />
                       </div>
                       <p style={{ fontSize: 11, color: 'var(--text-muted)', marginTop: 4 }}>
-                        Google lo completÃ³ por ti. CorrÃ­gelo si no es tu nombre real.
+                        Google lo completó por ti. Corrígelo si no es tu nombre real.
                       </p>
                     </div>
 
@@ -476,7 +476,7 @@ export default function CompleteRegistration() {
                   <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap' }}>
                     <div style={{ flex: '1 1 200px' }}>
                       <label style={{ display: 'flex', alignItems: 'center', gap: 4, fontSize: 13, fontWeight: 700, color: '#0f172a', marginBottom: 8 }}>
-                        TelÃ©fono <span style={{ color: '#ef4444' }}>*</span>
+                        Teléfono <span style={{ color: '#ef4444' }}>*</span>
                       </label>
                       <div style={{ position: 'relative' }}>
                         <Phone size={16} style={{ position: 'absolute', left: 14, top: '50%', transform: 'translateY(-50%)', color: 'var(--text-muted)' }} />
@@ -493,7 +493,7 @@ export default function CompleteRegistration() {
 
                     <div style={{ flex: '1 1 200px' }}>
                       <label style={{ display: 'flex', alignItems: 'center', gap: 4, fontSize: 13, fontWeight: 700, color: '#0f172a', marginBottom: 8 }}>
-                        CÃ©dula <span style={{ color: '#ef4444' }}>*</span>
+                        Cédula <span style={{ color: '#ef4444' }}>*</span>
                       </label>
                       <div style={{ position: 'relative' }}>
                         <CreditCard size={16} style={{ position: 'absolute', left: 14, top: '50%', transform: 'translateY(-50%)', color: 'var(--text-muted)' }} />
@@ -530,13 +530,13 @@ export default function CompleteRegistration() {
                         style={{ paddingLeft: '40px' }}
                       />
                     </div>
-                    <p style={{ fontSize: 11, color: 'var(--text-muted)', marginTop: 4 }}>Opcional â€” para sorpresas y descuentos en tu cumpleaÃ±os</p>
+                    <p style={{ fontSize: 11, color: 'var(--text-muted)', marginTop: 4 }}>Opcional — para sorpresas y descuentos en tu cumpleaños</p>
                   </div>
 
                   <div style={{ display: 'flex', gap: 10, alignItems: 'flex-start', background: 'rgba(17, 17, 17,0.06)', border: '1px solid rgba(217, 192, 143,0.25)', borderRadius: 12, padding: '12px 14px' }}>
                     <Info size={15} style={{ color: 'var(--text-muted)', flexShrink: 0, marginTop: 1 }} />
                     <p style={{ fontSize: 12, color: 'var(--text-secondary)', lineHeight: 1.55 }}>
-                      PodrÃ¡s explorar la app sin completar estos datos. Los necesitaremos al momento de reservar tu cita.
+                      Podr¡s explorar la app sin completar estos datos. Los necesitaremos al momento de reservar tu cita.
                     </p>
                   </div>
                 </div>
@@ -555,7 +555,7 @@ export default function CompleteRegistration() {
             </div>
           </motion.div>
 
-          {/* Connector arrow â€” purely decorative, only where there's room for it. */}
+          {/* Connector arrow — purely decorative, only where there's room for it. */}
           <motion.div
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -566,7 +566,7 @@ export default function CompleteRegistration() {
             <ArrowRight size={26} style={{ color: 'var(--champagne)' }} />
           </motion.div>
 
-          {/* â”€â”€ Right: live membership card preview (desktop only â€” the mobile layout
+          {/* â”€â”€ Right: live membership card preview (desktop only — the mobile layout
               already needs the vertical space for the form itself). â”€â”€ */}
           <motion.div
             className="hidden lg:block"
@@ -579,11 +579,11 @@ export default function CompleteRegistration() {
               TU CLUB SONRISA
             </p>
             <h2 style={{ fontSize: 20, fontWeight: 800, color: '#111111', textAlign: 'center', marginBottom: 18 }}>
-              Tu membresÃ­a empieza <span className="text-gold">hoy.</span>
+              Tu membresía empieza <span className="text-gold">hoy.</span>
             </h2>
 
             {/* The membership card itself. Structural elements (border, chip, avatar ring)
-                are graphite/chrome â€” true to the logo's black & white identity â€” and gold is
+                are graphite/chrome — true to the logo's black & white identity — and gold is
                 reserved for the two things actually worth highlighting: the member label and
                 the points count. `perspective` on this wrapper is what makes the child's
                 rotateX/rotateY read as real depth instead of a flat skew. */}
@@ -601,11 +601,11 @@ export default function CompleteRegistration() {
                 }}
               >
 
-                {/* Subtle cursor-tracked glint â€” much softer/tighter than the earlier
+                {/* Subtle cursor-tracked glint — much softer/tighter than the earlier
                     attempt, so it reads as a refined shimmer rather than a bright spot
                     sitting in the middle of the card. */}
                 <motion.div style={{ position: 'absolute', inset: 0, background: cardGlowBackground, pointerEvents: 'none' }} />
-                {/* Thin, faint diagonal sheen â€” always present at a whisper, so the card
+                {/* Thin, faint diagonal sheen — always present at a whisper, so the card
                     still looks like polished metal even before you hover it. */}
                 <div style={{
                   position: 'absolute', inset: '-50%',
@@ -642,7 +642,7 @@ export default function CompleteRegistration() {
                     </div>
                   </div>
 
-                  {/* Bottom row: tier + points â€” the one place gold is meant to pop. */}
+                  {/* Bottom row: tier + points — the one place gold is meant to pop. */}
                   <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between' }}>
                     <span style={{
                       fontSize: 9.5, fontWeight: 800, letterSpacing: '0.12em', color: 'var(--champagne)',
@@ -660,11 +660,11 @@ export default function CompleteRegistration() {
               </motion.div>
             </div>
 
-            {/* Benefits row â€” vertical layout (badge, then title, then description, all
+            {/* Benefits row — vertical layout (badge, then title, then description, all
                 centered) gives each line of text the item's FULL width instead of sharing
                 it with a side-by-side icon, which is what was forcing the wraps before.
-                whiteSpace: nowrap + ellipsis is a safety net, not the primary fix â€” the
-                shortened copy above is what actually keeps every line real (no visible â€¦). */}
+                whiteSpace: nowrap + ellipsis is a safety net, not the primary fix — the
+                shortened copy above is what actually keeps every line real (no visible …). */}
             <div style={{
               display: 'flex', marginTop: 18,
               background: 'linear-gradient(180deg, rgba(217, 192, 143,0.05) 0%, rgba(217, 192, 143,0.02) 100%)',
@@ -731,7 +731,7 @@ export default function CompleteRegistration() {
             <Shield size={17} style={{ color: 'var(--champagne)' }} />
           </div>
           <p style={{ fontSize: 12, color: 'var(--text-muted)', lineHeight: 1.5 }}>
-            Tus datos estÃ¡n 100% seguros con nosotros.
+            Tus datos est¡n 100% seguros con nosotros.
             <br />
             Solo los usamos para brindarte la mejor experiencia.
           </p>

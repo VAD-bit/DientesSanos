@@ -62,7 +62,7 @@ export class SimpleErrorBoundary extends React.Component {
               color: '#111111',
               letterSpacing: '-0.3px'
             }}>
-              Algo saliÃ³ mal
+              Algo salió mal
             </h2>
 
             {/* Description */}
@@ -75,7 +75,7 @@ export class SimpleErrorBoundary extends React.Component {
               marginLeft: 'auto',
               marginRight: 'auto'
             }}>
-              La aplicaciÃ³n encontrÃ³ un error inesperado. No te preocupes, puedes recargar para continuar.
+              La aplicación encontró un error inesperado. No te preocupes, puedes recargar para continuar.
             </p>
 
             {/* Reload Button */}
@@ -103,7 +103,7 @@ export class SimpleErrorBoundary extends React.Component {
                 e.currentTarget.style.boxShadow = '0 4px 20px rgba(17, 17, 17, 0.25)';
               }}
             >
-              Recargar pÃ¡gina
+              Recargar p¡gina
             </button>
 
             {/* Error Details */}

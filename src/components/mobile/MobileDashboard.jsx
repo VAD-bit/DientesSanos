@@ -35,21 +35,21 @@ const CheckoutPOS = lazy(() => import('../CheckoutPOS'));
 const ReceptionModule = lazy(() => import('../ReceptionModule'));
 
 const QUOTES = [
-  { text: "Cada cabeza es un mundo.", creator: "RefrÃ¡n Popular" },
-  { text: "La grandeza nace de pequeÃ±os comienzos.", creator: "Sir Francis Drake" },
+  { text: "Cada cabeza es un mundo.", creator: "Refr¡n Popular" },
+  { text: "La grandeza nace de pequeños comienzos.", creator: "Sir Francis Drake" },
   { text: "La disciplina es el puente entre metas y logros.", creator: "Jim Rohn" },
-  { text: "El estilo es una forma de decir quiÃ©n eres sin hablar.", creator: "Rachel Zoe" },
-  { text: "Invierte en tu imagen, es tu carta de presentaciÃ³n.", creator: "Negocios" },
+  { text: "El estilo es una forma de decir quién eres sin hablar.", creator: "Rachel Zoe" },
+  { text: "Invierte en tu imagen, es tu carta de presentación.", creator: "Negocios" },
   { text: "Cuidar tu sonrisa puede cambiar tu vida.", creator: "Arte Dientes Sanos" },
   { text: "La calidad atrae, el detalle retiene.", creator: "Estrategia" },
   { text: "No busques clientes, busca fans.", creator: "Crecimiento" },
-  { text: "La odontologÃ­a es el arte de cuidar sonrisas.", creator: "MÃ­stica Dientes Sanos" },
-  { text: "El Ã©xito es la suma de pequeÃ±os esfuerzos diarios.", creator: "Robert Collier" },
+  { text: "La odontología es el arte de cuidar sonrisas.", creator: "Mística Dientes Sanos" },
+  { text: "El éxito es la suma de pequeños esfuerzos diarios.", creator: "Robert Collier" },
   { text: "Domina tu oficio, luego rompe las reglas.", creator: "Maestros" },
-  { text: "Cada cliente es una oportunidad de crear una obra maestra.", creator: "VisiÃ³n" },
+  { text: "Cada cliente es una oportunidad de crear una obra maestra.", creator: "Visión" },
   { text: "El mejor marketing es un cliente satisfecho.", creator: "Marketing" },
-  { text: "SÃ© tan bueno que no puedan ignorarte.", creator: "Steve Martin" },
-  { text: "Tu Ãºnica competencia es la persona en el espejo.", creator: "SuperaciÃ³n" },
+  { text: "Sé tan bueno que no puedan ignorarte.", creator: "Steve Martin" },
+  { text: "Tu única competencia es la persona en el espejo.", creator: "Superación" },
   { text: "El negocio de la belleza es el negocio de la felicidad.", creator: "Emprendimiento" }
 ];
 
@@ -84,7 +84,7 @@ const MobileDashboard = ({ onOpenSale, stats, chartData, dbData, onNavigate, onO
     let alive = true;
     const load = async () => {
       try { const apps = await dataService.getAppointmentsByState(['En Silla']); if (alive) setChairApps(apps || []); }
-      catch { /* mantener Ãºltimo */ }
+      catch { /* mantener último */ }
     };
     load();
     const poll = setInterval(load, 15000);
@@ -107,7 +107,7 @@ const MobileDashboard = ({ onOpenSale, stats, chartData, dbData, onNavigate, onO
       out.push({
         id: String(i).padStart(2, '0'),
         occupied: true,
-        barber: app.staff?.name || app.staff_name || 'OdontÃ³logo',
+        barber: app.staff?.name || app.staff_name || 'Odontólogo',
         avatar: app.staff?.image_url,
         client: app.clients?.name || app.client_name || 'Cliente',
         service: app.services?.name || 'Servicio',
@@ -148,10 +148,10 @@ const MobileDashboard = ({ onOpenSale, stats, chartData, dbData, onNavigate, onO
     let template = localStorage.getItem('panda_default_bday_message');
     const isCorrupted = !template || 
       template.includes('\uFFFD') || 
-      template.includes('Ã¯Â¿Â½') ||
+      template.includes('îÂ¿Â½') ||
       /[\uD800-\uDBFF](?![\uDC00-\uDFFF])|([^\uD800-\uDBFF]|^)[\uDC00-\uDFFF]/.test(template);
     if (isCorrupted) {
-      template = `Â¡Hola {name}! ${String.fromCodePoint(0x1F389)} Te deseamos un muy feliz cumpleaÃ±os de parte de todo el equipo de Dientes Sanos. ${String.fromCodePoint(0x1F488)} Â¡Que tengas un dÃ­a excelente!`;
+      template = `Â¡Hola {name}! ${String.fromCodePoint(0x1F389)} Te deseamos un muy feliz cumpleaños de parte de todo el equipo de Dientes Sanos. ${String.fromCodePoint(0x1F488)} Â¡Que tengas un día excelente!`;
       localStorage.setItem('panda_default_bday_message', template);
     }
     const whatsappMsg = template.replace('{name}', person.name);
@@ -172,7 +172,7 @@ const MobileDashboard = ({ onOpenSale, stats, chartData, dbData, onNavigate, onO
       try {
         await dataService.updateClient(whatsappModalData.id, { phone: editedPhone });
       } catch (err) {
-        console.error("Error al actualizar telÃ©fono de cliente:", err);
+        console.error("Error al actualizar teléfono de cliente:", err);
       } finally {
         setIsSaving(false);
       }
@@ -224,7 +224,7 @@ const MobileDashboard = ({ onOpenSale, stats, chartData, dbData, onNavigate, onO
     })
     .sort((a, b) => (b.stats?.monthlyIncome || 0) - (a.stats?.monthlyIncome || 0));
 
-  // Top Clientes (Limitado a los 10 mejores para no saturar la vista mÃ³vil al expandir)
+  // Top Clientes (Limitado a los 10 mejores para no saturar la vista móvil al expandir)
   const topClients = (dbData?.clients || [])
     .sort((a, b) => (b.total_spent || 0) - (a.total_spent || 0))
     .slice(0, 10);
@@ -365,7 +365,7 @@ const MobileDashboard = ({ onOpenSale, stats, chartData, dbData, onNavigate, onO
         </div>
       </div>
 
-      {/* Estado de sillas â€” carrusel deslizable con el dedo (igual que en PC) */}
+      {/* Estado de sillas — carrusel deslizable con el dedo (igual que en PC) */}
       <div style={{ marginBottom: '24px' }}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '12px' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
@@ -422,7 +422,7 @@ const MobileDashboard = ({ onOpenSale, stats, chartData, dbData, onNavigate, onO
                   )}
                 </div>
                 <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '6px', textAlign: 'right' }}>
-                  <span style={{ fontSize: '15px', fontWeight: '900', color: '#111111', lineHeight: '1.1' }}>{chair.occupied ? chair.barber : 'SillÃ³n'}</span>
+                  <span style={{ fontSize: '15px', fontWeight: '900', color: '#111111', lineHeight: '1.1' }}>{chair.occupied ? chair.barber : 'Sillón'}</span>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '6px', background: chair.occupied ? 'rgba(239, 68, 68, 0.1)' : 'rgba(34, 197, 94, 0.1)', padding: '4px 8px', borderRadius: '8px' }}>
                     <div style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: chair.occupied ? '#ef4444' : '#22c55e', boxShadow: chair.occupied ? '0 0 8px #ef4444' : '0 0 8px #22c55e' }} />
                     <span style={{ fontSize: '10px', fontWeight: '900', color: chair.occupied ? '#ef4444' : '#22c55e', textTransform: 'uppercase', letterSpacing: '0.5px' }}>{chair.occupied ? 'En tratamiento' : 'Disponible'}</span>
@@ -434,7 +434,7 @@ const MobileDashboard = ({ onOpenSale, stats, chartData, dbData, onNavigate, onO
               <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center', pointerEvents: 'none', zIndex: 1 }}>
                 <img
                   src={dentalChairImg}
-                  alt="SillÃ³n odontolÃ³gico"
+                  alt="Sillón odontológico"
                   style={{
                     height: '180px', width: 'auto', objectFit: 'contain',
                     transform: chair.occupied ? 'scale(1.15)' : 'scale(1.0)',
@@ -458,7 +458,7 @@ const MobileDashboard = ({ onOpenSale, stats, chartData, dbData, onNavigate, onO
                     </div>
                   </div>
                 ) : (
-                  <div style={{ textAlign: 'center', fontSize: '12px', fontWeight: '800', color: 'rgba(255,255,255,0.3)', letterSpacing: '1px', textTransform: 'uppercase', padding: '16px 0', background: 'var(--bg-secondary)', borderRadius: '14px', backdropFilter: 'blur(4px)' }}>SillÃ³n libre</div>
+                  <div style={{ textAlign: 'center', fontSize: '12px', fontWeight: '800', color: 'rgba(255,255,255,0.3)', letterSpacing: '1px', textTransform: 'uppercase', padding: '16px 0', background: 'var(--bg-secondary)', borderRadius: '14px', backdropFilter: 'blur(4px)' }}>Sillón libre</div>
                 )}
               </div>
             </div>
@@ -470,7 +470,7 @@ const MobileDashboard = ({ onOpenSale, stats, chartData, dbData, onNavigate, onO
       {/* Bento Box Stats (Apple UX) */}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: '12px', marginBottom: '28px', padding: '0 4px' }}>
         
-        {/* Tarjeta Principal: ProducciÃ³n */}
+        {/* Tarjeta Principal: Producción */}
         <div style={{ 
           gridColumn: 'span 2', 
           background: 'linear-gradient(135deg, rgba(0, 0, 0, 0.04) 0%, rgba(17, 17, 17, 0.03) 100%)', 
@@ -488,7 +488,7 @@ const MobileDashboard = ({ onOpenSale, stats, chartData, dbData, onNavigate, onO
             <div style={{ width: '28px', height: '28px', borderRadius: '8px', background: 'rgba(17, 17, 17, 0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <DollarSign size={16} color="var(--gold-primary)" strokeWidth={2.5} />
             </div>
-            <span style={{ fontSize: '12px', color: 'rgba(255,255,255,0.6)', fontWeight: '800', letterSpacing: '0.5px' }}>PRODUCCIÃ“N TOTAL</span>
+            <span style={{ fontSize: '12px', color: 'rgba(255,255,255,0.6)', fontWeight: '800', letterSpacing: '0.5px' }}>PRODUCCIÓN TOTAL</span>
           </div>
           <div style={{ fontSize: '38px', fontWeight: '900', color: '#111111', letterSpacing: '-1px', display: 'flex', alignItems: 'baseline', gap: '4px' }}>
             <span style={{ fontSize: '24px', color: 'var(--gold-primary)', opacity: 0.8 }}>$</span>
@@ -541,7 +541,7 @@ const MobileDashboard = ({ onOpenSale, stats, chartData, dbData, onNavigate, onO
       {isAdmin && (
         <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', marginBottom: '24px' }}>
           {[
-            { id: 'daily', title: 'MisiÃ³n Diaria', current: stats?.income || 0, goal: goals.daily, label: 'HOY' },
+            { id: 'daily', title: 'Misión Diaria', current: stats?.income || 0, goal: goals.daily, label: 'HOY' },
             { id: 'weekly', title: 'Meta Semanal', current: stats?.weeklyIncome || 0, goal: goals.weekly, label: 'SEMANA ACTUAL' },
             { id: 'monthly', title: 'Objetivo Mensual', current: stats?.monthlyIncome || 0, goal: goals.monthly, label: 'MES EN CURSO' }
           ].map((m, i) => (
@@ -587,7 +587,7 @@ const MobileDashboard = ({ onOpenSale, stats, chartData, dbData, onNavigate, onO
       {/* Visual Podium Section for Top Barbers (Identical to Desktop) */}
       {isAdmin && teamOverview.length >= 2 && (
         <PodiumWidget 
-          title="Top OdontÃ³logos" 
+          title="Top Odontólogos" 
           icon={<Trophy size={16} />}
           data={teamOverview}
           labelKey="name"
@@ -614,7 +614,7 @@ const MobileDashboard = ({ onOpenSale, stats, chartData, dbData, onNavigate, onO
       {isAdmin && teamOverview.length < 2 && (
         <div className="glass-card" style={{ padding: '20px', borderRadius: '24px', marginBottom: '24px', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
           <div style={{ fontWeight: '900', fontSize: '13px', color: '#111111', marginBottom: '16px', letterSpacing: '-0.3px', fontStyle: 'italic', display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <Trophy size={14} color="var(--gold-primary)" /> TOP OdontÃ³logos (MES EN CURSO)
+            <Trophy size={14} color="var(--gold-primary)" /> TOP Odontólogos (MES EN CURSO)
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
             {teamOverview.map((st, idx) => (
@@ -640,7 +640,7 @@ const MobileDashboard = ({ onOpenSale, stats, chartData, dbData, onNavigate, onO
             <div style={{ width: '32px', height: '32px', borderRadius: '10px', background: 'rgba(17, 17, 17, 0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', border: '1px solid rgba(17, 17, 17, 0.2)', boxShadow: '0 0 10px rgba(17, 17, 17, 0.1)' }}>
               <Cake size={16} color="var(--gold-primary)" />
             </div>
-            <h3 style={{ fontSize: '16px', fontWeight: '900', color: '#111111', letterSpacing: '-0.3px', margin: 0 }}>CumpleaÃ±os</h3>
+            <h3 style={{ fontSize: '16px', fontWeight: '900', color: '#111111', letterSpacing: '-0.3px', margin: 0 }}>Cumpleaños</h3>
           </div>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
@@ -677,7 +677,7 @@ const MobileDashboard = ({ onOpenSale, stats, chartData, dbData, onNavigate, onO
                         >
                           {c.name.split(' ')[0]}
                         </div>
-                        <div style={{ fontSize: '11px', color: 'rgba(255,255,255,0.6)', fontWeight: '600' }}>Â¡FelicÃ­talo hoy!</div>
+                        <div style={{ fontSize: '11px', color: 'rgba(255,255,255,0.6)', fontWeight: '600' }}>Â¡Felicítalo hoy!</div>
                       </div>
                     </div>
                     
@@ -713,7 +713,7 @@ const MobileDashboard = ({ onOpenSale, stats, chartData, dbData, onNavigate, onO
             {upcomingBirthdays.length > 0 && (
               <div>
                 <div style={{ fontSize: '10px', fontWeight: '900', color: 'var(--text-muted)', letterSpacing: '1px', textTransform: 'uppercase', marginBottom: '12px', paddingLeft: '8px' }}>
-                  PRÃ“XIMOS DÃAS
+                  PRÓXIMOS DÍAS
                 </div>
                 <div className="glass-card" style={{ padding: '16px', borderRadius: '24px', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
                   <div style={{ display: 'flex', flexDirection: 'column' }}>
@@ -753,7 +753,7 @@ const MobileDashboard = ({ onOpenSale, stats, chartData, dbData, onNavigate, onO
               <div className="glass-card" style={{ padding: '30px 20px', borderRadius: '24px', border: '1px solid rgba(0, 0, 0, 0.08)', textAlign: 'center' }}>
                 <Cake size={32} color="rgba(255,255,255,0.1)" style={{ marginBottom: '12px' }} />
                 <div style={{ fontSize: '13px', color: 'var(--text-muted)', fontWeight: '600' }}>
-                  No hay cumpleaÃ±os cercanos
+                  No hay cumpleaños cercanos
                 </div>
               </div>
             )}
@@ -829,7 +829,7 @@ const MobileDashboard = ({ onOpenSale, stats, chartData, dbData, onNavigate, onO
             {/* Points & Tags */}
             {points.map((p, i) => {
               const isLast = i === points.length - 1;
-              // Si el punto estÃ¡ muy arriba, dibujamos la etiqueta abajo para que no se corte
+              // Si el punto est¡ muy arriba, dibujamos la etiqueta abajo para que no se corte
               const labelYOffset = p.y < 35 ? 20 : -20;
               
               return (
@@ -1041,13 +1041,13 @@ const MobileDashboard = ({ onOpenSale, stats, chartData, dbData, onNavigate, onO
 
             {/* Description */}
             <p style={{ fontSize: '11px', color: 'var(--text-secondary)', lineHeight: '1.4', margin: '0 0 14px 0' }}>
-              Personaliza el mensaje y el nÃºmero. Al editar el telÃ©fono, se guardarÃ¡ en la base de datos automÃ¡ticamente.
+              Personaliza el mensaje y el número. Al editar el teléfono, se guardar¡ en la base de datos autom¡ticamente.
             </p>
 
             {/* Phone Input */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', marginBottom: '12px' }}>
               <label style={{ fontSize: '9px', color: 'var(--text-muted)', fontWeight: '800', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
-                NÃºmero de TelÃ©fono
+                Número de Teléfono
               </label>
               <input 
                 type="text" 
@@ -1070,7 +1070,7 @@ const MobileDashboard = ({ onOpenSale, stats, chartData, dbData, onNavigate, onO
             {/* Message Input */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', marginBottom: '18px' }}>
               <label style={{ fontSize: '9px', color: 'var(--text-muted)', fontWeight: '800', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
-                Mensaje de FelicitaciÃ³n
+                Mensaje de Felicitación
               </label>
               <textarea 
                 value={editedMessage} 
@@ -1115,7 +1115,7 @@ const MobileDashboard = ({ onOpenSale, stats, chartData, dbData, onNavigate, onO
                 }}
               >
                 <MessageCircle size={14} />
-                {isSaving ? 'Guardando...' : 'Enviar al NÃºmero Registrado'}
+                {isSaving ? 'Guardando...' : 'Enviar al Número Registrado'}
               </button>
 
               <button 
@@ -1166,7 +1166,7 @@ const MobileDashboard = ({ onOpenSale, stats, chartData, dbData, onNavigate, onO
         document.body
       )}
 
-      {/* POPUPS PARA SILLAS EN MÃ“VIL (APPLE BOTTOM SHEET UX) */}
+      {/* POPUPS PARA SILLAS EN MÓVIL (APPLE BOTTOM SHEET UX) */}
       {createPortal(
         <AnimatePresence>
           {checkoutChairModal && (
@@ -1202,7 +1202,7 @@ const MobileDashboard = ({ onOpenSale, stats, chartData, dbData, onNavigate, onO
                 </div>
                 <div style={{ padding: '0 24px 16px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid rgba(0, 0, 0, 0.08)' }}>
                   <h3 style={{ margin: 0, fontSize: '20px', fontWeight: '900', color: '#111111', letterSpacing: '-0.5px' }}>
-                    Cobrar SillÃ³n {checkoutChairModal.id}
+                    Cobrar Sillón {checkoutChairModal.id}
                   </h3>
                   <button onClick={() => setCheckoutChairModal(null)} style={{ background: 'rgba(0, 0, 0, 0.04)', border: 'none', borderRadius: '50%', width: '32px', height: '32px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#111111', cursor: 'pointer' }}>
                     <X size={18} />
@@ -1262,7 +1262,7 @@ const MobileDashboard = ({ onOpenSale, stats, chartData, dbData, onNavigate, onO
                 </div>
                 <div style={{ padding: '0 24px 16px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid rgba(0, 0, 0, 0.08)' }}>
                   <h3 style={{ margin: 0, fontSize: '20px', fontWeight: '900', color: '#111111', letterSpacing: '-0.5px' }}>
-                    RecepciÃ³n
+                    Recepción
                   </h3>
                   <button onClick={() => setShowReceptionPopup(false)} style={{ background: 'rgba(0, 0, 0, 0.04)', border: 'none', borderRadius: '50%', width: '32px', height: '32px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#111111', cursor: 'pointer' }}>
                     <X size={18} />

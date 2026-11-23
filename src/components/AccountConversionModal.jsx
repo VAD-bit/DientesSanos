@@ -22,7 +22,7 @@ const CONVERSION_ACCOUNTS = [
   { key: 'zelle', label: 'Zelle', shortLabel: 'Zelle', usd: true, icon: Landmark, color: '#7356bf' },
   { key: 'binance', label: 'Binance', shortLabel: 'Binance', usd: true, icon: Coins, color: '#f3ba2f' },
   { key: 'zinli', label: 'Zinli', shortLabel: 'Zinli', usd: true, icon: Smartphone, color: '#68369b' },
-  { key: 'pago_movil', label: 'Pago MÃ³vil', shortLabel: 'Pago MÃ³vil', usd: false, icon: Smartphone, color: '#2f80ed' },
+  { key: 'pago_movil', label: 'Pago Móvil', shortLabel: 'Pago Móvil', usd: false, icon: Smartphone, color: '#2f80ed' },
   { key: 'cash_bs', label: 'Efectivo (Bs)', shortLabel: 'Efectivo Bs', usd: false, icon: Banknote, color: '#32d74b' },
   { key: 'punto_venta', label: 'Punto de venta', shortLabel: 'Punto de venta', usd: false, icon: CreditCard, color: '#56ccf2' },
   { key: 'transferencia', label: 'Transferencia', shortLabel: 'Transferencia', usd: false, icon: Layers3, color: '#bb6bd9' }
@@ -187,7 +187,7 @@ export default function AccountConversionModal({
                 </div>
                 <div>
                   <h2 style={{ fontSize: 'clamp(17px, 2vw, 20px)', fontWeight: '950', margin: 0, color: '#111111', letterSpacing: '-0.3px' }}>
-                    {sameCurrency ? 'Transferencia entre Cuentas' : 'ConversiÃ³n de Divisa'}
+                    {sameCurrency ? 'Transferencia entre Cuentas' : 'Conversión de Divisa'}
                   </h2>
                   <p style={{ margin: '2px 0 0', fontSize: '11.5px', color: 'var(--text-secondary)' }}>
                     {sameCurrency 
@@ -297,7 +297,7 @@ export default function AccountConversionModal({
                   {/* Amount Input */}
                   <div style={{ marginTop: '4px' }}>
                     <label style={{ display: 'block', fontSize: '11px', fontWeight: '800', color: 'var(--text-secondary)', marginBottom: '6px' }}>
-                      Monto a Transferir / Sacar ({fromInfo.usd ? '$ USD' : 'BolÃ­vares Bs'})
+                      Monto a Transferir / Sacar ({fromInfo.usd ? '$ USD' : 'Bolívares Bs'})
                     </label>
                     <div style={{ position: 'relative' }}>
                       <input
@@ -513,7 +513,7 @@ export default function AccountConversionModal({
                   <div>
                     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '6px' }}>
                       <label style={{ fontSize: '11px', fontWeight: '800', color: 'var(--text-secondary)' }}>
-                        Monto a Recibir ({toInfo.usd ? '$ USD' : 'BolÃ­vares Bs'})
+                        Monto a Recibir ({toInfo.usd ? '$ USD' : 'Bolívares Bs'})
                       </label>
                       {isManualTo && (
                         <button
@@ -626,7 +626,7 @@ export default function AccountConversionModal({
                   }}
                 >
                   <RefreshCcw size={17} />
-                  {loading ? 'Procesando...' : (sameCurrency ? 'Registrar Transferencia' : 'Registrar ConversiÃ³n')}
+                  {loading ? 'Procesando...' : (sameCurrency ? 'Registrar Transferencia' : 'Registrar Conversión')}
                 </button>
               </footer>
             </form>

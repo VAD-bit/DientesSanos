@@ -7,7 +7,7 @@ const MANUAL_ACCOUNTS = [
   { key: 'zelle', label: 'Zelle', currency: 'USD' },
   { key: 'zinli', label: 'Zinli', currency: 'USD' },
   { key: 'binance', label: 'Binance / USDT', currency: 'USD' },
-  { key: 'pago_movil', label: 'Pago MÃ³vil', currency: 'BS' },
+  { key: 'pago_movil', label: 'Pago Móvil', currency: 'BS' },
   { key: 'cash_bs', label: 'Efectivo (Bs)', currency: 'BS' },
   { key: 'punto_venta', label: 'Punto de venta', currency: 'BS' },
   { key: 'transferencia', label: 'Transferencia', currency: 'BS' }
@@ -33,15 +33,15 @@ export default function ManualFinanceTransactionPanel({ type, balances, rate, lo
     <header style={{ display: 'flex', justifyContent: 'space-between', gap: '16px', marginBottom: '24px' }}>
       <div style={{ display: 'flex', gap: '14px', alignItems: 'center' }}>
         <div style={{ width: '48px', height: '48px', borderRadius: '15px', display: 'grid', placeItems: 'center', background: isExpense ? 'rgba(255,69,58,.12)' : 'rgba(17, 17, 17,.12)', color: isExpense ? '#ff5b55' : 'var(--gold-primary)' }}>{isExpense ? <ArrowDownCircle /> : <ArrowUpCircle />}</div>
-        <div><h2 style={{ margin: 0, fontSize: '24px', fontWeight: 900 }}>Registrar {isExpense ? 'gasto' : 'ingreso'}</h2><p style={{ margin: '5px 0 0', color: 'var(--text-secondary)', fontSize: '13px' }}>{isExpense ? 'Indica de cuÃ¡l cuenta saldrÃ¡ el dinero.' : 'Indica a cuÃ¡l cuenta ingresarÃ¡ el dinero.'}</p></div>
+        <div><h2 style={{ margin: 0, fontSize: '24px', fontWeight: 900 }}>Registrar {isExpense ? 'gasto' : 'ingreso'}</h2><p style={{ margin: '5px 0 0', color: 'var(--text-secondary)', fontSize: '13px' }}>{isExpense ? 'Indica de cu¡l cuenta saldr¡ el dinero.' : 'Indica a cu¡l cuenta ingresar¡ el dinero.'}</p></div>
       </div>
       <button type="button" onClick={onClose} aria-label="Cerrar" style={{ background: 'transparent', border: 0, color: '#aaa', cursor: 'pointer', alignSelf: 'flex-start' }}><X /></button>
     </header>
 
-    <FieldLabel required>DESCRIPCIÃ“N</FieldLabel>
+    <FieldLabel required>DESCRIPCIÓN</FieldLabel>
     <input value={description} onChange={event => setDescription(event.target.value)} placeholder={isExpense ? 'Ej. Compra de productos de limpieza' : 'Ej. Aporte de caja'} maxLength={160} style={{ width: '100%', boxSizing: 'border-box', borderRadius: '13px', border: '1px solid rgba(0, 0, 0, 0.08)', background: 'var(--bg-secondary)', color: '#111111', padding: '14px 16px', fontSize: '15px', outline: 'none', marginBottom: '22px' }} />
 
-    <FieldLabel required>{isExpense ? 'MÃ‰TODO DE PAGO' : 'CUENTA DE DESTINO'}</FieldLabel>
+    <FieldLabel required>{isExpense ? 'MÉTODO DE PAGO' : 'CUENTA DE DESTINO'}</FieldLabel>
     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(155px,1fr))', gap: '10px', marginBottom: '22px' }}>
       {MANUAL_ACCOUNTS.map(item => { const active = item.key === accountKey; return <button key={item.key} type="button" onClick={() => { setAccountKey(item.key); setAmount(''); }} style={{ textAlign: 'left', padding: '13px', borderRadius: '13px', cursor: 'pointer', color: '#111111', background: active ? 'rgba(17, 17, 17,.12)' : 'rgba(255,255,255,.025)', border: active ? '1px solid var(--gold-primary)' : '1px solid rgba(0, 0, 0, 0.08)' }}><span style={{ display: 'flex', alignItems: 'center', gap: '7px', fontSize: '12px', fontWeight: 850 }}><Landmark size={14} />{item.label}</span><span style={{ display: 'block', marginTop: '7px', color: active ? 'var(--gold-primary)' : 'var(--text-muted)', fontSize: '11px' }}>Disponible: {money(balances?.[item.key], item.currency)}</span></button>; })}
     </div>

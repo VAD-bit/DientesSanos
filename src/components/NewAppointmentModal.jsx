@@ -194,7 +194,7 @@ const NewAppointmentModal = ({ isOpen, onClose, onSuccess, rates }) => {
 
   const handleGoToStep2 = () => {
     if (!newApp.clientId || !newApp.serviceId || !newApp.staffId) {
-      showToast("Selecciona cliente, servicio y odontÃ³logo", "error");
+      showToast("Selecciona cliente, servicio y odontólogo", "error");
       return;
     }
     if (!isDentistaBookableStaff(staff.find(s => String(s.id) === String(newApp.staffId)))) {
@@ -341,7 +341,7 @@ const NewAppointmentModal = ({ isOpen, onClose, onSuccess, rates }) => {
                           <div style={{ position: 'relative' }}>
                             <div style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
                               <Search style={{ position: 'absolute', left: '14px', pointerEvents: 'none' }} size={18} color="rgba(255,255,255,0.35)" />
-                              <input type="text" placeholder="CÃ©dula o nombre..." value={clientSearchTerm} onChange={(e) => handleClientSearch(e.target.value)} style={{ width: '100%', padding: '0 14px 0 42px', height: '46px', fontSize: '14px', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', borderRadius: '14px', color: '#111111', outline: 'none', fontWeight: '500', transition: 'all 0.2s' }} onFocus={e => { e.target.style.borderColor = 'rgba(17, 17, 17,0.4)'; e.target.style.background = 'rgba(255,255,255,0.08)'; }} onBlur={e => { e.target.style.borderColor = 'rgba(255,255,255,0.08)'; e.target.style.background = 'rgba(255,255,255,0.05)'; }} />
+                              <input type="text" placeholder="Cédula o nombre..." value={clientSearchTerm} onChange={(e) => handleClientSearch(e.target.value)} style={{ width: '100%', padding: '0 14px 0 42px', height: '46px', fontSize: '14px', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', borderRadius: '14px', color: '#111111', outline: 'none', fontWeight: '500', transition: 'all 0.2s' }} onFocus={e => { e.target.style.borderColor = 'rgba(17, 17, 17,0.4)'; e.target.style.background = 'rgba(255,255,255,0.08)'; }} onBlur={e => { e.target.style.borderColor = 'rgba(255,255,255,0.08)'; e.target.style.background = 'rgba(255,255,255,0.05)'; }} />
                             </div>
                             {!selectedClient && clientSearchResults.length > 0 && (
                               <div className="animate-scale-in" style={{ position: 'absolute', top: 'calc(100% + 6px)', left: 0, right: 0, background: 'var(--bg-secondary)', border: '1px solid rgba(0, 0, 0, 0.08)', borderRadius: '14px', overflow: 'hidden', zIndex: 200, backdropFilter: 'blur(30px)', boxShadow: '0 16px 40px rgba(0,0,0,0.5)', maxHeight: '200px', overflowY: 'auto' }}>
@@ -362,7 +362,7 @@ const NewAppointmentModal = ({ isOpen, onClose, onSuccess, rates }) => {
 
                       {/* Barbero */}
                       <div>
-                        <FieldLabel required>OdontÃ³logo</FieldLabel>
+                        <FieldLabel required>Odontólogo</FieldLabel>
                         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, 60px)', gap: '12px', justifyItems: 'center' }}>
                           {staff.filter(isDentistaBookableStaff).map(s => {
                             const isSel = newApp.staffId === s.id;
@@ -389,7 +389,7 @@ const NewAppointmentModal = ({ isOpen, onClose, onSuccess, rates }) => {
                         <PandaSelect placeholder="Selecciona el servicio..." value={newApp.serviceId} onChange={(val) => setNewApp({...newApp, serviceId: val})} options={services.map(s => ({ label: `${s.name} ($${s.price})`, value: s.id }))} />
                       </div>
 
-                      {/* Extras â€” Grid 2 columnas */}
+                      {/* Extras — Grid 2 columnas */}
                       <div>
                         <FieldLabel>Extras</FieldLabel>
                         <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) minmax(0, 1fr)', gap: '8px' }}>
