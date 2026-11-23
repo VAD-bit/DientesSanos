@@ -5,7 +5,8 @@ import { json, parseBody, requireMethod } from '../server/passkeys/http.js';
 // Reduce 1 Serverless Function a 1 (se mantiene, pero unificado).
 export default async function handler(request, response) {
   try {
-    const url = new URL(request.url);
+    // request.url puede ser una ruta relativa (/api/admin/auth-users) en localhost
+    const url = new URL(request.url, 'http://localhost');
     // Vercel rewrite pasa el path original como query param ?path=:path*
     const pathParam = url.searchParams.get('path') || '';
     const path = pathParam ? `/api/admin/${pathParam}` : '/api/admin';

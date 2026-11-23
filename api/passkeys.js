@@ -15,7 +15,7 @@ import { assertPasskeyRateLimit } from '../server/passkeys/rateLimit.js';
 // Reduce 6 Serverless Functions a 1 (límite del plan Hobby de Vercel: 12).
 export default async function handler(request, response) {
   try {
-    const url = new URL(request.url);
+    const url = new URL(request.url, 'http://localhost');
     const pathParam = url.searchParams.get('path') || '';
     const path = pathParam ? `/api/passkeys/${pathParam}` : '/api/passkeys';
     const method = request.method;

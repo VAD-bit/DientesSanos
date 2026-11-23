@@ -7,7 +7,7 @@ import { isBookableStaff } from '../src/utils/staffRoles.js';
 // Reduce 6 Serverless Functions a 1 (límite del plan Hobby de Vercel: 12).
 export default async function handler(request, response) {
   try {
-    const url = new URL(request.url);
+    const url = new URL(request.url, 'http://localhost');
     const pathParam = url.searchParams.get('path') || '';
     const path = pathParam ? `/api/public/${pathParam}` : '/api/public';
     const method = request.method;
