@@ -33,16 +33,20 @@ export default async function handler(request, response) {
       if (action === 'create') {
         const email = normalizeEmail(body.email);
         if (!email || !body.password) throw Object.assign(new Error('Correo y clave son obligatorios'), { statusCode: 400 });
+        if (String(body.password).length < 6) throw Object.assign(new Error('La contraseña debe tener al menos 6 caracteres'), { statusCode: 400 });
         const { data: listed, error: listError } = await admin.auth.admin.listUsers({ page: 1, perPage: 1000 });
         if (listError) throw listError;
         const existing = listed.users.find(user => normalizeEmail(user.email) === email);
-        if (existing) return json(response, 200, { user: existing });
+        if (existing) return json(response, 200, { user: existing, existed: true });
         const { data, error } = await admin.auth.admin.createUser({
           email,
           password: String(body.password),
           email_confirm: true,
         });
-        if (error) throw error;
+        if (error) {
+          const msg = error?.message || error?.error_description || error?.error || 'Error al crear usuario en Supabase Auth';
+          throw Object.assign(new Error(msg), { statusCode: error?.status || 500 });
+        }
         return json(response, 201, { user: data.user });
       }
 
