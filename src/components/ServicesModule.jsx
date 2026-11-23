@@ -1021,22 +1021,22 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
                         value={editingItem?.id === item.id ? editingItem.name : item.name} 
                         onChange={(e) => setEditingItem({ ...(editingItem || item), id: item.id, name: e.target.value })}
                         onFocus={() => setEditingItem(item)}
-                        style={{ flex: 1, fontSize: '13px', height: '36px', background: 'transparent', border: 'none', fontWeight: '600', minWidth: 0 }}
+                        style={{ flex: 1, fontSize: '13px', height: '36px', background: '#ffffff', border: 'none', fontWeight: '600', minWidth: 0 }}
                       />
 
                       
                       <div style={{ display: 'flex', gap: '4px' }}>
                         {editingItem?.id === item.id ? (
                           <>
-                            <button onClick={e => handleUpdateMasterItem(item.id, editingItem.name, item.base_cost)} style={{ background: 'transparent', border: 'none', color: '#32d74b', cursor: 'pointer' }}>
+                            <button onClick={e => handleUpdateMasterItem(item.id, editingItem.name, item.base_cost)} style={{ background: '#ffffff', border: 'none', color: '#32d74b', cursor: 'pointer' }}>
                               <Check size={18} />
                             </button>
-                            <button onClick={() => setEditingItem(null)} style={{ background: 'transparent', border: 'none', color: '#ff453a', cursor: 'pointer' }}>
+                            <button onClick={() => setEditingItem(null)} style={{ background: '#ffffff', border: 'none', color: '#ff453a', cursor: 'pointer' }}>
                               <X size={18} />
                             </button>
                           </>
                         ) : (
-                          <button onClick={(e) => handleDeleteMasterItem(e, item.id, item.name)} style={{ background: 'transparent', border: 'none', color: '#ff453a', cursor: 'pointer', opacity: 0.7 }}>
+                          <button onClick={(e) => handleDeleteMasterItem(e, item.id, item.name)} style={{ background: '#ffffff', border: 'none', color: '#ff453a', cursor: 'pointer', opacity: 0.7 }}>
                             <Trash2 size={16} />
                           </button>
                         )}
@@ -1485,4 +1485,5 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
 };
 
 export default ServicesModule;
+
 

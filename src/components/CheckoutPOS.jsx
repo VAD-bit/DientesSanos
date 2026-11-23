@@ -3576,7 +3576,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
 
                   return (
                     <article key={extra.id} className="pos-extra-card" style={{ display: 'flex', flexDirection: 'column', height: '230px', overflow: 'hidden', borderRadius: '16px', border: `1px solid ${isSelected ? 'var(--gold-primary)' : 'rgba(0, 0, 0, 0.08)'}`, background: isSelected ? 'rgba(17, 17, 17, 0.05)' : 'rgba(255,255,255,.025)', transition: 'all 0.2s' }}>
-                      <div role="button" tabIndex={0} onClick={() => isSelected ? toggleExtra() : handleAddExtra(extra)} onKeyDown={(e) => { if(e.key==='Enter'||e.key===' ') isSelected ? toggleExtra() : handleAddExtra(extra); }} style={{ padding: 0, border: 0, background: 'transparent', color: 'inherit', cursor: 'pointer', textAlign: 'left', display: 'flex', flexDirection: 'column', height: '100%', outline: 'none' }}>
+                      <div role="button" tabIndex={0} onClick={() => isSelected ? toggleExtra() : handleAddExtra(extra)} onKeyDown={(e) => { if(e.key==='Enter'||e.key===' ') isSelected ? toggleExtra() : handleAddExtra(extra); }} style={{ padding: 0, border: 0, background: '#ffffff', color: 'inherit', cursor: 'pointer', textAlign: 'left', display: 'flex', flexDirection: 'column', height: '100%', outline: 'none' }}>
                         <div style={{ height: '140px', width: '100%', position: 'relative', overflow: 'hidden', background: 'var(--bg-secondary)' }}>
                           <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--gold-primary)' }}>
                             <IconComponent size={32} strokeWidth={1.5} />
@@ -3650,7 +3650,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
 
                   return (
                   <article key={service.id} className="pos-extra-card" style={{ display: 'flex', flexDirection: 'column', height: '230px', overflow: 'hidden', borderRadius: '16px', border: `1px solid ${isSelected ? 'var(--gold-primary)' : 'rgba(0, 0, 0, 0.08)'}`, background: isSelected ? 'rgba(17, 17, 17, 0.05)' : 'rgba(255,255,255,.025)', transition: 'all 0.2s' }}>
-                    <div role="button" tabIndex={0} onClick={() => isSelected ? toggleService() : handleAddService(service)} onKeyDown={(e) => { if(e.key==='Enter'||e.key===' ') isSelected ? toggleService() : handleAddService(service); }} style={{ padding: 0, border: 0, background: 'transparent', color: 'inherit', cursor: 'pointer', textAlign: 'left', display: 'flex', flexDirection: 'column', height: '100%', outline: 'none' }}>
+                    <div role="button" tabIndex={0} onClick={() => isSelected ? toggleService() : handleAddService(service)} onKeyDown={(e) => { if(e.key==='Enter'||e.key===' ') isSelected ? toggleService() : handleAddService(service); }} style={{ padding: 0, border: 0, background: '#ffffff', color: 'inherit', cursor: 'pointer', textAlign: 'left', display: 'flex', flexDirection: 'column', height: '100%', outline: 'none' }}>
                       <div style={{ height: '140px', width: '100%', position: 'relative', overflow: 'hidden', background: 'var(--bg-secondary)' }}>
                         <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--gold-primary)' }}>
                           <ServiceIcon size={32} />
@@ -4094,5 +4094,6 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
 };
 
 export default CheckoutPOS;
+
 
 

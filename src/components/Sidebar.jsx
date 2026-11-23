@@ -126,7 +126,7 @@ const Sidebar = ({ activeTab, setActiveTab, isMobile, rates, isCollapsed, setIsC
   }, [displayedTab, menuItems, isCollapsed]);
 
   const sidebarStyle = isMobile ? {
-    width: '100%', height: 'auto', backgroundColor: 'transparent', display: 'flex', flexDirection: 'column', padding: '0'
+    width: '100%', height: 'auto', backgroundColor: '#ffffff', display: 'flex', flexDirection: 'column', padding: '0'
   } : {
     width: isCollapsed ? '75px' : '245px',
     height: '100vh',
@@ -177,7 +177,7 @@ const Sidebar = ({ activeTab, setActiveTab, isMobile, rates, isCollapsed, setIsC
               position: isCollapsed ? 'relative' : 'absolute',
               right: isCollapsed ? 'auto' : '0',
               top: '0',
-              background: 'transparent',
+              background: '#ffffff',
               border: 'none',
               color: 'rgba(255,255,255,0.25)',
               cursor: 'pointer',
@@ -244,7 +244,7 @@ const Sidebar = ({ activeTab, setActiveTab, isMobile, rates, isCollapsed, setIsC
               style={{
                 display: 'flex', alignItems: 'center', gap: '10px',
                 padding: isCollapsed ? '10px 0' : menuItems.length <= 4 ? '12px 14px' : '8px 12px',
-                backgroundColor: 'transparent', border: 'none', borderRadius: '10px',
+                backgroundColor: '#ffffff', border: 'none', borderRadius: '10px',
                 cursor: 'pointer',
                 transition: 'color 0.2s ease',
                 textAlign: 'left', width: '100%',
@@ -423,4 +423,5 @@ const Sidebar = ({ activeTab, setActiveTab, isMobile, rates, isCollapsed, setIsC
 };
 
 export default Sidebar;
+
 

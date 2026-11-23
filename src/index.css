@@ -681,7 +681,7 @@ input[type="number"] {
 
 select option {
   background-color: #ffffff; /* Factual solid background for options */
-  color: #f5f5f5;
+  color: #111111;
   padding: 12px;
 }
 

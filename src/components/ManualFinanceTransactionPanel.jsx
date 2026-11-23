@@ -35,7 +35,7 @@ export default function ManualFinanceTransactionPanel({ type, balances, rate, lo
         <div style={{ width: '48px', height: '48px', borderRadius: '15px', display: 'grid', placeItems: 'center', background: isExpense ? 'rgba(255,69,58,.12)' : 'rgba(17, 17, 17,.12)', color: isExpense ? '#ff5b55' : 'var(--gold-primary)' }}>{isExpense ? <ArrowDownCircle /> : <ArrowUpCircle />}</div>
         <div><h2 style={{ margin: 0, fontSize: '24px', fontWeight: 900 }}>Registrar {isExpense ? 'gasto' : 'ingreso'}</h2><p style={{ margin: '5px 0 0', color: 'var(--text-secondary)', fontSize: '13px' }}>{isExpense ? 'Indica de cuÃ¡l cuenta saldrÃ¡ el dinero.' : 'Indica a cuÃ¡l cuenta ingresarÃ¡ el dinero.'}</p></div>
       </div>
-      <button type="button" onClick={onClose} aria-label="Cerrar" style={{ background: 'transparent', border: 0, color: '#aaa', cursor: 'pointer', alignSelf: 'flex-start' }}><X /></button>
+      <button type="button" onClick={onClose} aria-label="Cerrar" style={{ background: '#ffffff', border: 0, color: '#aaa', cursor: 'pointer', alignSelf: 'flex-start' }}><X /></button>
     </header>
 
     <FieldLabel required>DESCRIPCIÃ“N</FieldLabel>
@@ -55,4 +55,5 @@ export default function ManualFinanceTransactionPanel({ type, balances, rate, lo
     <footer style={{ display: 'flex', justifyContent: 'flex-end', gap: '12px', marginTop: '24px' }}><button type="button" disabled={!canSubmit} onClick={() => onSubmit({ description: description.trim(), account, amount: value })} className="btn-gold" style={{ padding: '14px 25px', borderRadius: '12px', fontWeight: 900, opacity: canSubmit ? 1 : .45, cursor: canSubmit ? 'pointer' : 'not-allowed' }}>Registrar {isExpense ? 'gasto' : 'ingreso'}</button></footer>
   </section>;
 }
+
 

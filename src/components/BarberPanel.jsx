@@ -1196,7 +1196,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
                 setSelectedBarber(null);
                 window.dispatchEvent(new CustomEvent('panda_active_barber_changed', { detail: null }));
               }}
-              style={{ background: 'transparent', border: '1px solid rgba(0, 0, 0, 0.08)', color: 'var(--text-secondary)', padding: '10px 16px', borderRadius: '12px', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '8px', fontWeight: '700', transition: 'all 0.2s' }}
+              style={{ background: '#ffffff', border: '1px solid rgba(0, 0, 0, 0.08)', color: 'var(--text-secondary)', padding: '10px 16px', borderRadius: '12px', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '8px', fontWeight: '700', transition: 'all 0.2s' }}
               onMouseEnter={(e) => { e.currentTarget.style.color = '#ff4d4d'; e.currentTarget.style.borderColor = 'rgba(255,77,77,0.3)'; e.currentTarget.style.background = 'rgba(255,77,77,0.05)'; }}
               onMouseLeave={(e) => { e.currentTarget.style.color = 'var(--text-secondary)'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)'; e.currentTarget.style.background = 'transparent'; }}
             >
@@ -2027,7 +2027,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
                         <button
                           onClick={() => handleCancelGroup(group)}
                           disabled={loading}
-                          style={{ width: '100%', marginTop: '10px', background: 'transparent', border: 'none', color: 'var(--text-muted)', fontSize: '11px', fontWeight: '700', cursor: 'pointer', padding: '6px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px' }}
+                          style={{ width: '100%', marginTop: '10px', background: '#ffffff', border: 'none', color: 'var(--text-muted)', fontSize: '11px', fontWeight: '700', cursor: 'pointer', padding: '6px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px' }}
                         >
                           <Trash2 size={13} /> Cancelar
                         </button>
@@ -2739,4 +2739,5 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
 };
 
 export default BarberPanel;
+
 

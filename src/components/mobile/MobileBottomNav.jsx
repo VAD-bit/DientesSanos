@@ -186,7 +186,7 @@ const MobileBottomNav = ({ activeTab, setActiveTab }) => {
                   padding: '12px',
                   borderRadius: '30px',
                   border: 'none',
-                  background: 'transparent',
+                  background: '#ffffff',
                   color: '#6b7280',
                   cursor: 'pointer',
                   outline: 'none'
@@ -306,4 +306,5 @@ const MobileBottomNav = ({ activeTab, setActiveTab }) => {
 };
 
 export default MobileBottomNav;
+
 

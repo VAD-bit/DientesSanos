@@ -227,7 +227,7 @@ const InventoryAccessGate = ({ children }) => {
             </button>
           ))}
           
-          <button className="numpad-btn" style={{ background: 'transparent', border: 'none', boxShadow: 'none', cursor: 'default' }} disabled>
+          <button className="numpad-btn" style={{ background: '#ffffff', border: 'none', boxShadow: 'none', cursor: 'default' }} disabled>
             {/* Espacio vacÃ­o intencional para alinear el 0 */}
           </button>
           
@@ -235,7 +235,7 @@ const InventoryAccessGate = ({ children }) => {
             0
           </button>
           
-          <button className="numpad-btn" onClick={handleDelete} style={{ background: 'transparent', border: 'none', boxShadow: 'none' }}>
+          <button className="numpad-btn" onClick={handleDelete} style={{ background: '#ffffff', border: 'none', boxShadow: 'none' }}>
             <Delete size={30} strokeWidth={1.5} style={{ opacity: pin.length > 0 ? 0.9 : 0.2, transition: 'opacity 0.2s' }} />
           </button>
         </div>
@@ -245,4 +245,5 @@ const InventoryAccessGate = ({ children }) => {
 };
 
 export default InventoryAccessGate;
+
 

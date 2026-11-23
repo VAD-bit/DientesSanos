@@ -853,7 +853,7 @@ const ReceptionModule = ({ isMobile, rates }) => {
                           <button type="button"
                             onClick={() => setEditingExtraPriceId(e.id)}
                             aria-label={`Editar precio de ${e.name}`}
-                            style={{ display: 'flex', alignItems: 'center', gap: '6px', cursor: 'pointer', padding: '3px 6px', border: 0, borderRadius: '8px', color: 'inherit', background: 'transparent' }}
+                            style={{ display: 'flex', alignItems: 'center', gap: '6px', cursor: 'pointer', padding: '3px 6px', border: 0, borderRadius: '8px', color: 'inherit', background: '#ffffff' }}
                           >
                             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end' }}>
                               <strong style={{ color: '#fff', fontSize: '12px' }}>{formatBs(Number(e.customPrice ?? e.price) * exchangeRate)} Bs</strong>
@@ -1829,4 +1829,5 @@ const SelectionModal = ({ isOpen, onClose, title, icon, items, selectedItems, on
 };
 
 export default ReceptionModule;
+
 

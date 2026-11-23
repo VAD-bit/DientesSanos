@@ -882,7 +882,7 @@ const InventoryModule = ({ isMobile, currency, rates }) => {
                     <button 
                       onClick={() => handeAdjustStock(item.id, item.stock, -1)}
                       style={{ 
-                        width: isMobile ? '40px' : '32px', height: isMobile ? '40px' : '32px', borderRadius: '50%', border: 'none', background: 'transparent', 
+                        width: isMobile ? '40px' : '32px', height: isMobile ? '40px' : '32px', borderRadius: '50%', border: 'none', background: '#ffffff', 
                         color: 'var(--text-secondary)', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: '0.2s' 
                       }}
                       onMouseOver={e => { e.currentTarget.style.background='rgba(255,255,255,0.1)'; e.currentTarget.style.color='white'; }}
@@ -900,7 +900,7 @@ const InventoryModule = ({ isMobile, currency, rates }) => {
                     <button 
                       onClick={() => handeAdjustStock(item.id, item.stock, 1)}
                       style={{ 
-                        width: isMobile ? '40px' : '32px', height: isMobile ? '40px' : '32px', borderRadius: '50%', border: 'none', background: 'transparent', 
+                        width: isMobile ? '40px' : '32px', height: isMobile ? '40px' : '32px', borderRadius: '50%', border: 'none', background: '#ffffff', 
                         color: 'var(--text-secondary)', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: '0.2s' 
                       }}
                       onMouseOver={e => { e.currentTarget.style.background='rgba(255,255,255,0.1)'; e.currentTarget.style.color='white'; }}
@@ -1338,4 +1338,5 @@ const EditInventoryModal = ({ isOpen, item, staff = [], onClose, onSave }) => {
 };
 
 export default InventoryModule;
+
 

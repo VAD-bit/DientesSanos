@@ -829,7 +829,7 @@ const DashboardModule = ({
       flex: (isMobile || isTablet) ? 'none' : 1,
       height: '100%',
       minHeight: 0,
-      backgroundColor: 'transparent',
+      backgroundColor: '#ffffff',
     }}>
       {!isMobile && (
         <style>{`
@@ -854,7 +854,7 @@ const DashboardModule = ({
           justifyContent: 'space-between',
           alignItems: 'center',
           padding: '4px 8px 20px 8px',
-          backgroundColor: 'transparent',
+          backgroundColor: '#ffffff',
           zIndex: 2,
           flexShrink: 0
         }}>
@@ -2025,7 +2025,7 @@ const DashboardModule = ({
                     fontWeight: '700',
                     color: 'rgba(255,255,255,0.75)',
                     cursor: 'pointer',
-                    background: 'transparent',
+                    background: '#ffffff',
                     border: 'none',
                     padding: '2px 4px',
                     display: 'flex',
@@ -2166,7 +2166,7 @@ const DashboardModule = ({
                 <h3 style={{ fontSize: '15px', fontWeight: '800', color: '#111111', margin: 0 }}>EDITAR SILLA {selectedChair.id}</h3>
                 <button 
                   onClick={(e) => { e.stopPropagation(); setSelectedChair(null); }} 
-                  style={{ background: 'transparent', border: 'none', color: 'rgba(255,255,255,0.75)', cursor: 'pointer' }}
+                  style={{ background: '#ffffff', border: 'none', color: 'rgba(255,255,255,0.75)', cursor: 'pointer' }}
                 >
                   <X size={18} />
                 </button>
@@ -2479,7 +2479,7 @@ const DashboardModule = ({
                 <h3 style={{ fontSize: '15px', fontWeight: '800', color: '#111111', margin: 0 }}>EDITAR META MENSUAL</h3>
                 <button 
                   onClick={(e) => { e.stopPropagation(); setIsEditingGoals(false); }} 
-                  style={{ background: 'transparent', border: 'none', color: 'rgba(255,255,255,0.75)', cursor: 'pointer' }}
+                  style={{ background: '#ffffff', border: 'none', color: 'rgba(255,255,255,0.75)', cursor: 'pointer' }}
                 >
                   <X size={18} />
                 </button>
@@ -2894,4 +2894,5 @@ const DashboardModule = ({
 };
 
 export default DashboardModule;
+
 

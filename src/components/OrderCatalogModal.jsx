@@ -102,7 +102,7 @@ const OrderCatalogModal = ({
                 const ItemIcon = getIcon(item.name);
                 return (
                   <article key={item.id} className="order-catalog-item" style={{ display: 'flex', flexDirection: 'column', height: '230px', overflow: 'hidden', borderRadius: '16px', border: `1px solid ${isSelected ? 'var(--gold-primary)' : 'rgba(0, 0, 0, 0.08)'}`, background: isSelected ? 'rgba(17, 17, 17, 0.05)' : 'rgba(255,255,255,.025)', transition: 'all 0.2s' }}>
-                    <button type="button" onClick={() => onToggle?.(item)} style={{ padding: 0, border: 0, background: 'transparent', color: 'inherit', cursor: 'pointer', textAlign: 'left', display: 'flex', flexDirection: 'column', height: '100%', outline: 'none' }}>
+                    <button type="button" onClick={() => onToggle?.(item)} style={{ padding: 0, border: 0, background: '#ffffff', color: 'inherit', cursor: 'pointer', textAlign: 'left', display: 'flex', flexDirection: 'column', height: '100%', outline: 'none' }}>
                       <div className="order-catalog-visual" style={{ height: '140px', width: '100%', position: 'relative', overflow: 'hidden', background: 'var(--bg-secondary)' }}>
                         <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--gold-primary)' }}>
                           <ItemIcon size={32} strokeWidth={1.5} />
@@ -132,4 +132,5 @@ const OrderCatalogModal = ({
 };
 
 export default OrderCatalogModal;
+
 

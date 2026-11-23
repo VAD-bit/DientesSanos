@@ -170,8 +170,8 @@ const PandaSelect = ({
               padding: '12px 16px',
               borderRadius: '10px',
               cursor: 'pointer',
-              backgroundColor: value === opt.value ? 'rgba(255, 255, 255, 0.15)' : 'transparent',
-              color: value === opt.value ? 'var(--gold-primary)' : 'white',
+              backgroundColor: value === opt.value ? 'var(--gold-primary)' : 'rgba(0, 0, 0, 0.02)',
+              color: value === opt.value ? '#111111' : '#111111',
               transition: '0.2s',
               fontSize: '14px',
               fontWeight: value === opt.value ? '700' : '500',
@@ -207,7 +207,7 @@ const PandaSelect = ({
             border: isOpen ? '1px solid var(--gold-primary)' : '1px solid rgba(0, 0, 0, 0.08)',
             padding: '12px 16px',
             borderRadius: '12px',
-            color: selectedOption ? 'white' : 'var(--text-muted)',
+            color: selectedOption ? '#111111' : '#666666',
             cursor: disabled ? 'not-allowed' : 'pointer',
             display: 'flex',
             justifyContent: 'space-between',
@@ -300,7 +300,7 @@ const PandaSelect = ({
             }
             .panda-option-copy small {
               overflow: hidden;
-              color: rgba(255,255,255,0.38);
+              color: '#666666';
               font-size: 9px;
               font-weight: 650;
               line-height: 1.2;

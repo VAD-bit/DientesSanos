@@ -3583,7 +3583,7 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
           </div>
           </div>
 
-          <div className="appointment-list-wrapper" style={{ background: 'transparent', border: 'none', boxShadow: 'none' }}>
+          <div className="appointment-list-wrapper" style={{ background: '#ffffff', border: 'none', boxShadow: 'none' }}>
             {loading ? (
               <div>
                 <div className="desktop-agenda-metrics" style={{ marginBottom: '24px', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '16px' }}>
@@ -4762,4 +4762,5 @@ const MiniCalendar = ({ selectedDate, onDateSelect, allAppointments }) => {
 };
 
 export default SchedulingModule;
+
 

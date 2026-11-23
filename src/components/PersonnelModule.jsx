@@ -2305,7 +2305,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                               setNewRoleName(''); 
                               setFormData({ ...formData, roles: ['Odontologo'], permissions: allRolePresets['Odontologo'] || [] });
                             }}
-                            style={{ background: 'transparent', border: 'none', color: 'var(--text-muted)', fontSize: '10px', cursor: 'pointer', fontWeight: '800' }}
+                            style={{ background: '#ffffff', border: 'none', color: 'var(--text-muted)', fontSize: '10px', cursor: 'pointer', fontWeight: '800' }}
                           >
                             DESCARTAR
                           </button>
@@ -3020,7 +3020,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                             setNewRoleName(''); 
                             setFormData({ ...formData, roles: ['Odontologo'], permissions: allRolePresets['Odontologo'] || [] });
                           }}
-                          style={{ background: 'transparent', border: 'none', color: 'var(--text-muted)', fontSize: '10px', cursor: 'pointer', fontWeight: '800' }}
+                          style={{ background: '#ffffff', border: 'none', color: 'var(--text-muted)', fontSize: '10px', cursor: 'pointer', fontWeight: '800' }}
                         >
                           DESCARTAR
                         </button>
@@ -5149,7 +5149,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                       flex: 1,
                       padding: '12px',
                       borderRadius: '12px',
-                      backgroundColor: 'transparent',
+                      backgroundColor: '#ffffff',
                       color: 'var(--text-muted)',
                       border: 'none',
                       fontWeight: '700',
@@ -5202,4 +5202,5 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
 };
 
 export default PersonnelModule;
+
 

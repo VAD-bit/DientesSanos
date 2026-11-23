@@ -1412,7 +1412,7 @@ const UserProfilePage = ({ staffMember, inventory = [], onUpdate, isMobile }) =>
                 ) : (
                   <div style={{ display: 'flex', gap: '5px' }}>
                     <button onClick={saveGoals} style={{ border: '1px solid rgba(17, 17, 17,0.3)', background: 'rgba(17, 17, 17,0.12)', color: 'var(--gold-primary)', borderRadius: '8px', padding: '5px 8px', cursor: 'pointer' }}><Check size={11} /></button>
-                    <button onClick={() => setEditingGoals(false)} style={{ border: '1px solid rgba(0, 0, 0, 0.08)', background: 'transparent', color: '#888', borderRadius: '8px', padding: '5px 8px', cursor: 'pointer' }}><X size={11} /></button>
+                    <button onClick={() => setEditingGoals(false)} style={{ border: '1px solid rgba(0, 0, 0, 0.08)', background: '#ffffff', color: '#888', borderRadius: '8px', padding: '5px 8px', cursor: 'pointer' }}><X size={11} /></button>
                   </div>
                 )}
               </div>
@@ -1886,4 +1886,5 @@ const UserProfilePage = ({ staffMember, inventory = [], onUpdate, isMobile }) =>
 };
 
 export default UserProfilePage;
+
 

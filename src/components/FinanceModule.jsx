@@ -4697,7 +4697,7 @@ const FinanceModule = ({ isMobile, currency, rates, staff = [] }) => {
           <AnimatedModal isOpen={valeModal.isOpen}>
             {(overlayClass, cardClass) => (
               <div className={overlayClass} onClick={(e) => e.stopPropagation()} onTouchStart={(e) => e.stopPropagation()} style={{ position: 'fixed', inset: 0, background: 'var(--bg-secondary)', backdropFilter: 'blur(16px)', zIndex: 3001, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: isMobile ? '8px' : '20px', paddingTop: isMobile ? 'max(8px, env(safe-area-inset-top, 8px))' : 'max(20px, env(safe-area-inset-top, 20px))' }}>
-                <div className={cardClass.replace('global-modal-card', '')} style={{ width: '100%', display: 'flex', justifyContent: 'center', maxWidth: '1020px', borderRadius: '24px', border: 'none', background: 'transparent' }}>
+                <div className={cardClass.replace('global-modal-card', '')} style={{ width: '100%', display: 'flex', justifyContent: 'center', maxWidth: '1020px', borderRadius: '24px', border: 'none', background: '#ffffff' }}>
                   <ValeAdvancePanel modal={valeModal} setModal={setValeModal} balances={accountBalances} rate={rates?.usd || 550} activeVales={transactions.filter(t => t.category === 'Vales Odontologos' && t.metadata?.staffId === valeModal.staff?.id).length} onSubmit={handleRegisterVale} loading={loading} isMobile={isMobile}/>
                 </div>
               </div>
@@ -5196,4 +5196,5 @@ const FinanceModule = ({ isMobile, currency, rates, staff = [] }) => {
 };
 
 export default FinanceModule;
+
 

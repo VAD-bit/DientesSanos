@@ -45,7 +45,7 @@ const PayrollDetailPanel = ({ detail, rate, periodStart, periodEnd, isMobile, on
   };
 
   return <section role="dialog" aria-modal="true" aria-label={`Detalle de servicios de ${staff.name}`} style={{ width: isMobile ? '100vw' : 'min(1120px, 96vw)', maxHeight: isMobile ? '100vh' : '92vh', overflow: isMobile ? 'auto' : 'hidden', display: 'flex', flexDirection: 'column', borderRadius: isMobile ? '0' : '22px', padding: isMobile ? '16px' : '24px', color: '#111111', background: 'var(--bg-secondary)', border: isMobile ? 'none' : '1px solid rgba(0, 0, 0, 0.08)', boxShadow: isMobile ? 'none' : '0 30px 90px rgba(0,0,0,.72)', WebkitOverflowScrolling: 'touch' }}>
-    <header style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '16px', marginBottom: '16px' }}><h2 style={{ margin: 0, fontSize: isMobile ? '19px' : '23px', letterSpacing: '-.5px' }}>Detalle de servicios <span style={{ color: 'var(--text-muted)', fontWeight: 500 }}>Â·</span> <span style={{ color: 'var(--gold-primary)' }}>{staff.name}</span></h2><button onClick={onClose} aria-label="Cerrar detalle" style={{ width: '44px', height: '44px', borderRadius: '12px', border: 0, background: 'transparent', color: 'var(--text-secondary)', cursor: 'pointer', display: 'grid', placeItems: 'center' }}><X size={20}/></button></header>
+    <header style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '16px', marginBottom: '16px' }}><h2 style={{ margin: 0, fontSize: isMobile ? '19px' : '23px', letterSpacing: '-.5px' }}>Detalle de servicios <span style={{ color: 'var(--text-muted)', fontWeight: 500 }}>Â·</span> <span style={{ color: 'var(--gold-primary)' }}>{staff.name}</span></h2><button onClick={onClose} aria-label="Cerrar detalle" style={{ width: '44px', height: '44px', borderRadius: '12px', border: 0, background: '#ffffff', color: 'var(--text-secondary)', cursor: 'pointer', display: 'grid', placeItems: 'center' }}><X size={20}/></button></header>
     <div style={{ display: 'grid', gridTemplateColumns: isMobile ? 'repeat(2,minmax(0,1fr))' : 'repeat(4,minmax(0,1fr))', gap: '8px', marginBottom: '14px' }}>
       {stat(<Banknote size={isMobile ? 17 : 20}/>, isAssistant ? 'Total ganado' : 'Generado por el profesional', totalGeneratedBs, null, totalGeneratedUsd)}
       {stat(<WalletCards size={isMobile ? 17 : 20}/>, 'Pagado / vales', paidAndAdvancesBs, null, paidAndAdvancesUsd)}
@@ -174,4 +174,5 @@ const PayrollDetailPanel = ({ detail, rate, periodStart, periodEnd, isMobile, on
 };
 
 export default PayrollDetailPanel;
+
 

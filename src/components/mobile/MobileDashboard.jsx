@@ -1147,7 +1147,7 @@ const MobileDashboard = ({ onOpenSale, stats, chartData, dbData, onNavigate, onO
                   width: '100%',
                   padding: '10px',
                   borderRadius: '10px',
-                  backgroundColor: 'transparent',
+                  backgroundColor: '#ffffff',
                   color: 'var(--text-muted)',
                   fontWeight: '600',
                   fontSize: '12px',
@@ -1448,5 +1448,6 @@ const PodiumWidget = ({ title, icon, data, labelKey, scoreKey, scoreLabel, isCli
 };
 
 export default MobileDashboard;
+
 
 

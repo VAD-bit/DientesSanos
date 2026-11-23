@@ -737,6 +737,7 @@ const styles = {
   quadRow: { display: 'flex', flexWrap: 'wrap', gap: '8px', marginTop: '8px' },
   quadBtn: {
     padding: '6px 10px', borderRadius: '8px', border: '1px dashed rgba(0, 0, 0, 0.08)',
-    background: 'transparent', color: 'rgba(255,255,255,0.5)', fontSize: '11px', fontWeight: '700', cursor: 'pointer'
+    background: '#ffffff', color: 'rgba(255,255,255,0.5)', fontSize: '11px', fontWeight: '700', cursor: 'pointer'
   }
 };
+

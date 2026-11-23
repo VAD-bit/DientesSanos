@@ -37,7 +37,7 @@ export default function ReceivablePaymentPanel({ transaction, rate, loading, onC
         <div style={{ width: 46, height: 46, borderRadius: 14, display: 'grid', placeItems: 'center', background: 'rgba(255,159,10,.12)', color: '#ffb340' }}><CircleDollarSign /></div>
         <div><h2 style={{ margin: 0, fontSize: 23, fontWeight: 900 }}>Registrar cobro</h2><p style={{ margin: '5px 0 0', color: 'var(--text-secondary)', fontSize: 13 }}>Confirma dÃ³nde ingresÃ³ el pago del cliente.</p></div>
       </div>
-      <button type="button" onClick={onClose} aria-label="Cerrar" style={{ background: 'transparent', border: 0, color: '#aaa', cursor: 'pointer', alignSelf: 'flex-start' }}><X /></button>
+      <button type="button" onClick={onClose} aria-label="Cerrar" style={{ background: '#ffffff', border: 0, color: '#aaa', cursor: 'pointer', alignSelf: 'flex-start' }}><X /></button>
     </header>
 
     <div style={{ padding: 16, borderRadius: 15, background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', marginBottom: 20 }}>
@@ -60,4 +60,5 @@ export default function ReceivablePaymentPanel({ transaction, rate, loading, onC
     <footer style={{ display: 'flex', justifyContent: 'flex-end', gap: 11, marginTop: 22 }}><button type="button" disabled={!canSubmit} onClick={() => onSubmit({ account, reference: reference.trim(), amountUsd, amountNative })} className="btn-gold" style={{ padding: '13px 24px', borderRadius: 12, fontWeight: 900, opacity: canSubmit ? 1 : .45, cursor: canSubmit ? 'pointer' : 'not-allowed' }}>{loading ? 'Registrandoâ€¦' : 'Confirmar pago'}</button></footer>
   </section>;
 }
+
 

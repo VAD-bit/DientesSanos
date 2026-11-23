@@ -148,7 +148,7 @@ const SellableInventoryModal = ({
                     const ProductIcon = getProductIcon(item.name, item.inventory_type);
                     return (
                       <article key={item.id} className="pos-extra-card sellable-inventory-item" style={{ display: 'flex', flexDirection: 'column', overflow: 'hidden', borderRadius: '16px', border: `1px solid ${quantity ? 'rgba(17, 17, 17,.62)' : 'rgba(0, 0, 0, 0.08)'}`, background: quantity ? 'rgba(17, 17, 17,.08)' : 'rgba(255,255,255,.025)', opacity: out ? .55 : 1 }}>
-                        <button type="button" disabled={out} onClick={() => mode === 'single' ? onSelect?.(item) : changeQuantity(item, 1)} style={{ padding: 0, border: 0, background: 'transparent', color: 'inherit', cursor: out ? 'not-allowed' : 'pointer', textAlign: 'left', flex: 1, display: 'flex', flexDirection: 'column' }}>
+                        <button type="button" disabled={out} onClick={() => mode === 'single' ? onSelect?.(item) : changeQuantity(item, 1)} style={{ padding: 0, border: 0, background: '#ffffff', color: 'inherit', cursor: out ? 'not-allowed' : 'pointer', textAlign: 'left', flex: 1, display: 'flex', flexDirection: 'column' }}>
                           <div className="sellable-inventory-visual" style={{ width: '100%', aspectRatio: '4/3', position: 'relative', overflow: 'hidden', background: 'var(--bg-secondary)' }}>
                             {item.image_url ? <img src={item.image_url} alt={item.name} loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover' }} /> : <div style={{ height: '100%', display: 'grid', placeItems: 'center', color: isCafe ? 'var(--gold-primary)' : '#54d37b' }}><ProductIcon size={35} /></div>}
                             <span style={{ position: 'absolute', top: '7px', right: '7px', padding: '3px 7px', borderRadius: '999px', color: '#fff', background: out ? '#8d2f2a' : 'rgba(31,143,71,.9)', fontSize: '8px', fontWeight: 950 }}>{out ? 'AGOTADO' : `${stock} DISP.`}</span>
@@ -188,4 +188,5 @@ const SellableInventoryModal = ({
 };
 
 export default SellableInventoryModal;
+
 
