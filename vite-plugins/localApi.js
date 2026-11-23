@@ -46,11 +46,26 @@ export default function localApiPlugin(apiDir = 'api') {
 
         const urlPath = req.url.split('?')[0];
         const relative = urlPath.replace(/^\/api\//, '');
+        const originalQuery = req.url.includes('?') ? req.url.slice(req.url.indexOf('?')) : '';
         const candidates = [
           path.join(root, `${relative}.js`),
           path.join(root, relative, 'index.js'),
         ];
-        const filePath = candidates.find((p) => fs.existsSync(p));
+        let filePath = candidates.find((p) => fs.existsSync(p));
+
+        // Fallback para routers combinados (api/admin.js, api/public.js, api/passkeys.js)
+        // En localhost no hay rewrites de vercel.json, así que pasamos el sub-path
+        // como query param ?path=... para que el router lo reconstruya.
+        if (!filePath) {
+          const segments = relative.split('/');
+          const routerFile = path.join(root, `${segments[0]}.js`);
+          if (segments.length > 1 && fs.existsSync(routerFile)) {
+            const subPath = segments.slice(1).join('/');
+            const sep = originalQuery ? '&' : '?';
+            req.url = `/api/${segments[0]}${sep}path=${subPath}${originalQuery}`;
+            filePath = routerFile;
+          }
+        }
         if (!filePath) return next();
 
         try {
