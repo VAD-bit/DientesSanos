@@ -92,7 +92,15 @@ export default async function handler(request, response) {
   } catch (error) {
     // Manejo de errores específico para admin (sin mensaje genérico de biometría)
     const status = Number(error?.statusCode || error?.status) || 500;
-    const message = error?.message || 'Error en la operación de administración';
+    let message = error?.message || 'Error en la operación de administración';
+    
+    // Mensajes más claros para errores comunes de autenticación
+    if (status === 401 && error?.message?.toLowerCase().includes('sesión inválida')) {
+      message = 'Sesión expirada. Inicia sesión nuevamente en el CRM para administrar usuarios.';
+    } else if (status === 403) {
+      message = 'No tienes permisos de administrador para realizar esta acción.';
+    }
+    
     console.error('[admin-auth-users] ERROR:', { status, message, error: String(error), stack: error?.stack });
     return json(response, status, { error: message, details: String(error), stack: error?.stack });
   }
