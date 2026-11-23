@@ -5,17 +5,17 @@ let adminClient;
 export const getAdminClient = () => {
   if (adminClient) return adminClient;
   
-  // En serverless functions de Vercel, SOLO existen las vars exactas configuradas en Vercel Dashboard
-  // VITE_SUPABASE_URL NO existe en runtime (solo en build del frontend)
-  const url = process.env.SUPABASE_URL;
-  const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
+  // En localhost (Vite dev server), las variables VITE_ están disponibles en process.env
+  // gracias a loadEnv() en vite.config.js. En Vercel serverless, usamos SUPABASE_URL directo.
+  const url = process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL;
+  const key = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.VITE_SUPABASE_ANON_KEY;
   
-  // Debug logging (se ve en Vercel Function Logs)
+  // Debug logging (se ve en la terminal de vite y en Vercel Function Logs)
   console.log('[getAdminClient] SUPABASE_URL:', url ? 'PRESENTE (' + url.substring(0, 30) + '...)' : 'FALTA');
-  console.log('[getAdminClient] SUPABASE_SERVICE_ROLE_KEY:', key ? 'PRESENTE' : 'FALTA');
+  console.log('[getAdminClient] SERVICE_ROLE_KEY:', key ? 'PRESENTE' : 'FALTA');
   
-  if (!url) throw new Error('Falta SUPABASE_URL en variables de entorno de Vercel (Settings → Environment Variables). NO uses VITE_SUPABASE_URL.');
-  if (!key) throw new Error('Falta SUPABASE_SERVICE_ROLE_KEY en variables de entorno de Vercel (Settings → Environment Variables).');
+  if (!url) throw new Error('Falta SUPABASE_URL / VITE_SUPABASE_URL en variables de entorno. Revisa .env.local o Vercel Settings → Environment Variables.');
+  if (!key) throw new Error('Falta SUPABASE_SERVICE_ROLE_KEY / VITE_SUPABASE_ANON_KEY en variables de entorno.');
   
   // Validar formato de URL
   let parsedUrl;

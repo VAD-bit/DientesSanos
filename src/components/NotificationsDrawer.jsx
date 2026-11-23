@@ -309,7 +309,7 @@ const NotificationsDrawer = ({ isOpen, onClose }) => {
                   <CategoryIcon size={16} />
                 </div>
                 <div style={{ flex: 1, minWidth: 0 }}>
-                  <h4 style={{ fontSize: '13px', fontWeight: '900', color: 'white', margin: '0 0 4px 0', paddingRight: '12px' }}>
+                  <h4 style={{ fontSize: '13px', fontWeight: '900', color: '#111111', margin: '0 0 4px 0', paddingRight: '12px' }}>
                     {n.title}
                   </h4>
                   <p style={{ fontSize: '12px', color: 'var(--text-secondary)', margin: '0 0 10px 0', lineHeight: '1.5' }}>
