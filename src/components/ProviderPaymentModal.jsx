@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { 
   X, 
   Truck, 
@@ -160,7 +160,7 @@ export default function ProviderPaymentModal({
                   <Truck size={22} />
                 </div>
                 <div>
-                  <h2 style={{ fontSize: 'clamp(17px, 2vw, 20px)', fontWeight: '950', margin: 0, color: '#111111', letterSpacing: '-0.3px' }}>
+                  <h2 style={{ fontSize: 'clamp(17px, 2vw, 20px)', fontWeight: '950', margin: 0, color: '#fff', letterSpacing: '-0.3px' }}>
                     Pago a Proveedor
                   </h2>
                   <p style={{ margin: '2px 0 0', fontSize: '11.5px', color: 'var(--text-secondary)' }}>
@@ -278,7 +278,7 @@ export default function ProviderPaymentModal({
                           : numericAmount > 0 
                             ? '1.5px solid rgba(17, 17, 17, 0.6)' 
                             : '1px solid rgba(0, 0, 0, 0.08)', 
-                        color: '#111111', 
+                        color: '#fff', 
                         fontSize: '18px', 
                         fontWeight: '900', 
                         outline: 'none',

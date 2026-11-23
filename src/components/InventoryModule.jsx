@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { getRoleCategory } from '../utils/staffRoles';
 import { 
   Package, 
@@ -474,7 +474,7 @@ const InventoryModule = ({ isMobile, currency, rates }) => {
                        <div style={{ width: '40px', height: '40px', borderRadius: '50%', backgroundColor: 'var(--bg-secondary)', display: 'flex', alignItems: 'center', justifyContent: 'center', backdropFilter: 'blur(4px)' }}>
                          <Camera size={20} color="var(--gold-primary)" />
                        </div>
-                       <span style={{ fontSize: '12px', color: '#111111', fontWeight: '800', textShadow: '0 2px 4px rgba(0,0,0,0.8)' }}>Tocar para cambiar foto</span>
+                       <span style={{ fontSize: '12px', color: 'white', fontWeight: '800', textShadow: '0 2px 4px rgba(0,0,0,0.8)' }}>Tocar para cambiar foto</span>
                     </div>
                   </>
                 ) : (
@@ -851,7 +851,7 @@ const InventoryModule = ({ isMobile, currency, rates }) => {
                       ) : (
                         <div style={{ display: 'flex', flexDirection: 'column' }}>
                           <span style={{ fontSize: '9px', fontWeight: '900', color: 'var(--text-muted)' }}>COSTO (USO INTERNO)</span>
-                          <div style={{ fontSize: '20px', fontWeight: '950', color: '#111111' }}>
+                          <div style={{ fontSize: '20px', fontWeight: '950', color: 'white' }}>
                             <span style={{ fontSize: '12px', verticalAlign: 'super', marginRight: '2px' }}>$</span>
                             {item.cost_price?.toFixed(2) || '0.00'}
                           </div>
@@ -1034,7 +1034,7 @@ const InventoryModule = ({ isMobile, currency, rates }) => {
                       onChange={e => setHistorySearch(e.target.value)}
                       placeholder="Buscar producto o motivo..."
                       className="search-subtle"
-                      style={{ width: '100%', padding: '10px 14px 10px 36px', borderRadius: '12px', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', color: '#111111', fontSize: '13px', outline: 'none', boxSizing: 'border-box' }}
+                      style={{ width: '100%', padding: '10px 14px 10px 36px', borderRadius: '12px', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', color: 'white', fontSize: '13px', outline: 'none', boxSizing: 'border-box' }}
                     />
                     {historySearch && (
                       <button onClick={() => setHistorySearch('')} style={{ position: 'absolute', right: '8px', top: '50%', transform: 'translateY(-50%)', background: 'rgba(0, 0, 0, 0.04)', border: 'none', color: 'rgba(255,255,255,0.4)', cursor: 'pointer', width: '20px', height: '20px', borderRadius: '6px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
@@ -1101,7 +1101,7 @@ const InventoryModule = ({ isMobile, currency, rates }) => {
 
                                   {/* Info */}
                                   <div style={{ flex: 1, minWidth: 0 }}>
-                                    <div style={{ fontSize: '13px', fontWeight: '700', color: '#111111', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{formatProductName(move.inventory?.name) || 'Producto Eliminado'}</div>
+                                    <div style={{ fontSize: '13px', fontWeight: '700', color: 'white', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{formatProductName(move.inventory?.name) || 'Producto Eliminado'}</div>
                                     <div style={{ fontSize: '11px', color: 'var(--text-muted)', marginTop: '2px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                                       {move.reason || 'Sin motivo'}
                                     </div>
@@ -1169,7 +1169,7 @@ const EditInventoryModal = ({ isOpen, item, staff = [], onClose, onSave }) => {
                 }}>
                   <Package size={20} color="var(--gold-primary)" />
                 </div>
-                <h3 style={{ fontSize: '18px', fontWeight: '800', color: '#111111', letterSpacing: '-0.3px', margin: 0 }}>
+                <h3 style={{ fontSize: '18px', fontWeight: '800', color: 'white', letterSpacing: '-0.3px', margin: 0 }}>
                   Editar Producto
                 </h3>
               </div>
@@ -1269,7 +1269,7 @@ const EditInventoryModal = ({ isOpen, item, staff = [], onClose, onSave }) => {
                          <div style={{ width: '40px', height: '40px', borderRadius: '50%', backgroundColor: 'var(--bg-secondary)', display: 'flex', alignItems: 'center', justifyContent: 'center', backdropFilter: 'blur(4px)' }}>
                            <Camera size={20} color="var(--gold-primary)" />
                          </div>
-                         <span style={{ fontSize: '12px', color: '#111111', fontWeight: '800', textShadow: '0 2px 4px rgba(0,0,0,0.8)', backgroundColor: 'var(--bg-secondary)', padding: '4px 10px', borderRadius: '12px', backdropFilter: 'blur(4px)' }}>Tocar para cambiar foto</span>
+                         <span style={{ fontSize: '12px', color: 'white', fontWeight: '800', textShadow: '0 2px 4px rgba(0,0,0,0.8)', backgroundColor: 'var(--bg-secondary)', padding: '4px 10px', borderRadius: '12px', backdropFilter: 'blur(4px)' }}>Tocar para cambiar foto</span>
                       </div>
                     </>
                   ) : (
@@ -1292,7 +1292,7 @@ const EditInventoryModal = ({ isOpen, item, staff = [], onClose, onSave }) => {
                   borderRadius: '16px', 
                   border: '1px solid rgba(0, 0, 0, 0.08)', 
                   backgroundColor: 'rgba(0, 0, 0, 0.04)', 
-                  color: '#111111', 
+                  color: 'white', 
                   fontSize: '14px', 
                   fontWeight: '800',
                   cursor: 'pointer',

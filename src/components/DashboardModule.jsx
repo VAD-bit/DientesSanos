@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect, useRef, lazy, Suspense } from 'react';
+import React, { useState, useEffect, useRef, lazy, Suspense } from 'react';
 import { getRoleCategory } from '../utils/staffRoles';
 import { createPortal } from 'react-dom';
 import dentalChairImg from '../assets/dental-chair.png';
@@ -863,7 +863,7 @@ const DashboardModule = ({
             <h1 style={{
               fontSize: '21px',
               fontWeight: '700',
-              color: '#111111',
+              color: 'white',
               letterSpacing: '-0.3px',
               display: 'flex',
               alignItems: 'center',
@@ -963,7 +963,7 @@ const DashboardModule = ({
                   borderRadius: '12px',
                   backgroundColor: 'rgba(0, 0, 0, 0.04)',
                   border: '1px solid rgba(0, 0, 0, 0.08)',
-                  color: '#111111',
+                  color: 'white',
                   fontSize: '13px',
                   outline: 'none',
                   transition: 'all 0.2s ease'
@@ -1047,7 +1047,7 @@ const DashboardModule = ({
                           border: 'none',
                           borderRadius: '9px',
                           background: isActive ? 'rgba(232, 212, 176, 0.12)' : 'transparent',
-                          color: '#111111',
+                          color: 'white',
                           cursor: 'pointer',
                           textAlign: 'left'
                         }}
@@ -1335,7 +1335,7 @@ const DashboardModule = ({
                 <span style={{ fontSize: '9px', fontWeight: '800', color: 'rgba(255,255,255,0.7)', letterSpacing: '0.5px' }}>CITAS HOY</span>
                 <Calendar size={13} color="rgba(255,255,255,0.6)" />
               </div>
-              <div style={{ fontSize: '18px', fontWeight: '900', color: '#111111', margin: '1px 0' }}>
+              <div style={{ fontSize: '18px', fontWeight: '900', color: 'white', margin: '1px 0' }}>
                 {citasHoyCount}
               </div>
               <div style={{ display: 'inline-flex', alignItems: 'center', gap: '3px', fontSize: '9px', color: '#111111', fontWeight: '700' }}>
@@ -1349,7 +1349,7 @@ const DashboardModule = ({
                 <span style={{ fontSize: '9px', fontWeight: '800', color: 'rgba(255,255,255,0.7)', letterSpacing: '0.5px' }}>FACTURADO HOY</span>
                 <span style={{ fontSize: '11px', color: 'rgba(255,255,255,0.6)', fontWeight: '800' }}>$</span>
               </div>
-              <div style={{ fontSize: '18px', fontWeight: '900', color: '#111111', margin: '1px 0' }}>
+              <div style={{ fontSize: '18px', fontWeight: '900', color: 'white', margin: '1px 0' }}>
                 ${formatCurrency(facturadoHoyAmount)}
               </div>
               <div style={{ display: 'inline-flex', alignItems: 'center', gap: '3px', fontSize: '9px', color: '#111111', fontWeight: '700' }}>
@@ -1363,7 +1363,7 @@ const DashboardModule = ({
                 <span style={{ fontSize: '9px', fontWeight: '800', color: 'rgba(255,255,255,0.7)', letterSpacing: '0.5px' }}>CLIENTES NUEVOS</span>
                 <Users size={13} color="rgba(255,255,255,0.6)" />
               </div>
-              <div style={{ fontSize: '18px', fontWeight: '900', color: '#111111', margin: '1px 0' }}>
+              <div style={{ fontSize: '18px', fontWeight: '900', color: 'white', margin: '1px 0' }}>
                 {clientesNuevosCount}
               </div>
               <div style={{ display: 'inline-flex', alignItems: 'center', gap: '3px', fontSize: '9px', color: '#111111', fontWeight: '700' }}>
@@ -1378,7 +1378,7 @@ const DashboardModule = ({
                 <UserX size={13} color="rgba(255,255,255,0.6)" />
               </div>
               <div
-                style={{ fontSize: '18px', fontWeight: '900', color: '#111111', margin: '1px 0' }}
+                style={{ fontSize: '18px', fontWeight: '900', color: 'white', margin: '1px 0' }}
                 title={barbersPendingArrival.length > 0 ? barbersPendingArrival.map(member => member.name).join(', ') : 'Todos los Odontólogos activos están presentes'}
               >
                 {pendingBarbersCount}
@@ -1406,7 +1406,7 @@ const DashboardModule = ({
           }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px', flexShrink: 0 }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <h3 style={{ fontSize: '13px', fontWeight: '800', color: '#111111', margin: 0, textTransform: 'uppercase', letterSpacing: '0.5px' }}>Estado de los sillones</h3>
+                <h3 style={{ fontSize: '13px', fontWeight: '800', color: 'white', margin: 0, textTransform: 'uppercase', letterSpacing: '0.5px' }}>Estado de los sillones</h3>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '4px', backgroundColor: 'rgba(0, 0, 0, 0.04)', padding: '2px 8px', borderRadius: '4px', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
                   <div style={{ width: '4px', height: '4px', borderRadius: '50%', backgroundColor: 'var(--champagne)' }} />
                   <span style={{ fontSize: '10px', color: 'rgba(255,255,255,0.5)', fontWeight: '600' }}>En tiempo real</span>
@@ -1531,7 +1531,7 @@ const DashboardModule = ({
                       </div>
 
                       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '2px', textAlign: 'right' }}>
-                        <span style={{ fontSize: '10px', fontWeight: '900', color: '#111111', letterSpacing: '0.3px', lineHeight: '1' }}>{chair.type}</span>
+                        <span style={{ fontSize: '10px', fontWeight: '900', color: 'white', letterSpacing: '0.3px', lineHeight: '1' }}>{chair.type}</span>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
                           <div style={{ width: '4px', height: '4px', borderRadius: '50%', backgroundColor: chair.statusColor }} />
                           <span style={{ fontSize: '8px', fontWeight: '800', color: chair.statusColor }}>{chair.status === 'En servicio' ? 'En tratamiento' : chair.status}</span>
@@ -1571,7 +1571,7 @@ const DashboardModule = ({
                           boxSizing: 'border-box'
                         }}>
                           <div style={{ flex: 1, minWidth: 0 }}>
-                            <div style={{ fontSize: '10px', fontWeight: '800', color: '#111111', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{chair.name}</div>
+                            <div style={{ fontSize: '10px', fontWeight: '800', color: 'white', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{chair.name}</div>
                             <div style={{ fontSize: '8.5px', color: 'rgba(255,255,255,0.75)', fontWeight: '600', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{chair.service}</div>
                           </div>
                           <div style={{ textAlign: 'right' }}>
@@ -1626,7 +1626,7 @@ const DashboardModule = ({
                               borderRadius: '4px',
                               backgroundColor: 'rgba(0, 0, 0, 0.04)',
                               border: '1px solid rgba(0, 0, 0, 0.08)',
-                              color: '#111111',
+                              color: 'white',
                               display: 'flex',
                               alignItems: 'center',
                               justifyContent: 'center',
@@ -1660,7 +1660,7 @@ const DashboardModule = ({
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '4px', flexShrink: 0 }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
                   <Crown size={14} color="var(--champagne)" fill="var(--champagne)" />
-                  <span style={{ fontSize: '10px', fontWeight: '800', color: '#111111', letterSpacing: '0.5px', textTransform: 'uppercase' }}>Top Odontólogos</span>
+                  <span style={{ fontSize: '10px', fontWeight: '800', color: 'white', letterSpacing: '0.5px', textTransform: 'uppercase' }}>Top Odontólogos</span>
                 </div>
                 <span style={{ fontSize: '8.5px', fontWeight: '700', color: 'var(--champagne)', backgroundColor: 'rgba(232, 212, 176, 0.1)', padding: '2px 8px', borderRadius: '100px', border: '1px solid rgba(232, 212, 176, 0.2)' }}>
                   MES EN CURSO
@@ -1770,7 +1770,7 @@ const DashboardModule = ({
                         </div>
 
                         {/* Info */}
-                        <span style={{ fontSize: isTop1 ? '11.5px' : '10.5px', fontWeight: '900', color: '#111111', marginTop: '4px', textAlign: 'center', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', width: '100%' }}>
+                        <span style={{ fontSize: isTop1 ? '11.5px' : '10.5px', fontWeight: '900', color: 'white', marginTop: '4px', textAlign: 'center', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', width: '100%' }}>
                           {getShortName(barber.name)}
                         </span>
                         <span style={{ fontSize: isTop1 ? '11px' : '9.5px', fontWeight: '900', color: isTop1 ? 'var(--champagne)' : 'rgba(255,255,255,0.85)', marginTop: '1px' }}>
@@ -1800,7 +1800,7 @@ const DashboardModule = ({
             {/* 2. Servicios más vendidos */}
             <div className="glass-card" style={{ padding: '10px 12px', borderRadius: '16px', backgroundColor: 'var(--bg-secondary)', border: '1px solid rgba(0, 0, 0, 0.08)', display: 'flex', flexDirection: 'column', height: '100%', minHeight: 0 }}>
               <div style={{ flexShrink: 0, marginBottom: '8px' }}>
-                <h4 style={{ fontSize: '10px', fontWeight: '800', color: '#111111', margin: 0, textTransform: 'uppercase', letterSpacing: '0.5px' }}>Servicios más vendidos</h4>
+                <h4 style={{ fontSize: '10px', fontWeight: '800', color: 'white', margin: 0, textTransform: 'uppercase', letterSpacing: '0.5px' }}>Servicios más vendidos</h4>
               </div>
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', flex: 1, overflowY: 'auto' }}>
@@ -1808,7 +1808,7 @@ const DashboardModule = ({
                   <div key={service.id || idx} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '5px 8px', borderRadius: '8px', backgroundColor: 'rgba(0, 0, 0, 0.04)' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                       <span style={{ fontSize: '10px', fontWeight: '900', color: 'var(--champagne)' }}>{idx + 1}</span>
-                      <span style={{ fontSize: '11px', fontWeight: '700', color: '#111111' }}>{service.name}</span>
+                      <span style={{ fontSize: '11px', fontWeight: '700', color: 'white' }}>{service.name}</span>
                     </div>
                     <span style={{ fontSize: '11px', fontWeight: '800', color: 'rgba(255,255,255,0.9)' }}>{service.val}</span>
                   </div>
@@ -1824,7 +1824,7 @@ const DashboardModule = ({
                   border: '1px solid rgba(0, 0, 0, 0.08)',
                   borderRadius: '8px',
                   padding: '6px 0',
-                  color: '#111111',
+                  color: 'white',
                   fontSize: '10px',
                   fontWeight: '700',
                   cursor: 'pointer',
@@ -1865,7 +1865,7 @@ const DashboardModule = ({
             overflow: 'hidden'
           }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px', flexShrink: 0 }}>
-              <h3 style={{ fontSize: '11.5px', fontWeight: '800', color: '#111111', margin: 0, textTransform: 'uppercase', letterSpacing: '0.5px' }}>Próximas citas</h3>
+              <h3 style={{ fontSize: '11.5px', fontWeight: '800', color: 'white', margin: 0, textTransform: 'uppercase', letterSpacing: '0.5px' }}>Próximas citas</h3>
               <span style={{ fontSize: '9px', color: 'rgba(255,255,255,0.75)', fontWeight: '700', cursor: 'pointer', textDecoration: 'underline' }} onClick={() => onNavigate && onNavigate('scheduling')}>Ver calendario</span>
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', overflowY: 'auto', flex: 1 }} className="panda-scrollbar">
@@ -1907,7 +1907,7 @@ const DashboardModule = ({
                     <div style={{ flex: 1, minWidth: 0 }}>
                       {/* Line 1: full name */}
                       <div style={{
-                        fontSize: '11px', fontWeight: '700', color: '#111111',
+                        fontSize: '11px', fontWeight: '700', color: 'white',
                         lineHeight: '1.3', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis'
                       }}>{item.name}</div>
                       {/* Line 2: service · barber + beverage chip */}
@@ -1949,7 +1949,7 @@ const DashboardModule = ({
             flexDirection: 'column', 
             flexShrink: 0
           }}>
-            <h3 style={{ fontSize: '10px', fontWeight: '800', color: '#111111', margin: '0 0 8px 0', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Acciones rápidas</h3>
+            <h3 style={{ fontSize: '10px', fontWeight: '800', color: 'white', margin: '0 0 8px 0', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Acciones rápidas</h3>
             <div style={{ display: 'grid', gridTemplateColumns: isMobile ? 'repeat(2, minmax(0, 1fr))' : 'repeat(4, minmax(0, 1fr))', gap: '8px' }}>
               {[
                 { label: 'Inventario', action: () => setShowInventoryPopup(true), icon: Package },
@@ -2015,7 +2015,7 @@ const DashboardModule = ({
             position: 'relative'
           }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2px', flexShrink: 0 }}>
-              <span style={{ fontSize: '10px', fontWeight: '800', color: '#111111', letterSpacing: '0.5px', textTransform: 'uppercase' }}>Ingresos</span>
+              <span style={{ fontSize: '10px', fontWeight: '800', color: 'white', letterSpacing: '0.5px', textTransform: 'uppercase' }}>Ingresos</span>
               <div ref={incomePeriodMenuRef} style={{ position: 'relative' }}>
                 <button
                   type="button"
@@ -2077,7 +2077,7 @@ const DashboardModule = ({
               </div>
             </div>
             <div style={{ flexShrink: 0, marginBottom: '6px' }}>
-              <div style={{ fontSize: '18px', fontWeight: '900', color: '#111111' }}>
+              <div style={{ fontSize: '18px', fontWeight: '900', color: 'white' }}>
                 ${formatCurrency(activeIncomeAmount)}
               </div>
               <div style={{ display: 'inline-flex', alignItems: 'center', gap: '3px', fontSize: '9px', color: '#111111', fontWeight: '700', marginTop: '2px' }}>
@@ -2115,7 +2115,7 @@ const DashboardModule = ({
               </div>
             </div>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: '6px' }}>
-              <span style={{ fontSize: '13px', fontWeight: '900', color: '#111111' }}>
+              <span style={{ fontSize: '13px', fontWeight: '900', color: 'white' }}>
                 ${formatCurrency(currentMonthAmountReal)} <span style={{ fontSize: '10px', color: 'rgba(255,255,255,0.3)', fontWeight: '600' }}>/ ${formatCurrency(monthlyGoal)}</span>
               </span>
               <span style={{ fontSize: '10.5px', fontWeight: '900', color: 'var(--champagne)' }}>
@@ -2163,7 +2163,7 @@ const DashboardModule = ({
               boxShadow: '0 30px 60px -12px rgba(0,0,0,0.5)'
             }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <h3 style={{ fontSize: '15px', fontWeight: '800', color: '#111111', margin: 0 }}>EDITAR SILLA {selectedChair.id}</h3>
+                <h3 style={{ fontSize: '15px', fontWeight: '800', color: 'white', margin: 0 }}>EDITAR SILLA {selectedChair.id}</h3>
                 <button 
                   onClick={(e) => { e.stopPropagation(); setSelectedChair(null); }} 
                   style={{ background: 'transparent', border: 'none', color: 'rgba(255,255,255,0.75)', cursor: 'pointer' }}
@@ -2190,7 +2190,7 @@ const DashboardModule = ({
                       border: '1px solid rgba(0, 0, 0, 0.08)',
                       borderRadius: '12px',
                       padding: '12px 12px 12px 36px',
-                      color: '#111111',
+                      color: 'white',
                       outline: 'none',
                       fontSize: '13px',
                       transition: 'all 0.25s ease',
@@ -2280,7 +2280,7 @@ const DashboardModule = ({
                           border: '1px solid rgba(0, 0, 0, 0.08)',
                           borderRadius: '12px',
                           padding: '12px 12px 12px 36px',
-                          color: '#111111',
+                          color: 'white',
                           outline: 'none',
                           fontSize: '13px',
                           transition: 'all 0.25s ease',
@@ -2308,7 +2308,7 @@ const DashboardModule = ({
                           border: '1px solid rgba(0, 0, 0, 0.08)',
                           borderRadius: '12px',
                           padding: '12px 12px 12px 36px',
-                          color: '#111111',
+                          color: 'white',
                           outline: 'none',
                           fontSize: '13px',
                           transition: 'all 0.25s ease',
@@ -2337,7 +2337,7 @@ const DashboardModule = ({
                             border: '1px solid rgba(0, 0, 0, 0.08)',
                             borderRadius: '12px',
                             padding: '12px 12px 12px 36px',
-                            color: '#111111',
+                            color: 'white',
                             outline: 'none',
                             fontSize: '13px',
                             transition: 'all 0.25s ease',
@@ -2364,7 +2364,7 @@ const DashboardModule = ({
                             border: '1px solid rgba(0, 0, 0, 0.08)',
                             borderRadius: '12px',
                             padding: '12px 12px 12px 36px',
-                            color: '#111111',
+                            color: 'white',
                             outline: 'none',
                             fontSize: '13px',
                             transition: 'all 0.25s ease',
@@ -2396,7 +2396,7 @@ const DashboardModule = ({
                         border: '1px solid rgba(0, 0, 0, 0.08)',
                         borderRadius: '12px',
                         padding: '12px 12px 12px 36px',
-                        color: '#111111',
+                        color: 'white',
                         outline: 'none',
                         fontSize: '13px',
                         transition: 'all 0.25s ease',
@@ -2416,7 +2416,7 @@ const DashboardModule = ({
                     borderRadius: '8px',
                     backgroundColor: 'rgba(0, 0, 0, 0.04)',
                     border: '1px solid rgba(0, 0, 0, 0.08)',
-                    color: '#111111',
+                    color: 'white',
                     fontWeight: '700',
                     cursor: 'pointer'
                   }}
@@ -2476,7 +2476,7 @@ const DashboardModule = ({
               boxShadow: '0 30px 60px -12px rgba(0,0,0,0.5)'
             }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <h3 style={{ fontSize: '15px', fontWeight: '800', color: '#111111', margin: 0 }}>EDITAR META MENSUAL</h3>
+                <h3 style={{ fontSize: '15px', fontWeight: '800', color: 'white', margin: 0 }}>EDITAR META MENSUAL</h3>
                 <button 
                   onClick={(e) => { e.stopPropagation(); setIsEditingGoals(false); }} 
                   style={{ background: 'transparent', border: 'none', color: 'rgba(255,255,255,0.75)', cursor: 'pointer' }}
@@ -2503,7 +2503,7 @@ const DashboardModule = ({
                       border: '1px solid rgba(0, 0, 0, 0.08)',
                       borderRadius: '12px',
                       padding: '12px 12px 12px 36px',
-                      color: '#111111',
+                      color: 'white',
                       outline: 'none',
                       fontSize: '13px',
                       transition: 'all 0.25s ease',
@@ -2532,7 +2532,7 @@ const DashboardModule = ({
                       border: '1px solid rgba(0, 0, 0, 0.08)',
                       borderRadius: '12px',
                       padding: '12px 12px 12px 36px',
-                      color: '#111111',
+                      color: 'white',
                       outline: 'none',
                       fontSize: '13px',
                       transition: 'all 0.25s ease',
@@ -2551,7 +2551,7 @@ const DashboardModule = ({
                     borderRadius: '8px',
                     backgroundColor: 'rgba(0, 0, 0, 0.04)',
                     border: '1px solid rgba(0, 0, 0, 0.08)',
-                    color: '#111111',
+                    color: 'white',
                     fontWeight: '700',
                     cursor: 'pointer'
                   }}
@@ -2600,7 +2600,7 @@ const DashboardModule = ({
                     borderRadius: '50%',
                     width: '32px',
                     height: '32px',
-                    color: '#111111',
+                    color: 'white',
                     cursor: 'pointer',
                     display: 'flex',
                     alignItems: 'center',
@@ -2670,7 +2670,7 @@ const DashboardModule = ({
                   borderRadius: '50%',
                   width: '32px',
                   height: '32px',
-                  color: '#111111',
+                  color: 'white',
                   cursor: 'pointer',
                   display: 'flex',
                   alignItems: 'center',
@@ -2711,7 +2711,7 @@ const DashboardModule = ({
                   borderRadius: '50%',
                   width: '32px',
                   height: '32px',
-                  color: '#111111',
+                  color: 'white',
                   cursor: 'pointer',
                   display: 'flex',
                   alignItems: 'center',
@@ -2754,7 +2754,7 @@ const DashboardModule = ({
                     borderRadius: '50%',
                     width: '32px',
                     height: '32px',
-                    color: '#111111',
+                    color: 'white',
                     cursor: 'pointer',
                     display: 'flex',
                     alignItems: 'center',
@@ -2790,7 +2790,7 @@ const DashboardModule = ({
                   borderRadius: '50%',
                   width: '32px',
                   height: '32px',
-                  color: '#111111',
+                  color: 'white',
                   cursor: 'pointer',
                   display: 'flex',
                   alignItems: 'center',

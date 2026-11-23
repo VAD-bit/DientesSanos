@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNotifs } from '../context/NotificationContext';
 import { roleLabel } from '../utils/staffRoles';
 import { 
@@ -452,7 +452,7 @@ const SaleServiceModal = ({ isOpen, onClose, clients, services, staff, extras, i
             <div>
               <div style={{ fontSize: '10px', color: 'var(--gold-primary)', fontWeight: '800', textTransform: 'uppercase', marginBottom: '2px' }}>Total Estimado</div>
               <div style={{ display: 'flex', flexDirection: 'column' }}>
-                <div style={{ fontSize: '24px', fontWeight: '950', color: '#111111' }}>${totalPrice}</div>
+                <div style={{ fontSize: '24px', fontWeight: '950', color: 'white' }}>${totalPrice}</div>
                 {rates?.usd > 0 && (
                   <div style={{ fontSize: '12px', fontWeight: '700', color: 'var(--text-secondary)' }}>
                     ≈ {Math.round(totalPrice * rates.usd).toLocaleString()} BS

@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { 
   Users, 
@@ -728,7 +728,7 @@ const ReceptionModule = ({ isMobile, rates }) => {
                       borderRadius: '16px',
                       background: 'rgba(0, 0, 0, 0.04)',
                       border: '1px solid rgba(0, 0, 0, 0.08)',
-                      color: '#111111',
+                      color: 'white',
                       fontSize: '14px',
                       outline: 'none',
                       transition: 'all 0.3s ease'
@@ -770,7 +770,7 @@ const ReceptionModule = ({ isMobile, rates }) => {
                         onMouseOver={(e) => e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255,0.1)'}
                         onMouseOut={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
                       >
-                        <span style={{ fontWeight: '700', fontSize: '14px', color: '#111111' }}>{c.name}</span>
+                        <span style={{ fontWeight: '700', fontSize: '14px', color: 'white' }}>{c.name}</span>
                         <span style={{ fontSize: '12px', color: 'var(--gold-primary)', fontWeight: '700' }}>V-{c.id_card}</span>
                       </div>
                     ))}
@@ -815,7 +815,7 @@ const ReceptionModule = ({ isMobile, rates }) => {
                 <div style={{ marginBottom: '11px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '12px' }}>
                   <div>
                     <span style={{ display: 'block', color: 'var(--gold-primary)', fontSize: '9px', fontWeight: 950, letterSpacing: '1px', textTransform: 'uppercase' }}>Orden en preparación</span>
-                    <strong style={{ display: 'block', marginTop: '2px', color: '#111111', fontSize: '14px' }}>{orderItemCount} {orderItemCount === 1 ? 'artículo' : 'artículos'}</strong>
+                    <strong style={{ display: 'block', marginTop: '2px', color: '#fff', fontSize: '14px' }}>{orderItemCount} {orderItemCount === 1 ? 'artículo' : 'artículos'}</strong>
                   </div>
                   <span style={{ padding: '5px 9px', borderRadius: '999px', color: '#cfcfd2', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', fontSize: '9px', fontWeight: 850 }}>LISTA PARA ASIGNAR</span>
                 </div>
@@ -823,9 +823,9 @@ const ReceptionModule = ({ isMobile, rates }) => {
                   {selectedServices.map(s => (
                     <div key={s.id} className="reception-order-row" style={{ minHeight: '62px', padding: '9px 9px 9px 10px', display: 'grid', gridTemplateColumns: '38px minmax(0,1fr) auto 36px', alignItems: 'center', gap: '10px', borderRadius: '14px', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
                       <span style={{ width: '38px', height: '38px', display: 'grid', placeItems: 'center', borderRadius: '11px', color: 'var(--gold-primary)', background: 'rgba(17, 17, 17,.11)', border: '1px solid rgba(17, 17, 17,.2)' }}><ToothIcon size={17} /></span>
-                      <div style={{ minWidth: 0 }}><span style={{ display: 'block', color: 'var(--gold-primary)', fontSize: '8px', fontWeight: 950, letterSpacing: '.7px' }}>SERVICIO</span><strong style={{ display: 'block', marginTop: '2px', color: '#111111', fontSize: '13px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{s.name}</strong></div>
+                      <div style={{ minWidth: 0 }}><span style={{ display: 'block', color: 'var(--gold-primary)', fontSize: '8px', fontWeight: 950, letterSpacing: '.7px' }}>SERVICIO</span><strong style={{ display: 'block', marginTop: '2px', color: '#fff', fontSize: '13px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{s.name}</strong></div>
                       <div style={{ textAlign: 'right' }}>
-                        <strong style={{ display: 'block', color: '#111111', fontSize: '12px' }}>{formatBs(Number(s.price) * exchangeRate)} Bs</strong>
+                        <strong style={{ display: 'block', color: '#fff', fontSize: '12px' }}>{formatBs(Number(s.price) * exchangeRate)} Bs</strong>
                         <small style={{ color: 'var(--text-muted)', fontSize: '9px' }}>${formatUsd(s.price)}</small>
                       </div>
                       <button type="button" aria-label={`Quitar servicio ${s.name}`} onClick={() => toggleService(s.id)} className="reception-remove-item"><Trash2 size={15} /></button>
@@ -834,7 +834,7 @@ const ReceptionModule = ({ isMobile, rates }) => {
                   {selectedExtras.map(e => (
                     <div key={e.id} className="reception-order-row" style={{ minHeight: '62px', padding: '9px 9px 9px 10px', display: 'grid', gridTemplateColumns: '38px minmax(0,1fr) auto 36px', alignItems: 'center', gap: '10px', borderRadius: '14px', background: 'rgba(255,159,10,.035)', border: '1px solid rgba(255,159,10,.12)' }}>
                       <span style={{ width: '38px', height: '38px', display: 'grid', placeItems: 'center', borderRadius: '11px', color: '#ff9f0a', background: 'rgba(255,159,10,.09)', border: '1px solid rgba(255,159,10,.18)' }}><Rocket size={17} /></span>
-                      <div style={{ minWidth: 0 }}><span style={{ display: 'block', color: '#ffad33', fontSize: '8px', fontWeight: 950, letterSpacing: '.7px' }}>EXTRA</span><strong style={{ display: 'block', marginTop: '2px', color: '#111111', fontSize: '13px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{e.name}</strong></div>
+                      <div style={{ minWidth: 0 }}><span style={{ display: 'block', color: '#ffad33', fontSize: '8px', fontWeight: 950, letterSpacing: '.7px' }}>EXTRA</span><strong style={{ display: 'block', marginTop: '2px', color: '#fff', fontSize: '13px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{e.name}</strong></div>
                       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end' }}>
                         {editingExtraPriceId === e.id ? (
                           <div style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
@@ -846,7 +846,7 @@ const ReceptionModule = ({ isMobile, rates }) => {
                               onChange={(val) => updateExtraPrice(e.id, val.target.value)}
                               onBlur={() => setEditingExtraPriceId(null)}
                               onKeyDown={(key) => key.key === 'Enter' && setEditingExtraPriceId(null)}
-                              style={{ width: '74px', height: '34px', background: 'var(--bg-secondary)', border: '1px solid #ff9f0a', borderRadius: '9px', color: '#111111', padding: '0 7px 0 17px', fontSize: '12px', fontWeight: '800', textAlign: 'right' }}
+                              style={{ width: '74px', height: '34px', background: 'var(--bg-secondary)', border: '1px solid #ff9f0a', borderRadius: '9px', color: 'white', padding: '0 7px 0 17px', fontSize: '12px', fontWeight: '800', textAlign: 'right' }}
                             />
                           </div>
                         ) : (
@@ -856,7 +856,7 @@ const ReceptionModule = ({ isMobile, rates }) => {
                             style={{ display: 'flex', alignItems: 'center', gap: '6px', cursor: 'pointer', padding: '3px 6px', border: 0, borderRadius: '8px', color: 'inherit', background: 'transparent' }}
                           >
                             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end' }}>
-                              <strong style={{ color: '#111111', fontSize: '12px' }}>{formatBs(Number(e.customPrice ?? e.price) * exchangeRate)} Bs</strong>
+                              <strong style={{ color: '#fff', fontSize: '12px' }}>{formatBs(Number(e.customPrice ?? e.price) * exchangeRate)} Bs</strong>
                               <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
                                 <span style={{ color: 'var(--text-muted)', fontSize: '9px' }}>${formatUsd(e.customPrice ?? e.price)}</span>
                                 <Edit3 size={8} color="var(--text-muted)" />
@@ -871,9 +871,9 @@ const ReceptionModule = ({ isMobile, rates }) => {
                   {selectedProducts.map(p => (
                     <div key={p.id} className="reception-order-row" style={{ minHeight: '66px', padding: '9px 9px 9px 10px', display: 'grid', gridTemplateColumns: '42px minmax(0,1fr) auto 36px', alignItems: 'center', gap: '10px', borderRadius: '14px', background: String(p.inventory_type).toLowerCase() === 'cafe' ? 'rgba(255,159,10,.035)' : 'rgba(48,209,88,.035)', border: `1px solid ${String(p.inventory_type).toLowerCase() === 'cafe' ? 'rgba(255,159,10,.13)' : 'rgba(48,209,88,.13)'}` }}>
                       <span style={{ width: '42px', height: '42px', display: 'grid', placeItems: 'center', overflow: 'hidden', borderRadius: '12px', color: String(p.inventory_type).toLowerCase() === 'cafe' ? '#ff9f0a' : '#30d158', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)' }}>{p.image_url ? <img src={p.image_url} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} /> : <ShoppingBag size={18} />}</span>
-                      <div style={{ minWidth: 0 }}><span style={{ display: 'block', color: String(p.inventory_type).toLowerCase() === 'cafe' ? '#ffad33' : '#54d37b', fontSize: '8px', fontWeight: 950, letterSpacing: '.65px' }}>{getInventorySalesLabel(p).toUpperCase()} {Number(p.quantity || 1) > 1 ? `· ×${p.quantity}` : ''}</span><strong style={{ display: 'block', marginTop: '2px', color: '#111111', fontSize: '13px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{p.name}</strong></div>
+                      <div style={{ minWidth: 0 }}><span style={{ display: 'block', color: String(p.inventory_type).toLowerCase() === 'cafe' ? '#ffad33' : '#54d37b', fontSize: '8px', fontWeight: 950, letterSpacing: '.65px' }}>{getInventorySalesLabel(p).toUpperCase()} {Number(p.quantity || 1) > 1 ? `· ×${p.quantity}` : ''}</span><strong style={{ display: 'block', marginTop: '2px', color: '#fff', fontSize: '13px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{p.name}</strong></div>
                       <div style={{ textAlign: 'right' }}>
-                        <strong style={{ display: 'block', color: '#111111', fontSize: '12px' }}>{formatBs(Number(p.price) * Number(p.quantity || 1) * exchangeRate)} Bs</strong>
+                        <strong style={{ display: 'block', color: '#fff', fontSize: '12px' }}>{formatBs(Number(p.price) * Number(p.quantity || 1) * exchangeRate)} Bs</strong>
                         <small style={{ color: 'var(--text-muted)', fontSize: '9px' }}>${formatUsd(Number(p.price) * Number(p.quantity || 1))}</small>
                       </div>
                       <button type="button" aria-label={`Quitar producto ${p.name}`} onClick={() => toggleProduct(p)} className="reception-remove-item"><Trash2 size={15} /></button>
@@ -916,7 +916,7 @@ const ReceptionModule = ({ isMobile, rates }) => {
                         : 'Recomendación (Siguiente en Fila)'}
                     </span>
                   </div>
-                  <p style={{ margin: 0, fontSize: '12px', color: '#111111', fontWeight: '750', lineHeight: '1.4' }}>
+                  <p style={{ margin: 0, fontSize: '12px', color: 'white', fontWeight: '750', lineHeight: '1.4' }}>
                     {recommendationInfo.type === 'frequent' ? (
                       recommendationInfo.isBusy ? (
                         <span>
@@ -1015,7 +1015,7 @@ const ReceptionModule = ({ isMobile, rates }) => {
                             top: 0, 
                             right: 0, 
                             backgroundColor: '#ff453a', 
-                            color: '#111111', 
+                            color: 'white', 
                             fontSize: '8px', 
                             padding: '2px 6px', 
                             fontWeight: '900',
@@ -1153,7 +1153,7 @@ const ReceptionModule = ({ isMobile, rates }) => {
                           </span>
                         </div>
                         <div>
-                          <div style={{ fontWeight: '800', fontSize: '14px', color: '#111111' }}>{app.clients?.name}</div>
+                          <div style={{ fontWeight: '800', fontSize: '14px', color: 'white' }}>{app.clients?.name}</div>
                           <div style={{ fontSize: '11px', color: 'var(--text-secondary)', marginTop: '2px', display: 'flex', alignItems: 'center', gap: '4px' }}>
                             <span style={{ width: '4px', height: '4px', borderRadius: '50%', backgroundColor: 'rgba(0, 0, 0, 0.04)' }} />
                             <span>Atendido por: <strong>{app.staff?.name}</strong></span>
@@ -1230,7 +1230,7 @@ const ReceptionModule = ({ isMobile, rates }) => {
                   <div className="radar-glow" />
                   <Search size={28} color="var(--gold-primary)" style={{ position: 'relative', zIndex: 2 }} />
                 </div>
-                <h3 style={{ color: '#111111', fontWeight: '800', fontSize: '18px' }}>Escaneando Pacientes</h3>
+                <h3 style={{ color: 'white', fontWeight: '800', fontSize: '18px' }}>Escaneando Pacientes</h3>
                 <p style={{ fontSize: '13px', color: 'var(--text-secondary)', marginTop: '8px', maxWidth: '280px', lineHeight: '1.5' }}>
                   Ingresa la cédula o nombre en el buscador para cargar la ficha y comenzar la atención.
                 </p>
@@ -1246,7 +1246,7 @@ const ReceptionModule = ({ isMobile, rates }) => {
                 <CheckCircle2 size={56} color="var(--gold-primary)" style={{ marginBottom: '24px' }} />
                 <h3 style={{ fontSize: '24px', marginBottom: '8px' }}>Todo Listo</h3>
                 <p style={{ color: 'var(--text-secondary)', marginBottom: '24px', fontSize: '14px' }}>
-                  Confirmación para <span style={{ color: '#111111', fontWeight: '800' }}>{selectedClient.name}</span>
+                  Confirmación para <span style={{ color: 'white', fontWeight: '800' }}>{selectedClient.name}</span>
                 </p>
 
                 {/* Detailed Summary for Confirmation */}
@@ -1298,7 +1298,7 @@ const ReceptionModule = ({ isMobile, rates }) => {
                     ))}
                     <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginTop: '6px', paddingTop: '10px', borderTop: '1px solid rgba(0, 0, 0, 0.08)' }}>
                       <Users size={14} color="var(--text-muted)" />
-                      <span style={{ fontSize: '13px', color: 'var(--text-muted)' }}>Asignado: <span style={{ color: '#111111', fontWeight: '700' }}>{staff.find(s => s.id === formData.staffId)?.name || 'No seleccionado'}</span></span>
+                      <span style={{ fontSize: '13px', color: 'var(--text-muted)' }}>Asignado: <span style={{ color: 'white', fontWeight: '700' }}>{staff.find(s => s.id === formData.staffId)?.name || 'No seleccionado'}</span></span>
                     </div>
                   </div>
                 </div>
@@ -1331,7 +1331,7 @@ const ReceptionModule = ({ isMobile, rates }) => {
                       <button 
                         disabled={loading}
                         onClick={handleScheduleClick}
-                        style={{ background: 'none', border: '1px solid var(--border-color)', color: '#111111', height: '56px', borderRadius: '18px', fontWeight: '700', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px' }}
+                        style={{ background: 'none', border: '1px solid var(--border-color)', color: 'white', height: '56px', borderRadius: '18px', fontWeight: '700', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px' }}
                       >
                         <Calendar size={18} /> AGENDAR PARA DESPUÉS
                       </button>
@@ -1706,7 +1706,7 @@ const SelectionModal = ({ isOpen, onClose, title, icon, items, selectedItems, on
             {icon}
             <h3 style={{ fontSize: '20px', fontWeight: '800' }}>{title}</h3>
           </div>
-          <button onClick={onClose} style={{ background: 'rgba(0, 0, 0, 0.04)', border: 'none', borderRadius: '50%', width: '36px', height: '36px', color: '#111111', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <button onClick={onClose} style={{ background: 'rgba(0, 0, 0, 0.04)', border: 'none', borderRadius: '50%', width: '36px', height: '36px', color: 'white', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
             <X size={20} />
           </button>
         </div>

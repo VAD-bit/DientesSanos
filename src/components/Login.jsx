@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 import {
   Mail, Lock, Loader2, Rocket, Eye, EyeOff,
@@ -1351,7 +1351,7 @@ const mobFeaturesSecureGap = ${mobFeaturesSecureGap};`;
               {/* Mobile Card Header */}
               <div className="l-card-mobile-header">
                  <img loading="lazy" src={logo} alt="Centro Odontológico Dientes Sanos" style={{ width: '130px', marginBottom: '24px', objectFit: 'contain', display: 'block', marginLeft: 'auto', marginRight: 'auto', filter: 'drop-shadow(0 8px 16px rgba(0,0,0,0.95)) drop-shadow(0 0 25px rgba(17, 17, 17, 0.3))' }} />
-                <h2 style={{ fontSize: '24px', fontWeight: '600', color: '#111111', marginBottom: '6px' }}>¡Bienvenido de nuevo!</h2>
+                <h2 style={{ fontSize: '24px', fontWeight: '600', color: '#fff', marginBottom: '6px' }}>¡Bienvenido de nuevo!</h2>
                 <p style={{ fontSize: '13.5px', color: 'rgba(255,255,255,0.4)', marginBottom: '8px' }}>Inicia sesión para acceder al CRM de tu clínica</p>
               </div>
 

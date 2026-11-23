@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { createPortal } from 'react-dom';
 import { X, User, Phone, CreditCard, Tag, Loader2 } from 'lucide-react';
 import { dataService } from '../services/dataService';
@@ -97,7 +97,7 @@ const NewClientModal = ({ isOpen, onClose, onSuccess }) => {
                   right: '24px', 
                   background: 'rgba(0, 0, 0, 0.04)', 
                   border: 'none', 
-                  color: '#111111', 
+                  color: 'white', 
                   width: '36px', 
                   height: '36px', 
                   borderRadius: '50%', 
@@ -114,7 +114,7 @@ const NewClientModal = ({ isOpen, onClose, onSuccess }) => {
                 <h2 style={{ 
                   fontSize: '24px', 
                   fontWeight: '900', 
-                  color: '#111111', 
+                  color: 'white', 
                   marginBottom: '8px',
                   display: 'flex',
                   alignItems: 'center',

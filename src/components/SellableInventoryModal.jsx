@@ -1,4 +1,4 @@
-﻿import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { X, Search, Plus, Minus, ShoppingBag } from 'lucide-react';
 import { 
   GiCoffeeCup, GiBeerBottle, GiWaterBottle, GiChocolateBar, 
@@ -93,7 +93,7 @@ const SellableInventoryModal = ({
                 <div style={{ display: 'flex', gap: '13px', minWidth: 0 }}>
                   <div style={{ width: '38px', height: '38px', borderRadius: '12px', display: 'grid', placeItems: 'center', flexShrink: 0, color: 'var(--gold-primary)', background: 'rgba(17, 17, 17,.12)', border: '1px solid rgba(17, 17, 17,.25)' }}><ShoppingBag size={18} /></div>
                   <div style={{ minWidth: 0 }}>
-                    <h2 style={{ margin: 0, color: '#111111', fontSize: 'clamp(19px, 2.5vw, 23px)', fontWeight: 950, letterSpacing: '-.45px' }}>{title}</h2>
+                    <h2 style={{ margin: 0, color: '#fff', fontSize: 'clamp(19px, 2.5vw, 23px)', fontWeight: 950, letterSpacing: '-.45px' }}>{title}</h2>
                     <p style={{ margin: '3px 0 0', color: 'var(--text-secondary)', fontSize: '11px', lineHeight: 1.4 }}>{subtitle}</p>
                   </div>
                 </div>
@@ -103,7 +103,7 @@ const SellableInventoryModal = ({
               <div style={{ marginTop: '13px', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(240px, 100%), 1fr))', gap: '8px', alignItems: 'center' }}>
                 <label style={{ position: 'relative' }}>
                   <Search size={17} style={{ position: 'absolute', left: '15px', top: '50%', transform: 'translateY(-50%)', color: 'var(--gold-primary)' }} />
-                  <input value={search} onChange={event => setSearch(event.target.value)} placeholder="Buscar productos o insumos..." style={{ width: '100%', height: '42px', boxSizing: 'border-box', padding: '0 13px 0 42px', borderRadius: '12px', border: '1px solid rgba(0, 0, 0, 0.08)', background: 'var(--bg-secondary)', color: '#111111', outline: 'none', fontSize: '13px' }} />
+                  <input value={search} onChange={event => setSearch(event.target.value)} placeholder="Buscar productos o insumos..." style={{ width: '100%', height: '42px', boxSizing: 'border-box', padding: '0 13px 0 42px', borderRadius: '12px', border: '1px solid rgba(0, 0, 0, 0.08)', background: 'var(--bg-secondary)', color: '#fff', outline: 'none', fontSize: '13px' }} />
                 </label>
                 <div style={{ display: 'flex', gap: '7px', overflowX: 'auto', maxWidth: '100%' }}>
                   {Object.entries(INVENTORY_SALES_GROUPS).map(([value, label]) => (
@@ -151,11 +151,11 @@ const SellableInventoryModal = ({
                         <button type="button" disabled={out} onClick={() => mode === 'single' ? onSelect?.(item) : changeQuantity(item, 1)} style={{ padding: 0, border: 0, background: 'transparent', color: 'inherit', cursor: out ? 'not-allowed' : 'pointer', textAlign: 'left', flex: 1, display: 'flex', flexDirection: 'column' }}>
                           <div className="sellable-inventory-visual" style={{ width: '100%', aspectRatio: '4/3', position: 'relative', overflow: 'hidden', background: 'var(--bg-secondary)' }}>
                             {item.image_url ? <img src={item.image_url} alt={item.name} loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover' }} /> : <div style={{ height: '100%', display: 'grid', placeItems: 'center', color: isCafe ? 'var(--gold-primary)' : '#54d37b' }}><ProductIcon size={35} /></div>}
-                            <span style={{ position: 'absolute', top: '7px', right: '7px', padding: '3px 7px', borderRadius: '999px', color: '#111111', background: out ? '#8d2f2a' : 'rgba(31,143,71,.9)', fontSize: '8px', fontWeight: 950 }}>{out ? 'AGOTADO' : `${stock} DISP.`}</span>
+                            <span style={{ position: 'absolute', top: '7px', right: '7px', padding: '3px 7px', borderRadius: '999px', color: '#fff', background: out ? '#8d2f2a' : 'rgba(31,143,71,.9)', fontSize: '8px', fontWeight: 950 }}>{out ? 'AGOTADO' : `${stock} DISP.`}</span>
                           </div>
                           <div className="sellable-inventory-content" style={{ padding: '9px 11px 7px', flex: 1 }}>
                             <span style={{ color: isCafe ? 'var(--gold-primary)' : '#54d37b', fontSize: '9px', fontWeight: 950, textTransform: 'uppercase', letterSpacing: '.55px' }}>{getInventorySalesLabel(item)}</span>
-                            <h3 style={{ margin: '4px 0 6px', color: '#111111', fontSize: '13px', lineHeight: 1.2, fontWeight: 900, textTransform: 'capitalize' }}>{item.name}</h3>
+                            <h3 style={{ margin: '4px 0 6px', color: '#fff', fontSize: '13px', lineHeight: 1.2, fontWeight: 900, textTransform: 'capitalize' }}>{item.name}</h3>
                             <strong style={{ color: 'var(--gold-primary)', fontSize: '18px', lineHeight: 1 }}>${money(item.price)}</strong>
                             {rate > 0 && <span style={{ marginTop: '4px', display: 'block', color: 'rgba(255,255,255,0.5)', fontSize: '11.5px', fontWeight: 500 }}>≈ {money(Number(item.price || 0) * rate)} Bs</span>}
                           </div>

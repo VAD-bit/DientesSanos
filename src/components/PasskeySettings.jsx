@@ -1,4 +1,4 @@
-﻿import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { Fingerprint, KeyRound, Loader2, ShieldCheck, Trash2 } from 'lucide-react';
 import { passkeyService } from '../services/passkeyService';
 import { SkeletonList } from './Skeleton';
@@ -74,7 +74,7 @@ export default function PasskeySettings({ showToast }) {
     <section className="glass-card" style={{ padding: '24px', borderRadius: '24px', marginTop: '22px' }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', gap: '16px', flexWrap: 'wrap', alignItems: 'center' }}>
         <div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '10px', color: '#111111', fontWeight: 900, fontSize: '18px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '10px', color: '#fff', fontWeight: 900, fontSize: '18px' }}>
             <ShieldCheck size={21} color="#d4bd94" /> Seguridad y biometría
             <span style={{
               padding: '4px 8px', borderRadius: '999px', fontSize: '9px',
@@ -101,7 +101,7 @@ export default function PasskeySettings({ showToast }) {
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px', minWidth: 0 }}>
               <KeyRound size={19} color="#d4bd94" />
               <div style={{ minWidth: 0 }}>
-                <strong style={{ color: '#111111' }}>{item.name}</strong>
+                <strong style={{ color: '#fff' }}>{item.name}</strong>
                 <div style={{ color: 'rgba(255,255,255,.45)', fontSize: '11px', marginTop: '3px' }}>Último uso: {formatDate(item.last_used_at)}</div>
               </div>
             </div>

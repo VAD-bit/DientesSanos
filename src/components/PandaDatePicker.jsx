@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { ChevronLeft, ChevronRight, ChevronUp, ChevronDown, Calendar as CalendarIcon } from 'lucide-react';
 
@@ -229,7 +229,7 @@ const PandaDatePicker = ({ value, onChange, placeholder = "Seleccionar fecha", c
             <button onClick={handlePrevMonth} className="action-btn" style={{ width: '32px', height: '32px' }}>
               <ChevronLeft size={18} />
             </button>
-            <div style={{ display: 'flex', gap: '8px', fontWeight: '700', fontSize: '14px', color: '#111111', position: 'relative' }}>
+            <div style={{ display: 'flex', gap: '8px', fontWeight: '700', fontSize: '14px', color: 'white', position: 'relative' }}>
               <div 
                 onClick={(e) => { e.stopPropagation(); setShowMonthSelect(!showMonthSelect); setShowYearSelect(false); }}
                 style={{ cursor: 'pointer', padding: '4px 8px', borderRadius: '8px', background: showMonthSelect ? 'rgba(255,255,255,0.1)' : 'transparent', transition: 'all 0.2s' }}

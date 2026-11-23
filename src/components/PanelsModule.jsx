@@ -1,4 +1,4 @@
-﻿import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { User, ArrowLeft, Droplets, Megaphone } from 'lucide-react';
 import ToothIcon from './icons/ToothIcon';
 import { dataService } from '../services/dataService';
@@ -98,7 +98,7 @@ export default function PanelsModule({ isMobile, rates }) {
     const isSupport = isSupportStaff(selected);
     return (
       <section style={{ width: '100%' }}>
-        <button type="button" onClick={() => setSelected(null)} style={{ display: 'inline-flex', alignItems: 'center', gap: 8, marginBottom: 18, padding: '10px 14px', borderRadius: 12, border: '1px solid var(--border-color)', background: 'rgba(0, 0, 0, 0.04)', color: '#111111', cursor: 'pointer', fontWeight: 800 }}>
+        <button type="button" onClick={() => setSelected(null)} style={{ display: 'inline-flex', alignItems: 'center', gap: 8, marginBottom: 18, padding: '10px 14px', borderRadius: 12, border: '1px solid var(--border-color)', background: 'rgba(0, 0, 0, 0.04)', color: 'white', cursor: 'pointer', fontWeight: 800 }}>
           <ArrowLeft size={17} /> Volver a Paneles
         </button>
         {isSupport
@@ -160,7 +160,7 @@ export default function PanelsModule({ isMobile, rates }) {
                     <span style={{ width: 30, height: 30, borderRadius: '50%', display: 'grid', placeItems: 'center', fontSize: 12, fontWeight: 800, color: '#17140d', background: meta.color, overflow: 'hidden', flexShrink: 0 }}>
                       {member.image_url ? <img src={member.image_url} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} /> : initials(member.name)}
                     </span>
-                    <span style={{ fontSize: 13, fontWeight: 700, color: '#111111', whiteSpace: 'nowrap' }}>{member.name}</span>
+                    <span style={{ fontSize: 13, fontWeight: 700, color: 'white', whiteSpace: 'nowrap' }}>{member.name}</span>
                   </button>
                 );
               })}

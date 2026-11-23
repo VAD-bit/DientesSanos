@@ -1,4 +1,4 @@
-﻿import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Beer, BellRing, Check, CheckCircle2, Clock3, Coffee, GlassWater, RefreshCw, UserRound } from 'lucide-react';
 import { dataService } from '../services/dataService';
 import { notificationService } from '../services/notificationService';
@@ -131,7 +131,7 @@ export default function BaristaPanel({ isMobile }) {
           {beverageIcon(app.beverage_selection)}
         </div>
         <div style={{ minWidth: 0 }}>
-          <strong style={{ display: 'block', color: '#111111', fontSize: '14px', textDecoration: served ? 'line-through' : 'none' }}>{formatProductName(app.beverage_selection) || app.beverage_selection}</strong>
+          <strong style={{ display: 'block', color: 'white', fontSize: '14px', textDecoration: served ? 'line-through' : 'none' }}>{formatProductName(app.beverage_selection) || app.beverage_selection}</strong>
           <span style={{ display: 'flex', alignItems: 'center', gap: '5px', marginTop: '4px', color: 'var(--text-secondary)', fontSize: '12px' }}>
             <UserRound size={13} /> {formatName(app.clients?.name) || 'Cliente'} • {formatServiceName(app.services?.name) || app.services?.name || 'Servicio'}
           </span>
@@ -170,12 +170,12 @@ export default function BaristaPanel({ isMobile }) {
 
   return <section style={{ width: '100%', maxWidth: '1180px', margin: '0 auto', paddingBottom: isMobile ? '100px' : '30px' }}>    <header style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '16px', marginBottom: '22px' }}>
       <div><div style={{ display: 'flex', alignItems: 'center', gap: '9px', color: 'var(--gold-primary)', fontSize: '11px', fontWeight: 900, letterSpacing: '1px' }}><GlassWater size={17} /> HIDRATACIÓN DE CORTESÍA</div><h1 style={{ margin: '7px 0 4px', fontSize: isMobile ? '28px' : '36px', lineHeight: 1 }}>Panel de Hidratación</h1><p style={{ margin: 0, color: 'var(--text-secondary)', fontSize: '13px' }}>Solicitudes de hidratación de los pacientes de hoy.</p></div>
-      <button type="button" onClick={() => loadRequests()} aria-label="Actualizar solicitudes" style={{ width: '44px', height: '44px', borderRadius: '13px', display: 'grid', placeItems: 'center', color: '#111111', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', cursor: 'pointer' }}><RefreshCw size={18} className={loading ? 'animate-spin' : ''} /></button>
+      <button type="button" onClick={() => loadRequests()} aria-label="Actualizar solicitudes" style={{ width: '44px', height: '44px', borderRadius: '13px', display: 'grid', placeItems: 'center', color: 'white', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', cursor: 'pointer' }}><RefreshCw size={18} className={loading ? 'animate-spin' : ''} /></button>
     </header>
     <div style={{ display: 'grid', gridTemplateColumns: isMobile ? 'minmax(0, 1fr) minmax(0, 1fr)' : 'repeat(3, minmax(0, 1fr))', gap: '12px', marginBottom: '20px' }}>
       {[{ label: 'Solicitudes de hoy', value: appointments.length, icon: <BellRing size={19} />, color: '#111111' }, { label: 'Pendientes', value: pending.length - servedIds.size, icon: <Clock3 size={19} />, color: '#ff9f0a' }, { label: 'Pacientes en sillón', value: active.length, icon: <CheckCircle2 size={19} />, color: '#30d158' }].map(({ label, value, icon, color }, index) => <article key={label} className="glass-card" style={{ padding: isMobile ? '15px' : '20px', borderRadius: '18px', gridColumn: isMobile && index === 2 ? '1 / -1' : 'auto' }}><span style={{ color }}>{icon}</span><strong style={{ display: 'block', marginTop: '9px', fontSize: '25px', color }}>{Math.max(0, value)}</strong><span style={{ color: 'var(--text-muted)', fontSize: '11px', fontWeight: 800 }}>{label}</span></article>)}
     </div>
-    {loading ? <div className="glass-card" style={{ borderRadius: '22px', padding: isMobile ? '14px' : '22px' }}><SkeletonList rows={3} rowHeight={64} /></div> : appointments.length === 0 ? <div className="glass-card" style={{ borderRadius: '22px', padding: isMobile ? '14px' : '22px' }}><div style={{ padding: '48px 16px', textAlign: 'center', color: 'var(--text-muted)' }}><GlassWater size={32} style={{ margin: '0 auto 12px' }} /><strong style={{ display: 'block', color: '#111111', marginBottom: '5px' }}>No hay solicitudes de hidratación hoy</strong>Las nuevas reservas aparecerán aquí automáticamente.</div></div> : <div style={{ display: 'flex', flexDirection: 'column', gap: '18px' }}>
+    {loading ? <div className="glass-card" style={{ borderRadius: '22px', padding: isMobile ? '14px' : '22px' }}><SkeletonList rows={3} rowHeight={64} /></div> : appointments.length === 0 ? <div className="glass-card" style={{ borderRadius: '22px', padding: isMobile ? '14px' : '22px' }}><div style={{ padding: '48px 16px', textAlign: 'center', color: 'var(--text-muted)' }}><GlassWater size={32} style={{ margin: '0 auto 12px' }} /><strong style={{ display: 'block', color: 'white', marginBottom: '5px' }}>No hay solicitudes de hidratación hoy</strong>Las nuevas reservas aparecerán aquí automáticamente.</div></div> : <div style={{ display: 'flex', flexDirection: 'column', gap: '18px' }}>
       {active.length > 0 && <div className="glass-card" style={{ borderRadius: '22px', padding: isMobile ? '14px' : '22px' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '15px' }}>
           <span style={{ width: '7px', height: '7px', borderRadius: '50%', background: '#30d158', boxShadow: '0 0 8px #30d158' }} />

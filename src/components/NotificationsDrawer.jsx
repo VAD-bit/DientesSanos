@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Bell, X, ShieldAlert, Trash2, CheckCheck, Sparkles, Smartphone, AlertTriangle, ChevronDown, DollarSign, Calendar, Trophy, GlassWater, ShieldCheck } from 'lucide-react';
 import { notificationService } from '../services/notificationService';
 import { useDialog } from '../context/DialogContext';
@@ -131,7 +131,7 @@ const NotificationsDrawer = ({ isOpen, onClose }) => {
         }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
             <Bell size={22} className="text-gold" />
-            <h3 style={{ fontSize: '18px', fontWeight: '900', color: '#111111', margin: 0 }}>Notificaciones</h3>
+            <h3 style={{ fontSize: '18px', fontWeight: '900', color: 'white', margin: 0 }}>Notificaciones</h3>
           </div>
           <button 
             onClick={onClose}
@@ -141,7 +141,7 @@ const NotificationsDrawer = ({ isOpen, onClose }) => {
               borderRadius: '50%',
               width: '36px',
               height: '36px',
-              color: '#111111',
+              color: 'white',
               cursor: 'pointer',
               display: 'flex',
               alignItems: 'center',
@@ -176,7 +176,7 @@ const NotificationsDrawer = ({ isOpen, onClose }) => {
               }}
             >
               <Smartphone size={16} className="text-gold" style={{ flexShrink: 0 }} />
-              <span style={{ fontSize: '12px', fontWeight: '800', color: '#111111', flex: 1 }}>Activa las notificaciones push</span>
+              <span style={{ fontSize: '12px', fontWeight: '800', color: 'white', flex: 1 }}>Activa las notificaciones push</span>
               <ChevronDown size={15} color="var(--text-muted)" style={{ transform: bannerExpanded ? 'rotate(180deg)' : 'none', transition: 'transform 0.2s', flexShrink: 0 }} />
             </button>
 
@@ -309,7 +309,7 @@ const NotificationsDrawer = ({ isOpen, onClose }) => {
                   <CategoryIcon size={16} />
                 </div>
                 <div style={{ flex: 1, minWidth: 0 }}>
-                  <h4 style={{ fontSize: '13px', fontWeight: '900', color: '#111111', margin: '0 0 4px 0', paddingRight: '12px' }}>
+                  <h4 style={{ fontSize: '13px', fontWeight: '900', color: 'white', margin: '0 0 4px 0', paddingRight: '12px' }}>
                     {n.title}
                   </h4>
                   <p style={{ fontSize: '12px', color: 'var(--text-secondary)', margin: '0 0 10px 0', lineHeight: '1.5' }}>

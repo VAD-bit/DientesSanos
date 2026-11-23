@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import { 
   Banknote, 
   Coins, 
@@ -59,7 +59,7 @@ export default function ValeAdvancePanel({ modal, setModal, balances, rate, acti
       display: 'flex',
       flexDirection: 'column',
       gap: '18px',
-      color: '#111111'
+      color: 'white'
     }}>
       {/* Header */}
       <header style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '16px' }}>
@@ -127,7 +127,7 @@ export default function ValeAdvancePanel({ modal, setModal, balances, rate, acti
                 )}
               </div>
               <div style={{ minWidth: 0 }}>
-                <div style={{ fontWeight: '850', fontSize: '15px', color: '#111111', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                <div style={{ fontWeight: '850', fontSize: '15px', color: 'white', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                   {modal.staff?.name}
                 </div>
                 <div style={{ fontSize: '10.5px', color: 'var(--gold-primary)', fontWeight: '800', textTransform: 'uppercase', letterSpacing: '0.4px', marginTop: '1px' }}>
@@ -170,7 +170,7 @@ export default function ValeAdvancePanel({ modal, setModal, balances, rate, acti
                     borderRadius: '14px',
                     border: '1.5px solid rgba(17, 17, 17,0.4)',
                     background: 'var(--bg-secondary)',
-                    color: '#111111',
+                    color: 'white',
                     fontSize: '22px',
                     fontWeight: '900',
                     outline: 'none',
@@ -191,7 +191,7 @@ export default function ValeAdvancePanel({ modal, setModal, balances, rate, acti
                       borderRadius: '10px',
                       background: 'rgba(0, 0, 0, 0.04)',
                       border: '1px solid rgba(0, 0, 0, 0.08)',
-                      color: '#111111',
+                      color: 'white',
                       fontSize: '11.5px',
                       fontWeight: '800',
                       cursor: 'pointer',
@@ -241,7 +241,7 @@ export default function ValeAdvancePanel({ modal, setModal, balances, rate, acti
                 borderRadius: '12px', 
                 border: '1px solid rgba(0, 0, 0, 0.08)', 
                 background: 'var(--bg-secondary)', 
-                color: '#111111', 
+                color: 'white', 
                 fontFamily: 'inherit',
                 fontSize: '12.5px',
                 resize: 'vertical',
@@ -322,7 +322,7 @@ export default function ValeAdvancePanel({ modal, setModal, balances, rate, acti
                   return (
                     <label key={method.name} style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) 110px', alignItems: 'center', gap: '8px', padding: '6px 10px', borderRadius: '8px', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', fontSize: '11px' }}>
                       <div style={{ minWidth: 0 }}>
-                        <span style={{ fontWeight: '750', color: '#111111', display: 'block', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{method.name}</span>
+                        <span style={{ fontWeight: '750', color: 'white', display: 'block', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{method.name}</span>
                         <small style={{ color: 'var(--text-muted)', fontSize: '9px' }}>Disp: {method.currency === 'USD' ? '$' : ''}{fmt(available)}{method.currency === 'Bs' ? ' Bs' : ''}</small>
                       </div>
                       <div style={{ position: 'relative' }}>
@@ -333,7 +333,7 @@ export default function ValeAdvancePanel({ modal, setModal, balances, rate, acti
                           value={modal.allocations?.[method.name] || ''} 
                           onChange={e => setModal({ ...modal, allocations: { ...(modal.allocations || {}), [method.name]: e.target.value } })} 
                           placeholder="0.00" 
-                          style={{ width: '100%', padding: '6px 24px 6px 8px', borderRadius: '6px', border: '1px solid rgba(0, 0, 0, 0.08)', background: 'var(--bg-secondary)', color: '#111111', outline: 'none', fontSize: '12px', fontWeight: '800' }}
+                          style={{ width: '100%', padding: '6px 24px 6px 8px', borderRadius: '6px', border: '1px solid rgba(0, 0, 0, 0.08)', background: 'var(--bg-secondary)', color: 'white', outline: 'none', fontSize: '12px', fontWeight: '800' }}
                         />
                         <b style={{ position: 'absolute', right: '6px', top: '50%', transform: 'translateY(-50%)', color: 'var(--gold-primary)', fontSize: '10px' }}>
                           {method.currency === 'USD' ? '$' : 'Bs'}

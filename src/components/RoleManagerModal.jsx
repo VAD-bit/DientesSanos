@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { createPortal } from 'react-dom';
 import { 
   X, 
@@ -182,7 +182,7 @@ const RoleManagerModal = ({ isOpen, onClose, roles, onSaveRole, onDeleteRole, av
 
                         {/* Role info */}
                         <div style={{ flex: 1, minWidth: 0 }}>
-                          <div style={{ fontWeight: '800', fontSize: '15px', marginBottom: '6px', color: '#111111' }}>{roleLabel(name)}</div>
+                          <div style={{ fontWeight: '800', fontSize: '15px', marginBottom: '6px', color: 'white' }}>{roleLabel(name)}</div>
                           <div style={{ display: 'flex', gap: '5px', flexWrap: 'wrap' }}>
                             {perms.slice(0, 4).map(p => (
                               <span key={p} style={{
@@ -215,7 +215,7 @@ const RoleManagerModal = ({ isOpen, onClose, roles, onSaveRole, onDeleteRole, av
                             onClick={() => handleEditClick(name, perms)}
                             style={{
                               background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)',
-                              padding: '8px 10px', borderRadius: '10px', cursor: 'pointer', color: '#111111',
+                              padding: '8px 10px', borderRadius: '10px', cursor: 'pointer', color: 'white',
                               transition: 'all 0.2s', display: 'flex', alignItems: 'center'
                             }}
                             onMouseOver={e => e.currentTarget.style.background = 'rgba(255,255,255,0.1)'}
@@ -256,7 +256,7 @@ const RoleManagerModal = ({ isOpen, onClose, roles, onSaveRole, onDeleteRole, av
                   <div style={{ padding: '20px', backgroundColor: 'rgba(0, 0, 0, 0.04)', borderRadius: '20px', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '16px' }}>
                       <Key size={16} color="var(--gold-primary)" />
-                      <label style={{ fontSize: '11px', fontWeight: '900', color: '#111111', letterSpacing: '1px', textTransform: 'uppercase' }}>Permisos</label>
+                      <label style={{ fontSize: '11px', fontWeight: '900', color: 'white', letterSpacing: '1px', textTransform: 'uppercase' }}>Permisos</label>
                     </div>
 
                     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: '8px' }}>
@@ -294,7 +294,7 @@ const RoleManagerModal = ({ isOpen, onClose, roles, onSaveRole, onDeleteRole, av
                   <div style={{ display: 'flex', gap: '10px', marginTop: '24px' }}>
                     <button
                       onClick={() => setEditingRole(null)}
-                      style={{ flex: 1, height: '50px', borderRadius: '14px', border: '1px solid rgba(0, 0, 0, 0.08)', background: 'rgba(0, 0, 0, 0.04)', color: '#111111', fontWeight: '700', cursor: 'pointer', transition: 'all 0.2s' }}
+                      style={{ flex: 1, height: '50px', borderRadius: '14px', border: '1px solid rgba(0, 0, 0, 0.08)', background: 'rgba(0, 0, 0, 0.04)', color: 'white', fontWeight: '700', cursor: 'pointer', transition: 'all 0.2s' }}
                       onMouseOver={e => e.currentTarget.style.background = 'rgba(255,255,255,0.08)'}
                       onMouseOut={e => e.currentTarget.style.background = 'rgba(255,255,255,0.04)'}
                     >

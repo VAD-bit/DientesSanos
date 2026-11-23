@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import pandaLogo from '../assets/panda_logo_nobg.png';
 
 export class SimpleErrorBoundary extends React.Component {
@@ -22,7 +22,7 @@ export class SimpleErrorBoundary extends React.Component {
         <div style={{
           minHeight: '100vh',
           background: 'var(--bg-secondary)',
-          color: '#111111',
+          color: 'white',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
@@ -59,7 +59,7 @@ export class SimpleErrorBoundary extends React.Component {
               fontSize: '22px',
               fontWeight: '800',
               margin: '0 0 10px',
-              color: '#111111',
+              color: 'white',
               letterSpacing: '-0.3px'
             }}>
               Algo salió mal

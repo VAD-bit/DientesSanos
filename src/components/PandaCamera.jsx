@@ -1,4 +1,4 @@
-﻿import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { Camera, X, Check, RefreshCw, Upload, Image as ImageIcon, ChevronLeft, ZoomIn, ZoomOut, SwitchCamera } from 'lucide-react';
 import logo from '../assets/logo.png';
 
@@ -459,7 +459,7 @@ const PandaCamera = ({ onCapture, onClose, overlayClass, cardClass, initialActio
                 <Camera size={20} color="var(--gold-primary)" />
               </div>
               <div style={{ textAlign: 'left' }}>
-                <div style={{ fontSize: '14px', fontWeight: '800', color: '#111111' }}>Tomar foto</div>
+                <div style={{ fontSize: '14px', fontWeight: '800', color: 'white' }}>Tomar foto</div>
                 <div style={{ fontSize: '11px', color: 'rgba(255,255,255,0.45)', marginTop: '2px' }}>Usar la cámara ahora</div>
               </div>
             </button>
@@ -472,7 +472,7 @@ const PandaCamera = ({ onCapture, onClose, overlayClass, cardClass, initialActio
                 <Upload size={20} color="var(--gold-primary)" />
               </div>
               <div style={{ textAlign: 'left' }}>
-                <div style={{ fontSize: '14px', fontWeight: '800', color: '#111111' }}>Subir de galería</div>
+                <div style={{ fontSize: '14px', fontWeight: '800', color: 'white' }}>Subir de galería</div>
                 <div style={{ fontSize: '11px', color: 'rgba(255,255,255,0.45)', marginTop: '2px' }}>Elegir una foto existente</div>
               </div>
             </button>
@@ -698,7 +698,7 @@ const PandaCamera = ({ onCapture, onClose, overlayClass, cardClass, initialActio
           <div style={{ display: 'flex', justifyContent: 'center', gap: '24px' }}>
             <button
               onClick={retake}
-              style={{ width: '56px', height: '56px', borderRadius: '50%', backgroundColor: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.15)', color: '#111111', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}
+              style={{ width: '56px', height: '56px', borderRadius: '50%', backgroundColor: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.15)', color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}
             >
               <RefreshCw size={20} />
             </button>

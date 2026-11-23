@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect, useRef, useMemo } from 'react';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
 import useDebounce from '../hooks/useDebounce';
 import FieldLabel from './FieldLabel';
 import { createPortal } from 'react-dom';
@@ -299,7 +299,7 @@ const CartWrapper = ({ isMobile, showMobileCart, onClose, isModalView, children 
             <div style={{ width: '40px', height: '4px', background: 'rgba(0, 0, 0, 0.04)', borderRadius: '2px', margin: '0 auto 12px auto' }} />
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
               <h3 style={{ margin: 0, fontSize: '20px', fontWeight: '900' }}>Carrito</h3>
-              <button onClick={onClose} style={{ background: 'rgba(0, 0, 0, 0.04)', border: 'none', borderRadius: '50%', padding: '6px', color: '#111111', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><X size={20} /></button>
+              <button onClick={onClose} style={{ background: 'rgba(0, 0, 0, 0.04)', border: 'none', borderRadius: '50%', padding: '6px', color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><X size={20} /></button>
             </div>
           </div>
           {/* Contenido Scrolleable */}
@@ -2048,7 +2048,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                       }}
                     >
                       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
-                        <span style={{ fontWeight: '800', fontSize: '14px', color: '#111111', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', maxWidth: '65%', display: 'block' }}>{group.client_name}</span>
+                        <span style={{ fontWeight: '800', fontSize: '14px', color: 'white', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', maxWidth: '65%', display: 'block' }}>{group.client_name}</span>
                         <span style={{ 
                           fontSize: '9px', 
                           backgroundColor: badgeStatus === 'En Silla' 
@@ -2148,7 +2148,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
               
               <button 
                 onClick={() => setShowProductModal(true)}
-                style={{ flex: 1, padding: isMobile ? '18px 8px' : '24px', borderRadius: isMobile ? '18px' : '24px', border: '1px solid rgba(0, 0, 0, 0.08)', background: 'rgba(0, 0, 0, 0.04)', backdropFilter: 'blur(10px)', WebkitBackdropFilter: 'blur(10px)', color: '#111111', cursor: 'pointer', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '12px', transition: 'all 0.3s ease' }}
+                style={{ flex: 1, padding: isMobile ? '18px 8px' : '24px', borderRadius: isMobile ? '18px' : '24px', border: '1px solid rgba(0, 0, 0, 0.08)', background: 'rgba(0, 0, 0, 0.04)', backdropFilter: 'blur(10px)', WebkitBackdropFilter: 'blur(10px)', color: 'white', cursor: 'pointer', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '12px', transition: 'all 0.3s ease' }}
                 onMouseEnter={e => { e.currentTarget.style.background = 'rgba(255, 255, 255, 0.05)'; }}
                 onMouseLeave={e => { e.currentTarget.style.background = 'rgba(255, 255, 255, 0.02)'; }}
                 onPointerDown={e => { e.currentTarget.style.transform = 'scale(0.97)'; }}
@@ -2161,7 +2161,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
 
               <button 
                 onClick={() => setShowExtraModal(true)}
-                style={{ flex: 1, padding: isMobile ? '18px 8px' : '24px', borderRadius: isMobile ? '18px' : '24px', border: '1px solid rgba(0, 0, 0, 0.08)', background: 'rgba(0, 0, 0, 0.04)', backdropFilter: 'blur(10px)', WebkitBackdropFilter: 'blur(10px)', color: '#111111', cursor: 'pointer', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '12px', transition: 'all 0.3s ease' }}
+                style={{ flex: 1, padding: isMobile ? '18px 8px' : '24px', borderRadius: isMobile ? '18px' : '24px', border: '1px solid rgba(0, 0, 0, 0.08)', background: 'rgba(0, 0, 0, 0.04)', backdropFilter: 'blur(10px)', WebkitBackdropFilter: 'blur(10px)', color: 'white', cursor: 'pointer', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '12px', transition: 'all 0.3s ease' }}
                 onMouseEnter={e => { e.currentTarget.style.background = 'rgba(255, 255, 255, 0.05)'; }}
                 onMouseLeave={e => { e.currentTarget.style.background = 'rgba(255, 255, 255, 0.02)'; }}
                 onPointerDown={e => { e.currentTarget.style.transform = 'scale(0.97)'; }}
@@ -2174,7 +2174,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
 
               <button 
                 onClick={() => setShowServiceModal(true)}
-                style={{ flex: 1, padding: isMobile ? '18px 8px' : '24px', borderRadius: isMobile ? '18px' : '24px', border: '1px solid rgba(0, 0, 0, 0.08)', background: 'rgba(0, 0, 0, 0.04)', backdropFilter: 'blur(10px)', WebkitBackdropFilter: 'blur(10px)', color: '#111111', cursor: 'pointer', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '12px', transition: 'all 0.3s ease' }}
+                style={{ flex: 1, padding: isMobile ? '18px 8px' : '24px', borderRadius: isMobile ? '18px' : '24px', border: '1px solid rgba(0, 0, 0, 0.08)', background: 'rgba(0, 0, 0, 0.04)', backdropFilter: 'blur(10px)', WebkitBackdropFilter: 'blur(10px)', color: 'white', cursor: 'pointer', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '12px', transition: 'all 0.3s ease' }}
                 onMouseEnter={e => { e.currentTarget.style.background = 'rgba(255, 255, 255, 0.05)'; }}
                 onMouseLeave={e => { e.currentTarget.style.background = 'rgba(255, 255, 255, 0.02)'; }}
                 onPointerDown={e => { e.currentTarget.style.transform = 'scale(0.97)'; }}
@@ -2202,7 +2202,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                   <div style={{ fontSize: '10px', color: 'var(--text-muted)', fontWeight: '700', letterSpacing: '0.5px', marginTop: '4px' }}>POR COBRAR</div>
                 </div>
                 <div style={{ padding: '16px', borderRadius: '16px', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', textAlign: 'center' }}>
-                  <div style={{ fontSize: '28px', fontWeight: '900', color: '#111111' }}>{groupedScheduledServices.length}</div>
+                  <div style={{ fontSize: '28px', fontWeight: '900', color: 'white' }}>{groupedScheduledServices.length}</div>
                   <div style={{ fontSize: '10px', color: 'var(--text-muted)', fontWeight: '700', letterSpacing: '0.5px', marginTop: '4px' }}>EN COLA</div>
                 </div>
               </div>
@@ -2272,7 +2272,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                               </button>
                               <button 
                                 onClick={() => setShowNewClientModal(true)} 
-                                style={{ padding: '0 10px', height: '40px', borderRadius: '12px', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', color: '#111111', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '6px', flexShrink: 0 }}
+                                style={{ padding: '0 10px', height: '40px', borderRadius: '12px', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', color: 'white', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '6px', flexShrink: 0 }}
                               >
                                 <UserPlus size={16} />
                               </button>
@@ -2295,7 +2295,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                                     onMouseOver={(e) => e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255,0.1)'}
                                     onMouseOut={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
                                   >
-                                    <span style={{ fontWeight: '700', fontSize: '13px', color: '#111111' }}>{c.name}</span>
+                                    <span style={{ fontWeight: '700', fontSize: '13px', color: 'white' }}>{c.name}</span>
                                     <span style={{ fontSize: '11px', color: 'var(--text-muted)' }}>V-{c.id_card}</span>
                                   </div>
                                 ))}
@@ -2434,7 +2434,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                                       setEditingAppPrice(null);
                                     }
                                   }}
-                                  style={{ width: isMobile ? '110px' : '95px', height: isMobile ? '44px' : '28px', background: 'var(--bg-secondary)', border: '1px solid var(--gold-primary)', borderRadius: '6px', color: '#111111', paddingLeft: '28px', paddingRight: '6px', fontSize: '12px', fontWeight: '800', textAlign: 'right', outline: 'none' }}
+                                  style={{ width: isMobile ? '110px' : '95px', height: isMobile ? '44px' : '28px', background: 'var(--bg-secondary)', border: '1px solid var(--gold-primary)', borderRadius: '6px', color: 'white', paddingLeft: '28px', paddingRight: '6px', fontSize: '12px', fontWeight: '800', textAlign: 'right', outline: 'none' }}
                                 />
                               </div>
                             ) : (
@@ -2445,7 +2445,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                                 onMouseOut={(ev) => ev.currentTarget.style.backgroundColor = 'transparent'}
                               >
                                 <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '0px' }}>
-                                  <span style={{ fontWeight: '800', fontSize: isMobile ? '12px' : '14px', color: '#111111' }}>
+                                  <span style={{ fontWeight: '800', fontSize: isMobile ? '12px' : '14px', color: 'white' }}>
                                     {isMobile ? `${Math.round(sPrice * fixedRate).toLocaleString('es-VE')} Bs.` : `${(sPrice * fixedRate).toLocaleString('es-VE', {minimumFractionDigits: 2, maximumFractionDigits: 2})} Bs.`}
                                   </span>
                                   <span style={{ fontSize: '9px', color: 'var(--text-muted)' }}>Ref: ${Number(sPrice).toFixed(2)}</span>
@@ -2500,7 +2500,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                         >
                           <Minus size={8} />
                         </button>
-                        <span style={{ fontSize: '9px', fontWeight: '900', color: '#111111', minWidth: '10px', textAlign: 'center' }}>{p.quantity}</span>
+                        <span style={{ fontSize: '9px', fontWeight: '900', color: 'white', minWidth: '10px', textAlign: 'center' }}>{p.quantity}</span>
                         <button 
                           onClick={() => handleIncrementProduct(p)}
                           style={{ background: 'none', border: 'none', color: 'var(--gold-primary)', cursor: 'pointer', padding: '1px', display: 'flex', alignItems: 'center' }}
@@ -2525,7 +2525,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                           defaultValue={(p.price * p.quantity * fixedRate).toFixed(2)}
                           onBlur={(e) => handleUpdateProductPrice(p, e.target.value)}
                           onKeyDown={(e) => e.key === 'Enter' && handleUpdateProductPrice(p, e.target.value)}
-                          style={{ width: isMobile ? '110px' : '95px', height: isMobile ? '44px' : '28px', background: 'var(--bg-secondary)', border: '1px solid var(--gold-primary)', borderRadius: '6px', color: '#111111', paddingLeft: '28px', paddingRight: '6px', fontSize: '12px', fontWeight: '800', textAlign: 'right', outline: 'none' }}
+                          style={{ width: isMobile ? '110px' : '95px', height: isMobile ? '44px' : '28px', background: 'var(--bg-secondary)', border: '1px solid var(--gold-primary)', borderRadius: '6px', color: 'white', paddingLeft: '28px', paddingRight: '6px', fontSize: '12px', fontWeight: '800', textAlign: 'right', outline: 'none' }}
                         />
                       </div>
                     ) : (
@@ -2536,7 +2536,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                         onMouseOut={(ev) => ev.currentTarget.style.backgroundColor = 'transparent'}
                       >
                         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '0px' }}>
-                          <span style={{ fontWeight: '800', fontSize: isMobile ? '12px' : '14px', color: '#111111' }}>
+                          <span style={{ fontWeight: '800', fontSize: isMobile ? '12px' : '14px', color: 'white' }}>
                             {isMobile ? `${Math.round(p.price * p.quantity * fixedRate).toLocaleString('es-VE')} Bs.` : `${(p.price * p.quantity * fixedRate).toLocaleString('es-VE', {minimumFractionDigits: 2, maximumFractionDigits: 2})} Bs.`}
                           </span>
                           <span style={{ fontSize: '9px', color: 'var(--text-muted)' }}>Ref: ${(p.price * p.quantity).toFixed(2)}</span>
@@ -2577,7 +2577,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                             defaultValue={(extra.price * fixedRate).toFixed(2)}
                             onBlur={(e) => handleUpdateExtraPrice(extra.id, e.target.value)}
                             onKeyDown={(e) => e.key === 'Enter' && handleUpdateExtraPrice(extra.id, e.target.value)}
-                            style={{ width: isMobile ? '110px' : '95px', height: isMobile ? '44px' : '28px', background: 'var(--bg-secondary)', border: '1px solid var(--gold-primary)', borderRadius: '6px', color: '#111111', paddingLeft: '28px', paddingRight: '6px', fontSize: '12px', fontWeight: '800', textAlign: 'right', outline: 'none' }}
+                            style={{ width: isMobile ? '110px' : '95px', height: isMobile ? '44px' : '28px', background: 'var(--bg-secondary)', border: '1px solid var(--gold-primary)', borderRadius: '6px', color: 'white', paddingLeft: '28px', paddingRight: '6px', fontSize: '12px', fontWeight: '800', textAlign: 'right', outline: 'none' }}
                           />
                         </div>
                       ) : (
@@ -2609,7 +2609,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                           <Droplets size={14} />
                         </div>
                         <div>
-                          <h4 style={{ fontSize: '11px', fontWeight: '800', color: '#111111', margin: 0 }}>Limpiezas</h4>
+                          <h4 style={{ fontSize: '11px', fontWeight: '800', color: 'white', margin: 0 }}>Limpiezas</h4>
                           <p style={{ fontSize: '9px', color: 'var(--text-secondary)', margin: 0 }}>Selecciona la cantidad de limpiezas.</p>
                         </div>
                       </div>
@@ -2650,7 +2650,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                             borderRadius: '12px',
                             background: 'rgba(0, 0, 0, 0.04)',
                             border: '1px solid rgba(0, 0, 0, 0.08)',
-                            color: '#111111',
+                            color: 'white',
                             fontSize: isMobile ? '12px' : '14px',
                             cursor: 'pointer',
                             display: 'flex',
@@ -2716,7 +2716,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                                   padding: '12px 16px',
                                   cursor: 'pointer',
                                   fontSize: isMobile ? '12px' : '14px',
-                                  color: '#111111',
+                                  color: 'white',
                                   borderBottom: '1px solid rgba(0, 0, 0, 0.08)',
                                   display: 'flex',
                                   justifyContent: 'space-between',
@@ -2771,7 +2771,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                               borderRadius: '10px',
                               fontSize: '12px',
                               border: '1px solid rgba(0, 0, 0, 0.08)',
-                              color: '#111111',
+                              color: 'white',
                               padding: '0 12px',
                               display: 'flex',
                               justifyContent: 'space-between',
@@ -2836,7 +2836,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                                   padding: '10px 12px',
                                   cursor: 'pointer',
                                   fontSize: '12px',
-                                  color: '#111111',
+                                  color: 'white',
                                   borderBottom: '1px solid rgba(0, 0, 0, 0.08)',
                                   transition: 'background-color 0.2s',
                                   backgroundColor: t.staffId === s.id ? 'rgba(255, 255, 255, 0.1)' : 'transparent'
@@ -3003,7 +3003,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                             placeholder="O ingresa código manual..."
                             value={couponCode}
                             onChange={(e) => setCouponCode(e.target.value)}
-                            style={{ flex: 1, height: '36px', fontSize: '12px', background: 'var(--bg-secondary)', border: '1px solid rgba(0, 0, 0, 0.08)', borderRadius: '8px', color: '#111111', paddingLeft: '8px' }}
+                            style={{ flex: 1, height: '36px', fontSize: '12px', background: 'var(--bg-secondary)', border: '1px solid rgba(0, 0, 0, 0.08)', borderRadius: '8px', color: 'white', paddingLeft: '8px' }}
                           />
                           <button 
                             onClick={async () => {
@@ -3216,7 +3216,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                             setPaymentReferenceBs(value);
                           }}
                           placeholder={methodBs === 'Pago Móvil' ? 'Ej. 4821' : 'Ej. 00123456'}
-                          style={{ width: '100%', height: '40px', padding: '0 12px', borderRadius: '10px', border: '1px solid rgba(0, 0, 0, 0.08)', background: 'rgba(0, 0, 0, 0.04)', color: '#111111', fontSize: '12px', fontWeight: '700', boxSizing: 'border-box' }}
+                          style={{ width: '100%', height: '40px', padding: '0 12px', borderRadius: '10px', border: '1px solid rgba(0, 0, 0, 0.08)', background: 'rgba(0, 0, 0, 0.04)', color: 'white', fontSize: '12px', fontWeight: '700', boxSizing: 'border-box' }}
                         />
                       </div>
                     )}
@@ -3294,7 +3294,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                               setPaymentReferenceBs(value);
                             }}
                             placeholder={methodBs === 'Pago Móvil' ? 'Ej. 4821' : 'Ej. 00123456'}
-                            style={{ width: '100%', height: '40px', padding: '0 12px', borderRadius: '10px', border: '1px solid rgba(0, 0, 0, 0.08)', background: 'rgba(0, 0, 0, 0.04)', color: '#111111', fontSize: '12px', fontWeight: '700', boxSizing: 'border-box' }}
+                            style={{ width: '100%', height: '40px', padding: '0 12px', borderRadius: '10px', border: '1px solid rgba(0, 0, 0, 0.08)', background: 'rgba(0, 0, 0, 0.04)', color: 'white', fontSize: '12px', fontWeight: '700', boxSizing: 'border-box' }}
                           />
                         </div>
                       )}
@@ -3387,7 +3387,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                       <div style={{ width: '36px', height: '36px', borderRadius: '10px', background: 'linear-gradient(135deg, rgba(0, 0, 0, 0.04), rgba(0, 0, 0, 0.04))', border: '1px solid rgba(0, 0, 0, 0.08)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                         <ShoppingBag size={18} color="var(--gold-primary)" />
                       </div>
-                      <h2 style={{ fontWeight: '900', fontSize: '22px', letterSpacing: '-0.3px', color: '#111111' }}>Productos y Cortesías</h2>
+                      <h2 style={{ fontWeight: '900', fontSize: '22px', letterSpacing: '-0.3px', color: 'white' }}>Productos y Cortesías</h2>
                     </div>
                     <p style={{ fontSize: '13px', color: 'var(--text-muted)', marginLeft: '46px' }}>
                       {inventory.filter(i => matchesInventorySalesGroup(i, productGroup) && i.name.toLowerCase().includes(debouncedProductSearch.toLowerCase())).length} opciones disponibles
@@ -3405,7 +3405,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                     placeholder="Buscar por nombre..."
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
-                    style={{ width: '100%', height: '44px', padding: '0 44px', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', borderRadius: '14px', color: '#111111', fontSize: '14px', outline: 'none', boxSizing: 'border-box' }}
+                    style={{ width: '100%', height: '44px', padding: '0 44px', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', borderRadius: '14px', color: 'white', fontSize: '14px', outline: 'none', boxSizing: 'border-box' }}
                   />
                 </div>
                 <div style={{ display: 'flex', gap: '8px', overflowX: 'auto', padding: '4px 4px 16px 4px', margin: '-4px -4px 0 -4px' }}>
@@ -3466,7 +3466,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                                 </div>
                             }
                             {/* Stock badge */}
-                            <div style={{ position: 'absolute', top: '8px', right: '8px', padding: '3px 8px', borderRadius: '20px', background: isOutOfStock ? 'rgba(255,59,48,0.85)' : 'rgba(48,209,88,0.85)', backdropFilter: 'blur(6px)', fontSize: '10px', fontWeight: '800', color: '#111111', letterSpacing: '0.3px' }}>
+                            <div style={{ position: 'absolute', top: '8px', right: '8px', padding: '3px 8px', borderRadius: '20px', background: isOutOfStock ? 'rgba(255,59,48,0.85)' : 'rgba(48,209,88,0.85)', backdropFilter: 'blur(6px)', fontSize: '10px', fontWeight: '800', color: 'white', letterSpacing: '0.3px' }}>
                               {isOutOfStock ? 'AGOTADO' : `×${item.stock}`}
                             </div>
                           </div>
@@ -3474,7 +3474,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                           {/* Info area */}
                           <div style={{ padding: '12px 14px 14px' }}>
                             <div style={{ color: String(item.inventory_type).toLowerCase() === 'cafe' ? '#ff9f0a' : '#30d158', fontWeight: '850', fontSize: '9px', textTransform: 'uppercase', letterSpacing: '0.6px', marginBottom: '5px' }}>{getInventorySalesLabel(item)}</div>
-                            <div style={{ fontWeight: '800', fontSize: '13px', color: '#111111', marginBottom: '8px', lineHeight: '1.3' }}>{item.name}</div>
+                            <div style={{ fontWeight: '800', fontSize: '13px', color: 'white', marginBottom: '8px', lineHeight: '1.3' }}>{item.name}</div>
                             <div style={{ display: 'flex', alignItems: 'baseline', gap: '4px' }}>
                               <span style={{ color: 'var(--gold-primary)', fontWeight: '900', fontSize: '18px' }}>${item.price}</span>
                             </div>
@@ -3512,7 +3512,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                       <Zap size={20} color="var(--gold-primary)" />
                     </div>
                     <div>
-                      <h2 style={{ fontWeight: '900', fontSize: '20px', color: '#111111', marginBottom: '2px' }}>Servicios Extras</h2>
+                      <h2 style={{ fontWeight: '900', fontSize: '20px', color: 'white', marginBottom: '2px' }}>Servicios Extras</h2>
                       <p style={{ fontSize: '12px', color: 'var(--text-muted)' }}>{allExtras.length} extras disponibles</p>
                     </div>
 </div>
@@ -3589,7 +3589,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                         </div>
                         <div style={{ flex: 1, padding: '12px 14px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
                           <span style={{ color: 'var(--gold-primary)', fontSize: '9px', fontWeight: 950, textTransform: 'uppercase', letterSpacing: '.55px' }}>Servicio Extra</span>
-                          <h3 style={{ margin: '4px 0 6px', color: '#111111', fontSize: '13px', lineHeight: 1.2, fontWeight: 900, textTransform: 'capitalize', display: 'block' }}>{extra.name || 'Extra'}</h3>
+                          <h3 style={{ margin: '4px 0 6px', color: '#fff', fontSize: '13px', lineHeight: 1.2, fontWeight: 900, textTransform: 'capitalize', display: 'block' }}>{extra.name || 'Extra'}</h3>
                           <strong style={{ color: 'var(--gold-primary)', fontSize: '18px', lineHeight: 1, display: 'block' }}>${extra.price || 0}</strong>
                           {rates?.usd > 0 && <span style={{ marginTop: '4px', display: 'block', color: 'rgba(255,255,255,0.5)', fontSize: '11.5px', fontWeight: 500 }}>≈ {Math.round((extra.price || 0) * rates.usd).toLocaleString('es-VE')} Bs</span>}
                         </div>
@@ -3616,7 +3616,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                       <ToothIcon size={20} color="var(--gold-primary)" />
                     </div>
                     <div>
-                      <h2 style={{ fontWeight: '900', fontSize: '20px', color: '#111111', marginBottom: '2px' }}>Catálogo de Servicios</h2>
+                      <h2 style={{ fontWeight: '900', fontSize: '20px', color: 'white', marginBottom: '2px' }}>Catálogo de Servicios</h2>
                       <p style={{ fontSize: '12px', color: 'var(--text-muted)' }}>{allServices.length} servicios disponibles</p>
                     </div>
                   </div>
@@ -3663,7 +3663,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                       </div>
                       <div style={{ flex: 1, padding: '12px 14px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
                         <span style={{ color: 'var(--gold-primary)', fontSize: '9px', fontWeight: 950, textTransform: 'uppercase', letterSpacing: '.55px' }}>Servicio Base</span>
-                        <h3 style={{ margin: '4px 0 6px', color: '#111111', fontSize: '13px', lineHeight: 1.2, fontWeight: 900, textTransform: 'capitalize', display: 'block' }}>{service.name || 'Servicio'}</h3>
+                        <h3 style={{ margin: '4px 0 6px', color: '#fff', fontSize: '13px', lineHeight: 1.2, fontWeight: 900, textTransform: 'capitalize', display: 'block' }}>{service.name || 'Servicio'}</h3>
                         <strong style={{ color: 'var(--gold-primary)', fontSize: '18px', lineHeight: 1, display: 'block' }}>${formatUsdAmount(service.price || 0)}</strong>
                         {rates?.usd > 0 && <span style={{ marginTop: '4px', display: 'block', color: 'rgba(255,255,255,0.5)', fontSize: '11.5px', fontWeight: 500 }}>≈ {Math.round(Number(service.price || 0) * rates.usd).toLocaleString('es-VE')} Bs</span>}
                       </div>
@@ -3692,7 +3692,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                       <ToothIcon size={20} color="var(--gold-primary)" />
                     </div>
                     <div>
-                      <h2 style={{ fontWeight: '900', fontSize: '20px', color: '#111111', margin: 0 }}>Asignar Profesional</h2>
+                      <h2 style={{ fontWeight: '900', fontSize: '20px', color: 'white', margin: 0 }}>Asignar Profesional</h2>
                       <span style={{ fontSize: '11px', color: 'var(--text-muted)', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Seleccionar Odontólogo o Asistente</span>
                     </div>
                   </div>
@@ -3721,7 +3721,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                       onChange={e => setCustomServicePrice(e.target.value)}
                       placeholder="Ej: 150"
                       autoFocus
-                      style={{ width: '100%', padding: '12px 14px', borderRadius: '12px', border: '1px solid rgba(0, 0, 0, 0.08)', background: 'rgba(255, 255, 255, 0.9)', color: '#111111', fontSize: '16px', fontWeight: '700', outline: 'none' }}
+                      style={{ width: '100%', padding: '12px 14px', borderRadius: '12px', border: '1px solid rgba(0, 0, 0, 0.08)', background: 'rgba(255, 255, 255, 0.9)', color: 'white', fontSize: '16px', fontWeight: '700', outline: 'none' }}
                     />
                   </div>
                 )}
@@ -3770,7 +3770,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                         )}
                       </div>
                       <div>
-                        <div style={{ fontWeight: '800', color: '#111111', fontSize: '15px' }}>{barber.name}</div>
+                        <div style={{ fontWeight: '800', color: 'white', fontSize: '15px' }}>{barber.name}</div>
                         <span style={{ fontSize: '11px', color: 'var(--text-muted)' }}>{barber.role?.split('|')[0]}</span>
                       </div>
                     </button>
@@ -3795,7 +3795,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
             <div className={`${cardClass.replace('global-modal-card', '')} glass-card`} style={{ maxWidth: 'min(560px, 90vw)', width: '100%', borderRadius: '24px', border: '1px solid rgba(0, 0, 0, 0.08)', padding: '28px', background: 'var(--bg-secondary)', boxShadow: '0 30px 60px -12px rgba(0,0,0,0.5)' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '24px' }}>
                 <h2 style={{ fontWeight: '900', fontSize: '20px' }}>Enlazar Citas en Espera</h2>
-                <button onClick={() => setShowLinkModal(false)} style={{ background: 'none', border: 'none', color: '#111111', fontSize: '24px', cursor: 'pointer' }}>&times;</button>
+                <button onClick={() => setShowLinkModal(false)} style={{ background: 'none', border: 'none', color: 'white', fontSize: '24px', cursor: 'pointer' }}>&times;</button>
               </div>
               
               <p style={{ color: 'var(--text-secondary)', marginBottom: '20px', fontSize: '13px' }}>
@@ -3819,7 +3819,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                           style={{ padding: '14px 16px', borderRadius: '16px', border: '1px solid rgba(0, 0, 0, 0.08)', background: 'rgba(0, 0, 0, 0.04)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
                         >
                           <div>
-                            <div style={{ fontWeight: '800', fontSize: '14px', color: '#111111' }}>{group.client_name}</div>
+                            <div style={{ fontWeight: '800', fontSize: '14px', color: 'white' }}>{group.client_name}</div>
                             <div style={{ fontSize: '11px', color: 'var(--text-muted)', marginTop: '2px' }}>{sNames}</div>
                           </div>
                           <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
@@ -3902,7 +3902,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                       <div key={item.id} style={{ padding: '14px 16px', borderRadius: '16px', border: '1px solid rgba(0, 0, 0, 0.08)', background: 'rgba(0, 0, 0, 0.04)' }}>
                         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '12px' }}>
                           <div style={{ minWidth: 0 }}>
-                            <div style={{ fontWeight: '800', fontSize: '14px', color: '#111111' }}>{p.clientName || 'Cliente'}</div>
+                            <div style={{ fontWeight: '800', fontSize: '14px', color: 'white' }}>{p.clientName || 'Cliente'}</div>
                             <div style={{ fontSize: '11px', color: 'var(--text-muted)', marginTop: '2px' }}>{p.serviceName || 'Venta de productos'}</div>
                             {when && <div style={{ fontSize: '10px', color: 'var(--text-muted)', marginTop: '4px' }}>En cola desde {when}</div>}
                           </div>
@@ -3945,7 +3945,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                 </button>
                 <button
                   onClick={() => setShowOfflineModal(false)}
-                  style={{ padding: '10px 24px', borderRadius: '12px', fontWeight: '800', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', color: '#111111', cursor: 'pointer' }}
+                  style={{ padding: '10px 24px', borderRadius: '12px', fontWeight: '800', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', color: 'white', cursor: 'pointer' }}
                 >
                   Cerrar
                 </button>
@@ -4065,7 +4065,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                   setMethodBs('Pago Móvil');
                   setPaymentReferenceBs('');
                 }}
-                style={{ width: '100%', padding: '16px', borderRadius: '14px', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', color: '#111111', fontWeight: '800', cursor: 'pointer' }}
+                style={{ width: '100%', padding: '16px', borderRadius: '14px', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', color: 'white', fontWeight: '800', cursor: 'pointer' }}
               >
                 Cerrar y Continuar
               </button>

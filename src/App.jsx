@@ -1,4 +1,4 @@
-﻿import React, { lazy, Suspense, useState, useEffect, useRef } from 'react';
+import React, { lazy, Suspense, useState, useEffect, useRef } from 'react';
 import Sidebar from './components/Sidebar';
 import { 
   Star, 
@@ -984,7 +984,7 @@ function App() {
           }}>
             <button 
               onClick={() => setIsReceptionModalOpen(false)}
-              style={{ position: 'absolute', right: '20px', top: 'max(20px, env(safe-area-inset-top, 20px))', zIndex: 3001, background: 'rgba(0, 0, 0, 0.04)', border: 'none', borderRadius: '50%', width: '40px', height: '40px', color: '#111111', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+              style={{ position: 'absolute', right: '20px', top: 'max(20px, env(safe-area-inset-top, 20px))', zIndex: 3001, background: 'rgba(0, 0, 0, 0.04)', border: 'none', borderRadius: '50%', width: '40px', height: '40px', color: 'white', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
             >
               <X size={20} />
             </button>

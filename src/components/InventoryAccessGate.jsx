@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { LockKeyhole, Unlock, Delete } from 'lucide-react';
 import { notificationService } from '../services/notificationService';
 import { supabase } from '../lib/supabase';
@@ -177,7 +177,7 @@ const InventoryAccessGate = ({ children }) => {
           }}>
             {status === 'success' ? <Unlock size={30} /> : <LockKeyhole size={30} />}
           </div>
-          <h1 style={{ margin: '0 0 8px', color: '#111111', fontSize: '24px', fontWeight: 600, letterSpacing: '0.5px' }}>
+          <h1 style={{ margin: '0 0 8px', color: '#fff', fontSize: '24px', fontWeight: 600, letterSpacing: '0.5px' }}>
             Inventario Dientes Sanos
           </h1>
           <p style={{ margin: 0, color: 'var(--text-secondary)', fontSize: '15px' }}>

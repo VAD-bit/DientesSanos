@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { 
   BarChart3, 
   Calendar, 
@@ -1224,7 +1224,7 @@ const ReportsModule = ({ isMobile, rates, staff = [] }) => {
             <Loader2 size={24} color="var(--gold-primary)" style={{ animation: 'spin 1s linear infinite' }} />
           </div>
           <div style={{ textAlign: 'center' }}>
-            <p style={{ fontSize: '15px', fontWeight: '800', color: '#111111', margin: 0 }}>Generando PDF</p>
+            <p style={{ fontSize: '15px', fontWeight: '800', color: 'white', margin: 0 }}>Generando PDF</p>
             <p style={{ fontSize: '12px', color: 'var(--text-muted)', margin: '4px 0 0' }}>Preparando reporte, esto puede tomar unos segundos...</p>
           </div>
         </div>
@@ -1380,7 +1380,7 @@ const ReportsModule = ({ isMobile, rates, staff = [] }) => {
               fontSize: '13px', 
               fontWeight: '800', 
               fontStyle: 'italic', 
-              color: '#111111', 
+              color: 'white', 
               textTransform: 'uppercase', 
               marginBottom: '6px',
               textAlign: 'center',
@@ -1579,7 +1579,7 @@ const ReportsModule = ({ isMobile, rates, staff = [] }) => {
                 const pct = (b.count / maxBarberCount) * 80;
                 return (
                   <div key={idx} style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                    <div style={{ width: '100px', fontSize: '12px', fontWeight: '800', color: '#111111', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                    <div style={{ width: '100px', fontSize: '12px', fontWeight: '800', color: 'white', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                       {b.name}
                     </div>
                     <div style={{ flex: 1, display: 'flex', alignItems: 'center' }}>

@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   X, 
   User, 
@@ -407,7 +407,7 @@ const StaffProfileModal = ({ isOpen, onClose, staffMember, inventory = [], onUpd
               )}
             </div>
             <div>
-              <h2 style={{ fontSize: isMobileView ? '22px' : '28px', fontWeight: '900', color: '#111111', margin: 0 }}>{staffMember.name}</h2>
+              <h2 style={{ fontSize: isMobileView ? '22px' : '28px', fontWeight: '900', color: 'white', margin: 0 }}>{staffMember.name}</h2>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--gold-primary)', fontWeight: '700', fontSize: isMobileView ? '12px' : '14px', marginTop: '4px' }}>
                 <Star size={14} fill="var(--gold-primary)" />
                 {roleLabel(staffMember.role?.split('|')[0]) || 'Odontólogo'}
@@ -487,7 +487,7 @@ const StaffProfileModal = ({ isOpen, onClose, staffMember, inventory = [], onUpd
                   </div>
                   <div>
                     <div style={{ fontSize: '10px', color: 'var(--text-muted)', fontWeight: '900', letterSpacing: '1px', marginBottom: '4px' }}>COMISIONES SERVICIOS</div>
-                    <div style={{ fontSize: '20px', fontWeight: '900', color: '#111111' }}>${stats.totalServiceComm.toFixed(2)}</div>
+                    <div style={{ fontSize: '20px', fontWeight: '900', color: 'white' }}>${stats.totalServiceComm.toFixed(2)}</div>
                   </div>
                 </div>
                 <div 
@@ -509,7 +509,7 @@ const StaffProfileModal = ({ isOpen, onClose, staffMember, inventory = [], onUpd
                   </div>
                   <div>
                     <div style={{ fontSize: '10px', color: 'var(--text-muted)', fontWeight: '900', letterSpacing: '1px', marginBottom: '4px' }}>COMISIONES PRODUCTOS</div>
-                    <div style={{ fontSize: '20px', fontWeight: '900', color: '#111111' }}>${stats.totalProductComm.toFixed(2)}</div>
+                    <div style={{ fontSize: '20px', fontWeight: '900', color: 'white' }}>${stats.totalProductComm.toFixed(2)}</div>
                   </div>
                 </div>
                 <div 
@@ -556,11 +556,11 @@ const StaffProfileModal = ({ isOpen, onClose, staffMember, inventory = [], onUpd
                   
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
                     <span style={{ color: 'var(--text-secondary)', fontWeight: '600' }}>Servicios Totales</span>
-                    <span style={{ color: '#111111', fontWeight: '900', fontSize: '18px' }}>{stats.totalAppointments}</span>
+                    <span style={{ color: 'white', fontWeight: '900', fontSize: '18px' }}>{stats.totalAppointments}</span>
                   </div>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                     <span style={{ color: 'var(--text-secondary)', fontWeight: '600' }}>Tiempo Promedio</span>
-                    <span style={{ color: '#111111', fontWeight: '900', fontSize: '18px' }}>{stats.avgDurationMin > 0 ? `${stats.avgDurationMin} min` : 'N/A'}</span>
+                    <span style={{ color: 'white', fontWeight: '900', fontSize: '18px' }}>{stats.avgDurationMin > 0 ? `${stats.avgDurationMin} min` : 'N/A'}</span>
                   </div>
                 </div>
 
@@ -576,7 +576,7 @@ const StaffProfileModal = ({ isOpen, onClose, staffMember, inventory = [], onUpd
                   onMouseOver={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.04)'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)'; }}
                   onMouseOut={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.025)'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.06)'; }}
                 >
-                  <h4 style={{ color: '#111111', fontSize: '14px', fontWeight: '900', marginBottom: '24px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <h4 style={{ color: 'white', fontSize: '14px', fontWeight: '900', marginBottom: '24px', display: 'flex', alignItems: 'center', gap: '8px' }}>
                     <TrendingUp size={16} color="var(--gold-primary)" /> Servicios Más Realizados
                   </h4>
                   
@@ -608,7 +608,7 @@ const StaffProfileModal = ({ isOpen, onClose, staffMember, inventory = [], onUpd
                   gap: '16px'
                 }}
               >
-                <h4 style={{ color: '#111111', fontSize: '14px', fontWeight: '900', margin: 0, display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <h4 style={{ color: 'white', fontSize: '14px', fontWeight: '900', margin: 0, display: 'flex', alignItems: 'center', gap: '8px' }}>
                   <Star size={16} color="var(--gold-primary)" fill="var(--gold-primary)" /> Valoraciones y Reseñas de Pacientes
                 </h4>
                 
@@ -622,7 +622,7 @@ const StaffProfileModal = ({ isOpen, onClose, staffMember, inventory = [], onUpd
                         <div key={rev.id} style={{ padding: '14px', borderRadius: '16px', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', display: 'flex', flexDirection: 'column', gap: '8px' }}>
                           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
                             <div>
-                              <span style={{ fontWeight: '700', fontSize: '13px', color: '#111111' }}>{clientName}</span>
+                              <span style={{ fontWeight: '700', fontSize: '13px', color: 'white' }}>{clientName}</span>
                               <span style={{ fontSize: '11px', color: 'var(--text-muted)', marginLeft: '8px' }}>{dateFormatted}</span>
                             </div>
                             <div style={{ display: 'flex', alignItems: 'center', gap: '4px', background: 'rgba(17, 17, 17, 0.1)', padding: '2px 8px', borderRadius: '6px', fontSize: '12px', fontWeight: '800', color: 'var(--champagne)' }}>
@@ -633,9 +633,9 @@ const StaffProfileModal = ({ isOpen, onClose, staffMember, inventory = [], onUpd
                           
                           {/* Sub ratings */}
                           <div style={{ display: 'flex', gap: '12px', fontSize: '11px', color: 'var(--text-muted)', fontWeight: '600' }}>
-                            <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}><Zap size={10} color="#ffcc00" /> Rapidez: <span style={{ color: '#111111' }}>{rev.rapidez || rev.rating || 5}</span></span>
-                            <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}><Droplets size={10} color="#007aff" /> Limpieza: <span style={{ color: '#111111' }}>{rev.limpieza || rev.rating || 5}</span></span>
-                            <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}><ToothIcon size={10} color="#ff3b30" /> Habilidad: <span style={{ color: '#111111' }}>{rev.habilidad || rev.rating || 5}</span></span>
+                            <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}><Zap size={10} color="#ffcc00" /> Rapidez: <span style={{ color: 'white' }}>{rev.rapidez || rev.rating || 5}</span></span>
+                            <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}><Droplets size={10} color="#007aff" /> Limpieza: <span style={{ color: 'white' }}>{rev.limpieza || rev.rating || 5}</span></span>
+                            <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}><ToothIcon size={10} color="#ff3b30" /> Habilidad: <span style={{ color: 'white' }}>{rev.habilidad || rev.rating || 5}</span></span>
                           </div>
 
                           {rev.comment && (
@@ -656,7 +656,7 @@ const StaffProfileModal = ({ isOpen, onClose, staffMember, inventory = [], onUpd
             <div className="animate-fade-in">
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '24px' }}>
                 <div>
-                  <h3 style={{ fontSize: '18px', fontWeight: '900', color: '#111111' }}>Equipamiento de {staffMember.name.split(' ')[0]}</h3>
+                  <h3 style={{ fontSize: '18px', fontWeight: '900', color: 'white' }}>Equipamiento de {staffMember.name.split(' ')[0]}</h3>
                   <p style={{ color: 'var(--text-muted)', fontSize: '13px', marginTop: '4px' }}>Control de herramientas asignadas o propias.</p>
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap', justifyContent: 'flex-end' }}>
@@ -664,7 +664,7 @@ const StaffProfileModal = ({ isOpen, onClose, staffMember, inventory = [], onUpd
                   onClick={() => setShowInventoryHistory(true)}
                   style={{
                     background: 'rgba(0, 0, 0, 0.04)',
-                    color: '#111111',
+                    color: 'white',
                     border: '1px solid rgba(0, 0, 0, 0.08)',
                     padding: '10px 16px',
                     borderRadius: '50px',
@@ -859,7 +859,7 @@ const StaffProfileModal = ({ isOpen, onClose, staffMember, inventory = [], onUpd
                             : <Wrench size={18} color={tool.ownership === 'Asignada' ? 'var(--gold-primary)' : 'white'} />}
                         </div>
                         <div>
-                          <div style={{ fontWeight: '800', color: '#111111', fontSize: '15px' }}>
+                          <div style={{ fontWeight: '800', color: 'white', fontSize: '15px' }}>
                             {tool.name} <span style={{ color: 'var(--gold-primary)', fontSize: '12px' }}>× {tool.quantity || 1}</span>
                           </div>
                           <div style={{ color: 'var(--text-muted)', fontSize: '12px', fontWeight: '600' }}>
