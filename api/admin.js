@@ -44,9 +44,24 @@ export default async function handler(request, response) {
           email_confirm: true,
         });
         if (error) {
-          console.error('[admin-auth-users] Supabase createUser error object:', JSON.stringify(error, null, 2));
-          const msg = error?.message || error?.error_description || error?.error || error?.msg || JSON.stringify(error) || 'Error al crear usuario en Supabase Auth';
-          throw Object.assign(new Error(msg), { statusCode: error?.status || error?.statusCode || 500 });
+          console.error('[admin-auth-users] Supabase createUser error:', {
+            message: error?.message,
+            status: error?.status,
+            code: error?.code,
+            name: error?.name,
+            fullError: JSON.stringify(error),
+          });
+          let userMsg = 'Error al crear usuario en Supabase Auth';
+          if (error?.code === 'unexpected_failure') {
+            userMsg = 'Error interno de Supabase Auth al crear usuario. Revisa Supabase Dashboard → Authentication → Settings: verifica que email confirmations esté desactivado o que SMTP esté configurado, y que el email no exista ya.';
+          } else if (error?.message?.toLowerCase().includes('already exists')) {
+            userMsg = 'El correo electrónico ya existe en Supabase Auth.';
+          } else if (error?.message?.toLowerCase().includes('invalid email')) {
+            userMsg = 'El correo electrónico no es válido.';
+          } else if (error?.message?.toLowerCase().includes('password')) {
+            userMsg = 'La contraseña no cumple los requisitos de Supabase.';
+          }
+          throw Object.assign(new Error(userMsg), { statusCode: error?.status || error?.statusCode || 500 });
         }
         return json(response, 201, { user: data.user });
       }
