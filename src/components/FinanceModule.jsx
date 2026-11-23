@@ -1596,13 +1596,16 @@ const FinanceModule = ({ isMobile, currency, rates, staff = [] }) => {
     const desc = (t.description || '').toLowerCase();
     const { clientName, barbero, paymentReference } = parseTxExcel(t);
 
-    const normClient = (clientName || '').toLowerCase().replace(/[^a-z0-9]/g, '');
     const amountVal = Number(t.amount || 0).toFixed(2);
-    const dateDay = t.created_at ? new Date(t.created_at).toISOString().split('T')[0] : '';
 
-    // 1. If client name is known (e.g. "Daniel García"), deduplicate ALL entries for this client on this day with this amount
-    if (normClient && normClient !== 'sn' && normClient !== 'cliente') {
-      return `client_${dateDay}_${normClient}_${amountVal}`;
+    // 1. Appointment IDs - deduplicar SOLO por IDs de cita (una transacción por cita/pago)
+    const rawAppIds = [
+      meta.appointment_id,
+      ...(Array.isArray(meta.appointmentIds) ? meta.appointmentIds : (meta.appointmentIds ? [meta.appointmentIds] : []))
+    ].filter(Boolean);
+
+    if (rawAppIds.length > 0) {
+      return `app_${rawAppIds.map(String).sort().join('_')}`;
     }
 
     // 2. Reference extraction from metadata or description
@@ -1613,21 +1616,11 @@ const FinanceModule = ({ isMobile, currency, rates, staff = [] }) => {
     }
 
     if (ref && ref.length > 1 && ref !== '0' && ref !== '0000') {
-      return `ref_${dateDay}_${ref}_${amountVal}`;
+      return `ref_${ref}_${amountVal}`;
     }
 
-    // 3. Appointment IDs
-    const rawAppIds = [
-      meta.appointment_id,
-      ...(Array.isArray(meta.appointmentIds) ? meta.appointmentIds : (meta.appointmentIds ? [meta.appointmentIds] : []))
-    ].filter(Boolean);
-
-    if (rawAppIds.length > 0) {
-      return `app_${rawAppIds.map(String).sort().join('_')}`;
-    }
-
-    const dateMinuteStr = t.created_at ? new Date(t.created_at).toISOString().substring(0, 16) : '';
-    return `tx_${normClient}_${barbero.toLowerCase().replace(/[^a-z0-9]/g, '')}_${amountVal}_${dateMinuteStr}`;
+    // 3. Fallback: usar ID de transacción + amount para evitar duplicados exactos del mismo pago
+    return `tx_${t.id}_${amountVal}`;
   };
 
   const operationalTransactions = useMemo(
