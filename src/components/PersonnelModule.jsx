@@ -504,7 +504,7 @@ const AttendanceHistoryModal = ({ member, dates, logs, streak, onClose, overlayC
                     {d.dayNum}
                   </span>
                   {d.isToday && (
-                    <span style={{ position: 'absolute', bottom: '2px', width: '3px', height: '3px', borderRadius: '50%', background: 'white' }} />
+                    <span style={{ position: 'absolute', bottom: '2px', width: '3px', height: '3px', borderRadius: '50%', background: '#111111' }} />
                   )}
                 </div>
               );
@@ -5204,4 +5204,5 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
 };
 
 export default PersonnelModule;
+
 

@@ -1,9 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+﻿@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 @import "tailwindcss";
 
 :root {
-  /* ─── Dientes Sanos Palette (blanco/negro/gris + acento arena #E8D4B0) ─── */
+  /* â”€â”€â”€ Dientes Sanos Palette (blanco/negro/gris + acento arena #E8D4B0) â”€â”€â”€ */
   --black: #111111;
   --graphite: #333333;
   --card: #ffffff;
@@ -84,10 +84,10 @@ body {
   position: relative;
 }
 
-/* ─── Global Button Normalization ─── */
+/* â”€â”€â”€ Global Button Normalization â”€â”€â”€ */
 /* Ensures consistent font size across ALL buttons in the entire CRM.
    Individual inline styles that set a different font-size will still
-   override this — but the DEFAULT for any unstyled button is now 14px. */
+   override this â€” but the DEFAULT for any unstyled button is now 14px. */
 button {
   font-size: 14px;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -166,7 +166,7 @@ html, body {
   pointer-events: none;
 }
 
-/* ─── Apple UX Animations ─── */
+/* â”€â”€â”€ Apple UX Animations â”€â”€â”€ */
 .ambient-glow {
   position: absolute;
   width: 600px;
@@ -1212,7 +1212,7 @@ input[type="submit"]:active {
     font-size: 16px !important;
   }
 
-  /* Remove hover-lift on touch screens — no translateY bounce */
+  /* Remove hover-lift on touch screens â€” no translateY bounce */
   button:hover,
   input[type="submit"]:hover {
     transform: none !important;
@@ -1542,7 +1542,7 @@ input[type="submit"]:active {
   height: 0 !important;
 }
 
-/* REDISEÑO PREMIUM MOCKUP */
+/* REDISEÃ‘O PREMIUM MOCKUP */
 
 .premium-active-menu {
   background: linear-gradient(135deg, rgba(232, 212, 176, 0.16) 0%, rgba(232, 212, 176, 0.04) 100%) !important;
@@ -1860,7 +1860,7 @@ input[type="submit"]:active {
     background: white !important;
     font-size: 12px;
     line-height: 1.2;
-    /* Forzar que el logo (imagen) se imprima aunque el navegador omita gráficos */
+    /* Forzar que el logo (imagen) se imprima aunque el navegador omita grÃ¡ficos */
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }
@@ -1912,7 +1912,7 @@ input[type="submit"]:active {
 .receipt-slogan { font-style: italic; margin-top: 4px; }
 .receipt-contact { font-size: 10px; margin-top: 8px; }
 
-/* Logo y número de orden del recibo */
+/* Logo y nÃºmero de orden del recibo */
 .receipt-logo { display: block; max-width: 52mm; max-height: 22mm; margin: 0 auto 6px; object-fit: contain; }
 .receipt-order { font-weight: bold; font-size: 15px; margin: 4px 0 2px; }
 .receipt-payments p { margin: 4px 0; }
@@ -1983,7 +1983,7 @@ body.in-booking-flow .whatsapp-float-btn { display: none !important; }
   transform-origin: top center;
 }
 
-/* ═══ PERFORMANCE: PC de bajos recursos ═══ */
+/* â•â•â• PERFORMANCE: PC de bajos recursos â•â•â• */
 
 /* 1. Si el SO pide reducir motion, desactivar blur y simplificar */
 @media (prefers-reduced-motion: reduce) {
@@ -2019,7 +2019,7 @@ body.in-booking-flow .whatsapp-float-btn { display: none !important; }
 }
 
 /* ============================================
-   STEP GUIDE — Apple-style step indicator
+   STEP GUIDE â€” Apple-style step indicator
    ============================================ */
 
 .step-guide {
@@ -2111,7 +2111,7 @@ body.in-booking-flow .whatsapp-float-btn { display: none !important; }
 }
 
 /* ============================================
-   FIELD LABEL — Required/Optional indicators
+   FIELD LABEL â€” Required/Optional indicators
    ============================================ */
 
 .field-required-dot {
@@ -2137,7 +2137,7 @@ body.in-booking-flow .whatsapp-float-btn { display: none !important; }
 }
 
 /* ============================================
-   STEP HIGHLIGHT — Active field glow wrapper
+   STEP HIGHLIGHT â€” Active field glow wrapper
    ============================================ */
 
 .step-highlight {
@@ -2158,12 +2158,12 @@ body.in-booking-flow .whatsapp-float-btn { display: none !important; }
   animation: slideDownEntry 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* ════════════════════════════════════════════════════════════════════════
-   TEMA CLARO MÁRMOL — Panel de Administración
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   TEMA CLARO MÃRMOL â€” Panel de AdministraciÃ³n
    Se aplica sobre .admin-light-theme (fondos blancos, vetas grises,
    texto oscuro). Coherente con identidad: blanco/negro/gris + acento
-   arena #E8D4B0. Sin teal ni púrpura.
-   ════════════════════════════════════════════════════════════════════════ */
+   arena #E8D4B0. Sin teal ni pÃºrpura.
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 .admin-light-theme {
   --bg-primary: #ffffff;
   --bg-secondary: #f5f7fa;
@@ -2185,12 +2185,12 @@ body.in-booking-flow .whatsapp-float-btn { display: none !important; }
   --gold-glow: 0 0 24px rgba(232, 212, 176, 0.25);
 }
 
-/* Fondo de mármol detrás de la app admin */
+/* Fondo de mÃ¡rmol detrÃ¡s de la app admin */
 .admin-marble-bg {
   /* El SVG ya trae su propio fondo; esta clase ancla el z-index. */
 }
 
-/* Cuando el tema claro está activo, el cuerpo y la app dejan de ser oscuros */
+/* Cuando el tema claro estÃ¡ activo, el cuerpo y la app dejan de ser oscuros */
 .admin-light-theme body,
 .admin-light-theme #root,
 .admin-light-theme .app-container,
@@ -2200,7 +2200,7 @@ body.in-booking-flow .whatsapp-float-btn { display: none !important; }
   color: var(--text-primary) !important;
 }
 
-/* Sidebar claro (mármol) */
+/* Sidebar claro (mÃ¡rmol) */
 .admin-light-theme .sidebar {
   background: rgba(255, 255, 255, 0.82) !important;
   border-right: 1px solid rgba(0, 0, 0, 0.06) !important;
@@ -2228,7 +2228,7 @@ body.in-booking-flow .whatsapp-float-btn { display: none !important; }
   filter: brightness(0) invert(0) drop-shadow(0 0 8px rgba(0,0,0,0.15)) !important;
 }
 
-/* Tarjetas y módulos claros sobre mármol */
+/* Tarjetas y mÃ³dulos claros sobre mÃ¡rmol */
 .admin-light-theme .glass-card {
   background: rgba(255, 255, 255, 0.75) !important;
   border: 1px solid rgba(0, 0, 0, 0.05) !important;
@@ -2262,7 +2262,7 @@ body.in-booking-flow .whatsapp-float-btn { display: none !important; }
   color: #111827 !important;
 }
 
-/* Botones de acción claros */
+/* Botones de acciÃ³n claros */
 .admin-light-theme .action-btn {
   background: #f5f7fa !important;
   border: 1px solid rgba(0, 0, 0, 0.08) !important;
@@ -2274,18 +2274,18 @@ body.in-booking-flow .whatsapp-float-btn { display: none !important; }
   background: #f0e2c8 !important;
 }
 
-/* Evitar que el overlay de recepción oscurezca el mármol */
+/* Evitar que el overlay de recepciÃ³n oscurezca el mÃ¡rmol */
 .admin-light-theme .global-modal-overlay {
   background-color: rgba(0, 0, 0, 0.04) !important;
 }
 
-/* Botón dorado sigue oscuro sobre mármol (contraste WCAG) */
+/* BotÃ³n dorado sigue oscuro sobre mÃ¡rmol (contraste WCAG) */
 .admin-light-theme .btn-gold,
 .admin-light-theme .premium-btn-gold {
   color: #111111 !important;
 }
 
-/* Scrollbars claros sobre mármol */
+/* Scrollbars claros sobre mÃ¡rmol */
 .admin-light-theme .panda-scrollbar::-webkit-scrollbar-thumb,
 .admin-light-theme .glass-card::-webkit-scrollbar-thumb {
   background: rgba(0, 0, 0, 0.15) !important;
@@ -2295,10 +2295,10 @@ body.in-booking-flow .whatsapp-float-btn { display: none !important; }
   background: #e8d4b0 !important;
 }
 
-/* ════════════════════════════════════════════════════════════════════════
-   TEXTO GRIS — Forzar todos los textos a gris sobre el tema claro
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   TEXTO GRIS â€” Forzar todos los textos a gris sobre el tema claro
    Sobreescribe estilos inline oscuros hardcodeados en componentes.
-   ════════════════════════════════════════════════════════════════════════ */
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 .admin-light-theme * {
   color: var(--text-primary) !important;
 }
@@ -2329,34 +2329,34 @@ body.in-booking-flow .whatsapp-float-btn { display: none !important; }
   color: #6b7280 !important;
 }
 
-/* Fondos claros — forzar fondo blanco/mármol en lugar de oscuros */
+/* Fondos claros â€” forzar fondo blanco/mÃ¡rmol en lugar de oscuros */
 .admin-light-theme * {
   background-color: transparent !important;
 }
 .admin-light-theme .glass-card,
-.admin-light-theme [style*="background-color: '#ffffff'"],
+.admin-light-theme [style*="background-color: '#111111'"],
 .admin-light-theme [style*="background-color:#ffffff"],
 .admin-light-theme [style*="background-color: #ffffff"],
-.admin-light-theme [style*="background: '#ffffff'"],
+.admin-light-theme [style*="background: '#111111'"],
 .admin-light-theme [style*="background:#ffffff"],
 .admin-light-theme [style*="background: #ffffff"],
-.admin-light-theme [style*="background-color: '#ffffff'"],
+.admin-light-theme [style*="background-color: '#111111'"],
 .admin-light-theme [style*="background-color:#ffffff"],
 .admin-light-theme [style*="background-color: #ffffff"],
-.admin-light-theme [style*="background: '#ffffff'"],
+.admin-light-theme [style*="background: '#111111'"],
 .admin-light-theme [style*="background:#ffffff"],
 .admin-light-theme [style*="background: #ffffff"],
-.admin-light-theme [style*="background-color: '#ffffff'"],
+.admin-light-theme [style*="background-color: '#111111'"],
 .admin-light-theme [style*="background-color:#ffffff"],
 .admin-light-theme [style*="background-color: #ffffff"],
-.admin-light-theme [style*="background: '#ffffff'"],
+.admin-light-theme [style*="background: '#111111'"],
 .admin-light-theme [style*="background:#ffffff"],
 .admin-light-theme [style*="background: #ffffff"] {
   background: #ffffff !important;
   background-color: #ffffff !important;
 }
 
-/* Tarjetas sobre mármol */
+/* Tarjetas sobre mÃ¡rmol */
 .admin-light-theme .glass-card {
   background: #ffffff !important;
   border: 1px solid rgba(0, 0, 0, 0.05) !important;
@@ -2368,16 +2368,16 @@ body.in-booking-flow .whatsapp-float-btn { display: none !important; }
   color: #e8d4b0 !important;
 }
 
-/* ════════════════════════════════════════════════════════════════════════
-   MÓVIL — Forzar tema claro mármol en MobileLayout y componentes hijos
-   Sobreescribe estilos inline oscuros hardcodeados en componentes móviles
-   ════════════════════════════════════════════════════════════════════════ */
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   MÃ“VIL â€” Forzar tema claro mÃ¡rmol en MobileLayout y componentes hijos
+   Sobreescribe estilos inline oscuros hardcodeados en componentes mÃ³viles
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 .admin-light-theme .mobile-header,
 .admin-light-theme [style*="backgroundColor: 'var(--bg-primary)'"],
 .admin-light-theme [style*="backgroundColor:var(--bg-primary)"],
 .admin-light-theme [style*="background-color: var(--bg-primary)"],
 .admin-light-theme [style*="background-color:var(--bg-primary)"],
-.admin-light-theme [style*="color: 'white'"],
+.admin-light-theme [style*="color: '#111111'"],
 .admin-light-theme [style*="color:'white'"],
 .admin-light-theme [style*="color:white"],
 .admin-light-theme [style*="color: #fff"],
@@ -2394,7 +2394,7 @@ body.in-booking-flow .whatsapp-float-btn { display: none !important; }
   background-color: #ffffff !important;
 }
 
-/* MobileBottomNav y elementos de navegación móvil claros */
+/* MobileBottomNav y elementos de navegaciÃ³n mÃ³vil claros */
 .admin-light-theme .mobile-bottom-nav,
 .admin-light-theme [class*="MobileBottomNav"],
 .admin-light-theme [class*="mobile-bottom-nav"] {
@@ -2403,7 +2403,7 @@ body.in-booking-flow .whatsapp-float-btn { display: none !important; }
   color: #374151 !important;
 }
 
-/* Enlaces y acentos en móvil */
+/* Enlaces y acentos en mÃ³vil */
 .admin-light-theme .mobile-nav-link,
 .admin-light-theme [class*="mobile-nav-link"] {
   color: #374151 !important;
@@ -2413,7 +2413,7 @@ body.in-booking-flow .whatsapp-float-btn { display: none !important; }
   color: #e8d4b0 !important;
 }
 
-/* Tarjetas y módulos móviles claros */
+/* Tarjetas y mÃ³dulos mÃ³viles claros */
 .admin-light-theme .mobile-card,
 .admin-light-theme [class*="mobile-card"] {
   background: #ffffff !important;
@@ -2421,10 +2421,10 @@ body.in-booking-flow .whatsapp-float-btn { display: none !important; }
   color: #111827 !important;
 }
 
-/* ════════════════════════════════════════════════════════════════════════
-   MENÚS DESPLEGABLES — Estética mármol claro
-   Selects, dropdowns, opciones, tooltips y popovers sobre fondo mármol
-   ════════════════════════════════════════════════════════════════════════ */
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   MENÃšS DESPLEGABLES â€” EstÃ©tica mÃ¡rmol claro
+   Selects, dropdowns, opciones, tooltips y popovers sobre fondo mÃ¡rmol
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 
 /* Selects nativos (dropdowns) */
 .admin-light-theme select,
@@ -2459,7 +2459,7 @@ body.in-booking-flow .whatsapp-float-btn { display: none !important; }
   color: #111827 !important;
 }
 
-/* option:selected no es estilo estándar en navegadores; se omite para evitar warning */
+/* option:selected no es estilo estÃ¡ndar en navegadores; se omite para evitar warning */
 .admin-light-theme [role="option"][aria-selected="true"],
 .admin-light-theme .dropdown-item.active,
 .admin-light-theme .menu-item.active {
@@ -2476,7 +2476,7 @@ body.in-booking-flow .whatsapp-float-btn { display: none !important; }
   outline: none !important;
 }
 
-/* Menús desplegables personalizados (div/ul basados) */
+/* MenÃºs desplegables personalizados (div/ul basados) */
 .admin-light-theme .dropdown-content,
 .admin-light-theme .menu-content,
 .admin-light-theme .popover-content,
@@ -2488,7 +2488,7 @@ body.in-booking-flow .whatsapp-float-btn { display: none !important; }
   color: #374151 !important;
 }
 
-/* Tooltips sobre mármol */
+/* Tooltips sobre mÃ¡rmol */
 .admin-light-theme .tooltip,
 .admin-light-theme .tooltipster,
 .admin-light-theme [data-tooltip],
@@ -2500,7 +2500,7 @@ body.in-booking-flow .whatsapp-float-btn { display: none !important; }
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06) !important;
 }
 
-/* Inputs de búsqueda dentro de menús */
+/* Inputs de bÃºsqueda dentro de menÃºs */
 .admin-light-theme .dropdown-search input,
 .admin-light-theme .menu-search input,
 .admin-light-theme .select-search input {
@@ -2510,7 +2510,7 @@ body.in-booking-flow .whatsapp-float-btn { display: none !important; }
   border-radius: 6px !important;
 }
 
-/* Dividers dentro de menús */
+/* Dividers dentro de menÃºs */
 .admin-light-theme .dropdown-divider,
 .admin-light-theme .menu-divider,
 .admin-light-theme hr {
@@ -2519,7 +2519,7 @@ body.in-booking-flow .whatsapp-float-btn { display: none !important; }
   margin: 6px 0 !important;
 }
 
-/* Scrollbars dentro de menús desplegables */
+/* Scrollbars dentro de menÃºs desplegables */
 .admin-light-theme .dropdown-menu::-webkit-scrollbar,
 .admin-light-theme .dropdown-content::-webkit-scrollbar,
 .admin-light-theme .menu-content::-webkit-scrollbar,
@@ -2540,7 +2540,7 @@ body.in-booking-flow .whatsapp-float-btn { display: none !important; }
   background: #e8d4b0 !important;
 }
 
-/* Botones de abrir/cerrar menús (triggers) */
+/* Botones de abrir/cerrar menÃºs (triggers) */
 .admin-light-theme .dropdown-trigger,
 .admin-light-theme .menu-trigger,
 .admin-light-theme .select-trigger {
@@ -2556,7 +2556,7 @@ body.in-booking-flow .whatsapp-float-btn { display: none !important; }
   border-color: #e8d4b0 !important;
 }
 
-/* Flechas/indicadores de menú desplegable */
+/* Flechas/indicadores de menÃº desplegable */
 .admin-light-theme .dropdown-arrow,
 .admin-light-theme .menu-arrow,
 .admin-light-theme .select-arrow,
@@ -2565,7 +2565,7 @@ body.in-booking-flow .whatsapp-float-btn { display: none !important; }
   border-color: #6b7280 !important;
 }
 
-/* Iconos dentro de menús desplegables */
+/* Iconos dentro de menÃºs desplegables */
 .admin-light-theme .dropdown-item svg,
 .admin-light-theme .menu-item svg,
 .admin-light-theme .dropdown-trigger svg,
@@ -2581,19 +2581,19 @@ body.in-booking-flow .whatsapp-float-btn { display: none !important; }
   fill: #e8d4b0 !important;
 }
 
-/* ════════════════════════════════════════════════════════════════════════
-   LOGIN — Tema claro mármol para portal público de autenticación
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   LOGIN â€” Tema claro mÃ¡rmol para portal pÃºblico de autenticaciÃ³n
    Sobreescribe estilos inline oscuros hardcodeados en Login.jsx
-   ════════════════════════════════════════════════════════════════════════ */
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 
-/* Fondo raíz */
+/* Fondo raÃ­z */
 .login-light-theme,
 .login-light-theme .l-root {
   background: #ffffff !important;
   color: #111827 !important;
 }
 
-/* Overlay oscuro → mármol claro */
+/* Overlay oscuro â†’ mÃ¡rmol claro */
 .login-light-theme .l-overlay {
   background: #fafafa !important;
   opacity: 1 !important;
@@ -2605,7 +2605,7 @@ body.in-booking-flow .whatsapp-float-btn { display: none !important; }
   box-shadow: 0 24px 60px rgba(0, 0, 0, 0.08) !important;
 }
 
-/* Tarjeta de login → blanco sólido */
+/* Tarjeta de login â†’ blanco sÃ³lido */
 .login-light-theme .l-card {
   background: #ffffff !important;
   border: 1px solid rgba(0, 0, 0, 0.05) !important;
@@ -2657,7 +2657,7 @@ body.in-booking-flow .whatsapp-float-btn { display: none !important; }
   background: #ffffff !important;
 }
 
-/* Botón iniciar sesión */
+/* BotÃ³n iniciar sesiÃ³n */
 .login-light-theme .l-btn-login,
 .login-light-theme button[type="submit"],
 .login-light-theme .l-btn-gold {
@@ -2685,10 +2685,11 @@ body.in-booking-flow .whatsapp-float-btn { display: none !important; }
   fill: #6b7280 !important;
 }
 
-/* Bottom nav móvil */
+/* Bottom nav mÃ³vil */
 .login-light-theme .l-bottom-nav,
 .login-light-theme [class*="bottom-nav"] {
   background: #ffffff !important;
   border-top: 1px solid rgba(0, 0, 0, 0.06) !important;
   color: #374151 !important;
 }
+

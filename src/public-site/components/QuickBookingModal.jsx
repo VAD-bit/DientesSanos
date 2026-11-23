@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Calendar as CalendarIcon, Clock, Sparkles, User, Search, CheckCircle, MessageSquare, Lock } from 'lucide-react';
 import ToothIcon from '../../components/icons/ToothIcon';
@@ -27,7 +27,7 @@ export default function QuickBookingModal({ onClose, client, initialBarber = nul
   const [searchQuery, setSearchQuery] = useState('');
   const [isClosing, setIsClosing] = useState(false);
 
-  // Plays the closing animation before actually unmounting — calling onClose()
+  // Plays the closing animation before actually unmounting â€” calling onClose()
   // directly would remove the component instantly since the parent renders it
   // via a plain `{show && <QuickBookingModal />}` (no AnimatePresence).
   const handleClose = () => {
@@ -68,9 +68,9 @@ export default function QuickBookingModal({ onClose, client, initialBarber = nul
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  // El único control de disponibilidad es el interruptor manual del dashboard
-  // (system_settings.store_is_open): abierto = cualquier hora del día disponible,
-  // cerrado = no se puede agendar ningún turno.
+  // El Ãºnico control de disponibilidad es el interruptor manual del dashboard
+  // (system_settings.store_is_open): abierto = cualquier hora del dÃ­a disponible,
+  // cerrado = no se puede agendar ningÃºn turno.
   const [storeIsOpen, setStoreIsOpen] = useState(true);
 
   useEffect(() => {
@@ -125,7 +125,7 @@ export default function QuickBookingModal({ onClose, client, initialBarber = nul
   const handleConfirm = async () => {
     if (!selectedService || !selectedBarber || !selectedDate || !selectedTime) return;
     if (!storeIsOpen) {
-      alert('La clínica está cerrada por ahora — no se pueden agendar citas.');
+      alert('La clÃ­nica estÃ¡ cerrada por ahora â€” no se pueden agendar citas.');
       return;
     }
     setIsSubmitting(true);
@@ -261,7 +261,7 @@ export default function QuickBookingModal({ onClose, client, initialBarber = nul
                     
                     {(isTattooArtist === null || isTattooArtist === false) && barberServices.length > 0 && (
                       <motion.div variants={itemVariants} style={{ marginBottom: 24 }}>
-                        <h5 style={{ color: '#0f172a', fontSize: 13, marginBottom: 12 }}>Estética</h5>
+                        <h5 style={{ color: '#0f172a', fontSize: 13, marginBottom: 12 }}>EstÃ©tica</h5>
                         <div style={{ display: 'grid', gap: 12 }}>
                           {barberServices.map(s => (
                             <motion.button 
@@ -397,7 +397,7 @@ export default function QuickBookingModal({ onClose, client, initialBarber = nul
                       days.push(d);
                     }
                     
-                    const dayNames = ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'];
+                    const dayNames = ['Dom', 'Lun', 'Mar', 'MiÃ©', 'Jue', 'Vie', 'SÃ¡b'];
                     const monthNames = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'];
 
                     return (
@@ -464,8 +464,8 @@ export default function QuickBookingModal({ onClose, client, initialBarber = nul
                             <Lock size={16} color="#f87171" />
                           </div>
                           <div style={{ textAlign: 'left', minWidth: 0 }}>
-                            <p style={{ color: '#f87171', fontSize: 11, fontWeight: 900, textTransform: 'uppercase', letterSpacing: 0.5, margin: 0, lineHeight: 1.2 }}>Clínica cerrada</p>
-                            <p style={{ color: 'rgba(248,113,113,0.7)', fontSize: 11, fontWeight: 500, margin: '2px 0 0 0', lineHeight: 1.3 }}>Las reservas están bloqueadas por ahora. Vuelve más tarde.</p>
+                            <p style={{ color: '#f87171', fontSize: 11, fontWeight: 900, textTransform: 'uppercase', letterSpacing: 0.5, margin: 0, lineHeight: 1.2 }}>ClÃ­nica cerrada</p>
+                            <p style={{ color: 'rgba(248,113,113,0.7)', fontSize: 11, fontWeight: 500, margin: '2px 0 0 0', lineHeight: 1.3 }}>Las reservas estÃ¡n bloqueadas por ahora. Vuelve mÃ¡s tarde.</p>
                           </div>
                         </div>
                       );
@@ -517,19 +517,19 @@ export default function QuickBookingModal({ onClose, client, initialBarber = nul
 
                     return (
                       <div>
-                        {renderSlotGrid('Mañana', morning)}
+                        {renderSlotGrid('MaÃ±ana', morning)}
                         {renderSlotGrid('Tarde', afternoon)}
                         {renderSlotGrid('Noche', evening)}
                         {!(selectedService?.category || '').toLowerCase().includes('tatuaje') && (
                           <motion.div variants={itemVariants} style={{ display: 'flex', flexDirection: 'column', gap: 12, marginTop: 16 }}>
                             <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
                               <MessageSquare size={18} color="var(--champagne)" />
-                              <h5 style={{ color: '#0f172a', fontSize: 12, margin: 0, textTransform: 'uppercase', letterSpacing: 1 }}>¿Algo que debamos saber?</h5>
+                              <h5 style={{ color: '#0f172a', fontSize: 12, margin: 0, textTransform: 'uppercase', letterSpacing: 1 }}>Â¿Algo que debamos saber?</h5>
                             </div>
                             <textarea
                               value={notes}
                               onChange={e => setNotes(e.target.value)}
-                              placeholder="Ej: Sensibilidad en la muela inferior, alergia a algún medicamento..."
+                              placeholder="Ej: Sensibilidad en la muela inferior, alergia a algÃºn medicamento..."
                               style={{
                                 width: '100%', padding: 16, background: '#f7f7f5', border: '1px solid rgba(217, 192, 143, 0.2)',
                                 borderRadius: 12, color: '#0f172a', fontSize: 13, minHeight: 80, resize: 'none', fontFamily: 'inherit'
@@ -582,7 +582,7 @@ export default function QuickBookingModal({ onClose, client, initialBarber = nul
                     {/* TICKET CONTAINER */}
                     <div style={{
                       width: '100%',
-                      background: '#ffffff',
+                      background: '#111111',
                       border: '1px solid rgba(217, 192, 143, 0.15)',
                       borderRadius: 24,
                       position: 'relative',
@@ -623,12 +623,12 @@ export default function QuickBookingModal({ onClose, client, initialBarber = nul
                         {/* Left Cutout */}
                         <div style={{
                           position: 'absolute', top: -15, left: -15, width: 30, height: 30,
-                          borderRadius: '50%', background: '#ffffff', borderRight: '1px solid rgba(217, 192, 143, 0.15)'
+                          borderRadius: '50%', background: '#111111', borderRight: '1px solid rgba(217, 192, 143, 0.15)'
                         }} />
                         {/* Right Cutout */}
                         <div style={{
                           position: 'absolute', top: -15, right: -15, width: 30, height: 30,
-                          borderRadius: '50%', background: '#ffffff', borderLeft: '1px solid rgba(217, 192, 143, 0.15)'
+                          borderRadius: '50%', background: '#111111', borderLeft: '1px solid rgba(217, 192, 143, 0.15)'
                         }} />
                         {/* Dashed Line */}
                         <div style={{
@@ -679,7 +679,7 @@ export default function QuickBookingModal({ onClose, client, initialBarber = nul
               <button onClick={handleBack} style={{
                 flex: 1, padding: '14px 0', borderRadius: 12, background: '#f7f7f5',
                 color: '#475569', border: 'none', fontWeight: 700, cursor: 'pointer'
-              }}>Atrás</button>
+              }}>AtrÃ¡s</button>
             )}
             
             {step < 3 ? (
@@ -728,3 +728,4 @@ export default function QuickBookingModal({ onClose, client, initialBarber = nul
     </motion.div>
   );
 }
+

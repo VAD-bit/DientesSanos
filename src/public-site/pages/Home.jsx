@@ -283,7 +283,7 @@ export default function Home() {
                       onClick={() => setSelectedBarberForReview(barber)}
                       style={{
                         marginTop: 16,
-                        background: '#ffffff',
+                        background: '#111111',
                         border: '1px solid rgba(217, 192, 143, 0.25)',
                         color: '#111111',
                         padding: '8px 16px',
@@ -328,7 +328,7 @@ export default function Home() {
               display: 'inline-flex',
               alignItems: 'center',
               gap: 8,
-              background: '#ffffff',
+              background: '#111111',
               color: '#111111',
               padding: '14px 32px',
               borderRadius: 'var(--radius-pill)',
@@ -426,7 +426,7 @@ export default function Home() {
                     width: '100%',
                     height: 100,
                     borderRadius: 12,
-                    background: '#ffffff',
+                    background: '#111111',
                     border: '1px solid rgba(217, 192, 143, 0.25)',
                     color: '#0f172a',
                     padding: 12,
@@ -459,4 +459,5 @@ export default function Home() {
     </div>
   );
 }
+
 

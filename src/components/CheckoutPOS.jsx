@@ -3985,7 +3985,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
               </div>
               <span style={{ color: 'rgba(255,255,255,0.9)', fontWeight: '600', fontSize: '15px' }}>Ver Carrito</span>
             </div>
-            <div style={{ display: 'flex', alignItems: 'center', background: 'white', padding: '6px 12px', borderRadius: '10px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', background: '#111111', padding: '6px 12px', borderRadius: '10px' }}>
               <span style={{ color: 'black', fontWeight: '800', fontSize: '14px' }}>
                 ${Number(totalUsd).toFixed(2)}
               </span>
@@ -4006,7 +4006,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
       {/* VISTA PREVIA DE LA FACTURA (antes de cobrar) */}
       {previewReceipt && createPortal(
         <div onClick={() => setPreviewReceipt(null)} style={{ position: 'fixed', inset: 0, background: 'rgba(255, 255, 255, 0.9)', backdropFilter: 'blur(10px)', zIndex: 99999, display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', padding: '20px', paddingTop: 'max(20px, env(safe-area-inset-top, 20px))', boxSizing: 'border-box' }}>
-          <div onClick={(e) => e.stopPropagation()} style={{ background: 'white', borderRadius: '10px', maxHeight: '82vh', overflowY: 'auto', boxShadow: '0 20px 60px rgba(0,0,0,0.6)' }}>
+          <div onClick={(e) => e.stopPropagation()} style={{ background: '#111111', borderRadius: '10px', maxHeight: '82vh', overflowY: 'auto', boxShadow: '0 20px 60px rgba(0,0,0,0.6)' }}>
             <ReceiptTicket transaction={previewReceipt} />
           </div>
           <button
@@ -4094,5 +4094,6 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
 };
 
 export default CheckoutPOS;
+
 
 

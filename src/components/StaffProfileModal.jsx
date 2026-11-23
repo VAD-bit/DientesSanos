@@ -806,7 +806,7 @@ const StaffProfileModal = ({ isOpen, onClose, staffMember, inventory = [], onUpd
                     onClick={handleAddTool} 
                     style={{ 
                       width: '100%', 
-                      background: 'white', 
+                      background: '#111111', 
                       color: 'black', 
                       border: 'none', 
                       borderRadius: '50px', 
@@ -981,4 +981,5 @@ const StaffProfileModal = ({ isOpen, onClose, staffMember, inventory = [], onUpd
 };
 
 export default StaffProfileModal;
+
 

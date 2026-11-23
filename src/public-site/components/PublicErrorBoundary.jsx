@@ -71,7 +71,7 @@ export default class PublicErrorBoundary extends React.Component {
               </div>
               <pre
                 style={{
-                  background: '#ffffff', border: '1px solid rgba(217, 192, 143, 0.2)', borderRadius: 12,
+                  background: '#111111', border: '1px solid rgba(217, 192, 143, 0.2)', borderRadius: 12,
                   padding: 14, fontSize: 11.5, lineHeight: 1.5, color: '#334155',
                   maxHeight: '40vh', overflow: 'auto', whiteSpace: 'pre-wrap', wordBreak: 'break-word',
                   userSelect: 'text', fontFamily: 'ui-monospace, monospace', textAlign: 'left', margin: 0,
@@ -87,4 +87,5 @@ export default class PublicErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
+
 

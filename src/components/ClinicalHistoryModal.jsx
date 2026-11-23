@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, useRef } from 'react';
+﻿import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { X, ClipboardPlus, Camera, Save, Loader2, FileText, Trash2, AlertTriangle } from 'lucide-react';
 import { dataService } from '../services/dataService';
 import Odontograma from './Odontograma';
@@ -22,7 +22,7 @@ async function compressImage(file, maxDim = 1280, quality = 0.72) {
     reader.onerror = () => reject(new Error('No se pudo leer la imagen'));
     reader.onload = () => {
       const img = new Image();
-      img.onerror = () => reject(new Error('Imagen inválida'));
+      img.onerror = () => reject(new Error('Imagen invÃ¡lida'));
       img.onload = () => {
         let { width, height } = img;
         if (width > maxDim || height > maxDim) {
@@ -115,7 +115,7 @@ export default function ClinicalHistoryModal({ isOpen, client, onClose, mandator
       })
       .catch(e => {
         if (!alive) return;
-        console.error('Error cargando historial clínico', e);
+        console.error('Error cargando historial clÃ­nico', e);
         setTab('manual');
         setError('No se pudo cargar el historial. Verifica que la tabla clinical_records exista en Supabase.');
       })
@@ -138,7 +138,7 @@ export default function ClinicalHistoryModal({ isOpen, client, onClose, mandator
       setTab('fotos');
     } catch (err) {
       console.error(err);
-      setError('No se pudieron procesar las imágenes.');
+      setError('No se pudieron procesar las imÃ¡genes.');
     }
   };
 
@@ -158,7 +158,7 @@ export default function ClinicalHistoryModal({ isOpen, client, onClose, mandator
   const handleSave = async () => {
     if (!clientId) return;
     if (!canSave()) {
-      setError('Completa al menos el motivo de consulta, el diagnóstico, el odontograma o adjunta una foto.');
+      setError('Completa al menos el motivo de consulta, el diagnÃ³stico, el odontograma o adjunta una foto.');
       return;
     }
     setSaving(true);
@@ -172,8 +172,8 @@ export default function ClinicalHistoryModal({ isOpen, client, onClose, mandator
       if (typeof onSaved === 'function') onSaved({ clientId, form, imagenes, odontograma });
       if (!mandatory && typeof onClose === 'function') onClose();
     } catch (e) {
-      console.error('Error guardando historial clínico', e);
-      setError('No se pudo guardar. Revisa la conexión o el esquema de la tabla clinical_records.');
+      console.error('Error guardando historial clÃ­nico', e);
+      setError('No se pudo guardar. Revisa la conexiÃ³n o el esquema de la tabla clinical_records.');
     } finally {
       setSaving(false);
     }
@@ -188,7 +188,7 @@ export default function ClinicalHistoryModal({ isOpen, client, onClose, mandator
           <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
             <div style={styles.iconBox}><ClipboardPlus size={20} color="#111" /></div>
             <div>
-              <h2 style={styles.title}>Historial Clínico</h2>
+              <h2 style={styles.title}>Historial ClÃ­nico</h2>
               <span style={styles.subtitle}>{client.name}</span>
             </div>
           </div>
@@ -232,32 +232,32 @@ export default function ClinicalHistoryModal({ isOpen, client, onClose, mandator
           {loading ? (
             <div style={{ padding: '40px', textAlign: 'center', color: 'var(--text-muted)' }}>
               <Loader2 size={22} className="animate-spin" style={{ margin: '0 auto 10px' }} />
-              Cargando historial…
+              Cargando historialâ€¦
             </div>
           ) : tab === 'manual' ? (
             <div style={{ display: 'grid', gap: '14px' }}>
-              <Field label="Motivo de consulta *" value={form.motivo_consulta} onChange={v => set('motivo_consulta', v)} placeholder="Dolor molar inferior derecho…" rows={2} />
-              <Field label="Antecedentes" value={form.antecedentes} onChange={v => set('antecedentes', v)} placeholder="Cirugías, enfermedades previas…" rows={2} />
-              <Field label="Alergias" value={form.alergias} onChange={v => set('alergias', v)} placeholder="Anestesia, látex, medicamentos…" rows={2} />
-              <Field label="Medicación actual" value={form.medicacion_actual} onChange={v => set('medicacion_actual', v)} placeholder="Anticoagulantes, antibióticos…" rows={2} />
-              <Field label="Antecedentes familiares" value={form.antecedentes_fam} onChange={v => set('antecedentes_fam', v)} placeholder="Diabetes, hemofilia…" rows={2} />
-              <Field label="Hábitos" value={form.habitos} onChange={v => set('habitos', v)} placeholder="Bruxismo, tabaquismo, higiene…" rows={2} />
-              <Field label="Exploración clínica" value={form.exploracion} onChange={v => set('exploracion', v)} placeholder="Hallazgos generales, encías, radiografías…" rows={3} />
-              <Field label="Diagnóstico *" value={form.diagnostico} onChange={v => set('diagnostico', v)} placeholder="Caries oclusal pieza 26 (marcar en odontograma)…" rows={3} />
-              <Field label="Plan de tratamiento" value={form.plan_tratamiento} onChange={v => set('plan_tratamiento', v)} placeholder="Obturación + control en 15 días…" rows={3} />
-              <Field label="Notas adicionales" value={form.notas} onChange={v => set('notas', v)} placeholder="Indicaciones post-operatorias…" rows={2} />
+              <Field label="Motivo de consulta *" value={form.motivo_consulta} onChange={v => set('motivo_consulta', v)} placeholder="Dolor molar inferior derechoâ€¦" rows={2} />
+              <Field label="Antecedentes" value={form.antecedentes} onChange={v => set('antecedentes', v)} placeholder="CirugÃ­as, enfermedades previasâ€¦" rows={2} />
+              <Field label="Alergias" value={form.alergias} onChange={v => set('alergias', v)} placeholder="Anestesia, lÃ¡tex, medicamentosâ€¦" rows={2} />
+              <Field label="MedicaciÃ³n actual" value={form.medicacion_actual} onChange={v => set('medicacion_actual', v)} placeholder="Anticoagulantes, antibiÃ³ticosâ€¦" rows={2} />
+              <Field label="Antecedentes familiares" value={form.antecedentes_fam} onChange={v => set('antecedentes_fam', v)} placeholder="Diabetes, hemofiliaâ€¦" rows={2} />
+              <Field label="HÃ¡bitos" value={form.habitos} onChange={v => set('habitos', v)} placeholder="Bruxismo, tabaquismo, higieneâ€¦" rows={2} />
+              <Field label="ExploraciÃ³n clÃ­nica" value={form.exploracion} onChange={v => set('exploracion', v)} placeholder="Hallazgos generales, encÃ­as, radiografÃ­asâ€¦" rows={3} />
+              <Field label="DiagnÃ³stico *" value={form.diagnostico} onChange={v => set('diagnostico', v)} placeholder="Caries oclusal pieza 26 (marcar en odontograma)â€¦" rows={3} />
+              <Field label="Plan de tratamiento" value={form.plan_tratamiento} onChange={v => set('plan_tratamiento', v)} placeholder="ObturaciÃ³n + control en 15 dÃ­asâ€¦" rows={3} />
+              <Field label="Notas adicionales" value={form.notas} onChange={v => set('notas', v)} placeholder="Indicaciones post-operatoriasâ€¦" rows={2} />
               <p style={{ fontSize: '11.5px', color: 'rgba(255,255,255,0.4)', margin: 0, lineHeight: 1.4 }}>
-                Para marcar dientes usa la pestaña <strong>Odontograma</strong> en vez de escribirlo a mano.
+                Para marcar dientes usa la pestaÃ±a <strong>Odontograma</strong> en vez de escribirlo a mano.
               </p>
             </div>
           ) : tab === 'odontograma' ? (
-            <div style={{ background: '#ffffff', borderRadius: '14px', minHeight: '300px' }}>
+            <div style={{ background: '#111111', borderRadius: '14px', minHeight: '300px' }}>
               <Odontograma value={odontograma} onChange={setOdontograma} />
             </div>
           ) : (
             <div>
               <p style={{ color: 'var(--text-secondary)', fontSize: '13px', marginBottom: '14px', lineHeight: 1.5 }}>
-                Adjunta fotos del historial físico o documentos escaneados del paciente. Se comprimen automáticamente.
+                Adjunta fotos del historial fÃ­sico o documentos escaneados del paciente. Se comprimen automÃ¡ticamente.
               </p>
               <input
                 ref={fileRef}
@@ -316,7 +316,7 @@ const styles = {
   },
   card: {
     width: '100%', maxWidth: '560px', maxHeight: '92vh',
-    background: '#ffffff', borderRadius: '22px',
+    background: '#111111', borderRadius: '22px',
     border: '1px solid rgba(0,0,0,0.08)',
     boxShadow: '0 30px 60px rgba(0,0,0,0.10)',
     display: 'flex', flexDirection: 'column', overflow: 'hidden'
@@ -360,7 +360,7 @@ const styles = {
   },
   input: {
     width: '100%', padding: '10px 12px', borderRadius: '10px',
-    border: '1px solid rgba(0,0,0,0.10)', background: '#ffffff',
+    border: '1px solid rgba(0,0,0,0.10)', background: '#111111',
     color: '#111827', fontSize: '13.5px', outline: 'none', boxSizing: 'border-box', fontFamily: 'inherit'
   },
   uploadBtn: {
@@ -396,3 +396,4 @@ const styles = {
     fontSize: '13.5px', fontWeight: '800', cursor: 'pointer'
   }
 };
+
