@@ -377,6 +377,8 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
   });
 
   const handleEditClick = (service) => {
+    setIsFormExiting(false);
+    setShowAddForm(false); // Forzar cierre para que React re-renderice
     setIsEditing(true);
     setNewService({
       id: service.id,
@@ -390,7 +392,7 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
       included_items: service.included_items || [],
       is_tattoo: service.is_tattoo || false
     });
-    setShowAddForm(true);
+    setShowAddForm(true); // Reabrir con los datos del nuevo servicio
   };
 
   const handleCreateService = async () => {
