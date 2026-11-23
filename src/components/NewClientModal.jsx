@@ -185,7 +185,7 @@ const NewClientModal = ({ isOpen, onClose, onSuccess }) => {
                 </div>
 
                 <PandaSelect
-                  label="Â¿Cómo conoció Dientes Sanos?"
+                  label="¿Cómo conoció Dientes Sanos?"
                   value={formData.origin}
                   onChange={(val) => setFormData({ ...formData, origin: val })}
                   placeholder="Seleccionar origen"
@@ -222,4 +222,5 @@ const NewClientModal = ({ isOpen, onClose, onSuccess }) => {
 };
 
 export default NewClientModal;
+
 

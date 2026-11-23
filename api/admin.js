@@ -1,7 +1,7 @@
-import { requireAdmin } from '../server/auth/admin.js';
+﻿import { requireAdmin } from '../server/auth/admin.js';
 import { json, parseBody, requireMethod } from '../server/passkeys/http.js';
 
-// Router para endpoints de administraci�n.
+// Router para endpoints de administraciϿ½n.
 // Reduce 1 Serverless Function a 1 (se mantiene, pero unificado).
 export default async function handler(request, response) {
   try {
@@ -53,7 +53,7 @@ export default async function handler(request, response) {
           });
           let userMsg = 'Error al crear usuario en Supabase Auth';
           if (error?.code === 'unexpected_failure') {
-            userMsg = 'Error interno de Supabase Auth al crear usuario. Revisa Supabase Dashboard → Authentication → Settings: verifica que email confirmations esté desactivado o que SMTP esté configurado, y que el email no exista ya.';
+            userMsg = 'Error interno de Supabase Auth al crear usuario. Revisa Supabase Dashboard â†’ Authentication â†’ Settings: verifica que email confirmations esté desactivado o que SMTP esté configurado, y que el email no exista ya.';
           } else if (error?.message?.toLowerCase().includes('already exists')) {
             userMsg = 'El correo electrónico ya existe en Supabase Auth.';
           } else if (error?.message?.toLowerCase().includes('invalid email')) {
@@ -85,7 +85,7 @@ export default async function handler(request, response) {
         return json(response, 200, { success: true });
       }
 
-      throw Object.assign(new Error('Acci�n no permitida'), { statusCode: 400 });
+      throw Object.assign(new Error('AcciϿ½n no permitida'), { statusCode: 400 });
     }
 
     return json(response, 404, { error: 'Ruta no encontrada' });
@@ -105,3 +105,4 @@ export default async function handler(request, response) {
     return json(response, status, { error: message, details: String(error), stack: error?.stack });
   }
 }
+

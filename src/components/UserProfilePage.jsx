@@ -424,7 +424,7 @@ const UserProfilePage = ({ staffMember, inventory = [], onUpdate, isMobile }) =>
   };
 
   const handleRemoveTool = async (toolId) => {
-    if (!await confirm('Â¿Seguro que deseas eliminar este artículo del inventario personal?')) return;
+    if (!await confirm('¿Seguro que deseas eliminar este artículo del inventario personal?')) return;
     try {
       setLoading(true);
       const toolToRemove = tools.find(t => t.id === toolId);
@@ -1136,7 +1136,7 @@ const UserProfilePage = ({ staffMember, inventory = [], onUpdate, isMobile }) =>
                 {isCelebratingBirthday ? (
                   <h2 className="bday-inline-title">
                     <Cake size={28} className="bday-cake-icon" />
-                    <span className="bday-title-text">Â¡Feliz cumpleaños, {String(staffMember.name || '').trim().split(' ')[0]}!</span>
+                    <span className="bday-title-text">¡Feliz cumpleaños, {String(staffMember.name || '').trim().split(' ')[0]}!</span>
                   </h2>
                 ) : (
                   <h2 style={{ fontSize: '32px', fontWeight: '950', color: '#111111', letterSpacing: '-0.8px', marginBottom: '8px', fontFamily: 'Outfit, var(--font-sans), system-ui' }}>
@@ -1431,7 +1431,7 @@ const UserProfilePage = ({ staffMember, inventory = [], onUpdate, isMobile }) =>
                     <div key={goal.label}>
                       <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px', color: '#aaa', fontSize: '12px' }}><span>{goal.label}</span><strong style={{ color: '#111111' }}>{goal.value}</strong></div>
                       <div style={{ height: 6, borderRadius: 6, overflow: 'hidden', background: 'rgba(0, 0, 0, 0.04)' }}><div style={{ height: '100%', width: `${goal.progress}%`, background: goal.color, borderRadius: 6 }} /></div>
-                      <div style={{ marginTop: '5px', textAlign: 'right', color: goal.progress >= 100 ? goal.color : '#555', fontSize: '10px' }}>{goal.progress >= 100 ? 'Â¡Meta alcanzada!' : `${goal.progress}% completado`}</div>
+                      <div style={{ marginTop: '5px', textAlign: 'right', color: goal.progress >= 100 ? goal.color : '#555', fontSize: '10px' }}>{goal.progress >= 100 ? '¡Meta alcanzada!' : `${goal.progress}% completado`}</div>
                     </div>
                   ))}
                 </div>
@@ -1657,7 +1657,7 @@ const UserProfilePage = ({ staffMember, inventory = [], onUpdate, isMobile }) =>
                         >
                           <span style={{ color: newTool.inventory_id ? 'white' : 'rgba(255, 255, 255, 0.4)' }}>
                             {newTool.inventory_id 
-                              ? `${availableInventoryTools.find(t => t.id === newTool.inventory_id)?.name} Â· Stock: ${availableInventoryTools.find(t => t.id === newTool.inventory_id)?.stock}`
+                              ? `${availableInventoryTools.find(t => t.id === newTool.inventory_id)?.name} · Stock: ${availableInventoryTools.find(t => t.id === newTool.inventory_id)?.stock}`
                               : `Selecciona ${newTool.item_type === 'Producto' ? 'un producto' : 'una herramienta'}...`}
                           </span>
                           <ChevronDown size={16} color="var(--gold-primary)" style={{ transform: dropdownOpen ? 'rotate(180deg)' : 'none', transition: 'transform 0.2s ease' }} />
@@ -1710,7 +1710,7 @@ const UserProfilePage = ({ staffMember, inventory = [], onUpdate, isMobile }) =>
                                     e.currentTarget.style.color = newTool.inventory_id === t.id ? 'var(--gold-primary)' : 'white';
                                   }}
                                 >
-                                  {t.name} Â· Stock: {t.stock}
+                                  {t.name} · Stock: {t.stock}
                                 </div>
                               ))
                             )}
@@ -1779,7 +1779,7 @@ const UserProfilePage = ({ staffMember, inventory = [], onUpdate, isMobile }) =>
                           {tool.name} <span style={{ color: 'var(--gold-primary)', fontSize: '11px' }}>Ø {tool.quantity || 1}</span>
                         </div>
                         <div style={{ fontSize: '11px', color: 'rgba(255,255,255,0.4)', marginTop: '4px' }}>
-                          {itemType}{tool.brand ? ` Â· ${tool.brand}` : ''} Â· <span style={{ color: tool.ownership === 'Propia' ? 'var(--gold-primary)' : '#30d158', fontWeight: '800' }}>{tool.ownership}</span>
+                          {itemType}{tool.brand ? ` · ${tool.brand}` : ''} · <span style={{ color: tool.ownership === 'Propia' ? 'var(--gold-primary)' : '#30d158', fontWeight: '800' }}>{tool.ownership}</span>
                         </div>
                         </div>
                       </div>
@@ -1886,4 +1886,5 @@ const UserProfilePage = ({ staffMember, inventory = [], onUpdate, isMobile }) =>
 };
 
 export default UserProfilePage;
+
 

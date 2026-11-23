@@ -1,4 +1,4 @@
-import { Outlet, Navigate, useLocation, useNavigate, useOutlet } from 'react-router-dom';
+﻿import { Outlet, Navigate, useLocation, useNavigate, useOutlet } from 'react-router-dom';
 import { Home, Calendar, User, Plus, Crown, LogOut, Compass } from 'lucide-react';
 import { useState, useEffect, Suspense } from 'react';
 import BottomNav from './BottomNav';
@@ -32,7 +32,7 @@ export default function ClientLayout() {
   const [dataLoaded, setDataLoaded] = useState(false);
   const [showLoader, setShowLoader] = useState(true);
   // Lets a routed page (e.g. the booking success screen) ask the layout to
-  // hide its own chrome — the desktop sidebar and BottomNav — so a
+  // hide its own chrome â€” the desktop sidebar and BottomNav â€” so a
   // confirmation card can sit alone, centered, with nothing else on screen.
   // ClientLayout has no direct visibility into that page's local state
   // (it only renders it via <Outlet/>), so pages signal this with a plain
@@ -128,7 +128,7 @@ export default function ClientLayout() {
           .desktop-sidebar-wrapper { display: none !important; }
         }
       `}</style>
-      {/* Full-viewport fixed aurora background — covers sidebar + content uniformly */}
+      {/* Full-viewport fixed aurora background â€” covers sidebar + content uniformly */}
       <div style={{
         position: 'fixed',
         inset: 0,
@@ -174,7 +174,7 @@ export default function ClientLayout() {
           </div>
           
           <div style={{ display: 'flex', flexDirection: 'column', gap: 6, flex: 1, position: 'relative', zIndex: 2 }}>
-            <div style={{ fontSize: 10, fontWeight: 800, color: '#94a3b8', letterSpacing: '1.5px', marginBottom: 8, paddingLeft: 12 }}>MENÚ PRINCIPAL</div>
+            <div style={{ fontSize: 10, fontWeight: 800, color: '#94a3b8', letterSpacing: '1.5px', marginBottom: 8, paddingLeft: 12 }}>MENÃš PRINCIPAL</div>
             {authNavItems.map(item => {
               const active = isActive(item.path);
               const Icon = item.icon;
@@ -320,7 +320,7 @@ export default function ClientLayout() {
       </div>
       )}
 
-      {/* ── MAIN CONTENT AREA ── */}
+      {/* â”€â”€ MAIN CONTENT AREA â”€â”€ */}
       <div className="main-content-area" style={{ flex: 1, display: 'flex', flexDirection: 'column', position: 'relative', zIndex: 1, paddingTop: 'calc(max(env(safe-area-inset-top, 0px), 12px))' }}>
 
         <div style={{ flex: 1 }} className="outlet-wrapper">
@@ -374,7 +374,7 @@ export default function ClientLayout() {
         }
         .outlet-wrapper {
           /* 90px clears BottomNav's dock (60px tall dock + 20px gap off the viewport
-             edge, plus a little breathing room) — env(safe-area-inset-bottom) was
+             edge, plus a little breathing room) â€” env(safe-area-inset-bottom) was
              missing here, so on phones with a taller home-indicator inset the dock
              sat further up than this padding accounted for, leaving content (e.g.
              the booking wizard's "Siguiente" button) to peek out from under it. */
@@ -428,3 +428,4 @@ export default function ClientLayout() {
     </>
   );
 }
+

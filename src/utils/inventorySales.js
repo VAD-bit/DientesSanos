@@ -1,4 +1,4 @@
-export const INVENTORY_SALES_GROUPS = {
+﻿export const INVENTORY_SALES_GROUPS = {
   all: 'Todos',
   retail: 'Productos para venta',
   agua: 'Agua de cortesía'
@@ -15,3 +15,4 @@ export const filterSellableInventory = (items = []) =>
 
 export const matchesInventorySalesGroup = (item, group) =>
   group === 'all' || getInventorySalesGroup(item) === group;
+

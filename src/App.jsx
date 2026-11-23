@@ -433,8 +433,8 @@ function App() {
       if (birthdayClients.length > 0) {
         const names = birthdayClients.map(c => c.name).join(', ');
         notificationService.sendNotification(
-          '🏆 Â¡Cumpleaños de Pacientes hoy! 🏈',
-          `Hoy cumplen años: ${names}. Â¡Recuerda felicitarlos o enviarles una promoción especial!`
+          '🏆 ¡Cumpleaños de Pacientes hoy! 🏈',
+          `Hoy cumplen años: ${names}. ¡Recuerda felicitarlos o enviarles una promoción especial!`
         );
         whatsappService.sendBirthdayReminders().catch(console.error);
       }
@@ -459,8 +459,8 @@ function App() {
         const lastNotifiedDaily = localStorage.getItem('panda_goal_notified_daily');
         if (lastNotifiedDaily !== todayStr) {
           notificationService.sendNotification(
-            'ðŸŽ¯ Â¡Meta Diaria Alcanzada! 🏆',
-            `Â¡Espectacular! Se ha alcanzado la meta diaria de $${dailyGoal} USD (Total hoy: $${computedStats.income.toFixed(2)} USD).`
+            'ðŸŽ¯ ¡Meta Diaria Alcanzada! 🏆',
+            `¡Espectacular! Se ha alcanzado la meta diaria de $${dailyGoal} USD (Total hoy: $${computedStats.income.toFixed(2)} USD).`
           );
           localStorage.setItem('panda_goal_notified_daily', todayStr);
         }
@@ -471,8 +471,8 @@ function App() {
         const lastNotifiedWeekly = localStorage.getItem('panda_goal_notified_weekly');
         if (lastNotifiedWeekly !== lastSundayStr) {
           notificationService.sendNotification(
-            'ðŸ† Â¡Meta Semanal Alcanzada! ðŸŒŸ',
-            `Â¡Increíble trabajo equipo! Se alcanzó la meta semanal de $${weeklyGoal} USD (Total semanal: $${computedStats.weeklyIncome.toFixed(2)} USD).`
+            'ðŸ† ¡Meta Semanal Alcanzada! ðŸŒŸ',
+            `¡Increíble trabajo equipo! Se alcanzó la meta semanal de $${weeklyGoal} USD (Total semanal: $${computedStats.weeklyIncome.toFixed(2)} USD).`
           );
           localStorage.setItem('panda_goal_notified_weekly', lastSundayStr);
         }
@@ -483,8 +483,8 @@ function App() {
         const lastNotifiedMonthly = localStorage.getItem('panda_goal_notified_monthly');
         if (lastNotifiedMonthly !== currentMonthStr) {
           notificationService.sendNotification(
-            'ðŸ‘‘ Â¡Objetivo Mensual Completado! ðŸš€',
-            `Â¡Histórico! Se ha completado el objetivo mensual de $${monthlyGoal} USD (Total mensual: $${computedStats.monthlyIncome.toFixed(2)} USD).`
+            'ðŸ‘‘ ¡Objetivo Mensual Completado! ðŸš€',
+            `¡Histórico! Se ha completado el objetivo mensual de $${monthlyGoal} USD (Total mensual: $${computedStats.monthlyIncome.toFixed(2)} USD).`
           );
           localStorage.setItem('panda_goal_notified_monthly', currentMonthStr);
         }
@@ -777,7 +777,7 @@ function App() {
   };
 
   const handleSeedData = async () => {
-    if (!await confirm('Â¿Quieres cargar datos de prueba para ver el CRM funcionando?')) return;
+    if (!await confirm('¿Quieres cargar datos de prueba para ver el CRM funcionando?')) return;
     try {
       await dataService.addStaff({ name: 'Marco Silva', role: 'Odontologo', commission_pct: 40 });
       await dataService.addService({ name: 'Blanqueamiento Premium', price: 80, category: 'Estética' });
@@ -1024,4 +1024,5 @@ function App() {
 }
 
 export default App;
+
 

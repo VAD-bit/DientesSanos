@@ -87,7 +87,7 @@ const InventoryAccessGate = ({ children }) => {
         setLockedUntil(now + LOCKOUT_MS);
         notificationService.broadcastNotification(
           supabase,
-          'âš ï¸ Intentos de PIN — Inventario',
+          'âš ϸ Intentos de PIN — Inventario',
           `Se intentó acceder al inventario ${newCount} veces con PIN incorrecto. Acceso bloqueado 5 minutos.`,
           { recipientRole: 'admin' }
         );
@@ -245,4 +245,5 @@ const InventoryAccessGate = ({ children }) => {
 };
 
 export default InventoryAccessGate;
+
 

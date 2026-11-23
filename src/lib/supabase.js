@@ -1,4 +1,4 @@
-import { createClient } from '@supabase/supabase-js';
+﻿import { createClient } from '@supabase/supabase-js';
 
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
@@ -12,7 +12,7 @@ if (!supabaseUrl || !supabaseAnonKey) {
   if (!supabaseAnonKey) missing.push('VITE_SUPABASE_ANON_KEY');
   throw new Error(
     `[Dientes Sanos] Falta(n) variable(s) de entorno: ${missing.join(', ')}. ` +
-    'Agrégalas en Vercel → Settings → Environment Variables (Production, Preview, Development) ' +
+    'Agrégalas en Vercel â†’ Settings â†’ Environment Variables (Production, Preview, Development) ' +
     'o en .env.local para desarrollo local.'
   );
 }
@@ -41,3 +41,4 @@ export const publicSupabase = createClient(supabaseUrl, supabaseAnonKey, {
 // Compatibilidad temporal mientras dataService/publicService terminan de migrar
 // sus llamadas a RLS/RPC. Nunca se crea un cliente administrativo en el browser.
 // En CRM conserva la sesión del empleado; el portal público usa su propia sesión.
+

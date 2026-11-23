@@ -148,10 +148,10 @@ const MobileDashboard = ({ onOpenSale, stats, chartData, dbData, onNavigate, onO
     let template = localStorage.getItem('panda_default_bday_message');
     const isCorrupted = !template || 
       template.includes('\uFFFD') || 
-      template.includes('îÂ¿Â½') ||
+      template.includes('ο½') ||
       /[\uD800-\uDBFF](?![\uDC00-\uDFFF])|([^\uD800-\uDBFF]|^)[\uDC00-\uDFFF]/.test(template);
     if (isCorrupted) {
-      template = `Â¡Hola {name}! ${String.fromCodePoint(0x1F389)} Te deseamos un muy feliz cumpleaños de parte de todo el equipo de Dientes Sanos. ${String.fromCodePoint(0x1F488)} Â¡Que tengas un día excelente!`;
+      template = `¡Hola {name}! ${String.fromCodePoint(0x1F389)} Te deseamos un muy feliz cumpleaños de parte de todo el equipo de Dientes Sanos. ${String.fromCodePoint(0x1F488)} ¡Que tengas un día excelente!`;
       localStorage.setItem('panda_default_bday_message', template);
     }
     const whatsappMsg = template.replace('{name}', person.name);
@@ -677,7 +677,7 @@ const MobileDashboard = ({ onOpenSale, stats, chartData, dbData, onNavigate, onO
                         >
                           {c.name.split(' ')[0]}
                         </div>
-                        <div style={{ fontSize: '11px', color: 'rgba(255,255,255,0.6)', fontWeight: '600' }}>Â¡Felicítalo hoy!</div>
+                        <div style={{ fontSize: '11px', color: 'rgba(255,255,255,0.6)', fontWeight: '600' }}>¡Felicítalo hoy!</div>
                       </div>
                     </div>
                     
@@ -1448,5 +1448,6 @@ const PodiumWidget = ({ title, icon, data, labelKey, scoreKey, scoreLabel, isCli
 };
 
 export default MobileDashboard;
+
 
 

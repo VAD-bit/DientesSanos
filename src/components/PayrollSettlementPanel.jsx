@@ -29,7 +29,7 @@ const PayrollSettlementPanel = ({ modal, setModal, isMobile, loading, onPay, onC
         {metric('Saldo pendiente', pendingBs, 'var(--gold-primary)')}
       </div>
       <div style={{ padding: '12px', borderRadius: '14px', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', gap: '8px', marginBottom: '9px' }}><span style={{ fontSize: '10px', color: 'var(--text-muted)', fontWeight: 900, textTransform: 'uppercase' }}>Cómo se generó</span><span style={{ fontSize: '10px', color: 'var(--text-secondary)' }}>{settlement.payrollFrequency === 'daily' ? 'Pago diario' : settlement.payrollFrequency === 'biweekly' ? 'Pago quincenal' : 'Pago semanal'} Â· tasa {formatBs(settlement.rate)}</span></div>
+        <div style={{ display: 'flex', justifyContent: 'space-between', gap: '8px', marginBottom: '9px' }}><span style={{ fontSize: '10px', color: 'var(--text-muted)', fontWeight: 900, textTransform: 'uppercase' }}>Cómo se generó</span><span style={{ fontSize: '10px', color: 'var(--text-secondary)' }}>{settlement.payrollFrequency === 'daily' ? 'Pago diario' : settlement.payrollFrequency === 'biweekly' ? 'Pago quincenal' : 'Pago semanal'} · tasa {formatBs(settlement.rate)}</span></div>
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>{Object.entries(settlement.methodBreakdown || {}).map(([method, amount]) => {
           // Cuentas en dólares: mostrar el USD original (no Bs/tasa-de-hoy).
           const isUsdAccount = /efectivo \(\$\)|zelle|zinli|binance|usdt/i.test(method);
@@ -45,7 +45,7 @@ const PayrollSettlementPanel = ({ modal, setModal, isMobile, loading, onPay, onC
             {settlement.recentEarnings?.length ? settlement.recentEarnings.map(item => <div key={item.id} style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) 1.1fr auto', gap: '7px', padding: '7px 0', borderBottom: '1px solid rgba(0, 0, 0, 0.08)', fontSize: '9px' }}><span title={item.clientName} style={{ color: '#111111', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{item.clientName}</span><span title={item.serviceName} style={{ color: 'var(--text-secondary)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{item.serviceName}</span><strong style={{ whiteSpace: 'nowrap' }}>{formatBs(item.amountBs + item.tipBs)} Bs</strong></div>) : <span style={{ fontSize: '10px', color: 'var(--text-muted)' }}>Sin servicios registrados.</span>}
           </div>
         </div>
-        <div style={{ padding: '12px', borderRadius: '14px', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)' }}><span style={{ fontSize: '9px', color: 'var(--text-muted)', fontWeight: 900, textTransform: 'uppercase' }}>Pagos y adelantos</span><div style={{ marginTop: '8px', display: 'flex', flexDirection: 'column', gap: '7px', maxHeight: '180px', overflowY: 'auto' }}>{settlement.paymentHistory?.length ? settlement.paymentHistory.map(item => <div key={item.id} style={{ display: 'flex', justifyContent: 'space-between', gap: '6px', fontSize: '9px' }}><span style={{ color: 'var(--text-secondary)' }}>{item.type} Â· {new Date(item.date).toLocaleDateString('es-VE')}</span><strong style={{ color: '#ff9f0a', whiteSpace: 'nowrap' }}>-{formatBs(item.amountBs)} Bs</strong></div>) : <span style={{ fontSize: '10px', color: 'var(--text-muted)' }}>Aún no registra pagos.</span>}</div></div>
+        <div style={{ padding: '12px', borderRadius: '14px', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)' }}><span style={{ fontSize: '9px', color: 'var(--text-muted)', fontWeight: 900, textTransform: 'uppercase' }}>Pagos y adelantos</span><div style={{ marginTop: '8px', display: 'flex', flexDirection: 'column', gap: '7px', maxHeight: '180px', overflowY: 'auto' }}>{settlement.paymentHistory?.length ? settlement.paymentHistory.map(item => <div key={item.id} style={{ display: 'flex', justifyContent: 'space-between', gap: '6px', fontSize: '9px' }}><span style={{ color: 'var(--text-secondary)' }}>{item.type} · {new Date(item.date).toLocaleDateString('es-VE')}</span><strong style={{ color: '#ff9f0a', whiteSpace: 'nowrap' }}>-{formatBs(item.amountBs)} Bs</strong></div>) : <span style={{ fontSize: '10px', color: 'var(--text-muted)' }}>Aún no registra pagos.</span>}</div></div>
       </div>
     </section>
     <section style={{ padding: '14px', borderRadius: '16px', background: 'rgba(17, 17, 17,.035)', border: '1px solid rgba(17, 17, 17,.15)', display: 'flex', flexDirection: 'column', gap: '10px' }}>
@@ -59,4 +59,5 @@ const PayrollSettlementPanel = ({ modal, setModal, isMobile, loading, onPay, onC
 };
 
 export default PayrollSettlementPanel;
+
 

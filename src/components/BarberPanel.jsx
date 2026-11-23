@@ -299,15 +299,15 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
           
           if (isForMe || !payload.new?.staff_id) {
             if (payload.eventType === 'INSERT') {
-              showToast("ðŸš€ Â¡Nueva cita asignada!");
+              showToast("ðŸš€ ¡Nueva cita asignada!");
               triggerRocket();
             } else if (payload.eventType === 'UPDATE' && payload.new.status === 'En Silla') {
-              showToast("ðŸš€ Â¡Cliente listo en sillón!", "success");
+              showToast("ðŸš€ ¡Cliente listo en sillón!", "success");
               triggerRocket();
             } else if (payload.eventType === 'UPDATE' && payload.new.status === 'En Lavado') {
               showToast("ðŸ’§ Cliente en profilaxis", "info");
             } else if (payload.eventType === 'UPDATE' && payload.new.status === 'Completado') {
-              showToast("ðŸ’° Â¡Cobro finalizado por Caja!", "success");
+              showToast("ðŸ’° ¡Cobro finalizado por Caja!", "success");
             } else {
               showToast("Actualizando sillón...", "info");
             }
@@ -403,7 +403,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
     try {
       setLoading(true);
       await dataService.updateAppointmentStatus(serviceId, 'Por Pagar');
-      showToast("Â¡Servicio finalizado! Enviado a caja para cobro.");
+      showToast("¡Servicio finalizado! Enviado a caja para cobro.");
       triggerConfetti();
       loadMyWork();
       loadStats();
@@ -419,7 +419,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
     try {
       setLoading(true);
       await dataService.updateAppointmentStatus(serviceId, 'En Silla');
-      showToast("Â¡Cliente recuperado a tu sillón!");
+      showToast("¡Cliente recuperado a tu sillón!");
       loadMyWork();
       loadStats();
       loadCompletedToday();
@@ -466,7 +466,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
 
       const idsToWash = washGroupApps.length ? washGroupApps : [washAppId];
       await Promise.all(idsToWash.map(id => dataService.updateAppointmentStatus(id, 'En Lavado')));
-      showToast("Â¡Cliente enviado a profilaxis!");
+      showToast("¡Cliente enviado a profilaxis!");
       triggerRocket();
       setShowWashModal(false);
       
@@ -509,7 +509,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
       const barberName = app?.staff?.name || 'Odontólogo';
 
       await dataService.updateAppointmentStatus(serviceId, 'En Silla');
-      showToast("Â¡Cliente enviado de regreso al odontólogo!");
+      showToast("¡Cliente enviado de regreso al odontólogo!");
       
       // Notify barbers that client is ready
       notificationService.broadcastNotification(
@@ -539,7 +539,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
       await dataService.assignAssistantToAppointment(serviceId, selectedBarber.id);
       // Update status to 'Por Pagar' (sent to checkout)
       await dataService.updateAppointmentStatus(serviceId, 'Por Pagar');
-      showToast("Â¡Profilaxis completada! Enviado a caja.");
+      showToast("¡Profilaxis completada! Enviado a caja.");
       triggerConfetti();
 
       // Broadcast to Admin / Caja
@@ -640,7 +640,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
         }));
       }
 
-      showToast("Â¡Foto guardada con éxito!", "success");
+      showToast("¡Foto guardada con éxito!", "success");
       await loadMyWork();
     } catch (err) {
       console.error(err);
@@ -655,7 +655,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
       const app = myServices.find(s => s.id === appId);
       if (!app) return;
 
-      if (!await confirm("Â¿Quieres borrar la foto de esta cita?")) return;
+      if (!await confirm("¿Quieres borrar la foto de esta cita?")) return;
 
       showToast("Borrando foto...", "info");
 
@@ -817,8 +817,8 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
   const handleCancelChair = async (app) => {
     const hasSomething = !!app.service_id || (app.appointment_extras?.length > 0) || (app.appointment_products?.length > 0);
     const message = hasSomething
-      ? "Â¿Cancelar este servicio? Se marcar¡ como cancelado."
-      : "Â¿Quitar este cliente del sillón?";
+      ? "¿Cancelar este servicio? Se marcar¡ como cancelado."
+      : "¿Quitar este cliente del sillón?";
     if (!await confirm(message)) return;
     try {
       setLoading(true);
@@ -854,7 +854,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
     try {
       setLoading(true);
       await Promise.all(group.apps.map(a => dataService.updateAppointmentStatus(a.id, 'Por Pagar')));
-      showToast("Â¡Servicio finalizado! Enviado a caja para cobro.");
+      showToast("¡Servicio finalizado! Enviado a caja para cobro.");
       triggerConfetti();
       loadMyWork();
       loadStats();
@@ -871,8 +871,8 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
   const handleCancelGroup = async (group) => {
     const hasContent = groupHasContent(group);
     const message = hasContent
-      ? "Â¿Cancelar la orden de este cliente? Se marcar¡ como cancelada."
-      : "Â¿Quitar este cliente del sillón?";
+      ? "¿Cancelar la orden de este cliente? Se marcar¡ como cancelada."
+      : "¿Quitar este cliente del sillón?";
     if (!await confirm(message)) return;
     try {
       setLoading(true);
@@ -899,7 +899,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
     try {
       setLoading(true);
       await Promise.all(group.apps.map(a => dataService.updateAppointmentStatus(a.id, 'En Silla')));
-      showToast("Â¡Cliente recuperado a tu sillón!");
+      showToast("¡Cliente recuperado a tu sillón!");
       loadMyWork();
       loadStats();
       loadCompletedToday();
@@ -924,7 +924,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
       showToast("Ese servicio tiene extras/productos; quítalos primero", "warning");
       return;
     }
-    if (!await confirm(`Â¿Quitar "${app.services?.name || 'servicio'}"?`)) return;
+    if (!await confirm(`¿Quitar "${app.services?.name || 'servicio'}"?`)) return;
     try {
       setLoading(true);
       if (group.apps.length > 1) {
@@ -1029,9 +1029,9 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
   const getGreeting = () => {
     const options = { timeZone: 'America/Caracas', hour: 'numeric', hour12: false };
     const hour = parseInt(new Date().toLocaleString('en-US', options), 10);
-    if (hour >= 5 && hour < 12) return 'Â¡Buenos días,';
-    if (hour >= 12 && hour < 19) return 'Â¡Buenas tardes,';
-    return 'Â¡Buenas noches,';
+    if (hour >= 5 && hour < 12) return '¡Buenos días,';
+    if (hour >= 12 && hour < 19) return '¡Buenas tardes,';
+    return '¡Buenas noches,';
   };
 
   const activeChairCount = myServices.filter(app => app.status === 'En Silla' || app.status === 'En Lavado').length;
@@ -1292,7 +1292,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
                         <span style={{ fontSize: '10px', fontWeight: '900', color: '#007aff', textTransform: 'uppercase', letterSpacing: '1px' }}>Listo en Profilaxis</span>
                         <h3 style={{ fontSize: '20px', fontWeight: '900', marginTop: '4px' }}>{app.clients?.name}</h3>
                         <div style={{ color: 'var(--text-secondary)', fontSize: '14px', marginTop: '4px' }}>
-                                                         Odontólogo: <span style={{ color: '#111111', fontWeight: '700' }}>{app.staff?.name || 'Otro'}</span> Â· Servicio: <span style={{ color: 'var(--gold-primary)', fontWeight: '700' }}>{app.services?.name}</span>
+                                                         Odontólogo: <span style={{ color: '#111111', fontWeight: '700' }}>{app.staff?.name || 'Otro'}</span> · Servicio: <span style={{ color: 'var(--gold-primary)', fontWeight: '700' }}>{app.services?.name}</span>
                         </div>
                         {app.services?.included_items && app.services.included_items.length > 0 && (
                           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', marginTop: '8px' }}>
@@ -2257,7 +2257,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
                     <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginTop: '12px', paddingTop: '12px', borderTop: '1px dashed rgba(0, 0, 0, 0.08)' }}>
                       {startedTime && (
                         <div style={{ display: 'flex', alignItems: 'center', gap: '12px', width: '100%' }}>
-                          <span style={{ fontSize: '12px', color: 'var(--text-secondary)', fontWeight: '800' }}>â± {startedTime} â†’ {completedTime}</span>
+                          <span style={{ fontSize: '12px', color: 'var(--text-secondary)', fontWeight: '800' }}>± {startedTime} â†’ {completedTime}</span>
                           <span style={{ marginLeft: 'auto', fontSize: '11px', fontWeight: '900', color: isAssistant ? '#007aff' : 'var(--gold-primary)', background: isAssistant ? 'rgba(0,122,255,0.1)' : 'rgba(255, 255, 255,0.1)', padding: '4px 10px', borderRadius: '12px', border: isAssistant ? '1px solid rgba(0,122,255,0.2)' : '1px solid rgba(0, 0, 0, 0.08)' }}>
                             {durationMin > 0 ? `${durationMin} min` : 'Completado'}
                           </span>
@@ -2382,7 +2382,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
                     </div>
                     <h3 style={{ fontSize: '22px', fontWeight: '900', color: '#111111', margin: 0 }}>{app.clients?.name || 'Cliente'}</h3>
                     <p style={{ fontSize: '13px', color: 'var(--text-muted)', marginTop: '4px' }}>
-                      {app.clients?.phone || ''}{app.clients?.id_card ? ` Â· C.I. ${app.clients.id_card}` : ''}
+                      {app.clients?.phone || ''}{app.clients?.id_card ? ` · C.I. ${app.clients.id_card}` : ''}
                     </p>
                   </div>
                   <button 
@@ -2739,4 +2739,5 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
 };
 
 export default BarberPanel;
+
 

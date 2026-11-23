@@ -647,12 +647,12 @@ const StaffTransactionHistory = ({ staffMember, rates, isMobile }) => {
                               )}
                               {transaction.staffAmounts.tips > 0 && (
                                 <span style={{ fontSize: '11px', color: '#32d74b', fontWeight: '850' }}>
-                                  Â· Propina: +${formatUsd(transaction.staffAmounts.tips)}
+                                  · Propina: +${formatUsd(transaction.staffAmounts.tips)}
                                 </span>
                               )}
                               {transaction.staffAmounts.productCommission > 0 && (
                                 <span style={{ fontSize: '11px', color: 'var(--gold-primary)', fontWeight: '850' }}>
-                                  Â· Comisión productos: +${formatUsd(transaction.staffAmounts.productCommission)}
+                                  · Comisión productos: +${formatUsd(transaction.staffAmounts.productCommission)}
                                 </span>
                               )}
                             </div>
@@ -683,7 +683,7 @@ const StaffTransactionHistory = ({ staffMember, rates, isMobile }) => {
                             <div style={{ fontSize: '14px', fontWeight: '900', color: '#111111' }}>{clientName}</div>
                             <div style={{ display: 'flex', gap: '10px', fontSize: '11px', color: 'var(--text-muted)', marginTop: '3px', flexWrap: 'wrap' }}>
                               {clientCedula !== 'No registrada' && <span>CI: {clientCedula}</span>}
-                              {clientPhone !== 'No registrado' && <span>Â· Tel: {clientPhone}</span>}
+                              {clientPhone !== 'No registrado' && <span>· Tel: {clientPhone}</span>}
                             </div>
                           </div>
 
@@ -804,4 +804,5 @@ const StaffTransactionHistory = ({ staffMember, rates, isMobile }) => {
 };
 
 export default StaffTransactionHistory;
+
 

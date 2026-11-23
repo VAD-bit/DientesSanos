@@ -225,7 +225,7 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
   };
 
   const handleDeleteCategory = async (catObj) => {
-    if (!await confirm(`Â¿Est¡s seguro de eliminar la categoría "${catObj.name}"?`)) return;
+    if (!await confirm(`¿Est¡s seguro de eliminar la categoría "${catObj.name}"?`)) return;
     try {
       await dataService.deleteServiceCategory(catObj.name, catObj.icon);
       await fetchCategories();
@@ -252,7 +252,7 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
   };
 
   const handleDeleteStrategy = async (value) => {
-    if (!await confirm('Â¿Est¡s seguro de eliminar esta estrategia?')) return;
+    if (!await confirm('¿Est¡s seguro de eliminar esta estrategia?')) return;
     try {
       await dataService.deleteServiceStrategy(value);
       await fetchStrategies();
@@ -288,7 +288,7 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
 
   const handleDeleteMasterItem = async (e, id, name) => {
     e.stopPropagation();
-    if (!await confirm(`Â¿Eliminar "${name}" del checklist maestro?`)) return;
+    if (!await confirm(`¿Eliminar "${name}" del checklist maestro?`)) return;
     try {
       await dataService.deleteChecklistItem(id);
       await fetchBaseItems();
@@ -335,7 +335,7 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
 
   const handleDeleteBillableExtra = async (e, id, name) => {
     e.stopPropagation();
-    if (!await confirm(`Â¿Archivar el extra "${name}"? Se mantendr¡ en el historial pero ya no se podr¡ seleccionar para nuevos servicios.`)) return;
+    if (!await confirm(`¿Archivar el extra "${name}"? Se mantendr¡ en el historial pero ya no se podr¡ seleccionar para nuevos servicios.`)) return;
     try {
       await dataService.deleteExtra(id);
       await fetchBillableExtras();
@@ -346,7 +346,7 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
   };
 
   const handleDeleteService = async (id, name) => {
-    if (!await confirm(`Â¿Archivar el servicio "${name}"? Se mantendr¡ en el historial pero ya no se podr¡ seleccionar.`)) return;
+    if (!await confirm(`¿Archivar el servicio "${name}"? Se mantendr¡ en el historial pero ya no se podr¡ seleccionar.`)) return;
     try {
       setLoading(true);
       await dataService.deleteService(id);
@@ -403,10 +403,10 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
       const serviceToSave = { ...newService, price: newService.price || 0 };
       if (isEditing && serviceToSave.id) {
         await dataService.updateService(serviceToSave.id, serviceToSave);
-        showToast(`Â¡Servicio ${serviceToSave.name} actualizado!`);
+        showToast(`¡Servicio ${serviceToSave.name} actualizado!`);
       } else {
         await dataService.addService(serviceToSave);
-        showToast(`Â¡Servicio ${serviceToSave.name} agregado al cat¡logo!`);
+        showToast(`¡Servicio ${serviceToSave.name} agregado al cat¡logo!`);
       }
       setNewService({ 
         name: '', 
@@ -1487,4 +1487,5 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
 };
 
 export default ServicesModule;
+
 

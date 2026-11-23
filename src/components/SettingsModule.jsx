@@ -106,7 +106,7 @@ const SettingsModule = ({ isMobile, clients, onRefresh }) => {
       setWhatsappSettings({
         followUp: settings.whatsapp_template_followup || '',
         birthday: settings.whatsapp_template_birthday || '',
-        thankYou: settings.whatsapp_template_thank_you || 'Gracias por tu visita, es muy importante para nosotros tu fidelidad. Â¡Espero que vuelvas pronto!',
+        thankYou: settings.whatsapp_template_thank_you || 'Gracias por tu visita, es muy importante para nosotros tu fidelidad. ¡Espero que vuelvas pronto!',
         businessNumber: settings.whatsapp_business_number || ''
       });
     } catch (e) {
@@ -163,7 +163,7 @@ const SettingsModule = ({ isMobile, clients, onRefresh }) => {
   };
 
   const handleDeleteCoupon = async (id) => {
-    const isConfirmed = await confirm("Â¿Seguro que deseas eliminar este cupón?", "Eliminar Cupón");
+    const isConfirmed = await confirm("¿Seguro que deseas eliminar este cupón?", "Eliminar Cupón");
     if (isConfirmed) {
       try {
         await dataService.deleteCoupon(id);
@@ -224,7 +224,7 @@ const SettingsModule = ({ isMobile, clients, onRefresh }) => {
   };
 
   const handleRemovePrize = async (id) => {
-    confirm('Â¿Eliminar este premio de la ruleta?', async () => {
+    confirm('¿Eliminar este premio de la ruleta?', async () => {
       try {
         setLoading(true);
         await dataService.removeRoulettePrize(id);
@@ -831,4 +831,5 @@ const SettingsModule = ({ isMobile, clients, onRefresh }) => {
 };
 
 export default SettingsModule;
+
 

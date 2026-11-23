@@ -239,7 +239,7 @@ export default function AccountConversionModal({
                     <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                       <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#ff453a' }} />
                       <span style={{ fontSize: '11px', fontWeight: '900', color: 'var(--text-secondary)', textTransform: 'uppercase', letterSpacing: '0.6px' }}>
-                        Origen Â· Cuenta de Salida
+                        Origen · Cuenta de Salida
                       </span>
                     </div>
                     <span style={{ fontSize: '11px', color: hasInsufficientFunds ? '#ff453a' : 'var(--text-muted)', fontWeight: '800' }}>
@@ -375,7 +375,7 @@ export default function AccountConversionModal({
                     <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                       <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#32d74b' }} />
                       <span style={{ fontSize: '11px', fontWeight: '900', color: 'var(--text-secondary)', textTransform: 'uppercase', letterSpacing: '0.6px' }}>
-                        Destino Â· Cuenta de Entrada
+                        Destino · Cuenta de Entrada
                       </span>
                     </div>
                     <button
@@ -636,4 +636,5 @@ export default function AccountConversionModal({
     </AnimatedModal>
   );
 }
+
 

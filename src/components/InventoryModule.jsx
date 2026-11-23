@@ -209,7 +209,7 @@ const InventoryModule = ({ isMobile, currency, rates }) => {
   };
 
   const handleDeleteItem = async (id, name) => {
-    if (!await confirm(`Â¿Est¡s seguro de que quieres eliminar "${name}" del inventario?`)) return;
+    if (!await confirm(`¿Est¡s seguro de que quieres eliminar "${name}" del inventario?`)) return;
     try {
       await dataService.deleteInventoryItem(id);
       fetchInventory();
@@ -409,7 +409,7 @@ const InventoryModule = ({ isMobile, currency, rates }) => {
       {(showAddForm || isFormExiting) && (
         <div className={`glass-card ${isFormExiting ? 'animate-slide-down-fade' : 'animate-slide-up'}`} style={{ transition: 'none', marginBottom: '32px', borderRadius: '28px' }}>
           <h3 style={{ marginBottom: '24px', fontSize: '20px', fontWeight: '800' }}>
-            Nuevo registro Â· <span className="text-gold">{selectedInventory.label}</span>
+            Nuevo registro · <span className="text-gold">{selectedInventory.label}</span>
           </h3>
 
           <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(auto-fit, minmax(200px, 1fr))', gap: '20px' }}>
@@ -1338,4 +1338,5 @@ const EditInventoryModal = ({ isOpen, item, staff = [], onClose, onSave }) => {
 };
 
 export default InventoryModule;
+
 

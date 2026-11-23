@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { User, LogOut, Phone, Shield, Edit2, Check, X, ArrowLeft } from 'lucide-react';
 import { publicService } from '../services/publicService';
@@ -183,3 +183,4 @@ export default function ClientSettings() {
     </div>
   );
 }
+

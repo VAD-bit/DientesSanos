@@ -179,7 +179,7 @@ export default function BaristaPanel({ isMobile }) {
       {active.length > 0 && <div className="glass-card" style={{ borderRadius: '22px', padding: isMobile ? '14px' : '22px' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '15px' }}>
           <span style={{ width: '7px', height: '7px', borderRadius: '50%', background: '#30d158', boxShadow: '0 0 8px #30d158' }} />
-          <h2 style={{ margin: 0, fontSize: '13px', fontWeight: 900, letterSpacing: '0.6px', color: '#30d158' }}>AHORA Â· EN SILLA</h2>
+          <h2 style={{ margin: 0, fontSize: '13px', fontWeight: 900, letterSpacing: '0.6px', color: '#30d158' }}>AHORA · EN SILLA</h2>
         </div>
         <div style={{ display: 'grid', gap: '10px' }}>{sortByServed(active).map(renderCard)}</div>
       </div>}
@@ -200,4 +200,5 @@ export default function BaristaPanel({ isMobile }) {
     `}</style>
   </section>;
 }
+
 

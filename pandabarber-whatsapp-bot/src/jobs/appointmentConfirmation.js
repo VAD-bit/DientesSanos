@@ -1,4 +1,4 @@
-import { supabase } from '../supabase.js';
+﻿import { supabase } from '../supabase.js';
 import { sendMessage, isWhatsAppReady } from '../bot.js';
 import { renderTemplate } from '../utils/messageTemplates.js';
 
@@ -64,3 +64,4 @@ export async function sendAppointmentConfirmation(appointmentId) {
     return { success: false, error: err.message };
   }
 }
+

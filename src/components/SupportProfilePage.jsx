@@ -149,7 +149,7 @@ const SupportProfilePage = ({ staffMember, isMobile }) => {
                 <div style={{ height: 10, borderRadius: 999, background: 'rgba(0, 0, 0, 0.04)', overflow: 'hidden' }}>
                   <div style={{ width: `${salaryPct}%`, height: '100%', borderRadius: 999, background: salaryPct >= 100 ? '#30d158' : 'var(--gold-gradient, linear-gradient(90deg,#e8d4b0,#f5e9d5))', transition: 'width .5s ease' }} />
                 </div>
-                <div style={{ marginTop: 6, fontSize: 11, color: 'var(--text-muted)' }}>{salaryPct}% del salario cubierto Â· {fmtBs(paidMonthBs)} Bs pagados este mes</div>
+                <div style={{ marginTop: 6, fontSize: 11, color: 'var(--text-muted)' }}>{salaryPct}% del salario cubierto · {fmtBs(paidMonthBs)} Bs pagados este mes</div>
               </div>
             ) : (
               <div style={{ marginTop: 14, fontSize: 12, color: 'var(--text-muted)' }}>
@@ -246,4 +246,5 @@ const SupportProfilePage = ({ staffMember, isMobile }) => {
 };
 
 export default SupportProfilePage;
+
 

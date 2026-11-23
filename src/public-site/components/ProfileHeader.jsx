@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+﻿import { useState, useRef } from 'react';
 import { Phone, Mail, Crown } from 'lucide-react';
 import pandaLogo from '../../assets/panda_logo_nobg.png';
 
@@ -26,7 +26,7 @@ export default function ProfileHeader({ client, points, isTopClient, className =
   return (
     <div className={`new-dashboard-header ${className}`}>
       
-      {/* ── IZQUIERDA: Info de Usuario ── */}
+      {/* â”€â”€ IZQUIERDA: Info de Usuario â”€â”€ */}
       <div className="header-left">
         <div className="header-avatar">
           {client?.image_url ? (
@@ -197,3 +197,4 @@ export default function ProfileHeader({ client, points, isTopClient, className =
     </div>
   );
 }
+

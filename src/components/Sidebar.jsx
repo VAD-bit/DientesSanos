@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect } from 'react';
+﻿import { useRef, useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import {
   BarChart3, 
@@ -55,7 +55,7 @@ const Sidebar = ({ activeTab, setActiveTab, isMobile, rates, isCollapsed, setIsC
     const res = await notificationService.requestPermission();
     setNotifPermission(res);
     if (res === 'granted') {
-      notificationService.sendNotification('🔔 Notificaciones Activadas', '¡Excelente! Ahora recibirás alertas en tiempo real de citas y avisos.');
+      notificationService.sendNotification('ðŸ”” Notificaciones Activadas', '¡Excelente! Ahora recibirás alertas en tiempo real de citas y avisos.');
     }
   };
 
@@ -374,7 +374,7 @@ const Sidebar = ({ activeTab, setActiveTab, isMobile, rates, isCollapsed, setIsC
                   {userRoleName}
                 </div>
               </div>
-              <span style={{ fontSize: '9px', color: 'rgba(255,255,255,0.18)', fontWeight: '700' }}>▼</span>
+              <span style={{ fontSize: '9px', color: 'rgba(255,255,255,0.18)', fontWeight: '700' }}>â–¼</span>
             </div>
           )}
 
@@ -423,3 +423,4 @@ const Sidebar = ({ activeTab, setActiveTab, isMobile, rates, isCollapsed, setIsC
 };
 
 export default Sidebar;
+

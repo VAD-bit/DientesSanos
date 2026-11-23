@@ -417,7 +417,7 @@ const NewAppointmentModal = ({ isOpen, onClose, onSuccess, rates }) => {
                       <div style={{ fontSize: '28px', fontWeight: '800', color: '#111111', lineHeight: '1.1' }}>${totalEstimated.toFixed(2)}</div>
                       <div style={{ fontSize: '11px', color: 'rgba(255,255,255,0.3)', marginTop: '2px' }}>
                         {newApp.serviceId && <span>Servicio: ${servicePrice.toFixed(2)}</span>}
-                        {newApp.extras.length > 0 && <span> Â· Extras: +${extrasPrice.toFixed(2)}</span>}
+                        {newApp.extras.length > 0 && <span> · Extras: +${extrasPrice.toFixed(2)}</span>}
                       </div>
                     </div>
                     <button type="button" onClick={handleGoToStep2} style={{ height: '52px', padding: '0 32px', borderRadius: '16px', background: 'linear-gradient(135deg, var(--champagne-dark), var(--champagne-light))', color: 'black', border: 'none', fontSize: '15px', fontWeight: '800', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px', cursor: 'pointer', transition: 'all 0.25s', flexShrink: 0, whiteSpace: 'nowrap' }} onMouseEnter={e => e.currentTarget.style.transform = 'scale(1.03)'} onMouseLeave={e => e.currentTarget.style.transform = 'scale(1)'}>
@@ -573,4 +573,5 @@ const NewAppointmentModal = ({ isOpen, onClose, onSuccess, rates }) => {
 };
 
 export default NewAppointmentModal;
+
 

@@ -1,4 +1,4 @@
-import manifest from '../../assets/instagram/manifest.json';
+﻿import manifest from '../../assets/instagram/manifest.json';
 
 // Vite inyecta las URLs finales de cada imagen empaquetada.
 const imageModules = import.meta.glob('../../assets/instagram/*.{jpg,jpeg,png,webp}', {
@@ -23,3 +23,4 @@ export function getInstagramPosts(limit = 4) {
     .filter((post) => post.image)
     .slice(0, limit);
 }
+

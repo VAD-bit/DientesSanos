@@ -1,8 +1,8 @@
-import { supabase } from '../supabase.js';
+﻿import { supabase } from '../supabase.js';
 import { sendMessage, isWhatsAppReady } from '../bot.js';
 import { renderTemplate } from '../utils/messageTemplates.js';
 
-const THANKYOU_TEMPLATE = '¡Hola {{nombre}}! 🎉 Muchas gracias por visitarnos hoy en Panda Barber Studio. Esperamos verte pronto.';
+const THANKYOU_TEMPLATE = '¡Hola {{nombre}}! ðŸŽ‰ Muchas gracias por visitarnos hoy en Panda Barber Studio. Esperamos verte pronto.';
 
 let processedIds = new Set();
 
@@ -82,3 +82,4 @@ export async function sendThankYouMessages() {
     return { success: false, sent: 0 };
   }
 }
+

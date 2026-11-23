@@ -243,7 +243,7 @@ const DashboardModule = ({
             id: `client-${client.id}`,
             type: 'client',
             title: client.name || 'Cliente',
-            subtitle: [client.phone, client.id_card].filter(Boolean).join(' Â· ') || 'Ficha de cliente',
+            subtitle: [client.phone, client.id_card].filter(Boolean).join(' · ') || 'Ficha de cliente',
             data: client
           })),
         ...searchableAppointments
@@ -261,7 +261,7 @@ const DashboardModule = ({
               appointment.services?.name || 'Servicio',
               appointment.staff?.name,
               appointment.status
-            ].filter(Boolean).join(' Â· '),
+            ].filter(Boolean).join(' · '),
             data: appointment
           })),
         ...staffList
@@ -569,7 +569,7 @@ const DashboardModule = ({
         staffInvolved: chair.appointment?.staff_id ? [{ staffId: chair.appointment.staff_id, role: 'dentista', amountUsd: chair.rawPrice || 0 }] : []
       });
 
-      showToast(`Â¡Cobro de ${chair.price} registrado con éxito! Sillón liberado.`);
+      showToast(`¡Cobro de ${chair.price} registrado con éxito! Sillón liberado.`);
       setCheckoutChairModal(null);
       
       const activeApps = await dataService.getAppointmentsByState(['En Silla', 'Agendado']);
@@ -870,7 +870,7 @@ const DashboardModule = ({
               gap: '6px',
               margin: 0
             }}>
-              Â¡Buenos días, Dientes Sanos!
+              ¡Buenos días, Dientes Sanos!
               <span className="wave-hand-span" style={{ display: 'inline-flex', alignItems: 'center', opacity: 0.85 }}>
                 <svg
                   width="19"
@@ -1910,12 +1910,12 @@ const DashboardModule = ({
                         fontSize: '11px', fontWeight: '700', color: '#111111',
                         lineHeight: '1.3', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis'
                       }}>{item.name}</div>
-                      {/* Line 2: service Â· barber + beverage chip */}
+                      {/* Line 2: service · barber + beverage chip */}
                       <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginTop: '2px', flexWrap: 'wrap' }}>
                         <span style={{
                           fontSize: '9px', color: 'rgba(255,255,255,0.38)', lineHeight: '1.3',
                           whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', maxWidth: '180px'
-                        }}>{item.service} Â· {item.barber}</span>
+                        }}>{item.service} · {item.barber}</span>
                         {item.beverage && (
                           <span style={{
                             fontSize: '10px', fontWeight: '800', color: '#e8d4b0',
@@ -2894,4 +2894,5 @@ const DashboardModule = ({
 };
 
 export default DashboardModule;
+
 

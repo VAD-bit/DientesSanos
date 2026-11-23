@@ -168,10 +168,10 @@ const ClientModule = ({ isMobile, clients, onRefresh, initialClientId }) => {
     let msg = localStorage.getItem('panda_default_bday_message');
     const isCorrupted = !msg || 
       msg.includes('\uFFFD') || 
-      msg.includes('îÂ¿Â½') ||
+      msg.includes('ο½') ||
       /[\uD800-\uDBFF](?![\uDC00-\uDFFF])|([^\uD800-\uDBFF]|^)[\uDC00-\uDFFF]/.test(msg);
     if (isCorrupted) {
-      msg = `Â¡Hola {name}! ${String.fromCodePoint(0x1F389)} Te deseamos un muy feliz cumpleaños de parte de todo el equipo de Dientes Sanos. ${String.fromCodePoint(0x1F488)} Â¡Que tengas un día excelente!`;
+      msg = `¡Hola {name}! ${String.fromCodePoint(0x1F389)} Te deseamos un muy feliz cumpleaños de parte de todo el equipo de Dientes Sanos. ${String.fromCodePoint(0x1F488)} ¡Que tengas un día excelente!`;
       localStorage.setItem('panda_default_bday_message', msg);
     }
     return msg;
@@ -233,7 +233,7 @@ const ClientModule = ({ isMobile, clients, onRefresh, initialClientId }) => {
   }, [visibleClients]);
 
   const handleDeleteClient = async (id, name) => {
-    if (!await confirm(`Â¿Est¡s seguro de eliminar a ${name}? Esta acción no se puede deshacer.`)) return;
+    if (!await confirm(`¿Est¡s seguro de eliminar a ${name}? Esta acción no se puede deshacer.`)) return;
     try {
       setLoading(true);
       await dataService.deleteClient(id);
@@ -271,7 +271,7 @@ const ClientModule = ({ isMobile, clients, onRefresh, initialClientId }) => {
       });
       setShowAddForm(false);
       await onRefresh();
-      showToast('Â¡Ficha de cliente creada con éxito!');
+      showToast('¡Ficha de cliente creada con éxito!');
     } catch (error) {
       console.error('Error addClient:', error);
       showToast('Error técnico al agregar cliente.', 'error');
@@ -969,7 +969,7 @@ const ClientModule = ({ isMobile, clients, onRefresh, initialClientId }) => {
               
               <button 
                 onClick={() => {
-                  setDefaultBdayMessage(localStorage.getItem('panda_default_bday_message') || `Â¡Hola {name}! ${String.fromCodePoint(0x1F389)} Te deseamos un muy feliz cumpleaños de parte de todo el equipo de Dientes Sanos. ${String.fromCodePoint(0x1F488)} Â¡Que tengas un día excelente!`);
+                  setDefaultBdayMessage(localStorage.getItem('panda_default_bday_message') || `¡Hola {name}! ${String.fromCodePoint(0x1F389)} Te deseamos un muy feliz cumpleaños de parte de todo el equipo de Dientes Sanos. ${String.fromCodePoint(0x1F488)} ¡Que tengas un día excelente!`);
                   setShowMessageModal(false);
                 }}
                 style={{
@@ -1094,7 +1094,7 @@ const RouletteModal = ({ isOpen, onClose, onFinish, prizes }) => {
 
         {result ? (
           <div className="animate-fade-in" style={{ fontSize: '18px', fontWeight: '800', color: '#32d74b' }}>
-            Â¡Ganaste: {result.prize_name}! ðŸŽ
+            ¡Ganaste: {result.prize_name}! ðŸŽ
           </div>
         ) : (
           <button 
@@ -1337,7 +1337,7 @@ const ClientDetail = ({ isMobile, client, onBack, onDelete, onUpdate }) => {
   };
 
   const handlePhotoDelete = async (index) => {
-    if (!await confirm('Â¿Deseas eliminar esta foto de la galería?')) return;
+    if (!await confirm('¿Deseas eliminar esta foto de la galería?')) return;
     try {
       const newGallery = gallery.filter((_, i) => i !== index);
       setGallery(newGallery);
@@ -2295,8 +2295,8 @@ const ClientDetail = ({ isMobile, client, onBack, onDelete, onUpdate }) => {
                     <div style={{ fontWeight: '800', color: '#111111', fontSize: '13.5px' }}>{t.services?.name || 'Servicio'}</div>
                     <div style={{ fontSize: '11.5px', color: 'var(--text-muted)', marginTop: '2px' }}>
                       {when ? new Date(when).toLocaleString('es-VE', { day: 'numeric', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit', hour12: true }) : '—'}
-                      {t.staff?.name ? ` Â· ${t.staff.name}` : ''}
-                      {t.services?.category ? ` Â· ${t.services.category}` : ''}
+                      {t.staff?.name ? ` · ${t.staff.name}` : ''}
+                      {t.services?.category ? ` · ${t.services.category}` : ''}
                     </div>
                   </div>
                   <div style={{ textAlign: 'right', flexShrink: 0 }}>
@@ -2715,4 +2715,5 @@ const BeforeAfterSlider = ({ photoA, photoB, sliderPos, setSliderPos }) => {
     </div>
   );
 };
+
 

@@ -359,7 +359,7 @@ export default function ProviderPaymentModal({
                     <ArrowRight size={14} color="rgba(255,255,255,0.4)" />
                     <div style={{ background: isFullyPaid ? 'rgba(50, 215, 75, 0.12)' : 'rgba(255,255,255,0.03)', border: isFullyPaid ? '1px solid rgba(50, 215, 75, 0.3)' : 'none', padding: '6px 8px', borderRadius: '8px' }}>
                       <span style={{ display: 'block', fontSize: '9.5px', color: isFullyPaid ? '#32d74b' : 'var(--text-muted)' }}>
-                        {isFullyPaid ? 'Â¡Deuda saldada!' : 'Nueva deuda'}
+                        {isFullyPaid ? '¡Deuda saldada!' : 'Nueva deuda'}
                       </span>
                       <strong style={{ fontSize: '12.5px', color: isFullyPaid ? '#32d74b' : '#fff' }}>
                         ${remainingDebtUsd.toFixed(2)}
@@ -518,4 +518,5 @@ const quickBtnStyle = {
   cursor: 'pointer',
   transition: 'all 0.15s ease'
 };
+
 

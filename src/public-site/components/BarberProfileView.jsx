@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+﻿import React, { useRef, useEffect } from 'react';
 import { ChevronLeft, Check, Star, Calendar as CalendarIcon, User, Lock } from 'lucide-react';
 import ToothIcon from '../../components/icons/ToothIcon';
 import { getNormalizedSpecialty, getBarberBiography, getBarberDetails, getBarberStats, getBarberVideo } from '../pages/BookAppointment';
@@ -128,7 +128,7 @@ export default function BarberProfileView({
                                   </button>
                                 </div>
                                 </motion.div>
-                                {/* ── MÓVIL: Immersive Cinematic Hero Video/Photo Header (Oculto en desktop) ── */}
+                                {/* â”€â”€ MÃ“VIL: Immersive Cinematic Hero Video/Photo Header (Oculto en desktop) â”€â”€ */}
                                 <motion.div variants={profileItemVariants} className="relative h-[420px] -mx-4 -mt-8 mb-6 overflow-hidden rounded-b-[2rem] border border-[#d9c08f]/15 shadow-2xl bg-[#0a0a0d] profile-video-hero z-10 md:hidden">
                                   {/* Botón Volver Flotante en Móvil */}
                                   <button
@@ -211,7 +211,7 @@ export default function BarberProfileView({
                                   </div>
                                 </motion.div>
 
-                                {/* ── MÓVIL: Creative Manifesto (Oculto en desktop) ── */}
+                                {/* â”€â”€ MÃ“VIL: Creative Manifesto (Oculto en desktop) â”€â”€ */}
                                 <motion.div variants={profileItemVariants} className="relative urban-industrial-panel overflow-visible p-5 mb-6 profile-bio-enter md:hidden">
                                   <div className="absolute -top-3 left-4">
                                     <span className="urban-tape urban-tape-accent text-[9px]">
@@ -226,7 +226,7 @@ export default function BarberProfileView({
                                 <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start w-full text-left">
                                 {/* Left Column: Especialidades, Portafolio, Testimonios */}
                                 <div className="md:col-span-8 space-y-8 w-full">
-{/* ── ESCRITORIO: Vista Horizontal Unificada (Oculto en móvil) ── */}
+{/* â”€â”€ ESCRITORIO: Vista Horizontal Unificada (Oculto en móvil) â”€â”€ */}
                                 {(() => {
                                   const details = getBarberDetails(expandedBarber.name);
                                   const ratings = details.rating;
@@ -323,7 +323,7 @@ export default function BarberProfileView({
                                           <div className="flex flex-col items-center text-center flex-1 border-l border-[#d9c08f]/15">
                                             <CalendarIcon size={20} className="text-[#111111] mb-1.5" />
                                             <span className="text-xl font-black text-[#0f172a] leading-none mb-1">5</span>
-                                            <span className="text-[8px] text-[#64748b] font-black uppercase tracking-widest leading-tight">AÑOS<br/>DE EXPERIENCIA</span>
+                                            <span className="text-[8px] text-[#64748b] font-black uppercase tracking-widest leading-tight">AÃ‘OS<br/>DE EXPERIENCIA</span>
                                           </div>
 
                                           <div className="flex flex-col items-center text-center flex-1 border-l border-[#d9c08f]/15">
@@ -335,14 +335,14 @@ export default function BarberProfileView({
                                           <div className="flex flex-col items-center text-center flex-1 border-l border-[#d9c08f]/15">
                                             <Star size={20} className="text-[#111111] mb-1.5" />
                                             <span className="text-xl font-black text-[#0f172a] leading-none mb-1">{ratings}</span>
-                                            <span className="text-[8px] text-[#64748b] font-black uppercase tracking-widest leading-tight">VALORACIÓN<br/>PROMEDIO</span>
+                                            <span className="text-[8px] text-[#64748b] font-black uppercase tracking-widest leading-tight">VALORACIÃ“N<br/>PROMEDIO</span>
                                           </div>
                                         </div>
                                       </div>
                                     </div>
                                   );
                                 })()}
-                                                                  {/* ── ESCRITORIO: Especialidades (Oculto en móvil) ── */}
+                                                                  {/* â”€â”€ ESCRITORIO: Especialidades (Oculto en móvil) â”€â”€ */}
                                 {(() => {
                                   const details = getBarberDetails(expandedBarber.name);
                                   return (
@@ -413,7 +413,7 @@ export default function BarberProfileView({
                             {/* Right Column: Stats panel, Services menu, Booking CTA (sticky on desktop conditionally) */}
                             <div className="md:col-span-4 profile-sticky-sidebar space-y-6 w-full">
                               
-                              {/* ── MÓVIL: Vista Clásica (Oculto en computadoras) ── */}
+                              {/* â”€â”€ MÃ“VIL: Vista Clásica (Oculto en computadoras) â”€â”€ */}
                               <div className="md:hidden space-y-6 w-full">
                                 {/* Brutalist Asymmetric Stats Section */}
                                 {(() => {
@@ -450,7 +450,7 @@ export default function BarberProfileView({
                                       <div className="urban-industrial-panel p-3 flex flex-row items-center gap-3 h-[68px]">
                                         <div className="text-xs font-black text-[#0f172a] leading-none uppercase tracking-tight">{stats.location && stats.location.toLowerCase().includes('sede') ? 'Consultorio' : stats.location}</div>
                                         <div className="flex flex-col min-w-0">
-                                          <span className="text-[8px] text-[#64748b] font-black uppercase tracking-widest leading-none mb-0.5">// UBICACIÓN</span>
+                                          <span className="text-[8px] text-[#64748b] font-black uppercase tracking-widest leading-none mb-0.5">// UBICACIÃ“N</span>
                                           <span className="text-[10px] text-[#334155] font-bold uppercase tracking-wider leading-tight">Principal</span>
                                         </div>
                                       </div>
@@ -463,7 +463,7 @@ export default function BarberProfileView({
                                     {/* Brutalist Chalkboard Services Menu */}
                                 <motion.div variants={profileItemVariants} className="mb-8">
                                   <div className="flex items-center justify-between mb-4">
-                                    <h4 className="font-extrabold text-sm text-[#111111] uppercase tracking-widest">// MENÚ DE SERVICIOS</h4>
+                                    <h4 className="font-extrabold text-sm text-[#111111] uppercase tracking-widest">// MENÃš DE SERVICIOS</h4>
                                     <span className="text-[9px] text-[#64748b] font-bold tracking-wider uppercase">TARIFA PREMIUM</span>
                                   </div>
                                   <div className="flex flex-col bg-white border border-[#d9c08f]/15 rounded-2xl p-4 gap-1">
@@ -567,7 +567,7 @@ export default function BarberProfileView({
                               </div>
 
                               <div className="hidden md:flex flex-col space-y-6 w-full bg-white border border-[#d9c08f]/15 rounded-3xl p-6 shadow-2xl h-fit md:col-span-4">
-                                {/* ── ESCRITORIO: Ficha de Reserva Unificada en 1 Paso (Oculto en móvil) ── */}
+                                {/* â”€â”€ ESCRITORIO: Ficha de Reserva Unificada en 1 Paso (Oculto en móvil) â”€â”€ */}
                                 <div>
                                   <h4 className="font-extrabold text-sm text-[#111111] uppercase tracking-widest leading-none mb-1">RESERVA TU CITA</h4>
                                   <span className="text-[8px] text-[#64748b] font-black uppercase tracking-widest">PROCESO DE RESERVA DIRECTO</span>
@@ -686,7 +686,7 @@ export default function BarberProfileView({
                                          onClick={() => setProfileActivePeriod('mañana')}
                                          className={`px-1.5 py-0.5 rounded-md transition-all cursor-pointer ${profileActivePeriod === 'mañana' ? 'bg-[#111111] text-white font-black' : 'text-[#64748b] hover:text-[#111111]'}`}
                                        >
-                                         MAÑANA
+                                         MAÃ‘ANA
                                        </button>
                                        <button 
                                          type="button"
@@ -775,7 +775,7 @@ export default function BarberProfileView({
                                       <BarberAvatar url={expandedBarber.image_url} name={expandedBarber.name} className="w-10 h-10 rounded-xl" />
                                       <div className="flex flex-col min-w-0">
                                         <span className="text-xs font-bold text-[#0f172a] truncate leading-none mb-1">{expandedBarber.name}</span>
-                                        <span className="text-[10px] text-[#334155] truncate leading-none mb-1">{selectedService.name} • {formatDuration(selectedService.duration)}</span>
+                                        <span className="text-[10px] text-[#334155] truncate leading-none mb-1">{selectedService.name} â€¢ {formatDuration(selectedService.duration)}</span>
                                         <span className="text-[9px] text-[#111111] font-bold leading-none">
                                           {selectedDate.toLocaleDateString('es-ES', { weekday: 'short', day: 'numeric', month: 'short' })} a las {formatTime12(selectedTime)}
                                         </span>
@@ -815,7 +815,7 @@ export default function BarberProfileView({
 
                                 {/* Colaboradores recomendados ("También podrías reservar con") */}
                                 <div className="border-t border-[#d9c08f]/15 pt-4 mt-2">
-                                  <span className="text-[10px] text-[#64748b] font-bold uppercase tracking-wider block mb-3">TAMBIÉN PODRÍAS RESERVAR CON</span>
+                                  <span className="text-[10px] text-[#64748b] font-bold uppercase tracking-wider block mb-3">TAMBIÃ‰N PODRÍAS RESERVAR CON</span>
                                   <div className="flex items-center gap-3 overflow-x-auto pb-1.5 scrollbar-none w-full">
                                     {barbers
                                       .filter(b => {
@@ -863,3 +863,4 @@ export default function BarberProfileView({
     </>
   );
 }
+

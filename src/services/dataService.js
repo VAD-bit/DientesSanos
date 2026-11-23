@@ -1,18 +1,18 @@
-import { supabase as anonClient } from '../lib/supabase';
+﻿import { supabase as anonClient } from '../lib/supabase';
 const supabase = anonClient;
 import { notificationService } from './notificationService';
 import { pushService } from './pushService';
 import { defaultCommissionPct, isBookableStaff, isOperationalReceptionStaff, isAsistenteRole } from '../utils/staffRoles';
 import { formatName, formatProductName, formatServiceName } from '../utils/stringUtils';
 
-// ─── Smart In-Memory Cache ────────────────────────────────────────────────────
+// â”€â”€â”€ Smart In-Memory Cache â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 // Reduces redundant Supabase calls from ~35+ per session to ~8.
 // Static data (inventory, clients, staff, services, extras) caches 45s.
 // Operational data (appointments) caches 15s since it changes more often.
 const _cache = {};
 const STAFF_PUBLIC_SELECT = 'id, auth_user_id, email, name, role, commission_pct, active, created_at, image_url, phone, address, username, tools, washing_rate, birth_date, skipped_count, specialty, badge, biography, payroll_frequency, monthly_salary, show_on_landing, video_url';
-// Same as STAFF_PUBLIC_SELECT but WITHOUT image_url — the avatars are base64 blobs
-// (~113–173 KB each, ~1.3 MB across the team) and getStaff() runs on nearly every
+// Same as STAFF_PUBLIC_SELECT but WITHOUT image_url â€” the avatars are base64 blobs
+// (~113â€“173 KB each, ~1.3 MB across the team) and getStaff() runs on nearly every
 // screen. The list fetches this lite shape; avatars come from a separate long-lived
 // cache (see _getStaffAvatars) and get merged back in, so callers still receive
 // image_url unchanged but the heavy payload only downloads ~once per 10 min.
@@ -21,7 +21,7 @@ const STAFF_LITE_SELECT = 'id, auth_user_id, email, name, role, commission_pct, 
 // the sellable/inventory lists load on Reception, Scheduling, Checkout and Inventory.
 // The lists fetch this lite shape; images come from a separate long-lived cache and are
 // merged back in. Cache key deliberately does NOT start with 'inventory_' so a stock
-// change (every sale) doesn't wipe the image cache — only editing an item does.
+// change (every sale) doesn't wipe the image cache â€” only editing an item does.
 const INVENTORY_LITE_SELECT = 'id, name, stock, price, is_for_sale, updated_at, category, cost_price, commission_pct, code, unit, min_stock, inventory_type, owner_staff_id, purchase_price, sale_price, item_type';
 
 function _cacheGet(key) {
@@ -228,7 +228,7 @@ async function _adminAuthRequest(payload) {
   }
   return result;
 }
-// ─────────────────────────────────────────────────────────────────────────────
+// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 export const dataService = {
   supabase: anonClient,
@@ -241,7 +241,7 @@ export const dataService = {
     if (cached) return cached;
 
     // Explicit column list on purpose: `*` used to pull `work_gallery` (base64 photos,
-    // ~90% of each client row) into this list — downloaded on 5 different screens
+    // ~90% of each client row) into this list â€” downloaded on 5 different screens
     // (Clients, Checkout, Reception, Scheduling, New Appointment). Galleries are loaded
     // on demand per-client via getClientGalleries() when a client's detail opens, so
     // they don't belong in the list. Keep every other column; only work_gallery is dropped.
@@ -282,7 +282,7 @@ export const dataService = {
     return result;
   },
 
-  // Lightweight clients list — no joins, fast for initial load
+  // Lightweight clients list â€” no joins, fast for initial load
   async getClientsLite() {
     const cached = _cacheGet('clients_lite');
     if (cached) return cached;
@@ -328,7 +328,7 @@ export const dataService = {
     // Notificar registro de nuevo cliente
     try {
       notificationService.sendNotification(
-        'Nuevo Cliente Registrado 👤',
+        'Nuevo Cliente Registrado ðŸ‘¤',
         `Se ha registrado a ${data.name || 'un nuevo cliente'} (Tlf: ${data.phone || 'No registrado'}) en el sistema.`
       );
     } catch (e) {
@@ -566,7 +566,7 @@ export const dataService = {
       .select(STAFF_PUBLIC_SELECT);
     if (error) throw error;
     if (!data || data.length === 0) {
-      console.warn('updateStaff: 0 rows returned — RLS may be filtering the result');
+      console.warn('updateStaff: 0 rows returned â€” RLS may be filtering the result');
     }
     return data?.[0] || null;
   },
@@ -1553,7 +1553,7 @@ export const dataService = {
   // Like getAppointmentsByState but scoped to reservations in a date window.
   // Operational/walk-in rows without scheduled_at belong to history/queue views,
   // never to the booking calendar.
-  // Used by views that only render one day/week/month at a time — pulling
+  // Used by views that only render one day/week/month at a time â€” pulling
   // every appointment ever made (with base64 client galleries) on every
   // navigation was the main cause of slow local loads.
   async getAppointmentsInRangeFull(startDate, endDate, states = []) {
@@ -1607,7 +1607,7 @@ export const dataService = {
   },
 
   // Web Push helper: builds a rich message for an appointment event and fires it
-  // to the right barber/roles. Fire-and-forget — never blocks the caller.
+  // to the right barber/roles. Fire-and-forget â€” never blocks the caller.
   async _pushAppointment(appId, kind) {
     try {
       const { data: app } = await supabase.from('appointments')
@@ -1618,29 +1618,29 @@ export const dataService = {
       const clientName = formatName(app.clients?.name) || 'Cliente';
       const svc = formatServiceName(app.services?.name) || app.services?.name;
       const price = app.services?.price ?? app.total_price;
-      const priceStr = price ? ` • $${price}` : '';
+      const priceStr = price ? ` â€¢ $${price}` : '';
       let when = '';
       if (app.scheduled_at) {
         const d = new Date(app.scheduled_at);
         const fecha = d.toLocaleDateString('es-VE', { timeZone: 'America/Caracas', day: '2-digit', month: '2-digit' });
         const hora = d.toLocaleTimeString('es-VE', { timeZone: 'America/Caracas', hour: '2-digit', minute: '2-digit', hour12: true });
-        when = ` • ${fecha} ${hora}`;
+        when = ` â€¢ ${fecha} ${hora}`;
       }
       if (kind === 'agendada') {
-        pushService.notify({ staffId: app.staff_id }, '📅 Nueva cita agendada',
-          `${clientName}${svc ? ' • ' + svc : ''}${when}${priceStr}`, { appId, kind });
+        pushService.notify({ staffId: app.staff_id }, 'ðŸ“… Nueva cita agendada',
+          `${clientName}${svc ? ' â€¢ ' + svc : ''}${when}${priceStr}`, { appId, kind });
       } else if (kind === 'ensilla') {
-        pushService.notify({ staffId: app.staff_id }, '🦷 Cliente en tu silla',
-          `${clientName} está en tu silla${svc ? ' • ' + svc : ''}${priceStr}`, { appId, kind });
+        pushService.notify({ staffId: app.staff_id }, 'ðŸ¦· Cliente en tu silla',
+          `${clientName} está en tu silla${svc ? ' â€¢ ' + svc : ''}${priceStr}`, { appId, kind });
         if (app.beverage_selection) {
           pushService.notify({ roles: ['asistente', 'admin'] }, 'Preparar hidratación',
             `${clientName} ya llegó y quiere ${formatProductName(app.beverage_selection) || app.beverage_selection}`, { appId, kind, beverage: app.beverage_selection });
         }
       } else if (kind === 'caja') {
-        pushService.notify({ roles: ['admin'] }, '💳 Cobrar cliente',
-          `${clientName}${svc ? ' • ' + svc : ''}${priceStr} — listo para cobrar`, { appId, kind });
+        pushService.notify({ roles: ['admin'] }, 'ðŸ’³ Cobrar cliente',
+          `${clientName}${svc ? ' â€¢ ' + svc : ''}${priceStr} â€” listo para cobrar`, { appId, kind });
       } else if (kind === 'lavado') {
-        pushService.notify({ roles: ['asistente'] }, '💧 Nuevo lavado',
+        pushService.notify({ roles: ['asistente'] }, 'ðŸ’§ Nuevo lavado',
           `${clientName} está listo para lavado`, { appId, kind });
       }
     } catch (e) {
@@ -1648,7 +1648,7 @@ export const dataService = {
     }
   },
 
-  // Web Push helper: product sale → barista, asistentes y administración.
+  // Web Push helper: product sale â†’ barista, asistentes y administración.
   async _pushProduct(appointmentId, productId, quantity) {
     try {
       const [prodRes, appRes] = await Promise.all([
@@ -1658,7 +1658,7 @@ export const dataService = {
       const prodName = formatProductName(prodRes.data?.name) || 'Producto';
       const clientName = formatName(appRes.data?.clients?.name) || 'Cliente';
       const qty = quantity && quantity > 1 ? ` x${quantity}` : '';
-      pushService.notify({ roles: ['asistente', 'admin'] }, '🦷 Venta de producto',
+      pushService.notify({ roles: ['asistente', 'admin'] }, 'ðŸ¦· Venta de producto',
         `${prodName}${qty} para ${clientName}`, { appointmentId, productId });
     } catch (e) {
       console.error('push product error', e);
@@ -1819,7 +1819,7 @@ export const dataService = {
 
           notificationService.broadcastNotification(
             supabase,
-            '🦷 Nuevo Cliente en Silla',
+            'ðŸ¦· Nuevo Cliente en Silla',
             `Hey, te toca atender a ${clientName} para el servicio: ${serviceName}${includedList}.`,
             { recipientId: appDetails.staff_id, recipientRole: 'Barbero' }
           );
@@ -1934,7 +1934,7 @@ export const dataService = {
     const hasContent = (a) => !!a.service_id
       || _asArray(a.appointment_extras).length > 0
       || _asArray(a.appointment_products).length > 0;
-    if (!rows.some(hasContent)) return 0; // only the pending shell exists — leave it be
+    if (!rows.some(hasContent)) return 0; // only the pending shell exists â€” leave it be
     const shellIds = rows.filter(a => !hasContent(a)).map(a => a.id);
     if (shellIds.length === 0) return 0;
     const { error: delErr } = await supabase.from('appointments').delete().in('id', shellIds);
@@ -2034,7 +2034,7 @@ export const dataService = {
 
     // Steps 2-4 are secondary bookkeeping (commissions, stock, transaction log).
     // Wrapped so a failure here (e.g. a bad product id) can't swallow step 5
-    // (loyalty points) below — the appointment is already marked completed at
+    // (loyalty points) below â€” the appointment is already marked completed at
     // this point, so losing the rest of the pipeline silently is worse than
     // logging and moving on.
     const primaryAppId = paymentRecord.appointmentId || paymentRecord.appointmentIds?.[0] || null;
@@ -2258,7 +2258,7 @@ export const dataService = {
       staffIdsToNotify.forEach(staffId => {
         notificationService.broadcastNotification(
           supabase,
-          '💰 ¡Cobro Finalizado!',
+          'ðŸ’° ¡Cobro Finalizado!',
           `El pago de ${clientName} (${serviceName}) ha sido procesado exitosamente en Caja.`,
           { recipientId: staffId }
         );
@@ -2856,7 +2856,7 @@ export const dataService = {
     ].map(method => [method, 0]));
     const methodBreakdown = {};
     // Igual que methodBreakdown pero en USD ORIGINAL (usando la tasa de cada transacción,
-    // no la de hoy). Las cuentas en dólares (Efectivo $, Zelle, Binance…) representan un
+    // no la de hoy). Las cuentas en dólares (Efectivo $, Zelle, Binanceâ€¦) representan un
     // monto fijo en USD; reconvertir Bs/tasa-de-hoy inflaba el valor cuando la tasa bajaba.
     const methodBreakdownUsd = {};
     const addAmount = (target, method, amountBs) => {
@@ -2874,7 +2874,7 @@ export const dataService = {
     transactions.forEach(transaction => {
       const metadata = transaction.metadata || {};
       const rate = txRate(transaction);
-      // Conversión: transferencia interna entre cuentas (Bs↔USD), no un gasto. Mueve el
+      // Conversión: transferencia interna entre cuentas (Bsâ†”USD), no un gasto. Mueve el
       // saldo de la cuenta origen a la destino (todo en Bs, como el resto de accountBalances).
       if (metadata.conversion) {
         const convRate = Number(metadata.rate || rate) || 1;
@@ -3129,3 +3129,4 @@ export const dataService = {
     } catch (error) { console.error('Error getting next order number:', error); return null; }
   }
 };
+

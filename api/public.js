@@ -1,4 +1,4 @@
-import { getAdminClient } from '../server/passkeys/supabaseAdmin.js';
+﻿import { getAdminClient } from '../server/passkeys/supabaseAdmin.js';
 import { handleError, json, parseBody, requireMethod } from '../server/passkeys/http.js';
 import { requireUser } from '../server/auth/admin.js';
 import { isBookableStaff } from '../src/utils/staffRoles.js';
@@ -71,7 +71,7 @@ export default async function handler(request, response) {
       const password = String(body.password || '');
 
       if (!EMAIL_RE.test(email)) {
-        throw Object.assign(new Error('Correo electr�nico inv�lido.'), { statusCode: 400 });
+        throw Object.assign(new Error('Correo electrϿ½nico invϿ½lido.'), { statusCode: 400 });
       }
       if (password.length < 6) {
         throw Object.assign(new Error('La contraseña debe tener al menos 6 caracteres.'), { statusCode: 400 });
@@ -129,7 +129,7 @@ export default async function handler(request, response) {
       const updates = { ...pick(body), auth_user_id: user.id, status: 'Activo' };
       if (updates.birth_date !== undefined && updates.birth_date !== null) {
         const normalized = normalizeDate(updates.birth_date);
-        if (!normalized.ok) throw Object.assign(new Error('Fecha de nacimiento inv�lida. Usa el formato DD/MM/AAAA.'), { statusCode: 400 });
+        if (!normalized.ok) throw Object.assign(new Error('Fecha de nacimiento invϿ½lida. Usa el formato DD/MM/AAAA.'), { statusCode: 400 });
         updates.birth_date = normalized.value;
       }
       if (linked) {
@@ -145,7 +145,7 @@ export default async function handler(request, response) {
         existing = data;
       }
       if (existing?.auth_user_id && String(existing.auth_user_id) !== String(user.id)) {
-        throw Object.assign(new Error('Estos datos ya est�n vinculados a otra cuenta'), { statusCode: 409 });
+        throw Object.assign(new Error('Estos datos ya estϿ½n vinculados a otra cuenta'), { statusCode: 409 });
       }
       if (existing) {
         const { data, error } = await db.from('clients').update(updates).eq('id', existing.id).select().single();
@@ -166,3 +166,4 @@ export default async function handler(request, response) {
     });
   }
 }
+

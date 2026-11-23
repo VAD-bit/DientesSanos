@@ -399,7 +399,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
       isOpen: true,
       type: 'confirm',
       title: 'Descartar pago pendiente',
-      message: 'Este pago no se enviar¡ al servidor y no se podr¡ recuperar. Â¿Descartar de todas formas?',
+      message: 'Este pago no se enviar¡ al servidor y no se podr¡ recuperar. ¿Descartar de todas formas?',
       onConfirm: async () => {
         setDialog(prev => ({ ...prev, isOpen: false }));
         setOfflineBusy(true);
@@ -811,7 +811,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
     try {
       setLoading(true);
       await dataService.updateAppointmentStatus(id, 'En Silla');
-      showToast("Â¡Servicio iniciado! El cliente ya est¡ en sillón.");
+      showToast("¡Servicio iniciado! El cliente ya est¡ en sillón.");
       loadData();
     } catch (error) {
       showToast("Error al iniciar servicio", "error");
@@ -826,7 +826,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
       for (const app of apps) {
         await dataService.updateAppointmentStatus(app.id, 'En Silla');
       }
-      showToast("Â¡Servicios iniciados! El cliente ya est¡ en sillón.");
+      showToast("¡Servicios iniciados! El cliente ya est¡ en sillón.");
       loadData();
     } catch (error) {
       showToast("Error al iniciar servicios", "error");
@@ -1105,7 +1105,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
     setDialog({
       isOpen: true,
       title: "Cancelar Orden",
-      message: `Â¿Seguro que deseas cancelar toda la orden de este cliente? Se marcar¡n los servicios como 'Cancelado'.`,
+      message: `¿Seguro que deseas cancelar toda la orden de este cliente? Se marcar¡n los servicios como 'Cancelado'.`,
       type: "confirm",
       onConfirm: async () => {
         setDialog(prev => ({ ...prev, isOpen: false }));
@@ -1628,7 +1628,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
 
       setPrintTransaction(receiptData);
       triggerRocket();
-      showToast("Â¡Venta completada con éxito!", "success");
+      showToast("¡Venta completada con éxito!", "success");
       loadData();
     } catch (err) {
       console.error("Error en checkout:", err);
@@ -1811,7 +1811,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
     setDialog({
       isOpen: true,
       title: "Eliminar Servicio",
-      message: `Â¿Seguro que deseas eliminar el servicio "${app.services?.name}" de esta cita?`,
+      message: `¿Seguro que deseas eliminar el servicio "${app.services?.name}" de esta cita?`,
       type: "confirm",
       onConfirm: async () => {
         setDialog(prev => ({ ...prev, isOpen: false }));
@@ -1881,7 +1881,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
       } else if (directSaleSearchResults.length > 1) {
         showToast("Múltiples coincidencias. Selecciona uno de la lista.", "info");
       } else {
-        showToast("Cliente no encontrado. Â¿Es un cliente nuevo?", "warning");
+        showToast("Cliente no encontrado. ¿Es un cliente nuevo?", "warning");
       }
     }
   };
@@ -1890,7 +1890,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
     setAllClients([...allClients, newClient]);
     setSelectedClient(newClient);
     setShowNewClientModal(false);
-    showToast(`Â¡Cliente ${newClient.name} registrado y enlazado!`);
+    showToast(`¡Cliente ${newClient.name} registrado y enlazado!`);
   };
 
   // Group active services (status !== 'Agendado') by client
@@ -1994,7 +1994,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                       isOpen: true,
                       type: 'confirm',
                       title: 'Cita Encontrada',
-                      message: `El cliente ${scheduledMatch.clients?.name} tiene una cita agendada para hoy. Â¿Deseas iniciar su servicio ahora?`,
+                      message: `El cliente ${scheduledMatch.clients?.name} tiene una cita agendada para hoy. ¿Deseas iniciar su servicio ahora?`,
                       onConfirm: () => {
                         const clientApps = pendingServices.filter(app => app.client_id === scheduledMatch.client_id && app.status === 'Agendado');
                         handleStartGroupAppointments(clientApps);
@@ -3889,7 +3889,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
               <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', maxHeight: '340px', overflowY: 'auto', paddingRight: '8px' }} className="panda-scrollbar">
                 {offlineItems.length === 0 ? (
                   <div style={{ padding: '20px', textAlign: 'center', color: 'var(--text-muted)', fontSize: '13px' }}>
-                    No hay pagos pendientes. Â¡Todo sincronizado! âœ…
+                    No hay pagos pendientes. ¡Todo sincronizado! âœ…
                   </div>
                 ) : (
                   offlineItems.map(item => {
@@ -4034,7 +4034,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
         }}>
           <div className="glass-card animate-scale-in" style={{ padding: '32px', borderRadius: '24px', textAlign: 'center', maxWidth: '400px', width: '90%' }}>
             <CheckCircle size={64} color="var(--success-color)" style={{ margin: '0 auto 20px auto' }} />
-            <h2 style={{ marginBottom: '12px', fontSize: '24px', fontWeight: '900' }}>Â¡Cobro Exitoso!</h2>
+            <h2 style={{ marginBottom: '12px', fontSize: '24px', fontWeight: '900' }}>¡Cobro Exitoso!</h2>
             <p style={{ color: 'var(--text-secondary)', marginBottom: '32px' }}>El pago de {printTransaction.client?.name} ha sido procesado.</p>
             
             <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
@@ -4094,6 +4094,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
 };
 
 export default CheckoutPOS;
+
 
 
 

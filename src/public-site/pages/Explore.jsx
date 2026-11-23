@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+﻿import { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Settings, User, Award, Calendar as CalendarIcon, GlassWater, Gamepad2, Compass, ArrowUpRight, MapPin, X, ChevronLeft, Star, Heart } from 'lucide-react';
 import ToothIcon from '../../components/icons/ToothIcon';
@@ -46,7 +46,7 @@ export default function Explore() {
 
 
   // A self-contained profile peek instead of sending the visitor into the
-  // booking wizard's own "expanded barber" step — that view lives deep inside
+  // booking wizard's own "expanded barber" step â€” that view lives deep inside
   // BookAppointment's step machinery and pulled them into the reservation flow
   // just to look at a photo. This stays on Explorar; only the explicit
   // "Reservar" button below hands off to booking.
@@ -198,7 +198,7 @@ export default function Explore() {
         </div>
       </div>
 
-      {/* ODONTOPEDÍA — CINEMATIC IMMERSIVE EXPERIENCE */}
+      {/* ODONTOPEDÍA â€” CINEMATIC IMMERSIVE EXPERIENCE */}
       <div className="explore-section animate-fade-in-up" style={{ animationDelay: '300ms' }}>
         <div className="kids-cinema">
           {/* Cinematic Media Layer (barbería neutralizada: fondo arena) */}
@@ -212,10 +212,10 @@ export default function Explore() {
             <div className="kids-cinema-gradient" />
           </div>
           
-          {/* Content Layer — Centered, Breathing */}
+          {/* Content Layer â€” Centered, Breathing */}
           <div className="kids-cinema-content">
 
-            {/* Hero Title — The Star */}
+            {/* Hero Title â€” The Star */}
             <h2 className="kids-cinema-title">
               Odonto<br />pediatría<span className="kids-title-dot">.</span>
             </h2>
@@ -226,7 +226,7 @@ export default function Explore() {
               <span className="kids-subtitle-secondary">Paciencia, cuidado y sonrisas para los más pequeños.</span>
             </p>
             
-            {/* Feature Trio — Apple-style horizontal chips */}
+            {/* Feature Trio â€” Apple-style horizontal chips */}
             <div className="kids-cinema-features">
               <div className="kids-feature-chip" style={{ animationDelay: '0.6s' }}>
                 <Gamepad2 size={15} />
@@ -242,7 +242,7 @@ export default function Explore() {
               </div>
             </div>
 
-            {/* CTA — Shimmer Button */}
+            {/* CTA â€” Shimmer Button */}
             <button className="kids-cinema-cta" onClick={() => navigate('/perfil/reservar', { state: { startBooking: true, openCategory: 'Kids' } })}>
               <span className="kids-cta-text">Reservar para mi pequeño</span>
               <ArrowUpRight size={16} strokeWidth={2.5} />
@@ -368,7 +368,7 @@ export default function Explore() {
           font-size: 13px; font-weight: 500;
         }
 
-        /* TEAM ROW — story-style portrait cards */
+        /* TEAM ROW â€” story-style portrait cards */
         .explore-team-row {
           display: flex;
           gap: 12px;
@@ -442,7 +442,7 @@ export default function Explore() {
           0%,100% { opacity: 0.5; } 50% { opacity: 1; }
         }
 
-        /* BENEFITS — asymmetric bento (first item featured) */
+        /* BENEFITS â€” asymmetric bento (first item featured) */
         /* SNAP CARDS (Apple-style horizontal scroll) */
         .explore-benefits-snap {
           display: flex;
@@ -679,7 +679,7 @@ export default function Explore() {
           .ep-widget { flex: 1; }
         }
 
-        /* BARBER PROFILE — full-screen takeover, same layout as the landing's
+        /* BARBER PROFILE â€” full-screen takeover, same layout as the landing's
            expanded barber view (photo hero, manifesto panel, stats, portfolio). */
         .explore-profile-overlay {
           position: fixed; inset: 0;
@@ -745,9 +745,9 @@ export default function Explore() {
         }
         .explore-profile-reserve-btn:active { transform: scale(0.98); }
 
-        /* ═══════════════════════════════════════════════════
-           ODONTOPEDÍA — CINEMATIC IMMERSIVE CARD
-           ═══════════════════════════════════════════════════ */
+        /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+           ODONTOPEDÍA â€” CINEMATIC IMMERSIVE CARD
+           â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
         .kids-cinema {
           position: relative;
           border-radius: 28px;
@@ -763,7 +763,7 @@ export default function Explore() {
           .kids-cinema { min-height: 560px; }
         }
 
-        /* ── Video Layer ── */
+        /* â”€â”€ Video Layer â”€â”€ */
         .kids-cinema-video-wrap {
           position: absolute;
           inset: 0;
@@ -782,7 +782,7 @@ export default function Explore() {
           transform: scale(1.08);
         }
 
-        /* ── Gradient Layers (depth) ── */
+        /* â”€â”€ Gradient Layers (depth) â”€â”€ */
         .kids-cinema-vignette {
           position: absolute;
           inset: 0;
@@ -802,7 +802,7 @@ export default function Explore() {
           opacity: 0.85;
         }
 
-        /* ── Content Layer ── */
+        /* â”€â”€ Content Layer â”€â”€ */
         .kids-cinema-content {
           position: relative;
           z-index: 2;
@@ -815,7 +815,7 @@ export default function Explore() {
           gap: 0;
         }
 
-        /* ── Floating Eyebrow ── */
+        /* â”€â”€ Floating Eyebrow â”€â”€ */
         .kids-cinema-eyebrow {
           display: inline-flex;
           align-items: center;
@@ -842,7 +842,7 @@ export default function Explore() {
           animation: kidsDotPulse 2.5s ease-in-out infinite;
         }
 
-        /* ── Hero Title ── */
+        /* â”€â”€ Hero Title â”€â”€ */
         .kids-cinema-title {
           font-size: clamp(52px, 14vw, 88px);
           font-weight: 900;
@@ -859,7 +859,7 @@ export default function Explore() {
           text-shadow: none;
         }
 
-        /* ── Subtitle ── */
+        /* â”€â”€ Subtitle â”€â”€ */
         .kids-cinema-subtitle {
           font-size: 15px;
           line-height: 1.6;
@@ -875,7 +875,7 @@ export default function Explore() {
           font-size: 14px;
         }
 
-        /* ── Feature Chips ── */
+        /* â”€â”€ Feature Chips â”€â”€ */
         .kids-cinema-features {
           display: flex;
           gap: 8px;
@@ -909,7 +909,7 @@ export default function Explore() {
           transform: translateY(-2px);
         }
 
-        /* ── CTA Button with Shimmer ── */
+        /* â”€â”€ CTA Button with Shimmer â”€â”€ */
         .kids-cinema-cta {
           position: relative;
           display: inline-flex;
@@ -956,7 +956,7 @@ export default function Explore() {
           pointer-events: none;
         }
 
-        /* ── Keyframes ── */
+        /* â”€â”€ Keyframes â”€â”€ */
         @keyframes kidsSlideUp {
           from { opacity: 0; transform: translateY(24px); }
           to   { opacity: 1; transform: translateY(0); }
@@ -978,3 +978,4 @@ export default function Explore() {
     </div>
   );
 }
+

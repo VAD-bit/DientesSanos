@@ -17,9 +17,9 @@ const RANKS = [
   { min: 300, label: 'Oro' },
   { min: 200, label: 'Plata' },
   { min: 100, label: 'Bronce' },
-  { min: 0, label: 'BÃ¡sico' },
+  { min: 0, label: 'Básico' },
 ];
-const getRank = (points) => RANKS.find(r => points >= r.min)?.label || 'BÃ¡sico';
+const getRank = (points) => RANKS.find(r => points >= r.min)?.label || 'Básico';
 
 export default function Login() {
   const [mode, setMode] = useState(() => {
@@ -208,7 +208,7 @@ export default function Login() {
   const memberSinceRaw = new Date().toLocaleDateString('es-ES', { month: 'short', year: 'numeric' });
   const memberSince = memberSinceRaw.charAt(0).toUpperCase() + memberSinceRaw.slice(1).replace('.', '');
   const rank = getRank(0);
-  const displayName = registerForm.name.trim() || 'Tu nombre aquÃ­';
+  const displayName = registerForm.name.trim() || 'Tu nombre aquí';
   const initials = registerForm.name.trim()
     ? registerForm.name.trim().split(/\s+/).slice(0, 2).map(w => w[0]).join('').toUpperCase()
     : '?';
@@ -327,7 +327,7 @@ export default function Login() {
                 transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
                 style={{ fontSize: `clamp(1.4rem, 3vw, ${isXL ? '2.4rem' : '2rem'})`, fontWeight: 900, lineHeight: 1.15, marginBottom: 20, textAlign: 'center' }}
               >
-                {mode === 'login' ? <>Â¡QuÃ© bueno <span className="text-gold">verte!</span></> : <>Ãšnete a la<br /><span className="text-gold">familia Dientes Sanos.</span></>}
+                {mode === 'login' ? <>¡Qué bueno <span className="text-gold">verte!</span></> : <>Ãšnete a la<br /><span className="text-gold">familia Dientes Sanos.</span></>}
               </motion.h1>
 
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10, marginBottom: 20 }}>
@@ -344,7 +344,7 @@ export default function Login() {
 
               <p style={{ color: 'var(--text-secondary)', fontSize: isXL ? 13 : 11.5, lineHeight: 1.6, marginBottom: 20, maxWidth: isXL ? 400 : 340, margin: '0 auto 20px' }}>
                 {mode === 'login'
-                  ? <>Inicia sesiÃ³n para reservar, ganar puntos<br />y disfrutar todos los beneficios<br />de <span style={{ color: 'var(--champagne)', fontWeight: 700 }}>Club Sonrisa.</span></>
+                  ? <>Inicia sesión para reservar, ganar puntos<br />y disfrutar todos los beneficios<br />de <span style={{ color: 'var(--champagne)', fontWeight: 700 }}>Club Sonrisa.</span></>
                   : <>Crea tu cuenta para reservar, ganar puntos<br />y disfrutar todos los beneficios<br />de <span style={{ color: 'var(--champagne)', fontWeight: 700 }}>Club Sonrisa.</span></>
                 }
               </p>
@@ -410,7 +410,7 @@ export default function Login() {
                   cursor: 'pointer', transition: 'all 0.2s ease',
                 }}
               >
-                {mode === 'login' ? 'Â¿No tienes cuenta? Crear cuenta' : 'Â¿Ya tienes cuenta? Iniciar sesiÃ³n'}
+                {mode === 'login' ? '¿No tienes cuenta? Crear cuenta' : '¿Ya tienes cuenta? Iniciar sesión'}
               </motion.button>
             </motion.div>
           )}
@@ -432,7 +432,7 @@ export default function Login() {
                 transition={{ duration: 3.5, repeat: Infinity, ease: 'easeInOut' }}
                 style={{ fontSize: isPortraitTablet ? '2.6rem' : '1.8rem', fontWeight: 900, lineHeight: 1.1, letterSpacing: '-0.02em' }}
               >
-                {mode === 'login' ? <>Â¡QuÃ© bueno <span className="text-gold">verte!</span></> : <>Ãšnete a la<br /><span className="text-gold">familia Dientes Sanos.</span></>}
+                {mode === 'login' ? <>¡Qué bueno <span className="text-gold">verte!</span></> : <>Ãšnete a la<br /><span className="text-gold">familia Dientes Sanos.</span></>}
               </motion.h1>
             </motion.div>
           )}
@@ -472,12 +472,12 @@ export default function Login() {
                     transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
                     style={{ fontSize: isXL ? 20 : 17, fontWeight: 800, color: '#111111', textAlign: 'center', marginBottom: 2 }}
                   >
-                    {mode === 'login' ? 'Iniciar sesiÃ³n' : 'Crear cuenta'}
+                    {mode === 'login' ? 'Iniciar sesión' : 'Crear cuenta'}
                   </motion.h2>
                   <p style={{ fontSize: isXL ? 13 : 11, color: 'var(--text-secondary)', textAlign: 'center', marginBottom: 16, lineHeight: 1.4 }}>
                     {mode === 'login'
-                      ? <>Accede a tu cuenta y continÃºa disfrutando de <span style={{ color: 'var(--champagne)', fontWeight: 600 }}>Club Sonrisa.</span></>
-                      : <>RegÃ­strate para reservar, ganar puntos y disfrutar de <span style={{ color: 'var(--champagne)', fontWeight: 600 }}>Club Sonrisa.</span></>
+                      ? <>Accede a tu cuenta y continúa disfrutando de <span style={{ color: 'var(--champagne)', fontWeight: 600 }}>Club Sonrisa.</span></>
+                      : <>Regístrate para reservar, ganar puntos y disfrutar de <span style={{ color: 'var(--champagne)', fontWeight: 600 }}>Club Sonrisa.</span></>
                     }
                   </p>
                 </>
@@ -489,7 +489,7 @@ export default function Login() {
                   transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
                   style={{ fontSize: isBigTablet ? 26 : 17, fontWeight: 800, color: '#111111', textAlign: 'center', marginBottom: isBigTablet ? 24 : 16 }}
                 >
-                  {mode === 'login' ? 'Iniciar sesiÃ³n' : 'Crear cuenta'}
+                  {mode === 'login' ? 'Iniciar sesión' : 'Crear cuenta'}
                 </motion.h2>
               )}
 
@@ -508,7 +508,7 @@ export default function Login() {
                   <div style={{ marginBottom: isSmall ? 18 : 16 }}>
                     <label style={{ display: 'flex', alignItems: 'center', gap: 5, fontSize: isBigTablet ? 15 : (isSmall ? 12 : 11), fontWeight: 500, color: '#0f172a', marginBottom: isBigTablet ? 10 : (isSmall ? 8 : 6) }}>
                       <User size={12} style={{ color: 'var(--champagne)' }} />
-                      TelÃ©fono o correo electrÃ³nico
+                      Teléfono o correo electrónico
                     </label>
                     <input
                       type="text"
@@ -525,7 +525,7 @@ export default function Login() {
                   <div style={{ marginBottom: isSmall ? 18 : 16 }}>
                     <label style={{ display: 'flex', alignItems: 'center', gap: 5, fontSize: isBigTablet ? 15 : (isSmall ? 12 : 11), fontWeight: 500, color: '#0f172a', marginBottom: isBigTablet ? 10 : (isSmall ? 8 : 6) }}>
                       <Lock size={12} style={{ color: 'var(--champagne)' }} />
-                      ContraseÃ±a
+                      Contraseña
                     </label>
                     <div style={{ position: 'relative' }}>
                       <input
@@ -572,8 +572,8 @@ export default function Login() {
                       </div>
                       Recordarme
                     </label>
-                    <Link to="/olvidar-contraseÃ±a" style={{ fontSize: isSmall ? 13 : 12, color: 'var(--champagne)', textDecoration: 'none', fontWeight: 600 }}>
-                      Â¿Olvidaste tu contraseÃ±a?
+                    <Link to="/olvidar-contraseña" style={{ fontSize: isSmall ? 13 : 12, color: 'var(--champagne)', textDecoration: 'none', fontWeight: 600 }}>
+                      ¿Olvidaste tu contraseña?
                     </Link>
                   </div>
 
@@ -601,7 +601,7 @@ export default function Login() {
                         <Loader2 size={18} />
                       </motion.div>
                     ) : (
-                      <>Iniciar sesiÃ³n <ArrowRight size={17} /></>
+                      <>Iniciar sesión <ArrowRight size={17} /></>
                     )}
                   </motion.button>
                 </form>
@@ -660,7 +660,7 @@ export default function Login() {
                                 value={registerForm.name}
                                 onChange={(e) => setRegisterForm({ ...registerForm, name: e.target.value })}
                                 className="input-field auth-input"
-                                placeholder="Juan PÃ©rez"
+                                placeholder="Juan Pérez"
                                 required
                                 style={{ width: '100%', boxSizing: 'border-box', padding: isBigTablet ? '16px 18px 16px 46px' : (isSmall ? '10px 12px 10px 38px' : '7px 12px 7px 38px'), height: inputH, fontSize: isBigTablet ? 18 : (isSmall ? 16 : undefined) }}
                               />
@@ -688,7 +688,7 @@ export default function Login() {
                             <div style={{ flex: '1 1 180px' }}>
                               <label style={{ display: 'flex', alignItems: 'center', gap: 5, fontSize: isBigTablet ? 15 : (isSmall ? 12 : 11), fontWeight: 500, color: '#0f172a', marginBottom: isBigTablet ? 8 : (isSmall ? 5 : 4) }}>
                                 <Phone size={12} style={{ color: 'var(--champagne)' }} />
-                                TelÃ©fono
+                                Teléfono
                               </label>
                               <input
                                 type="tel"
@@ -704,7 +704,7 @@ export default function Login() {
                             <div style={{ flex: '1 1 180px' }}>
                               <label style={{ display: 'flex', alignItems: 'center', gap: 5, fontSize: isBigTablet ? 15 : (isSmall ? 12 : 11), fontWeight: 500, color: '#0f172a', marginBottom: isBigTablet ? 8 : (isSmall ? 5 : 4) }}>
                                 <CreditCard size={12} style={{ color: 'var(--champagne)' }} />
-                                CÃ©dula
+                                Cédula
                               </label>
                               <input
                                 type="text"
@@ -768,7 +768,7 @@ export default function Login() {
                         <div style={{ marginBottom: isSmall ? 14 : 16 }}>
                           <label style={{ display: 'flex', alignItems: 'center', gap: 5, fontSize: isBigTablet ? 15 : (isSmall ? 12 : 11), fontWeight: 500, color: '#0f172a', marginBottom: isBigTablet ? 8 : (isSmall ? 5 : 4) }}>
                             <Lock size={12} style={{ color: 'var(--champagne)' }} />
-                            ContraseÃ±a
+                            Contraseña
                           </label>
                           <div style={{ position: 'relative' }}>
                             <input
@@ -810,7 +810,7 @@ export default function Login() {
                               flex: '0 0 auto',
                             }}
                           >
-                            <ArrowLeft size={16} /> AtrÃ¡s
+                            <ArrowLeft size={16} /> Atrás
                           </motion.button>
 
                             <motion.button
@@ -847,7 +847,7 @@ export default function Login() {
 
               {/* Desktop/tablet already gets this exact toggle as a pill button in the
                   left panel above (the `{!isSmall && (...)}` block containing the
-                  "Â¿Ya tienes cuenta? Iniciar sesiÃ³n" button) â€” rendering it again here
+                  "¿Ya tienes cuenta? Iniciar sesión" button) â€” rendering it again here
                   unconditionally meant desktop showed the same action twice while
                   phones (where the left panel is hidden) only ever saw this one. */}
               {isSmall && (
@@ -858,10 +858,10 @@ export default function Login() {
                     style={{ padding: isBigTablet ? '12px 22px' : '10px 18px', fontSize: isBigTablet ? 15 : 13 }}
                   >
                     <span style={{ color: '#0f172a', fontWeight: 500 }}>
-                      {mode === 'login' ? 'Â¿No tienes cuenta?' : 'Â¿Ya tienes cuenta?'}{' '}
+                      {mode === 'login' ? '¿No tienes cuenta?' : '¿Ya tienes cuenta?'}{' '}
                     </span>
                     <span style={{ color: 'var(--champagne)', fontWeight: 700 }}>
-                      {mode === 'login' ? 'Crear cuenta' : 'Iniciar sesiÃ³n'}
+                      {mode === 'login' ? 'Crear cuenta' : 'Iniciar sesión'}
                     </span>
                   </button>
                 </div>
@@ -891,7 +891,7 @@ export default function Login() {
                 transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut', delay: 0.15 }}
                 style={{ fontSize: isXL ? 23 : 20, fontWeight: 800, color: '#111111', textAlign: 'center', marginBottom: 24 }}
               >
-                Tu membresÃ­a empieza <span className="text-gold">hoy.</span>
+                Tu membresía empieza <span className="text-gold">hoy.</span>
               </motion.h2>
 
               <div style={{ perspective: 1200 }}>
@@ -1018,8 +1018,8 @@ export default function Login() {
                 style={{ fontSize: 28, fontWeight: 900, color: '#111111', marginBottom: 6, fontFamily: 'General Sans' }}
               >
                 {welcomeData?.isReturning
-                  ? <>Â¡Bienvenido{welcomeData?.name ? ` de vuelta, ${welcomeData.name}` : ''}!</>
-                  : <>Â¡Bienvenido{welcomeData?.name ? `, ${welcomeData.name}` : ''}!</>
+                  ? <>¡Bienvenido{welcomeData?.name ? ` de vuelta, ${welcomeData.name}` : ''}!</>
+                  : <>¡Bienvenido{welcomeData?.name ? `, ${welcomeData.name}` : ''}!</>
                 }
               </motion.h2>
 
@@ -1054,7 +1054,7 @@ export default function Login() {
                 style={{ fontSize: 14, color: '#64748b', lineHeight: 1.6, marginBottom: 24, fontFamily: 'General Sans' }}
               >
                 {welcomeData?.isReturning
-                  ? <>Â¿QuÃ© te gustarÃ­a hacer hoy?</>
+                  ? <>¿Qué te gustaría hacer hoy?</>
                   : <>Ya puedes reservar citas, acumular puntos<br />y disfrutar de <span style={{ color: 'var(--champagne)', fontWeight: 600 }}>beneficios exclusivos.</span></>
                 }
               </motion.p>
@@ -1149,4 +1149,5 @@ export default function Login() {
     </>
   );
 }
+
 

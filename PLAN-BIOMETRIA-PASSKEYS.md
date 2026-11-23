@@ -1,4 +1,4 @@
-# Plan de implementación: acceso biométrico seguro con Passkeys
+﻿# Plan de implementación: acceso biométrico seguro con Passkeys
 
 Estado: implementación local completada; pendiente migración, variables de producción y pruebas en dispositivos reales
 Proyecto: odontosonrisa
@@ -54,7 +54,7 @@ Dependencia:
 Archivos propuestos:
 
 - `src/services/passkeyService.js`: llamadas a los endpoints y a `startRegistration` / `startAuthentication`.
-- `src/components/PasskeyLoginButton.jsx`: botón “Entrar con huella o Face ID”, estados de carga y mensajes claros.
+- `src/components/PasskeyLoginButton.jsx`: botón â€œEntrar con huella o Face IDâ€, estados de carga y mensajes claros.
 - `src/components/PasskeySettings.jsx`: registrar, nombrar, listar y revocar dispositivos desde Mi Perfil.
 - `src/components/Login.jsx`: acceso biométrico del personal.
 - `src/public-site/pages/Login.jsx`: acceso biométrico de clientes, en una segunda fase controlada.
@@ -218,15 +218,15 @@ Opcional recomendado: `passkey_audit_events` para registro, acceso exitoso/falli
 
 En `src/components/Login.jsx`:
 
-- Mostrar “Entrar con huella o Face ID” solo si `browserSupportsWebAuthn()` es verdadero.
+- Mostrar â€œEntrar con huella o Face IDâ€ solo si `browserSupportsWebAuthn()` es verdadero.
 - Mantener correo y contraseña debajo como alternativa.
 - Bloquear el botón mientras la ceremonia está activa para evitar dobles solicitudes.
 - Mensajes diferenciados: cancelado por el usuario, dispositivo no compatible, credencial no registrada, empleado archivado y error de red.
 
 En Mi Perfil > Seguridad:
 
-- Botón “Activar acceso biométrico en este dispositivo”.
-- Lista “Mis dispositivos”: nombre, fecha, último uso, botón revocar.
+- Botón â€œActivar acceso biométrico en este dispositivoâ€.
+- Lista â€œMis dispositivosâ€: nombre, fecha, último uso, botón revocar.
 - Advertencia de que la biometría permanece en el dispositivo/proveedor de passkeys; odontosonrisa guarda solamente clave pública y metadatos mínimos.
 
 Primera liberación recomendada: personal interno únicamente. Después de una semana sin fallos, habilitar clientes públicos.
@@ -258,7 +258,7 @@ En una segunda fase:
 
 ## 8. Orden de implementación
 
-### Fase 0 — retirar la clave administrativa del navegador
+### Fase 0 â€” retirar la clave administrativa del navegador
 
 1. Inventariar cada uso de `authClient`.
 2. Crear endpoints/RPC/RLS de reemplazo.
@@ -266,7 +266,7 @@ En una segunda fase:
 4. Rotar la clave y actualizar Vercel solo con `SUPABASE_SERVICE_ROLE_KEY` del lado servidor.
 5. Build, pruebas de permisos por rol y prueba manual de todos los módulos principales.
 
-### Fase 1 — backend passkeys
+### Fase 1 â€” backend passkeys
 
 1. Instalar `@simplewebauthn/server` y `@simplewebauthn/browser` en versiones compatibles.
 2. Crear migración y aplicar primero en staging.
@@ -274,20 +274,20 @@ En una segunda fase:
 4. Implementar registro, verificación, login, listado y revocación.
 5. Añadir pruebas automatizadas para retos vencidos/usados, origen incorrecto, contador y usuario inactivo.
 
-### Fase 2 — personal interno
+### Fase 2 â€” personal interno
 
 1. Añadir botón en login.
 2. Añadir gestión en Mi Perfil.
 3. Integrar sesión retornada con `AuthContext` sin duplicar listeners ni provocar doble carga.
 4. Activar inicialmente para administrador y dos Odontologos piloto.
 
-### Fase 3 — clientes
+### Fase 3 â€” clientes
 
 1. Reutilizar servicio con audiencia `public`.
 2. Integrar login y reserva.
 3. Probar Google/contraseña/recuperación y passkey en conjunto.
 
-### Fase 4 — producción
+### Fase 4 â€” producción
 
 1. Definir dominio canónico.
 2. Configurar variables de servidor en Vercel.
@@ -394,3 +394,4 @@ Referencias oficiales consultadas para este plan:
 - WebAuthn Level 3 (W3C): retos del servidor, validación de origen y RP ID.
 - SimpleWebAuthn: flujos `generate/verify` en servidor y `startRegistration/startAuthentication` en navegador.
 - Supabase Auth: `admin.generateLink`, `verifyOtp` y prohibición de exponer `service_role` en el navegador.
+

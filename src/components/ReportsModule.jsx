@@ -1203,7 +1203,7 @@ const ReportsModule = ({ isMobile, rates, staff = [] }) => {
               cursor: generatingPdf ? 'wait' : 'pointer',
               transition: 'background-color 0.3s ease, color 0.3s ease'
             }}>
-            {generatingPdf ? 'â³ Generando PDF...' : <><Download size={16} /> PDF</>}
+            {generatingPdf ? '³ Generando PDF...' : <><Download size={16} /> PDF</>}
           </button>
         </div>
       </div>
@@ -2017,4 +2017,5 @@ const ReportsModule = ({ isMobile, rates, staff = [] }) => {
 };
 
 export default ReportsModule;
+
 

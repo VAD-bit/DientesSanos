@@ -265,7 +265,7 @@ const ReceptionModule = ({ isMobile, rates }) => {
     try {
       setLoading(true);
       await dataService.updateAppointmentStatus(id, 'En Silla');
-      showToast("Â¡Servicio iniciado! El cliente ya est¡ en sillón.");
+      showToast("¡Servicio iniciado! El cliente ya est¡ en sillón.");
       triggerRocket();
       loadData();
     } catch (error) {
@@ -537,7 +537,7 @@ const ReceptionModule = ({ isMobile, rates }) => {
         await Promise.all([...extraPromises, ...productPromises]);
       }
 
-      showToast(isProductOnly ? "Venta enviada a caja" : (scheduledAt ? `Â¡Cita agendada para las ${new Date(scheduledAt).toLocaleTimeString([], {hour:'2-digit', minute:'2-digit', hour12: true})}!` : `Â¡Orden enviada! ${selectedServices.length} servicios en cola.`));
+      showToast(isProductOnly ? "Venta enviada a caja" : (scheduledAt ? `¡Cita agendada para las ${new Date(scheduledAt).toLocaleTimeString([], {hour:'2-digit', minute:'2-digit', hour12: true})}!` : `¡Orden enviada! ${selectedServices.length} servicios en cola.`));
       if (!statusOverride || statusOverride === 'En Silla') triggerRocket();
 
       const targetStatus = statusOverride || formData.status;
@@ -605,8 +605,8 @@ const ReceptionModule = ({ isMobile, rates }) => {
       type: 'confirm',
       title: appointmentsToDelete.length > 1 ? 'Eliminar orden completa' : 'Eliminar cita',
       message: appointmentsToDelete.length > 1
-        ? `Esta orden contiene ${appointmentsToDelete.length} servicios. Se eliminar¡n todos juntos. Â¿Deseas continuar?`
-        : 'Â¿Est¡s seguro de que deseas eliminar esta cita permanentemente? Esta acción no se puede deshacer.',
+        ? `Esta orden contiene ${appointmentsToDelete.length} servicios. Se eliminar¡n todos juntos. ¿Deseas continuar?`
+        : '¿Est¡s seguro de que deseas eliminar esta cita permanentemente? Esta acción no se puede deshacer.',
       onConfirm: async () => {
         try {
           setLoading(true);
@@ -871,7 +871,7 @@ const ReceptionModule = ({ isMobile, rates }) => {
                   {selectedProducts.map(p => (
                     <div key={p.id} className="reception-order-row" style={{ minHeight: '66px', padding: '9px 9px 9px 10px', display: 'grid', gridTemplateColumns: '42px minmax(0,1fr) auto 36px', alignItems: 'center', gap: '10px', borderRadius: '14px', background: String(p.inventory_type).toLowerCase() === 'cafe' ? 'rgba(255,159,10,.035)' : 'rgba(48,209,88,.035)', border: `1px solid ${String(p.inventory_type).toLowerCase() === 'cafe' ? 'rgba(255,159,10,.13)' : 'rgba(48,209,88,.13)'}` }}>
                       <span style={{ width: '42px', height: '42px', display: 'grid', placeItems: 'center', overflow: 'hidden', borderRadius: '12px', color: String(p.inventory_type).toLowerCase() === 'cafe' ? '#ff9f0a' : '#30d158', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)' }}>{p.image_url ? <img src={p.image_url} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} /> : <ShoppingBag size={18} />}</span>
-                      <div style={{ minWidth: 0 }}><span style={{ display: 'block', color: String(p.inventory_type).toLowerCase() === 'cafe' ? '#ffad33' : '#54d37b', fontSize: '8px', fontWeight: 950, letterSpacing: '.65px' }}>{getInventorySalesLabel(p).toUpperCase()} {Number(p.quantity || 1) > 1 ? `Â· Ø${p.quantity}` : ''}</span><strong style={{ display: 'block', marginTop: '2px', color: '#111111', fontSize: '13px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{p.name}</strong></div>
+                      <div style={{ minWidth: 0 }}><span style={{ display: 'block', color: String(p.inventory_type).toLowerCase() === 'cafe' ? '#ffad33' : '#54d37b', fontSize: '8px', fontWeight: 950, letterSpacing: '.65px' }}>{getInventorySalesLabel(p).toUpperCase()} {Number(p.quantity || 1) > 1 ? `· Ø${p.quantity}` : ''}</span><strong style={{ display: 'block', marginTop: '2px', color: '#111111', fontSize: '13px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{p.name}</strong></div>
                       <div style={{ textAlign: 'right' }}>
                         <strong style={{ display: 'block', color: '#111111', fontSize: '12px' }}>{formatBs(Number(p.price) * Number(p.quantity || 1) * exchangeRate)} Bs</strong>
                         <small style={{ color: 'var(--text-muted)', fontSize: '9px' }}>${formatUsd(Number(p.price) * Number(p.quantity || 1))}</small>
@@ -1006,7 +1006,7 @@ const ReceptionModule = ({ isMobile, rates }) => {
                           fontWeight: '900',
                           borderBottomRightRadius: '8px'
                         }}>
-                          {idx + 1}Âº
+                          {idx + 1}º
                         </div>
 
                         {isBusy && (
@@ -1770,7 +1770,7 @@ const SelectionModal = ({ isOpen, onClose, title, icon, items, selectedItems, on
                   </div>
                   
                   <div style={{ flex: 1, minWidth: 0 }}>
-                    {type === 'product' && <div style={{ color: String(item.inventory_type).toLowerCase() === 'cafe' ? '#ff9f0a' : '#30d158', fontWeight: '850', fontSize: '9px', textTransform: 'uppercase', letterSpacing: '0.6px', marginBottom: '4px' }}>{getInventorySalesLabel(item)} Â· {isOutOfStock ? 'Agotado' : `Stock: ${item.stock}`}</div>}
+                    {type === 'product' && <div style={{ color: String(item.inventory_type).toLowerCase() === 'cafe' ? '#ff9f0a' : '#30d158', fontWeight: '850', fontSize: '9px', textTransform: 'uppercase', letterSpacing: '0.6px', marginBottom: '4px' }}>{getInventorySalesLabel(item)} · {isOutOfStock ? 'Agotado' : `Stock: ${item.stock}`}</div>}
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                       <div style={{ fontSize: '14px', fontWeight: '750', color: isSelected ? 'var(--gold-primary)' : 'white', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{item.name}</div>
                       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', marginLeft: '10px' }}>
@@ -1829,4 +1829,5 @@ const SelectionModal = ({ isOpen, onClose, title, icon, items, selectedItems, on
 };
 
 export default ReceptionModule;
+
 

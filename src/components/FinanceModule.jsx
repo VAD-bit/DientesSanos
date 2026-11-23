@@ -356,7 +356,7 @@ const EditTransactionContent = ({ transaction: t, rates, staff = [], onSave, onC
                       label: b.name,
                       imageUrl: b.image_url || b.avatar_url || '',
                       avatarFallback: (b.name || '?').trim().charAt(0).toUpperCase(),
-                      subtitle: `${roleLabel((b.role || 'Odontologo').split('|')[0])}${b.commission_pct != null ? ` Â· ${b.commission_pct}%` : ''}`
+                      subtitle: `${roleLabel((b.role || 'Odontologo').split('|')[0])}${b.commission_pct != null ? ` · ${b.commission_pct}%` : ''}`
                     }))
                   ]}
                   triggerStyle={{ minHeight: '44px' }}
@@ -459,7 +459,7 @@ const EditTransactionContent = ({ transaction: t, rates, staff = [], onSave, onC
           </div>
           <div>
             <label style={{ fontSize: '9px', color: 'var(--text-muted)', fontWeight: '800', textTransform: 'uppercase', display: 'block', marginBottom: '4px' }}>Referencia</label>
-            <input placeholder="NÂº de referencia" value={paymentRef} onChange={e => setPaymentRef(e.target.value)} style={inputStyle} />
+            <input placeholder="Nº de referencia" value={paymentRef} onChange={e => setPaymentRef(e.target.value)} style={inputStyle} />
           </div>
         </div>
         <div style={{ marginTop: '10px' }}>
@@ -616,7 +616,7 @@ const EditExpenseContent = ({ transaction: t, rates, staff = [], onSave, onCance
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '16px' }}>
         <div>
           <div style={{ fontSize: '11px', fontWeight: '900', color: '#ff9f0a', textTransform: 'uppercase', letterSpacing: '.5px' }}>{categoryLabel}</div>
-          <div style={{ fontSize: '12px', color: 'var(--text-secondary)', marginTop: '4px' }}>Egreso Â· edita a quién, cu¡nto y por dónde salió</div>
+          <div style={{ fontSize: '12px', color: 'var(--text-secondary)', marginTop: '4px' }}>Egreso · edita a quién, cu¡nto y por dónde salió</div>
         </div>
         <div style={{ textAlign: 'right' }}>
           <div style={{ fontSize: '22px', fontWeight: '950', color: '#ff453a' }}>-{(Number(amountBs) || 0).toLocaleString('es-VE', { minimumFractionDigits: 2 })} Bs</div>
@@ -630,7 +630,7 @@ const EditExpenseContent = ({ transaction: t, rates, staff = [], onSave, onCance
         <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
           {hasStaff && (
             <div>
-              <label style={label}>Â¿A quién se le pagó?</label>
+              <label style={label}>¿A quién se le pagó?</label>
               <PandaSelect
                 value={staffId}
                 onChange={setStaffId}
@@ -674,7 +674,7 @@ const EditExpenseContent = ({ transaction: t, rates, staff = [], onSave, onCance
           </div>
           <div>
             <label style={label}>Referencia (opcional)</label>
-            <input placeholder="NÂº de referencia" value={paymentRef} onChange={e => setPaymentRef(e.target.value)} style={inputStyle} />
+            <input placeholder="Nº de referencia" value={paymentRef} onChange={e => setPaymentRef(e.target.value)} style={inputStyle} />
           </div>
         </div>
       </div>
@@ -1170,7 +1170,7 @@ const FinanceModule = ({ isMobile, currency, rates, staff = [] }) => {
       isOpen: true,
       type: 'confirm',
       title: 'Eliminar transacción',
-      message: `Â¿Eliminar permanentemente esta transacción de ${transaction.metadata?.clientName || 'este cliente'}? Esto también eliminar¡ la cita asociada. Esta acción no se puede deshacer.`,
+      message: `¿Eliminar permanentemente esta transacción de ${transaction.metadata?.clientName || 'este cliente'}? Esto también eliminar¡ la cita asociada. Esta acción no se puede deshacer.`,
       confirmText: 'Eliminar',
       onConfirm: async () => {
         try {
@@ -1261,7 +1261,7 @@ const FinanceModule = ({ isMobile, currency, rates, staff = [] }) => {
         };
         const applyComm = (entry) => { if (entry) entry.commissionBs = Number(entry.commissionEarned || 0) * rate; };
 
-        // 1) Comisión de servicio por cita (base neta âˆ’ lavado en la 1Âª) Ø % del barbero
+        // 1) Comisión de servicio por cita (base neta âˆ’ lavado en la 1ª) Ø % del barbero
         for (let i = 0; i < newServices.length; i++) {
           const row = newServices[i];
           const base = Math.max(0, (Number(row.servicePrice) || 0) - (i === 0 ? newWashDeduct : 0));
@@ -2196,7 +2196,7 @@ const FinanceModule = ({ isMobile, currency, rates, staff = [] }) => {
       weeklyAssistanceBs = weeklyAssistanceUsd * (rates?.usd || 550);
       netIncomeBs = earnedBs - weeklyAssistanceBs;
     } else if (isAssistant) {
-      // Cuenta lavados reales de la asistente: los incluidos (washCount) MÃS los extras
+      // Cuenta lavados reales de la asistente: los incluidos (washCount) MÁS los extras
       // de lavado (Lavado express/premium), que no activan didWash pero sí son lavados.
       lavadosCount = serviceTransactions.reduce((sum, t) => {
         const m = t.metadata || {};
@@ -2332,7 +2332,7 @@ const FinanceModule = ({ isMobile, currency, rates, staff = [] }) => {
   }, 0);
   // Ganancia de Panda por lavados: el asistente cobra su % (washAssistantSharePct) del lavado
   // y Panda se queda con el resto. Se deriva de lo que se le pagó al asistente en cada venta:
-  // si le tocó 'x' con un share del 60%, el lavado valía x/0.6 y Panda retuvo el 40% = xÂ·(0.4/0.6).
+  // si le tocó 'x' con un share del 60%, el lavado valía x/0.6 y Panda retuvo el 40% = x·(0.4/0.6).
   const lavadosProfitBsOf = (txs) => (txs || []).filter(t => t.type === 'income').reduce((sum, t) => {
     const share = Math.min(0.95, Math.max(0.05, Number(t.metadata?.washAssistantSharePct || 60) / 100));
     const assistantCommBs = (t.metadata?.staffInvolved || [])
@@ -2388,7 +2388,7 @@ const FinanceModule = ({ isMobile, currency, rates, staff = [] }) => {
           id: `${t.id}-${p.id}`,
           date: t.created_at,
           product: `${p.name || inv?.name || 'Producto'} Ø${qty}`,
-          context: `${m.clientName || 'Cliente'} Â· ${m.serviceName || 'Servicio'}`,
+          context: `${m.clientName || 'Cliente'} · ${m.serviceName || 'Servicio'}`,
           seller: p.sellerName || '',
           saleBs: saleUsd * rate, marginBs: marginUsd * rate, costBs: costTotalUsd * rate,
           saleUsd, marginUsd, costUsd: costTotalUsd,
@@ -2427,18 +2427,18 @@ const FinanceModule = ({ isMobile, currency, rates, staff = [] }) => {
       let concept, kind, staffTakeBs = 0;
       if (t.type === 'income') {
         kind = 'income';
-        concept = `${m.clientName || 'Cliente'} Â· ${m.serviceName || 'Servicio'}`;
+        concept = `${m.clientName || 'Cliente'} · ${m.serviceName || 'Servicio'}`;
         staffTakeBs = (m.staffInvolved || []).reduce((s, x) => s + Number(x.commissionBs || 0) + Number(x.productCommissionBs || 0) + Number(x.tipBs || 0), 0);
       } else if (m.conversion) {
         kind = 'conversion'; concept = `${m.transfer ? 'Transferencia' : 'Conversión'}: ${m.fromLabel || ''} â†’ ${m.toLabel || ''}`;
       } else if (t.category === 'Pago Proveedor') {
         kind = 'provider'; concept = `Pago a proveedor${m.paymentMethod ? ` (${m.paymentMethod})` : ''}`;
       } else if (t.category === 'Vales Odontologos') {
-        kind = 'vale'; concept = `Vale / Adelanto Â· ${nameOfStaff(m.staffId)}`;
+        kind = 'vale'; concept = `Vale / Adelanto · ${nameOfStaff(m.staffId)}`;
       } else if (t.category === 'Consumo Personal') {
-        kind = 'consumo'; concept = `Consumo Â· ${nameOfStaff(m.staffId)}`;
+        kind = 'consumo'; concept = `Consumo · ${nameOfStaff(m.staffId)}`;
       } else if (t.category === 'Pago Nómina') {
-        kind = 'nomina'; concept = `Pago nómina Â· ${nameOfStaff(m.staffId)}`;
+        kind = 'nomina'; concept = `Pago nómina · ${nameOfStaff(m.staffId)}`;
       } else {
         kind = 'expense'; concept = t.description || 'Gasto';
       }
@@ -2610,7 +2610,7 @@ const FinanceModule = ({ isMobile, currency, rates, staff = [] }) => {
             transition: 'color 0.2s'
           }}
         >
-          {isMobile ? 'ANÃLISIS' : 'RENTABILIDAD Y OCUPACIÓN'}
+          {isMobile ? 'ANÁLISIS' : 'RENTABILIDAD Y OCUPACIÓN'}
         </button>
         <button
           onClick={() => setActiveTab('receivables')}
@@ -2776,7 +2776,7 @@ const FinanceModule = ({ isMobile, currency, rates, staff = [] }) => {
               <Receipt size={14} color="#ffb340" /> CUENTAS POR COBRAR
             </div>
             <div className="finance-money" style={{ fontSize: '20px', fontWeight: '900', color: '#ffb340', marginTop: '6px' }}>{totalReceivableBs.toLocaleString('es-VE', { maximumFractionDigits: 2 })} Bs</div>
-            <span style={{ fontSize: '10px', color: 'var(--text-muted)' }}>${totalReceivableUsd.toFixed(2)} USD pendientes Â· no disponible</span>
+            <span style={{ fontSize: '10px', color: 'var(--text-muted)' }}>${totalReceivableUsd.toFixed(2)} USD pendientes · no disponible</span>
           </button>
           {accountBalances.transferencia !== 0 && (
           <div style={{ padding: '16px', backgroundColor: 'rgba(0, 0, 0, 0.04)', borderRadius: '16px', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
@@ -3205,7 +3205,7 @@ const FinanceModule = ({ isMobile, currency, rates, staff = [] }) => {
                     ${t.amount.toFixed(2)} USD
                   </div>
                   <div style={{ fontSize: '9px', color: 'var(--text-muted)', marginTop: '4px', letterSpacing: '0.2px', background: 'rgba(0, 0, 0, 0.04)', padding: '3px 6px', borderRadius: '4px', fontWeight: '700', maxWidth: '150px', textAlign: 'right' }}>
-                    {paymentMethod}{paymentReference ? ` Â· Ref. ${paymentReference}` : ''}
+                    {paymentMethod}{paymentReference ? ` · Ref. ${paymentReference}` : ''}
                   </div>
                   <div style={{ display: 'flex', gap: '6px', marginTop: '8px' }}>
                     <button onClick={(e) => { e.stopPropagation(); setEditTx({ isOpen: true, transaction: t }); }} style={{ width: '30px', height: '30px', borderRadius: '8px', border: '1px solid rgba(17, 17, 17,.25)', background: 'rgba(17, 17, 17,.08)', color: 'var(--gold-primary)', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
@@ -3593,7 +3593,7 @@ const FinanceModule = ({ isMobile, currency, rates, staff = [] }) => {
           <div className="animate-fade-in">
              <div style={{ display: 'flex', flexDirection: isMobile ? 'column' : 'row', justifyContent: 'space-between', alignItems: isMobile ? 'stretch' : 'center', gap: '20px', marginBottom: '24px' }}>
               <div>
-                <h3 style={{ fontSize: '14px', fontWeight: '800', color: 'var(--text-secondary)', letterSpacing: '1px', margin: 0 }}>NÓMINA Â· CUENTA CORRIENTE</h3>
+                <h3 style={{ fontSize: '14px', fontWeight: '800', color: 'var(--text-secondary)', letterSpacing: '1px', margin: 0 }}>NÓMINA · CUENTA CORRIENTE</h3>
                 <p style={{ fontSize: '12px', color: 'var(--text-secondary)', margin: '6px 0 0' }}>Saldo acumulado hasta hoy: total ganado âˆ’ total pagado. El an¡lisis por semana est¡ en Rentabilidad.</p>
               </div>
             </div>
@@ -3993,7 +3993,7 @@ const FinanceModule = ({ isMobile, currency, rates, staff = [] }) => {
         <div className="animate-fade-in">
           {/* Header — la caja (estado acumulado), sin filtro de período */}
           <div style={{ marginBottom: '20px' }}>
-            <h3 style={{ fontSize: '14px', fontWeight: '800', color: '#32d74b', letterSpacing: '1px', margin: 0 }}>CLÍNICA Â· CAJA DE DIENTES SANOS</h3>
+            <h3 style={{ fontSize: '14px', fontWeight: '800', color: '#32d74b', letterSpacing: '1px', margin: 0 }}>CLÍNICA · CAJA DE DIENTES SANOS</h3>
             <p style={{ fontSize: '12px', color: 'var(--text-secondary)', margin: '6px 0 0' }}>Estado acumulado de la clínica: ganancia total, dónde est¡ el dinero y deuda al proveedor. (El an¡lisis por semana est¡ en la pestaña Rentabilidad.)</p>
           </div>
 
@@ -4092,8 +4092,8 @@ const FinanceModule = ({ isMobile, currency, rates, staff = [] }) => {
                         <div style={{ fontSize: '12px', fontWeight: '700', color: '#111111', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{mv.concept}</div>
                         <div style={{ fontSize: '9px', color: 'var(--text-muted)', marginTop: '3px', display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
                           <span>{new Date(mv.date).toLocaleString('es-VE', { day: '2-digit', month: 'short', hour: '2-digit', minute: '2-digit', hour12: true })}</span>
-                          {mv.method && <span style={{ color: 'var(--text-secondary)' }}>Â· {mv.method}</span>}
-                          {isIncome && mv.staffTakeBs > 0 && <span style={{ color: '#ffb340' }}>Â· Comisión: {formatCurrency(mv.staffTakeBs, '')} Bs</span>}
+                          {mv.method && <span style={{ color: 'var(--text-secondary)' }}>· {mv.method}</span>}
+                          {isIncome && mv.staffTakeBs > 0 && <span style={{ color: '#ffb340' }}>· Comisión: {formatCurrency(mv.staffTakeBs, '')} Bs</span>}
                         </div>
                       </div>
                       <div style={{ textAlign: 'right', flexShrink: 0 }}>
@@ -4560,7 +4560,7 @@ const FinanceModule = ({ isMobile, currency, rates, staff = [] }) => {
                       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '6px' }}>
                         {payrollModal.file ? <CheckCircle2 size={24} color="#32d74b" /> : <Camera size={24} color="var(--gold-primary)" />}
                         <span style={{ color: payrollModal.file ? '#32d74b' : 'var(--gold-primary)', fontWeight: '800', fontSize: '12px' }}>
-                          {payrollModal.file ? 'Â¡Comprobante cargado! (Toca para cambiar)' : 'Toca para subir comprobante'}
+                          {payrollModal.file ? '¡Comprobante cargado! (Toca para cambiar)' : 'Toca para subir comprobante'}
                         </span>
                       </div>
                     </div>
@@ -5160,4 +5160,5 @@ const FinanceModule = ({ isMobile, currency, rates, staff = [] }) => {
 };
 
 export default FinanceModule;
+
 

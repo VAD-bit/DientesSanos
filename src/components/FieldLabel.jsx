@@ -1,7 +1,7 @@
-import React from 'react';
+﻿import React from 'react';
 
 /**
- * FieldLabel — Unified label for form fields with required/optional indicators.
+ * FieldLabel â€” Unified label for form fields with required/optional indicators.
  *
  * Usage:
  *   <FieldLabel required>Cliente</FieldLabel>
@@ -31,3 +31,4 @@ const FieldLabel = ({ children, required = false, hint, style = {}, ...props }) 
 };
 
 export default FieldLabel;
+

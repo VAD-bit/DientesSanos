@@ -323,10 +323,10 @@ export default function ProductHistoryModal({
                       // Date formatting
                       const dateFormatted = new Date(r.date).toLocaleDateString('es-VE', { day: '2-digit', month: 'short' });
 
-                      // Context split: Client Â· Service
-                      const contextParts = (r.context || '').split(' Â· ');
+                      // Context split: Client · Service
+                      const contextParts = (r.context || '').split(' · ');
                       const clientName = contextParts[0] || 'Cliente';
-                      const serviceName = contextParts.slice(1).join(' Â· ');
+                      const serviceName = contextParts.slice(1).join(' · ');
 
                       return (
                         <tr 
@@ -357,7 +357,7 @@ export default function ProductHistoryModal({
                               </span>
                             </div>
                             <div style={{ fontSize: '10.5px', color: 'var(--text-muted)', marginTop: '3px', display: 'flex', alignItems: 'center', gap: '5px' }}>
-                              <Calendar size={11} /> {dateFormatted} {r.seller ? `Â· ${r.seller}` : ''}
+                              <Calendar size={11} /> {dateFormatted} {r.seller ? `· ${r.seller}` : ''}
                             </div>
                           </td>
 
@@ -478,4 +478,5 @@ const getChipStyle = (active) => ({
   whiteSpace: 'nowrap',
   transition: 'all 0.15s ease'
 });
+
 

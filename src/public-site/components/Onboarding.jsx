@@ -190,7 +190,7 @@ export default function Onboarding({ onComplete }) {
   const slideTexts = [
     {
       titleLine1: userName ? `Hola, ${userName}` : 'Dientes',
-      titleLine2: userName ? 'Â¡Comenzamos!' : 'Sanos',
+      titleLine2: userName ? '¡Comenzamos!' : 'Sanos',
       subtitle: userName ? 'Reserva, acumula y disfruta.' : 'El estilo que mereces, a un toque.',
     },
     { titleLine1: 'Reserva al', titleLine2: 'Instante', subtitle: 'Agenda tu cita en segundos.' },
@@ -708,4 +708,5 @@ export default function Onboarding({ onComplete }) {
     </motion.div>
   );
 }
+
 

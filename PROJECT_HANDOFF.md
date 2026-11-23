@@ -1,6 +1,6 @@
-# Panda Barber CRM — Project Handoff & Context Document
+﻿# Panda Barber CRM â€” Project Handoff & Context Document
 
-> **Última actualización: 08 de Julio 2026**
+> **Ãšltima actualización: 08 de Julio 2026**
 
 Este documento es la **"Biblia"** del proyecto Panda Barber CRM. Cualquier IA o desarrollador debe leerlo COMPLETAMENTE antes de proponer cambios.
 
@@ -11,17 +11,17 @@ Este documento es la **"Biblia"** del proyecto Panda Barber CRM. Cualquier IA o 
 
 ---
 
-## 📖 Contexto del Negocio
+## ðŸ“– Contexto del Negocio
 
 **Centro Odontológico Dientes Sanos** es una clínica dental premium. El software debe reflejar esa exclusividad:
 
 - **Estética:** Dark Mode por defecto, acentos dorados (`#D4AF37`) y blancos
 - **Componentes:** Glassmorphism (fondos semitransparentes + blur), bordes redondeados, micro-animaciones
-- **UX:** Todo fluido como app móvil — **PROHIBIDO** hacer diseños planos o aburridos
+- **UX:** Todo fluido como app móvil â€” **PROHIBIDO** hacer diseños planos o aburridos
 
 ---
 
-## 🛠️ Stack Tecnológico
+## ðŸ› ϸ Stack Tecnológico
 
 | Capa | Tecnología |
 |------|-----------|
@@ -35,7 +35,7 @@ Este documento es la **"Biblia"** del proyecto Panda Barber CRM. Cualquier IA o 
 
 ---
 
-## 🗄️ Configuración Crítica de Base de Datos
+## ðŸ—„ϸ Configuración Crítica de Base de Datos
 
 ### Esquema
 Todos los datos del CRM están en el esquema **`odontosonrisa`**, NO en `public`.
@@ -47,8 +47,8 @@ createClient(url, key, { db: { schema: 'odontosonrisa' } })
 
 ### Archivo `src/lib/supabase.js`
 Exporta DOS clientes:
-- `supabase` — clave anon, esquema `odontosonrisa`. Para operaciones de usuario normal
-- `publicSupabase` — clave anon, esquema `odontosonrisa`. Para el portal público con su propia sesión
+- `supabase` â€” clave anon, esquema `odontosonrisa`. Para operaciones de usuario normal
+- `publicSupabase` â€” clave anon, esquema `odontosonrisa`. Para el portal público con su propia sesión
 
 > [!NOTE]
 > **Resolución de RLS (Ago 2026):** Las tablas del esquema `odontosonrisa` ahora tienen políticas RLS correctas para el rol `authenticated`. Ya no se necesita `authClient` (service role) en el browser. Todos los queries usan la clave anon con la sesión del empleado autenticado.
@@ -65,29 +65,29 @@ VITE_SUPABASE_SERVICE_ROLE_KEY=eyJ...
 
 ---
 
-## 🏗️ Arquitectura — 3 Bloques Principales
+## ðŸ—ϸ Arquitectura â€” 3 Bloques Principales
 
 ```
 odontosonrisa/
-├── src/
-│   ├── App.jsx                    # Router principal, auth guard, cumpleaños
-│   ├── main.jsx                   # Entry point admin/CRM
-│   ├── main-public.jsx            # Entry point portal público
-│   ├── PublicRouter.jsx           # Rutas del portal público
-│   ├── context/
-│   │   └── AuthContext.jsx        # Auth state, login, logout, roles
-│   ├── lib/
-│   │   └── supabase.js            # Clientes Supabase (supabase + publicSupabase)
-│   ├── services/
-│   │   ├── dataService.js         # API principal del CRM (CRUD completo)
-│   │   └── notificationService.js # Sistema de notificaciones in-app
-│   ├── components/                # Módulos del CRM (ver tabla abajo)
-│   └── public-site/               # Portal de reservas público
-│       ├── pages/
-│       │   └── BookAppointment.jsx
-│       ├── services/
-│       │   └── publicService.js   # API pública (anon, sin auth)
-│       └── public.css
+â”œâ”€â”€ src/
+â”‚   â”œâ”€â”€ App.jsx                    # Router principal, auth guard, cumpleaños
+â”‚   â”œâ”€â”€ main.jsx                   # Entry point admin/CRM
+â”‚   â”œâ”€â”€ main-public.jsx            # Entry point portal público
+â”‚   â”œâ”€â”€ PublicRouter.jsx           # Rutas del portal público
+â”‚   â”œâ”€â”€ context/
+â”‚   â”‚   â””â”€â”€ AuthContext.jsx        # Auth state, login, logout, roles
+â”‚   â”œâ”€â”€ lib/
+â”‚   â”‚   â””â”€â”€ supabase.js            # Clientes Supabase (supabase + publicSupabase)
+â”‚   â”œâ”€â”€ services/
+â”‚   â”‚   â”œâ”€â”€ dataService.js         # API principal del CRM (CRUD completo)
+â”‚   â”‚   â””â”€â”€ notificationService.js # Sistema de notificaciones in-app
+â”‚   â”œâ”€â”€ components/                # Módulos del CRM (ver tabla abajo)
+â”‚   â””â”€â”€ public-site/               # Portal de reservas público
+â”‚       â”œâ”€â”€ pages/
+â”‚       â”‚   â””â”€â”€ BookAppointment.jsx
+â”‚       â”œâ”€â”€ services/
+â”‚       â”‚   â””â”€â”€ publicService.js   # API pública (anon, sin auth)
+â”‚       â””â”€â”€ public.css
 ```
 
 ### Módulos del CRM (`src/components/`)
@@ -99,7 +99,7 @@ odontosonrisa/
 | `DashboardModule.jsx` | Resumen del negocio, métricas |
 | `SchedulingModule.jsx` | Calendario y agenda de citas |
 | `ReceptionModule.jsx` | Vista de recepción, check-in de clientes |
-| `CheckoutPOS.jsx` | **Punto de venta** — pagos, comisiones, ticket |
+| `CheckoutPOS.jsx` | **Punto de venta** â€” pagos, comisiones, ticket |
 | `ClientModule.jsx` | CRUD clientes, historial, galería |
 | `PersonnelModule.jsx` | CRUD staff, roles, comisiones |
 | `ServicesModule.jsx` | CRUD servicios, tatuajes, precios |
@@ -112,7 +112,7 @@ odontosonrisa/
 
 ---
 
-## 👥 Sistema de Roles y Permisos
+## ðŸ‘¥ Sistema de Roles y Permisos
 
 El campo `role` en la tabla `staff` tiene el formato: `Posición|módulo1,módulo2,...`
 
@@ -131,12 +131,12 @@ El campo `role` en la tabla `staff` tiene el formato: `Posición|módulo1,módul
 ### Regla de acceso en el login (`AuthContext.jsx`)
 1. `supabase.auth.signInWithPassword()` valida email/password
 2. `dataService.getStaffByAuthUserId()` busca el perfil del empleado autenticado
-3. Si no hay perfil activo → error "usuario no vinculado al equipo"
-4. Si el `role` empieza con `ARCHIVED|` → mismo error
+3. Si no hay perfil activo â†’ error "usuario no vinculado al equipo"
+4. Si el `role` empieza con `ARCHIVED|` â†’ mismo error
 
 ---
 
-## 👤 Usuarios Actuales del Sistema
+## ðŸ‘¤ Usuarios Actuales del Sistema
 
 ### Administrador
 | Email | Contraseña | Rol |
@@ -156,11 +156,11 @@ El campo `role` en la tabla `staff` tiene el formato: `Posición|módulo1,módul
 | Marko Cardozo | marko@odontosonrisa.com | Tatuador | 70% | 28/03/2004 |
 | José Cordero | jose@odontosonrisa.com | Tatuador | 70% | 05/09/1997 |
 | Cesia Zuleta | cesia@odontosonrisa.com | Asistente de Lavado | 60% | 16/01/2002 |
-| Yarlin Herrera | yarlin@odontosonrisa.com | Barista | — | 07/07/1983 |
+| Yarlin Herrera | yarlin@odontosonrisa.com | Barista | â€” | 07/07/1983 |
 
 ---
 
-## 💰 Sistema de Comisiones
+## ðŸ’° Sistema de Comisiones
 
 - **Barbero:** `commission_pct` % sobre el precio del servicio (ej. 60% de $20 = $12)
 - **Asistente Dental:** Tarifa plana (`profilaxis_rate`) por cada cliente que pasa por profilaxis dental. El costo de la profilaxis se descuenta del pago del odontólogo antes de calcular su comisión
@@ -169,7 +169,7 @@ El campo `role` en la tabla `staff` tiene el formato: `Posición|módulo1,módul
 
 ---
 
-## ✅ Características Implementadas
+## âœ… Características Implementadas
 
 ### POS / Caja (`CheckoutPOS.jsx`)
 - Pagos bi-moneda simultáneos: **USD (efectivo/Zelle)** y **VES (Pago Móvil/Punto)**
@@ -188,8 +188,8 @@ El campo `role` en la tabla `staff` tiene el formato: `Posición|módulo1,módul
 - Detección automática: categoría que contiene `"tatuaj"` (NO campo `is_tattoo`)
 - Precio mostrado como `"A cotizar"` (se guarda `price: 0` en DB)
 - Labels de comisión cambian: "Comisión Tatuador", "Pago Real Tatuador"
-- En el portal público → paso de "Referencia" en vez de "Bebida"
-- Al confirmar → redirige a `wa.me/{numero}` con mensaje preformateado
+- En el portal público â†’ paso de "Referencia" en vez de "Bebida"
+- Al confirmar â†’ redirige a `wa.me/{numero}` con mensaje preformateado
 
 ### WhatsApp Automation
 - Plantillas configurables en `system_settings`: cumpleaños, seguimiento
@@ -197,36 +197,36 @@ El campo `role` en la tabla `staff` tiene el formato: `Posición|módulo1,módul
 - Campo `whatsapp_business_number` configurable en SettingsModule
 
 ### Portal Público de Reservas (`/agendar`)
-- Selección de servicio → staff → fecha → hora → confirmación
+- Selección de servicio â†’ staff â†’ fecha â†’ hora â†’ confirmación
 - Filtra Odontologos/ según el tipo de servicio seleccionado
 - Número de WhatsApp del negocio dinámico desde la DB
 
 ---
 
-## 🌿 Ramas de Desarrollo
+## ðŸŒ¿ Ramas de Desarrollo
 
 | Rama | Descripción | Estado |
 |------|-------------|--------|
 | `main` | Producción estable | Solo merge desde `rama-funciones` |
-| `rama-funciones` | Funcionalidades core del CRM | ✅ Activa |
-| `rama-diseno` | Diseño UI/UX externo | ✅ Mergeada en `rama-funciones` |
+| `rama-funciones` | Funcionalidades core del CRM | âœ… Activa |
+| `rama-diseno` | Diseño UI/UX externo | âœ… Mergeada en `rama-funciones` |
 
 ---
 
-## 🐛 Bugs Resueltos (Historial Reciente)
+## ðŸ› Bugs Resueltos (Historial Reciente)
 
 | Fecha | Bug | Solución |
 |-------|-----|---------|
 | Jul 8 2026 | Login mostraba "usuario no vinculado" aunque las credenciales eran correctas | Había un registro duplicado con `role: ARCHIVED\|...` y mismo `auth_user_id`. Se eliminó el duplicado. |
 | Jul 8 2026 | `getStaffByAuthUserId()` devolvía `null` con clave anon aunque el auth pasaba | RLS activo sin políticas para `authenticated`. Fix: aplicar políticas RLS en Supabase VPS para que `authenticated` pueda leer `staff` |
-| Jul 8 2026 | Página en blanco al abrir — error: `supabase.js does not provide export 'authClient'` | Cache de Vite corrupta. Fix: reiniciar Vite con `--force` (`npm run dev -- --force`). NOTA: `authClient` fue eliminado del código; ya no se necesita. |
+| Jul 8 2026 | Página en blanco al abrir â€” error: `supabase.js does not provide export 'authClient'` | Cache de Vite corrupta. Fix: reiniciar Vite con `--force` (`npm run dev -- --force`). NOTA: `authClient` fue eliminado del código; ya no se necesita. |
 
 ---
 
-## 🚧 Pendientes / Próximos Pasos
+## ðŸš§ Pendientes / Próximos Pasos
 
 ### Alta Prioridad
-- [x] **Aplicar políticas RLS correctas** en el panel de Supabase VPS para el esquema `odontosonrisa` — RESUELTO (Ago 2026)
+- [x] **Aplicar políticas RLS correctas** en el panel de Supabase VPS para el esquema `odontosonrisa` â€” RESUELTO (Ago 2026)
 - [ ] **Verificar que todos los nuevos Odontologos pueden iniciar sesión** correctamente (email: `nombre@odontosonrisa.com`, pass: `123456`)
 - [ ] **Probar el flujo completo de caja** con los nuevos Odontologos asignados a citas
 
@@ -237,11 +237,11 @@ El campo `role` en la tabla `staff` tiene el formato: `Posición|módulo1,módul
 
 ### Baja Prioridad
 - [ ] **Pulido UX del portal público:** Mejorar animaciones en `/agendar`
-- [ ] **`washing_rate`** para Cesia Zuleta — definir cuánto cobra por servicio de lavado y actualizarlo en su perfil de staff
+- [ ] **`washing_rate`** para Cesia Zuleta â€” definir cuánto cobra por servicio de lavado y actualizarlo en su perfil de staff
 
 ---
 
-## 🔧 Cómo Arrancar el Proyecto Localmente
+## ðŸ”§ Cómo Arrancar el Proyecto Localmente
 
 ```bash
 # Clonar el repo
@@ -268,7 +268,7 @@ El servidor levanta en `http://localhost:5173` (o el siguiente puerto disponible
 
 ---
 
-## 📁 Archivos Clave por Responsabilidad
+## ðŸ“ Archivos Clave por Responsabilidad
 
 | Archivo | Responsabilidad |
 |---------|----------------|
@@ -287,3 +287,4 @@ El servidor levanta en `http://localhost:5173` (o el siguiente puerto disponible
 ---
 
 *Este documento debe ser leído en su totalidad antes de proponer cambios arquitectónicos, tocar la DB, o modificar el sistema de roles.*
+

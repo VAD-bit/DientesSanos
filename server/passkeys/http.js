@@ -1,4 +1,4 @@
-export const json = (response, status, payload) => {
+﻿export const json = (response, status, payload) => {
   response.status(status).setHeader('Content-Type', 'application/json; charset=utf-8');
   response.setHeader('Cache-Control', 'no-store');
   return response.json(payload);
@@ -28,3 +28,4 @@ export const handleError = (response, error, options = {}) => {
   if (status >= 500) console.error(`[${logLabel}]`, error?.message || error);
   return json(response, status, { error: publicMessage });
 };
+

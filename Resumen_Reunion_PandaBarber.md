@@ -1,4 +1,4 @@
-# Resumen Reunión 1 - Panda Barber Studio
+﻿# Resumen Reunión 1 - Panda Barber Studio
 
 **Fecha:** 2025
 **Participantes:** Desarrollador (Somos Dos Estudios) + Panda Barber Studio
@@ -23,7 +23,7 @@
 
 ### Agenda y Citas
 - Clientes nuevos se registran con: nombre, teléfono, cédula, fecha de nacimiento
-- Sistema recuerda cumpleaños → descuento 10% + mensaje automático
+- Sistema recuerda cumpleaños â†’ descuento 10% + mensaje automático
 - Selección de servicio y odontólogo/estético disponible
 - Horas disponibles se actualizan en tiempo real
 - Opción de "agendar después" si el barbero no está disponible
@@ -93,3 +93,4 @@
 - Base de datos en Supabase
 - Cuenta de Google AI Pro/Ultra para el developer
 - Cámara Kodak con problemas de lectura de SD (pendiente revisar)
+

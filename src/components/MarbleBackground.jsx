@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 
 // Fondo de mármol blanco con vetas grises, estilo la imagen de referencia.
 // Generado en SVG sin depender de imágenes externas.
@@ -87,3 +87,4 @@ export default function MarbleBackground() {
     </div>
   );
 }
+

@@ -1,8 +1,8 @@
-import { supabase } from '../supabase.js';
+﻿import { supabase } from '../supabase.js';
 import { sendMessage, isWhatsAppReady } from '../bot.js';
 import { renderTemplate, normalizePhone } from '../utils/messageTemplates.js';
 
-const WELCOME_TEMPLATE = 'Hola {{nombre}}! Bienvenido a Panda Barber Studio. Estamos listos para atenderte ✂️🐼';
+const WELCOME_TEMPLATE = 'Hola {{nombre}}! Bienvenido a Panda Barber Studio. Estamos listos para atenderte âœ‚ϸðŸ¼';
 
 export async function sendWelcome(clientId) {
   if (!isWhatsAppReady()) {
@@ -37,3 +37,4 @@ export async function sendWelcome(clientId) {
     return { success: false, error: err.message };
   }
 }
+

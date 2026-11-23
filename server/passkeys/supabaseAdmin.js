@@ -1,4 +1,4 @@
-import { createClient } from '@supabase/supabase-js';
+﻿import { createClient } from '@supabase/supabase-js';
 import fs from 'node:fs';
 import path from 'node:path';
 
@@ -106,3 +106,4 @@ export const issueSupabaseLoginToken = async (authUserId) => {
   if (!tokenHash) throw new Error('Supabase no devolvió un token de acceso utilizable');
   return tokenHash;
 };
+

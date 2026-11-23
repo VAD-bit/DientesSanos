@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo, useRef } from 'react';
+﻿import { useState, useEffect, useMemo, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { useNavigate, useLocation, Link } from 'react-router-dom';
 import { 
@@ -499,10 +499,10 @@ function InstagramReelCard({ post, idx, onOpen }) {
       {/* Hover Overlay */}
       <div className="absolute inset-0 bg-black/0 md:bg-black/0 md:group-hover:bg-black/50 opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center gap-1.5 text-white text-[10px] font-extrabold z-10 pointer-events-none">
         <span className="bg-[#111111] text-white py-1.5 px-3.5 rounded-lg uppercase tracking-wider scale-90 md:group-hover:scale-100 transition-transform duration-300">
-          {hasImage ? 'VER EN INSTAGRAM' : 'PRÓXIMAMENTE'}
+          {hasImage ? 'VER EN INSTAGRAM' : 'PRÃ“XIMAMENTE'}
         </span>
         {hasImage && post?.likes ? (
-          <span className="text-[8px] text-[#d9c08f] uppercase tracking-widest mt-1">♥ {post.likes}</span>
+          <span className="text-[8px] text-[#d9c08f] uppercase tracking-widest mt-1">â™¥ {post.likes}</span>
         ) : (
           <span className="text-[7.5px] text-[#d9c08f]/105 uppercase tracking-widest mt-1">Contenido del perfil</span>
         )}
@@ -540,7 +540,7 @@ const getServiceIcon = (service) => {
 };
 
 // Availability is now controlled solely by the manual "Abierta/Cerrada" toggle
-// (system_settings.store_is_open), not by a weekly schedule — while open, clients
+// (system_settings.store_is_open), not by a weekly schedule â€” while open, clients
 // can book any slot around the clock.
 function generateTimeSlotsForDate() {
   const slots = [];
@@ -676,7 +676,7 @@ const videoRef = useRef(null);
           if (isEnd) {
             el.scrollTo({ left: 0, behavior: 'smooth' });
           } else {
-            // Step by the actual card width + gap (24px, gap-6) instead of a fixed guess —
+            // Step by the actual card width + gap (24px, gap-6) instead of a fixed guess â€”
             // a mismatched step drifts out of sync with the snap points every cycle, so no
             // card ever lands centered.
             const card = el.querySelector('[data-review-card]');
@@ -719,7 +719,7 @@ const videoRef = useRef(null);
   const [cafeVideoRef] = useLazyMount('600px 0px');
   const [kidsVideoRef] = useLazyMount('600px 0px');
   // Solo controla el fade de la FOTO del hero (texto y CTA aparecen aparte, de inmediato,
-  // sin esperarla) — se activa cuando la imagen realmente termino de cargar, no con un
+  // sin esperarla) â€” se activa cuando la imagen realmente termino de cargar, no con un
   // timer ciego, para que el fade se vea sincronizado con la llegada real de la foto.
   const [heroPhotoLoaded, setHeroPhotoLoaded] = useState(false);
   const [activeMuralIdx, setActiveMuralIdx] = useState(0);
@@ -769,7 +769,7 @@ const videoRef = useRef(null);
   const [stepKey, setStepKey] = useState(0);
 
   // Reseñas de Google (tabla `google_reviews`). Si está vacía, el badge del hero y la
-  // sección #resenas quedan en espera — listos para conectar con las reseñas reales.
+  // sección #resenas quedan en espera â€” listos para conectar con las reseñas reales.
   const [googleReviews, setGoogleReviews] = useState([]);
   useEffect(() => {
     let alive = true;
@@ -1074,8 +1074,8 @@ const videoRef = useRef(null);
   //
   // scrollProgress used to be React state, re-set on every single scroll event. That
   // meant every scroll tick re-rendered this entire (huge) component tree, which on a
-  // real phone saturates the main thread badly enough that taps — e.g. on the hamburger
-  // button — get delayed or dropped. It only ever feeds one <circle>'s strokeDashoffset,
+  // real phone saturates the main thread badly enough that taps â€” e.g. on the hamburger
+  // button â€” get delayed or dropped. It only ever feeds one <circle>'s strokeDashoffset,
   // so it's written straight to the DOM via a ref instead, skipping React entirely.
   const handleLandingScroll = (e) => {
     const { scrollTop, scrollHeight, clientHeight } = e.currentTarget;
@@ -1193,9 +1193,9 @@ const videoRef = useRef(null);
 
   // Applies the barberId that arrived via Explorar's { exploreBarbers, barberId }
   // navigation state exactly once. Without exploreDeepLinkAppliedRef, this re-ran
-  // on every expandedBarber change (it was in the dependency array) — including
+  // on every expandedBarber change (it was in the dependency array) â€” including
   // the change fired by clicking a different barber in "También podrías reservar
-  // con" inside the profile — and since location.state.barberId never updates
+  // con" inside the profile â€” and since location.state.barberId never updates
   // after the initial navigation, it kept finding a mismatch and snapping
   // expandedBarber straight back to the original barber, so switching looked
   // like it silently did nothing.
@@ -1487,7 +1487,7 @@ const videoRef = useRef(null);
 
   // Tells ClientLayout (when embedded inside the profile, /perfil/reservar)
   // to hide its sidebar/BottomNav so the confirmation card is the only
-  // thing on screen — see the panda_hide_chrome listener there. A no-op
+  // thing on screen â€” see the panda_hide_chrome listener there. A no-op
   // outside that context since nothing listens for the event elsewhere.
   useEffect(() => {
     if (!isEmbedded) return;
@@ -1704,7 +1704,7 @@ const videoRef = useRef(null);
   
   const getScrollContainer = () => {
     // When embedded in the profile, this component's own wrapper is intentionally
-    // non-scrolling (overflow-visible) — the actual scroll happens on ClientLayout's
+    // non-scrolling (overflow-visible) â€” the actual scroll happens on ClientLayout's
     // .main-content-area. Scrolling scrollContainerRef itself here would be a no-op.
     if (isEmbedded) {
       return scrollContainerRef.current?.closest('.main-content-area') || document.documentElement;
@@ -1723,7 +1723,7 @@ const videoRef = useRef(null);
     const currentScroll = isDoc ? window.scrollY : container.scrollTop;
 
     // Embedded (profile) view has a floating bottom-nav dock overlapping the last
-    // ~100px of the viewport that isn't part of layout flow — clear it with extra
+    // ~100px of the viewport that isn't part of layout flow â€” clear it with extra
     // buffer. The standalone landing has no such overlay, so a small buffer suffices.
     const bottomClearance = isEmbedded ? 110 : 32;
 
@@ -1808,19 +1808,19 @@ const videoRef = useRef(null);
         
         const filteredBarbers = staffData.filter(isBookableStaff);
 
-        // ── ORDEN FIJO DEL EQUIPO (nunca cambia sin importar quién se agregue) ─────────
-        // Grupo 1: Odontologos  → Ángel primero, Moret segundo, luego los demás por nombre
+        // â”€â”€ ORDEN FIJO DEL EQUIPO (nunca cambia sin importar quién se agregue) â”€â”€â”€â”€â”€â”€â”€â”€â”€
+        // Grupo 1: Odontologos  â†’ Ángel primero, Moret segundo, luego los demás por nombre
         // Grupo 2: 
         // Grupo 3: BARISTA
         // Grupo 4: ASISTENTE
-        // ────────────────────────────────────────────────────────────────────────────────
+        // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
         const sortedBarbers = [...filteredBarbers].sort((a, b) => {
           const getGroupRank = (barber) => {
             const role = (barber.role || '').toLowerCase();
             const spec = (barber.specialty || '').toLowerCase();
             const name = barber.name.toLowerCase();
 
-            // Asistente (grupo 4) — va siempre al final
+            // Asistente (grupo 4) â€” va siempre al final
             const isAsistente = role.includes('asistente') ||
                                 role.includes('lavado') ||
                                 role.includes('lavarista') ||
@@ -1829,7 +1829,7 @@ const videoRef = useRef(null);
                                 name.includes('cesia');
             if (isAsistente) return 4;
 
-            // Barista (grupo 3) — va antes del asistente
+            // Barista (grupo 3) â€” va antes del asistente
             const isBarista = role.includes('barista') ||
                               role.includes('café') ||
                               role.includes('cafe') ||
@@ -1848,7 +1848,7 @@ const videoRef = useRef(null);
                                spec.includes('artista');
             if (isTatuador) return 2;
 
-            // Barbero (grupo 1) — va primero
+            // Barbero (grupo 1) â€” va primero
             return 1;
           };
 
@@ -1920,7 +1920,7 @@ const videoRef = useRef(null);
         setReviews(reviewsData || []);
 
 
-        // ── PREFILL FROM "REPETIR" BUTTON ──
+        // â”€â”€ PREFILL FROM "REPETIR" BUTTON â”€â”€
         // When the user clicks "Repetir" in their history, we receive prefillStaff
         // and prefillService IDs via React Router location.state. Match them to the
         // loaded data and jump straight to step 3 (date picker).
@@ -1943,7 +1943,7 @@ const videoRef = useRef(null);
             }
           }
           if (prefillApplied) {
-            // Skip welcome screen and both selection steps — go straight to date/time
+            // Skip welcome screen and both selection steps â€” go straight to date/time
             setShowWelcome(false);
             setStep(3);
           }
@@ -2090,8 +2090,8 @@ const videoRef = useRef(null);
   }, [currentCalendarMonth, selectedDate]);
 
   // Filter visible time slots. isClosed lives on the slot itself (not recomputed by
-  // each consumer) so every place that renders a slot grid — including
-  // BarberProfileView's own grid — stays in sync with the manual open/closed toggle.
+  // each consumer) so every place that renders a slot grid â€” including
+  // BarberProfileView's own grid â€” stays in sync with the manual open/closed toggle.
   const visibleSlots = useMemo(() => {
     const isToday = selectedDate?.toDateString() === new Date().toDateString();
     return allTimeSlots.map(time => ({
@@ -2182,7 +2182,7 @@ const videoRef = useRef(null);
     try { liveStoreOpen = await publicService.getStoreOpen(); } catch { /* keep last known */ }
     if (!liveStoreOpen) {
       setStoreIsOpen(false);
-      setAuthError('La clínica está cerrada por ahora — no se pueden agendar citas.');
+      setAuthError('La clínica está cerrada por ahora â€” no se pueden agendar citas.');
       setSubmitting(false);
       return;
     }
@@ -2210,7 +2210,7 @@ const videoRef = useRef(null);
           localStorage.setItem('panda_public_client', JSON.stringify(activeClient));
           setIsLoggedIn(true);
           // Same "first time in your profile" intro shown to Register.jsx/Google
-          // signups — stays pending until they actually visit /perfil (see the
+          // signups â€” stays pending until they actually visit /perfil (see the
           // route-gated effect in PublicLayout.jsx), so it doesn't interrupt the
           // booking they're finishing right now.
           localStorage.setItem('panda_show_onboarding', 'true');
@@ -2231,7 +2231,7 @@ const videoRef = useRef(null);
             // Try real email first, then odontosonrisa.app email
             client = await publicService.getClientByEmail(id);
           } else {
-            // It's a phone number — try by phone
+            // It's a phone number â€” try by phone
             client = await publicService.getClientByPhone(id);
             // If not found by phone, try with fake email format
             if (!client) {
@@ -2334,7 +2334,7 @@ const videoRef = useRef(null);
           </div>
         )}
 
-        {/* ── Animated Ambient Spotlights (Auroras) ── */}
+        {/* â”€â”€ Animated Ambient Spotlights (Auroras) â”€â”€ */}
         {isDesktop && (
           <>
             <div className="absolute inset-0 pointer-events-none z-1 aurora-gold" />
@@ -2342,16 +2342,16 @@ const videoRef = useRef(null);
           </>
         )}
 
-        {/* ── HERO MINIMALISTA SIN FOTO DE MARCA ── */}
+        {/* â”€â”€ HERO MINIMALISTA SIN FOTO DE MARCA â”€â”€ */}
 
-        {/* ── Left-side text legibility gradient ── */}
+        {/* â”€â”€ Left-side text legibility gradient â”€â”€ */}
         {isDesktop && (
           <div className="absolute inset-0 pointer-events-none z-10" style={{
             background: 'var(--bg-secondary)',
           }} />
         )}
 
-        {/* ── Bottom legibility gradient for buttons ── */}
+        {/* â”€â”€ Bottom legibility gradient for buttons â”€â”€ */}
         {isDesktop && (
           <div className="absolute inset-x-0 bottom-0 pointer-events-none z-10" style={{
             height: '40%',
@@ -2359,14 +2359,14 @@ const videoRef = useRef(null);
           }} />
         )}
 
-        {/* ── Cinematic vignette ── */}
+        {/* â”€â”€ Cinematic vignette â”€â”€ */}
         {isDesktop && (
           <div className="absolute inset-0 pointer-events-none z-10" style={{
             background: 'var(--bg-secondary)',
           }} />
         )}
 
-        {/* ── Grain/noise texture ── */}
+        {/* â”€â”€ Grain/noise texture â”€â”€ */}
         <div className="absolute inset-0 pointer-events-none z-15 hero-grain" />
 
 
@@ -2379,7 +2379,7 @@ const videoRef = useRef(null);
           className="w-full max-w-[1440px] mx-auto flex flex-col justify-center items-start gap-5 lg:gap-8 relative z-20 px-6 lg:px-12 text-left pt-6 lg:pt-0 lg:my-auto"
         >
           
-          {/* Trust/Reputation Badge — promedio dinámico desde google_reviews (oculto sin datos) */}
+          {/* Trust/Reputation Badge â€” promedio dinámico desde google_reviews (oculto sin datos) */}
           {googleReviews.length > 0 && (
           <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 w-full mb-2">
             <div className="flex items-center gap-2 bg-[#f7f7f5] border border-[#d9c08f]/20 px-3 py-1.5 rounded-full w-fit">
@@ -2392,7 +2392,7 @@ const videoRef = useRef(null);
               <div className="flex items-center gap-1.5 shrink-0">
                 <span className="text-[12px] font-black text-[#0f172a] leading-none mt-0.5">{googleRating}</span>
                 <span className="text-[11px] text-[#FBBC05] font-black tracking-widest flex items-center leading-none">
-                  ★ ★ ★ ★ ★
+                  â˜… â˜… â˜… â˜… â˜…
                 </span>
               </div>
             </div>
@@ -2405,7 +2405,7 @@ const videoRef = useRef(null);
               <span className="text-[10px] lg:text-[13px] font-black uppercase tracking-[0.35em] text-[#111111] block mb-1 animate-float-subtle">
                 {isLoggedIn && loggedInClient?.name ? 'HOLA DE NUEVO' : 'BIENVENIDO A'}
               </span>
-              <h1 className="text-[40px] sm:text-5xl lg:text-6xl font-black uppercase tracking-tight leading-[0.95] mb-1 font-sans text-[#0f172a]">CENTRO ODONTOLÓGICO</h1>
+              <h1 className="text-[40px] sm:text-5xl lg:text-6xl font-black uppercase tracking-tight leading-[0.95] mb-1 font-sans text-[#0f172a]">CENTRO ODONTOLÃ“GICO</h1>
               <h1 className="text-[40px] sm:text-5xl lg:text-6xl font-black uppercase tracking-tight leading-[0.95] mb-2 font-sans text-[#111111]">DIENTES SANOS</h1>
             </div>
 
@@ -2432,7 +2432,7 @@ const videoRef = useRef(null);
               className="btn-gold w-full sm:w-auto py-4 px-8 rounded-xl font-extrabold text-[12px] lg:text-[13px] uppercase tracking-widest transition-all cursor-pointer flex items-center justify-center gap-2"
               style={{ borderRadius: '10px' }}
             >
-              <CalendarIcon size={16} /> <span>{isLoggedIn && loggedInClient?.name ? 'Reservar de nuevo' : 'Reservar mi visita'}</span> <span>→</span>
+              <CalendarIcon size={16} /> <span>{isLoggedIn && loggedInClient?.name ? 'Reservar de nuevo' : 'Reservar mi visita'}</span> <span>â†’</span>
             </button>
             {isLoggedIn && loggedInClient?.name && (
               <p className="text-[#94a3b8] text-[11px] font-medium -mt-1">Toma menos de 1 minuto, ya tenemos tus datos</p>
@@ -2484,10 +2484,10 @@ const videoRef = useRef(null);
           </div>
         )}
 
-        {/* ── HERO CONFIGURATOR (hidden debug tool) ── */}
+        {/* â”€â”€ HERO CONFIGURATOR (hidden debug tool) â”€â”€ */}
         {isResting && (
           <>
-            {/* Toggle button — tiny, bottom-left corner */}
+            {/* Toggle button â€” tiny, bottom-left corner */}
             <button
               onClick={() => setShowConfigurator(v => !v)}
               style={{
@@ -2499,7 +2499,7 @@ const videoRef = useRef(null);
                 cursor: 'pointer', backdropFilter: 'blur(6px)',
               }}
               title="Configurador"
-            >⚙</button>
+            >âš™</button>
 
             {/* Configurator panel */}
             {showConfigurator && (
@@ -2644,7 +2644,7 @@ const videoRef = useRef(null);
               <div className="flex items-center gap-5 w-full md:justify-center md:border-r md:border-[#d9c08f]/15 px-6 reveal-item delay-200 animate-float-subtle" style={{ animationDelay: '300ms' }}>
                 <span className="text-[22px] font-bold text-[#d9c08f] bg-[#d9c08f]/15 px-3 py-1.5 rounded-full font-sans tracking-tight leading-none select-none">02</span>
                 <div className="flex flex-col text-left">
-                  <span className="text-xl lg:text-2xl font-extrabold text-[#111111] tracking-tight leading-tight" style={{ animationDelay: '1.2s' }}>PRECISIÓN</span>
+                  <span className="text-xl lg:text-2xl font-extrabold text-[#111111] tracking-tight leading-tight" style={{ animationDelay: '1.2s' }}>PRECISIÃ“N</span>
                   <span className="text-xs text-[#64748b] font-medium">Cada detalle trabajado con intención</span>
                 </div>
               </div>
@@ -2652,7 +2652,7 @@ const videoRef = useRef(null);
               <div className="flex items-center gap-5 w-full md:justify-center md:border-r md:border-[#d9c08f]/15 px-6 reveal-item delay-300 animate-float-subtle" style={{ animationDelay: '600ms' }}>
                 <span className="text-[22px] font-bold text-[#d9c08f] bg-[#d9c08f]/15 px-3 py-1.5 rounded-full font-sans tracking-tight leading-none select-none">03</span>
                 <div className="flex flex-col text-left">
-                  <span className="text-xl lg:text-2xl font-extrabold text-[#111111] tracking-tight leading-tight" style={{ animationDelay: '2.4s' }}>SALUD & DISEÑO</span>
+                  <span className="text-xl lg:text-2xl font-extrabold text-[#111111] tracking-tight leading-tight" style={{ animationDelay: '2.4s' }}>SALUD & DISEÃ‘O</span>
                   <span className="text-xs text-[#64748b] font-medium">Especialistas en un solo lugar</span>
                 </div>
               </div>
@@ -2701,10 +2701,10 @@ const videoRef = useRef(null);
                       <Sparkles size={20} className="text-white" />
                     </div>
                     <div>
-                      <h3 className="text-xl font-extrabold text-white mb-2 uppercase tracking-wide">ESTÉTICA</h3>
+                      <h3 className="text-xl font-extrabold text-white mb-2 uppercase tracking-wide">ESTÃ‰TICA</h3>
                       <p className="text-white/75 text-sm leading-relaxed mb-4">Blanqueamiento, limpieza profunda y diseño de sonrisa.</p>
                       <span className="text-white text-sm font-extrabold uppercase tracking-wider flex items-center gap-1 hover:underline cursor-pointer">
-                        EXPLORAR SERVICIOS <span className="text-[14px]">→</span>
+                        EXPLORAR SERVICIOS <span className="text-[14px]">â†’</span>
                       </span>
                     </div>
                   </div>
@@ -2733,7 +2733,7 @@ const videoRef = useRef(null);
                       <h3 className="text-xl font-extrabold text-white mb-2 uppercase tracking-wide">ORTODONCIA</h3>
                       <p className="text-white/75 text-sm leading-relaxed mb-4">Alinea tu sonrisa con opciones discretas y efectivas.</p>
                       <span className="text-white text-sm font-extrabold uppercase tracking-wider flex items-center gap-1 hover:underline cursor-pointer">
-                        CONOCER ESPECIALISTAS <span className="text-[14px]">→</span>
+                        CONOCER ESPECIALISTAS <span className="text-[14px]">â†’</span>
                       </span>
                     </div>
                   </div>
@@ -2758,7 +2758,7 @@ const videoRef = useRef(null);
                       <h3 className="text-xl font-extrabold text-white mb-2 uppercase tracking-wide">ODONTOPEDIATRÍA</h3>
                       <p className="text-white/75 text-sm leading-relaxed mb-4">Cuidamos las sonrisas de los más pequeños. Paciencia y confianza garantizadas.</p>
                       <span className="text-white text-sm font-extrabold uppercase tracking-wider flex items-center gap-1 hover:underline cursor-pointer">
-                        VER SERVICIOS INFANTILES <span className="text-[14px]">→</span>
+                        VER SERVICIOS INFANTILES <span className="text-[14px]">â†’</span>
                       </span>
                     </div>
                   </div>
@@ -2783,7 +2783,7 @@ const videoRef = useRef(null);
                       <h3 className="text-xl font-extrabold text-white mb-2 uppercase tracking-wide">EXPERIENCIA DIENTES SANOS</h3>
                       <p className="text-white/75 text-sm leading-relaxed mb-4">Ambiente confortable, tecnología moderna y trato cercano.</p>
                       <span className="text-white text-sm font-extrabold uppercase tracking-wider flex items-center gap-1 hover:underline cursor-pointer">
-                        DESCUBRIR MÁS <span className="text-[14px]">→</span>
+                        DESCUBRIR MÁS <span className="text-[14px]">â†’</span>
                       </span>
                     </div>
                   </div>
@@ -2914,13 +2914,13 @@ const videoRef = useRef(null);
                        
                        const specialtyText = (barber.specialty || '').trim() 
                           ? barber.specialty.trim().toUpperCase() 
-                          : (isAbraham ? 'MASTER DENTAL' : isAlejandro ? 'ODONTÓLOGO' : isAngel ? 'ODONTÓLOGO' : isJose ? 'ESTÉTICA' : isMarko ? 'ESTÉTICA' : (isBarista ? 'ASISTENTE CLÍNICO' : isAsistente ? 'ASISTENTE CLÍNICO' : (isRawRolePermissions ? 'ASISTENTE' : roleLabel(rawRole).toUpperCase())));
+                          : (isAbraham ? 'MASTER DENTAL' : isAlejandro ? 'ODONTÃ“LOGO' : isAngel ? 'ODONTÃ“LOGO' : isJose ? 'ESTÃ‰TICA' : isMarko ? 'ESTÃ‰TICA' : (isBarista ? 'ASISTENTE CLÍNICO' : isAsistente ? 'ASISTENTE CLÍNICO' : (isRawRolePermissions ? 'ASISTENTE' : roleLabel(rawRole).toUpperCase())));
                        const cleanTags = (barber.role?.split('|')[1] || '').trim();
                        const isRawPermissions = cleanTags.includes(',') || cleanTags.includes('barber') || cleanTags.includes('schedule') || !cleanTags;
-                       const defaultTags = isBarista ? 'Hidratación • Confort • Experiencia' : (isAsistente ? 'Higiene • Confort • Cuidado' : (specialtyText.includes('TATUA') || rawRole.toLowerCase().includes('tatu') ? 'Estética • Blanqueamiento • Sonrisa' : (specialtyText.includes('MANICUR') || specialtyText.includes('UÑA') ? 'Estética • Diseño • Sonrisa' : 'Prevención • Estética • Confort')));
+                       const defaultTags = isBarista ? 'Hidratación â€¢ Confort â€¢ Experiencia' : (isAsistente ? 'Higiene â€¢ Confort â€¢ Cuidado' : (specialtyText.includes('TATUA') || rawRole.toLowerCase().includes('tatu') ? 'Estética â€¢ Blanqueamiento â€¢ Sonrisa' : (specialtyText.includes('MANICUR') || specialtyText.includes('UÃ‘A') ? 'Estética â€¢ Diseño â€¢ Sonrisa' : 'Prevención â€¢ Estética â€¢ Confort')));
                        const tagsText = !isRawPermissions 
                          ? cleanTags 
-                         : (isAbraham ? 'Prevención • Estética • Control' : isAlejandro ? 'Ortodoncia • Estética • Control' : isAngel ? 'Endodoncia • Urgencias • Confort' : isJose ? 'Estética • Blanqueamiento' : isMarko ? 'Estética • Blanqueamiento' : defaultTags);
+                         : (isAbraham ? 'Prevención â€¢ Estética â€¢ Control' : isAlejandro ? 'Ortodoncia â€¢ Estética â€¢ Control' : isAngel ? 'Endodoncia â€¢ Urgencias â€¢ Confort' : isJose ? 'Estética â€¢ Blanqueamiento' : isMarko ? 'Estética â€¢ Blanqueamiento' : defaultTags);
                        
                        return (
                          <div key={barber.id} className="shrink-0 px-3 animate-[premiumFadeUp_0.6s_cubic-bezier(0.16,1,0.3,1)_both]" style={{ width: `${100 / visibleCount}%`, animationDelay: `${idx * 60}ms` }}>
@@ -3045,7 +3045,7 @@ const videoRef = useRef(null);
               </FadeInUp>
             </div>
 
-            {/* SECTION: ODONTOPEDIATRÍA — Premium responsive grid layout */}
+            {/* SECTION: ODONTOPEDIATRÍA â€” Premium responsive grid layout */}
             <FadeInUp id="pandakids" className="w-full reveal-item scroll-mt-24 py-12">
               {/* CSS for micro-animations inside this section */}
               <style>{`
@@ -3127,13 +3127,13 @@ const videoRef = useRef(null);
                     <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-[#111111] block">SU PRIMERA SONRISA</span>
                     <h2 className="text-3xl lg:text-4xl font-extrabold text-[#111111] tracking-tight uppercase leading-tight font-sans title-loop-pulse">
                       SONRISAS QUE HACEN<br />
-                      <span className="text-[#111111]">FELICES A LOS PEQUEÑOS</span>
+                      <span className="text-[#111111]">FELICES A LOS PEQUEÃ‘OS</span>
                     </h2>
                     
                     {/* Minimalist, high-end indicators */}
                     <div className="flex items-center gap-3 text-[10px] sm:text-[11px] font-bold tracking-[0.2em] text-[#111111] uppercase pt-1">
-                      <span>EDADES: 1 A 12 AÑOS</span>
-                      <span className="text-[#cbd5e1] select-none">•</span>
+                      <span>EDADES: 1 A 12 AÃ‘OS</span>
+                      <span className="text-[#cbd5e1] select-none">â€¢</span>
                       <span>SALA INFANTIL</span>
                     </div>
 
@@ -3142,7 +3142,7 @@ const videoRef = useRef(null);
                     </p>
                   </div>
 
-                  {/* Feature List — Interactive hover styling */}
+                  {/* Feature List â€” Interactive hover styling */}
                   <div className="space-y-4 pt-1">
                     {[
                       { icon: <HeartPulse size={15} />, class: 'icon-scissors', title: 'Butaca dental infantil', desc: 'Asiento adaptado para que estén cómodos' },
@@ -3167,7 +3167,7 @@ const videoRef = useRef(null);
                 <div className="w-full md:col-span-2 lg:col-span-4 text-left flex flex-col justify-between py-2 space-y-6 md:border-t md:border-[#d9c08f]/15 md:pt-6 lg:border-t-0 lg:border-l lg:pt-2 lg:pl-10 xl:pl-14 md:max-w-2xl md:mx-auto lg:max-w-none z-10">
                   {/* Premium Floating Testimonial Card */}
                   <div className="bg-white border border-[#d9c08f]/15 rounded-2xl p-6 relative flex-1 flex flex-col justify-center space-y-4">
-                    <span className="text-[3rem] text-[#111111]/15 font-serif absolute -top-2 -left-1 select-none pointer-events-none">“</span>
+                    <span className="text-[3rem] text-[#111111]/15 font-serif absolute -top-2 -left-1 select-none pointer-events-none">â€œ</span>
                     <p className="text-[#334155] text-[14px] leading-relaxed italic relative z-1">
                       Me gustó mucho la cita, el odontólogo fue muy paciente y amable, y lo trató súper bien. ¡Volveremos pronto sin duda!
                     </p>
@@ -3235,7 +3235,7 @@ const videoRef = useRef(null);
                         <span className="text-[10px] font-extrabold tracking-widest text-[#475569] uppercase">
                           ESPECIALISTA DENTAL
                         </span>
-                        <span className="text-[#cbd5e1]">•</span>
+                        <span className="text-[#cbd5e1]">â€¢</span>
                         <span className="text-[10px] font-extrabold tracking-widest text-[#111111] uppercase">
                           TOP DEL MES
                         </span>
@@ -3318,7 +3318,7 @@ const videoRef = useRef(null);
 
             <div id="experiencia-section" className="w-full reveal-item scroll-mt-24 py-12 flex flex-col gap-8">
               
-              {/* Header Title for the Mural — Mobile only */}
+              {/* Header Title for the Mural â€” Mobile only */}
               <div className="text-center space-y-3 block md:hidden">
                 <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-[#111111] tracking-tight uppercase font-sans title-loop-pulse">
                   EXPERIENCIA <span className="text-[#d9c08f]">DIENTES SANOS</span>
@@ -3336,19 +3336,19 @@ const videoRef = useRef(null);
                   
                   {/* === HERO: 2 Vertical Videos Side by Side === */}
                   <div className="flex gap-2 w-full">
-                    {/* Video 1 — Experiencia principal */}
+                    {/* Video 1 â€” Experiencia principal */}
                     <div ref={muralVideoRef} className="flex-1 rounded-2xl overflow-hidden shadow-2xl border border-[#111111]/20 relative bg-white">
                       <div className="w-full aspect-[9/16]" style={{ background: 'linear-gradient(135deg,#f7f4ee 0%,#efe6d5 50%,#e8d4b0 100%)' }} />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
                     </div>
-                    {/* Video 2 — Consultorio */}
+                    {/* Video 2 â€” Consultorio */}
                     <div ref={cafeVideoRef} className="flex-1 rounded-2xl overflow-hidden shadow-2xl border border-[#111111]/20 relative bg-white">
                       <div className="w-full aspect-[9/16]" style={{ background: 'linear-gradient(135deg,#f7f4ee 0%,#efe6d5 50%,#e8d4b0 100%)' }} />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
                     </div>
                   </div>
 
-                  {/* === STRIP 1: Marquee scrolling LEFT — larger photos === */}
+                  {/* === STRIP 1: Marquee scrolling LEFT â€” larger photos === */}
                   <div className="relative w-full overflow-hidden" style={{ maskImage: 'linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)', WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)' }}>
                     <div className="marquee-strip-left flex gap-2 w-max">
                       {/* Original set */}
@@ -3366,7 +3366,7 @@ const videoRef = useRef(null);
                     </div>
                   </div>
 
-                  {/* === STRIP 2: Marquee scrolling RIGHT — slightly smaller photos === */}
+                  {/* === STRIP 2: Marquee scrolling RIGHT â€” slightly smaller photos === */}
                   <div className="relative w-full overflow-hidden" style={{ maskImage: 'linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)', WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)' }}>
                     <div className="marquee-strip-right flex gap-2 w-max">
                       {/* Original set */}
@@ -3489,7 +3489,7 @@ const videoRef = useRef(null);
                     document.body
                   )}
 
-                  {/* Bento Grid — Videos vertical 9:16, photos proportional */}
+                  {/* Bento Grid â€” Videos vertical 9:16, photos proportional */}
                   <motion.div 
                     ref={muralGridRef}
                     className={`grid grid-cols-12 gap-3 auto-rows-[80px] ${!bentoEditMode ? 'cursor-none' : ''}`}
@@ -3656,7 +3656,7 @@ const videoRef = useRef(null);
                 <style dangerouslySetInnerHTML={{__html: `
                   .hide-scrollbar::-webkit-scrollbar { display: none; }
                 `}} />
-                {/* REVIEWS DE GOOGLE — desde la tabla `google_reviews`, lista para las reseñas reales */}
+                {/* REVIEWS DE GOOGLE â€” desde la tabla `google_reviews`, lista para las reseñas reales */}
                 {/* TODO(reseñas): conectar la API de Google Places o insertar filas en google_reviews */}
                 {googleReviews.length === 0 && (
                   <div className="min-w-full flex flex-col items-center justify-center gap-4 py-12 text-center">
@@ -3696,12 +3696,12 @@ const videoRef = useRef(null);
             </div>
           </FadeInUp>
 
-            {/* SECTION: ¿POR QUÉ ELEGIR DIENTES SANOS? & UBICACIÓN */}
+            {/* SECTION: ¿POR QUÃ‰ ELEGIR DIENTES SANOS? & UBICACIÃ“N */}
             <FadeInUp className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-stretch" id="ubicacion">
               
               {/* Left Column: Why Choose Us (Redesigned as premium cards) */}
               <div className="lg:col-span-6 flex flex-col justify-center text-left">
-                <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-[#111111] block mb-2">¿POR QUÉ ELEGIR</span>
+                <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-[#111111] block mb-2">¿POR QUÃ‰ ELEGIR</span>
                 <h2 className="text-3xl lg:text-4xl font-extrabold text-[#111111] tracking-tight uppercase font-sans mb-8 title-loop-pulse">
                   <span className="text-[#d9c08f]">DIENTES SANOS?</span>
                 </h2>
@@ -3711,7 +3711,7 @@ const videoRef = useRef(null);
                     { icon: <User size={18} />, title: 'Profesionales', desc: 'Especialistas experimentados en salud y estética dental.' },
                     { icon: <Award size={18} />, title: 'Calidad Premium', desc: 'Usamos insumos y equipos de alta gama para el cuidado dental.' },
                     { icon: <CalendarIcon size={18} />, title: 'Reserva Fácil', desc: 'Agenda tu cita en segundos las 24 horas del día.' },
-                    { icon: <Users size={18} />, title: 'Ambiente Único', desc: 'Un espacio cómodo y una sala de espera pensada para tu tranquilidad.' },
+                    { icon: <Users size={18} />, title: 'Ambiente Ãšnico', desc: 'Un espacio cómodo y una sala de espera pensada para tu tranquilidad.' },
                   ].map((item, idx) => (
                     <div key={idx} className="p-5 rounded-2xl bg-white border border-[#d9c08f]/15 hover:border-[#111111]/20 hover:bg-[#f7f7f5] transition-all duration-300 flex flex-col gap-3 group">
                       <div className="w-9 h-9 rounded-lg bg-[#111111]/10 border border-[#111111]/25 flex items-center justify-center text-[#111111] transition-colors group-hover:bg-[#111111] group-hover:text-white">
@@ -3730,7 +3730,7 @@ const videoRef = useRef(null);
               <div className="lg:col-span-6 flex flex-col justify-center text-left">
                 <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-[#111111] block mb-2">NUESTRA SEDE</span>
                 <h2 className="text-3xl lg:text-4xl font-extrabold text-[#111111] tracking-tight uppercase font-sans mb-8 title-loop-pulse">
-                  NUESTRA <span className="text-[#d9c08f]">UBICACIÓN</span>
+                  NUESTRA <span className="text-[#d9c08f]">UBICACIÃ“N</span>
                 </h2>
 
                 <div className="bg-white border border-[#d9c08f]/15 rounded-3xl p-6 lg:p-8 flex flex-col justify-between h-full min-h-[350px] relative overflow-hidden group hover:border-[#111111]/20 transition-all duration-300">
@@ -3747,7 +3747,7 @@ const videoRef = useRef(null);
                           <MapPin size={18} />
                         </div>
                         <div>
-                          <h4 className="text-sm font-extrabold text-[#0f172a] uppercase tracking-wider">SEDE ÚNICA</h4>
+                          <h4 className="text-sm font-extrabold text-[#0f172a] uppercase tracking-wider">SEDE ÃšNICA</h4>
                           <span className="text-[10px] text-[#111111] font-bold uppercase tracking-wider">{CLINIC.addressShort}</span>
                         </div>
                       </div>
@@ -3846,7 +3846,7 @@ const videoRef = useRef(null);
                 </a>
               </div>
 
-              {/* Grid of 4 posts — fotos locales descargadas del Instagram real; fallback a cards con link */}
+              {/* Grid of 4 posts â€” fotos locales descargadas del Instagram real; fallback a cards con link */}
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-[1200px] mx-auto">
                 {(getInstagramPosts(4).length > 0
                   ? getInstagramPosts(4)
@@ -3890,7 +3890,7 @@ const videoRef = useRef(null);
                 {/* Left links */}
                 <div className="flex flex-wrap justify-start gap-5 text-[10px] font-black tracking-[0.25em] text-[#94a3b8] uppercase">
                   <a href={CLINIC.instagramUrl} target="_blank" rel="noopener noreferrer" className="hover:text-[#111111] transition-colors no-underline">@{CLINIC.instagramHandle}</a>
-                  <span className="text-[#cbd5e1] select-none">•</span>
+                  <span className="text-[#cbd5e1] select-none">â€¢</span>
                   <a href={CLINIC.whatsappUrl} target="_blank" rel="noopener noreferrer" className="hover:text-[#111111] transition-colors no-underline">WhatsApp</a>
                 </div>
 
@@ -3904,12 +3904,12 @@ const videoRef = useRef(null);
                 {/* Right links */}
                 <div className="flex flex-wrap justify-end gap-5 text-[10px] font-black tracking-[0.25em] text-[#94a3b8] uppercase">
                   <span className="cursor-pointer hover:text-[#111111] transition-colors" onClick={() => document.getElementById('servicios')?.scrollIntoView({ behavior: 'smooth' })}>Servicios</span>
-                  <span className="text-[#cbd5e1] select-none">•</span>
+                  <span className="text-[#cbd5e1] select-none">â€¢</span>
                   <span className="cursor-pointer hover:text-[#111111] transition-colors" onClick={() => document.getElementById('ubicacion')?.scrollIntoView({ behavior: 'smooth' })}>Ubicación</span>
                 </div>
               </div>
 
-              {/* Mobile Footer — Cosmos-style centered stacked layout */}
+              {/* Mobile Footer â€” Cosmos-style centered stacked layout */}
               <div className="flex md:hidden flex-col items-center gap-8 mb-16">
                 {/* Logo */}
                 <div className="w-14 h-14 flex items-center justify-center">
@@ -4028,7 +4028,7 @@ const videoRef = useRef(null);
           <div className="ambient-aurora-bronze"></div>
         </div>
 
-        {/* ── WELCOME SCREEN ── */}
+        {/* â”€â”€ WELCOME SCREEN â”€â”€ */}
         {/* Render welcome screen while showWelcome is true, adding fade-out class during transitions */}
         {showWelcome && (
           <>
@@ -4041,7 +4041,7 @@ const videoRef = useRef(null);
                 className="fixed bottom-6 right-6 z-[100] bg-[#111111] text-white font-extrabold px-6 py-3.5 rounded-full shadow-[0_10px_30px_rgba(0,0,0,0.06)] hover:scale-105 transition-all flex items-center gap-2 cursor-pointer text-xs tracking-widest uppercase border border-black/10 animate-pulse"
                 style={{ boxShadow: '0 10px 25px -5px rgba(17, 17, 17,0.4), 0 8px 10px -6px rgba(17, 17, 17,0.4)' }}
               >
-                <span>Volver a la reserva</span> <span className="text-[14px]">→</span>
+                <span>Volver a la reserva</span> <span className="text-[14px]">â†’</span>
               </button>
             )}
             <AnimatePresence>
@@ -4097,7 +4097,7 @@ const videoRef = useRef(null);
           <div className="quiet-fade-overlay" />
         )}
 
-        {/* ── SUCCESS VIEW SCREEN ── */}
+        {/* â”€â”€ SUCCESS VIEW SCREEN â”€â”€ */}
         {!showWelcome && success && (() => {
           const isTattoo = (selectedService?.category || '').toLowerCase().includes('tatuaj');
           const barberPhone = selectedBarber?.phone?.replace(/[^0-9]/g, '') || '';
@@ -4200,13 +4200,13 @@ const videoRef = useRef(null);
           );
         })()}
 
-        {/* ── INTERACTIVE WIZARD FLOW SCREEN (STEPS 1-6) ── */}
+        {/* â”€â”€ INTERACTIVE WIZARD FLOW SCREEN (STEPS 1-6) â”€â”€ */}
         {(!showWelcome || isTransitioning) && !success && (
           // Same max-w-7xl the expanded barber profile uses. No breakpoint prefix needed:
           // on phone/tablet viewports (< 1280px) the content is still bounded by w-full and
           // never actually reaches 1280px, so this only widens things on real desktops.
           // Below lg the `lg:grid` never applies, so this stays the original single-column
-          // flex layout — phone/tablet markup and behavior are untouched.
+          // flex layout â€” phone/tablet markup and behavior are untouched.
           <div 
             className={`w-full mx-auto px-4 ${isEmbedded ? 'pb-4' : 'pb-28 md:pb-16'} relative z-10 ${step === 2 && expandedBarber ? 'max-w-7xl 2xl:max-w-[1600px] px-4 md:px-8 flex flex-col flex-1' : isEmbedded ? 'max-w-6xl flex flex-col flex-1 xl:grid xl:grid-cols-[1fr_380px] xl:gap-12 xl:items-start' : 'max-w-6xl flex flex-col flex-1 lg:grid lg:grid-cols-[1fr_380px] lg:gap-14 lg:items-start'}`}
             style={{ paddingTop: (step === 2 && expandedBarber) ? '0px' : 'calc(max(env(safe-area-inset-top, 0px), 32px))' }}
@@ -4221,7 +4221,7 @@ const videoRef = useRef(null);
             {/* Wizard Header: PASO X DE 6 with title/subtitle and back button */}
             {!(step === 2 && expandedBarber) && (
             <div className="mb-4 relative text-center">
-              {/* Circular back button on the left — hidden on step 1 when embedded (nothing to go back to) */}
+              {/* Circular back button on the left â€” hidden on step 1 when embedded (nothing to go back to) */}
               {(!isEmbedded || step > 1) && (
               <div className="absolute left-0 top-0">
                 <button 
@@ -4312,7 +4312,7 @@ const videoRef = useRef(null);
                 
                 {/* STEP 1: Categories & Services (Accordion) */}
                 {step === 1 && (
-                  // Fixed 2-column grid from lg up, always — an open card just grows taller
+                  // Fixed 2-column grid from lg up, always â€” an open card just grows taller
                   // within its own column (its row's height auto-expands to fit it; the
                   // sibling card next to it stays put, top-aligned via items-start). No
                   // col-span here: spanning the open card across both columns is what caused
@@ -4336,7 +4336,7 @@ const videoRef = useRef(null);
                             isOpen ? 'is-open' : ''
                           } ${cat.isKids ? 'border-[rgba(17, 17, 17,0.3)]' : ''}`}
                         >
-                          {/* Header card — click to toggle */}
+                          {/* Header card â€” click to toggle */}
                           <button 
                             onClick={() => setOpenCategory(isOpen ? null : cat.key)}
                             className="accordion-category-header"
@@ -4443,7 +4443,7 @@ const videoRef = useRef(null);
                         barbers={barbers}
                         onClose={() => {
                           if (location.state?.exploreBarbers) {
-                            // Navigate immediately — don't clear expandedBarber first
+                            // Navigate immediately â€” don't clear expandedBarber first
                             // or the Step 2 grid will flash behind.
                             navigate('/perfil/explorar', { replace: true });
                           } else {
@@ -4624,9 +4624,9 @@ const videoRef = useRef(null);
                                               : 'bg-white text-[#475569] hover:bg-[#f7f7f5] hover:text-[#0f172a] border border-[#d9c08f]/20'
                                           }`}
                                         >
-                                          {isSelected ? '✓ Elegido' : 'Elegir'}
+                                          {isSelected ? 'âœ“ Elegido' : 'Elegir'}
                                         </button>
-                                        {/* Tap hint — only when not selected */}
+                                        {/* Tap hint â€” only when not selected */}
                                         {!isSelected && (
                                           <p className="text-center text-[8px] text-[#cbd5e1] font-medium tracking-wide -mt-0.5">
                                             Tócame para escoger
@@ -4700,7 +4700,7 @@ const videoRef = useRef(null);
                       
                       {/* Weekday abbreviations */}
                       <div className="grid grid-cols-7 gap-1 text-center">
-                        {['LUN', 'MAR', 'MIÉ', 'JUE', 'VIE', 'SÁB', 'DOM'].map(d => (
+                        {['LUN', 'MAR', 'MIÃ‰', 'JUE', 'VIE', 'SÁB', 'DOM'].map(d => (
                           <span key={d} className="text-[10px] font-black text-[#94a3b8] tracking-wider">
                             {d}
                           </span>
@@ -4838,7 +4838,7 @@ const videoRef = useRef(null);
                       )}
                     </div>
                     
-                    {/* TU SELECCIÓN Card — solo en móvil/tablet, en desktop el sidebar ya muestra esto */}
+                    {/* TU SELECCIÃ“N Card â€” solo en móvil/tablet, en desktop el sidebar ya muestra esto */}
                     {selectedDate && selectedTime && (
                       <div ref={bookingSummaryRef} className="relative rounded-3xl overflow-hidden animate-fade-in lg:hidden" style={{
                         background: 'linear-gradient(135deg, rgba(17, 17, 17,0.10) 0%, rgba(255,255,255,0.98) 50%, rgba(17, 17, 17,0.05) 100%)',
@@ -4969,7 +4969,7 @@ const videoRef = useRef(null);
                       </div>
                     )}
 
-                    {/* Big Gold CONTINUAR Button — solo visible en móvil, en desktop usa el Siguiente del sidebar */}
+                    {/* Big Gold CONTINUAR Button â€” solo visible en móvil, en desktop usa el Siguiente del sidebar */}
                     <div className="pt-2 lg:hidden" ref={step3ContinueBtnRef} style={{ scrollMarginBottom: isEmbedded ? '120px' : '40px' }}>
                       <button
                         type="button"
@@ -5286,7 +5286,7 @@ const videoRef = useRef(null);
                       {/* Content section */}
                       <div className="p-4 space-y-2.5" style={{background: 'var(--bg-secondary)'}}>
                         
-                        {/* Service chip — champagne */}
+                        {/* Service chip â€” champagne */}
                         <div className="flex items-center gap-3 p-3 rounded-2xl" style={{
                           background: 'rgba(17, 17, 17,0.06)',
                           border: '1px solid rgba(17, 17, 17,0.14)'
@@ -5300,7 +5300,7 @@ const videoRef = useRef(null);
                           </div>
                         </div>
 
-                        {/* Date & Time chip — champagne slightly lighter */}
+                        {/* Date & Time chip â€” champagne slightly lighter */}
                         <div className="flex items-center gap-3 p-3 rounded-2xl" style={{
                           background: 'rgba(17, 17, 17,0.04)',
                           border: '1px solid rgba(17, 17, 17,0.10)'
@@ -5470,7 +5470,7 @@ const videoRef = useRef(null);
                                     value={authForm.password}
                                     onChange={(e) => setAuthForm({ ...authForm, password: e.target.value })}
                                     className="w-full bg-white border border-[#d9c08f]/15 rounded-xl pl-4 pr-10 py-3 text-xs text-[#0f172a] focus:border-[var(--champagne)] focus:bg-white focus:shadow-[0_0_12px_rgba(17, 17, 17,0.1)] transition-all duration-200 outline-none"
-                                    placeholder="••••••••"
+                                    placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢"
                                     autoComplete="new-password"
                                     required
                                   />
@@ -5548,7 +5548,7 @@ const videoRef = useRef(null);
               </AnimatePresence>
             </div>
 
-            {/* Footer Navigation Buttons — hidden when barber profile is expanded or when in Step 3 (which has its own button) */}
+            {/* Footer Navigation Buttons â€” hidden when barber profile is expanded or when in Step 3 (which has its own button) */}
             <div ref={nextBtnRef} className={`mt-8 sm:mt-20 pb-10 ${(step === 2 && expandedBarber) || step === 3 ? 'hidden' : ''} ${isEmbedded ? 'xl:hidden' : 'lg:hidden'}`} style={{ scrollMarginBottom: isEmbedded ? '120px' : '40px' }}>
               {step < 5 ? (
                 <button
@@ -5587,7 +5587,7 @@ const videoRef = useRef(null);
 
             </div>
             {/* Right column on desktop: live booking summary. Hidden below lg (still in the
-                DOM but display:none — harmless) and skipped entirely for the expanded barber
+                DOM but display:none â€” harmless) and skipped entirely for the expanded barber
                 profile, which already has its own wide multi-column layout. */}
             {!(step === 2 && expandedBarber) && (() => {
               const barberLabel = 'Especialista';
@@ -5717,7 +5717,7 @@ const videoRef = useRef(null);
                                 transition={{ duration: 0.3 }}
                                 className={`text-sm font-extrabold leading-snug truncate ${item.value ? 'text-[#0f172a]' : 'text-[#cbd5e1] font-medium'}`}
                               >
-                                {item.value || (isCurrent ? 'Eligiendo ahora…' : 'Pendiente')}
+                                {item.value || (isCurrent ? 'Eligiendo ahoraâ€¦' : 'Pendiente')}
                               </motion.p>
                             </AnimatePresence>
                           </div>
@@ -5744,7 +5744,7 @@ const videoRef = useRef(null);
                         WebkitTextFillColor: selectedService?.price != null ? 'transparent' : 'unset',
                         color: selectedService?.price != null ? undefined : 'rgba(0,0,0,0.2)'
                       }}>
-                        {selectedService?.price != null ? `$${selectedService.price}` : '—'}
+                        {selectedService?.price != null ? `$${selectedService.price}` : 'â€”'}
                       </span>
                     </div>
 
@@ -5876,7 +5876,7 @@ const videoRef = useRef(null);
                           <BarberAvatar url={b.image_url} name={b.name} />
                           {isSelected && (
                             <div className="absolute -bottom-1 -right-1 w-4.5 h-4.5 rounded-full bg-[var(--champagne)] text-black flex items-center justify-center text-[8px] font-black border border-[#e9eae8]">
-                              ✓
+                              âœ“
                             </div>
                           )}
                         </div>
@@ -5910,7 +5910,7 @@ const videoRef = useRef(null);
                             ? 'bg-[var(--champagne)] text-black scale-100' 
                             : 'bg-white text-transparent border border-[#d9c08f]/20 scale-90'
                         }`}>
-                          ✓
+                          âœ“
                         </div>
 
                         <div className="pr-4">
@@ -6025,7 +6025,7 @@ const videoRef = useRef(null);
               }}
               className="btn-gold px-5 py-2.5 rounded-full text-[10px] uppercase tracking-widest font-extrabold flex items-center gap-1 cursor-pointer"
             >
-              Reservar visita <span className="text-[12px]">→</span>
+              Reservar visita <span className="text-[12px]">â†’</span>
             </button>
           </div>
         </div>
@@ -6033,3 +6033,4 @@ const videoRef = useRef(null);
     </div>
   );
 }
+

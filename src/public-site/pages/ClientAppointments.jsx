@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useCallback } from 'react';
+﻿import { useState, useEffect, useRef, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Calendar, FileCheck, Star, Clock, Eye, AlertTriangle, Check, X, PenTool, Droplets, Sparkles, User, ChevronRight, ChevronDown } from 'lucide-react';
 import ToothIcon from '../../components/icons/ToothIcon';
@@ -223,7 +223,7 @@ export default function ClientAppointments() {
         <p className="tab-intro-subtitle">Revisa tu historial de tratamientos, gestiona tus próximas visitas y firma tus consentimientos dentales.</p>
       </div>
 
-      {/* ── SEGMENTED CONTROL TABS ── */}
+      {/* â”€â”€ SEGMENTED CONTROL TABS â”€â”€ */}
       <div className="ca-tabs">
         {[
           { id: 'citas', label: 'Historial', icon: Calendar },
@@ -244,7 +244,7 @@ export default function ClientAppointments() {
         })}
       </div>
 
-      {/* ── CITAS TAB ── */}
+      {/* â”€â”€ CITAS TAB â”€â”€ */}
       {activeTab === 'citas' && (
         <div className="ca-section">
 
@@ -356,7 +356,7 @@ export default function ClientAppointments() {
         </div>
       )}
 
-      {/* ── CONSENT TAB ── */}
+      {/* â”€â”€ CONSENT TAB â”€â”€ */}
       {activeTab === 'consent' && (
         <div className="ca-section">
           {tattooAppointments.length === 0 ? (
@@ -430,7 +430,7 @@ export default function ClientAppointments() {
         </div>
       )}
 
-      {/* ── CONSENT MODAL ── */}
+      {/* â”€â”€ CONSENT MODAL â”€â”€ */}
       <AnimatePresence>
       {selectedConsent && (() => {
         const isViewOnly = selectedConsent._viewOnly;
@@ -461,13 +461,13 @@ export default function ClientAppointments() {
 
               <div className="ca-modal-body">
                 <div className="ca-modal-legal-header">
-                  <p className="ca-ml-brand">CENTRO ODONTOLÓGICO DIENTES SANOS</p>
+                  <p className="ca-ml-brand">CENTRO ODONTOLÃ“GICO DIENTES SANOS</p>
                   <p className="ca-ml-title">Consentimiento Informado de Tratamiento Dental</p>
                   <p className="ca-ml-subtitle">Para procedimientos odontológicos</p>
                 </div>
 
                 {[
-                  { title: '1. DECLARACIÓN', text: 'Declaro que soy mayor de edad y acepto de forma voluntaria el procedimiento odontológico propuesto por Centro Odontológico Dientes Sanos. Comprendo que el tratamiento implica la intervención sobre tejidos dentales y tejidos blandos de la cavidad oral mediante instrumentales esterilizados y materiales biocompatibles, y que conlleva riesgos inherentemente asociados.' },
+                  { title: '1. DECLARACIÃ“N', text: 'Declaro que soy mayor de edad y acepto de forma voluntaria el procedimiento odontológico propuesto por Centro Odontológico Dientes Sanos. Comprendo que el tratamiento implica la intervención sobre tejidos dentales y tejidos blandos de la cavidad oral mediante instrumentales esterilizados y materiales biocompatibles, y que conlleva riesgos inherentemente asociados.' },
                   { title: '2. RIESGOS ACEPTADOS', text: 'Acepto que los riesgos del procedimiento incluyen: dolor y molestias postoperatorias, sangrado en la zona tratada, hinchazón e inflamación temporal, reacciones alérgicas o adversas a anestésicos, medicamentos o materiales de restauración utilizados, infección, sensibilidad dental prolongada y posibles complicaciones relacionadas con mi condición de salud individual.' },
                   { title: '3. CUIDADOS POSTERIORES', text: 'Me comprometo a seguir rigurosamente las indicaciones de cuidado posterior proporcionadas por el especialista, incluyendo la higiene oral, la alimentación, la toma de medicamentos indicados y la asistencia a los controles y citas de seguimiento durante todo el proceso de recuperación.' },
                   { title: '4. USO DE IMAGEN', text: 'Autorizo de forma voluntaria a Centro Odontológico Dientes Sanos a tomar fotografías y/o videos del procedimiento y del resultado final del tratamiento, para su uso exclusivo con fines promocionales en redes sociales, página web y plataformas digitales de la clínica.' },
@@ -519,7 +519,7 @@ export default function ClientAppointments() {
       })()}
       </AnimatePresence>
 
-      {/* ── RATING MODAL ── */}
+      {/* â”€â”€ RATING MODAL â”€â”€ */}
       {ratingModal && (
         <div className="ca-modal-overlay" onClick={() => setRatingModal(null)}>
           <div className="ca-modal ca-modal-sm" onClick={e => e.stopPropagation()}>
@@ -560,7 +560,7 @@ export default function ClientAppointments() {
           margin: 0;
         }
 
-        /* ── TABS ── */
+        /* â”€â”€ TABS â”€â”€ */
         .ca-tabs {
           display: flex;
           gap: 4px;
@@ -622,7 +622,7 @@ export default function ClientAppointments() {
           to { opacity: 1; transform: translateY(0); }
         }
 
-        /* ── HERO CARD ── */
+        /* â”€â”€ HERO CARD â”€â”€ */
         .ca-hero-card {
           display: flex;
           border-radius: 20px;
@@ -730,7 +730,7 @@ export default function ClientAppointments() {
           color: var(--champagne);
         }
 
-        /* ── HISTORY ── */
+        /* â”€â”€ HISTORY â”€â”€ */
         .ca-history-title {
           font-size: 10px;
           font-weight: 800;
@@ -861,7 +861,7 @@ export default function ClientAppointments() {
           text-transform: uppercase;
         }
 
-        /* ── PAGINATION ── */
+        /* â”€â”€ PAGINATION â”€â”€ */
         .ca-pagination {
           display: flex;
           justify-content: space-between;
@@ -890,7 +890,7 @@ export default function ClientAppointments() {
           letter-spacing: 1px;
         }
 
-        /* ── EMPTY STATE ── */
+        /* â”€â”€ EMPTY STATE â”€â”€ */
         .ca-empty {
           display: flex;
           flex-direction: column;
@@ -910,7 +910,7 @@ export default function ClientAppointments() {
           font-size: 12px; color: #94a3b8; font-weight: 600;
         }
 
-        /* ── CONSENT ── */
+        /* â”€â”€ CONSENT â”€â”€ */
         .ca-consent-label {
           display: flex;
           align-items: center;
@@ -1052,7 +1052,7 @@ export default function ClientAppointments() {
           background: rgba(34,197,94,0.08);
         }
 
-        /* ── MODALS ── */
+        /* â”€â”€ MODALS â”€â”€ */
         .ca-modal-overlay {
           position: fixed;
           inset: 0;
@@ -1131,7 +1131,7 @@ export default function ClientAppointments() {
         .ca-ml-sec-title { font-size: 10px; font-weight: 800; color: rgba(17,17,17,0.7); text-transform: uppercase; letter-spacing: 1px; margin: 0 0 4px; }
         .ca-ml-sec-text { font-size: 13px; color: #64748b; line-height: 1.6; font-weight: 500; margin: 0; }
 
-        /* ── SIGNATURE ── */
+        /* â”€â”€ SIGNATURE â”€â”€ */
         .ca-modal-sign {
           padding-top: 20px;
           border-top: 1px solid rgba(217, 192, 143, 0.15);
@@ -1194,7 +1194,7 @@ export default function ClientAppointments() {
         .ca-sign-submit:hover { background: #d9c08f; }
         .ca-sign-submit:disabled { opacity: 0.4; cursor: default; }
 
-        /* ── SIGNED VIEW ── */
+        /* â”€â”€ SIGNED VIEW â”€â”€ */
         .ca-modal-signed {
           padding-top: 20px;
           border-top: 1px solid rgba(217, 192, 143, 0.15);
@@ -1234,7 +1234,7 @@ export default function ClientAppointments() {
         }
         .ca-signed-close:hover { background: #f7f7f5; color: #0f172a; }
 
-        /* ── STAR RATING ── */
+        /* â”€â”€ STAR RATING â”€â”€ */
         .ca-modal .flex.items-center.gap-3.py-2 {
           display: flex;
           align-items: center;
@@ -1242,7 +1242,7 @@ export default function ClientAppointments() {
           padding: 8px 0;
         }
 
-        /* ── MOBILE ── */
+        /* â”€â”€ MOBILE â”€â”€ */
         @media (max-width: 640px) {
           .ca-hero-card { flex-direction: column; }
           .ca-hero-stub {
@@ -1261,3 +1261,4 @@ export default function ClientAppointments() {
     </div>
   );
 }
+

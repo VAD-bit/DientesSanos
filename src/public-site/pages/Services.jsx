@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+﻿import { useState, useEffect, useRef } from 'react';
 import { Clock, Star, ChevronRight, User, X } from 'lucide-react';
 import { publicService } from '../services/publicService';
 import QuickBookingModal from '../components/QuickBookingModal';
@@ -259,3 +259,4 @@ export default function Services() {
     </div>
   );
 }
+

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 
 /**
  * Detecta automáticamente si el dispositivo es de bajos recursos
@@ -68,3 +68,4 @@ const usePerformanceMode = () => {
 };
 
 export default usePerformanceMode;
+

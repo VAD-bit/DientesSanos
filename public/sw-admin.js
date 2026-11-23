@@ -1,4 +1,4 @@
-// Service Worker para la PWA Admin de Dientes Sanos CRM
+﻿// Service Worker para la PWA Admin de Dientes Sanos CRM
 
 const CACHE_NAME = 'dientes-sanos-admin-cache-v1';
 const ADMIN_BASE = '/admin';
@@ -104,7 +104,7 @@ self.addEventListener('fetch', event => {
   );
 });
 
-// ─── IndexedDB Offline Queue ────────────────────────────────────────────────
+// â”€â”€â”€ IndexedDB Offline Queue â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 function saveOfflineRequest(requestData) {
   return new Promise((resolve, reject) => {
@@ -176,7 +176,7 @@ function deleteOfflineRequest(id) {
   });
 }
 
-// ─── Push Notifications ─────────────────────────────────────────────────────
+// â”€â”€â”€ Push Notifications â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 self.addEventListener('push', event => {
   let data = { title: 'Dientes Sanos', body: 'Nueva notificación.' };
@@ -205,3 +205,4 @@ self.addEventListener('notificationclick', event => {
     event.waitUntil(clients.openWindow('/admin'));
   }
 });
+

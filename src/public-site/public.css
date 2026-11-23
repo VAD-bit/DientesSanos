@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+﻿@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 @import "tailwindcss";
 
@@ -477,7 +477,7 @@
   50% { transform: translate(45px, -35px) scale(1.1); }
 }
 
-/* Step transitions anim — opacity/transform only (no filter) so it stays on the
+/* Step transitions anim â€” opacity/transform only (no filter) so it stays on the
    compositor and doesn't drop frames on mobile, especially on real devices where
    animating `filter: blur()` forces a repaint every frame. */
 /* The enter/exit animation is driven by framer-motion (stepVariants in BookAppointment).
@@ -524,7 +524,7 @@
   box-shadow: 0 0 8px rgba(17, 17, 17, 0.4);
 }
 
-/* ── CINEMATIC DIAGNOL SCISSOR CUT TRANSITION ── */
+/* â”€â”€ CINEMATIC DIAGNOL SCISSOR CUT TRANSITION â”€â”€ */
 
 /* Overlay Container for Slices */
 .slice-container {
@@ -547,11 +547,11 @@
   height: 100%;
   background: #e9eae8;
   pointer-events: auto;
-  /* No CSS transition here — movement is handled by @keyframe animations */
+  /* No CSS transition here â€” movement is handled by @keyframe animations */
   z-index: 30;
 }
 
-/* Diagonal split — clip-paths only active during transition via welcome-exit parent */
+/* Diagonal split â€” clip-paths only active during transition via welcome-exit parent */
 .welcome-exit .slice-top-left {
   clip-path: polygon(0 0, 101% 0, 0 101%);
   animation: sliceExitTopLeft 0.85s cubic-bezier(0.76, 0, 0.24, 1) forwards;
@@ -695,7 +695,7 @@
 
 /* Wizard Cinematic 3D Reveal */
 
-/* ── RETURN ANIMATION (reverse slices come together) ── */
+/* â”€â”€ RETURN ANIMATION (reverse slices come together) â”€â”€ */
 .welcome-return .slice-return-top-left {
   clip-path: polygon(0 0, 101% 0, 0 101%);
   animation: sliceReturnTopLeft 0.75s cubic-bezier(0.76, 0, 0.24, 1) forwards;
@@ -791,7 +791,7 @@
   }
 }
 
-/* ── SUSTAINED TITLE ANIMATION ── */
+/* â”€â”€ SUSTAINED TITLE ANIMATION â”€â”€ */
 @keyframes titleGlow {
   0%, 100% {
     text-shadow: 0 0 10px rgba(17, 17, 17, 0.3), 0 0 20px rgba(17, 17, 17, 0.1);
@@ -1132,9 +1132,9 @@
   transform: scale(0.95);
 }
 
-/* ══════════════════════════════════════════
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
    PREMIUM MICRO-INTERACTIONS
-   ══════════════════════════════════════════ */
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 
 /* 1. Parallax on service card images */
 .accordion-category-header:hover .category-image-wrapper img,
@@ -1249,7 +1249,7 @@
   }
 }
 
-/* ═══════ DISRUPTIVE BARBER CARDS ═══════ */
+/* â•â•â•â•â•â•â• DISRUPTIVE BARBER CARDS â•â•â•â•â•â•â• */
 
 .barber-hero-card {
   position: relative;
@@ -1478,7 +1478,7 @@
   z-index: 10;
 }
 
-/* ── PREMIUM GLOBAL FLUID TRANSITIONS & INTERACTIVE MICRO-ANIMATIONS ── */
+/* â”€â”€ PREMIUM GLOBAL FLUID TRANSITIONS & INTERACTIVE MICRO-ANIMATIONS â”€â”€ */
 
 /* Apply smooth cubic-bezier transitions to all interactive, hoverable, and focusable elements */
 button,
@@ -1541,7 +1541,7 @@ input[type="date"] {
   color-scheme: dark;
 }
 
-/* ── MINI-LANDING PAGE STYLES ── */
+/* â”€â”€ MINI-LANDING PAGE STYLES â”€â”€ */
 .landing-scroll-container {
   width: 100%;
   overflow-y: auto;
@@ -1556,7 +1556,7 @@ input[type="date"] {
   display: none;
 }
 
-/* ── BACK TO TOP BUTTON ── */
+/* â”€â”€ BACK TO TOP BUTTON â”€â”€ */
 .back-to-top-btn {
   width: 48px;
   height: 48px;
@@ -1672,7 +1672,7 @@ input[type="date"] {
   padding: 0;
 }
 
-/* ── Servicios Populares (vertical list showcase) ── */
+/* â”€â”€ Servicios Populares (vertical list showcase) â”€â”€ */
 .landing-services-scroll {
   display: flex;
   flex-direction: column;
@@ -1779,7 +1779,7 @@ input[type="date"] {
   z-index: 2;
 }
 
-/* ── Barbero Destacado del Mes (horizontal card) ── */
+/* â”€â”€ Barbero Destacado del Mes (horizontal card) â”€â”€ */
 .landing-barber-month-card {
   width: 100%;
   display: flex;
@@ -1898,7 +1898,7 @@ input[type="date"] {
   filter: brightness(0.94);
 }
 
-/* ── Equipo Disponible (flush top photo card) ── */
+/* â”€â”€ Equipo Disponible (flush top photo card) â”€â”€ */
 .landing-team-subtitle {
   font-size: 11px;
   font-weight: 800;
@@ -2020,7 +2020,7 @@ input[type="date"] {
   box-shadow: 0 0 12px rgba(255, 214, 107, 0.4);
 }
 
-/* ── Club Panda VIP ── */
+/* â”€â”€ Club Panda VIP â”€â”€ */
 .landing-vip-card {
   width: 100%;
   display: flex;
@@ -2111,7 +2111,7 @@ input[type="date"] {
   color: #111111;
 }
 
-/* ── Podio individual Premium ── */
+/* â”€â”€ Podio individual Premium â”€â”€ */
 @keyframes float {
   0% { transform: translateY(0px); }
   50% { transform: translateY(-5px); }
@@ -2280,7 +2280,7 @@ input[type="date"] {
   filter: drop-shadow(0 0 6px rgba(255, 200, 80, 0.5));
 }
 
-/* ── Cliente del Mes: ganador único ── */
+/* â”€â”€ Cliente del Mes: ganador único â”€â”€ */
 .landing-vip-winner {
   display: flex;
   flex-direction: column;
@@ -2344,7 +2344,7 @@ input[type="date"] {
   }
 }
 
-/* ── 3D PANDA BEAR & WAVING HAND EFFECTS ── */
+/* â”€â”€ 3D PANDA BEAR & WAVING HAND EFFECTS â”€â”€ */
 .bear-glow-effect {
   filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.35)) drop-shadow(0 0 10px rgba(17, 17, 17, 0.4));
 }
@@ -2423,7 +2423,7 @@ input[type="date"] {
 
 
 
-/* ── Hero depth effects ── */
+/* â”€â”€ Hero depth effects â”€â”€ */
 .hero-grain {
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
   background-repeat: repeat;
@@ -2432,7 +2432,7 @@ input[type="date"] {
   mix-blend-mode: overlay;
 }
 
-/* ── Desktop Dashboard Layout adjustments ── */
+/* â”€â”€ Desktop Dashboard Layout adjustments â”€â”€ */
 @media (min-width: 1024px) {
   .landing-services-scroll {
     display: grid !important;
@@ -2616,7 +2616,7 @@ input[type="date"] {
 .delay-500 { transition-delay: 500ms !important; }
 .delay-600 { transition-delay: 600ms !important; }
 
-/* ── PREMIUM VISUAL ELEVATION ── */
+/* â”€â”€ PREMIUM VISUAL ELEVATION â”€â”€ */
 
 /* 1. Shimmer sweep effect on Gold CTA Buttons */
 .btn-gold {
@@ -2721,7 +2721,7 @@ input[type="date"] {
   animation: slowFloat2 24s ease-in-out infinite;
 }
 
-/* ── NEXT-LEVEL BUTTON ANIMATIONS ── */
+/* â”€â”€ NEXT-LEVEL BUTTON ANIMATIONS â”€â”€ */
 
 /* 1. Liquid Purple Button - Ultra Premium */
 .btn-gold {
@@ -3079,7 +3079,7 @@ body.hide-public-header nav {
   animation: float-subtle 4s ease-in-out infinite;
 }
 
-/* ── TITLE ANIMATION SYSTEM ── */
+/* â”€â”€ TITLE ANIMATION SYSTEM â”€â”€ */
 
 /* 1. Entrance animation (Slide-up & Fade-in) */
 .title-enter-active {
@@ -3207,6 +3207,7 @@ body.hide-public-header nav {
   line-height: 1.5;
   margin: 0;
 }
+
 
 
 

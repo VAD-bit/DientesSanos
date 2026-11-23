@@ -11,7 +11,7 @@ import pandaIcon from '../../assets/panda_logo_nobg.png';
 
 const getGreeting = () => {
   const h = new Date().getHours();
-  if (h < 12) return 'Buenos dÃ­as';
+  if (h < 12) return 'Buenos días';
   if (h < 19) return 'Buenas tardes';
   return 'Buenas noches';
 };
@@ -22,7 +22,7 @@ const cleanStaffName = (name) => {
 };
 
 const getRatingBadge = (val) => {
-  if (val === 5) return { text: 'Â¡Excelente!', icon: Gem, color: 'var(--champagne)' };
+  if (val === 5) return { text: '¡Excelente!', icon: Gem, color: 'var(--champagne)' };
   if (val === 4) return { text: 'Muy bueno', icon: ThumbsUp, color: '#475569' };
   if (val === 3) return { text: 'Normal', icon: Smile, color: '#64748b' };
   if (val === 2) return { text: 'Regular', icon: Frown, color: '#64748b' };
@@ -354,10 +354,10 @@ export default function ClientDashboard() {
             </div>
             <div style={{ textAlign: 'left' }}>
               <div style={{ fontSize: 14, fontWeight: 700, color: '#0f172a', marginBottom: 2 }}>
-                Califica tu servicio con {pendingRating.staff?.name || 'tu odontÃ³logo'}
+                Califica tu servicio con {pendingRating.staff?.name || 'tu odontólogo'}
               </div>
               <div style={{ fontSize: 12, color: '#475569' }}>
-                CuÃ©ntanos cÃ³mo estuvo tu experiencia para ayudarnos a mejorar.
+                Cuéntanos cómo estuvo tu experiencia para ayudarnos a mejorar.
               </div>
             </div>
           </div>
@@ -395,11 +395,11 @@ export default function ClientDashboard() {
                     ) : (
                       <span className="appt-confirmed-badge"><Check size={10} strokeWidth={4} /> CONFIRMADA</span>
                     )}
-                    <span className="appt-step-label">{isLive ? 'Te estÃ¡n atendiendo' : 'PrÃ³xima cita'}</span>
+                    <span className="appt-step-label">{isLive ? 'Te están atendiendo' : 'Próxima cita'}</span>
                   </div>
                   {!isLive && d && (
                     <div className="appt-countdown">
-                      {days > 0 && <div className="countdown-block"><span className="cb-num">{days}</span><span className="cb-lbl">{days === 1 ? 'dÃ­a' : 'dÃ­as'}</span></div>}
+                      {days > 0 && <div className="countdown-block"><span className="cb-num">{days}</span><span className="cb-lbl">{days === 1 ? 'día' : 'días'}</span></div>}
                       <div className="countdown-block"><span className="cb-num">{days > 0 ? hours : Math.max(0, Math.floor(ms / 3600000))}</span><span className="cb-lbl">hrs</span></div>
                       {days === 0 && <div className="countdown-block"><span className="cb-num">{Math.max(0, mins)}</span><span className="cb-lbl">min</span></div>}
                     </div>
@@ -457,7 +457,7 @@ export default function ClientDashboard() {
                 </div>
 
                 <div className="ea-text">
-                  <h3 className="ea-title">Tu sillÃ³n te espera</h3>
+                  <h3 className="ea-title">Tu sillón te espera</h3>
                   <p className="ea-subtitle">Reserva en segundos. Vive la Experiencia Dientes Sanos.</p>
                 </div>
 
@@ -570,7 +570,7 @@ export default function ClientDashboard() {
                     <div className="hci-service">{a.services?.name}</div>
                     <div className="hci-meta">
                       {getApptDate(a) ? getApptDate(a).toLocaleDateString('es-ES', { day: 'numeric', month: 'short', year: 'numeric' }) : 'Fecha no disponible'}
-                      &nbsp;Â·&nbsp;
+                      &nbsp;·&nbsp;
                       con {a.staff?.name?.split(' ')[0]}
                     </div>
                   </div>
@@ -597,7 +597,7 @@ export default function ClientDashboard() {
               {historyAppointments.length === 0 && (
                 <div className="hc-empty">
                   <Calendar size={20} color="#94a3b8" />
-                  <span>AÃºn no hay visitas registradas</span>
+                  <span>Aún no hay visitas registradas</span>
                 </div>
               )}
             </div>
@@ -784,7 +784,7 @@ export default function ClientDashboard() {
                             />
                           </div>
                         </div>
-                        <h2 style={{ fontSize: 22, fontWeight: 800, color: '#0f172a', margin: '0 0 6px', letterSpacing: '-0.5px' }}>Â¿QuÃ© tal estuvo tu cita?</h2>
+                        <h2 style={{ fontSize: 22, fontWeight: 800, color: '#0f172a', margin: '0 0 6px', letterSpacing: '-0.5px' }}>¿Qué tal estuvo tu cita?</h2>
                         <p style={{ fontSize: 13, color: '#64748b', margin: 0 }}>
                           Califica tu experiencia con <span style={{ color: 'var(--champagne)', fontWeight: 700 }}>{cleanStaffName(ratingModal.staff?.name)}</span>
                         </p>
@@ -847,7 +847,7 @@ export default function ClientDashboard() {
                               <textarea
                                 value={ratingComment}
                                 onChange={e => setRatingComment(e.target.value)}
-                                placeholder="Escribe aquÃ­ tu experiencia..."
+                                placeholder="Escribe aquí tu experiencia..."
                                 maxLength={200}
                                 autoFocus
                                 style={{
@@ -891,7 +891,7 @@ export default function ClientDashboard() {
                             transition: 'all 0.2s'
                           }}
                         >
-                          Hacerlo mÃ¡s tarde
+                          Hacerlo más tarde
                         </button>
                         <button
                           type="button"
@@ -957,10 +957,10 @@ export default function ClientDashboard() {
                       </motion.div>
 
                       <h2 style={{ fontSize: 24, fontWeight: 800, color: '#0f172a', margin: '10px 0 4px', letterSpacing: '-0.5px' }}>
-                        Â¡Muchas gracias!
+                        ¡Muchas gracias!
                       </h2>
                       <p style={{ fontSize: 13, color: '#64748b', lineHeight: 1.5, maxWidth: 280, margin: 0 }}>
-                        Tu opiniÃ³n nos ayuda a mantener el nivel de la Experiencia Dientes Sanos.
+                        Tu opinión nos ayuda a mantener el nivel de la Experiencia Dientes Sanos.
                       </p>
                     </div>
                   )}
@@ -993,7 +993,7 @@ export default function ClientDashboard() {
                 <Crown size={28} className="text-[#111111]" />
                 TU EQUIPO IDEAL
               </h2>
-              <p className="text-[#64748b] text-sm leading-relaxed font-medium">Â¿QuiÃ©nes son los artistas que mejor entienden tu estilo? Selecciona a tus protagonistas para acceder a ellos con un solo toque.</p>
+              <p className="text-[#64748b] text-sm leading-relaxed font-medium">¿Quiénes son los artistas que mejor entienden tu estilo? Selecciona a tus protagonistas para acceder a ellos con un solo toque.</p>
             </div>
             
             <div className="flex-1 overflow-y-auto hide-scrollbar grid grid-cols-2 md:grid-cols-3 gap-4 p-2 pb-6">
@@ -1752,4 +1752,5 @@ export default function ClientDashboard() {
     </div>
   );
 }
+
 

@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+﻿import { useState, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from 'framer-motion';
@@ -140,7 +140,7 @@ export default function Profile() {
       });
       setAllBarbers(activeBarbers);
       
-      // null means the key was never written (true first-time visitor) — only then do
+      // null means the key was never written (true first-time visitor) â€” only then do
       // we seed defaults. An empty array means the user deliberately cleared their
       // favorites, and that choice must stick across reloads instead of being reseeded.
       const rawFavs = localStorage.getItem('favorite_barbers');
@@ -190,7 +190,7 @@ export default function Profile() {
   
 
 
-  // Sort completed appointments descending — used by the history modal
+  // Sort completed appointments descending â€” used by the history modal
   const historyAppointments = [...completedAppointments].sort((a,b) => new Date(b.scheduled_at) - new Date(a.scheduled_at));
 
   const RANKS = [
@@ -246,7 +246,7 @@ export default function Profile() {
 
   const favoriteBarbersData = allBarbers.filter(b => favorites.includes(b.id));
 
-  // ── STAR LOGIC: based on most visits, not favorites ──
+  // â”€â”€ STAR LOGIC: based on most visits, not favorites â”€â”€
   const pastAppointments = appointments.filter(a => {
     const date = new Date(a.scheduled_at);
     return date < new Date() && (a.status === 'completed' || a.status === 'confirmed' || !a.status);
@@ -282,7 +282,7 @@ export default function Profile() {
     <div className="new-dashboard-container px-4 md:px-8 lg:px-10">
       {createPortal(
         <AnimatePresence>
-          {/* Birthday Roulette — only shows on client's birthday and only once per year */}
+          {/* Birthday Roulette â€” only shows on client's birthday and only once per year */}
           {(() => {
             if (!client?.birth_date) return null;
             const today = new Date();
@@ -294,7 +294,7 @@ export default function Profile() {
             const hasCouponThisYear = coupons.some(c => c.generated_at && new Date(c.generated_at).getFullYear() === currentYear);
             if (!isBirthday || hasSpun || hasCouponThisYear) return null;
             const bdayKey = `panda_bday_spun_${client.id}_${currentYear}`;
-            // Winning must NOT hide the wheel immediately — PrizeWheel shows a victory
+            // Winning must NOT hide the wheel immediately â€” PrizeWheel shows a victory
             // ticket with the coupon code after a win, and this component re-renders
             // the moment `hasSpun` flips true, which would unmount that ticket before
             // the client ever sees it. So a win only persists to localStorage; only the
@@ -349,7 +349,7 @@ export default function Profile() {
       )}
 
 
-      {/* ── PAGE HEADER ── */}
+      {/* â”€â”€ PAGE HEADER â”€â”€ */}
       <div className="panda-club-header animate-fade-in-up">
         <div className="pch-left">
           <div className="pch-eyebrow">
@@ -372,10 +372,10 @@ export default function Profile() {
         </div>
       </div>
 
-      {/* ── MAIN 2-COLUMN LAYOUT ── */}
+      {/* â”€â”€ MAIN 2-COLUMN LAYOUT â”€â”€ */}
       <div className="club-grid">
 
-        {/* ── TARJETA VIP TITANIO ── */}
+        {/* â”€â”€ TARJETA VIP TITANIO â”€â”€ */}
 
           {/* TARJETA VIP TITANIO (Now 3D Glassmorphism) */}
           <div className="titanium-card-wrapper animate-fade-in-up" style={{ animationDelay: '0ms' }}>
@@ -483,7 +483,7 @@ export default function Profile() {
             </div>
           </div>
 
-        {/* ── BENEFICIOS ── */}
+        {/* â”€â”€ BENEFICIOS â”€â”€ */}
           <div className="dash-card animate-fade-in-up" style={{ animationDelay: '120ms', padding: '24px' }}>
             <div className="dash-header-flex" style={{ marginBottom: 20 }}>
               <h3 className="dash-section-title" style={{ fontSize: '18px', fontWeight: 800 }}>Tus Beneficios</h3>
@@ -527,7 +527,7 @@ export default function Profile() {
             </div>
           </div>
 
-          {/* ── BÓVEDA VIP (Cupones) ── */}
+          {/* â”€â”€ BÃ“VEDA VIP (Cupones) â”€â”€ */}
           {/* touchAction: 'pan-y' works around an iOS Safari quirk where a
               backdrop-filter element (this card) containing nested rounded/
               overflow-hidden children (the coupon items below) can swallow
@@ -579,7 +579,7 @@ export default function Profile() {
 
       </div> {/* END CLUB GRID */}
 
-      {/* ── MODALS ── */}
+      {/* â”€â”€ MODALS â”€â”€ */}
       {showHistoryModal && (
         <div className="dash-modal-overlay" onClick={() => setShowHistoryModal(false)}>
           <div className="dash-modal" onClick={e => e.stopPropagation()}>
@@ -653,7 +653,7 @@ export default function Profile() {
           grid-template-columns: 1fr;
           gap: 20px;
         }
-        /* Tablet (portrait & landscape both land here — even iPad Pro landscape
+        /* Tablet (portrait & landscape both land here â€” even iPad Pro landscape
            is under 1200px, so without this step every tablet fell through to the
            single-column layout below and looked stretched/empty). Narrower left
            column than desktop since the content area itself is narrower here. */
@@ -916,7 +916,7 @@ export default function Profile() {
           height: 32px;
           background: #e2e8f0;
         }
-        /* Stacks through tablet too — side-by-side only once there's genuinely
+        /* Stacks through tablet too â€” side-by-side only once there's genuinely
            enough room, otherwise the title/eyebrow column gets squeezed and
            wraps awkwardly (was only stacking below 640px, leaving every tablet
            width fighting for space). */
@@ -977,7 +977,7 @@ export default function Profile() {
           flex: 1;
         }
 
-        /* ── CARDS GLOBALES (APPLE UX) ── */
+        /* â”€â”€ CARDS GLOBALES (APPLE UX) â”€â”€ */
         .dash-card {
           background: #ffffff;
           backdrop-filter: blur(24px);
@@ -989,7 +989,7 @@ export default function Profile() {
           flex-direction: column;
           box-shadow: 0 8px 24px rgba(0,0,0,0.10);
           /* Every dash-card combines backdrop-filter with nested rounded/
-             overflow-hidden children — the same iOS combination fixed on the
+             overflow-hidden children â€” the same iOS combination fixed on the
              VIP vault card specifically. Setting it here once covers every
              card built on this shared class instead of patching each one. */
           touch-action: pan-y;
@@ -1034,7 +1034,7 @@ export default function Profile() {
         .stat-value small { font-size: 14px; color: #64748b; font-weight: 500; margin-left: 4px; }
         .stat-desc { font-size: 12px; color: #94a3b8; }
 
-        /* ── ROW 2: NEXT APPT APPLE COUNTDOWN CARD ── */
+        /* â”€â”€ ROW 2: NEXT APPT APPLE COUNTDOWN CARD â”€â”€ */
         .next-appt-card-v2 {
           padding: 0 !important;
           border-radius: 24px;
@@ -1247,7 +1247,7 @@ export default function Profile() {
           .appt-status-badge { top: auto; bottom: 20px; right: 20px; }
         }
 
-        /* ── ROW 2: VIP RING (APPLE WATCH STYLE) ── */
+        /* â”€â”€ ROW 2: VIP RING (APPLE WATCH STYLE) â”€â”€ */
         .vip-ring-card {
           padding: 24px !important;
         }
@@ -1309,7 +1309,7 @@ export default function Profile() {
         }
         .vp-text strong { color: #0f172a; font-weight: 500; }
 
-        /* ── ROW 3: HISTORIAL APPLE UX ── */
+        /* â”€â”€ ROW 3: HISTORIAL APPLE UX â”€â”€ */
         .history-card-v2 {
           padding: 24px !important;
           border: 1px solid rgba(217, 192, 143, 0.15);
@@ -1533,7 +1533,7 @@ export default function Profile() {
            -webkit-background-clip: text;
         }
 
-        /* ── RESERVA RÁPIDA V2 (APPLE UX PILLS) ── */
+        /* â”€â”€ RESERVA RÁPIDA V2 (APPLE UX PILLS) â”€â”€ */
         .quick-book-card-v2 {
           padding: 20px 24px !important;
           background: linear-gradient(180deg, rgba(17,17,17,0.06) 0%, rgba(17,17,17,0) 100%);
@@ -1661,7 +1661,7 @@ export default function Profile() {
           color: #64748b;
         }
 
-        /* ── SPLIT PHOTO + VIDEO FAVORITE BARBER ── */
+        /* â”€â”€ SPLIT PHOTO + VIDEO FAVORITE BARBER â”€â”€ */
         .hero-fav-card {
           padding: 0 !important;
           overflow: hidden;
@@ -1895,7 +1895,7 @@ export default function Profile() {
           border-color: var(--champagne);
         }
 
-        /* ── MODALS ── */
+        /* â”€â”€ MODALS â”€â”€ */
         .dash-modal-overlay {
           position: fixed;
           top: 0; left: 0; right: 0; bottom: 0;
@@ -1937,7 +1937,7 @@ export default function Profile() {
           padding: 24px;
         }
 
-        /* ── BUTTONS ── */
+        /* â”€â”€ BUTTONS â”€â”€ */
         .dash-btn {
           background: #e8d4b0;
           color: #111111;
@@ -2368,3 +2368,4 @@ export default function Profile() {
     </div>
   );
 }
+

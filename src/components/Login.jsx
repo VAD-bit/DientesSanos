@@ -1332,7 +1332,7 @@ const mobFeaturesSecureGap = ${mobFeaturesSecureGap};`;
           {/* â”€â”€ MOBILE HEADER (Only shown on mobile) â”€â”€ */}
           <div className="l-mob-header">
              <img loading="lazy" src={logo} alt="Centro Odontológico Dientes Sanos" className="l-logo-mob" onDoubleClick={handleLogoDoubleClick} />
-            <h2 className="l-mob-title">Â¡BIENVENIDO A <span>DIENTES SANOS!</span></h2>
+            <h2 className="l-mob-title">¡BIENVENIDO A <span>DIENTES SANOS!</span></h2>
             <p className="l-mob-sub">Ingresa tus credenciales para continuar</p>
           </div>
 
@@ -1351,11 +1351,11 @@ const mobFeaturesSecureGap = ${mobFeaturesSecureGap};`;
               {/* Mobile Card Header */}
               <div className="l-card-mobile-header">
                  <img loading="lazy" src={logo} alt="Centro Odontológico Dientes Sanos" style={{ width: '130px', marginBottom: '24px', objectFit: 'contain', display: 'block', marginLeft: 'auto', marginRight: 'auto', filter: 'drop-shadow(0 8px 16px rgba(0,0,0,0.95)) drop-shadow(0 0 25px rgba(17, 17, 17, 0.3))' }} />
-                <h2 style={{ fontSize: '24px', fontWeight: '600', color: '#111111', marginBottom: '6px' }}>Â¡Bienvenido de nuevo!</h2>
+                <h2 style={{ fontSize: '24px', fontWeight: '600', color: '#111111', marginBottom: '6px' }}>¡Bienvenido de nuevo!</h2>
                 <p style={{ fontSize: '13.5px', color: 'rgba(255,255,255,0.4)', marginBottom: '8px' }}>Inicia sesión para acceder al CRM de tu clínica</p>
               </div>
 
-              <p className="l-card-title">Â¡BIENVENIDO A <span>DIENTES SANOS!</span></p>
+              <p className="l-card-title">¡BIENVENIDO A <span>DIENTES SANOS!</span></p>
               <p className="l-card-sub">Ingresa tus credenciales para continuar</p>
 
               
@@ -1775,7 +1775,7 @@ const mobFeaturesSecureGap = ${mobFeaturesSecureGap};`;
           </div>
 
           <div style={{ textAlign: 'center', fontSize: '10.5px', color: 'rgba(255,255,255,0.35)', marginTop: '14px', marginBottom: '8px' }} className="mob-only-copyright">
-            Â© {new Date().getFullYear()} Centro Odontológico Dientes Sanos. Todos los derechos reservados.
+            © {new Date().getFullYear()} Centro Odontológico Dientes Sanos. Todos los derechos reservados.
           </div>
 
         </div>
@@ -1784,4 +1784,5 @@ const mobFeaturesSecureGap = ${mobFeaturesSecureGap};`;
     </div>
   );
 }
+
 

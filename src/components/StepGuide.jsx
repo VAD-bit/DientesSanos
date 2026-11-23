@@ -1,17 +1,17 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import { Check, ChevronRight, User, Sparkles, PartyPopper, Circle } from 'lucide-react';
 
 /**
- * StepGuide — Friendly guided walkthrough for multi-step modals.
+ * StepGuide â€” Friendly guided walkthrough for multi-step modals.
  * Shows a message bar talking to the user + dot indicators.
  *
  * Usage:
  *   <StepGuide
  *     steps={[
- *       { id: 'client', label: 'Cliente', required: true, message: 'Primero, busca el cliente por cédula o nombre', icon: '👤' },
- *       { id: 'service', label: 'Servicio', required: true, message: '¡Genial! Ahora elige el servicio', icon: '🦷' },
- *       { id: 'barber', label: 'Dentista', required: true, message: 'Perfecto. Ahora selecciona al odontólogo', icon: '🦷' },
- *       { id: 'extras', label: 'Extras', required: false, message: 'Casi listo. Puedes agregar extras si quieres', icon: '✨' },
+ *       { id: 'client', label: 'Cliente', required: true, message: 'Primero, busca el cliente por cédula o nombre', icon: 'ðŸ‘¤' },
+ *       { id: 'service', label: 'Servicio', required: true, message: '¡Genial! Ahora elige el servicio', icon: 'ðŸ¦·' },
+ *       { id: 'barber', label: 'Dentista', required: true, message: 'Perfecto. Ahora selecciona al odontólogo', icon: 'ðŸ¦·' },
+ *       { id: 'extras', label: 'Extras', required: false, message: 'Casi listo. Puedes agregar extras si quieres', icon: 'âœ¨' },
  *     ]}
  *     currentStep={0}
  *     completedSteps={new Set()}
@@ -138,7 +138,7 @@ const StepGuide = ({ steps, currentStep = 0, completedSteps = new Set(), compact
 };
 
 /**
- * StepHighlight — Wraps a form field to add a glowing border when it's the active step.
+ * StepHighlight â€” Wraps a form field to add a glowing border when it's the active step.
  *
  * Usage:
  *   <StepHighlight active={currentStep === 0} label="Paso 1">
@@ -174,3 +174,4 @@ export const StepHighlight = ({ active, label, children, style = {} }) => {
 };
 
 export default StepGuide;
+

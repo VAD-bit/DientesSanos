@@ -3218,9 +3218,9 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
             value={statusFilter}
             onChange={setStatusFilter}
             options={[
-              { value: 'all', label: `Todas Â· ${teamScopedAppointments.length}` },
-              { value: 'pending', label: `Pendientes Â· ${pendingAppointmentsCount}` },
-              { value: 'completed', label: `Listas Â· ${completedAppointmentsCount}` }
+              { value: 'all', label: `Todas · ${teamScopedAppointments.length}` },
+              { value: 'pending', label: `Pendientes · ${pendingAppointmentsCount}` },
+              { value: 'completed', label: `Listas · ${completedAppointmentsCount}` }
             ]}
             triggerStyle={{ height: '46px', boxSizing: 'border-box', padding: '0 10px 0 12px', border: '1px solid rgba(0, 0, 0, 0.08)', borderRadius: '15px', background: 'rgba(0, 0, 0, 0.04)', boxShadow: 'none', fontSize: '11px', fontWeight: 800, color: 'rgba(255,255,255,0.78)' }}
             dropdownClassName="agenda-status-premium-dropdown"
@@ -3418,7 +3418,7 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
                 <strong>{filterType === 'day' ? 'Agenda del equipo' : 'Profesional visible'}</strong>
                 <span>
                   {teamMemberFilter === 'all'
-                    ? `${professionalStaff.length} profesionales Â· todas las citas en conjunto`
+                    ? `${professionalStaff.length} profesionales · todas las citas en conjunto`
                     : 'Mostrando únicamente la agenda seleccionada'}
                 </span>
               </div>
@@ -3481,9 +3481,9 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
               value={statusFilter}
               onChange={setStatusFilter}
               options={[
-                { value: 'all', label: `Todas Â· ${teamScopedAppointments.length}` },
-                { value: 'pending', label: `Pendientes Â· ${pendingAppointmentsCount}` },
-                { value: 'completed', label: `Listas Â· ${completedAppointmentsCount}` }
+                { value: 'all', label: `Todas · ${teamScopedAppointments.length}` },
+                { value: 'pending', label: `Pendientes · ${pendingAppointmentsCount}` },
+                { value: 'completed', label: `Listas · ${completedAppointmentsCount}` }
               ]}
               triggerStyle={{ height: '42px', boxSizing: 'border-box', padding: '0 8px 0 10px', border: '1px solid rgba(0, 0, 0, 0.08)', borderRadius: '12px', background: 'rgba(0, 0, 0, 0.04)', boxShadow: 'none', fontSize: '10px', fontWeight: 800, color: 'rgba(255,255,255,0.76)' }}
               dropdownClassName="agenda-status-premium-dropdown"
@@ -3726,8 +3726,8 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
                                   </span>
                                 </div>
                                 <div className="desktop-calendar-event-service">
-                                  {item.app.services?.name || 'Sin servicio'} Â· {item.duration} min
-                                  {item.app.beverage_selection && ` Â· ${item.app.beverage_selection}`}
+                                  {item.app.services?.name || 'Sin servicio'} · {item.duration} min
+                                  {item.app.beverage_selection && ` · ${item.app.beverage_selection}`}
                                 </div>
                                 {height >= 64 && (
                                   <footer className="desktop-calendar-event-footer">
@@ -3827,8 +3827,8 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
                                         <strong>{item.app.clients?.name || 'Cliente sin nombre'}</strong>
                                       </div>
                                       <span className="admin-resource-event-service">
-                                        {item.app.services?.name || 'Sin servicio'} Â· {item.duration} min
-                                        {item.app.beverage_selection && ` Â· ${item.app.beverage_selection}`}
+                                        {item.app.services?.name || 'Sin servicio'} · {item.duration} min
+                                        {item.app.beverage_selection && ` · ${item.app.beverage_selection}`}
                                       </span>
                                       {height >= 64 && (
                                         <footer className="admin-resource-event-footer">
@@ -3884,8 +3884,8 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
                       <div className="mobile-resource-summary">
                         <strong>{mobileFocusedStaff.name || 'Profesional'}</strong>
                         <span aria-label={`${mobileFocusedStats.total} citas, ${mobileFocusedStats.completed} completadas y ${mobileFocusedStats.estimate.toFixed(2)} dólares estimados`}>
-                          <b>{mobileFocusedStats.total}</b> citas&nbsp; Â· &nbsp;
-                          <b>{mobileFocusedStats.completed}</b> listas&nbsp; Â· &nbsp;
+                          <b>{mobileFocusedStats.total}</b> citas&nbsp; · &nbsp;
+                          <b>{mobileFocusedStats.completed}</b> listas&nbsp; · &nbsp;
                           <b>${mobileFocusedStats.estimate.toFixed(0)}</b>
                         </span>
                       </div>
@@ -3952,8 +3952,8 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
                                     <strong>{item.app.clients?.name || 'Cliente sin nombre'}</strong>
                                   </div>
                                   <span className="admin-resource-event-service">
-                                    {item.app.services?.name || 'Sin servicio'} Â· {item.duration} min
-                                    {item.app.beverage_selection && ` Â· ${item.app.beverage_selection}`}
+                                    {item.app.services?.name || 'Sin servicio'} · {item.duration} min
+                                    {item.app.beverage_selection && ` · ${item.app.beverage_selection}`}
                                   </span>
                                   {height >= 64 && (
                                     <footer className="admin-resource-event-footer">
@@ -4023,11 +4023,11 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
                                       <span className="period-event-client">{appointment.clients?.name || 'Cliente sin nombre'}</span>
                                       <span className="period-event-service">
                                         {appointment.services?.name || 'Sin servicio'}
-                                        {appointment.beverage_selection && ` Â· ${appointment.beverage_selection}`}
-                                        {appointment.notes && ' Â· Con nota'}
+                                        {appointment.beverage_selection && ` · ${appointment.beverage_selection}`}
+                                        {appointment.notes && ' · Con nota'}
                                       </span>
                                       <span className="period-event-meta">
-                                        <span>{getStatusText(appointment.status)} Â· {appointment.staff?.name || 'Sin asignar'}</span>
+                                        <span>{getStatusText(appointment.status)} · {appointment.staff?.name || 'Sin asignar'}</span>
                                         <strong>
                                           {rates?.usd > 0
                                             ? `${Math.round(Number(appointment.total_price || 0) * rates.usd).toLocaleString('es-VE')} Bs.`
@@ -4148,9 +4148,9 @@ return (
                                         </div>
                                         <div className="mobile-appointment-service">
                                           {app.services?.name || 'Sin servicio'}
-                                          {filterType !== 'day' && ` Â· ${appointmentDate.toLocaleDateString('es-ES', { day: 'numeric', month: 'short' })}`}
-                                          {app.beverage_selection && ` Â· ${app.beverage_selection}`}
-                                          {app.notes && ' Â· Con nota'}
+                                          {filterType !== 'day' && ` · ${appointmentDate.toLocaleDateString('es-ES', { day: 'numeric', month: 'short' })}`}
+                                          {app.beverage_selection && ` · ${app.beverage_selection}`}
+                                          {app.notes && ' · Con nota'}
                                         </div>
                                         <div className="mobile-appointment-bottom">
                                           <span className="mobile-appointment-professional">
@@ -4188,7 +4188,7 @@ return (
         isOpen={dialog.isOpen} 
         type="confirm"
         title="Gestionar Cita" 
-        message="Â¿Qué deseas hacer con esta cita?" 
+        message="¿Qué deseas hacer con esta cita?" 
         onCancel={() => setDialog({ isOpen: false, appointmentId: null })}
         customFooter={
           <div style={{ display: 'flex', gap: '12px', width: '100%', marginTop: '20px' }}>
@@ -4333,7 +4333,7 @@ return (
                     {/* Productos */}
                     <div>
                       <FieldLabel>Productos</FieldLabel>
-                      <PandaSelect placeholder="Añadir producto..." onChange={(val) => { if (!newApp.products.find(p => p.id === val)) setNewApp({ ...newApp, products: [...newApp.products, { id: val, quantity: 1 }] }); }} options={allProducts.filter(p => Number(p.stock || 0) > 0).map(p => ({ label: `${getInventorySalesLabel(p)} Â· ${p.name} ($${p.price})`, value: p.id }))} />
+                      <PandaSelect placeholder="Añadir producto..." onChange={(val) => { if (!newApp.products.find(p => p.id === val)) setNewApp({ ...newApp, products: [...newApp.products, { id: val, quantity: 1 }] }); }} options={allProducts.filter(p => Number(p.stock || 0) > 0).map(p => ({ label: `${getInventorySalesLabel(p)} · ${p.name} ($${p.price})`, value: p.id }))} />
                       {newApp.products.length > 0 && (
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', marginTop: '10px' }}>
                           {newApp.products.map(p => {
@@ -4372,8 +4372,8 @@ return (
                     <div style={{ fontSize: '28px', fontWeight: '800', color: '#111111', fontFamily: 'Outfit, sans-serif', lineHeight: '1.1' }}>${totalEstimated.toFixed(2)}</div>
                     <div style={{ fontSize: '11px', color: 'rgba(255,255,255,0.3)', marginTop: '2px' }}>
                       {newApp.serviceId && <span>Servicio: ${servicePrice.toFixed(2)}</span>}
-                      {newApp.extras.length > 0 && <span> Â· Extras: +${extrasPrice.toFixed(2)}</span>}
-                      {newApp.products.length > 0 && <span> Â· Prod: +${productsPrice.toFixed(2)}</span>}
+                      {newApp.extras.length > 0 && <span> · Extras: +${extrasPrice.toFixed(2)}</span>}
+                      {newApp.products.length > 0 && <span> · Prod: +${productsPrice.toFixed(2)}</span>}
                     </div>
                   </div>
                     <button onClick={() => {
@@ -4762,4 +4762,5 @@ const MiniCalendar = ({ selectedDate, onDateSelect, allAppointments }) => {
 };
 
 export default SchedulingModule;
+
 

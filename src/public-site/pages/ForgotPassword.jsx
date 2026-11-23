@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Mail, Check, ArrowLeft, ArrowRight, Shield } from 'lucide-react';
 import { motion } from 'framer-motion';
@@ -203,3 +203,4 @@ export default function ForgotPassword() {
     </div>
   );
 }
+

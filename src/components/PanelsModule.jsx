@@ -113,7 +113,7 @@ export default function PanelsModule({ isMobile, rates }) {
       <div style={{ maxWidth: 1080, margin: '0 auto' }}>
         <div className="panels-topbar" style={{ marginBottom: 24 }}>
           <p style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--gold-primary)', margin: '0 0 8px' }}>Paneles de trabajo</p>
-          <h1 style={{ fontSize: 'clamp(22px, 5vw, 34px)', fontWeight: 800, letterSpacing: '-0.02em', margin: '0 0 6px' }}>{greeting()}. Â¿A quién abrimos?</h1>
+          <h1 style={{ fontSize: 'clamp(22px, 5vw, 34px)', fontWeight: 800, letterSpacing: '-0.02em', margin: '0 0 6px' }}>{greeting()}. ¿A quién abrimos?</h1>
           <p style={{ fontSize: 14, color: 'var(--text-secondary)', margin: 0, maxWidth: '46ch' }}>Selecciona a alguien del equipo para abrir su panel de trabajo.</p>
         </div>
 
@@ -282,4 +282,5 @@ export default function PanelsModule({ isMobile, rates }) {
     </section>
   );
 }
+
 

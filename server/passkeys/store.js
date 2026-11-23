@@ -1,4 +1,4 @@
-import { getAdminClient } from './supabaseAdmin.js';
+﻿import { getAdminClient } from './supabaseAdmin.js';
 
 const table = (name) => getAdminClient().from(name);
 
@@ -83,3 +83,4 @@ export const revokeCredential = async (id, authUserId) => {
   if (error) throw error;
   if (!data?.length) throw Object.assign(new Error('Dispositivo no encontrado'), { statusCode: 404 });
 };
+

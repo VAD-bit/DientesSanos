@@ -1,4 +1,4 @@
-import 'dotenv/config';
+﻿import 'dotenv/config';
 import express from 'express';
 import cron from 'node-cron';
 import QRCode from 'qrcode';
@@ -55,11 +55,11 @@ function renderPinForm(errorMsg = '') {
     </head>
     <body>
       <div class="card">
-        <div class="logo">🔒</div>
+        <div class="logo">ðŸ”’</div>
         <h2>Acceso Restringido</h2>
         <p>Ingresa el PIN de seguridad para acceder al QR de WhatsApp.</p>
         <form method="POST" action="/qr">
-          <input type="password" name="pin" maxlength="10" placeholder="••••" autofocus required />
+          <input type="password" name="pin" maxlength="10" placeholder="â€¢â€¢â€¢â€¢" autofocus required />
           <button type="submit">Ingresar</button>
         </form>
         ${errorMsg ? `<div class="error">${errorMsg}</div>` : ''}
@@ -109,7 +109,7 @@ app.get('/qr', async (request, response) => {
       </head>
       <body>
         <div class="card">
-          <div class="icon">✅</div>
+          <div class="icon">âœ…</div>
           <h2>¡WhatsApp Conectado!</h2>
           <p>El bot de Panda Barber se encuentra activo y listo para enviar notificaciones.</p>
         </div>
@@ -166,7 +166,7 @@ app.get('/qr', async (request, response) => {
       <body>
         <div class="card">
           <h2>Escanea el Código QR</h2>
-          <p>Abre WhatsApp en tu teléfono ➔ Dispositivos vinculados ➔ Vincular dispositivo.</p>
+          <p>Abre WhatsApp en tu teléfono âž” Dispositivos vinculados âž” Vincular dispositivo.</p>
           <div class="qr-box">
             <img src="${qrDataUrl}" alt="WhatsApp QR Code" />
           </div>
@@ -201,3 +201,4 @@ async function shutdown(signal) {
 
 process.on('SIGINT', () => void shutdown('SIGINT'));
 process.on('SIGTERM', () => void shutdown('SIGTERM'));
+

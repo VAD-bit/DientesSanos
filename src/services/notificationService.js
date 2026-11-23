@@ -1,4 +1,4 @@
-// Servicio de Gestión de Notificaciones para Dientes Sanos CRM
+﻿// Servicio de Gestión de Notificaciones para Dientes Sanos CRM
 
 class NotificationService {
   constructor() {
@@ -158,3 +158,4 @@ class NotificationService {
 }
 
 export const notificationService = new NotificationService();
+

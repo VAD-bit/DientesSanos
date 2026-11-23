@@ -72,7 +72,7 @@ const RoleManagerModal = ({ isOpen, onClose, roles, onSaveRole, onDeleteRole, av
   };
 
   const handleDeleteRole = async (roleName) => {
-    const accepted = await confirm(`Â¿Seguro que deseas eliminar el rol "${roleLabel(roleName)}"? Esta acción puede afectar permisos del equipo.`);
+    const accepted = await confirm(`¿Seguro que deseas eliminar el rol "${roleLabel(roleName)}"? Esta acción puede afectar permisos del equipo.`);
     if (!accepted) return;
     onDeleteRole(roleName);
   };
@@ -334,4 +334,5 @@ const RoleManagerModal = ({ isOpen, onClose, roles, onSaveRole, onDeleteRole, av
 };
 
 export default RoleManagerModal;
+
 

@@ -1,4 +1,4 @@
-// Web Push (PWA) — suscripción del staff y disparo de notificaciones vía la
+﻿// Web Push (PWA) â€” suscripción del staff y disparo de notificaciones vía la
 // Edge Function `send-push` del VPS. La llave VAPID pública es segura en el cliente;
 // la privada vive solo en el servidor (tabla odontosonrisa.push_config).
 import { supabase } from '../lib/supabase';
@@ -74,7 +74,7 @@ export const pushService = {
         },
         body: JSON.stringify({ target, title, body, data }),
       }).catch((e) => {
-        // Silenciar errores de CORS / red — la función send-push puede no estar desplegada
+        // Silenciar errores de CORS / red â€” la función send-push puede no estar desplegada
         if (e?.name === 'TypeError' && e.message?.includes('fetch')) {
           return;
         }
@@ -85,3 +85,4 @@ export const pushService = {
     }
   },
 };
+

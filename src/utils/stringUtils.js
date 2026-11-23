@@ -1,4 +1,4 @@
-/**
+﻿/**
  * stringUtils.js
  * Utilidades para procesamiento de texto, capitalización inteligente y búsquedas sin acentos.
  */
@@ -23,7 +23,7 @@ const ACCENT_DICT = {
   "julian": "Julián",
   "ruben": "Rubén",
   "cesar": "César",
-  "oscar": "Óscar",
+  "oscar": "Ã“scar",
   "ivan": "Iván",
   "simon": "Simón",
   "matias": "Matías",
@@ -203,3 +203,4 @@ export default {
   formatProductName,
   formatServiceName
 };
+

@@ -734,7 +734,7 @@ const StaffSettlementPanel = ({ modal, setModal, isMobile, loading, onPay, onSki
         <div style={{ padding: '12px', borderRadius: '14px', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', gap: '10px', marginBottom: '9px' }}>
             <span style={{ fontSize: '10px', color: 'var(--text-muted)', fontWeight: '900', textTransform: 'uppercase' }}>Cómo se generó</span>
-            <span style={{ fontSize: '10px', color: 'var(--text-secondary)' }}>{settlement.payrollFrequency === 'daily' ? 'Pago diario' : settlement.payrollFrequency === 'biweekly' ? 'Pago quincenal' : 'Pago semanal'} Â· tasa {formatSettlementBs(settlement.rate)}</span>
+            <span style={{ fontSize: '10px', color: 'var(--text-secondary)' }}>{settlement.payrollFrequency === 'daily' ? 'Pago diario' : settlement.payrollFrequency === 'biweekly' ? 'Pago quincenal' : 'Pago semanal'} · tasa {formatSettlementBs(settlement.rate)}</span>
           </div>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
             {Object.entries(settlement.methodBreakdown || {}).map(([method, amount]) => {
@@ -769,7 +769,7 @@ const StaffSettlementPanel = ({ modal, setModal, isMobile, loading, onPay, onSki
           <div style={{ marginTop: '12px', display: 'flex', flexDirection: 'column', gap: '10px', maxHeight: '180px', overflowY: 'auto' }}>
             {settlement.paymentHistory?.length ? settlement.paymentHistory.map(item => (
               <div key={item.id} style={{ display: 'flex', justifyContent: 'space-between', gap: '8px', fontSize: '11px' }}>
-                <span style={{ color: 'var(--text-secondary)', fontWeight: '600' }}>{item.type} Â· {new Date(item.date).toLocaleDateString('es-VE')}</span>
+                <span style={{ color: 'var(--text-secondary)', fontWeight: '600' }}>{item.type} · {new Date(item.date).toLocaleDateString('es-VE')}</span>
                 <strong style={{ color: '#ff9f0a', whiteSpace: 'nowrap', fontWeight: '800' }}>-{formatSettlementBs(item.amountBs)} Bs</strong>
               </div>
             )) : <span style={{ display: 'block', marginTop: '12px', fontSize: '12px', color: 'var(--text-muted)', fontWeight: '500' }}>Aún no registra pagos.</span>}
@@ -1432,7 +1432,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
   };
 
   const handleDeleteCustomRole = async (name) => {
-    if (!await confirm(`Â¿Est¡s seguro de eliminar el rol "${name}"? Los miembros actuales que tengan este rol mantendr¡n sus permisos individuales, pero el rol ya no podr¡ ser asignado a nuevos artistas.`)) return;
+    if (!await confirm(`¿Est¡s seguro de eliminar el rol "${name}"? Los miembros actuales que tengan este rol mantendr¡n sus permisos individuales, pero el rol ya no podr¡ ser asignado a nuevos artistas.`)) return;
     
     const updated = { ...customRolePresets };
     delete updated[name];
@@ -1606,7 +1606,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
           }
           throw staffError;
         }
-        showToast(`Â¡${formData.name} se ha unido al equipo!`);
+        showToast(`¡${formData.name} se ha unido al equipo!`);
       }
       handleCloseForm();
       await fetchStaff();
@@ -1619,7 +1619,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
   };
 
   const handleDeleteStaff = async (id, name) => {
-    if (!await confirm(`Â¿Est¡s seguro de archivar a ${name}? Ya no aparecer¡ en las listas activas pero su historial se mantendr¡.`)) return;
+    if (!await confirm(`¿Est¡s seguro de archivar a ${name}? Ya no aparecer¡ en las listas activas pero su historial se mantendr¡.`)) return;
     try {
       setLoading(true);
       await dataService.deleteStaff(id);
@@ -1860,7 +1860,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
   };
 
   const handleVoidShift = async () => {
-    if (!await confirm('Â¿Est¡s seguro de anular este turno? Se borrar¡ completamente del historial como si nunca hubiera iniciado.')) return;
+    if (!await confirm('¿Est¡s seguro de anular este turno? Se borrar¡ completamente del historial como si nunca hubiera iniciado.')) return;
     try {
       setLoading(true);
       await dataService.voidShift(dailyPaymentModal.staffId);
@@ -2084,7 +2084,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
 
   const handleDeleteReview = async (id) => {
     const isConfirmed = await confirm(
-      'Â¿Est¡s seguro de que quieres eliminar permanentemente esta valoración?\n\nEsta acción no se puede deshacer.', 
+      '¿Est¡s seguro de que quieres eliminar permanentemente esta valoración?\n\nEsta acción no se puede deshacer.', 
       'Eliminar Valoración', 
       {
         confirmText: 'Eliminar',
@@ -2248,7 +2248,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
             <button onClick={() => toggleEditSection('basics')} style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '14px 16px', background: 'rgba(0, 0, 0, 0.04)', border: 'none', cursor: 'pointer', color: '#111111' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                 <User size={16} color="var(--gold-primary)" />
-                <span style={{ fontSize: '12px', fontWeight: '900', letterSpacing: '1px' }}>DATOS BÃSICOS</span>
+                <span style={{ fontSize: '12px', fontWeight: '900', letterSpacing: '1px' }}>DATOS BÁSICOS</span>
               </div>
               <ChevronDown size={16} style={{ transition: 'transform 0.3s', transform: editSections.basics ? 'rotate(180deg)' : 'rotate(0)' }} />
             </button>
@@ -2542,7 +2542,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                 </div>
                 <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'minmax(0, 1fr) minmax(0, 1fr)', gap: '16px' }}>
                   <div className="form-group">
-                  <FieldLabel>Â¿EN QUÉ SE ESPECIALIZA? (PUESTO / ENFOQUE)</FieldLabel>
+                  <FieldLabel>¿EN QUÉ SE ESPECIALIZA? (PUESTO / ENFOQUE)</FieldLabel>
                     <div style={{ position: 'relative' }}>
                       <ToothIcon size={18} style={{ position: 'absolute', left: '16px', top: '16px', color: 'var(--gold-primary)' }} />
                       <input className="form-input" placeholder="Ej. Especialista en estética dental y blanqueamiento" value={formData.specialty} onChange={e => setFormData({...formData, specialty: e.target.value})} style={{ width: '100%', height: '50px', paddingLeft: '48px' }} />
@@ -3178,7 +3178,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
               {/* Specialty & Badge Info */}
               <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'minmax(0, 1fr) minmax(0, 1fr)', gap: '16px' }}>
                 <div className="form-group">
-                  <label style={{ display: 'block', fontSize: '11px', fontWeight: '900', color: 'var(--text-muted)', marginBottom: '8px', letterSpacing: '1px' }}>Â¿EN QUÉ SE ESPECIALIZA? (PUESTO / ENFOQUE)</label>
+                  <label style={{ display: 'block', fontSize: '11px', fontWeight: '900', color: 'var(--text-muted)', marginBottom: '8px', letterSpacing: '1px' }}>¿EN QUÉ SE ESPECIALIZA? (PUESTO / ENFOQUE)</label>
                   <div style={{ position: 'relative' }}>
                     <ToothIcon size={18} style={{ position: 'absolute', left: '16px', top: '16px', color: 'var(--gold-primary)' }} />
                     <input className="form-input" placeholder="Ej. Especialista en estética dental y blanqueamiento" value={formData.specialty} onChange={e => setFormData({...formData, specialty: e.target.value})} style={{ width: '100%', height: '50px', paddingLeft: '48px' }} />
@@ -5204,5 +5204,6 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
 };
 
 export default PersonnelModule;
+
 
 

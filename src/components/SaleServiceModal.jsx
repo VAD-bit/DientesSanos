@@ -97,7 +97,7 @@ const SaleServiceModal = ({ isOpen, onClose, clients, services, staff, extras, i
       setStep(2);
       showToast(`Cliente encontrado: ${client.name}`);
     } else {
-      showToast("No se encontró el cliente. Â¿Es nuevo?", "warning");
+      showToast("No se encontró el cliente. ¿Es nuevo?", "warning");
     }
   };
 
@@ -180,7 +180,7 @@ const SaleServiceModal = ({ isOpen, onClose, clients, services, staff, extras, i
       if (onRefresh) onRefresh();
       
       triggerRocket();
-      showToast(`Â¡Operación registrada! ${selectedClient.name} enviado a caja.`);
+      showToast(`¡Operación registrada! ${selectedClient.name} enviado a caja.`);
       sendPushNotification('ðŸš€ Operación Dientes Sanos', `${selectedClient.name} — ${selectedService?.name || 'Venta'}`);
       
       onClose();
@@ -498,4 +498,5 @@ const SaleServiceModal = ({ isOpen, onClose, clients, services, staff, extras, i
 };
 
 export default SaleServiceModal;
+
 

@@ -203,7 +203,7 @@ const StaffProfileModal = ({ isOpen, onClose, staffMember, inventory = [], onUpd
   };
 
   const handleRemoveTool = async (toolId) => {
-    if (!await confirm('Â¿Seguro que deseas eliminar este artículo del inventario personal?')) return;
+    if (!await confirm('¿Seguro que deseas eliminar este artículo del inventario personal?')) return;
     try {
       setLoading(true);
       const toolToRemove = tools.find(t => t.id === toolId);
@@ -765,7 +765,7 @@ const StaffProfileModal = ({ isOpen, onClose, staffMember, inventory = [], onUpd
                           onChange={(val) => setNewTool({...newTool, inventory_id: val})} 
                           options={[
                             { value: '', label: `-- Selecciona ${newTool.item_type === 'Producto' ? 'un producto' : 'una herramienta'} --` },
-                            ...availableInventoryTools.map(item => ({ value: item.id, label: `${item.name} Â· Stock: ${item.stock}` }))
+                            ...availableInventoryTools.map(item => ({ value: item.id, label: `${item.name} · Stock: ${item.stock}` }))
                           ]}
                         />
                       </div>
@@ -863,7 +863,7 @@ const StaffProfileModal = ({ isOpen, onClose, staffMember, inventory = [], onUpd
                             {tool.name} <span style={{ color: 'var(--gold-primary)', fontSize: '12px' }}>Ø {tool.quantity || 1}</span>
                           </div>
                           <div style={{ color: 'var(--text-muted)', fontSize: '12px', fontWeight: '600' }}>
-                            {itemType}{tool.brand ? ` Â· ${tool.brand}` : ''}
+                            {itemType}{tool.brand ? ` · ${tool.brand}` : ''}
                           </div>
                         </div>
                       </div>
@@ -981,5 +981,6 @@ const StaffProfileModal = ({ isOpen, onClose, staffMember, inventory = [], onUpd
 };
 
 export default StaffProfileModal;
+
 
 

@@ -1,4 +1,4 @@
-// Dev-only shim so `/api/*` serverless functions (api/**/*.js) work under
+﻿// Dev-only shim so `/api/*` serverless functions (api/**/*.js) work under
 // plain `vite --host`, not just under a real Vercel deployment or `vercel dev`.
 // Those handlers are written for Vercel's Node runtime, which augments the
 // response with Express-like helpers (res.status/res.json) and pre-parses
@@ -31,9 +31,9 @@ function withVercelShims(res) {
 export default function localApiPlugin(apiDir = 'api') {
   const root = path.resolve(process.cwd(), apiDir);
 
-  // ── Cargar variables privadas de .env.local para el servidor local ──
+  // â”€â”€ Cargar variables privadas de .env.local para el servidor local â”€â”€
   // Los handlers de api/ leen process.env directamente (no import.meta.env).
-  // En Vercel estas vienen de Settings → Environment Variables.
+  // En Vercel estas vienen de Settings â†’ Environment Variables.
   // En localhost las leemos de .env.local (que tiene SUPABASE_URL y
   // SUPABASE_SERVICE_ROLE_KEY sin prefijo VITE_).
   function loadLocalEnv() {
@@ -119,3 +119,4 @@ export default function localApiPlugin(apiDir = 'api') {
     },
   };
 }
+

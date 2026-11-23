@@ -35,7 +35,7 @@ const MobileBottomNav = ({ activeTab, setActiveTab }) => {
     const res = await notificationService.requestPermission();
     setNotifPermission(res);
     if (res === 'granted') {
-      notificationService.sendNotification('ðŸ”” Notificaciones Activadas', 'Â¡Excelente! Ahora recibir¡s alertas en tiempo real.');
+      notificationService.sendNotification('ðŸ”” Notificaciones Activadas', '¡Excelente! Ahora recibir¡s alertas en tiempo real.');
     }
   };
 
@@ -306,4 +306,5 @@ const MobileBottomNav = ({ activeTab, setActiveTab }) => {
 };
 
 export default MobileBottomNav;
+
 

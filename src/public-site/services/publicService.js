@@ -1,4 +1,4 @@
-import { publicSupabase as supabase } from '../../lib/supabase';
+﻿import { publicSupabase as supabase } from '../../lib/supabase';
 import { isBookableStaff } from '../../utils/staffRoles';
 
 const authenticatedApi = async (url, payload) => {
@@ -88,7 +88,7 @@ export const publicService = {
   // takes bookings 24h; while closed nobody can book. Unset => treated as open so nothing
   // breaks before the owner uses the switch. On a read error we fail OPEN so a transient
   // hiccup doesn't block all bookings. Goes through /api/public/store-status (service key)
-  // because the anon role has no SELECT grant on system_settings — a direct client-side
+  // because the anon role has no SELECT grant on system_settings â€” a direct client-side
   // query here always fails silently and was masking the toggle having no real effect.
   async getStoreOpen() {
     try {
@@ -101,7 +101,7 @@ export const publicService = {
     }
   },
 
-  // Get active staff (barbers) — uses authClient (service role) because anon has no RLS policy on staff table
+  // Get active staff (barbers) â€” uses authClient (service role) because anon has no RLS policy on staff table
   async getStaff() {
     const response = await fetch('/api/public/staff');
     const result = await response.json().catch(() => ({}));
@@ -214,7 +214,7 @@ export const publicService = {
     const existing = await findExistingClientRecord({ id_card, email, phone });
 
     if (existing) {
-      // If the existing record already belongs to a DIFFERENT auth user — don't block,
+      // If the existing record already belongs to a DIFFERENT auth user â€” don't block,
       // just create a fresh independent client record for this new account.
       if (existing.auth_user_id && String(existing.auth_user_id) !== String(userId)) {
         // Fall through to create a new record below
@@ -515,7 +515,7 @@ export const publicService = {
         type: 'broadcast',
         event: 'crm-notification',
         payload: {
-          title: '🎉 ¡Ruleta de cumpleaños ganada!',
+          title: 'ðŸŽ‰ ¡Ruleta de cumpleaños ganada!',
           body: `${clientName || 'Un cliente'} ganó "${prizeName}" en su ruleta de cumpleaños.`,
           recipientRole: null,
           recipientId: null,
@@ -670,3 +670,4 @@ export const publicService = {
     }
   }
 };
+

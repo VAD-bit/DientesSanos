@@ -1860,7 +1860,7 @@ input[type="submit"]:active {
     background: white !important;
     font-size: 12px;
     line-height: 1.2;
-    /* Forzar que el logo (imagen) se imprima aunque el navegador omita grÃ¡ficos */
+    /* Forzar que el logo (imagen) se imprima aunque el navegador omita gráficos */
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }
@@ -1912,7 +1912,7 @@ input[type="submit"]:active {
 .receipt-slogan { font-style: italic; margin-top: 4px; }
 .receipt-contact { font-size: 10px; margin-top: 8px; }
 
-/* Logo y nÃºmero de orden del recibo */
+/* Logo y número de orden del recibo */
 .receipt-logo { display: block; max-width: 52mm; max-height: 22mm; margin: 0 auto 6px; object-fit: contain; }
 .receipt-order { font-weight: bold; font-size: 15px; margin: 4px 0 2px; }
 .receipt-payments p { margin: 4px 0; }
@@ -2159,10 +2159,10 @@ body.in-booking-flow .whatsapp-float-btn { display: none !important; }
 }
 
 /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-   TEMA CLARO MÃRMOL â€” Panel de AdministraciÃ³n
+   TEMA CLARO MÁRMOL â€” Panel de Administración
    Se aplica sobre .admin-light-theme (fondos blancos, vetas grises,
    texto oscuro). Coherente con identidad: blanco/negro/gris + acento
-   arena #E8D4B0. Sin teal ni pÃºrpura.
+   arena #E8D4B0. Sin teal ni púrpura.
    â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 .admin-light-theme {
   --bg-primary: #ffffff;
@@ -2185,12 +2185,12 @@ body.in-booking-flow .whatsapp-float-btn { display: none !important; }
   --gold-glow: 0 0 24px rgba(232, 212, 176, 0.25);
 }
 
-/* Fondo de mÃ¡rmol detrÃ¡s de la app admin */
+/* Fondo de mármol detrás de la app admin */
 .admin-marble-bg {
   /* El SVG ya trae su propio fondo; esta clase ancla el z-index. */
 }
 
-/* Cuando el tema claro estÃ¡ activo, el cuerpo y la app dejan de ser oscuros */
+/* Cuando el tema claro está activo, el cuerpo y la app dejan de ser oscuros */
 .admin-light-theme body,
 .admin-light-theme #root,
 .admin-light-theme .app-container,
@@ -2200,7 +2200,7 @@ body.in-booking-flow .whatsapp-float-btn { display: none !important; }
   color: var(--text-primary) !important;
 }
 
-/* Sidebar claro (mÃ¡rmol) */
+/* Sidebar claro (mármol) */
 .admin-light-theme .sidebar {
   background: rgba(255, 255, 255, 0.82) !important;
   border-right: 1px solid rgba(0, 0, 0, 0.06) !important;
@@ -2228,7 +2228,7 @@ body.in-booking-flow .whatsapp-float-btn { display: none !important; }
   filter: brightness(0) invert(0) drop-shadow(0 0 8px rgba(0,0,0,0.15)) !important;
 }
 
-/* Tarjetas y mÃ³dulos claros sobre mÃ¡rmol */
+/* Tarjetas y módulos claros sobre mármol */
 .admin-light-theme .glass-card {
   background: rgba(255, 255, 255, 0.75) !important;
   border: 1px solid rgba(0, 0, 0, 0.05) !important;
@@ -2262,7 +2262,7 @@ body.in-booking-flow .whatsapp-float-btn { display: none !important; }
   color: #111827 !important;
 }
 
-/* Botones de acciÃ³n claros */
+/* Botones de acción claros */
 .admin-light-theme .action-btn {
   background: #f5f7fa !important;
   border: 1px solid rgba(0, 0, 0, 0.08) !important;
@@ -2274,18 +2274,18 @@ body.in-booking-flow .whatsapp-float-btn { display: none !important; }
   background: #f0e2c8 !important;
 }
 
-/* Evitar que el overlay de recepciÃ³n oscurezca el mÃ¡rmol */
+/* Evitar que el overlay de recepción oscurezca el mármol */
 .admin-light-theme .global-modal-overlay {
   background-color: rgba(0, 0, 0, 0.04) !important;
 }
 
-/* BotÃ³n dorado sigue oscuro sobre mÃ¡rmol (contraste WCAG) */
+/* Botón dorado sigue oscuro sobre mármol (contraste WCAG) */
 .admin-light-theme .btn-gold,
 .admin-light-theme .premium-btn-gold {
   color: #111111 !important;
 }
 
-/* Scrollbars claros sobre mÃ¡rmol */
+/* Scrollbars claros sobre mármol */
 .admin-light-theme .panda-scrollbar::-webkit-scrollbar-thumb,
 .admin-light-theme .glass-card::-webkit-scrollbar-thumb {
   background: rgba(0, 0, 0, 0.15) !important;
@@ -2329,7 +2329,7 @@ body.in-booking-flow .whatsapp-float-btn { display: none !important; }
   color: #6b7280 !important;
 }
 
-/* Fondos claros â€” forzar fondo blanco/mÃ¡rmol en lugar de oscuros */
+/* Fondos claros â€” forzar fondo blanco/mármol en lugar de oscuros */
 .admin-light-theme * {
   background-color: transparent !important;
 }
@@ -2356,7 +2356,7 @@ body.in-booking-flow .whatsapp-float-btn { display: none !important; }
   background-color: #ffffff !important;
 }
 
-/* Tarjetas sobre mÃ¡rmol */
+/* Tarjetas sobre mármol */
 .admin-light-theme .glass-card {
   background: #ffffff !important;
   border: 1px solid rgba(0, 0, 0, 0.05) !important;
@@ -2369,8 +2369,8 @@ body.in-booking-flow .whatsapp-float-btn { display: none !important; }
 }
 
 /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-   MÃ“VIL â€” Forzar tema claro mÃ¡rmol en MobileLayout y componentes hijos
-   Sobreescribe estilos inline oscuros hardcodeados en componentes mÃ³viles
+   MÃ“VIL â€” Forzar tema claro mármol en MobileLayout y componentes hijos
+   Sobreescribe estilos inline oscuros hardcodeados en componentes móviles
    â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 .admin-light-theme .mobile-header,
 .admin-light-theme [style*="backgroundColor: 'var(--bg-primary)'"],
@@ -2394,7 +2394,7 @@ body.in-booking-flow .whatsapp-float-btn { display: none !important; }
   background-color: #ffffff !important;
 }
 
-/* MobileBottomNav y elementos de navegaciÃ³n mÃ³vil claros */
+/* MobileBottomNav y elementos de navegación móvil claros */
 .admin-light-theme .mobile-bottom-nav,
 .admin-light-theme [class*="MobileBottomNav"],
 .admin-light-theme [class*="mobile-bottom-nav"] {
@@ -2403,7 +2403,7 @@ body.in-booking-flow .whatsapp-float-btn { display: none !important; }
   color: #374151 !important;
 }
 
-/* Enlaces y acentos en mÃ³vil */
+/* Enlaces y acentos en móvil */
 .admin-light-theme .mobile-nav-link,
 .admin-light-theme [class*="mobile-nav-link"] {
   color: #374151 !important;
@@ -2413,7 +2413,7 @@ body.in-booking-flow .whatsapp-float-btn { display: none !important; }
   color: #e8d4b0 !important;
 }
 
-/* Tarjetas y mÃ³dulos mÃ³viles claros */
+/* Tarjetas y módulos móviles claros */
 .admin-light-theme .mobile-card,
 .admin-light-theme [class*="mobile-card"] {
   background: #ffffff !important;
@@ -2422,8 +2422,8 @@ body.in-booking-flow .whatsapp-float-btn { display: none !important; }
 }
 
 /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-   MENÃšS DESPLEGABLES â€” EstÃ©tica mÃ¡rmol claro
-   Selects, dropdowns, opciones, tooltips y popovers sobre fondo mÃ¡rmol
+   MENÃšS DESPLEGABLES â€” Estética mármol claro
+   Selects, dropdowns, opciones, tooltips y popovers sobre fondo mármol
    â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 
 /* Selects nativos (dropdowns) */
@@ -2459,7 +2459,7 @@ body.in-booking-flow .whatsapp-float-btn { display: none !important; }
   color: #111827 !important;
 }
 
-/* option:selected no es estilo estÃ¡ndar en navegadores; se omite para evitar warning */
+/* option:selected no es estilo estándar en navegadores; se omite para evitar warning */
 .admin-light-theme [role="option"][aria-selected="true"],
 .admin-light-theme .dropdown-item.active,
 .admin-light-theme .menu-item.active {
@@ -2476,7 +2476,7 @@ body.in-booking-flow .whatsapp-float-btn { display: none !important; }
   outline: none !important;
 }
 
-/* MenÃºs desplegables personalizados (div/ul basados) */
+/* Menús desplegables personalizados (div/ul basados) */
 .admin-light-theme .dropdown-content,
 .admin-light-theme .menu-content,
 .admin-light-theme .popover-content,
@@ -2488,7 +2488,7 @@ body.in-booking-flow .whatsapp-float-btn { display: none !important; }
   color: #374151 !important;
 }
 
-/* Tooltips sobre mÃ¡rmol */
+/* Tooltips sobre mármol */
 .admin-light-theme .tooltip,
 .admin-light-theme .tooltipster,
 .admin-light-theme [data-tooltip],
@@ -2500,7 +2500,7 @@ body.in-booking-flow .whatsapp-float-btn { display: none !important; }
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06) !important;
 }
 
-/* Inputs de bÃºsqueda dentro de menÃºs */
+/* Inputs de búsqueda dentro de menús */
 .admin-light-theme .dropdown-search input,
 .admin-light-theme .menu-search input,
 .admin-light-theme .select-search input {
@@ -2510,7 +2510,7 @@ body.in-booking-flow .whatsapp-float-btn { display: none !important; }
   border-radius: 6px !important;
 }
 
-/* Dividers dentro de menÃºs */
+/* Dividers dentro de menús */
 .admin-light-theme .dropdown-divider,
 .admin-light-theme .menu-divider,
 .admin-light-theme hr {
@@ -2519,7 +2519,7 @@ body.in-booking-flow .whatsapp-float-btn { display: none !important; }
   margin: 6px 0 !important;
 }
 
-/* Scrollbars dentro de menÃºs desplegables */
+/* Scrollbars dentro de menús desplegables */
 .admin-light-theme .dropdown-menu::-webkit-scrollbar,
 .admin-light-theme .dropdown-content::-webkit-scrollbar,
 .admin-light-theme .menu-content::-webkit-scrollbar,
@@ -2540,7 +2540,7 @@ body.in-booking-flow .whatsapp-float-btn { display: none !important; }
   background: #e8d4b0 !important;
 }
 
-/* Botones de abrir/cerrar menÃºs (triggers) */
+/* Botones de abrir/cerrar menús (triggers) */
 .admin-light-theme .dropdown-trigger,
 .admin-light-theme .menu-trigger,
 .admin-light-theme .select-trigger {
@@ -2556,7 +2556,7 @@ body.in-booking-flow .whatsapp-float-btn { display: none !important; }
   border-color: #e8d4b0 !important;
 }
 
-/* Flechas/indicadores de menÃº desplegable */
+/* Flechas/indicadores de menú desplegable */
 .admin-light-theme .dropdown-arrow,
 .admin-light-theme .menu-arrow,
 .admin-light-theme .select-arrow,
@@ -2565,7 +2565,7 @@ body.in-booking-flow .whatsapp-float-btn { display: none !important; }
   border-color: #6b7280 !important;
 }
 
-/* Iconos dentro de menÃºs desplegables */
+/* Iconos dentro de menús desplegables */
 .admin-light-theme .dropdown-item svg,
 .admin-light-theme .menu-item svg,
 .admin-light-theme .dropdown-trigger svg,
@@ -2582,18 +2582,18 @@ body.in-booking-flow .whatsapp-float-btn { display: none !important; }
 }
 
 /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-   LOGIN â€” Tema claro mÃ¡rmol para portal pÃºblico de autenticaciÃ³n
+   LOGIN â€” Tema claro mármol para portal público de autenticación
    Sobreescribe estilos inline oscuros hardcodeados en Login.jsx
    â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 
-/* Fondo raÃ­z */
+/* Fondo raíz */
 .login-light-theme,
 .login-light-theme .l-root {
   background: #ffffff !important;
   color: #111827 !important;
 }
 
-/* Overlay oscuro â†’ mÃ¡rmol claro */
+/* Overlay oscuro â†’ mármol claro */
 .login-light-theme .l-overlay {
   background: #fafafa !important;
   opacity: 1 !important;
@@ -2605,7 +2605,7 @@ body.in-booking-flow .whatsapp-float-btn { display: none !important; }
   box-shadow: 0 24px 60px rgba(0, 0, 0, 0.08) !important;
 }
 
-/* Tarjeta de login â†’ blanco sÃ³lido */
+/* Tarjeta de login â†’ blanco sólido */
 .login-light-theme .l-card {
   background: #ffffff !important;
   border: 1px solid rgba(0, 0, 0, 0.05) !important;
@@ -2657,7 +2657,7 @@ body.in-booking-flow .whatsapp-float-btn { display: none !important; }
   background: #ffffff !important;
 }
 
-/* BotÃ³n iniciar sesiÃ³n */
+/* Botón iniciar sesión */
 .login-light-theme .l-btn-login,
 .login-light-theme button[type="submit"],
 .login-light-theme .l-btn-gold {
@@ -2685,11 +2685,12 @@ body.in-booking-flow .whatsapp-float-btn { display: none !important; }
   fill: #6b7280 !important;
 }
 
-/* Bottom nav mÃ³vil */
+/* Bottom nav móvil */
 .login-light-theme .l-bottom-nav,
 .login-light-theme [class*="bottom-nav"] {
   background: #ffffff !important;
   border-top: 1px solid rgba(0, 0, 0, 0.06) !important;
   color: #374151 !important;
 }
+
 

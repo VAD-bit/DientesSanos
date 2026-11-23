@@ -61,7 +61,7 @@ export default function Home() {
     try {
       setSubmittingReview(true);
       await publicService.submitStaffReview(selectedBarberForReview.id, newRating, newComment);
-      alert('Â¡Gracias! Tu reseña ha sido registrada de forma anónima.');
+      alert('¡Gracias! Tu reseña ha sido registrada de forma anónima.');
       setSelectedBarberForReview(null);
       setNewRating(5);
       setNewComment('');
@@ -177,7 +177,7 @@ export default function Home() {
                 fontWeight: 800,
                 animation: 'pulse-gold 2s ease-in-out infinite',
               }}>
-                Â¡10% OFF cumpleañeros!
+                ¡10% OFF cumpleañeros!
               </div>
             </div>
           </div>
@@ -317,7 +317,7 @@ export default function Home() {
       }}>
         <div style={{ maxWidth: 700, margin: '0 auto' }}>
           <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 900, color: '#111111', marginBottom: 16, letterSpacing: -1 }}>
-            Â¿Listo para tu mejor sonrisa?
+            ¿Listo para tu mejor sonrisa?
           </h2>
           <p style={{ color: 'rgba(255,255,255,0.85)', fontSize: 18, marginBottom: 32 }}>
             Reserva ahora y obtén un 10% de descuento en tu primera cita
@@ -459,5 +459,6 @@ export default function Home() {
     </div>
   );
 }
+
 
 

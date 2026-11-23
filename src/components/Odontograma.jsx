@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useMemo } from 'react';
+﻿import React, { useState, useCallback, useMemo } from 'react';
 import { Eraser, Trash2 } from 'lucide-react';
 
 // FDI (ISO 3950) - Dentición Permanente (adultos): cuadrantes 1-4, 8 piezas cada uno = 32
@@ -377,7 +377,7 @@ export default function Odontograma({ value, onChange }) {
       const k = m.type + (m.mat ? ` ${m.mat}` : '');
       byType[k] = (byType[k] || 0) + 1;
     }
-    return Object.entries(byType).map(([k, n]) => `${n}× ${k}`).join(' · ');
+    return Object.entries(byType).map(([k, n]) => `${n}Ã— ${k}`).join(' · ');
   }, [marks]);
 
   return (
@@ -475,7 +475,7 @@ export default function Odontograma({ value, onChange }) {
         <div style={styles.hint}>
           {eraser
             ? 'Borrador activo: toca una superficie o diente para quitar marcas.'
-            : `Selecciona ${cond?.label?.toLowerCase() || 'una condición'}${cond?.materials ? ` (${activeMat} — ${MATERIAL_LABELS[activeMat] || activeMat})` : ''} y toca las caras del diente${cond?.kind === 'tooth' ? ' o el diente completo' : ''}. Tocar de nuevo = alternar/quitar.`}
+            : `Selecciona ${cond?.label?.toLowerCase() || 'una condición'}${cond?.materials ? ` (${activeMat} â€” ${MATERIAL_LABELS[activeMat] || activeMat})` : ''} y toca las caras del diente${cond?.kind === 'tooth' ? ' o el diente completo' : ''}. Tocar de nuevo = alternar/quitar.`}
         </div>
       </div>
 
@@ -507,20 +507,20 @@ export default function Odontograma({ value, onChange }) {
           {viewMode === 'permanent' && (
             <>
               <text x={MID_X / 2} y="272" textAnchor="middle" fontSize="9" fill="#666" fontWeight="700">
-                SUP · DER 18–11 | IZQ 21–28
+                SUP · DER 18â€“11 | IZQ 21â€“28
               </text>
               <text x={MID_X + (VIEW_W - MID_X) / 2} y="272" textAnchor="middle" fontSize="9" fill="#666" fontWeight="700">
-                INF · DER 48–41 | IZQ 31–38
+                INF · DER 48â€“41 | IZQ 31â€“38
               </text>
             </>
           )}
           {viewMode === 'temporary' && (
             <>
               <text x={MID_X / 2} y="272" textAnchor="middle" fontSize="9" fill="#666" fontWeight="700">
-                SUP · DER 55–51 | IZQ 61–65
+                SUP · DER 55â€“51 | IZQ 61â€“65
               </text>
               <text x={MID_X + (VIEW_W - MID_X) / 2} y="272" textAnchor="middle" fontSize="9" fill="#666" fontWeight="700">
-                INF · DER 85–81 | IZQ 71–75
+                INF · DER 85â€“81 | IZQ 71â€“75
               </text>
             </>
           )}
@@ -591,20 +591,20 @@ export default function Odontograma({ value, onChange }) {
         {viewMode === 'permanent' && (
           <>
             <button type="button" onClick={() => emit(marks.filter(m => m.tooth < 20 || m.tooth > 29))} style={styles.quadBtn}>
-              Limpiar sup. permanente (11–28)
+              Limpiar sup. permanente (11â€“28)
             </button>
             <button type="button" onClick={() => emit(marks.filter(m => m.tooth < 30 || m.tooth > 39))} style={styles.quadBtn}>
-              Limpiar inf. permanente (31–48)
+              Limpiar inf. permanente (31â€“48)
             </button>
           </>
         )}
         {viewMode === 'temporary' && (
           <>
             <button type="button" onClick={() => emit(marks.filter(m => m.tooth < 50 || m.tooth > 69))} style={styles.quadBtn}>
-              Limpiar sup. temporal (51–65)
+              Limpiar sup. temporal (51â€“65)
             </button>
             <button type="button" onClick={() => emit(marks.filter(m => m.tooth < 70 || m.tooth > 89))} style={styles.quadBtn}>
-              Limpiar inf. temporal (71–85)
+              Limpiar inf. temporal (71â€“85)
             </button>
           </>
         )}

@@ -1,4 +1,4 @@
-import {
+﻿import {
   generateRegistrationOptions,
   verifyRegistrationResponse,
   generateAuthenticationOptions,
@@ -95,7 +95,7 @@ export default async function handler(request, response) {
     if (path === '/api/passkeys/authenticate/verify' && method === 'POST') {
       if (!requireMethod(request, response, ['POST'])) return;
       const body = parseBody(request);
-      if (!body.challengeId || !body.response?.id) throw Object.assign(new Error('Respuesta biom�trica incompleta'), { statusCode: 400 });
+      if (!body.challengeId || !body.response?.id) throw Object.assign(new Error('Respuesta biomϿ½trica incompleta'), { statusCode: 400 });
       const expectedChallenge = await consumeChallenge({ id: body.challengeId, purpose: 'authentication', authUserId: null });
       const stored = await findCredential(body.response.id);
       if (!stored || stored.audience !== 'crm') throw Object.assign(new Error('Passkey no registrada o revocada'), { statusCode: 401 });
@@ -113,7 +113,7 @@ export default async function handler(request, response) {
         },
         requireUserVerification: true,
       });
-      if (!verification.verified) throw Object.assign(new Error('Verificaci�n biom�trica rechazada'), { statusCode: 401 });
+      if (!verification.verified) throw Object.assign(new Error('VerificaciϿ½n biomϿ½trica rechazada'), { statusCode: 401 });
       await updateCredentialUsage(stored.id, stored.counter, verification.authenticationInfo.newCounter);
       const tokenHash = await issueSupabaseLoginToken(stored.auth_user_id);
       return json(response, 200, { verified: true, tokenHash });
@@ -155,3 +155,4 @@ export default async function handler(request, response) {
     return handleError(response, error);
   }
 }
+

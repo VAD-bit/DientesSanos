@@ -1,4 +1,4 @@
-export const VALE_METHOD_CONFIG = [
+﻿export const VALE_METHOD_CONFIG = [
   { name: 'Efectivo ($)', key: 'cash_usd', currency: 'USD' }, { name: 'Zelle', key: 'zelle', currency: 'USD' },
   { name: 'Zinli', key: 'zinli', currency: 'USD' }, { name: 'Binance / USDT', key: 'binance', currency: 'USD' },
   { name: 'Pago Móvil', key: 'pago_movil', currency: 'Bs' }, { name: 'Punto de venta', key: 'punto_venta', currency: 'Bs' },
@@ -13,3 +13,4 @@ export const valeTotals = (modal, rate) => {
   const amount = Math.max(0, Number(modal.amountBs) || 0);
   return { distribution: [{ ...method, amount }], amountBs: amount * (method.currency === 'USD' ? rate : 1) };
 };
+

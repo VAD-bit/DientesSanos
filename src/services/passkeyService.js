@@ -1,4 +1,4 @@
-import {
+﻿import {
   browserSupportsWebAuthn,
   startAuthentication,
   startRegistration,
@@ -67,3 +67,4 @@ export const passkeyService = {
     });
   },
 };
+
