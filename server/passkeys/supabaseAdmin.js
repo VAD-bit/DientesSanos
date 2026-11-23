@@ -4,10 +4,30 @@ let adminClient;
 
 export const getAdminClient = () => {
   if (adminClient) return adminClient;
-  const url = process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL;
+  
+  // En serverless functions de Vercel, SOLO existen las vars exactas configuradas en Vercel Dashboard
+  // VITE_SUPABASE_URL NO existe en runtime (solo en build del frontend)
+  const url = process.env.SUPABASE_URL;
   const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
-  if (!url) throw new Error('Falta SUPABASE_URL / VITE_SUPABASE_URL en variables de entorno');
-  if (!key) throw new Error('Falta SUPABASE_SERVICE_ROLE_KEY en variables de entorno de Vercel (Settings → Environment Variables)');
+  
+  // Debug logging (se ve en Vercel Function Logs)
+  console.log('[getAdminClient] SUPABASE_URL:', url ? 'PRESENTE (' + url.substring(0, 30) + '...)' : 'FALTA');
+  console.log('[getAdminClient] SUPABASE_SERVICE_ROLE_KEY:', key ? 'PRESENTE' : 'FALTA');
+  
+  if (!url) throw new Error('Falta SUPABASE_URL en variables de entorno de Vercel (Settings → Environment Variables). NO uses VITE_SUPABASE_URL.');
+  if (!key) throw new Error('Falta SUPABASE_SERVICE_ROLE_KEY en variables de entorno de Vercel (Settings → Environment Variables).');
+  
+  // Validar formato de URL
+  let parsedUrl;
+  try {
+    parsedUrl = new URL(url);
+    if (parsedUrl.protocol !== 'https:') {
+      throw new Error('SUPABASE_URL debe usar https://');
+    }
+  } catch (e) {
+    throw new Error(`SUPABASE_URL inválida: "${url}". Debe ser formato https://xxx.supabase.co (sin barra final)`);
+  }
+  
   try {
     adminClient = createClient(url, key, {
       auth: { persistSession: false, autoRefreshToken: false },
