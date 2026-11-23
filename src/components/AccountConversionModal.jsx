@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
+﻿import React, { useState, useEffect, useMemo } from 'react';
 import { 
   X, 
   RefreshCcw, 
@@ -22,7 +22,7 @@ const CONVERSION_ACCOUNTS = [
   { key: 'zelle', label: 'Zelle', shortLabel: 'Zelle', usd: true, icon: Landmark, color: '#7356bf' },
   { key: 'binance', label: 'Binance', shortLabel: 'Binance', usd: true, icon: Coins, color: '#f3ba2f' },
   { key: 'zinli', label: 'Zinli', shortLabel: 'Zinli', usd: true, icon: Smartphone, color: '#68369b' },
-  { key: 'pago_movil', label: 'Pago Móvil', shortLabel: 'Pago Móvil', usd: false, icon: Smartphone, color: '#2f80ed' },
+  { key: 'pago_movil', label: 'Pago MÃ³vil', shortLabel: 'Pago MÃ³vil', usd: false, icon: Smartphone, color: '#2f80ed' },
   { key: 'cash_bs', label: 'Efectivo (Bs)', shortLabel: 'Efectivo Bs', usd: false, icon: Banknote, color: '#32d74b' },
   { key: 'punto_venta', label: 'Punto de venta', shortLabel: 'Punto de venta', usd: false, icon: CreditCard, color: '#56ccf2' },
   { key: 'transferencia', label: 'Transferencia', shortLabel: 'Transferencia', usd: false, icon: Layers3, color: '#bb6bd9' }
@@ -186,13 +186,13 @@ export default function AccountConversionModal({
                   <RefreshCcw size={22} />
                 </div>
                 <div>
-                  <h2 style={{ fontSize: 'clamp(17px, 2vw, 20px)', fontWeight: '950', margin: 0, color: '#fff', letterSpacing: '-0.3px' }}>
-                    {sameCurrency ? 'Transferencia entre Cuentas' : 'Conversión de Divisa'}
+                  <h2 style={{ fontSize: 'clamp(17px, 2vw, 20px)', fontWeight: '950', margin: 0, color: '#111111', letterSpacing: '-0.3px' }}>
+                    {sameCurrency ? 'Transferencia entre Cuentas' : 'ConversiÃ³n de Divisa'}
                   </h2>
                   <p style={{ margin: '2px 0 0', fontSize: '11.5px', color: 'var(--text-secondary)' }}>
                     {sameCurrency 
                       ? 'Reubica saldo entre cuentas de la misma moneda (1:1 sin tasa).' 
-                      : 'Cambio de divisa (Bs ↔ USD) con tasa de cambio. No afecta la ganancia total.'}
+                      : 'Cambio de divisa (Bs â†” USD) con tasa de cambio. No afecta la ganancia total.'}
                   </p>
                 </div>
               </div>
@@ -239,7 +239,7 @@ export default function AccountConversionModal({
                     <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                       <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#ff453a' }} />
                       <span style={{ fontSize: '11px', fontWeight: '900', color: 'var(--text-secondary)', textTransform: 'uppercase', letterSpacing: '0.6px' }}>
-                        Origen · Cuenta de Salida
+                        Origen Â· Cuenta de Salida
                       </span>
                     </div>
                     <span style={{ fontSize: '11px', color: hasInsufficientFunds ? '#ff453a' : 'var(--text-muted)', fontWeight: '800' }}>
@@ -297,7 +297,7 @@ export default function AccountConversionModal({
                   {/* Amount Input */}
                   <div style={{ marginTop: '4px' }}>
                     <label style={{ display: 'block', fontSize: '11px', fontWeight: '800', color: 'var(--text-secondary)', marginBottom: '6px' }}>
-                      Monto a Transferir / Sacar ({fromInfo.usd ? '$ USD' : 'Bolívares Bs'})
+                      Monto a Transferir / Sacar ({fromInfo.usd ? '$ USD' : 'BolÃ­vares Bs'})
                     </label>
                     <div style={{ position: 'relative' }}>
                       <input
@@ -316,7 +316,7 @@ export default function AccountConversionModal({
                           border: hasInsufficientFunds 
                             ? '1.5px solid #ff453a' 
                             : '1.5px solid rgba(0, 0, 0, 0.08)',
-                          color: '#fff',
+                          color: '#111111',
                           fontSize: '18px',
                           fontWeight: '900',
                           outline: 'none'
@@ -375,7 +375,7 @@ export default function AccountConversionModal({
                     <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                       <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#32d74b' }} />
                       <span style={{ fontSize: '11px', fontWeight: '900', color: 'var(--text-secondary)', textTransform: 'uppercase', letterSpacing: '0.6px' }}>
-                        Destino · Cuenta de Entrada
+                        Destino Â· Cuenta de Entrada
                       </span>
                     </div>
                     <button
@@ -513,7 +513,7 @@ export default function AccountConversionModal({
                   <div>
                     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '6px' }}>
                       <label style={{ fontSize: '11px', fontWeight: '800', color: 'var(--text-secondary)' }}>
-                        Monto a Recibir ({toInfo.usd ? '$ USD' : 'Bolívares Bs'})
+                        Monto a Recibir ({toInfo.usd ? '$ USD' : 'BolÃ­vares Bs'})
                       </label>
                       {isManualTo && (
                         <button
@@ -586,7 +586,7 @@ export default function AccountConversionModal({
                       fontSize: '11px'
                     }}>
                       <span style={{ color: 'var(--text-muted)' }}>Nuevo saldo {toInfo.shortLabel}:</span>
-                      <span style={{ fontWeight: '900', color: '#fff' }}>
+                      <span style={{ fontWeight: '900', color: '#111111' }}>
                         {formatMoney(toCurrentBal + effectiveToAmount)} {toInfo.usd ? '$' : 'Bs'}
                       </span>
                     </div>
@@ -626,7 +626,7 @@ export default function AccountConversionModal({
                   }}
                 >
                   <RefreshCcw size={17} />
-                  {loading ? 'Procesando...' : (sameCurrency ? 'Registrar Transferencia' : 'Registrar Conversión')}
+                  {loading ? 'Procesando...' : (sameCurrency ? 'Registrar Transferencia' : 'Registrar ConversiÃ³n')}
                 </button>
               </footer>
             </form>
@@ -636,3 +636,4 @@ export default function AccountConversionModal({
     </AnimatedModal>
   );
 }
+

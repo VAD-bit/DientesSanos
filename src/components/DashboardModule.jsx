@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, lazy, Suspense } from 'react';
+﻿import React, { useState, useEffect, useRef, lazy, Suspense } from 'react';
 import { getRoleCategory } from '../utils/staffRoles';
 import { createPortal } from 'react-dom';
 import dentalChairImg from '../assets/dental-chair.png';
@@ -76,21 +76,21 @@ ChartJS.register(
 );
 
 const QUOTES = [
-  { text: "Cada cabeza es un mundo.", creator: "Refrán Popular" },
-  { text: "La grandeza nace de pequeños comienzos.", creator: "Sir Francis Drake" },
+  { text: "Cada cabeza es un mundo.", creator: "RefrÃ¡n Popular" },
+  { text: "La grandeza nace de pequeÃ±os comienzos.", creator: "Sir Francis Drake" },
   { text: "La disciplina es el puente entre metas y logros.", creator: "Jim Rohn" },
-  { text: "El estilo es una forma de decir quién eres sin hablar.", creator: "Rachel Zoe" },
-  { text: "Invierte en tu imagen, es tu carta de presentación.", creator: "Negocios" },
+  { text: "El estilo es una forma de decir quiÃ©n eres sin hablar.", creator: "Rachel Zoe" },
+  { text: "Invierte en tu imagen, es tu carta de presentaciÃ³n.", creator: "Negocios" },
   { text: "Cuidar tu sonrisa puede cambiar tu vida.", creator: "Arte Dientes Sanos" },
   { text: "La calidad atrae, el detalle retiene.", creator: "Estrategia" },
   { text: "No busques clientes, busca fans.", creator: "Crecimiento" },
-  { text: "La odontología es el arte de cuidar sonrisas.", creator: "Mística Dientes Sanos" },
-  { text: "El éxito es la suma de pequeños esfuerzos diarios.", creator: "Robert Collier" },
+  { text: "La odontologÃ­a es el arte de cuidar sonrisas.", creator: "MÃ­stica Dientes Sanos" },
+  { text: "El Ã©xito es la suma de pequeÃ±os esfuerzos diarios.", creator: "Robert Collier" },
   { text: "Domina tu oficio, luego rompe las reglas.", creator: "Maestros" },
-  { text: "Cada cliente es una oportunidad de crear una obra maestra.", creator: "Visión" },
+  { text: "Cada cliente es una oportunidad de crear una obra maestra.", creator: "VisiÃ³n" },
   { text: "El mejor marketing es un cliente satisfecho.", creator: "Marketing" },
-  { text: "Sé tan bueno que no puedan ignorarte.", creator: "Steve Martin" },
-  { text: "Tu única competencia es la persona en el espejo.", creator: "Superación" },
+  { text: "SÃ© tan bueno que no puedan ignorarte.", creator: "Steve Martin" },
+  { text: "Tu Ãºnica competencia es la persona en el espejo.", creator: "SuperaciÃ³n" },
   { text: "El negocio de la belleza es el negocio de la felicidad.", creator: "Emprendimiento" }
 ];
 
@@ -243,7 +243,7 @@ const DashboardModule = ({
             id: `client-${client.id}`,
             type: 'client',
             title: client.name || 'Cliente',
-            subtitle: [client.phone, client.id_card].filter(Boolean).join(' · ') || 'Ficha de cliente',
+            subtitle: [client.phone, client.id_card].filter(Boolean).join(' Â· ') || 'Ficha de cliente',
             data: client
           })),
         ...searchableAppointments
@@ -261,7 +261,7 @@ const DashboardModule = ({
               appointment.services?.name || 'Servicio',
               appointment.staff?.name,
               appointment.status
-            ].filter(Boolean).join(' · '),
+            ].filter(Boolean).join(' Â· '),
             data: appointment
           })),
         ...staffList
@@ -346,7 +346,7 @@ const DashboardModule = ({
       return false;
     }).length;
 
-  // Hero KPI count-up animation (Facturado Hoy) — Apple-style emphasis on the metric that matters most
+  // Hero KPI count-up animation (Facturado Hoy) â€” Apple-style emphasis on the metric that matters most
   const [animatedFacturado, setAnimatedFacturado] = useState(0);
   useEffect(() => {
     const start = animatedFacturado;
@@ -404,7 +404,7 @@ const DashboardModule = ({
         time: timeFormatted,
         name: a.clients?.name || 'Cliente',
         service: a.services?.name || 'Servicio',
-        barber: a.staff?.name || 'Odontólogo',
+        barber: a.staff?.name || 'OdontÃ³logo',
         avatar: a.staff?.image_url,
         status: a.status,
         beverage: a.beverage_selection || ''
@@ -497,12 +497,12 @@ const DashboardModule = ({
   const [showInventoryPopup, setShowInventoryPopup] = useState(false);
   const [showSchedulePopup, setShowSchedulePopup] = useState(false);
 
-  // Interruptor manual Abierto/Cerrado de la clínica dental (system_settings.store_is_open).
-  // Abierto => el portal público toma reservas 24 h; Cerrado => nadie puede agendar y los
+  // Interruptor manual Abierto/Cerrado de la clÃ­nica dental (system_settings.store_is_open).
+  // Abierto => el portal pÃºblico toma reservas 24 h; Cerrado => nadie puede agendar y los
   // horarios salen bloqueados. Sin valor => se asume Abierto.
   const [storeOpen, setStoreOpen] = useState(true);
   const [storeToggling, setStoreToggling] = useState(false);
-  // Búsqueda colapsable: por defecto solo se ve el ícono de lupa; al hacer click se
+  // BÃºsqueda colapsable: por defecto solo se ve el Ã­cono de lupa; al hacer click se
   // expande a la barra y se enfoca.
   const [searchExpanded, setSearchExpanded] = useState(false);
   useEffect(() => {
@@ -528,10 +528,10 @@ const DashboardModule = ({
     setStoreOpen(next); // optimista
     try {
       await dataService.updateSystemSetting('store_is_open', next ? 'true' : 'false');
-      showToast(next ? 'Clínica ABIERTA — reservas 24 h activas' : 'Clínica CERRADA — reservas bloqueadas', next ? 'success' : 'info');
+      showToast(next ? 'ClÃ­nica ABIERTA â€” reservas 24 h activas' : 'ClÃ­nica CERRADA â€” reservas bloqueadas', next ? 'success' : 'info');
     } catch {
       setStoreOpen(!next); // revertir si falla
-      showToast('No se pudo cambiar el estado de la clínica', 'error');
+      showToast('No se pudo cambiar el estado de la clÃ­nica', 'error');
     } finally {
       setStoreToggling(false);
     }
@@ -569,7 +569,7 @@ const DashboardModule = ({
         staffInvolved: chair.appointment?.staff_id ? [{ staffId: chair.appointment.staff_id, role: 'dentista', amountUsd: chair.rawPrice || 0 }] : []
       });
 
-      showToast(`¡Cobro de ${chair.price} registrado con éxito! Sillón liberado.`);
+      showToast(`Â¡Cobro de ${chair.price} registrado con Ã©xito! SillÃ³n liberado.`);
       setCheckoutChairModal(null);
       
       const activeApps = await dataService.getAppointmentsByState(['En Silla', 'Agendado']);
@@ -616,7 +616,7 @@ const DashboardModule = ({
         const priceStr = `$${priceVal}`;
 
         const dentista = activeApp.staff || {};
-        const dentistaName = dentista.name || activeApp.staff_name || `Odontólogo`;
+        const dentistaName = dentista.name || activeApp.staff_name || `OdontÃ³logo`;
 
         result.push({
           id: chairId,
@@ -637,7 +637,7 @@ const DashboardModule = ({
       } else {
         result.push({
           id: chairId,
-          type: `Sillón ${chairId}`,
+          type: `SillÃ³n ${chairId}`,
           status: 'Disponible',
           glowClass: 'chair-halo-disponible',
           statusColor: '#22c55e',
@@ -659,13 +659,13 @@ const DashboardModule = ({
   const renderComparison = (current, previous, label) => {
     const change = percentChange(current, previous);
     if (change === null) {
-      return <><span style={{ fontSize: '7px' }}>●</span> Sin base <span style={{ color: 'rgba(255,255,255,0.3)', fontWeight: '500' }}>{label}</span></>;
+      return <><span style={{ fontSize: '7px' }}>â—</span> Sin base <span style={{ color: 'rgba(255,255,255,0.3)', fontWeight: '500' }}>{label}</span></>;
     }
     const isUp = change > 0;
     const isDown = change < 0;
     return (
       <>
-        <span style={{ fontSize: '7px' }}>{isUp ? '▲' : isDown ? '▼' : '●'}</span>
+        <span style={{ fontSize: '7px' }}>{isUp ? 'â–²' : isDown ? 'â–¼' : 'â—'}</span>
         {Math.abs(change)}%
         <span style={{ color: 'rgba(255,255,255,0.3)', fontWeight: '500' }}>{label}</span>
       </>
@@ -708,9 +708,9 @@ const DashboardModule = ({
     daysGrid.push({ day: i, isCurrentMonth: false });
   }
 
-  // Week revenues line chart — premium champagne glow style
+  // Week revenues line chart â€” premium champagne glow style
   const weeklyChartData = {
-    labels: ['Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb', 'Dom'],
+    labels: ['Lun', 'Mar', 'MiÃ©', 'Jue', 'Vie', 'SÃ¡b', 'Dom'],
     datasets: [
       {
         data: chartData?.datasets?.[0]?.data || [0, 0, 0, 0, 0, 0, 0],
@@ -738,7 +738,7 @@ const DashboardModule = ({
     ]
   };
 
-  // Month revenues line chart — same premium styling, daily granularity
+  // Month revenues line chart â€” same premium styling, daily granularity
   const monthlyLineChartData = {
     labels: monthlyChartData?.labels || [],
     datasets: [
@@ -842,7 +842,7 @@ const DashboardModule = ({
           }
         `}</style>
       )}
-      {/* Ambient glowing background orbs — deep & cinematic */}
+      {/* Ambient glowing background orbs â€” deep & cinematic */}
       <div className="l-dashboard-orb l-orb-1" />
       <div className="l-dashboard-orb l-orb-2" />
       <div className="l-dashboard-orb l-orb-3" />
@@ -863,14 +863,14 @@ const DashboardModule = ({
             <h1 style={{
               fontSize: '21px',
               fontWeight: '700',
-              color: 'white',
+              color: '#111111',
               letterSpacing: '-0.3px',
               display: 'flex',
               alignItems: 'center',
               gap: '6px',
               margin: 0
             }}>
-              ¡Buenos días, Dientes Sanos!
+              Â¡Buenos dÃ­as, Dientes Sanos!
               <span className="wave-hand-span" style={{ display: 'inline-flex', alignItems: 'center', opacity: 0.85 }}>
                 <svg
                   width="19"
@@ -899,13 +899,13 @@ const DashboardModule = ({
             </span>
           </div>
 
-          {/* Toggle Abierto/Cerrado, Búsqueda, Tasas & + Nueva cita */}
+          {/* Toggle Abierto/Cerrado, BÃºsqueda, Tasas & + Nueva cita */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-            {/* Interruptor Abierto/Cerrado (movido aquí desde el saludo) */}
+            {/* Interruptor Abierto/Cerrado (movido aquÃ­ desde el saludo) */}
             <button
               onClick={toggleStoreOpen}
               disabled={storeToggling}
-              title={storeOpen ? 'Clínica abierta (reservas 24 h) — click para cerrar' : 'Clínica cerrada — click para abrir'}
+              title={storeOpen ? 'ClÃ­nica abierta (reservas 24 h) â€” click para cerrar' : 'ClÃ­nica cerrada â€” click para abrir'}
               style={{
                 display: 'inline-flex', alignItems: 'center', gap: '6px', flexShrink: 0,
                 height: '40px', padding: '0 14px', borderRadius: '12px', whiteSpace: 'nowrap', boxSizing: 'border-box',
@@ -924,12 +924,12 @@ const DashboardModule = ({
               {storeOpen ? 'Abierta' : 'Cerrada'}
             </button>
 
-            {/* Lupa colapsada — se muestra solo cuando la barra está cerrada */}
+            {/* Lupa colapsada â€” se muestra solo cuando la barra estÃ¡ cerrada */}
             {!searchExpanded && (
               <button
                 type="button"
                 onClick={() => setSearchExpanded(true)}
-                title="Buscar citas, clientes, Odontólogos…"
+                title="Buscar citas, clientes, OdontÃ³logosâ€¦"
                 style={{ width: '40px', height: '40px', flexShrink: 0, borderRadius: '12px', display: 'grid', placeItems: 'center', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', color: 'rgba(255,255,255,0.6)', cursor: 'pointer', transition: 'all 0.2s ease' }}
                 onMouseEnter={(e) => { e.currentTarget.style.background = 'rgba(255,255,255,0.07)'; e.currentTarget.style.color = 'var(--champagne)'; }}
                 onMouseLeave={(e) => { e.currentTarget.style.background = 'rgba(255,255,255,0.04)'; e.currentTarget.style.color = 'rgba(255,255,255,0.6)'; }}
@@ -938,7 +938,7 @@ const DashboardModule = ({
               </button>
             )}
 
-            {/* Search Input Bar — oculta hasta expandir con la lupa */}
+            {/* Search Input Bar â€” oculta hasta expandir con la lupa */}
             <div ref={searchContainerRef} style={{
               position: 'relative',
               width: isMobile ? '100%' : '260px',
@@ -947,7 +947,7 @@ const DashboardModule = ({
             }}>
               <input 
                 type="text" 
-                placeholder="Buscar citas, clientes, Odontólogos..." 
+                placeholder="Buscar citas, clientes, OdontÃ³logos..." 
                 value={globalSearch}
                 onChange={(event) => {
                   setGlobalSearch(event.target.value);
@@ -963,7 +963,7 @@ const DashboardModule = ({
                   borderRadius: '12px',
                   backgroundColor: 'rgba(0, 0, 0, 0.04)',
                   border: '1px solid rgba(0, 0, 0, 0.08)',
-                  color: 'white',
+                  color: '#111111',
                   fontSize: '13px',
                   outline: 'none',
                   transition: 'all 0.2s ease'
@@ -976,7 +976,7 @@ const DashboardModule = ({
                 onBlur={(e) => {
                   e.target.style.backgroundColor = 'rgba(255,255,255,0.04)';
                   e.target.style.borderColor = 'rgba(255,255,255,0.06)';
-                  // Si la barra queda vacía al perder el foco, vuelve al ícono de lupa.
+                  // Si la barra queda vacÃ­a al perder el foco, vuelve al Ã­cono de lupa.
                   // 150 ms de gracia para que un click en un resultado alcance a dispararse.
                   setTimeout(() => {
                     if (!searchContainerRef.current?.querySelector('input')?.value) setSearchExpanded(false);
@@ -1047,7 +1047,7 @@ const DashboardModule = ({
                           border: 'none',
                           borderRadius: '9px',
                           background: isActive ? 'rgba(232, 212, 176, 0.12)' : 'transparent',
-                          color: 'white',
+                          color: '#111111',
                           cursor: 'pointer',
                           textAlign: 'left'
                         }}
@@ -1117,7 +1117,7 @@ const DashboardModule = ({
             {/* Divider between utility zone and rates+alerts zone */}
             {rates && <div style={{ width: '1px', height: '24px', background: 'rgba(0, 0, 0, 0.04)', flexShrink: 0 }} />}
 
-            {/* Rate Toggle Card — segmented control with soft dividers instead of boxed chips */}
+            {/* Rate Toggle Card â€” segmented control with soft dividers instead of boxed chips */}
             {rates && (
               <div style={{
                 height: '40px',
@@ -1161,7 +1161,7 @@ const DashboardModule = ({
                     fontWeight: '800',
                     color: activeRateType === 'bcv' ? '#22c55e' : 'white'
                   }}>
-                    {rates.bcv > 0 ? rates.bcv.toFixed(2) : '—'}
+                    {rates.bcv > 0 ? rates.bcv.toFixed(2) : 'â€”'}
                   </span>
                 </button>
 
@@ -1199,7 +1199,7 @@ const DashboardModule = ({
                     fontWeight: '800',
                     color: activeRateType === 'euro' ? '#22c55e' : 'white'
                   }}>
-                    {rates.euro > 0 ? rates.euro.toFixed(2) : '—'}
+                    {rates.euro > 0 ? rates.euro.toFixed(2) : 'â€”'}
                   </span>
                 </button>
 
@@ -1335,7 +1335,7 @@ const DashboardModule = ({
                 <span style={{ fontSize: '9px', fontWeight: '800', color: 'rgba(255,255,255,0.7)', letterSpacing: '0.5px' }}>CITAS HOY</span>
                 <Calendar size={13} color="rgba(255,255,255,0.6)" />
               </div>
-              <div style={{ fontSize: '18px', fontWeight: '900', color: 'white', margin: '1px 0' }}>
+              <div style={{ fontSize: '18px', fontWeight: '900', color: '#111111', margin: '1px 0' }}>
                 {citasHoyCount}
               </div>
               <div style={{ display: 'inline-flex', alignItems: 'center', gap: '3px', fontSize: '9px', color: '#111111', fontWeight: '700' }}>
@@ -1349,7 +1349,7 @@ const DashboardModule = ({
                 <span style={{ fontSize: '9px', fontWeight: '800', color: 'rgba(255,255,255,0.7)', letterSpacing: '0.5px' }}>FACTURADO HOY</span>
                 <span style={{ fontSize: '11px', color: 'rgba(255,255,255,0.6)', fontWeight: '800' }}>$</span>
               </div>
-              <div style={{ fontSize: '18px', fontWeight: '900', color: 'white', margin: '1px 0' }}>
+              <div style={{ fontSize: '18px', fontWeight: '900', color: '#111111', margin: '1px 0' }}>
                 ${formatCurrency(facturadoHoyAmount)}
               </div>
               <div style={{ display: 'inline-flex', alignItems: 'center', gap: '3px', fontSize: '9px', color: '#111111', fontWeight: '700' }}>
@@ -1363,7 +1363,7 @@ const DashboardModule = ({
                 <span style={{ fontSize: '9px', fontWeight: '800', color: 'rgba(255,255,255,0.7)', letterSpacing: '0.5px' }}>CLIENTES NUEVOS</span>
                 <Users size={13} color="rgba(255,255,255,0.6)" />
               </div>
-              <div style={{ fontSize: '18px', fontWeight: '900', color: 'white', margin: '1px 0' }}>
+              <div style={{ fontSize: '18px', fontWeight: '900', color: '#111111', margin: '1px 0' }}>
                 {clientesNuevosCount}
               </div>
               <div style={{ display: 'inline-flex', alignItems: 'center', gap: '3px', fontSize: '9px', color: '#111111', fontWeight: '700' }}>
@@ -1378,13 +1378,13 @@ const DashboardModule = ({
                 <UserX size={13} color="rgba(255,255,255,0.6)" />
               </div>
               <div
-                style={{ fontSize: '18px', fontWeight: '900', color: 'white', margin: '1px 0' }}
-                title={barbersPendingArrival.length > 0 ? barbersPendingArrival.map(member => member.name).join(', ') : 'Todos los Odontólogos activos están presentes'}
+                style={{ fontSize: '18px', fontWeight: '900', color: '#111111', margin: '1px 0' }}
+                title={barbersPendingArrival.length > 0 ? barbersPendingArrival.map(member => member.name).join(', ') : 'Todos los OdontÃ³logos activos estÃ¡n presentes'}
               >
                 {pendingBarbersCount}
               </div>
               <div style={{ display: 'inline-flex', alignItems: 'center', gap: '3px', fontSize: '9px', color: '#111111', fontWeight: '700' }}>
-                <span style={{ fontSize: '7px' }}>●</span>
+                <span style={{ fontSize: '7px' }}>â—</span>
                 {pendingBarbersCount === 0
                   ? 'Todos presentes'
                   : `${activeBarbers.length - pendingBarbersCount} de ${activeBarbers.length} presentes`}
@@ -1406,14 +1406,14 @@ const DashboardModule = ({
           }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px', flexShrink: 0 }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <h3 style={{ fontSize: '13px', fontWeight: '800', color: 'white', margin: 0, textTransform: 'uppercase', letterSpacing: '0.5px' }}>Estado de los sillones</h3>
+                <h3 style={{ fontSize: '13px', fontWeight: '800', color: '#111111', margin: 0, textTransform: 'uppercase', letterSpacing: '0.5px' }}>Estado de los sillones</h3>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '4px', backgroundColor: 'rgba(0, 0, 0, 0.04)', padding: '2px 8px', borderRadius: '4px', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
                   <div style={{ width: '4px', height: '4px', borderRadius: '50%', backgroundColor: 'var(--champagne)' }} />
                   <span style={{ fontSize: '10px', color: 'rgba(255,255,255,0.5)', fontWeight: '600' }}>En tiempo real</span>
                 </div>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                <span style={{ fontSize: '10px', color: 'rgba(255,255,255,0.4)', fontWeight: '600' }}>Desliza ➔</span>
+                <span style={{ fontSize: '10px', color: 'rgba(255,255,255,0.4)', fontWeight: '600' }}>Desliza âž”</span>
               </div>
             </div>
 
@@ -1464,7 +1464,7 @@ const DashboardModule = ({
                         setShowReceptionPopup(true);
                       }
                     }}
-                    title={isAvailable ? 'Abrir Recepción' : undefined}
+                    title={isAvailable ? 'Abrir RecepciÃ³n' : undefined}
                     style={{
                       flex: '0 0 auto',
                       width: isMobile ? '65vw' : '175px',
@@ -1531,7 +1531,7 @@ const DashboardModule = ({
                       </div>
 
                       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '2px', textAlign: 'right' }}>
-                        <span style={{ fontSize: '10px', fontWeight: '900', color: 'white', letterSpacing: '0.3px', lineHeight: '1' }}>{chair.type}</span>
+                        <span style={{ fontSize: '10px', fontWeight: '900', color: '#111111', letterSpacing: '0.3px', lineHeight: '1' }}>{chair.type}</span>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
                           <div style={{ width: '4px', height: '4px', borderRadius: '50%', backgroundColor: chair.statusColor }} />
                           <span style={{ fontSize: '8px', fontWeight: '800', color: chair.statusColor }}>{chair.status === 'En servicio' ? 'En tratamiento' : chair.status}</span>
@@ -1543,7 +1543,7 @@ const DashboardModule = ({
                        <img 
                         loading="lazy"
                         src={dentalChairImg} 
-                        alt="Sillón odontológico" 
+                        alt="SillÃ³n odontolÃ³gico" 
                         style={{ 
                           maxHeight: '100%', 
                           maxWidth: '100%',
@@ -1571,7 +1571,7 @@ const DashboardModule = ({
                           boxSizing: 'border-box'
                         }}>
                           <div style={{ flex: 1, minWidth: 0 }}>
-                            <div style={{ fontSize: '10px', fontWeight: '800', color: 'white', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{chair.name}</div>
+                            <div style={{ fontSize: '10px', fontWeight: '800', color: '#111111', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{chair.name}</div>
                             <div style={{ fontSize: '8.5px', color: 'rgba(255,255,255,0.75)', fontWeight: '600', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{chair.service}</div>
                           </div>
                           <div style={{ textAlign: 'right' }}>
@@ -1618,15 +1618,15 @@ const DashboardModule = ({
                               event.stopPropagation();
                               setShowReceptionPopup(true);
                             }}
-                            aria-label="Abrir Recepción"
-                            title="Abrir Recepción"
+                            aria-label="Abrir RecepciÃ³n"
+                            title="Abrir RecepciÃ³n"
                             style={{
                               width: '16px',
                               height: '16px',
                               borderRadius: '4px',
                               backgroundColor: 'rgba(0, 0, 0, 0.04)',
                               border: '1px solid rgba(0, 0, 0, 0.08)',
-                              color: 'white',
+                              color: '#111111',
                               display: 'flex',
                               alignItems: 'center',
                               justifyContent: 'center',
@@ -1646,7 +1646,7 @@ const DashboardModule = ({
             </div>
           </div>
 
-          {/* Bottom Row: Top Odontólogos (Podium + List) and Top Services */}
+          {/* Bottom Row: Top OdontÃ³logos (Podium + List) and Top Services */}
           <div style={{ 
             display: 'grid', 
             gridTemplateColumns: isMobile ? '1fr' : '2.1fr 0.9fr', 
@@ -1654,20 +1654,20 @@ const DashboardModule = ({
             flex: '0 1 auto',
             minHeight: 0
           }}>
-            {/* 1. Top Odontólogos Card */}
+            {/* 1. Top OdontÃ³logos Card */}
             <div className="glass-card" style={{ padding: '8px 10px', borderRadius: '16px', backgroundColor: 'var(--bg-secondary)', border: '1px solid rgba(0, 0, 0, 0.08)', display: 'flex', flexDirection: 'column', height: '100%', minHeight: 0 }}>
               {/* Header */}
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '4px', flexShrink: 0 }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
                   <Crown size={14} color="var(--champagne)" fill="var(--champagne)" />
-                  <span style={{ fontSize: '10px', fontWeight: '800', color: 'white', letterSpacing: '0.5px', textTransform: 'uppercase' }}>Top Odontólogos</span>
+                  <span style={{ fontSize: '10px', fontWeight: '800', color: '#111111', letterSpacing: '0.5px', textTransform: 'uppercase' }}>Top OdontÃ³logos</span>
                 </div>
                 <span style={{ fontSize: '8.5px', fontWeight: '700', color: 'var(--champagne)', backgroundColor: 'rgba(232, 212, 176, 0.1)', padding: '2px 8px', borderRadius: '100px', border: '1px solid rgba(232, 212, 176, 0.2)' }}>
                   MES EN CURSO
                 </span>
               </div>
 
-              {/* 🏆 ALL BARBERS PODIUMS SIDE-BY-SIDE STAGE */}
+              {/* ðŸ† ALL BARBERS PODIUMS SIDE-BY-SIDE STAGE */}
               <div style={{ 
                 flex: 1, 
                 minHeight: 0, 
@@ -1680,7 +1680,7 @@ const DashboardModule = ({
               }} className="panda-scrollbar">
                 {sortedStaff.length === 0 ? (
                   <div style={{ width: '100%', textAlign: 'center', color: 'rgba(255,255,255,0.4)', fontSize: '11px', padding: '20px' }}>
-                    No hay Odontólogos registrados
+                    No hay OdontÃ³logos registrados
                   </div>
                 ) : (
                   sortedStaff.map((barber, rankIndex) => {
@@ -1770,7 +1770,7 @@ const DashboardModule = ({
                         </div>
 
                         {/* Info */}
-                        <span style={{ fontSize: isTop1 ? '11.5px' : '10.5px', fontWeight: '900', color: 'white', marginTop: '4px', textAlign: 'center', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', width: '100%' }}>
+                        <span style={{ fontSize: isTop1 ? '11.5px' : '10.5px', fontWeight: '900', color: '#111111', marginTop: '4px', textAlign: 'center', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', width: '100%' }}>
                           {getShortName(barber.name)}
                         </span>
                         <span style={{ fontSize: isTop1 ? '11px' : '9.5px', fontWeight: '900', color: isTop1 ? 'var(--champagne)' : 'rgba(255,255,255,0.85)', marginTop: '1px' }}>
@@ -1797,10 +1797,10 @@ const DashboardModule = ({
               </div>
             </div>
 
-            {/* 2. Servicios más vendidos */}
+            {/* 2. Servicios mÃ¡s vendidos */}
             <div className="glass-card" style={{ padding: '10px 12px', borderRadius: '16px', backgroundColor: 'var(--bg-secondary)', border: '1px solid rgba(0, 0, 0, 0.08)', display: 'flex', flexDirection: 'column', height: '100%', minHeight: 0 }}>
               <div style={{ flexShrink: 0, marginBottom: '8px' }}>
-                <h4 style={{ fontSize: '10px', fontWeight: '800', color: 'white', margin: 0, textTransform: 'uppercase', letterSpacing: '0.5px' }}>Servicios más vendidos</h4>
+                <h4 style={{ fontSize: '10px', fontWeight: '800', color: '#111111', margin: 0, textTransform: 'uppercase', letterSpacing: '0.5px' }}>Servicios mÃ¡s vendidos</h4>
               </div>
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', flex: 1, overflowY: 'auto' }}>
@@ -1808,7 +1808,7 @@ const DashboardModule = ({
                   <div key={service.id || idx} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '5px 8px', borderRadius: '8px', backgroundColor: 'rgba(0, 0, 0, 0.04)' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                       <span style={{ fontSize: '10px', fontWeight: '900', color: 'var(--champagne)' }}>{idx + 1}</span>
-                      <span style={{ fontSize: '11px', fontWeight: '700', color: 'white' }}>{service.name}</span>
+                      <span style={{ fontSize: '11px', fontWeight: '700', color: '#111111' }}>{service.name}</span>
                     </div>
                     <span style={{ fontSize: '11px', fontWeight: '800', color: 'rgba(255,255,255,0.9)' }}>{service.val}</span>
                   </div>
@@ -1824,7 +1824,7 @@ const DashboardModule = ({
                   border: '1px solid rgba(0, 0, 0, 0.08)',
                   borderRadius: '8px',
                   padding: '6px 0',
-                  color: 'white',
+                  color: '#111111',
                   fontSize: '10px',
                   fontWeight: '700',
                   cursor: 'pointer',
@@ -1852,7 +1852,7 @@ const DashboardModule = ({
           minHeight: 0,
           overflow: 'hidden'
         }}>
-          {/* Card 1: Próximas citas */}
+          {/* Card 1: PrÃ³ximas citas */}
           <div className="glass-card" style={{ 
             padding: '12px 14px', 
             borderRadius: '16px', 
@@ -1865,13 +1865,13 @@ const DashboardModule = ({
             overflow: 'hidden'
           }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px', flexShrink: 0 }}>
-              <h3 style={{ fontSize: '11.5px', fontWeight: '800', color: 'white', margin: 0, textTransform: 'uppercase', letterSpacing: '0.5px' }}>Próximas citas</h3>
+              <h3 style={{ fontSize: '11.5px', fontWeight: '800', color: '#111111', margin: 0, textTransform: 'uppercase', letterSpacing: '0.5px' }}>PrÃ³ximas citas</h3>
               <span style={{ fontSize: '9px', color: 'rgba(255,255,255,0.75)', fontWeight: '700', cursor: 'pointer', textDecoration: 'underline' }} onClick={() => onNavigate && onNavigate('scheduling')}>Ver calendario</span>
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', overflowY: 'auto', flex: 1 }} className="panda-scrollbar">
               {realUpcomingAppointments.length === 0 ? (
                 <div style={{ padding: '16px', textAlign: 'center', color: 'rgba(255,255,255,0.4)', fontSize: '11px' }}>
-                  No hay citas próximas agendadas para hoy
+                  No hay citas prÃ³ximas agendadas para hoy
                 </div>
               ) : (
                 realUpcomingAppointments.map((item) => (
@@ -1907,22 +1907,22 @@ const DashboardModule = ({
                     <div style={{ flex: 1, minWidth: 0 }}>
                       {/* Line 1: full name */}
                       <div style={{
-                        fontSize: '11px', fontWeight: '700', color: 'white',
+                        fontSize: '11px', fontWeight: '700', color: '#111111',
                         lineHeight: '1.3', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis'
                       }}>{item.name}</div>
-                      {/* Line 2: service · barber + beverage chip */}
+                      {/* Line 2: service Â· barber + beverage chip */}
                       <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginTop: '2px', flexWrap: 'wrap' }}>
                         <span style={{
                           fontSize: '9px', color: 'rgba(255,255,255,0.38)', lineHeight: '1.3',
                           whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', maxWidth: '180px'
-                        }}>{item.service} · {item.barber}</span>
+                        }}>{item.service} Â· {item.barber}</span>
                         {item.beverage && (
                           <span style={{
                             fontSize: '10px', fontWeight: '800', color: '#e8d4b0',
                             background: 'rgba(232, 212, 176, 0.1)', border: '1px solid rgba(232, 212, 176, 0.2)',
                             borderRadius: '6px', padding: '3px 8px', whiteSpace: 'nowrap', flexShrink: 0,
                             textTransform: 'capitalize'
-                          }}>💧 {item.beverage}</span>
+                          }}>ðŸ’§ {item.beverage}</span>
                         )}
                       </div>
                     </div>
@@ -1939,7 +1939,7 @@ const DashboardModule = ({
 
           </div>
 
-          {/* Card 2: Acciones Rápidas */}
+          {/* Card 2: Acciones RÃ¡pidas */}
           <div className="glass-card" style={{ 
             padding: '10px 12px', 
             borderRadius: '16px', 
@@ -1949,7 +1949,7 @@ const DashboardModule = ({
             flexDirection: 'column', 
             flexShrink: 0
           }}>
-            <h3 style={{ fontSize: '10px', fontWeight: '800', color: 'white', margin: '0 0 8px 0', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Acciones rápidas</h3>
+            <h3 style={{ fontSize: '10px', fontWeight: '800', color: '#111111', margin: '0 0 8px 0', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Acciones rÃ¡pidas</h3>
             <div style={{ display: 'grid', gridTemplateColumns: isMobile ? 'repeat(2, minmax(0, 1fr))' : 'repeat(4, minmax(0, 1fr))', gap: '8px' }}>
               {[
                 { label: 'Inventario', action: () => setShowInventoryPopup(true), icon: Package },
@@ -2002,7 +2002,7 @@ const DashboardModule = ({
             </div>
           </div>
 
-          {/* Card 3: Gráfica de Ingresos */}
+          {/* Card 3: GrÃ¡fica de Ingresos */}
           <div className="glass-card" style={{
             padding: '12px 14px',
             borderRadius: '16px',
@@ -2015,7 +2015,7 @@ const DashboardModule = ({
             position: 'relative'
           }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2px', flexShrink: 0 }}>
-              <span style={{ fontSize: '10px', fontWeight: '800', color: 'white', letterSpacing: '0.5px', textTransform: 'uppercase' }}>Ingresos</span>
+              <span style={{ fontSize: '10px', fontWeight: '800', color: '#111111', letterSpacing: '0.5px', textTransform: 'uppercase' }}>Ingresos</span>
               <div ref={incomePeriodMenuRef} style={{ position: 'relative' }}>
                 <button
                   type="button"
@@ -2033,7 +2033,7 @@ const DashboardModule = ({
                     gap: '3px'
                   }}
                 >
-                  {activeIncomePeriodLabel} ▾
+                  {activeIncomePeriodLabel} â–¾
                 </button>
                 {(showIncomePeriodMenu || isIncomeMenuExiting) && (
                   <div className={isIncomeMenuExiting ? 'animate-bg-fade-out' : 'animate-bg-fade-in'} style={{
@@ -2077,7 +2077,7 @@ const DashboardModule = ({
               </div>
             </div>
             <div style={{ flexShrink: 0, marginBottom: '6px' }}>
-              <div style={{ fontSize: '18px', fontWeight: '900', color: 'white' }}>
+              <div style={{ fontSize: '18px', fontWeight: '900', color: '#111111' }}>
                 ${formatCurrency(activeIncomeAmount)}
               </div>
               <div style={{ display: 'inline-flex', alignItems: 'center', gap: '3px', fontSize: '9px', color: '#111111', fontWeight: '700', marginTop: '2px' }}>
@@ -2115,7 +2115,7 @@ const DashboardModule = ({
               </div>
             </div>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: '6px' }}>
-              <span style={{ fontSize: '13px', fontWeight: '900', color: 'white' }}>
+              <span style={{ fontSize: '13px', fontWeight: '900', color: '#111111' }}>
                 ${formatCurrency(currentMonthAmountReal)} <span style={{ fontSize: '10px', color: 'rgba(255,255,255,0.3)', fontWeight: '600' }}>/ ${formatCurrency(monthlyGoal)}</span>
               </span>
               <span style={{ fontSize: '10.5px', fontWeight: '900', color: 'var(--champagne)' }}>
@@ -2163,7 +2163,7 @@ const DashboardModule = ({
               boxShadow: '0 30px 60px -12px rgba(0,0,0,0.5)'
             }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <h3 style={{ fontSize: '15px', fontWeight: '800', color: 'white', margin: 0 }}>EDITAR SILLA {selectedChair.id}</h3>
+                <h3 style={{ fontSize: '15px', fontWeight: '800', color: '#111111', margin: 0 }}>EDITAR SILLA {selectedChair.id}</h3>
                 <button 
                   onClick={(e) => { e.stopPropagation(); setSelectedChair(null); }} 
                   style={{ background: 'transparent', border: 'none', color: 'rgba(255,255,255,0.75)', cursor: 'pointer' }}
@@ -2173,7 +2173,7 @@ const DashboardModule = ({
               </div>
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                <label style={{ fontSize: '10px', fontWeight: '800', color: 'rgba(255,255,255,0.75)' }}>ODONTÓLOGO</label>
+                <label style={{ fontSize: '10px', fontWeight: '800', color: 'rgba(255,255,255,0.75)' }}>ODONTÃ“LOGO</label>
                 <div style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
                   <div style={{ position: 'absolute', left: '12px', color: 'rgba(255,255,255,0.5)', display: 'flex', alignItems: 'center' }}>
                     <Crown size={15} color="var(--champagne)" />
@@ -2182,7 +2182,7 @@ const DashboardModule = ({
                     type="text" 
                     value={selectedChair.type || ''} 
                     onChange={(e) => setSelectedChair({ ...selectedChair, type: e.target.value })}
-                    placeholder="Ej. Luis Gómez"
+                    placeholder="Ej. Luis GÃ³mez"
                     className="premium-modal-input"
                     style={{
                       width: '100%',
@@ -2190,7 +2190,7 @@ const DashboardModule = ({
                       border: '1px solid rgba(0, 0, 0, 0.08)',
                       borderRadius: '12px',
                       padding: '12px 12px 12px 36px',
-                      color: 'white',
+                      color: '#111111',
                       outline: 'none',
                       fontSize: '13px',
                       transition: 'all 0.25s ease',
@@ -2272,7 +2272,7 @@ const DashboardModule = ({
                         type="text" 
                         value={selectedChair.name || ''} 
                         onChange={(e) => setSelectedChair({ ...selectedChair, name: e.target.value })}
-                        placeholder="Ej. Juan Pérez"
+                        placeholder="Ej. Juan PÃ©rez"
                         className="premium-modal-input"
                         style={{
                           width: '100%',
@@ -2280,7 +2280,7 @@ const DashboardModule = ({
                           border: '1px solid rgba(0, 0, 0, 0.08)',
                           borderRadius: '12px',
                           padding: '12px 12px 12px 36px',
-                          color: 'white',
+                          color: '#111111',
                           outline: 'none',
                           fontSize: '13px',
                           transition: 'all 0.25s ease',
@@ -2308,7 +2308,7 @@ const DashboardModule = ({
                           border: '1px solid rgba(0, 0, 0, 0.08)',
                           borderRadius: '12px',
                           padding: '12px 12px 12px 36px',
-                          color: 'white',
+                          color: '#111111',
                           outline: 'none',
                           fontSize: '13px',
                           transition: 'all 0.25s ease',
@@ -2337,7 +2337,7 @@ const DashboardModule = ({
                             border: '1px solid rgba(0, 0, 0, 0.08)',
                             borderRadius: '12px',
                             padding: '12px 12px 12px 36px',
-                            color: 'white',
+                            color: '#111111',
                             outline: 'none',
                             fontSize: '13px',
                             transition: 'all 0.25s ease',
@@ -2347,7 +2347,7 @@ const DashboardModule = ({
                       </div>
                     </div>
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                      <label style={{ fontSize: '10px', fontWeight: '800', color: 'rgba(255,255,255,0.75)' }}>DURACIÓN</label>
+                      <label style={{ fontSize: '10px', fontWeight: '800', color: 'rgba(255,255,255,0.75)' }}>DURACIÃ“N</label>
                       <div style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
                         <div style={{ position: 'absolute', left: '12px', color: 'rgba(255,255,255,0.5)', display: 'flex', alignItems: 'center' }}>
                           <Clock size={15} color="var(--champagne)" />
@@ -2364,7 +2364,7 @@ const DashboardModule = ({
                             border: '1px solid rgba(0, 0, 0, 0.08)',
                             borderRadius: '12px',
                             padding: '12px 12px 12px 36px',
-                            color: 'white',
+                            color: '#111111',
                             outline: 'none',
                             fontSize: '13px',
                             transition: 'all 0.25s ease',
@@ -2379,7 +2379,7 @@ const DashboardModule = ({
 
               {(selectedChair.status === 'Limpieza' || selectedChair.status === 'Disponible') && (
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                  <label style={{ fontSize: '10px', fontWeight: '800', color: 'rgba(255,255,255,0.75)' }}>INFORMACIÓN DE ESTADO</label>
+                  <label style={{ fontSize: '10px', fontWeight: '800', color: 'rgba(255,255,255,0.75)' }}>INFORMACIÃ“N DE ESTADO</label>
                   <div style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
                     <div style={{ position: 'absolute', left: '12px', color: 'rgba(255,255,255,0.5)', display: 'flex', alignItems: 'center' }}>
                       <Sparkles size={15} color="var(--champagne)" />
@@ -2388,7 +2388,7 @@ const DashboardModule = ({
                       type="text" 
                       value={selectedChair.info || ''} 
                       onChange={(e) => setSelectedChair({ ...selectedChair, info: e.target.value })}
-                      placeholder={selectedChair.status === 'Limpieza' ? 'Ej. Disponible en 10 min' : 'Ej. Próximo: 11:00 AM'}
+                      placeholder={selectedChair.status === 'Limpieza' ? 'Ej. Disponible en 10 min' : 'Ej. PrÃ³ximo: 11:00 AM'}
                       className="premium-modal-input"
                       style={{
                         width: '100%',
@@ -2396,7 +2396,7 @@ const DashboardModule = ({
                         border: '1px solid rgba(0, 0, 0, 0.08)',
                         borderRadius: '12px',
                         padding: '12px 12px 12px 36px',
-                        color: 'white',
+                        color: '#111111',
                         outline: 'none',
                         fontSize: '13px',
                         transition: 'all 0.25s ease',
@@ -2416,7 +2416,7 @@ const DashboardModule = ({
                     borderRadius: '8px',
                     backgroundColor: 'rgba(0, 0, 0, 0.04)',
                     border: '1px solid rgba(0, 0, 0, 0.08)',
-                    color: 'white',
+                    color: '#111111',
                     fontWeight: '700',
                     cursor: 'pointer'
                   }}
@@ -2427,7 +2427,7 @@ const DashboardModule = ({
                   onClick={(e) => {
                     e.stopPropagation();
                     setSelectedChair(null);
-                    showToast('El estado de los sillones se actualiza desde Recepción.');
+                    showToast('El estado de los sillones se actualiza desde RecepciÃ³n.');
                   }}
                   className="premium-btn-gold"
                   style={{
@@ -2476,7 +2476,7 @@ const DashboardModule = ({
               boxShadow: '0 30px 60px -12px rgba(0,0,0,0.5)'
             }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <h3 style={{ fontSize: '15px', fontWeight: '800', color: 'white', margin: 0 }}>EDITAR META MENSUAL</h3>
+                <h3 style={{ fontSize: '15px', fontWeight: '800', color: '#111111', margin: 0 }}>EDITAR META MENSUAL</h3>
                 <button 
                   onClick={(e) => { e.stopPropagation(); setIsEditingGoals(false); }} 
                   style={{ background: 'transparent', border: 'none', color: 'rgba(255,255,255,0.75)', cursor: 'pointer' }}
@@ -2486,7 +2486,7 @@ const DashboardModule = ({
               </div>
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                <label style={{ fontSize: '10px', fontWeight: '800', color: 'rgba(255,255,255,0.75)' }}>FACTURACIÓN ACTUAL (USD)</label>
+                <label style={{ fontSize: '10px', fontWeight: '800', color: 'rgba(255,255,255,0.75)' }}>FACTURACIÃ“N ACTUAL (USD)</label>
                 <div style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
                   <div style={{ position: 'absolute', left: '12px', color: 'rgba(255,255,255,0.5)', display: 'flex', alignItems: 'center' }}>
                     <DollarSign size={15} color="var(--champagne)" />
@@ -2503,7 +2503,7 @@ const DashboardModule = ({
                       border: '1px solid rgba(0, 0, 0, 0.08)',
                       borderRadius: '12px',
                       padding: '12px 12px 12px 36px',
-                      color: 'white',
+                      color: '#111111',
                       outline: 'none',
                       fontSize: '13px',
                       transition: 'all 0.25s ease',
@@ -2532,7 +2532,7 @@ const DashboardModule = ({
                       border: '1px solid rgba(0, 0, 0, 0.08)',
                       borderRadius: '12px',
                       padding: '12px 12px 12px 36px',
-                      color: 'white',
+                      color: '#111111',
                       outline: 'none',
                       fontSize: '13px',
                       transition: 'all 0.25s ease',
@@ -2551,7 +2551,7 @@ const DashboardModule = ({
                     borderRadius: '8px',
                     backgroundColor: 'rgba(0, 0, 0, 0.04)',
                     border: '1px solid rgba(0, 0, 0, 0.08)',
-                    color: 'white',
+                    color: '#111111',
                     fontWeight: '700',
                     cursor: 'pointer'
                   }}
@@ -2583,7 +2583,7 @@ const DashboardModule = ({
         )}
       </AnimatedModal>
 
-      {/* Modal Resumen de Cobro Emergente desde Sillón */}
+      {/* Modal Resumen de Cobro Emergente desde SillÃ³n */}
       <AnimatedModal isOpen={!!checkoutChairModal}>
         {(overlayClass, cardClass) => (
           checkoutChairModal && (
@@ -2600,7 +2600,7 @@ const DashboardModule = ({
                     borderRadius: '50%',
                     width: '32px',
                     height: '32px',
-                    color: 'white',
+                    color: '#111111',
                     cursor: 'pointer',
                     display: 'flex',
                     alignItems: 'center',
@@ -2670,7 +2670,7 @@ const DashboardModule = ({
                   borderRadius: '50%',
                   width: '32px',
                   height: '32px',
-                  color: 'white',
+                  color: '#111111',
                   cursor: 'pointer',
                   display: 'flex',
                   alignItems: 'center',
@@ -2711,7 +2711,7 @@ const DashboardModule = ({
                   borderRadius: '50%',
                   width: '32px',
                   height: '32px',
-                  color: 'white',
+                  color: '#111111',
                   cursor: 'pointer',
                   display: 'flex',
                   alignItems: 'center',
@@ -2737,7 +2737,7 @@ const DashboardModule = ({
         )}
       </AnimatedModal>
 
-      {/* Modal: Recepción Popup */}
+      {/* Modal: RecepciÃ³n Popup */}
       <AnimatedModal isOpen={showReceptionPopup}>
         {(overlayClass, cardClass) => (
           showReceptionPopup && (
@@ -2754,7 +2754,7 @@ const DashboardModule = ({
                     borderRadius: '50%',
                     width: '32px',
                     height: '32px',
-                    color: 'white',
+                    color: '#111111',
                     cursor: 'pointer',
                     display: 'flex',
                     alignItems: 'center',
@@ -2790,7 +2790,7 @@ const DashboardModule = ({
                   borderRadius: '50%',
                   width: '32px',
                   height: '32px',
-                  color: 'white',
+                  color: '#111111',
                   cursor: 'pointer',
                   display: 'flex',
                   alignItems: 'center',
@@ -2824,7 +2824,7 @@ const DashboardModule = ({
       />
 
       <style>{`
-        /* ── AMBIENT CINEMATIC ORBS ── */
+        /* â”€â”€ AMBIENT CINEMATIC ORBS â”€â”€ */
         .l-dashboard-orb {
           position: absolute;
           border-radius: 50%;
@@ -2879,7 +2879,7 @@ const DashboardModule = ({
           100% { transform: rotate( 0.0deg) }
         }
 
-        /* ── PREMIUM GLASS CARD HOVER ── */
+        /* â”€â”€ PREMIUM GLASS CARD HOVER â”€â”€ */
         .glass-card {
           transition: border-color 0.35s ease, 
                       box-shadow 0.35s ease !important;
@@ -2894,3 +2894,4 @@ const DashboardModule = ({
 };
 
 export default DashboardModule;
+

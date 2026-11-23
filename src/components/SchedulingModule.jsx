@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
+﻿import React, { useState, useEffect, useMemo } from 'react';
 import useDebounce from '../hooks/useDebounce';
 import FieldLabel from './FieldLabel';
 import { 
@@ -50,7 +50,7 @@ const DEFAULT_DAY_TIMELINE_START = 8;
 const DEFAULT_DAY_TIMELINE_END = 24;
 const DAY_TIMELINE_HOUR_HEIGHT = 68;
 const AGENDA_VIEW_OPTIONS = [
-  { value: 'day', label: 'Día' },
+  { value: 'day', label: 'DÃ­a' },
   { value: 'week', label: 'Semana' },
   { value: 'fortnight', label: '2 semanas' },
   { value: 'month', label: 'Mes' }
@@ -214,7 +214,7 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
   const loadAllAppointments = async () => {
     try {
       // Calendar dots only need a reasonable window around "today", not the
-      // barbershop's entire history — keeps this cheap on every mount.
+      // barbershop's entire history â€” keeps this cheap on every mount.
       const rangeStart = new Date();
       rangeStart.setDate(rangeStart.getDate() - 60);
       rangeStart.setHours(0, 0, 0, 0);
@@ -419,7 +419,7 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
       loadFilteredAppointments();
       loadAllAppointments();
     } catch (err) {
-      showToast("Error al procesar acción", "error");
+      showToast("Error al procesar acciÃ³n", "error");
     }
   };
 
@@ -454,7 +454,7 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
   };
 
   const getStatusText = (status) => {
-    if (status === 'En Silla') return 'En sillón';
+    if (status === 'En Silla') return 'En sillÃ³n';
     if (status === 'En Lavado') return 'En profilaxis';
     return status;
   };
@@ -3164,7 +3164,7 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
       <header className="scheduling-header">
         <div className="scheduling-header-title">
           <h1 style={{ fontSize: '32px', fontWeight: '950', letterSpacing: '-0.8px', fontFamily: 'Outfit, var(--font-sans), system-ui' }}>Agenda</h1>
-          <p style={{ color: 'var(--text-secondary)' }}>Gestión inteligente de citas y disponibilidad.</p>
+          <p style={{ color: 'var(--text-secondary)' }}>GestiÃ³n inteligente de citas y disponibilidad.</p>
         </div>
         <div className="scheduling-header-actions">
           <div className="desktop-header-search">
@@ -3172,7 +3172,7 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
             <input
               type="search"
               aria-label="Buscar citas"
-              placeholder="Buscar cliente, cédula o teléfono…"
+              placeholder="Buscar cliente, cÃ©dula o telÃ©fonoâ€¦"
               value={searchTerm}
               onChange={event => setSearchTerm(event.target.value)}
             />
@@ -3180,7 +3180,7 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
               <button
                 type="button"
                 className="desktop-header-search-clear"
-                aria-label="Limpiar búsqueda"
+                aria-label="Limpiar bÃºsqueda"
                 onClick={() => setSearchTerm('')}
               >
                 <X size={13} />
@@ -3218,9 +3218,9 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
             value={statusFilter}
             onChange={setStatusFilter}
             options={[
-              { value: 'all', label: `Todas · ${teamScopedAppointments.length}` },
-              { value: 'pending', label: `Pendientes · ${pendingAppointmentsCount}` },
-              { value: 'completed', label: `Listas · ${completedAppointmentsCount}` }
+              { value: 'all', label: `Todas Â· ${teamScopedAppointments.length}` },
+              { value: 'pending', label: `Pendientes Â· ${pendingAppointmentsCount}` },
+              { value: 'completed', label: `Listas Â· ${completedAppointmentsCount}` }
             ]}
             triggerStyle={{ height: '46px', boxSizing: 'border-box', padding: '0 10px 0 12px', border: '1px solid rgba(0, 0, 0, 0.08)', borderRadius: '15px', background: 'rgba(0, 0, 0, 0.04)', boxShadow: 'none', fontSize: '11px', fontWeight: 800, color: 'rgba(255,255,255,0.78)' }}
             dropdownClassName="agenda-status-premium-dropdown"
@@ -3296,7 +3296,7 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
               >
                 <CalendarIcon size={16} />
               </button>
-              <h2 style={{ fontSize: '18px', fontWeight: '900', textTransform: 'capitalize', color: 'white', fontFamily: 'Outfit, var(--font-sans), system-ui' }}>{formatDateLabel(selectedDate)}</h2>
+              <h2 style={{ fontSize: '18px', fontWeight: '900', textTransform: 'capitalize', color: '#111111', fontFamily: 'Outfit, var(--font-sans), system-ui' }}>{formatDateLabel(selectedDate)}</h2>
             </div>
             <div className="date-navigator-actions" style={{ display: 'flex', gap: '8px' }}>
               <button 
@@ -3320,9 +3320,9 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
                 <CalendarIcon size={18} />
               </button>
               
-              <button onClick={() => moveSelectedDate(-1)} style={{ background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', borderRadius: '12px', width: '38px', height: '38px', color: 'white', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'all 0.2s' }} onMouseEnter={e => e.currentTarget.style.borderColor = 'rgba(255, 255, 255,0.3)'} onMouseLeave={e => e.currentTarget.style.borderColor = 'rgba(255,255,255,0.08)'}><ChevronLeft size={18} /></button>
+              <button onClick={() => moveSelectedDate(-1)} style={{ background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', borderRadius: '12px', width: '38px', height: '38px', color: '#111111', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'all 0.2s' }} onMouseEnter={e => e.currentTarget.style.borderColor = 'rgba(255, 255, 255,0.3)'} onMouseLeave={e => e.currentTarget.style.borderColor = 'rgba(255,255,255,0.08)'}><ChevronLeft size={18} /></button>
               
-              <button onClick={() => moveSelectedDate(1)} style={{ background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', borderRadius: '12px', width: '38px', height: '38px', color: 'white', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'all 0.2s' }} onMouseEnter={e => e.currentTarget.style.borderColor = 'rgba(255, 255, 255,0.3)'} onMouseLeave={e => e.currentTarget.style.borderColor = 'rgba(255,255,255,0.08)'}><ChevronRight size={18} /></button>
+              <button onClick={() => moveSelectedDate(1)} style={{ background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', borderRadius: '12px', width: '38px', height: '38px', color: '#111111', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'all 0.2s' }} onMouseEnter={e => e.currentTarget.style.borderColor = 'rgba(255, 255, 255,0.3)'} onMouseLeave={e => e.currentTarget.style.borderColor = 'rgba(255,255,255,0.08)'}><ChevronRight size={18} /></button>
               <PandaSelect
                 className="agenda-view-select-panda"
                 value={filterType}
@@ -3358,7 +3358,7 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
                 const isToday = new Date().toDateString() === date.toDateString();
                 const dateStr = date.toISOString().split('T')[0];
                 const hasApps = allAppointments.some(a => (a.scheduled_at || a.created_at)?.startsWith(dateStr));
-                const dayNamesShort = ["Dom", "Lun", "Mar", "Mié", "Jue", "Vie", "Sáb"];
+                const dayNamesShort = ["Dom", "Lun", "Mar", "MiÃ©", "Jue", "Vie", "SÃ¡b"];
                 
                 return (
                   <button
@@ -3391,7 +3391,7 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
               <div className="agenda-summary-metric agenda-summary-metric--appointments">
                 <span className="agenda-summary-icon"><CalendarIcon size={15} /></span>
                 <span className="agenda-summary-copy">
-                  <small>Citas del día</small>
+                  <small>Citas del dÃ­a</small>
                   <strong>{teamScopedAppointments.length}</strong>
                 </span>
               </div>
@@ -3418,8 +3418,8 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
                 <strong>{filterType === 'day' ? 'Agenda del equipo' : 'Profesional visible'}</strong>
                 <span>
                   {teamMemberFilter === 'all'
-                    ? `${professionalStaff.length} profesionales · todas las citas en conjunto`
-                    : 'Mostrando únicamente la agenda seleccionada'}
+                    ? `${professionalStaff.length} profesionales Â· todas las citas en conjunto`
+                    : 'Mostrando Ãºnicamente la agenda seleccionada'}
                 </span>
               </div>
               <PandaSelect
@@ -3481,9 +3481,9 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
               value={statusFilter}
               onChange={setStatusFilter}
               options={[
-                { value: 'all', label: `Todas · ${teamScopedAppointments.length}` },
-                { value: 'pending', label: `Pendientes · ${pendingAppointmentsCount}` },
-                { value: 'completed', label: `Listas · ${completedAppointmentsCount}` }
+                { value: 'all', label: `Todas Â· ${teamScopedAppointments.length}` },
+                { value: 'pending', label: `Pendientes Â· ${pendingAppointmentsCount}` },
+                { value: 'completed', label: `Listas Â· ${completedAppointmentsCount}` }
               ]}
               triggerStyle={{ height: '42px', boxSizing: 'border-box', padding: '0 8px 0 10px', border: '1px solid rgba(0, 0, 0, 0.08)', borderRadius: '12px', background: 'rgba(0, 0, 0, 0.04)', boxShadow: 'none', fontSize: '10px', fontWeight: 800, color: 'rgba(255,255,255,0.76)' }}
               dropdownClassName="agenda-status-premium-dropdown"
@@ -3492,7 +3492,7 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
             <button
               type="button"
               className={`mobile-agenda-search-toggle${isMobileSearchOpen || searchTerm ? ' is-active' : ''}`}
-              aria-label={isMobileSearchOpen || searchTerm ? 'Ocultar búsqueda' : 'Buscar citas'}
+              aria-label={isMobileSearchOpen || searchTerm ? 'Ocultar bÃºsqueda' : 'Buscar citas'}
               aria-expanded={Boolean(isMobileSearchOpen || searchTerm)}
               onClick={() => setIsMobileSearchOpen(current => !current)}
             >
@@ -3503,7 +3503,7 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
               <input
                 type="search"
                 aria-label="Buscar citas"
-                placeholder="Buscar cliente, cédula o teléfono…"
+                placeholder="Buscar cliente, cÃ©dula o telÃ©fonoâ€¦"
                 value={searchTerm}
                 onChange={event => setSearchTerm(event.target.value)}
               />
@@ -3511,7 +3511,7 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
                 <button
                   type="button"
                   className="mobile-agenda-search-clear"
-                  aria-label={searchTerm ? 'Limpiar búsqueda' : 'Cerrar búsqueda'}
+                  aria-label={searchTerm ? 'Limpiar bÃºsqueda' : 'Cerrar bÃºsqueda'}
                   onClick={() => {
                     setSearchTerm('');
                     setIsMobileSearchOpen(false);
@@ -3549,7 +3549,7 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
               <Search style={{ position: 'absolute', left: '20px', pointerEvents: 'none' }} size={22} color="rgba(255,255,255,0.4)" />
               <input 
                 type="text" 
-                placeholder="Buscar por nombre, cédula o teléfono..." 
+                placeholder="Buscar por nombre, cÃ©dula o telÃ©fono..." 
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 style={{
@@ -3560,7 +3560,7 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
                   background: 'rgba(0, 0, 0, 0.04)',
                   border: '1px solid rgba(0, 0, 0, 0.08)',
                   borderRadius: '24px',
-                  color: 'white',
+                  color: '#111111',
                   outline: 'none',
                   fontWeight: '600',
                   boxShadow: 'inset 0 2px 4px rgba(0,0,0,0.2), 0 8px 24px rgba(0,0,0,0.1)',
@@ -3615,23 +3615,23 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
                 }}>
                   {searchTerm ? <Search size={34} /> : statusFilter !== 'all' ? <Filter size={34} /> : <CalendarIcon size={34} />}
                 </div>
-                <div style={{ color: 'white', fontSize: '17px', fontWeight: '900', fontFamily: 'Outfit, sans-serif', marginBottom: '8px' }}>
+                <div style={{ color: '#111111', fontSize: '17px', fontWeight: '900', fontFamily: 'Outfit, sans-serif', marginBottom: '8px' }}>
                   {searchTerm
-                    ? 'Sin resultados para tu búsqueda'
+                    ? 'Sin resultados para tu bÃºsqueda'
                     : statusFilter === 'completed'
-                      ? 'Aún no hay citas completadas'
+                      ? 'AÃºn no hay citas completadas'
                       : statusFilter === 'pending'
                         ? 'No hay citas pendientes'
-                        : (isProfessionalAgenda ? 'Tu día está disponible' : 'Aún no hay citas agendadas')}
+                        : (isProfessionalAgenda ? 'Tu dÃ­a estÃ¡ disponible' : 'AÃºn no hay citas agendadas')}
                 </div>
                 <div style={{ color: 'var(--text-muted)', fontSize: '13px', fontWeight: '600', maxWidth: '320px', lineHeight: '1.5' }}>
                   {searchTerm
-                    ? `No encontramos citas que coincidan con "${searchTerm}". Prueba con otro nombre, cédula o teléfono.`
+                    ? `No encontramos citas que coincidan con "${searchTerm}". Prueba con otro nombre, cÃ©dula o telÃ©fono.`
                     : statusFilter !== 'all'
-                      ? 'Selecciona “Todas” para volver a ver la agenda completa de esta fecha.'
+                      ? 'Selecciona â€œTodasâ€ para volver a ver la agenda completa de esta fecha.'
                     : (isProfessionalAgenda
-                      ? 'No tienes citas para esta fecha. Puedes revisar los próximos días o actualizar la agenda.'
-                      : 'Este día está libre. Crea una nueva cita y aparecerá aquí en tu agenda.')}
+                      ? 'No tienes citas para esta fecha. Puedes revisar los prÃ³ximos dÃ­as o actualizar la agenda.'
+                      : 'Este dÃ­a estÃ¡ libre. Crea una nueva cita y aparecerÃ¡ aquÃ­ en tu agenda.')}
                 </div>
                 {!searchTerm && statusFilter === 'all' && isProfessionalAgenda && (
                   <div className="mobile-empty-actions">
@@ -3644,12 +3644,12 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
                       }}
                       style={{ background: 'var(--gold-primary)', color: '#121212', border: 'none' }}
                     >
-                      Próximo día
+                      PrÃ³ximo dÃ­a
                     </button>
                     <button
                       type="button"
                       onClick={loadFilteredAppointments}
-                      style={{ background: 'rgba(0, 0, 0, 0.04)', color: 'white', border: '1px solid rgba(0, 0, 0, 0.08)' }}
+                      style={{ background: 'rgba(0, 0, 0, 0.04)', color: '#111111', border: '1px solid rgba(0, 0, 0, 0.08)' }}
                     >
                       Actualizar
                     </button>
@@ -3659,12 +3659,12 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
             ) : (
               <div key={selectedDate.toDateString()} className="panda-day-transition" style={{ display: 'flex', flexDirection: 'column', minHeight: '100%' }}>
                   {!isMobile && filterType === 'day' && isProfessionalAgenda && (
-                    <section className="desktop-day-calendar" aria-label="Agenda horaria del día">
+                    <section className="desktop-day-calendar" aria-label="Agenda horaria del dÃ­a">
                       <header className="desktop-day-calendar-header">
-                        <strong>Horario del día</strong>
+                        <strong>Horario del dÃ­a</strong>
                         <span>
                           {new Date(2000, 0, 1, dayTimelineRange.startHour).toLocaleTimeString([], { hour: 'numeric', minute: '2-digit', hour12: true })}
-                          {' — '}
+                          {' â€” '}
                           {new Date(2000, 0, 1, dayTimelineRange.endHour).toLocaleTimeString([], { hour: 'numeric', minute: '2-digit', hour12: true })}
                         </span>
                       </header>
@@ -3726,8 +3726,8 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
                                   </span>
                                 </div>
                                 <div className="desktop-calendar-event-service">
-                                  {item.app.services?.name || 'Sin servicio'} · {item.duration} min
-                                  {item.app.beverage_selection && ` · ${item.app.beverage_selection}`}
+                                  {item.app.services?.name || 'Sin servicio'} Â· {item.duration} min
+                                  {item.app.beverage_selection && ` Â· ${item.app.beverage_selection}`}
                                 </div>
                                 {height >= 64 && (
                                   <footer className="desktop-calendar-event-footer">
@@ -3803,7 +3803,7 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
                                 {showCurrentTimeLine && (
                                   <span className="admin-resource-now-line" style={{ top: `${currentTimeLineTop}px` }} />
                                 )}
-                                {memberItems.length === 0 && <span className="admin-resource-empty">Disponible durante el día</span>}
+                                {memberItems.length === 0 && <span className="admin-resource-empty">Disponible durante el dÃ­a</span>}
                                 {memberItems.map(item => {
                                   const statusStyle = getStatusColor(item.app.status);
                                   const top = ((item.startMinute - dayTimelineRange.startHour * 60) / 60) * DAY_TIMELINE_HOUR_HEIGHT;
@@ -3827,8 +3827,8 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
                                         <strong>{item.app.clients?.name || 'Cliente sin nombre'}</strong>
                                       </div>
                                       <span className="admin-resource-event-service">
-                                        {item.app.services?.name || 'Sin servicio'} · {item.duration} min
-                                        {item.app.beverage_selection && ` · ${item.app.beverage_selection}`}
+                                        {item.app.services?.name || 'Sin servicio'} Â· {item.duration} min
+                                        {item.app.beverage_selection && ` Â· ${item.app.beverage_selection}`}
                                       </span>
                                       {height >= 64 && (
                                         <footer className="admin-resource-event-footer">
@@ -3883,19 +3883,19 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
 
                       <div className="mobile-resource-summary">
                         <strong>{mobileFocusedStaff.name || 'Profesional'}</strong>
-                        <span aria-label={`${mobileFocusedStats.total} citas, ${mobileFocusedStats.completed} completadas y ${mobileFocusedStats.estimate.toFixed(2)} dólares estimados`}>
-                          <b>{mobileFocusedStats.total}</b> citas&nbsp; · &nbsp;
-                          <b>{mobileFocusedStats.completed}</b> listas&nbsp; · &nbsp;
+                        <span aria-label={`${mobileFocusedStats.total} citas, ${mobileFocusedStats.completed} completadas y ${mobileFocusedStats.estimate.toFixed(2)} dÃ³lares estimados`}>
+                          <b>{mobileFocusedStats.total}</b> citas&nbsp; Â· &nbsp;
+                          <b>{mobileFocusedStats.completed}</b> listas&nbsp; Â· &nbsp;
                           <b>${mobileFocusedStats.estimate.toFixed(0)}</b>
                         </span>
                       </div>
 
                       <div className="mobile-resource-calendar-shell">
                         <header className="mobile-resource-calendar-header">
-                          <strong>Horario del día</strong>
+                          <strong>Horario del dÃ­a</strong>
                           <span>
                             {new Date(2000, 0, 1, dayTimelineRange.startHour).toLocaleTimeString([], { hour: 'numeric', minute: '2-digit', hour12: true })}
-                            {' — '}
+                            {' â€” '}
                             {new Date(2000, 0, 1, dayTimelineRange.endHour).toLocaleTimeString([], { hour: 'numeric', minute: '2-digit', hour12: true })}
                           </span>
                         </header>
@@ -3927,7 +3927,7 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
                               <span className="admin-resource-now-line" style={{ top: `${currentTimeLineTop}px` }} />
                             )}
                             {mobileFocusedTimelineItems.length === 0 && (
-                              <span className="admin-resource-empty">Disponible durante el día</span>
+                              <span className="admin-resource-empty">Disponible durante el dÃ­a</span>
                             )}
                             {mobileFocusedTimelineItems.map(item => {
                               const statusStyle = getStatusColor(item.app.status);
@@ -3952,8 +3952,8 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
                                     <strong>{item.app.clients?.name || 'Cliente sin nombre'}</strong>
                                   </div>
                                   <span className="admin-resource-event-service">
-                                    {item.app.services?.name || 'Sin servicio'} · {item.duration} min
-                                    {item.app.beverage_selection && ` · ${item.app.beverage_selection}`}
+                                    {item.app.services?.name || 'Sin servicio'} Â· {item.duration} min
+                                    {item.app.beverage_selection && ` Â· ${item.app.beverage_selection}`}
                                   </span>
                                   {height >= 64 && (
                                     <footer className="admin-resource-event-footer">
@@ -3977,7 +3977,7 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
                   {filterType !== 'day' && (
                     <section className={`period-calendar period-calendar--${filterType}`} aria-label={`Vista de ${filterType}`}>
                       <div className="period-calendar-weekdays" aria-hidden="true">
-                        {['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'].map(day => <span key={day}>{day}</span>)}
+                        {['Lunes', 'Martes', 'MiÃ©rcoles', 'Jueves', 'Viernes', 'SÃ¡bado', 'Domingo'].map(day => <span key={day}>{day}</span>)}
                       </div>
                       <div className="period-calendar-grid">
                         {periodCalendarDays.map(day => {
@@ -4023,11 +4023,11 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
                                       <span className="period-event-client">{appointment.clients?.name || 'Cliente sin nombre'}</span>
                                       <span className="period-event-service">
                                         {appointment.services?.name || 'Sin servicio'}
-                                        {appointment.beverage_selection && ` · ${appointment.beverage_selection}`}
-                                        {appointment.notes && ' · Con nota'}
+                                        {appointment.beverage_selection && ` Â· ${appointment.beverage_selection}`}
+                                        {appointment.notes && ' Â· Con nota'}
                                       </span>
                                       <span className="period-event-meta">
-                                        <span>{getStatusText(appointment.status)} · {appointment.staff?.name || 'Sin asignar'}</span>
+                                        <span>{getStatusText(appointment.status)} Â· {appointment.staff?.name || 'Sin asignar'}</span>
                                         <strong>
                                           {rates?.usd > 0
                                             ? `${Math.round(Number(appointment.total_price || 0) * rates.usd).toLocaleString('es-VE')} Bs.`
@@ -4038,7 +4038,7 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
                                   );
                                 })}
                                 {day.appointments.length > visibleAppointments.length && (
-                                  <span className="period-day-more">+{day.appointments.length - visibleAppointments.length} más</span>
+                                  <span className="period-day-more">+{day.appointments.length - visibleAppointments.length} mÃ¡s</span>
                                 )}
                                 {!day.appointments.length && filterType !== 'month' && <span className="period-day-empty">Sin citas programadas</span>}
                               </div>
@@ -4053,7 +4053,7 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
                   {filterType === 'day' && (
                   <div className="agenda-groups-grid" style={{ position: 'relative', paddingRight: '4px', display: (!isProfessionalAgenda && !searchTerm) || (!isMobile && filterType === 'day') ? 'none' : undefined }}>
                   {[
-                    { key: 'morning', title: 'En la mañana', apps: morningApps, icon: <Sunrise size={16} />, color: 'var(--gold-primary)' },
+                    { key: 'morning', title: 'En la maÃ±ana', apps: morningApps, icon: <Sunrise size={16} />, color: 'var(--gold-primary)' },
                     { key: 'afternoon', title: 'En la tarde', apps: afternoonApps, icon: <Sun size={16} />, color: '#f39c12' },
                     { key: 'evening', title: 'En la noche', apps: eveningApps, icon: <Moon size={16} />, color: '#9b59b6' }
                   ].map((group, groupIdx) => {
@@ -4090,7 +4090,7 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
                             <div className="agenda-group-icon" style={{ color: group.color, display: 'flex', alignItems: 'center', background: 'rgba(0, 0, 0, 0.04)', padding: '8px', borderRadius: '10px' }}>
                               {group.icon}
                             </div>
-                            <span className="agenda-group-title" style={{ fontWeight: '800', fontSize: '15px', color: '#fff', fontFamily: 'Outfit, var(--font-sans), system-ui', letterSpacing: '0.5px' }}>
+                            <span className="agenda-group-title" style={{ fontWeight: '800', fontSize: '15px', color: '#111111', fontFamily: 'Outfit, var(--font-sans), system-ui', letterSpacing: '0.5px' }}>
                               {group.title}
                             </span>
                             <span className="agenda-group-count" style={{
@@ -4148,9 +4148,9 @@ return (
                                         </div>
                                         <div className="mobile-appointment-service">
                                           {app.services?.name || 'Sin servicio'}
-                                          {filterType !== 'day' && ` · ${appointmentDate.toLocaleDateString('es-ES', { day: 'numeric', month: 'short' })}`}
-                                          {app.beverage_selection && ` · ${app.beverage_selection}`}
-                                          {app.notes && ' · Con nota'}
+                                          {filterType !== 'day' && ` Â· ${appointmentDate.toLocaleDateString('es-ES', { day: 'numeric', month: 'short' })}`}
+                                          {app.beverage_selection && ` Â· ${app.beverage_selection}`}
+                                          {app.notes && ' Â· Con nota'}
                                         </div>
                                         <div className="mobile-appointment-bottom">
                                           <span className="mobile-appointment-professional">
@@ -4188,12 +4188,12 @@ return (
         isOpen={dialog.isOpen} 
         type="confirm"
         title="Gestionar Cita" 
-        message="¿Qué deseas hacer con esta cita?" 
+        message="Â¿QuÃ© deseas hacer con esta cita?" 
         onCancel={() => setDialog({ isOpen: false, appointmentId: null })}
         customFooter={
           <div style={{ display: 'flex', gap: '12px', width: '100%', marginTop: '20px' }}>
             <button onClick={() => processAction('cancel')} style={{ flex: 1, padding: '14px', borderRadius: '14px', border: '1px solid #ff453a', background: 'rgba(255,69,58,0.1)', color: '#ff453a', fontWeight: '800', cursor: 'pointer' }}>MARCAR CANCELADA</button>
-            <button onClick={() => processAction('delete')} style={{ flex: 1, padding: '14px', borderRadius: '14px', border: '1px solid rgba(0, 0, 0, 0.08)', background: 'rgba(0, 0, 0, 0.04)', color: 'white', fontWeight: '800', cursor: 'pointer' }}>BORRAR PERMANENTE</button>
+            <button onClick={() => processAction('delete')} style={{ flex: 1, padding: '14px', borderRadius: '14px', border: '1px solid rgba(0, 0, 0, 0.08)', background: 'rgba(0, 0, 0, 0.04)', color: '#111111', fontWeight: '800', cursor: 'pointer' }}>BORRAR PERMANENTE</button>
           </div>
         }
       />
@@ -4226,7 +4226,7 @@ return (
                 {/* Header - VisionOS Style */}
                 <div style={{ padding: '20px 28px 12px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexShrink: 0 }}>
                   <div>
-                    <h3 style={{ fontSize: '24px', fontWeight: '800', margin: 0, fontFamily: 'Outfit, sans-serif', color: 'white', letterSpacing: '-0.5px' }}>
+                    <h3 style={{ fontSize: '24px', fontWeight: '800', margin: 0, fontFamily: 'Outfit, sans-serif', color: '#111111', letterSpacing: '-0.5px' }}>
                       {editingApp ? 'Editar Cita' : 'Nueva Cita'}
                     </h3>
                     <span style={{ fontSize: '13px', color: 'rgba(255,255,255,0.5)', fontWeight: '500' }}>
@@ -4246,18 +4246,18 @@ return (
                 {/* Scrollable Content */}
                 <div className="custom-scrollbar" style={{ padding: '20px 28px', overflowY: 'auto', flex: 1, display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'minmax(260px, 0.38fr) minmax(0, 1fr)', gap: '0 36px', alignItems: 'start' }}>
                   
-                  {/* ── COLUMNA IZQUIERDA: Cliente + Barbero ── */}
+                  {/* â”€â”€ COLUMNA IZQUIERDA: Cliente + Barbero â”€â”€ */}
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', paddingRight: isMobile ? 0 : '12px' }}>
                     {/* Cliente */}
                       <FieldLabel required>Cliente</FieldLabel>
                       {selectedClient ? (
                         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', padding: '14px 16px', borderRadius: '16px' }}>
                           <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                            <div style={{ width: '40px', height: '40px', borderRadius: '20px', background: 'linear-gradient(135deg, #3a3a40, #ffffff)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '16px', fontWeight: '800', color: 'white', flexShrink: 0 }}>
+                            <div style={{ width: '40px', height: '40px', borderRadius: '20px', background: 'linear-gradient(135deg, #3a3a40, #ffffff)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '16px', fontWeight: '800', color: '#111111', flexShrink: 0 }}>
                               {selectedClient.name.charAt(0)}
                             </div>
                             <div style={{ minWidth: 0 }}>
-                              <div style={{ fontWeight: '700', color: 'white', fontSize: '14px', letterSpacing: '-0.3px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{selectedClient.name}</div>
+                              <div style={{ fontWeight: '700', color: '#111111', fontSize: '14px', letterSpacing: '-0.3px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{selectedClient.name}</div>
                               <div style={{ fontSize: '12px', color: 'rgba(255,255,255,0.4)', marginTop: '1px' }}>V-{selectedClient.id_card}</div>
                             </div>
                           </div>
@@ -4269,14 +4269,14 @@ return (
                         <div style={{ position: 'relative' }}>
                           <div style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
                             <Search style={{ position: 'absolute', left: '14px', pointerEvents: 'none' }} size={18} color="rgba(255,255,255,0.35)" />
-                            <input type="text" placeholder="Cédula o nombre..." value={clientSearchTerm} onChange={(e) => handleClientSearch(e.target.value)} style={{ width: '100%', padding: '0 14px 0 42px', height: '46px', fontSize: '14px', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', borderRadius: '14px', color: 'white', outline: 'none', fontWeight: '500', transition: 'all 0.2s' }} onFocus={e => { e.target.style.borderColor = 'rgba(17, 17, 17,0.4)'; e.target.style.background = 'rgba(255,255,255,0.08)'; }} onBlur={e => { e.target.style.borderColor = 'rgba(255,255,255,0.08)'; e.target.style.background = 'rgba(255,255,255,0.05)'; }} />
+                            <input type="text" placeholder="CÃ©dula o nombre..." value={clientSearchTerm} onChange={(e) => handleClientSearch(e.target.value)} style={{ width: '100%', padding: '0 14px 0 42px', height: '46px', fontSize: '14px', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', borderRadius: '14px', color: '#111111', outline: 'none', fontWeight: '500', transition: 'all 0.2s' }} onFocus={e => { e.target.style.borderColor = 'rgba(17, 17, 17,0.4)'; e.target.style.background = 'rgba(255,255,255,0.08)'; }} onBlur={e => { e.target.style.borderColor = 'rgba(255,255,255,0.08)'; e.target.style.background = 'rgba(255,255,255,0.05)'; }} />
                           </div>
                           {!selectedClient && clientSearchResults.length > 0 && (
                             <div className="animate-scale-in" style={{ position: 'absolute', top: 'calc(100% + 6px)', left: 0, right: 0, background: 'var(--bg-secondary)', border: '1px solid rgba(0, 0, 0, 0.08)', borderRadius: '14px', overflow: 'hidden', zIndex: 200, backdropFilter: 'blur(30px)', boxShadow: '0 16px 40px rgba(0,0,0,0.5)', maxHeight: '200px', overflowY: 'auto' }}>
                               {clientSearchResults.map(c => (
                                 <div key={c.id} onClick={() => handleSelectClient(c)} style={{ padding: '12px 16px', cursor: 'pointer', borderBottom: '1px solid rgba(0, 0, 0, 0.08)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }} onMouseOver={e => e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.06)'} onMouseOut={e => e.currentTarget.style.backgroundColor = 'transparent'}>
                                   <div>
-                                    <div style={{ fontWeight: '700', fontSize: '13px', color: 'white' }}>{c.name}</div>
+                                    <div style={{ fontWeight: '700', fontSize: '13px', color: '#111111' }}>{c.name}</div>
                                     {c.phone && <div style={{ fontSize: '11px', color: 'rgba(255,255,255,0.4)' }}>{c.phone}</div>}
                                   </div>
                                   <span style={{ fontSize: '11px', color: 'rgba(255,255,255,0.4)', fontWeight: '600' }}>V-{c.id_card}</span>
@@ -4288,7 +4288,7 @@ return (
                       )}
 
                     {/* Barbero */}
-                      <FieldLabel required>Odontólogo</FieldLabel>
+                      <FieldLabel required>OdontÃ³logo</FieldLabel>
                       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, 60px)', gap: '12px', justifyItems: 'center' }}>
                         {staff.filter(isDentistaBookableStaff).map(s => {
                           const isSel = newApp.staffId === s.id;
@@ -4297,7 +4297,7 @@ return (
                             <div key={s.id} onClick={() => { if (!locked) setNewApp({...newApp, staffId: s.id}); }} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '6px', cursor: locked ? 'not-allowed' : 'pointer', opacity: locked && !isSel ? 0.3 : 1 }}>
                               <div style={{ width: '52px', height: '52px', borderRadius: '26px', padding: '2px', background: isSel ? 'linear-gradient(135deg, var(--champagne-dark), var(--champagne-light))' : 'rgba(255,255,255,0.08)', transition: 'all 0.25s', transform: isSel ? 'scale(1.08)' : 'scale(1)' }}>
                                 <div style={{ width: '100%', height: '100%', borderRadius: '50%', overflow: 'hidden', background: 'var(--bg-secondary)', border: '2px solid rgba(0,0,0,0.15)' }}>
-                                  {s.image_url ? <img loading="lazy" src={s.image_url} alt={s.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} /> : <span style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%', fontSize: '18px', fontWeight: '800', color: 'white', background: 'linear-gradient(135deg, #444, #ffffff)' }}>{s.name.charAt(0)}</span>}
+                                  {s.image_url ? <img loading="lazy" src={s.image_url} alt={s.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} /> : <span style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%', fontSize: '18px', fontWeight: '800', color: '#111111', background: 'linear-gradient(135deg, #444, #ffffff)' }}>{s.name.charAt(0)}</span>}
                                 </div>
                               </div>
                               <span style={{ fontSize: '11px', color: isSel ? 'white' : 'rgba(255,255,255,0.45)', fontWeight: isSel ? '700' : '500' }}>{s.name.split(' ')[0]}</span>
@@ -4307,13 +4307,13 @@ return (
                       </div>
                   </div>
 
-                  {/* ── COLUMNA DERECHA: Servicio + Extras + Productos ── */}
+                  {/* â”€â”€ COLUMNA DERECHA: Servicio + Extras + Productos â”€â”€ */}
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '22px' }}>
                     {/* Servicio */}
                       <FieldLabel required>Servicio</FieldLabel>
                       <PandaSelect placeholder="Selecciona el servicio..." value={newApp.serviceId} onChange={(val) => setNewApp({...newApp, serviceId: val})} options={services.map(s => ({ label: `${s.name} ($${s.price})`, value: s.id }))} />
 
-                    {/* Extras — Grid 2 columnas */}
+                    {/* Extras â€” Grid 2 columnas */}
                       <FieldLabel>Extras</FieldLabel>
                       <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) minmax(0, 1fr)', gap: '8px' }}>
                         {allExtras.filter(ex => ex.name && !ex.name.toUpperCase().includes('ROULETTE_PRIZE') && !ex.name.toUpperCase().includes('CORTE GRATIS')).map(ex => {
@@ -4333,7 +4333,7 @@ return (
                     {/* Productos */}
                     <div>
                       <FieldLabel>Productos</FieldLabel>
-                      <PandaSelect placeholder="Añadir producto..." onChange={(val) => { if (!newApp.products.find(p => p.id === val)) setNewApp({ ...newApp, products: [...newApp.products, { id: val, quantity: 1 }] }); }} options={allProducts.filter(p => Number(p.stock || 0) > 0).map(p => ({ label: `${getInventorySalesLabel(p)} · ${p.name} ($${p.price})`, value: p.id }))} />
+                      <PandaSelect placeholder="AÃ±adir producto..." onChange={(val) => { if (!newApp.products.find(p => p.id === val)) setNewApp({ ...newApp, products: [...newApp.products, { id: val, quantity: 1 }] }); }} options={allProducts.filter(p => Number(p.stock || 0) > 0).map(p => ({ label: `${getInventorySalesLabel(p)} Â· ${p.name} ($${p.price})`, value: p.id }))} />
                       {newApp.products.length > 0 && (
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', marginTop: '10px' }}>
                           {newApp.products.map(p => {
@@ -4344,14 +4344,14 @@ return (
                                 <div style={{ display: 'flex', alignItems: 'center', gap: '10px', minWidth: 0 }}>
                                   <Package size={14} color="rgba(255,255,255,0.5)" />
                                   <div style={{ minWidth: 0 }}>
-                                    <div style={{ fontSize: '13px', fontWeight: '600', color: 'white', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{product.name}</div>
+                                    <div style={{ fontSize: '13px', fontWeight: '600', color: '#111111', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{product.name}</div>
                                     <div style={{ fontSize: '11px', color: 'rgba(255,255,255,0.4)' }}>${product.price} c/u</div>
                                   </div>
                                 </div>
                                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexShrink: 0 }}>
                                   <div style={{ display: 'flex', alignItems: 'center', gap: '4px', background: 'var(--bg-secondary)', borderRadius: '8px', padding: '2px' }}>
                                     <button onClick={() => { const q = p.quantity - 1; q <= 0 ? setNewApp({ ...newApp, products: newApp.products.filter(i => i.id !== p.id) }) : setNewApp({ ...newApp, products: newApp.products.map(i => i.id === p.id ? { ...i, quantity: q } : i) }); }} style={{ width: '24px', height: '24px', borderRadius: '6px', border: 'none', background: 'rgba(17, 17, 17,0.1)', color: 'var(--gold-primary)', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}><Minus size={10} /></button>
-                                    <span style={{ fontWeight: '800', fontSize: '12px', minWidth: '16px', textAlign: 'center', color: 'white' }}>{p.quantity}</span>
+                                    <span style={{ fontWeight: '800', fontSize: '12px', minWidth: '16px', textAlign: 'center', color: '#111111' }}>{p.quantity}</span>
                                     <button onClick={() => { if (p.quantity < Number(product.stock || 0)) setNewApp({ ...newApp, products: newApp.products.map(i => i.id === p.id ? { ...i, quantity: p.quantity + 1 } : i) }); }} disabled={p.quantity >= Number(product.stock || 0)} style={{ width: '24px', height: '24px', borderRadius: '6px', border: 'none', background: p.quantity >= Number(product.stock || 0) ? 'rgba(17, 17, 17,0.03)' : 'rgba(17, 17, 17,0.1)', color: p.quantity >= Number(product.stock || 0) ? 'rgba(17, 17, 17,0.2)' : 'var(--gold-primary)', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: p.quantity >= Number(product.stock || 0) ? 'not-allowed' : 'pointer' }}><Plus size={10} /></button>
                                   </div>
                                   <button onClick={() => setNewApp({ ...newApp, products: newApp.products.filter(i => i.id !== p.id) })} style={{ color: 'rgba(255,69,58,0.7)', background: 'rgba(255,69,58,0.08)', borderRadius: '6px', border: 'none', cursor: 'pointer', width: '24px', height: '24px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><Trash2 size={12} /></button>
@@ -4369,16 +4369,16 @@ return (
                 <div style={{ background: 'var(--bg-secondary)', backdropFilter: 'blur(20px)', borderTop: '1px solid rgba(0, 0, 0, 0.08)', padding: '18px 28px', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '20px' }}>
                   <div style={{ minWidth: 0 }}>
                     <div style={{ fontSize: '11px', color: 'rgba(255,255,255,0.4)', fontWeight: '700', letterSpacing: '0.5px', textTransform: 'uppercase' }}>Total Estimado</div>
-                    <div style={{ fontSize: '28px', fontWeight: '800', color: 'white', fontFamily: 'Outfit, sans-serif', lineHeight: '1.1' }}>${totalEstimated.toFixed(2)}</div>
+                    <div style={{ fontSize: '28px', fontWeight: '800', color: '#111111', fontFamily: 'Outfit, sans-serif', lineHeight: '1.1' }}>${totalEstimated.toFixed(2)}</div>
                     <div style={{ fontSize: '11px', color: 'rgba(255,255,255,0.3)', marginTop: '2px' }}>
                       {newApp.serviceId && <span>Servicio: ${servicePrice.toFixed(2)}</span>}
-                      {newApp.extras.length > 0 && <span> · Extras: +${extrasPrice.toFixed(2)}</span>}
-                      {newApp.products.length > 0 && <span> · Prod: +${productsPrice.toFixed(2)}</span>}
+                      {newApp.extras.length > 0 && <span> Â· Extras: +${extrasPrice.toFixed(2)}</span>}
+                      {newApp.products.length > 0 && <span> Â· Prod: +${productsPrice.toFixed(2)}</span>}
                     </div>
                   </div>
                     <button onClick={() => {
                       if (!newApp.clientId || !newApp.serviceId || !newApp.staffId) {
-                        showToast("Selecciona cliente, servicio y odontólogo", "error");
+                        showToast("Selecciona cliente, servicio y odontÃ³logo", "error");
                         return;
                       }
                       if (!isDentistaBookableStaff(staff.find(s => String(s.id) === String(newApp.staffId)))) {
@@ -4435,7 +4435,7 @@ return (
                       {initials}
                     </div>
                     <div>
-                      <h3 style={{ fontSize: '20px', fontWeight: '950', color: 'white', margin: 0, fontFamily: 'Outfit, sans-serif', letterSpacing: '-0.3px' }}>
+                      <h3 style={{ fontSize: '20px', fontWeight: '950', color: '#111111', margin: 0, fontFamily: 'Outfit, sans-serif', letterSpacing: '-0.3px' }}>
                         {activeDetail.clients?.name}
                       </h3>
                       <span className="status-glow-badge" style={{ 
@@ -4462,7 +4462,7 @@ return (
 
                 <div style={{ marginBottom: '24px', paddingBottom: '16px', borderBottom: '1px solid rgba(0, 0, 0, 0.08)' }}>
                   <p style={{ fontSize: '11px', color: 'var(--text-muted)', margin: 0, fontWeight: '700' }}>
-                    Cédula: <span style={{ color: 'white' }}>V-{activeDetail.clients?.id_card || 'S/C'}</span> • Celular: <span style={{ color: 'white' }}>{activeDetail.clients?.phone || 'S/N'}</span>
+                    CÃ©dula: <span style={{ color: '#111111' }}>V-{activeDetail.clients?.id_card || 'S/C'}</span> â€¢ Celular: <span style={{ color: '#111111' }}>{activeDetail.clients?.phone || 'S/N'}</span>
                   </p>
                 </div>
 
@@ -4471,14 +4471,14 @@ return (
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', background: 'rgba(0, 0, 0, 0.04)', padding: '12px', borderRadius: '14px', border: '1px solid rgba(0, 0, 0, 0.08)', alignItems: 'center' }}>
                     <Clock size={16} color="var(--gold-primary)" style={{ marginBottom: '2px' }} />
                     <span style={{ fontSize: '9px', fontWeight: '900', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.8px' }}>Hora</span>
-                    <span style={{ fontSize: '13px', fontWeight: '900', color: 'white', fontFamily: 'Outfit, sans-serif' }}>
+                    <span style={{ fontSize: '13px', fontWeight: '900', color: '#111111', fontFamily: 'Outfit, sans-serif' }}>
                       {new Date(activeDetail.scheduled_at || activeDetail.created_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: true })}
                     </span>
                   </div>
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', background: 'rgba(0, 0, 0, 0.04)', padding: '12px', borderRadius: '14px', border: '1px solid rgba(0, 0, 0, 0.08)', alignItems: 'center', textAlign: 'center' }}>
                     <CalendarIcon size={16} color="var(--gold-primary)" style={{ marginBottom: '2px' }} />
                     <span style={{ fontSize: '9px', fontWeight: '900', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.8px' }}>Fecha</span>
-                    <span style={{ fontSize: '13px', fontWeight: '900', color: 'white', whiteSpace: 'nowrap', fontFamily: 'Outfit, sans-serif' }}>
+                    <span style={{ fontSize: '13px', fontWeight: '900', color: '#111111', whiteSpace: 'nowrap', fontFamily: 'Outfit, sans-serif' }}>
                       {new Date(activeDetail.scheduled_at || activeDetail.created_at).toLocaleDateString('es-ES', { day: 'numeric', month: 'short', year: 'numeric' })}
                     </span>
                   </div>
@@ -4498,7 +4498,7 @@ return (
                           <ToothIcon size={15} />
                         </div>
                         <div style={{ minWidth: 0 }}>
-                          <div style={{ fontWeight: '850', color: 'white', fontSize: '13px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                          <div style={{ fontWeight: '850', color: '#111111', fontSize: '13px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                             {activeDetail.services?.name || 'Venta directa sin servicio'}
                           </div>
                           <p style={{ fontSize: '10px', color: 'var(--text-muted)', margin: '2px 0 0 0' }}>
@@ -4543,7 +4543,7 @@ return (
                       <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
                         {activeDetail.appointment_products.map(p => (
                           <div key={p.id} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'rgba(0, 0, 0, 0.04)', padding: '10px 16px', borderRadius: '12px', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
-                            <span style={{ fontSize: '12px', color: 'rgba(255,255,255,0.85)', fontWeight: '600' }}>• {p.quantity}x {p.inventory?.name}</span>
+                            <span style={{ fontSize: '12px', color: 'rgba(255,255,255,0.85)', fontWeight: '600' }}>â€¢ {p.quantity}x {p.inventory?.name}</span>
                             <span style={{ fontSize: '12px', fontWeight: '800', color: 'var(--gold-primary)', fontFamily: 'Outfit, sans-serif' }}>+${(p.price * p.quantity).toFixed(2)}</span>
                           </div>
                         ))}
@@ -4576,7 +4576,7 @@ return (
                               </div>
                               <div style={{ flex: 1, minWidth: 0 }}>
                                 <div style={{ display: 'flex', flexDirection: 'column', gap: '2px', marginBottom: '4px' }}>
-                                  <span style={{ fontWeight: '800', color: 'white', fontSize: '13px' }}>{as.staff?.name}</span>
+                                  <span style={{ fontWeight: '800', color: '#111111', fontSize: '13px' }}>{as.staff?.name}</span>
                                   <span style={{ fontSize: '9px', color: 'rgba(255,255,255,0.7)', fontWeight: '800', textTransform: 'uppercase', letterSpacing: '0.3px' }}>{cleanRole}</span>
                                 </div>
                                 <div style={{ display: 'flex', gap: '10px', fontSize: '11px', flexWrap: 'wrap' }}>
@@ -4607,13 +4607,13 @@ return (
                     {activeDetail.beverage_selection && (
                       <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                         <span>
-                          {activeDetail.beverage_selection.includes('Café') ? <Coffee size={14} color="#111111" /> :
+                          {activeDetail.beverage_selection.includes('CafÃ©') ? <Coffee size={14} color="#111111" /> :
                            activeDetail.beverage_selection.includes('Cerveza') ? <Beer size={14} color="#ffcc00" /> :
                            activeDetail.beverage_selection.includes('Whiskey') ? <Martini size={14} color="#ff9f0a" /> : <GlassWater size={14} color="#007aff" />}
                         </span>
                         <div>
-                          <span style={{ fontSize: '9px', fontWeight: '900', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.8px', display: 'block' }}>Hidratación Solicitada</span>
-                          <span style={{ fontSize: '13px', fontWeight: '800', color: 'white' }}>{activeDetail.beverage_selection}</span>
+                          <span style={{ fontSize: '9px', fontWeight: '900', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.8px', display: 'block' }}>HidrataciÃ³n Solicitada</span>
+                          <span style={{ fontSize: '13px', fontWeight: '800', color: '#111111' }}>{activeDetail.beverage_selection}</span>
                         </div>
                       </div>
                     )}
@@ -4668,7 +4668,7 @@ const MiniCalendar = ({ selectedDate, onDateSelect, allAppointments }) => {
     <div className="glass-card" style={{ maxWidth: '340px', width: '100%', margin: '0 auto', padding: '24px', borderRadius: '24px', border: '1px solid rgba(0, 0, 0, 0.08)', boxShadow: '0 20px 40px rgba(0, 0, 0, 0.4)' }}>
       <header style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
         <button onClick={() => setCurrentMonth(new Date(currentMonth.getFullYear(), currentMonth.getMonth() - 1, 1))} style={{ background: 'none', border: 'none', color: 'rgba(255,255,255,0.6)', cursor: 'pointer', display: 'flex', alignItems: 'center', transition: 'color 0.2s' }} onMouseEnter={e => e.currentTarget.style.color = 'white'} onMouseLeave={e => e.currentTarget.style.color = 'rgba(255,255,255,0.6)'}><ChevronLeft size={16} /></button>
-        <span style={{ fontSize: '13px', fontWeight: '900', textTransform: 'uppercase', color: 'white', fontFamily: 'Outfit, var(--font-sans), system-ui', letterSpacing: '0.5px' }}>{monthNames[currentMonth.getMonth()]} {currentMonth.getFullYear()}</span>
+        <span style={{ fontSize: '13px', fontWeight: '900', textTransform: 'uppercase', color: '#111111', fontFamily: 'Outfit, var(--font-sans), system-ui', letterSpacing: '0.5px' }}>{monthNames[currentMonth.getMonth()]} {currentMonth.getFullYear()}</span>
         <button onClick={() => setCurrentMonth(new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1, 1))} style={{ background: 'none', border: 'none', color: 'rgba(255,255,255,0.6)', cursor: 'pointer', display: 'flex', alignItems: 'center', transition: 'color 0.2s' }} onMouseEnter={e => e.currentTarget.style.color = 'white'} onMouseLeave={e => e.currentTarget.style.color = 'rgba(255,255,255,0.6)'}><ChevronRight size={16} /></button>
       </header>
       
@@ -4762,3 +4762,4 @@ const MiniCalendar = ({ selectedDate, onDateSelect, allAppointments }) => {
 };
 
 export default SchedulingModule;
+

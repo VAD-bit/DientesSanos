@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import { LockKeyhole, Unlock, Delete } from 'lucide-react';
 import { notificationService } from '../services/notificationService';
 import { supabase } from '../lib/supabase';
@@ -87,8 +87,8 @@ const InventoryAccessGate = ({ children }) => {
         setLockedUntil(now + LOCKOUT_MS);
         notificationService.broadcastNotification(
           supabase,
-          '⚠️ Intentos de PIN — Inventario',
-          `Se intentó acceder al inventario ${newCount} veces con PIN incorrecto. Acceso bloqueado 5 minutos.`,
+          'âš ï¸ Intentos de PIN â€” Inventario',
+          `Se intentÃ³ acceder al inventario ${newCount} veces con PIN incorrecto. Acceso bloqueado 5 minutos.`,
           { recipientRole: 'admin' }
         );
       }
@@ -177,7 +177,7 @@ const InventoryAccessGate = ({ children }) => {
           }}>
             {status === 'success' ? <Unlock size={30} /> : <LockKeyhole size={30} />}
           </div>
-          <h1 style={{ margin: '0 0 8px', color: '#fff', fontSize: '24px', fontWeight: 600, letterSpacing: '0.5px' }}>
+          <h1 style={{ margin: '0 0 8px', color: '#111111', fontSize: '24px', fontWeight: 600, letterSpacing: '0.5px' }}>
             Inventario Dientes Sanos
           </h1>
           <p style={{ margin: 0, color: 'var(--text-secondary)', fontSize: '15px' }}>
@@ -228,7 +228,7 @@ const InventoryAccessGate = ({ children }) => {
           ))}
           
           <button className="numpad-btn" style={{ background: 'transparent', border: 'none', boxShadow: 'none', cursor: 'default' }} disabled>
-            {/* Espacio vacío intencional para alinear el 0 */}
+            {/* Espacio vacÃ­o intencional para alinear el 0 */}
           </button>
           
           <button className="numpad-btn" onClick={() => handlePress('0')}>
@@ -245,3 +245,4 @@ const InventoryAccessGate = ({ children }) => {
 };
 
 export default InventoryAccessGate;
+

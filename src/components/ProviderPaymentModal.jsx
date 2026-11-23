@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
+﻿import React, { useState, useEffect, useMemo } from 'react';
 import { 
   X, 
   Truck, 
@@ -19,7 +19,7 @@ const PAYMENT_ACCOUNTS = [
   { key: 'zelle', label: 'Zelle', usd: true, icon: Landmark },
   { key: 'binance', label: 'Binance / USDT', usd: true, icon: Coins },
   { key: 'zinli', label: 'Zinli', usd: true, icon: Smartphone },
-  { key: 'pago_movil', label: 'Pago Móvil', usd: false, icon: Smartphone },
+  { key: 'pago_movil', label: 'Pago MÃ³vil', usd: false, icon: Smartphone },
   { key: 'cash_bs', label: 'Efectivo (Bs)', usd: false, icon: Banknote },
   { key: 'punto_venta', label: 'Punto de venta', usd: false, icon: CreditCard },
   { key: 'transferencia', label: 'Transferencia', usd: false, icon: Layers3 },
@@ -160,11 +160,11 @@ export default function ProviderPaymentModal({
                   <Truck size={22} />
                 </div>
                 <div>
-                  <h2 style={{ fontSize: 'clamp(17px, 2vw, 20px)', fontWeight: '950', margin: 0, color: '#fff', letterSpacing: '-0.3px' }}>
+                  <h2 style={{ fontSize: 'clamp(17px, 2vw, 20px)', fontWeight: '950', margin: 0, color: '#111111', letterSpacing: '-0.3px' }}>
                     Pago a Proveedor
                   </h2>
                   <p style={{ margin: '2px 0 0', fontSize: '11.5px', color: 'var(--text-secondary)' }}>
-                    Salda la reposición de productos vendidos descontando del saldo de tu cuenta.
+                    Salda la reposiciÃ³n de productos vendidos descontando del saldo de tu cuenta.
                   </p>
                 </div>
               </div>
@@ -217,7 +217,7 @@ export default function ProviderPaymentModal({
                 }}>
                   <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '6px' }}>
                     <span style={{ fontSize: '10.5px', fontWeight: '900', color: '#ff9f0a', textTransform: 'uppercase', letterSpacing: '0.6px', display: 'flex', alignItems: 'center', gap: '5px' }}>
-                      <AlertCircle size={13} color="#ff9f0a" /> Deuda Actual por Reposición
+                      <AlertCircle size={13} color="#ff9f0a" /> Deuda Actual por ReposiciÃ³n
                     </span>
                     <span style={{ fontSize: '11px', color: 'rgba(255,255,255,0.5)', fontWeight: '700' }}>
                       Tasa: {Number(rate || 1).toLocaleString('es-VE', { maximumFractionDigits: 2 })} Bs/$
@@ -228,7 +228,7 @@ export default function ProviderPaymentModal({
                       {Number(providerDebtBs || 0).toLocaleString('es-VE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} Bs
                     </strong>
                     <span style={{ fontSize: '14px', color: 'rgba(255,255,255,0.7)', fontWeight: '800' }}>
-                      ≈ ${Number(providerDebtUsd || 0).toFixed(2)} USD
+                      â‰ˆ ${Number(providerDebtUsd || 0).toFixed(2)} USD
                     </span>
                   </div>
                 </div>
@@ -242,7 +242,7 @@ export default function ProviderPaymentModal({
                 }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
                     <label style={{ fontSize: '11.5px', fontWeight: '900', color: 'var(--gold-primary)', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
-                      Monto a pagar ({selectedAccount.usd ? 'USD $' : 'Bolívares Bs'})
+                      Monto a pagar ({selectedAccount.usd ? 'USD $' : 'BolÃ­vares Bs'})
                     </label>
                     <span style={{ fontSize: '11px', color: isExceedingBalance ? '#ff453a' : 'var(--text-muted)', fontWeight: isExceedingBalance ? '900' : '600' }}>
                       Disponible: {formatMoney(availableBalance, selectedAccount.usd)}
@@ -278,7 +278,7 @@ export default function ProviderPaymentModal({
                           : numericAmount > 0 
                             ? '1.5px solid rgba(17, 17, 17, 0.6)' 
                             : '1px solid rgba(0, 0, 0, 0.08)', 
-                        color: '#fff', 
+                        color: '#111111', 
                         fontSize: '18px', 
                         fontWeight: '900', 
                         outline: 'none',
@@ -293,8 +293,8 @@ export default function ProviderPaymentModal({
                       <span>Equivalente:</span>
                       <strong style={{ color: selectedAccount.usd ? '#64d2ff' : 'var(--gold-primary)' }}>
                         {selectedAccount.usd 
-                          ? `≈ ${Number(amountBs).toLocaleString('es-VE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} Bs` 
-                          : `≈ $${Number(amountUsd).toFixed(2)} USD`}
+                          ? `â‰ˆ ${Number(amountBs).toLocaleString('es-VE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} Bs` 
+                          : `â‰ˆ $${Number(amountUsd).toFixed(2)} USD`}
                       </strong>
                     </div>
                   )}
@@ -359,7 +359,7 @@ export default function ProviderPaymentModal({
                     <ArrowRight size={14} color="rgba(255,255,255,0.4)" />
                     <div style={{ background: isFullyPaid ? 'rgba(50, 215, 75, 0.12)' : 'rgba(255,255,255,0.03)', border: isFullyPaid ? '1px solid rgba(50, 215, 75, 0.3)' : 'none', padding: '6px 8px', borderRadius: '8px' }}>
                       <span style={{ display: 'block', fontSize: '9.5px', color: isFullyPaid ? '#32d74b' : 'var(--text-muted)' }}>
-                        {isFullyPaid ? '¡Deuda saldada!' : 'Nueva deuda'}
+                        {isFullyPaid ? 'Â¡Deuda saldada!' : 'Nueva deuda'}
                       </span>
                       <strong style={{ fontSize: '12.5px', color: isFullyPaid ? '#32d74b' : '#fff' }}>
                         ${remainingDebtUsd.toFixed(2)}
@@ -377,7 +377,7 @@ export default function ProviderPaymentModal({
                     Cuenta de Origen
                   </label>
                   <span style={{ fontSize: '11px', color: 'var(--text-secondary)' }}>
-                    Selecciona de dónde pagar
+                    Selecciona de dÃ³nde pagar
                   </span>
                 </div>
 
@@ -458,7 +458,7 @@ export default function ProviderPaymentModal({
                   color: 'var(--text-secondary)',
                   lineHeight: '1.4'
                 }}>
-                  <strong style={{ color: 'rgba(255,255,255,0.85)' }}>Nota operativa:</strong> Este pago no se contabiliza como gasto operativo nuevo, ya que solo salda la deuda de reposición de inventario previamente vendido.
+                  <strong style={{ color: 'rgba(255,255,255,0.85)' }}>Nota operativa:</strong> Este pago no se contabiliza como gasto operativo nuevo, ya que solo salda la deuda de reposiciÃ³n de inventario previamente vendido.
                 </div>
 
               </div>
@@ -496,7 +496,7 @@ export default function ProviderPaymentModal({
                   transition: 'all 0.2s ease'
                 }}
               >
-                <Truck size={16} /> {loading ? 'Registrando pago…' : 'Registrar Pago a Proveedor'}
+                <Truck size={16} /> {loading ? 'Registrando pagoâ€¦' : 'Registrar Pago a Proveedor'}
               </button>
             </footer>
 
@@ -518,3 +518,4 @@ const quickBtnStyle = {
   cursor: 'pointer',
   transition: 'all 0.15s ease'
 };
+

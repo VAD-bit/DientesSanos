@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect, useMemo } from 'react';
+﻿import { useState, useRef, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronRight, ArrowRight, ChevronLeft } from 'lucide-react';
 import logo from '../../assets/logo_full.png';
@@ -55,7 +55,7 @@ function usePhoneSize() {
   return size;
 }
 
-/* ─── Stagger text: each word animates in separately ─── */
+/* â”€â”€â”€ Stagger text: each word animates in separately â”€â”€â”€ */
 function StaggerText({ text = '', style, delay = 0, direction = 1 }) {
   const words = (text || '').split(' ');
   return (
@@ -79,7 +79,7 @@ function StaggerText({ text = '', style, delay = 0, direction = 1 }) {
   );
 }
 
-/* ─── Animated counter: number flips in ─── */
+/* â”€â”€â”€ Animated counter: number flips in â”€â”€â”€ */
 function AnimatedCounter({ current, total, style }) {
   return (
     <div style={{ ...style, display: 'flex', alignItems: 'center', gap: 4 }}>
@@ -103,7 +103,7 @@ function AnimatedCounter({ current, total, style }) {
   );
 }
 
-/* ─── Floating particles: subtle dust motes ─── */
+/* â”€â”€â”€ Floating particles: subtle dust motes â”€â”€â”€ */
 function FloatingParticles({ count = 20, mobile = false }) {
   const particles = useMemo(() => {
     return Array.from({ length: count }, (_, i) => ({
@@ -149,7 +149,7 @@ function FloatingParticles({ count = 20, mobile = false }) {
   );
 }
 
-/* ─── Vignette overlay ─── */
+/* â”€â”€â”€ Vignette overlay â”€â”€â”€ */
 function Vignette({ intensity = 0.6 }) {
   return (
     <div style={{
@@ -190,7 +190,7 @@ export default function Onboarding({ onComplete }) {
   const slideTexts = [
     {
       titleLine1: userName ? `Hola, ${userName}` : 'Dientes',
-      titleLine2: userName ? '¡Comenzamos!' : 'Sanos',
+      titleLine2: userName ? 'Â¡Comenzamos!' : 'Sanos',
       subtitle: userName ? 'Reserva, acumula y disfruta.' : 'El estilo que mereces, a un toque.',
     },
     { titleLine1: 'Reserva al', titleLine2: 'Instante', subtitle: 'Agenda tu cita en segundos.' },
@@ -253,7 +253,7 @@ export default function Onboarding({ onComplete }) {
     exit: (dir) => ({ x: dir > 0 ? '-30%' : '30%', opacity: 0.6 }),
   };
 
-  /* ─── DESKTOP ─── */
+  /* â”€â”€â”€ DESKTOP â”€â”€â”€ */
   if (isDesktop) {
     return (
       <motion.div
@@ -340,7 +340,7 @@ export default function Onboarding({ onComplete }) {
           />
         </div>
 
-        {/* Content — bottom left */}
+        {/* Content â€” bottom left */}
         <div style={{
           position: 'absolute', bottom: 0, left: 0, right: 0, zIndex: 10,
           padding: isPhoneLandscape ? '0 30px 32px' : isLargeMonitor ? '0 120px 100px' : isSmallDesktop ? '0 50px 60px' : '0 80px 80px',
@@ -424,7 +424,7 @@ export default function Onboarding({ onComplete }) {
                   textTransform: 'uppercase',
                 }}
               >
-                <ChevronLeft size={16} strokeWidth={2.5} /> Atrás
+                <ChevronLeft size={16} strokeWidth={2.5} /> AtrÃ¡s
               </motion.button>
             )}
             <motion.button
@@ -437,7 +437,7 @@ export default function Onboarding({ onComplete }) {
                 borderRadius: 999,
                 border: 'none',
                 background: 'var(--gold-gradient)',
-                color: '#ffffff',
+                color: '#111111',
                 fontSize: isPhoneLandscape ? 11 : isLargeMonitor ? 18 : isSmallDesktop ? 13 : 14, fontWeight: 800,
                 fontFamily: 'General Sans, sans-serif',
                 cursor: 'pointer',
@@ -474,7 +474,7 @@ export default function Onboarding({ onComplete }) {
     );
   }
 
-  /* ─── MOBILE/TABLET ─── */
+  /* â”€â”€â”€ MOBILE/TABLET â”€â”€â”€ */
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -559,7 +559,7 @@ export default function Onboarding({ onComplete }) {
       <Vignette intensity={isTablet ? 0.5 : 0.65} />
       <FloatingParticles count={isTablet ? 14 : 12} mobile={true} />
 
-      {/* Content — bottom */}
+      {/* Content â€” bottom */}
       <div style={{
         position: 'absolute', bottom: 0, left: 0, right: 0, zIndex: 10,
         paddingBottom: isLargeTablet ? 140 : isMidTablet ? 115 : isTablet ? 100 : phoneSize === 'lg' ? 90 : phoneSize === 'md' ? 75 : 60,
@@ -647,7 +647,7 @@ export default function Onboarding({ onComplete }) {
                 borderRadius: 999,
                 border: 'none',
                 background: 'var(--gold-gradient)',
-                color: '#ffffff',
+                color: '#111111',
                 fontSize: isLargeTablet ? 26 : isMidTablet ? 21 : isTablet ? 19 : phoneSize === 'lg' ? 17 : phoneSize === 'md' ? 16 : 15, fontWeight: 800,
                 fontFamily: 'General Sans, sans-serif',
                 cursor: 'pointer',
@@ -692,7 +692,7 @@ export default function Onboarding({ onComplete }) {
                   textTransform: 'uppercase',
                 }}
               >
-                <ChevronLeft size={16} strokeWidth={2.5} /> Atrás
+                <ChevronLeft size={16} strokeWidth={2.5} /> AtrÃ¡s
               </motion.button>
             )}
           </div>
@@ -708,3 +708,4 @@ export default function Onboarding({ onComplete }) {
     </motion.div>
   );
 }
+

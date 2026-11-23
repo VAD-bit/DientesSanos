@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+﻿import React, { useState, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { 
   Users, 
@@ -265,7 +265,7 @@ const ReceptionModule = ({ isMobile, rates }) => {
     try {
       setLoading(true);
       await dataService.updateAppointmentStatus(id, 'En Silla');
-      showToast("¡Servicio iniciado! El cliente ya está en sillón.");
+      showToast("Â¡Servicio iniciado! El cliente ya estÃ¡ en sillÃ³n.");
       triggerRocket();
       loadData();
     } catch (error) {
@@ -283,7 +283,7 @@ const ReceptionModule = ({ isMobile, rates }) => {
       if (exact) {
         handleSelectClient(exact);
       } else if (searchResults.length > 1) {
-        showToast("Múltiples coincidencias. Selecciona uno de la lista.", "info");
+        showToast("MÃºltiples coincidencias. Selecciona uno de la lista.", "info");
       } else {
         showToast("Cliente no encontrado. Proceda a registrarlo.", "warning");
       }
@@ -343,7 +343,7 @@ const ReceptionModule = ({ isMobile, rates }) => {
 
   const handleScheduleClick = () => {
     if (!selectedClient || (selectedServices.length === 0 && selectedExtras.length === 0) || !formData.staffId) {
-      showToast("Selecciona cliente, servicio/extra y odontólogo/asistente primero", "warning");
+      showToast("Selecciona cliente, servicio/extra y odontÃ³logo/asistente primero", "warning");
       return;
     }
     setIsScheduleModalOpen(true);
@@ -419,7 +419,7 @@ const ReceptionModule = ({ isMobile, rates }) => {
         appointment_extras: [],
         appointment_products: []
       }, ...current.filter(app => String(app.id) !== String(createdAppointment.id))]);
-      showToast(`${selectedClient.name.split(' ')[0]} enviado a sillón. El odontólogo cargará el servicio.`);
+      showToast(`${selectedClient.name.split(' ')[0]} enviado a sillÃ³n. El odontÃ³logo cargarÃ¡ el servicio.`);
       triggerRocket();
       // Reset selection
       setSelectedClient(null);
@@ -429,7 +429,7 @@ const ReceptionModule = ({ isMobile, rates }) => {
       setFormData({ serviceId: '', staffId: '', status: 'En Silla' });
       loadData();
     } catch (error) {
-      const errorMessage = error?.message || error?.details || 'Error al enviar a sillón';
+      const errorMessage = error?.message || error?.details || 'Error al enviar a sillÃ³n';
       showToast(errorMessage, "error");
       console.error(error);
     } finally {
@@ -454,7 +454,7 @@ const ReceptionModule = ({ isMobile, rates }) => {
 
     const hasStaffRequired = selectedServices.length > 0 || selectedExtras.length > 0;
     if (hasStaffRequired && !formData.staffId) {
-      showToast("Selecciona un odontólogo o asistente", "error");
+      showToast("Selecciona un odontÃ³logo o asistente", "error");
       return;
     }
     if (hasStaffRequired) {
@@ -537,7 +537,7 @@ const ReceptionModule = ({ isMobile, rates }) => {
         await Promise.all([...extraPromises, ...productPromises]);
       }
 
-      showToast(isProductOnly ? "Venta enviada a caja" : (scheduledAt ? `¡Cita agendada para las ${new Date(scheduledAt).toLocaleTimeString([], {hour:'2-digit', minute:'2-digit', hour12: true})}!` : `¡Orden enviada! ${selectedServices.length} servicios en cola.`));
+      showToast(isProductOnly ? "Venta enviada a caja" : (scheduledAt ? `Â¡Cita agendada para las ${new Date(scheduledAt).toLocaleTimeString([], {hour:'2-digit', minute:'2-digit', hour12: true})}!` : `Â¡Orden enviada! ${selectedServices.length} servicios en cola.`));
       if (!statusOverride || statusOverride === 'En Silla') triggerRocket();
 
       const targetStatus = statusOverride || formData.status;
@@ -605,8 +605,8 @@ const ReceptionModule = ({ isMobile, rates }) => {
       type: 'confirm',
       title: appointmentsToDelete.length > 1 ? 'Eliminar orden completa' : 'Eliminar cita',
       message: appointmentsToDelete.length > 1
-        ? `Esta orden contiene ${appointmentsToDelete.length} servicios. Se eliminarán todos juntos. ¿Deseas continuar?`
-        : '¿Estás seguro de que deseas eliminar esta cita permanentemente? Esta acción no se puede deshacer.',
+        ? `Esta orden contiene ${appointmentsToDelete.length} servicios. Se eliminarÃ¡n todos juntos. Â¿Deseas continuar?`
+        : 'Â¿EstÃ¡s seguro de que deseas eliminar esta cita permanentemente? Esta acciÃ³n no se puede deshacer.',
       onConfirm: async () => {
         try {
           setLoading(true);
@@ -627,7 +627,7 @@ const ReceptionModule = ({ isMobile, rates }) => {
   };
 
   const staffGroups = [
-    { id: 'barbers', label: 'Odontólogos DISPONIBLES' },
+    { id: 'barbers', label: 'OdontÃ³logos DISPONIBLES' },
     { id: 'assistants', label: 'ASISTENTES DISPONIBLES' },
     { id: 'tattoo', label: ' DISPONIBLES' }
   ].map(group => ({
@@ -653,7 +653,7 @@ const ReceptionModule = ({ isMobile, rates }) => {
       '--text-muted': '#a1a1a6',
       '--text-secondary': '#d1d1d6'
     }}>
-      {/* Background Orbs (desktop only — on mobile they can bleed past the narrow viewport) */}
+      {/* Background Orbs (desktop only â€” on mobile they can bleed past the narrow viewport) */}
       {!isMobile && (
         <>
           <div className="r-orb r-orb-1" />
@@ -662,8 +662,8 @@ const ReceptionModule = ({ isMobile, rates }) => {
       )}
       {!isMobile && (
         <header style={{ marginBottom: '40px', textAlign: 'left', paddingRight: '48px' }}>
-          <h1 style={{ fontSize: '32px', fontWeight: '900' }}>Recepción</h1>
-          <p style={{ color: 'var(--text-secondary)' }}>Módulo de atención y agendamiento rápido.</p>
+          <h1 style={{ fontSize: '32px', fontWeight: '900' }}>RecepciÃ³n</h1>
+          <p style={{ color: 'var(--text-secondary)' }}>MÃ³dulo de atenciÃ³n y agendamiento rÃ¡pido.</p>
         </header>
       )}
 
@@ -686,10 +686,10 @@ const ReceptionModule = ({ isMobile, rates }) => {
             </div>
 
             {selectedClient ? (
-              <div className="animate-scale-in" style={{ padding: '20px', backgroundColor: 'rgba(0, 0, 0, 0.04)', borderRadius: '16px', border: '1px solid rgba(0, 0, 0, 0.08)', color: '#ffffff' }}>
+              <div className="animate-scale-in" style={{ padding: '20px', backgroundColor: 'rgba(0, 0, 0, 0.04)', borderRadius: '16px', border: '1px solid rgba(0, 0, 0, 0.08)', color: '#111111' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                   <div>
-                    <div style={{ fontWeight: '800', fontSize: '18px', color: '#ffffff' }}>{selectedClient.name}</div>
+                    <div style={{ fontWeight: '800', fontSize: '18px', color: '#111111' }}>{selectedClient.name}</div>
                     <div style={{ 
                       display: 'inline-flex', 
                       alignItems: 'center', 
@@ -704,7 +704,7 @@ const ReceptionModule = ({ isMobile, rates }) => {
                       color: 'var(--gold-primary)',
                       letterSpacing: '0.5px'
                     }}>
-                      <span style={{ opacity: 0.6, fontSize: '9px', fontWeight: '900', color: 'var(--text-muted)' }}>CÉDULA:</span> V-{selectedClient.id_card}
+                      <span style={{ opacity: 0.6, fontSize: '9px', fontWeight: '900', color: 'var(--text-muted)' }}>CÃ‰DULA:</span> V-{selectedClient.id_card}
                     </div>
                   </div>
                   <button onClick={() => { setSelectedClient(null); setRecommendationInfo(null); setFormData(prev => ({ ...prev, staffId: '' })); }} style={{ background: 'none', border: 'none', color: '#ff453a', fontWeight: '800', cursor: 'pointer', transition: 'color 0.2s' }} onMouseEnter={e => e.currentTarget.style.color = '#ff6b64'} onMouseLeave={e => e.currentTarget.style.color = '#ff453a'}>Cambiar</button>
@@ -716,7 +716,7 @@ const ReceptionModule = ({ isMobile, rates }) => {
                   <Search style={{ position: 'absolute', left: '16px' }} size={18} color="var(--text-muted)" />
                   <input 
                     type="text" 
-                    placeholder="Escribe nombre o cédula..." 
+                    placeholder="Escribe nombre o cÃ©dula..." 
                     value={idSearch}
                     onChange={(e) => handleSearchInput(e.target.value)}
                     onKeyDown={(e) => e.key === 'Enter' && handleIdSearch()}
@@ -728,7 +728,7 @@ const ReceptionModule = ({ isMobile, rates }) => {
                       borderRadius: '16px',
                       background: 'rgba(0, 0, 0, 0.04)',
                       border: '1px solid rgba(0, 0, 0, 0.08)',
-                      color: 'white',
+                      color: '#111111',
                       fontSize: '14px',
                       outline: 'none',
                       transition: 'all 0.3s ease'
@@ -770,7 +770,7 @@ const ReceptionModule = ({ isMobile, rates }) => {
                         onMouseOver={(e) => e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255,0.1)'}
                         onMouseOut={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
                       >
-                        <span style={{ fontWeight: '700', fontSize: '14px', color: 'white' }}>{c.name}</span>
+                        <span style={{ fontWeight: '700', fontSize: '14px', color: '#111111' }}>{c.name}</span>
                         <span style={{ fontSize: '12px', color: 'var(--gold-primary)', fontWeight: '700' }}>V-{c.id_card}</span>
                       </div>
                     ))}
@@ -814,8 +814,8 @@ const ReceptionModule = ({ isMobile, rates }) => {
               <div className="reception-order-sheet" style={{ background: 'var(--bg-secondary)', padding: '14px', borderRadius: '20px', marginBottom: '24px', border: '1px solid rgba(17, 17, 17,.18)', boxShadow: '0 18px 48px rgba(0,0,0,.22)' }}>
                 <div style={{ marginBottom: '11px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '12px' }}>
                   <div>
-                    <span style={{ display: 'block', color: 'var(--gold-primary)', fontSize: '9px', fontWeight: 950, letterSpacing: '1px', textTransform: 'uppercase' }}>Orden en preparación</span>
-                    <strong style={{ display: 'block', marginTop: '2px', color: '#fff', fontSize: '14px' }}>{orderItemCount} {orderItemCount === 1 ? 'artículo' : 'artículos'}</strong>
+                    <span style={{ display: 'block', color: 'var(--gold-primary)', fontSize: '9px', fontWeight: 950, letterSpacing: '1px', textTransform: 'uppercase' }}>Orden en preparaciÃ³n</span>
+                    <strong style={{ display: 'block', marginTop: '2px', color: '#111111', fontSize: '14px' }}>{orderItemCount} {orderItemCount === 1 ? 'artÃ­culo' : 'artÃ­culos'}</strong>
                   </div>
                   <span style={{ padding: '5px 9px', borderRadius: '999px', color: '#cfcfd2', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', fontSize: '9px', fontWeight: 850 }}>LISTA PARA ASIGNAR</span>
                 </div>
@@ -823,9 +823,9 @@ const ReceptionModule = ({ isMobile, rates }) => {
                   {selectedServices.map(s => (
                     <div key={s.id} className="reception-order-row" style={{ minHeight: '62px', padding: '9px 9px 9px 10px', display: 'grid', gridTemplateColumns: '38px minmax(0,1fr) auto 36px', alignItems: 'center', gap: '10px', borderRadius: '14px', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
                       <span style={{ width: '38px', height: '38px', display: 'grid', placeItems: 'center', borderRadius: '11px', color: 'var(--gold-primary)', background: 'rgba(17, 17, 17,.11)', border: '1px solid rgba(17, 17, 17,.2)' }}><ToothIcon size={17} /></span>
-                      <div style={{ minWidth: 0 }}><span style={{ display: 'block', color: 'var(--gold-primary)', fontSize: '8px', fontWeight: 950, letterSpacing: '.7px' }}>SERVICIO</span><strong style={{ display: 'block', marginTop: '2px', color: '#fff', fontSize: '13px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{s.name}</strong></div>
+                      <div style={{ minWidth: 0 }}><span style={{ display: 'block', color: 'var(--gold-primary)', fontSize: '8px', fontWeight: 950, letterSpacing: '.7px' }}>SERVICIO</span><strong style={{ display: 'block', marginTop: '2px', color: '#111111', fontSize: '13px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{s.name}</strong></div>
                       <div style={{ textAlign: 'right' }}>
-                        <strong style={{ display: 'block', color: '#fff', fontSize: '12px' }}>{formatBs(Number(s.price) * exchangeRate)} Bs</strong>
+                        <strong style={{ display: 'block', color: '#111111', fontSize: '12px' }}>{formatBs(Number(s.price) * exchangeRate)} Bs</strong>
                         <small style={{ color: 'var(--text-muted)', fontSize: '9px' }}>${formatUsd(s.price)}</small>
                       </div>
                       <button type="button" aria-label={`Quitar servicio ${s.name}`} onClick={() => toggleService(s.id)} className="reception-remove-item"><Trash2 size={15} /></button>
@@ -834,7 +834,7 @@ const ReceptionModule = ({ isMobile, rates }) => {
                   {selectedExtras.map(e => (
                     <div key={e.id} className="reception-order-row" style={{ minHeight: '62px', padding: '9px 9px 9px 10px', display: 'grid', gridTemplateColumns: '38px minmax(0,1fr) auto 36px', alignItems: 'center', gap: '10px', borderRadius: '14px', background: 'rgba(255,159,10,.035)', border: '1px solid rgba(255,159,10,.12)' }}>
                       <span style={{ width: '38px', height: '38px', display: 'grid', placeItems: 'center', borderRadius: '11px', color: '#ff9f0a', background: 'rgba(255,159,10,.09)', border: '1px solid rgba(255,159,10,.18)' }}><Rocket size={17} /></span>
-                      <div style={{ minWidth: 0 }}><span style={{ display: 'block', color: '#ffad33', fontSize: '8px', fontWeight: 950, letterSpacing: '.7px' }}>EXTRA</span><strong style={{ display: 'block', marginTop: '2px', color: '#fff', fontSize: '13px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{e.name}</strong></div>
+                      <div style={{ minWidth: 0 }}><span style={{ display: 'block', color: '#ffad33', fontSize: '8px', fontWeight: 950, letterSpacing: '.7px' }}>EXTRA</span><strong style={{ display: 'block', marginTop: '2px', color: '#111111', fontSize: '13px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{e.name}</strong></div>
                       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end' }}>
                         {editingExtraPriceId === e.id ? (
                           <div style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
@@ -846,7 +846,7 @@ const ReceptionModule = ({ isMobile, rates }) => {
                               onChange={(val) => updateExtraPrice(e.id, val.target.value)}
                               onBlur={() => setEditingExtraPriceId(null)}
                               onKeyDown={(key) => key.key === 'Enter' && setEditingExtraPriceId(null)}
-                              style={{ width: '74px', height: '34px', background: 'var(--bg-secondary)', border: '1px solid #ff9f0a', borderRadius: '9px', color: 'white', padding: '0 7px 0 17px', fontSize: '12px', fontWeight: '800', textAlign: 'right' }}
+                              style={{ width: '74px', height: '34px', background: 'var(--bg-secondary)', border: '1px solid #ff9f0a', borderRadius: '9px', color: '#111111', padding: '0 7px 0 17px', fontSize: '12px', fontWeight: '800', textAlign: 'right' }}
                             />
                           </div>
                         ) : (
@@ -856,7 +856,7 @@ const ReceptionModule = ({ isMobile, rates }) => {
                             style={{ display: 'flex', alignItems: 'center', gap: '6px', cursor: 'pointer', padding: '3px 6px', border: 0, borderRadius: '8px', color: 'inherit', background: 'transparent' }}
                           >
                             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end' }}>
-                              <strong style={{ color: '#fff', fontSize: '12px' }}>{formatBs(Number(e.customPrice ?? e.price) * exchangeRate)} Bs</strong>
+                              <strong style={{ color: '#111111', fontSize: '12px' }}>{formatBs(Number(e.customPrice ?? e.price) * exchangeRate)} Bs</strong>
                               <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
                                 <span style={{ color: 'var(--text-muted)', fontSize: '9px' }}>${formatUsd(e.customPrice ?? e.price)}</span>
                                 <Edit3 size={8} color="var(--text-muted)" />
@@ -871,9 +871,9 @@ const ReceptionModule = ({ isMobile, rates }) => {
                   {selectedProducts.map(p => (
                     <div key={p.id} className="reception-order-row" style={{ minHeight: '66px', padding: '9px 9px 9px 10px', display: 'grid', gridTemplateColumns: '42px minmax(0,1fr) auto 36px', alignItems: 'center', gap: '10px', borderRadius: '14px', background: String(p.inventory_type).toLowerCase() === 'cafe' ? 'rgba(255,159,10,.035)' : 'rgba(48,209,88,.035)', border: `1px solid ${String(p.inventory_type).toLowerCase() === 'cafe' ? 'rgba(255,159,10,.13)' : 'rgba(48,209,88,.13)'}` }}>
                       <span style={{ width: '42px', height: '42px', display: 'grid', placeItems: 'center', overflow: 'hidden', borderRadius: '12px', color: String(p.inventory_type).toLowerCase() === 'cafe' ? '#ff9f0a' : '#30d158', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)' }}>{p.image_url ? <img src={p.image_url} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} /> : <ShoppingBag size={18} />}</span>
-                      <div style={{ minWidth: 0 }}><span style={{ display: 'block', color: String(p.inventory_type).toLowerCase() === 'cafe' ? '#ffad33' : '#54d37b', fontSize: '8px', fontWeight: 950, letterSpacing: '.65px' }}>{getInventorySalesLabel(p).toUpperCase()} {Number(p.quantity || 1) > 1 ? `· ×${p.quantity}` : ''}</span><strong style={{ display: 'block', marginTop: '2px', color: '#fff', fontSize: '13px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{p.name}</strong></div>
+                      <div style={{ minWidth: 0 }}><span style={{ display: 'block', color: String(p.inventory_type).toLowerCase() === 'cafe' ? '#ffad33' : '#54d37b', fontSize: '8px', fontWeight: 950, letterSpacing: '.65px' }}>{getInventorySalesLabel(p).toUpperCase()} {Number(p.quantity || 1) > 1 ? `Â· Ã—${p.quantity}` : ''}</span><strong style={{ display: 'block', marginTop: '2px', color: '#111111', fontSize: '13px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{p.name}</strong></div>
                       <div style={{ textAlign: 'right' }}>
-                        <strong style={{ display: 'block', color: '#fff', fontSize: '12px' }}>{formatBs(Number(p.price) * Number(p.quantity || 1) * exchangeRate)} Bs</strong>
+                        <strong style={{ display: 'block', color: '#111111', fontSize: '12px' }}>{formatBs(Number(p.price) * Number(p.quantity || 1) * exchangeRate)} Bs</strong>
                         <small style={{ color: 'var(--text-muted)', fontSize: '9px' }}>${formatUsd(Number(p.price) * Number(p.quantity || 1))}</small>
                       </div>
                       <button type="button" aria-label={`Quitar producto ${p.name}`} onClick={() => toggleProduct(p)} className="reception-remove-item"><Trash2 size={15} /></button>
@@ -912,24 +912,24 @@ const ReceptionModule = ({ isMobile, rates }) => {
                     </div>
                     <span style={{ fontSize: '10px', fontWeight: '800', color: recommendationInfo.isBusy ? '#ff9f0a' : '#32d74b', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
                       {recommendationInfo.type === 'frequent' 
-                        ? 'Recomendación (Cliente Recurrente)' 
-                        : 'Recomendación (Siguiente en Fila)'}
+                        ? 'RecomendaciÃ³n (Cliente Recurrente)' 
+                        : 'RecomendaciÃ³n (Siguiente en Fila)'}
                     </span>
                   </div>
-                  <p style={{ margin: 0, fontSize: '12px', color: 'white', fontWeight: '750', lineHeight: '1.4' }}>
+                  <p style={{ margin: 0, fontSize: '12px', color: '#111111', fontWeight: '750', lineHeight: '1.4' }}>
                     {recommendationInfo.type === 'frequent' ? (
                       recommendationInfo.isBusy ? (
                         <span>
-                          Su odontólogo frecuente <strong>{recommendationInfo.name}</strong> está ocupado. Puedes <strong>agendar para después</strong> si el cliente desea esperar, o seleccionar a otro de la fila.
+                          Su odontÃ³logo frecuente <strong>{recommendationInfo.name}</strong> estÃ¡ ocupado. Puedes <strong>agendar para despuÃ©s</strong> si el cliente desea esperar, o seleccionar a otro de la fila.
                         </span>
                       ) : (
                         <span>
-                          Se ha sugerido automáticamente a su odontólogo frecuente <strong>{recommendationInfo.name}</strong>.
+                          Se ha sugerido automÃ¡ticamente a su odontÃ³logo frecuente <strong>{recommendationInfo.name}</strong>.
                         </span>
                       )
                     ) : (
                       <span>
-                        Se sugiere el odontólogo que sigue en la fila por orden de llegada: <strong>{recommendationInfo.name}</strong>.
+                        Se sugiere el odontÃ³logo que sigue en la fila por orden de llegada: <strong>{recommendationInfo.name}</strong>.
                       </span>
                     )}
                   </p>
@@ -1006,7 +1006,7 @@ const ReceptionModule = ({ isMobile, rates }) => {
                           fontWeight: '900',
                           borderBottomRightRadius: '8px'
                         }}>
-                          {idx + 1}º
+                          {idx + 1}Âº
                         </div>
 
                         {isBusy && (
@@ -1015,7 +1015,7 @@ const ReceptionModule = ({ isMobile, rates }) => {
                             top: 0, 
                             right: 0, 
                             backgroundColor: '#ff453a', 
-                            color: 'white', 
+                            color: '#111111', 
                             fontSize: '8px', 
                             padding: '2px 6px', 
                             fontWeight: '900',
@@ -1067,7 +1067,7 @@ const ReceptionModule = ({ isMobile, rates }) => {
                           onMouseEnter={(ev) => ev.currentTarget.style.backgroundColor = 'rgba(50,215,75,0.2)'}
                           onMouseLeave={(ev) => ev.currentTarget.style.backgroundColor = 'rgba(50,215,75,0.12)'}
                         >
-                           Enviar a sillón
+                           Enviar a sillÃ³n
                         </button>
                       )}
 
@@ -1106,11 +1106,11 @@ const ReceptionModule = ({ isMobile, rates }) => {
             <div style={{ marginTop: '24px' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '16px' }}>
                 <Calendar size={16} color="var(--gold-primary)" />
-                <span style={{ fontWeight: '800', fontSize: '11px', letterSpacing: '1px', textTransform: 'uppercase', color: 'var(--gold-primary)' }}>Próximas Citas (Agenda Hoy)</span>
+                <span style={{ fontWeight: '800', fontSize: '11px', letterSpacing: '1px', textTransform: 'uppercase', color: 'var(--gold-primary)' }}>PrÃ³ximas Citas (Agenda Hoy)</span>
               </div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
                 {upcomingAppointments.length === 0 ? (
-                  <div style={{ padding: '20px', textAlign: 'center', color: 'rgba(255,255,255,0.4)', fontSize: '12px', border: '1px dashed rgba(0, 0, 0, 0.08)', borderRadius: '16px' }}>No hay más citas para hoy</div>
+                  <div style={{ padding: '20px', textAlign: 'center', color: 'rgba(255,255,255,0.4)', fontSize: '12px', border: '1px dashed rgba(0, 0, 0, 0.08)', borderRadius: '16px' }}>No hay mÃ¡s citas para hoy</div>
                 ) : (
                   upcomingAppointments.map((app, idx) => (
                     <div 
@@ -1153,7 +1153,7 @@ const ReceptionModule = ({ isMobile, rates }) => {
                           </span>
                         </div>
                         <div>
-                          <div style={{ fontWeight: '800', fontSize: '14px', color: 'white' }}>{app.clients?.name}</div>
+                          <div style={{ fontWeight: '800', fontSize: '14px', color: '#111111' }}>{app.clients?.name}</div>
                           <div style={{ fontSize: '11px', color: 'var(--text-secondary)', marginTop: '2px', display: 'flex', alignItems: 'center', gap: '4px' }}>
                             <span style={{ width: '4px', height: '4px', borderRadius: '50%', backgroundColor: 'rgba(0, 0, 0, 0.04)' }} />
                             <span>Atendido por: <strong>{app.staff?.name}</strong></span>
@@ -1223,22 +1223,22 @@ const ReceptionModule = ({ isMobile, rates }) => {
             {!selectedClient ? (
               <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }} className="animate-fade-in">
                 <div className="premium-badge">
-                  <Clock size={10} style={{ marginRight: '2px' }} /> Módulo de Espera
+                  <Clock size={10} style={{ marginRight: '2px' }} /> MÃ³dulo de Espera
                 </div>
                 <div className="radar-container">
                   <div className="radar-circle" />
                   <div className="radar-glow" />
                   <Search size={28} color="var(--gold-primary)" style={{ position: 'relative', zIndex: 2 }} />
                 </div>
-                <h3 style={{ color: 'white', fontWeight: '800', fontSize: '18px' }}>Escaneando Pacientes</h3>
+                <h3 style={{ color: '#111111', fontWeight: '800', fontSize: '18px' }}>Escaneando Pacientes</h3>
                 <p style={{ fontSize: '13px', color: 'var(--text-secondary)', marginTop: '8px', maxWidth: '280px', lineHeight: '1.5' }}>
-                  Ingresa la cédula o nombre en el buscador para cargar la ficha y comenzar la atención.
+                  Ingresa la cÃ©dula o nombre en el buscador para cargar la ficha y comenzar la atenciÃ³n.
                 </p>
               </div>
             ) : selectedServices.length === 0 && selectedProducts.length === 0 && selectedExtras.length === 0 ? (
               <>
                 <ToothIcon size={48} color="rgba(255, 255, 255,0.2)" style={{ marginBottom: '20px' }} />
-                <h3 style={{ color: 'var(--text-secondary)' }}>Añade productos o servicios</h3>
+                <h3 style={{ color: 'var(--text-secondary)' }}>AÃ±ade productos o servicios</h3>
                 <p style={{ fontSize: '13px', color: 'var(--text-muted)', marginTop: '8px' }}>Selecciona lo que el cliente desea adquirir.</p>
               </>
             ) : (
@@ -1246,12 +1246,12 @@ const ReceptionModule = ({ isMobile, rates }) => {
                 <CheckCircle2 size={56} color="var(--gold-primary)" style={{ marginBottom: '24px' }} />
                 <h3 style={{ fontSize: '24px', marginBottom: '8px' }}>Todo Listo</h3>
                 <p style={{ color: 'var(--text-secondary)', marginBottom: '24px', fontSize: '14px' }}>
-                  Confirmación para <span style={{ color: 'white', fontWeight: '800' }}>{selectedClient.name}</span>
+                  ConfirmaciÃ³n para <span style={{ color: '#111111', fontWeight: '800' }}>{selectedClient.name}</span>
                 </p>
 
                 {/* Detailed Summary for Confirmation */}
                 <div style={{ backgroundColor: 'rgba(0, 0, 0, 0.04)', borderRadius: '20px', padding: '20px', marginBottom: '32px', textAlign: 'left', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
-                  <div style={{ fontSize: '10px', fontWeight: '900', color: 'var(--gold-primary)', letterSpacing: '1px', marginBottom: '12px', textTransform: 'uppercase' }}>Resumen de Atención</div>
+                  <div style={{ fontSize: '10px', fontWeight: '900', color: 'var(--gold-primary)', letterSpacing: '1px', marginBottom: '12px', textTransform: 'uppercase' }}>Resumen de AtenciÃ³n</div>
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
                     {selectedServices.map(s => (
                       <div key={s.id}>
@@ -1298,7 +1298,7 @@ const ReceptionModule = ({ isMobile, rates }) => {
                     ))}
                     <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginTop: '6px', paddingTop: '10px', borderTop: '1px solid rgba(0, 0, 0, 0.08)' }}>
                       <Users size={14} color="var(--text-muted)" />
-                      <span style={{ fontSize: '13px', color: 'var(--text-muted)' }}>Asignado: <span style={{ color: 'white', fontWeight: '700' }}>{staff.find(s => s.id === formData.staffId)?.name || 'No seleccionado'}</span></span>
+                      <span style={{ fontSize: '13px', color: 'var(--text-muted)' }}>Asignado: <span style={{ color: '#111111', fontWeight: '700' }}>{staff.find(s => s.id === formData.staffId)?.name || 'No seleccionado'}</span></span>
                     </div>
                   </div>
                 </div>
@@ -1324,16 +1324,16 @@ const ReceptionModule = ({ isMobile, rates }) => {
                       
                       {activeAppointments.some(a => a.staff_id === formData.staffId) && (
                         <p style={{ fontSize: '11px', color: '#ff453a', fontWeight: '700', marginTop: '-4px' }}>
-                          Usa "Agendar para después" para poner al cliente en cola.
+                          Usa "Agendar para despuÃ©s" para poner al cliente en cola.
                         </p>
                       )}
 
                       <button 
                         disabled={loading}
                         onClick={handleScheduleClick}
-                        style={{ background: 'none', border: '1px solid var(--border-color)', color: 'white', height: '56px', borderRadius: '18px', fontWeight: '700', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px' }}
+                        style={{ background: 'none', border: '1px solid var(--border-color)', color: '#111111', height: '56px', borderRadius: '18px', fontWeight: '700', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px' }}
                       >
-                        <Calendar size={18} /> AGENDAR PARA DESPUÉS
+                        <Calendar size={18} /> AGENDAR PARA DESPUÃ‰S
                       </button>
                     </>
                   ) : (
@@ -1407,7 +1407,7 @@ const ReceptionModule = ({ isMobile, rates }) => {
         rates={{ usd: exchangeRate }}
         mode="multiple"
         initialSelection={selectedProducts}
-        title="Productos y Cortesías"
+        title="Productos y CortesÃ­as"
         subtitle="Selecciona productos o insumos para agregarlos a la orden"
         onConfirm={applyProductSelection}
       />
@@ -1706,7 +1706,7 @@ const SelectionModal = ({ isOpen, onClose, title, icon, items, selectedItems, on
             {icon}
             <h3 style={{ fontSize: '20px', fontWeight: '800' }}>{title}</h3>
           </div>
-          <button onClick={onClose} style={{ background: 'rgba(0, 0, 0, 0.04)', border: 'none', borderRadius: '50%', width: '36px', height: '36px', color: 'white', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <button onClick={onClose} style={{ background: 'rgba(0, 0, 0, 0.04)', border: 'none', borderRadius: '50%', width: '36px', height: '36px', color: '#111111', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
             <X size={20} />
           </button>
         </div>
@@ -1770,7 +1770,7 @@ const SelectionModal = ({ isOpen, onClose, title, icon, items, selectedItems, on
                   </div>
                   
                   <div style={{ flex: 1, minWidth: 0 }}>
-                    {type === 'product' && <div style={{ color: String(item.inventory_type).toLowerCase() === 'cafe' ? '#ff9f0a' : '#30d158', fontWeight: '850', fontSize: '9px', textTransform: 'uppercase', letterSpacing: '0.6px', marginBottom: '4px' }}>{getInventorySalesLabel(item)} · {isOutOfStock ? 'Agotado' : `Stock: ${item.stock}`}</div>}
+                    {type === 'product' && <div style={{ color: String(item.inventory_type).toLowerCase() === 'cafe' ? '#ff9f0a' : '#30d158', fontWeight: '850', fontSize: '9px', textTransform: 'uppercase', letterSpacing: '0.6px', marginBottom: '4px' }}>{getInventorySalesLabel(item)} Â· {isOutOfStock ? 'Agotado' : `Stock: ${item.stock}`}</div>}
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                       <div style={{ fontSize: '14px', fontWeight: '750', color: isSelected ? 'var(--gold-primary)' : 'white', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{item.name}</div>
                       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', marginLeft: '10px' }}>
@@ -1829,3 +1829,4 @@ const SelectionModal = ({ isOpen, onClose, title, icon, items, selectedItems, on
 };
 
 export default ReceptionModule;
+

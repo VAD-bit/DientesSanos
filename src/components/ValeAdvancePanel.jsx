@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { 
   Banknote, 
   Coins, 
@@ -20,7 +20,7 @@ const ICON_METHODS = [
   { name: 'Zelle', key: 'zelle', currency: 'USD', icon: Landmark },
   { name: 'Zinli', key: 'zinli', currency: 'USD', icon: CreditCard },
   { name: 'Binance / USDT', key: 'binance', currency: 'USD', icon: Coins },
-  { name: 'Pago Móvil', key: 'pago_movil', currency: 'Bs', icon: Smartphone },
+  { name: 'Pago MÃ³vil', key: 'pago_movil', currency: 'Bs', icon: Smartphone },
   { name: 'Punto de venta', key: 'punto_venta', currency: 'Bs', icon: CreditCard },
   { name: 'Efectivo (Bs)', key: 'cash_bs', currency: 'Bs', icon: Banknote }
 ];
@@ -59,7 +59,7 @@ export default function ValeAdvancePanel({ modal, setModal, balances, rate, acti
       display: 'flex',
       flexDirection: 'column',
       gap: '18px',
-      color: 'white'
+      color: '#111111'
     }}>
       {/* Header */}
       <header style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '16px' }}>
@@ -68,7 +68,7 @@ export default function ValeAdvancePanel({ modal, setModal, balances, rate, acti
             <Banknote color="var(--gold-primary)" size={24} /> Registrar Vale / Adelanto
           </h2>
           <p style={{ margin: '4px 0 0', color: 'var(--text-secondary)', fontSize: '12px' }}>
-            El monto se registrará como egreso y se descontará automáticamente en su próximo pago de nómina.
+            El monto se registrarÃ¡ como egreso y se descontarÃ¡ automÃ¡ticamente en su prÃ³ximo pago de nÃ³mina.
           </p>
         </div>
         <button 
@@ -127,7 +127,7 @@ export default function ValeAdvancePanel({ modal, setModal, balances, rate, acti
                 )}
               </div>
               <div style={{ minWidth: 0 }}>
-                <div style={{ fontWeight: '850', fontSize: '15px', color: 'white', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                <div style={{ fontWeight: '850', fontSize: '15px', color: '#111111', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                   {modal.staff?.name}
                 </div>
                 <div style={{ fontSize: '10.5px', color: 'var(--gold-primary)', fontWeight: '800', textTransform: 'uppercase', letterSpacing: '0.4px', marginTop: '1px' }}>
@@ -150,7 +150,7 @@ export default function ValeAdvancePanel({ modal, setModal, balances, rate, acti
           {!mixed && (
             <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
               <label style={{ fontSize: '11px', fontWeight: '800', textTransform: 'uppercase', letterSpacing: '0.5px', color: 'var(--text-secondary)' }}>
-                Monto a entregar ({currency === 'USD' ? 'USD $' : 'Bolívares Bs.'}) *
+                Monto a entregar ({currency === 'USD' ? 'USD $' : 'BolÃ­vares Bs.'}) *
               </label>
               <div style={{ position: 'relative' }}>
                 <span style={{ position: 'absolute', left: '16px', top: '50%', transform: 'translateY(-50%)', fontSize: '20px', fontWeight: '900', color: 'var(--gold-primary)' }}>
@@ -170,7 +170,7 @@ export default function ValeAdvancePanel({ modal, setModal, balances, rate, acti
                     borderRadius: '14px',
                     border: '1.5px solid rgba(17, 17, 17,0.4)',
                     background: 'var(--bg-secondary)',
-                    color: 'white',
+                    color: '#111111',
                     fontSize: '22px',
                     fontWeight: '900',
                     outline: 'none',
@@ -179,7 +179,7 @@ export default function ValeAdvancePanel({ modal, setModal, balances, rate, acti
                 />
               </div>
 
-              {/* Botones de Monto Rápido */}
+              {/* Botones de Monto RÃ¡pido */}
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginTop: '2px', alignItems: 'center' }}>
                 {(currency === 'USD' ? [5, 10, 20, 50] : [500, 1000, 2000, 5000]).map(v => (
                   <button 
@@ -191,7 +191,7 @@ export default function ValeAdvancePanel({ modal, setModal, balances, rate, acti
                       borderRadius: '10px',
                       background: 'rgba(0, 0, 0, 0.04)',
                       border: '1px solid rgba(0, 0, 0, 0.08)',
-                      color: 'white',
+                      color: '#111111',
                       fontSize: '11.5px',
                       fontWeight: '800',
                       cursor: 'pointer',
@@ -241,7 +241,7 @@ export default function ValeAdvancePanel({ modal, setModal, balances, rate, acti
                 borderRadius: '12px', 
                 border: '1px solid rgba(0, 0, 0, 0.08)', 
                 background: 'var(--bg-secondary)', 
-                color: 'white', 
+                color: '#111111', 
                 fontFamily: 'inherit',
                 fontSize: '12.5px',
                 resize: 'vertical',
@@ -251,12 +251,12 @@ export default function ValeAdvancePanel({ modal, setModal, balances, rate, acti
           </div>
         </div>
 
-        {/* Columna Derecha: Métodos de Pago + Impacto Financiero */}
+        {/* Columna Derecha: MÃ©todos de Pago + Impacto Financiero */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-          {/* Selector de Cuentas / Métodos */}
+          {/* Selector de Cuentas / MÃ©todos */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
             <label style={{ fontSize: '11px', fontWeight: '800', textTransform: 'uppercase', letterSpacing: '0.5px', color: 'var(--text-secondary)' }}>
-              Cuenta de origen / Método de pago
+              Cuenta de origen / MÃ©todo de pago
             </label>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: '8px' }}>
               {[...VALE_METHODS, { name: 'Mixto', icon: Layers3, key: 'mixto' }].map(method => {
@@ -310,11 +310,11 @@ export default function ValeAdvancePanel({ modal, setModal, balances, rate, acti
             </div>
           </div>
 
-          {/* Si es Mixto: distribución manual */}
+          {/* Si es Mixto: distribuciÃ³n manual */}
           {mixed && (
             <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', padding: '12px', borderRadius: '14px', background: 'var(--bg-secondary)', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
               <span style={{ fontSize: '10.5px', fontWeight: '800', color: 'var(--gold-primary)', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
-                Distribución por cuenta:
+                DistribuciÃ³n por cuenta:
               </span>
               <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '6px', maxHeight: '180px', overflowY: 'auto' }}>
                 {VALE_METHODS.map(method => {
@@ -322,7 +322,7 @@ export default function ValeAdvancePanel({ modal, setModal, balances, rate, acti
                   return (
                     <label key={method.name} style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) 110px', alignItems: 'center', gap: '8px', padding: '6px 10px', borderRadius: '8px', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', fontSize: '11px' }}>
                       <div style={{ minWidth: 0 }}>
-                        <span style={{ fontWeight: '750', color: 'white', display: 'block', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{method.name}</span>
+                        <span style={{ fontWeight: '750', color: '#111111', display: 'block', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{method.name}</span>
                         <small style={{ color: 'var(--text-muted)', fontSize: '9px' }}>Disp: {method.currency === 'USD' ? '$' : ''}{fmt(available)}{method.currency === 'Bs' ? ' Bs' : ''}</small>
                       </div>
                       <div style={{ position: 'relative' }}>
@@ -333,7 +333,7 @@ export default function ValeAdvancePanel({ modal, setModal, balances, rate, acti
                           value={modal.allocations?.[method.name] || ''} 
                           onChange={e => setModal({ ...modal, allocations: { ...(modal.allocations || {}), [method.name]: e.target.value } })} 
                           placeholder="0.00" 
-                          style={{ width: '100%', padding: '6px 24px 6px 8px', borderRadius: '6px', border: '1px solid rgba(0, 0, 0, 0.08)', background: 'var(--bg-secondary)', color: 'white', outline: 'none', fontSize: '12px', fontWeight: '800' }}
+                          style={{ width: '100%', padding: '6px 24px 6px 8px', borderRadius: '6px', border: '1px solid rgba(0, 0, 0, 0.08)', background: 'var(--bg-secondary)', color: '#111111', outline: 'none', fontSize: '12px', fontWeight: '800' }}
                         />
                         <b style={{ position: 'absolute', right: '6px', top: '50%', transform: 'translateY(-50%)', color: 'var(--gold-primary)', fontSize: '10px' }}>
                           {method.currency === 'USD' ? '$' : 'Bs'}
@@ -346,7 +346,7 @@ export default function ValeAdvancePanel({ modal, setModal, balances, rate, acti
             </div>
           )}
 
-          {/* Impacto Financiero Visual (Antes ➔ Después) */}
+          {/* Impacto Financiero Visual (Antes âž” DespuÃ©s) */}
           <div style={{
             padding: '14px 16px',
             borderRadius: '16px',
@@ -358,7 +358,7 @@ export default function ValeAdvancePanel({ modal, setModal, balances, rate, acti
           }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
               <span style={{ fontSize: '10px', fontWeight: '850', textTransform: 'uppercase', letterSpacing: '0.5px', color: 'var(--text-secondary)' }}>
-                Impacto en su próximo pago
+                Impacto en su prÃ³ximo pago
               </span>
               <span style={{ fontSize: '10px', color: 'var(--text-muted)', display: 'flex', alignItems: 'center', gap: '4px' }}>
                 <CalendarDays size={12} color="var(--gold-primary)" /> {new Date().toLocaleDateString('es-VE', { day: '2-digit', month: 'short' })}
@@ -374,7 +374,7 @@ export default function ValeAdvancePanel({ modal, setModal, balances, rate, acti
                 </strong>
               </div>
 
-              {!isMobile && <span style={{ color: 'var(--text-muted)', fontSize: '16px', fontWeight: '900' }}>−</span>}
+              {!isMobile && <span style={{ color: 'var(--text-muted)', fontSize: '16px', fontWeight: '900' }}>âˆ’</span>}
 
               {/* Monto del Vale */}
               <div style={{ background: 'rgba(255,69,58,0.06)', border: '1px solid rgba(255,69,58,0.2)', padding: '8px 10px', borderRadius: '10px' }}>
@@ -398,7 +398,7 @@ export default function ValeAdvancePanel({ modal, setModal, balances, rate, acti
             {resultingBalanceBs < 0 && (
               <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: '#ff9f0a', fontSize: '10.5px', marginTop: '2px', background: 'rgba(255,159,10,0.06)', padding: '6px 10px', borderRadius: '8px', border: '1px solid rgba(255,159,10,0.2)' }}>
                 <AlertCircle size={13} color="#ff9f0a" style={{ flexShrink: 0 }} />
-                <span>El vale supera lo generado; quedará como saldo a recuperar en sus próximos servicios.</span>
+                <span>El vale supera lo generado; quedarÃ¡ como saldo a recuperar en sus prÃ³ximos servicios.</span>
               </div>
             )}
             {accountExceeded && (
@@ -437,9 +437,10 @@ export default function ValeAdvancePanel({ modal, setModal, balances, rate, acti
             transition: 'all 0.2s ease'
           }}
         >
-          <Banknote size={16} /> {loading ? 'Registrando…' : 'Registrar Vale'}
+          <Banknote size={16} /> {loading ? 'Registrandoâ€¦' : 'Registrar Vale'}
         </button>
       </footer>
     </div>
   );
 }
+

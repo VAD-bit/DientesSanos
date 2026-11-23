@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Star, Clock, ChevronRight, Sparkles, Users } from 'lucide-react';
 import ToothIcon from '../../components/icons/ToothIcon';
@@ -61,14 +61,14 @@ export default function Home() {
     try {
       setSubmittingReview(true);
       await publicService.submitStaffReview(selectedBarberForReview.id, newRating, newComment);
-      alert('¡Gracias! Tu reseña ha sido registrada de forma anónima.');
+      alert('Â¡Gracias! Tu reseÃ±a ha sido registrada de forma anÃ³nima.');
       setSelectedBarberForReview(null);
       setNewRating(5);
       setNewComment('');
       await reloadReviews();
     } catch (err) {
       console.error(err);
-      alert('Error al enviar la reseña.');
+      alert('Error al enviar la reseÃ±a.');
     } finally {
       setSubmittingReview(false);
     }
@@ -114,21 +114,21 @@ export default function Home() {
               marginBottom: 24,
             }}>
               <Sparkles size={14} style={{ color: 'var(--champagne)' }} />
-              <span style={{ color: 'var(--champagne)', fontSize: 13, fontWeight: 600 }}>Odontología integral y humana</span>
+              <span style={{ color: 'var(--champagne)', fontSize: 13, fontWeight: 600 }}>OdontologÃ­a integral y humana</span>
             </div>
 
             <h1 style={{ fontSize: 'clamp(3rem, 6vw, 5rem)', fontWeight: 900, lineHeight: 1.05, letterSpacing: -2, marginBottom: 24 }}>
               Tu Sonrisa,<br />
-              <span className="text-gold">Nuestra Pasión</span>
+              <span className="text-gold">Nuestra PasiÃ³n</span>
             </h1>
 
             <p style={{ color: 'var(--text-secondary)', fontSize: 18, lineHeight: 1.6, maxWidth: 440, marginBottom: 32 }}>
-              Prevención, estética y bienestar dental. Reserva tu cita en segundos.
+              PrevenciÃ³n, estÃ©tica y bienestar dental. Reserva tu cita en segundos.
             </p>
 
             <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap', marginBottom: 48 }}>
               <Link to={isLoggedIn ? '/agendar' : '/login'} className="btn-gold" style={{ padding: '14px 28px', fontSize: 15, borderRadius: 'var(--radius-pill)' }}>
-                {isLoggedIn ? 'Agendar Cita' : 'Iniciar Sesión para Agendar'} <ChevronRight size={18} style={{ marginLeft: 4 }} />
+                {isLoggedIn ? 'Agendar Cita' : 'Iniciar SesiÃ³n para Agendar'} <ChevronRight size={18} style={{ marginLeft: 4 }} />
               </Link>
               <a href="#servicios" className="btn-outline" style={{ padding: '14px 28px', fontSize: 15, borderRadius: 'var(--radius-pill)' }}>
                 Ver Servicios
@@ -141,12 +141,12 @@ export default function Home() {
                 <div style={{ color: 'var(--text-muted)', fontSize: 13 }}>Clientes Felices</div>
               </div>
               <div>
-                <div className="text-gold" style={{ fontSize: 32, fontWeight: 900 }}>{googleAvg ? googleAvg.toFixed(1) : '—'}</div>
-                <div style={{ color: 'var(--text-muted)', fontSize: 13 }}>Calificación Google</div>
+                <div className="text-gold" style={{ fontSize: 32, fontWeight: 900 }}>{googleAvg ? googleAvg.toFixed(1) : 'â€”'}</div>
+                <div style={{ color: 'var(--text-muted)', fontSize: 13 }}>CalificaciÃ³n Google</div>
               </div>
               <div>
                 <div className="text-gold" style={{ fontSize: 32, fontWeight: 900 }}>6+</div>
-                <div style={{ color: 'var(--text-muted)', fontSize: 13 }}>Odontólogos expertos</div>
+                <div style={{ color: 'var(--text-muted)', fontSize: 13 }}>OdontÃ³logos expertos</div>
               </div>
             </div>
           </div>
@@ -170,14 +170,14 @@ export default function Home() {
                 top: 0,
                 right: -20,
                 background: 'var(--gold-gradient)',
-                color: '#ffffff',
+                color: '#111111',
                 padding: '8px 16px',
                 borderRadius: 'var(--radius-pill)',
                 fontSize: 13,
                 fontWeight: 800,
                 animation: 'pulse-gold 2s ease-in-out infinite',
               }}>
-                ¡10% OFF cumpleañeros!
+                Â¡10% OFF cumpleaÃ±eros!
               </div>
             </div>
           </div>
@@ -191,7 +191,7 @@ export default function Home() {
             Nuestros <span className="text-gold">Servicios</span>
           </h2>
           <p className="section-subtitle" style={{ marginBottom: 48 }}>
-            Ofrecemos los mejores servicios para que siempre lucas increíble
+            Ofrecemos los mejores servicios para que siempre lucas increÃ­ble
           </p>
 
           {loading ? (
@@ -228,10 +228,10 @@ export default function Home() {
       <section style={{ padding: '80px 16px' }}>
         <div style={{ maxWidth: 1200, margin: '0 auto', textAlign: 'center' }}>
           <h2 className="section-title">
-            Nuestros <span className="text-gold">Odontólogos</span>
+            Nuestros <span className="text-gold">OdontÃ³logos</span>
           </h2>
           <p className="section-subtitle" style={{ marginBottom: 48 }}>
-            Elige tu odontólogo favorito para tu próxima cita
+            Elige tu odontÃ³logo favorito para tu prÃ³xima cita
           </p>
 
           {loading ? (
@@ -274,7 +274,7 @@ export default function Home() {
                       {avgRating && (
                         <div style={{ display: 'inline-flex', alignItems: 'center', gap: 4, marginTop: 8, color: 'var(--gold-primary)', fontSize: 13, fontWeight: '700' }}>
                           <Star size={14} fill="var(--gold-primary)" color="var(--gold-primary)" />
-                          <span>{avgRating} ({barberReviews.length} {barberReviews.length === 1 ? 'reseña' : 'reseñas'})</span>
+                          <span>{avgRating} ({barberReviews.length} {barberReviews.length === 1 ? 'reseÃ±a' : 'reseÃ±as'})</span>
                         </div>
                       )}
                     </div>
@@ -299,7 +299,7 @@ export default function Home() {
                       onMouseEnter={e => { e.currentTarget.style.background = '#e8d4b0'; e.currentTarget.style.color = '#111111'; }}
                       onMouseLeave={e => { e.currentTarget.style.background = '#ffffff'; e.currentTarget.style.color = '#111111'; }}
                     >
-                      <Star size={12} /> Dejar Reseña
+                      <Star size={12} /> Dejar ReseÃ±a
                     </button>
                   </div>
                 );
@@ -316,11 +316,11 @@ export default function Home() {
         textAlign: 'center',
       }}>
         <div style={{ maxWidth: 700, margin: '0 auto' }}>
-          <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 900, color: '#ffffff', marginBottom: 16, letterSpacing: -1 }}>
-            ¿Listo para tu mejor sonrisa?
+          <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 900, color: '#111111', marginBottom: 16, letterSpacing: -1 }}>
+            Â¿Listo para tu mejor sonrisa?
           </h2>
           <p style={{ color: 'rgba(255,255,255,0.85)', fontSize: 18, marginBottom: 32 }}>
-            Reserva ahora y obtén un 10% de descuento en tu primera cita
+            Reserva ahora y obtÃ©n un 10% de descuento en tu primera cita
           </p>
           <Link
             to={isLoggedIn ? '/agendar' : '/login'}
@@ -342,7 +342,7 @@ export default function Home() {
           </Link>
         </div>
       </section>
-      {/* Modal de Reseñas */}
+      {/* Modal de ReseÃ±as */}
       {selectedBarberForReview && (
         <div style={{
           position: 'fixed',
@@ -380,18 +380,18 @@ export default function Home() {
                 justifyContent: 'center'
               }}
             >
-              ✕
+              âœ•
             </button>
 
-            <h3 style={{ fontSize: 20, fontWeight: 900, marginBottom: 8 }}>Dejar Reseña Anónima</h3>
+            <h3 style={{ fontSize: 20, fontWeight: 900, marginBottom: 8 }}>Dejar ReseÃ±a AnÃ³nima</h3>
             <p style={{ color: 'var(--text-muted)', fontSize: 13, marginBottom: 24 }}>
-              Tu opinión ayuda a mejorar nuestro servicio. Reseña para: <strong style={{ color: '#111111' }}>{selectedBarberForReview.name}</strong>.
+              Tu opiniÃ³n ayuda a mejorar nuestro servicio. ReseÃ±a para: <strong style={{ color: '#111111' }}>{selectedBarberForReview.name}</strong>.
             </p>
 
             <form onSubmit={handleReviewSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
               {/* Star Rating Select */}
               <div>
-                <label style={{ display: 'block', fontSize: 11, fontWeight: 900, color: 'var(--text-muted)', marginBottom: 8, letterSpacing: 1 }}>VALORACIÓN</label>
+                <label style={{ display: 'block', fontSize: 11, fontWeight: 900, color: 'var(--text-muted)', marginBottom: 8, letterSpacing: 1 }}>VALORACIÃ“N</label>
                 <div style={{ display: 'flex', gap: 8 }}>
                   {[1, 2, 3, 4, 5].map((star) => (
                     <button
@@ -419,7 +419,7 @@ export default function Home() {
               <div>
                 <label style={{ display: 'block', fontSize: 11, fontWeight: 900, color: 'var(--text-muted)', marginBottom: 8, letterSpacing: 1 }}>COMENTARIO (OPCIONAL)</label>
                 <textarea
-                  placeholder="Escribe tu opinión de forma anónima..."
+                  placeholder="Escribe tu opiniÃ³n de forma anÃ³nima..."
                   value={newComment}
                   onChange={(e) => setNewComment(e.target.value)}
                   style={{
@@ -450,7 +450,7 @@ export default function Home() {
                   cursor: 'pointer'
                 }}
               >
-                {submittingReview ? 'Enviando...' : 'Enviar Reseña'}
+                {submittingReview ? 'Enviando...' : 'Enviar ReseÃ±a'}
               </button>
             </form>
           </div>
@@ -459,3 +459,4 @@ export default function Home() {
     </div>
   );
 }
+
