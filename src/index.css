@@ -2447,7 +2447,7 @@ body.in-booking-flow .whatsapp-float-btn { display: none !important; }
   color: #111827 !important;
 }
 
-.admin-light-theme select option:selected,
+/* option:selected no es estilo estándar en navegadores; se omite para evitar warning */
 .admin-light-theme [role="option"][aria-selected="true"],
 .admin-light-theme .dropdown-item.active,
 .admin-light-theme .menu-item.active {
