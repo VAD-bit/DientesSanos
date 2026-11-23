@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+﻿import React, { useState, useMemo } from 'react';
 import { 
   X, 
   ShoppingBag, 
@@ -112,7 +112,7 @@ export default function ProductHistoryModal({
                   <ShoppingBag size={22} />
                 </div>
                 <div>
-                  <h2 style={{ fontSize: 'clamp(17px, 2vw, 20px)', fontWeight: '950', margin: 0, color: '#fff', letterSpacing: '-0.3px' }}>
+                  <h2 style={{ fontSize: 'clamp(17px, 2vw, 20px)', fontWeight: '950', margin: 0, color: '#111111', letterSpacing: '-0.3px' }}>
                     Historial de Productos Vendidos
                   </h2>
                   <p style={{ margin: '2px 0 0', fontSize: '11.5px', color: 'var(--text-secondary)' }}>
@@ -251,7 +251,7 @@ export default function ProductHistoryModal({
                     borderRadius: '10px', 
                     background: 'var(--bg-secondary)', 
                     border: '1px solid rgba(0, 0, 0, 0.08)', 
-                    color: '#fff', 
+                    color: '#111111', 
                     fontSize: '12.5px', 
                     outline: 'none' 
                   }}
@@ -341,7 +341,7 @@ export default function ProductHistoryModal({
                           {/* Producto */}
                           <td style={{ padding: '12px 18px' }}>
                             <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                              <span style={{ fontWeight: '900', color: '#fff', fontSize: '13px' }}>
+                              <span style={{ fontWeight: '900', color: '#111111', fontSize: '13px' }}>
                                 {formattedName}
                               </span>
                               <span style={{ 

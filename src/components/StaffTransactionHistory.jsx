@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+﻿import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { 
   CalendarRange, 
@@ -119,7 +119,7 @@ const DatePicker = ({ value, onChange, placeholder, min }) => {
         <button onClick={() => setView(new Date(year, month - 1, 1))} style={{ background: 'none', border: 'none', color: 'var(--text-secondary)', cursor: 'pointer', padding: '4px', display: 'flex', borderRadius: '8px' }}>
           <ChevronLeft size={18} />
         </button>
-        <span style={{ fontWeight: '800', fontSize: '14px', color: 'white' }}>
+        <span style={{ fontWeight: '800', fontSize: '14px', color: '#111111' }}>
           {MONTH_NAMES[month]} {year}
         </span>
         <button onClick={() => setView(new Date(year, month + 1, 1))} style={{ background: 'none', border: 'none', color: 'var(--text-secondary)', cursor: 'pointer', padding: '4px', display: 'flex', borderRadius: '8px' }}>
@@ -500,7 +500,7 @@ const StaffTransactionHistory = ({ staffMember, rates, isMobile }) => {
             <div className="staff-history-metric-label" style={{ display: 'flex', gap: '8px', alignItems: 'center', color: 'var(--text-secondary)', fontSize: '11px', fontWeight: '850', textTransform: 'uppercase' }}>
               {card.icon} {card.label}
             </div>
-            <div className="staff-history-metric-value" style={{ marginTop: '10px', fontSize: '23px', fontWeight: '950', color: 'white' }}>
+            <div className="staff-history-metric-value" style={{ marginTop: '10px', fontSize: '23px', fontWeight: '950', color: '#111111' }}>
               {card.count !== undefined ? card.count : `${formatBs(card.valueBs)} Bs.`}
             </div>
             {card.count === undefined && (
@@ -586,7 +586,7 @@ const StaffTransactionHistory = ({ staffMember, rates, isMobile }) => {
                     </div>
                   </div>
                   <div className="staff-history-transaction-main">
-                    <div className="client" style={{ color: 'white', fontWeight: '900', fontSize: '14px' }}>{clientName}</div>
+                    <div className="client" style={{ color: '#111111', fontWeight: '900', fontSize: '14px' }}>{clientName}</div>
                     <div className="service" style={{ marginTop: '3px', color: 'var(--text-secondary)', fontSize: '12px' }}>{serviceName}</div>
                     <div className="method" style={{ marginTop: '4px', color: 'var(--text-muted)', fontSize: '11px', display: 'flex', alignItems: 'center', gap: '6px', flexWrap: 'wrap' }}>
                       <span>{method}</span>
@@ -680,7 +680,7 @@ const StaffTransactionHistory = ({ staffMember, rates, isMobile }) => {
                           </div>
 
                           <div>
-                            <div style={{ fontSize: '14px', fontWeight: '900', color: '#fff' }}>{clientName}</div>
+                            <div style={{ fontSize: '14px', fontWeight: '900', color: '#111111' }}>{clientName}</div>
                             <div style={{ display: 'flex', gap: '10px', fontSize: '11px', color: 'var(--text-muted)', marginTop: '3px', flexWrap: 'wrap' }}>
                               {clientCedula !== 'No registrada' && <span>CI: {clientCedula}</span>}
                               {clientPhone !== 'No registrado' && <span>· Tel: {clientPhone}</span>}
@@ -689,7 +689,7 @@ const StaffTransactionHistory = ({ staffMember, rates, isMobile }) => {
 
                           <div style={{ background: 'var(--bg-secondary)', padding: '10px 12px', borderRadius: '11px', border: '1px solid rgba(0, 0, 0, 0.08)', marginTop: '2px' }}>
                             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                              <span style={{ fontSize: '12.5px', fontWeight: '850', color: '#fff' }}>{serviceName}</span>
+                              <span style={{ fontSize: '12.5px', fontWeight: '850', color: '#111111' }}>{serviceName}</span>
                             </div>
                             {extras.map((extra, idx) => (
                               <div key={idx} style={{ display: 'flex', justifyContent: 'space-between', fontSize: '11px', color: 'var(--text-secondary)', marginTop: '4px' }}>
@@ -726,7 +726,7 @@ const StaffTransactionHistory = ({ staffMember, rates, isMobile }) => {
                           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '12px' }}>
                             <span style={{ color: 'var(--text-muted)' }}>Método de pago</span>
                             <div style={{ display: 'flex', alignItems: 'center', gap: '6px', flexWrap: 'wrap', justifyContent: 'flex-end' }}>
-                              <span style={{ color: '#fff', fontWeight: '850' }}>{method}</span>
+                              <span style={{ color: '#111111', fontWeight: '850' }}>{method}</span>
                               {referenceNo && (
                                 <span style={{ background: 'rgba(17, 17, 17, 0.15)', color: 'var(--gold-primary)', padding: '1px 6px', borderRadius: '5px', fontWeight: '900', fontSize: '10px', border: '1px solid rgba(17, 17, 17, 0.3)' }}>
                                   Ref #{referenceNo}
@@ -769,7 +769,7 @@ const StaffTransactionHistory = ({ staffMember, rates, isMobile }) => {
                               return (
                                 <div key={member.staffId || member.id || index} style={{ padding: '10px 12px', borderRadius: '12px', background: 'var(--bg-secondary)', border: '1px solid rgba(0, 0, 0, 0.08)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '8px' }}>
                                   <div style={{ minWidth: 0 }}>
-                                    <div style={{ fontSize: '11.5px', fontWeight: '850', color: '#fff', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                                    <div style={{ fontSize: '11.5px', fontWeight: '850', color: '#111111', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                                       {member.name || 'Personal'}
                                     </div>
                                     <div style={{ fontSize: '9.5px', color: 'var(--text-muted)' }}>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo, useRef } from 'react';
+﻿import React, { useState, useEffect, useMemo, useRef } from 'react';
 import useDebounce from '../hooks/useDebounce';
 import { createPortal } from 'react-dom';
 import { useNotifs } from '../context/NotificationContext';
@@ -380,7 +380,7 @@ const ClientModule = ({ isMobile, clients, onRefresh, initialClientId }) => {
                   gap: '8px',
                   backgroundColor: 'rgba(0, 0, 0, 0.04)',
                   border: '1px solid rgba(0, 0, 0, 0.08)',
-                  color: 'white',
+                  color: '#111111',
                   cursor: 'pointer',
                   flex: isMobile ? '1 1 45%' : 'none',
                   justifyContent: 'center',
@@ -549,7 +549,7 @@ const ClientModule = ({ isMobile, clients, onRefresh, initialClientId }) => {
               <h3 style={{ 
                 fontSize: '20px', 
                 fontWeight: '800', 
-                color: 'white', 
+                color: '#111111', 
                 marginBottom: '12px',
                 letterSpacing: '-0.5px'
               }}>
@@ -677,7 +677,7 @@ const ClientModule = ({ isMobile, clients, onRefresh, initialClientId }) => {
 
                         <div style={{ flex: 1, minWidth: 0 }}>
                           <div style={{
-                            fontWeight: '800', fontSize: '16px', color: 'white',
+                            fontWeight: '800', fontSize: '16px', color: '#111111',
                             lineHeight: '1.2', marginBottom: '4px'
                           }}>{client.name}</div>
                           <div style={{ fontSize: '11px', color: 'rgba(255,255,255,0.35)', fontWeight: '600' }}>
@@ -779,7 +779,7 @@ const ClientModule = ({ isMobile, clients, onRefresh, initialClientId }) => {
                         className="table-row-hover"
                       >
                         <td style={{ padding: isMobile ? '12px 12px' : '16px 24px' }}>
-                          <div style={{ fontWeight: '700', color: 'white', fontSize: isMobile ? '13px' : '16px' }}>{client.name}</div>
+                          <div style={{ fontWeight: '700', color: '#111111', fontSize: isMobile ? '13px' : '16px' }}>{client.name}</div>
                           {isMobile && client.id_card && <div style={{ fontSize: '11px', color: 'var(--text-secondary)', marginTop: '2px' }}>V-{client.id_card}</div>}
                         </td>
                         {!isMobile && (
@@ -880,7 +880,7 @@ const ClientModule = ({ isMobile, clients, onRefresh, initialClientId }) => {
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                 <MessageCircle size={20} color="var(--gold-primary)" />
-                <h3 style={{ margin: 0, fontSize: '16px', fontWeight: '900', color: 'white' }}>
+                <h3 style={{ margin: 0, fontSize: '16px', fontWeight: '900', color: '#111111' }}>
                   Mensaje de Cumpleaños Predeterminado
                 </h3>
               </div>
@@ -932,7 +932,7 @@ const ClientModule = ({ isMobile, clients, onRefresh, initialClientId }) => {
                   backgroundColor: 'rgba(0, 0, 0, 0.04)',
                   border: '1px solid rgba(0, 0, 0, 0.08)',
                   borderRadius: '12px',
-                  color: 'white',
+                  color: '#111111',
                   fontSize: '13px',
                   fontWeight: '600',
                   outline: 'none',
@@ -977,7 +977,7 @@ const ClientModule = ({ isMobile, clients, onRefresh, initialClientId }) => {
                   padding: '12px',
                   borderRadius: '12px',
                   backgroundColor: 'rgba(0, 0, 0, 0.04)',
-                  color: 'white',
+                  color: '#111111',
                   fontWeight: '700',
                   fontSize: '13px',
                   border: '1px solid rgba(0, 0, 0, 0.08)',
@@ -1044,7 +1044,7 @@ const RouletteModal = ({ isOpen, onClose, onFinish, prizes }) => {
       {(overlayClass, cardClass) => (
     <div className={overlayClass} style={{ position: 'fixed', inset: 0, zIndex: 100000, display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: 'rgba(255, 255, 255, 0.9)', backdropFilter: 'blur(5px)' }}>
       <div className={`glass-card ${cardClass.replace('global-modal-card', '')}`} style={{ padding: '30px', textAlign: 'center', maxWidth: '400px', width: '90%', position: 'relative', background: 'var(--bg-secondary)', border: '1px solid rgba(0, 0, 0, 0.08)', borderRadius: '24px' }}>
-        <button onClick={onClose} disabled={spinning} style={{ position: 'absolute', top: '15px', right: '15px', background: 'none', border: 'none', color: 'white', cursor: spinning ? 'not-allowed' : 'pointer' }}>
+        <button onClick={onClose} disabled={spinning} style={{ position: 'absolute', top: '15px', right: '15px', background: 'none', border: 'none', color: '#111111', cursor: spinning ? 'not-allowed' : 'pointer' }}>
           <X size={24} />
         </button>
         
@@ -1062,7 +1062,7 @@ const RouletteModal = ({ isOpen, onClose, onFinish, prizes }) => {
             transition: 'transform 5s cubic-bezier(0.2, 0.8, 0.2, 1)' 
           }}>
             {prizes.length === 0 ? (
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%', color: 'white' }}>Sin premios</div>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%', color: '#111111' }}>Sin premios</div>
             ) : prizes.map((p, i) => {
               const angle = 360 / prizes.length;
               const skew = 90 - angle;
@@ -1491,7 +1491,7 @@ const ClientDetail = ({ isMobile, client, onBack, onDelete, onUpdate }) => {
               ) : clientCoupons.map(c => (
                 <div key={c.id} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'rgba(0, 0, 0, 0.04)', padding: '12px', borderRadius: '10px', border: c.status === 'UNUSED' ? '1px solid rgba(50, 215, 75, 0.3)' : '1px solid rgba(0, 0, 0, 0.08)' }}>
                   <div>
-                    <div style={{ fontWeight: '800', color: 'white', fontSize: '13px' }}>{c.prize_name}</div>
+                    <div style={{ fontWeight: '800', color: '#111111', fontSize: '13px' }}>{c.prize_name}</div>
                     <div style={{ fontSize: '11px', color: 'var(--text-muted)' }}>{new Date(c.generated_at).toLocaleDateString()}</div>
                   </div>
                   <div style={{ fontSize: '10px', fontWeight: '900', padding: '4px 8px', borderRadius: '6px', color: c.status === 'UNUSED' ? '#32d74b' : 'var(--text-muted)', backgroundColor: c.status === 'UNUSED' ? 'rgba(50,215,75,0.1)' : 'rgba(255,255,255,0.05)' }}>
@@ -1739,7 +1739,7 @@ const ClientDetail = ({ isMobile, client, onBack, onDelete, onUpdate }) => {
                       style={{ 
                         position: 'absolute', top: '8px', right: '8px', 
                         backgroundColor: 'rgba(255, 69, 58, 0.8)', 
-                        border: 'none', borderRadius: '8px', color: 'white', 
+                        border: 'none', borderRadius: '8px', color: '#111111', 
                         padding: '6px', cursor: 'pointer',
                         display: 'flex', alignItems: 'center', justifyContent: 'center',
                         boxShadow: '0 4px 10px rgba(0,0,0,0.3)',
@@ -2131,7 +2131,7 @@ const ClientDetail = ({ isMobile, client, onBack, onDelete, onUpdate }) => {
                       style={{ 
                         position: 'absolute', top: '8px', right: '8px', 
                         backgroundColor: 'rgba(255, 69, 58, 0.8)', 
-                        border: 'none', borderRadius: '8px', color: 'white', 
+                        border: 'none', borderRadius: '8px', color: '#111111', 
                         padding: '6px', cursor: 'pointer',
                         display: 'flex', alignItems: 'center', justifyContent: 'center',
                         boxShadow: '0 4px 10px rgba(0,0,0,0.3)',
@@ -2292,7 +2292,7 @@ const ClientDetail = ({ isMobile, client, onBack, onDelete, onUpdate }) => {
               return (
                 <div key={t.id} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '10px', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', padding: '12px 14px', borderRadius: '12px' }}>
                   <div style={{ minWidth: 0 }}>
-                    <div style={{ fontWeight: '800', color: 'white', fontSize: '13.5px' }}>{t.services?.name || 'Servicio'}</div>
+                    <div style={{ fontWeight: '800', color: '#111111', fontSize: '13.5px' }}>{t.services?.name || 'Servicio'}</div>
                     <div style={{ fontSize: '11.5px', color: 'var(--text-muted)', marginTop: '2px' }}>
                       {when ? new Date(when).toLocaleString('es-VE', { day: 'numeric', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit', hour12: true }) : '—'}
                       {t.staff?.name ? ` · ${t.staff.name}` : ''}
@@ -2417,7 +2417,7 @@ const VisitDetailModal = ({ isOpen, visit, onClose, gallery = [] }) => {
                 <Receipt size={22} color="var(--gold-primary)" />
                 <span>Recibo de <span className="text-gold">Visita</span></span>
               </h3>
-              <button onClick={onClose} style={{ background: 'none', border: 'none', color: 'white', cursor: 'pointer' }}><X size={24} /></button>
+              <button onClick={onClose} style={{ background: 'none', border: 'none', color: '#111111', cursor: 'pointer' }}><X size={24} /></button>
             </div>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
@@ -2425,13 +2425,13 @@ const VisitDetailModal = ({ isOpen, visit, onClose, gallery = [] }) => {
               <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) minmax(0, 1fr)', gap: '20px', paddingBottom: '20px', borderBottom: '1px dashed rgba(0, 0, 0, 0.08)' }}>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
                   <span style={{ fontSize: '10px', fontWeight: '800', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '1px' }}>Fecha y Hora</span>
-                  <span style={{ fontSize: '14px', fontWeight: '800', color: 'white' }}>
+                  <span style={{ fontSize: '14px', fontWeight: '800', color: '#111111' }}>
                     {visit.created_at ? new Date(visit.created_at).toLocaleString('es-VE', { day: 'numeric', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit', hour12: true }) : 'Fecha no registrada'}
                   </span>
                 </div>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
                   <span style={{ fontSize: '10px', fontWeight: '800', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '1px' }}>Odontólogo</span>
-                  <span style={{ fontSize: '14px', fontWeight: '800', color: 'white' }}>{visit.barber_name || 'No especificado'}</span>
+                  <span style={{ fontSize: '14px', fontWeight: '800', color: '#111111' }}>{visit.barber_name || 'No especificado'}</span>
                 </div>
               </div>
 
@@ -2479,7 +2479,7 @@ const VisitDetailModal = ({ isOpen, visit, onClose, gallery = [] }) => {
                   <div style={{ fontSize: '32px', fontWeight: '900', color: 'var(--gold-primary)', lineHeight: '1' }}>${visit.amount}</div>
                 </div>
                 <div style={{ textAlign: 'right' }}>
-                  <div style={{ fontSize: '16px', fontWeight: '800', color: 'white' }}>{totalBs.toLocaleString('es-VE', {minimumFractionDigits: 2, maximumFractionDigits: 2})} Bs.</div>
+                  <div style={{ fontSize: '16px', fontWeight: '800', color: '#111111' }}>{totalBs.toLocaleString('es-VE', {minimumFractionDigits: 2, maximumFractionDigits: 2})} Bs.</div>
                   <div style={{ fontSize: '10px', color: 'var(--text-muted)', fontWeight: '700' }}>TASA: {visit.exchange_rate} Bs.</div>
                 </div>
               </div>
@@ -2507,31 +2507,31 @@ const VisitDetailModal = ({ isOpen, visit, onClose, gallery = [] }) => {
                     {visit.tattoo_data.size && (
                       <div>
                         <span style={{ fontSize: '9px', fontWeight: '800', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Tamaño</span>
-                        <div style={{ fontSize: '13px', fontWeight: '700', color: 'white' }}>{visit.tattoo_data.size}</div>
+                        <div style={{ fontSize: '13px', fontWeight: '700', color: '#111111' }}>{visit.tattoo_data.size}</div>
                       </div>
                     )}
                     {visit.tattoo_data.zone && (
                       <div>
                         <span style={{ fontSize: '9px', fontWeight: '800', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Zona</span>
-                        <div style={{ fontSize: '13px', fontWeight: '700', color: 'white' }}>{visit.tattoo_data.zone}</div>
+                        <div style={{ fontSize: '13px', fontWeight: '700', color: '#111111' }}>{visit.tattoo_data.zone}</div>
                       </div>
                     )}
                     {visit.tattoo_data.style && (
                       <div>
                         <span style={{ fontSize: '9px', fontWeight: '800', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Estilo</span>
-                        <div style={{ fontSize: '13px', fontWeight: '700', color: 'white' }}>{visit.tattoo_data.style}</div>
+                        <div style={{ fontSize: '13px', fontWeight: '700', color: '#111111' }}>{visit.tattoo_data.style}</div>
                       </div>
                     )}
                     {visit.tattoo_data.theme && (
                       <div>
                         <span style={{ fontSize: '9px', fontWeight: '800', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Temática</span>
-                        <div style={{ fontSize: '13px', fontWeight: '700', color: 'white' }}>{visit.tattoo_data.theme}</div>
+                        <div style={{ fontSize: '13px', fontWeight: '700', color: '#111111' }}>{visit.tattoo_data.theme}</div>
                       </div>
                     )}
                     {visit.tattoo_data.has_design !== null && (
                       <div>
                         <span style={{ fontSize: '9px', fontWeight: '800', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Diseño</span>
-                        <div style={{ fontSize: '13px', fontWeight: '700', color: 'white' }}>{visit.tattoo_data.has_design ? 'Trae su propio diseño' : 'Diseño personalizado (+$10)'}</div>
+                        <div style={{ fontSize: '13px', fontWeight: '700', color: '#111111' }}>{visit.tattoo_data.has_design ? 'Trae su propio diseño' : 'Diseño personalizado (+$10)'}</div>
                       </div>
                     )}
                   </div>
@@ -2609,7 +2609,7 @@ const HistoryItem = ({ date, service, price, barber, products, extras, onClick }
     onMouseOut={(e) => { e.currentTarget.style.borderColor = 'transparent'; e.currentTarget.style.transform = 'translateY(0)'; }}
   >
     <div style={{ flex: 1 }}>
-      <div style={{ fontWeight: '700', fontSize: '15px', color: 'white' }}>{service}</div>
+      <div style={{ fontWeight: '700', fontSize: '15px', color: '#111111' }}>{service}</div>
       <div style={{ fontSize: '12px', color: 'var(--text-muted)', marginTop: '2px', display: 'flex', alignItems: 'center', gap: '6px' }}>
         <span>{date}</span>
         {barber && (
@@ -2686,7 +2686,7 @@ const BeforeAfterSlider = ({ photoA, photoB, sliderPos, setSliderPos }) => {
         bottom: 0, 
         left: `${sliderPos}%`, 
         width: '2px', 
-        backgroundColor: 'white',
+        backgroundcolor: '#111111',
         boxShadow: '0 0 10px rgba(0,0,0,0.5)',
         zIndex: 10
       }}>
@@ -2698,7 +2698,7 @@ const BeforeAfterSlider = ({ photoA, photoB, sliderPos, setSliderPos }) => {
           width: '36px',
           height: '36px',
           borderRadius: '50%',
-          backgroundColor: 'white',
+          backgroundcolor: '#111111',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
@@ -2710,7 +2710,7 @@ const BeforeAfterSlider = ({ photoA, photoB, sliderPos, setSliderPos }) => {
       </div>
 
       {/* Labels */}
-      <div style={{ position: 'absolute', top: '12px', left: '12px', backgroundColor: 'var(--bg-secondary)', padding: '4px 10px', borderRadius: '4px', fontSize: '10px', fontWeight: '900', color: 'white', pointerEvents: 'none' }}>ANTES</div>
+      <div style={{ position: 'absolute', top: '12px', left: '12px', backgroundColor: 'var(--bg-secondary)', padding: '4px 10px', borderRadius: '4px', fontSize: '10px', fontWeight: '900', color: '#111111', pointerEvents: 'none' }}>ANTES</div>
       <div style={{ position: 'absolute', top: '12px', right: '12px', backgroundColor: 'rgba(255, 255, 255,0.8)', padding: '4px 10px', borderRadius: '4px', fontSize: '10px', fontWeight: '900', color: 'black', pointerEvents: 'none' }}>DESPUÉS</div>
     </div>
   );

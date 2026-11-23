@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+﻿import React, { useMemo, useState } from 'react';
 import { CircleDollarSign, Landmark, X } from 'lucide-react';
 
 const ACCOUNTS = [
@@ -48,13 +48,13 @@ export default function ReceivablePaymentPanel({ transaction, rate, loading, onC
 
     <label style={{ display: 'block', color: 'var(--gold-primary)', fontSize: 12, fontWeight: 800, marginBottom: 10 }}>CUENTA QUE RECIBE EL PAGO</label>
     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(145px,1fr))', gap: 9, marginBottom: 20 }}>
-      {ACCOUNTS.map(item => { const active = item.key === accountKey; return <button key={item.key} type="button" onClick={() => { setAccountKey(item.key); setReference(''); }} style={{ textAlign: 'left', minHeight: 67, padding: 12, borderRadius: 12, cursor: 'pointer', color: 'white', background: active ? 'rgba(17, 17, 17,.12)' : 'rgba(255,255,255,.025)', border: active ? '1px solid var(--gold-primary)' : '1px solid rgba(0, 0, 0, 0.08)' }}><span style={{ display: 'flex', alignItems: 'center', gap: 7, fontSize: 12, fontWeight: 850 }}><Landmark size={14} />{item.label}</span></button>; })}
+      {ACCOUNTS.map(item => { const active = item.key === accountKey; return <button key={item.key} type="button" onClick={() => { setAccountKey(item.key); setReference(''); }} style={{ textAlign: 'left', minHeight: 67, padding: 12, borderRadius: 12, cursor: 'pointer', color: '#111111', background: active ? 'rgba(17, 17, 17,.12)' : 'rgba(255,255,255,.025)', border: active ? '1px solid var(--gold-primary)' : '1px solid rgba(0, 0, 0, 0.08)' }}><span style={{ display: 'flex', alignItems: 'center', gap: 7, fontSize: 12, fontWeight: 850 }}><Landmark size={14} />{item.label}</span></button>; })}
     </div>
 
     <div style={{ padding: 17, borderRadius: 15, background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', gap: 12, alignItems: 'center' }}><span style={{ color: 'var(--text-secondary)', fontSize: 13 }}>Monto que ingresará</span><strong style={{ color: '#32d74b', fontSize: 21 }}>{money(amountNative, account.currency)}</strong></div>
       {account.currency === 'BS' && <small style={{ display: 'block', textAlign: 'right', color: 'var(--text-muted)', marginTop: 4 }}>Calculado con la tasa actual: {Number(rate || 0).toLocaleString('es-VE', { maximumFractionDigits: 2 })}</small>}
-      {account.reference && <input value={reference} onChange={event => setReference(event.target.value)} placeholder="Referencia del pago" maxLength={40} style={{ width: '100%', boxSizing: 'border-box', marginTop: 14, borderRadius: 12, border: '1px solid rgba(0, 0, 0, 0.08)', background: 'var(--bg-secondary)', color: 'white', padding: '13px 14px', fontSize: 14, outline: 'none' }} />}
+      {account.reference && <input value={reference} onChange={event => setReference(event.target.value)} placeholder="Referencia del pago" maxLength={40} style={{ width: '100%', boxSizing: 'border-box', marginTop: 14, borderRadius: 12, border: '1px solid rgba(0, 0, 0, 0.08)', background: 'var(--bg-secondary)', color: '#111111', padding: '13px 14px', fontSize: 14, outline: 'none' }} />}
     </div>
 
     <footer style={{ display: 'flex', justifyContent: 'flex-end', gap: 11, marginTop: 22 }}><button type="button" disabled={!canSubmit} onClick={() => onSubmit({ account, reference: reference.trim(), amountUsd, amountNative })} className="btn-gold" style={{ padding: '13px 24px', borderRadius: 12, fontWeight: 900, opacity: canSubmit ? 1 : .45, cursor: canSubmit ? 'pointer' : 'not-allowed' }}>{loading ? 'Registrando…' : 'Confirmar pago'}</button></footer>

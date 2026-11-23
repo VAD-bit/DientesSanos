@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
+﻿import React, { useState, useEffect, useMemo } from 'react';
 import { 
   User, 
   Clock, 
@@ -1108,7 +1108,7 @@ const UserProfilePage = ({ staffMember, inventory = [], onUpdate, isMobile }) =>
               {staffMember?.image_url ? (
                 <img src={staffMember.image_url} alt={staffMember.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
               ) : (
-                <div style={{ fontSize: '46px', fontWeight: '950', color: 'white', fontFamily: 'Outfit, var(--font-sans), system-ui', textShadow: '0 0 10px rgba(255,255,255,0.2)' }}>
+                <div style={{ fontSize: '46px', fontWeight: '950', color: '#111111', fontFamily: 'Outfit, var(--font-sans), system-ui', textShadow: '0 0 10px rgba(255,255,255,0.2)' }}>
                   {staffMember?.name ? staffMember.name.charAt(0) : 'A'}
                 </div>
               )}
@@ -1139,7 +1139,7 @@ const UserProfilePage = ({ staffMember, inventory = [], onUpdate, isMobile }) =>
                     <span className="bday-title-text">¡Feliz cumpleaños, {String(staffMember.name || '').trim().split(' ')[0]}!</span>
                   </h2>
                 ) : (
-                  <h2 style={{ fontSize: '32px', fontWeight: '950', color: 'white', letterSpacing: '-0.8px', marginBottom: '8px', fontFamily: 'Outfit, var(--font-sans), system-ui' }}>
+                  <h2 style={{ fontSize: '32px', fontWeight: '950', color: '#111111', letterSpacing: '-0.8px', marginBottom: '8px', fontFamily: 'Outfit, var(--font-sans), system-ui' }}>
                     {staffMember.name}
                   </h2>
                 )}
@@ -1268,7 +1268,7 @@ const UserProfilePage = ({ staffMember, inventory = [], onUpdate, isMobile }) =>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 16, flexWrap: 'wrap' }}>
                 <div>
                   <span style={{ color: 'var(--gold-primary)', fontSize: 11, fontWeight: 900, letterSpacing: .8, textTransform: 'uppercase' }}>Historial de pagos</span>
-                  <h3 style={{ margin: '6px 0 3px', fontSize: isMobile ? 22 : 27, color: 'white' }}>Pagos y vales de nómina</h3>
+                  <h3 style={{ margin: '6px 0 3px', fontSize: isMobile ? 22 : 27, color: '#111111' }}>Pagos y vales de nómina</h3>
                   <span style={{ color: 'var(--text-secondary)', fontSize: 12 }}>Consulta cada pago, abono o adelanto registrado.</span>
                 </div>
                 <button type="button" onClick={() => showPaymentHistory ? handleClosePaymentHistory() : setShowPaymentHistory(true)} className="btn-gold" style={{ padding: '12px 18px', borderRadius: 12, display: 'inline-flex', alignItems: 'center', gap: 8 }}><History size={17} /> {showPaymentHistory ? 'Ocultar historial' : 'Ver historial'}</button>
@@ -1326,7 +1326,7 @@ const UserProfilePage = ({ staffMember, inventory = [], onUpdate, isMobile }) =>
           <div id="profile-portfolio" className="glass-card anim-2 profile-portfolio" style={{ borderRadius: '22px', border: '1px solid rgba(0, 0, 0, 0.08)', padding: isMobile ? '18px' : '22px' }}>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '16px' }}>
               <div>
-                <h3 style={{ fontSize: '16px', fontWeight: '900', color: 'white', margin: 0, letterSpacing: '-0.3px' }}>Portafolio de Trabajos</h3>
+                <h3 style={{ fontSize: '16px', fontWeight: '900', color: '#111111', margin: 0, letterSpacing: '-0.3px' }}>Portafolio de Trabajos</h3>
                 <p style={{ fontSize: '12px', color: 'var(--text-muted)', margin: '4px 0 0' }}>Tus mejores trabajos para que los clientes los vean</p>
               </div>
               <span style={{ fontSize: '11px', color: 'var(--text-muted)', fontWeight: '700' }}>{portfolio.length}/{MAX_PORTFOLIO}</span>
@@ -1342,7 +1342,7 @@ const UserProfilePage = ({ staffMember, inventory = [], onUpdate, isMobile }) =>
                     <img src={photo.image_url} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                     <button
                       onClick={() => removePortfolioPhoto(photo)}
-                      style={{ position: 'absolute', top: '4px', right: '4px', width: '20px', height: '20px', borderRadius: '50%', background: 'rgba(255,69,58,0.9)', border: 'none', color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', fontSize: '10px' }}
+                      style={{ position: 'absolute', top: '4px', right: '4px', width: '20px', height: '20px', borderRadius: '50%', background: 'rgba(255,69,58,0.9)', border: 'none', color: '#111111', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', fontSize: '10px' }}
                     >
                       <X size={10} />
                     </button>
@@ -1369,7 +1369,7 @@ const UserProfilePage = ({ staffMember, inventory = [], onUpdate, isMobile }) =>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '18px' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '9px' }}>
                   <Calendar size={17} color="var(--gold-primary)" />
-                  <h4 style={{ fontSize: '13px', fontWeight: '900', color: 'white', textTransform: 'uppercase', letterSpacing: '0.6px' }}>
+                  <h4 style={{ fontSize: '13px', fontWeight: '900', color: '#111111', textTransform: 'uppercase', letterSpacing: '0.6px' }}>
                     {isAssistant ? 'Servicios asignados hoy' : 'Agenda de hoy'}
                   </h4>
                 </div>
@@ -1390,7 +1390,7 @@ const UserProfilePage = ({ staffMember, inventory = [], onUpdate, isMobile }) =>
                         <span style={{ width: '62px', flexShrink: 0, color: active ? 'var(--gold-primary)' : 'rgba(255,255,255,0.4)', fontSize: '11px', fontWeight: '700' }}>{formatTime(appointment.scheduled_at || appointment.created_at)}</span>
                         <span style={{ width: 7, height: 7, flexShrink: 0, borderRadius: '50%', background: completed ? '#30d158' : active ? 'var(--gold-primary)' : '#555' }} />
                         <div style={{ flex: 1, minWidth: 0 }}>
-                          <div style={{ color: 'white', fontSize: '13px', fontWeight: '750', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{appointment.clients?.name || 'Cliente'}</div>
+                          <div style={{ color: '#111111', fontSize: '13px', fontWeight: '750', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{appointment.clients?.name || 'Cliente'}</div>
                           <div style={{ color: 'rgba(255,255,255,0.35)', fontSize: '11px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{appointment.services?.name || 'Servicio'}</div>
                         </div>
                         <span style={{ flexShrink: 0, padding: '4px 9px', borderRadius: '20px', color: completed ? '#30d158' : active ? 'var(--gold-primary)' : '#888', background: completed ? 'rgba(48,209,88,0.1)' : active ? 'rgba(17, 17, 17,0.1)' : 'rgba(255,255,255,0.05)', fontSize: '10px', fontWeight: '800' }}>{appointment.status}</span>
@@ -1405,7 +1405,7 @@ const UserProfilePage = ({ staffMember, inventory = [], onUpdate, isMobile }) =>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '22px' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '9px' }}>
                   <Target size={17} color="var(--gold-primary)" />
-                  <h4 style={{ fontSize: '13px', fontWeight: '900', color: 'white', textTransform: 'uppercase', letterSpacing: '0.6px' }}>Metas del mes</h4>
+                  <h4 style={{ fontSize: '13px', fontWeight: '900', color: '#111111', textTransform: 'uppercase', letterSpacing: '0.6px' }}>Metas del mes</h4>
                 </div>
                 {!editingGoals ? (
                   <button onClick={openGoalEditor} style={{ border: '1px solid rgba(0, 0, 0, 0.08)', background: 'rgba(0, 0, 0, 0.04)', color: '#999', borderRadius: '8px', padding: '5px 9px', cursor: 'pointer', display: 'flex', gap: '5px', alignItems: 'center', fontSize: '10px', fontWeight: '800' }}><Pencil size={10} /> Editar</button>
@@ -1429,7 +1429,7 @@ const UserProfilePage = ({ staffMember, inventory = [], onUpdate, isMobile }) =>
                     { label: 'Ingresos', value: `$${monthlyStats.income.toFixed(2)} / $${monthlyGoalIncome.toFixed(2)}`, progress: incomeProgress, color: '#30d158' }
                   ].map(goal => (
                     <div key={goal.label}>
-                      <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px', color: '#aaa', fontSize: '12px' }}><span>{goal.label}</span><strong style={{ color: 'white' }}>{goal.value}</strong></div>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px', color: '#aaa', fontSize: '12px' }}><span>{goal.label}</span><strong style={{ color: '#111111' }}>{goal.value}</strong></div>
                       <div style={{ height: 6, borderRadius: 6, overflow: 'hidden', background: 'rgba(0, 0, 0, 0.04)' }}><div style={{ height: '100%', width: `${goal.progress}%`, background: goal.color, borderRadius: 6 }} /></div>
                       <div style={{ marginTop: '5px', textAlign: 'right', color: goal.progress >= 100 ? goal.color : '#555', fontSize: '10px' }}>{goal.progress >= 100 ? '¡Meta alcanzada!' : `${goal.progress}% completado`}</div>
                     </div>
@@ -1447,7 +1447,7 @@ const UserProfilePage = ({ staffMember, inventory = [], onUpdate, isMobile }) =>
               
               <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                 <Activity size={18} color="var(--gold-primary)" />
-                <h4 style={{ fontSize: '15px', fontWeight: '900', color: 'white', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Rendimiento Histórico</h4>
+                <h4 style={{ fontSize: '15px', fontWeight: '900', color: '#111111', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Rendimiento Histórico</h4>
               </div>
 
               {/* Service & Time Stats */}
@@ -1456,13 +1456,13 @@ const UserProfilePage = ({ staffMember, inventory = [], onUpdate, isMobile }) =>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: 'rgba(255,255,255,0.4)', fontSize: '11px', fontWeight: '800', letterSpacing: '0.5px' }}>
                     <Star size={12} color="var(--gold-primary)" /> {isAssistant ? 'LIMPIEZAS' : 'SERVICIOS'}
                   </div>
-                  <div style={{ fontSize: '32px', fontWeight: '950', color: 'white', marginTop: '8px', fontFamily: 'Outfit, var(--font-sans), system-ui' }}>{stats.totalAppointments}</div>
+                  <div style={{ fontSize: '32px', fontWeight: '950', color: '#111111', marginTop: '8px', fontFamily: 'Outfit, var(--font-sans), system-ui' }}>{stats.totalAppointments}</div>
                 </div>
                 <div style={{ padding: '20px', backgroundColor: 'var(--bg-secondary)', borderRadius: '20px', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: 'rgba(255,255,255,0.4)', fontSize: '11px', fontWeight: '800', letterSpacing: '0.5px' }}>
                     <Clock size={12} color="var(--gold-primary)" /> TIEMPO PROMEDIO
                   </div>
-                  <div style={{ fontSize: '32px', fontWeight: '950', color: 'white', marginTop: '8px', fontFamily: 'Outfit, var(--font-sans), system-ui' }}>
+                  <div style={{ fontSize: '32px', fontWeight: '950', color: '#111111', marginTop: '8px', fontFamily: 'Outfit, var(--font-sans), system-ui' }}>
                     {stats.avgDurationMin} <span style={{ fontSize: '14px', color: 'rgba(255,255,255,0.4)', fontWeight: '800' }}>min</span>
                   </div>
                 </div>
@@ -1478,7 +1478,7 @@ const UserProfilePage = ({ staffMember, inventory = [], onUpdate, isMobile }) =>
                     stats.topServices.map((srv, idx) => (
                       <div key={idx} className="rank-row" style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
                         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '13px' }}>
-                          <span style={{ fontWeight: '750', color: 'white' }}>{srv.service_name}</span>
+                          <span style={{ fontWeight: '750', color: '#111111' }}>{srv.service_name}</span>
                           <span style={{ fontWeight: '900', color: 'var(--gold-primary)', backgroundColor: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', padding: '3px 8px', borderRadius: '8px', fontSize: '10px' }}>{srv.count} veces</span>
                         </div>
                         <div style={{ height: '5px', backgroundColor: 'rgba(0, 0, 0, 0.04)', borderRadius: '3px', overflow: 'hidden' }}>
@@ -1502,7 +1502,7 @@ const UserProfilePage = ({ staffMember, inventory = [], onUpdate, isMobile }) =>
               <div style={{ display: 'flex', flexDirection: isMobile ? 'column' : 'row', justifyContent: 'space-between', alignItems: isMobile ? 'stretch' : 'center', gap: isMobile ? '14px' : 0 }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                   <Wrench size={18} color="var(--gold-primary)" style={{ flexShrink: 0 }} />
-                  <h4 style={{ fontSize: '15px', fontWeight: '900', color: 'white', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Inventario Personal</h4>
+                  <h4 style={{ fontSize: '15px', fontWeight: '900', color: '#111111', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Inventario Personal</h4>
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px', width: isMobile ? '100%' : 'auto' }}>
                 <button
@@ -1511,7 +1511,7 @@ const UserProfilePage = ({ staffMember, inventory = [], onUpdate, isMobile }) =>
                     backgroundColor: 'rgba(0, 0, 0, 0.04)',
                     border: '1px solid rgba(0, 0, 0, 0.08)',
                     borderRadius: '10px',
-                    color: 'white',
+                    color: '#111111',
                     padding: '9px 11px',
                     fontSize: '11px',
                     fontWeight: '800',
@@ -1775,7 +1775,7 @@ const UserProfilePage = ({ staffMember, inventory = [], onUpdate, isMobile }) =>
                           ? <Package size={16} color="var(--gold-primary)" />
                           : <Wrench size={16} color="var(--gold-primary)" />}
                         <div>
-                        <div style={{ fontWeight: '800', fontSize: '13px', color: 'white' }}>
+                        <div style={{ fontWeight: '800', fontSize: '13px', color: '#111111' }}>
                           {tool.name} <span style={{ color: 'var(--gold-primary)', fontSize: '11px' }}>× {tool.quantity || 1}</span>
                         </div>
                         <div style={{ fontSize: '11px', color: 'rgba(255,255,255,0.4)', marginTop: '4px' }}>

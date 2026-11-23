@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import { Search, Plus, Ticket, Users, Check, Trash2, Pencil, Loader2, Gift, MessageCircle, X } from 'lucide-react';
 import { dataService } from '../services/dataService';
 import { SkeletonList } from './Skeleton';
@@ -36,7 +36,7 @@ const PrizeRow = ({ prize, idx, onRemove, onUpdate }) => {
             onBlur={handleSave}
             onKeyDown={e => e.key === 'Enter' && handleSave()}
             autoFocus
-            style={{ flex: 1, background: 'rgba(0, 0, 0, 0.04)', border: '1px solid var(--gold-primary)', color: 'white', borderRadius: '8px', padding: '8px 12px', fontSize: '15px', outline: 'none' }}
+            style={{ flex: 1, background: 'rgba(0, 0, 0, 0.04)', border: '1px solid var(--gold-primary)', color: '#111111', borderRadius: '8px', padding: '8px 12px', fontSize: '15px', outline: 'none' }}
           />
         ) : (
           <div 
@@ -44,7 +44,7 @@ const PrizeRow = ({ prize, idx, onRemove, onUpdate }) => {
             style={{ flex: 1, padding: '8px 0', border: '1px solid transparent', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '8px' }}
             title="Haz clic para editar"
           >
-            <span style={{ fontSize: '15px', fontWeight: '600', color: 'white' }}>
+            <span style={{ fontSize: '15px', fontWeight: '600', color: '#111111' }}>
               {prize.name?.replace('ROULETTE_PRIZE:', '')}
             </span>
             <span style={{ fontSize: '11px', fontWeight: '500', color: 'rgba(255,255,255,0.3)' }}>
@@ -411,7 +411,7 @@ const SettingsModule = ({ isMobile, clients, onRefresh }) => {
       ) : (
         <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
           <div>
-            <h4 style={{ color: 'white', fontSize: '18px', fontWeight: '700', marginBottom: '16px' }}>Plantillas de Cupones (Para Asignar)</h4>
+            <h4 style={{ color: '#111111', fontSize: '18px', fontWeight: '700', marginBottom: '16px' }}>Plantillas de Cupones (Para Asignar)</h4>
             <div className="animate-slide-up" style={{ background: 'var(--bg-secondary)', padding: '0', borderRadius: '24px', overflow: 'hidden', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
               <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', tableLayout: 'auto' }}>
                 <thead>
@@ -436,7 +436,7 @@ const SettingsModule = ({ isMobile, clients, onRefresh }) => {
                           {coupon.id?.substring(0, 8).toUpperCase()}
                         </div>
                       </td>
-                      <td style={{ padding: isMobile ? '12px' : '16px 24px', fontSize: isMobile ? '12px' : '14px', color: 'white', fontWeight: '600' }}>
+                      <td style={{ padding: isMobile ? '12px' : '16px 24px', fontSize: isMobile ? '12px' : '14px', color: '#111111', fontWeight: '600' }}>
                         <button 
                           onClick={() => { setAssignCouponId(coupon.id); setShowAssignModal(true); }}
                           style={{ background: 'var(--gold-primary)', color: 'black', border: 'none', padding: '6px 12px', borderRadius: '4px', fontSize: '11px', fontWeight: '800', cursor: 'pointer' }}
@@ -449,7 +449,7 @@ const SettingsModule = ({ isMobile, clients, onRefresh }) => {
                       </td>
                       <td style={{ padding: isMobile ? '12px' : '16px 24px', textAlign: 'right' }}>
                         <div style={{ display: 'flex', gap: '8px', justifyContent: 'flex-end' }}>
-                          <button onClick={() => openEditModal(coupon)} style={{ background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', padding: '6px', borderRadius: '6px', color: 'white', cursor: 'pointer' }} title="Editar">
+                          <button onClick={() => openEditModal(coupon)} style={{ background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', padding: '6px', borderRadius: '6px', color: '#111111', cursor: 'pointer' }} title="Editar">
                             <Pencil size={14} />
                           </button>
                           <button onClick={() => handleDeleteCoupon(coupon.id)} style={{ background: 'rgba(255,69,58,0.1)', border: '1px solid rgba(255,69,58,0.2)', padding: '6px', borderRadius: '6px', color: '#ff453a', cursor: 'pointer' }} title="Eliminar">
@@ -465,7 +465,7 @@ const SettingsModule = ({ isMobile, clients, onRefresh }) => {
           </div>
 
           <div>
-            <h4 style={{ color: 'white', fontSize: '18px', fontWeight: '700', marginBottom: '16px' }}>Cupones Asignados a Pacientes</h4>
+            <h4 style={{ color: '#111111', fontSize: '18px', fontWeight: '700', marginBottom: '16px' }}>Cupones Asignados a Pacientes</h4>
             <div className="animate-slide-up" style={{ background: 'var(--bg-secondary)', padding: '0', borderRadius: '24px', overflow: 'hidden', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
               <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', tableLayout: 'auto' }}>
                 <thead>
@@ -493,7 +493,7 @@ const SettingsModule = ({ isMobile, clients, onRefresh }) => {
                           {new Date(coupon.generated_at).toLocaleDateString()}
                         </div>
                       </td>
-                      <td style={{ padding: isMobile ? '12px' : '16px 24px', fontSize: isMobile ? '12px' : '14px', color: 'white', fontWeight: '600' }}>
+                      <td style={{ padding: isMobile ? '12px' : '16px 24px', fontSize: isMobile ? '12px' : '14px', color: '#111111', fontWeight: '600' }}>
                         {coupon.clients?.name || 'Cliente Eliminado'}
                       </td>
                       <td style={{ padding: isMobile ? '12px' : '16px 24px', fontSize: isMobile ? '12px' : '14px', color: 'var(--text-secondary)' }}>
@@ -592,7 +592,7 @@ const SettingsModule = ({ isMobile, clients, onRefresh }) => {
             </p>
 
             <div style={{ marginBottom: '24px' }}>
-              <label style={{ display: 'block', fontSize: '14px', fontWeight: '600', color: 'white', marginBottom: '8px' }}>Número de WhatsApp de la Clínica</label>
+              <label style={{ display: 'block', fontSize: '14px', fontWeight: '600', color: '#111111', marginBottom: '8px' }}>Número de WhatsApp de la Clínica</label>
               <p style={{ color: 'var(--text-muted)', fontSize: '12px', marginBottom: '8px' }}>
                 Incluye el código del país sin el símbolo +. Ejemplo: 584129206984
               </p>
@@ -607,7 +607,7 @@ const SettingsModule = ({ isMobile, clients, onRefresh }) => {
             </div>
 
             <div style={{ marginBottom: '24px' }}>
-              <label style={{ display: 'block', fontSize: '14px', fontWeight: '600', color: 'white', marginBottom: '8px' }}>Recordatorio de Recurrencia</label>
+              <label style={{ display: 'block', fontSize: '14px', fontWeight: '600', color: '#111111', marginBottom: '8px' }}>Recordatorio de Recurrencia</label>
               <textarea 
                 className="form-input" 
                 rows={6}
@@ -618,12 +618,12 @@ const SettingsModule = ({ isMobile, clients, onRefresh }) => {
             </div>
 
             <div style={{ marginBottom: '32px' }}>
-              <label style={{ display: 'block', fontSize: '14px', fontWeight: '600', color: 'white', marginBottom: '8px' }}>Mensaje después del cobro</label>
+              <label style={{ display: 'block', fontSize: '14px', fontWeight: '600', color: '#111111', marginBottom: '8px' }}>Mensaje después del cobro</label>
               <textarea className="form-input" rows={6} value={whatsappSettings.thankYou} onChange={(e) => setWhatsappSettings({...whatsappSettings, thankYou: e.target.value})} style={{ width: '100%', resize: 'vertical' }} />
             </div>
 
             <div style={{ marginBottom: '32px' }}>
-              <label style={{ display: 'block', fontSize: '14px', fontWeight: '600', color: 'white', marginBottom: '8px' }}>Felicitación de Cumpleaños</label>
+              <label style={{ display: 'block', fontSize: '14px', fontWeight: '600', color: '#111111', marginBottom: '8px' }}>Felicitación de Cumpleaños</label>
               <textarea 
                 className="form-input" 
                 rows={6}
@@ -755,7 +755,7 @@ const SettingsModule = ({ isMobile, clients, onRefresh }) => {
                   border: '1px solid rgba(0, 0, 0, 0.08)',
                   borderRadius: '12px',
                   padding: '12px 12px 12px 40px',
-                  color: 'white',
+                  color: '#111111',
                   fontSize: '14px'
                 }}
               />

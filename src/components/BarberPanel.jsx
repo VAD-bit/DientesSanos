@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, useRef } from 'react';
+﻿import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { useModal } from '../context/ModalContext';
 import { 
@@ -1005,7 +1005,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
                   )}
                 </div>
                 <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '4px', width: '100%' }}>
-                  <span style={{ fontWeight: '800', fontSize: '16px', color: 'white' }}>{s.name}</span>
+                  <span style={{ fontWeight: '800', fontSize: '16px', color: '#111111' }}>{s.name}</span>
                   <span style={{ 
                     fontSize: '9.5px', 
                     fontWeight: '700', 
@@ -1251,7 +1251,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
                 marginLeft: 'auto', 
                 fontSize: '12px', 
                 fontWeight: '900', 
-                color: 'white', 
+                color: '#111111', 
                 background: 'rgba(0,122,255,0.15)', 
                 padding: '4px 12px', 
                 borderRadius: '20px',
@@ -1292,7 +1292,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
                         <span style={{ fontSize: '10px', fontWeight: '900', color: '#007aff', textTransform: 'uppercase', letterSpacing: '1px' }}>Listo en Profilaxis</span>
                         <h3 style={{ fontSize: '20px', fontWeight: '900', marginTop: '4px' }}>{app.clients?.name}</h3>
                         <div style={{ color: 'var(--text-secondary)', fontSize: '14px', marginTop: '4px' }}>
-                                                         Odontólogo: <span style={{ color: 'white', fontWeight: '700' }}>{app.staff?.name || 'Otro'}</span> · Servicio: <span style={{ color: 'var(--gold-primary)', fontWeight: '700' }}>{app.services?.name}</span>
+                                                         Odontólogo: <span style={{ color: '#111111', fontWeight: '700' }}>{app.staff?.name || 'Otro'}</span> · Servicio: <span style={{ color: 'var(--gold-primary)', fontWeight: '700' }}>{app.services?.name}</span>
                         </div>
                         {app.services?.included_items && app.services.included_items.length > 0 && (
                           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', marginTop: '8px' }}>
@@ -1325,7 +1325,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
                                     defaultValue={ex.price}
                                     onBlur={(e) => handleUpdateExtraPrice(ex.id, e.target.value)}
                                     onKeyDown={(e) => e.key === 'Enter' && handleUpdateExtraPrice(ex.id, e.target.value)}
-                                    style={{ width: '60px', height: '24px', background: 'var(--bg-secondary)', border: '1px solid var(--gold-primary)', borderRadius: '4px', color: 'white', paddingLeft: '14px', fontSize: '12px', fontWeight: '800', textAlign: 'right' }}
+                                    style={{ width: '60px', height: '24px', background: 'var(--bg-secondary)', border: '1px solid var(--gold-primary)', borderRadius: '4px', color: '#111111', paddingLeft: '14px', fontSize: '12px', fontWeight: '800', textAlign: 'right' }}
                                   />
                                 </div>
                               ) : (
@@ -1367,13 +1367,13 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
                     <div style={{ display: 'flex', gap: '10px', marginBottom: '24px' }}>
                       <button 
                         onClick={() => { setActiveAppId(app.id); setAddMode('extra'); setShowAddModal(true); }}
-                        style={{ flex: 1, padding: '12px', borderRadius: '12px', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', color: 'white', fontSize: '11px', fontWeight: '700', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px' }}
+                        style={{ flex: 1, padding: '12px', borderRadius: '12px', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', color: '#111111', fontSize: '11px', fontWeight: '700', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px' }}
                       >
                         <Plus size={14} color="var(--gold-primary)" /> Extra
                       </button>
                       <button 
                         onClick={() => { setActiveAppId(app.id); setAddMode('product'); setShowAddModal(true); }}
-                        style={{ flex: 1, padding: '12px', borderRadius: '12px', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', color: 'white', fontSize: '11px', fontWeight: '700', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px' }}
+                        style={{ flex: 1, padding: '12px', borderRadius: '12px', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', color: '#111111', fontSize: '11px', fontWeight: '700', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px' }}
                       >
                         <ShoppingBag size={14} color="var(--gold-primary)" /> Producto
                       </button>
@@ -1419,7 +1419,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
                           cursor: 'pointer',
                           background: 'linear-gradient(135deg, #007aff, #00d2ff)',
                           border: 'none',
-                          color: 'white',
+                          color: '#111111',
                           boxShadow: '0 4px 15px rgba(0,122,255,0.3)'
                         }}
                       >
@@ -1572,7 +1572,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
                               />
                             )}
                           </span>
-                          <h3 style={{ fontSize: '24px', fontWeight: '900', marginTop: '10px', color: 'white', letterSpacing: '-0.3px' }}>{app.clients?.name}</h3>
+                          <h3 style={{ fontSize: '24px', fontWeight: '900', marginTop: '10px', color: '#111111', letterSpacing: '-0.3px' }}>{app.clients?.name}</h3>
                           <div className="barber-service-list" style={{ display: 'flex', flexDirection: 'column', gap: '6px', marginTop: '10px' }}>
                             {group.apps.map(svc => (
                               <div key={svc.id} style={{
@@ -1637,7 +1637,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
                         </div>
                         <div className="barber-appointment-total" style={{ textAlign: 'right' }}>
                           <span className="barber-appointment-time"><Clock size={11} /> {formatAppointmentTime(app)}</span>
-                          <div style={{ fontSize: '22px', fontWeight: '900', color: 'white' }}>${group.apps.reduce((acc, a) => acc + Number(a.services?.price || 0), 0)}</div>
+                          <div style={{ fontSize: '22px', fontWeight: '900', color: '#111111' }}>${group.apps.reduce((acc, a) => acc + Number(a.services?.price || 0), 0)}</div>
                           {!isLiveAppointment && (
                             <span className={`barber-appointment-chevron ${isExpanded ? 'is-open' : ''}`} aria-hidden="true">
                               <ChevronDown size={15} />
@@ -1783,7 +1783,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
                               </span>
                               <div>
                                 <span style={{ fontSize: '9px', color: 'rgba(255,255,255,0.4)', textTransform: 'uppercase', fontWeight: '800', display: 'block', lineHeight: '1.2' }}>Hidratación Solicitada</span>
-                                <span style={{ fontSize: '12px', color: 'white', fontWeight: '700' }}>{app.beverage_selection}</span>
+                                <span style={{ fontSize: '12px', color: '#111111', fontWeight: '700' }}>{app.beverage_selection}</span>
                               </div>
                             </div>
                           )}
@@ -1815,7 +1815,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
                                       defaultValue={ex.price}
                                       onBlur={(e) => handleUpdateExtraPrice(ex.id, e.target.value)}
                                       onKeyDown={(e) => e.key === 'Enter' && handleUpdateExtraPrice(ex.id, e.target.value)}
-                                      style={{ width: '60px', height: '24px', background: 'var(--bg-secondary)', border: '1px solid var(--gold-primary)', borderRadius: '4px', color: 'white', paddingLeft: '14px', fontSize: '12px', fontWeight: '800', textAlign: 'right' }}
+                                      style={{ width: '60px', height: '24px', background: 'var(--bg-secondary)', border: '1px solid var(--gold-primary)', borderRadius: '4px', color: '#111111', paddingLeft: '14px', fontSize: '12px', fontWeight: '800', textAlign: 'right' }}
                                     />
                                   </div>
                                 ) : (
@@ -1867,7 +1867,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
                             borderRadius: '16px',
                             background: 'rgba(0, 0, 0, 0.04)',
                             border: '1px solid rgba(0, 0, 0, 0.08)',
-                            color: 'white',
+                            color: '#111111',
                             fontSize: '12px',
                             fontWeight: '800',
                             cursor: 'pointer',
@@ -1889,7 +1889,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
                             borderRadius: '16px',
                             background: 'rgba(0, 0, 0, 0.04)',
                             border: '1px solid rgba(0, 0, 0, 0.08)',
-                            color: 'white',
+                            color: '#111111',
                             fontSize: '12px',
                             fontWeight: '800',
                             cursor: 'pointer',
@@ -1911,7 +1911,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
                             borderRadius: '16px', 
                             background: 'rgba(0, 0, 0, 0.04)', 
                             border: '1px solid rgba(0, 0, 0, 0.08)', 
-                            color: 'white', 
+                            color: '#111111', 
                             fontSize: '12px', 
                             fontWeight: '800', 
                             cursor: 'pointer', 
@@ -2140,7 +2140,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
             <div className="barber-stat-label" style={{ fontSize: '11px', fontWeight: '800', color: 'var(--text-secondary)', textTransform: 'uppercase' }}>
               {isAssistant ? "Limpiezas" : "Servicios"}
             </div>
-            <div className="barber-stat-value barber-stat-value-wrap" style={{ fontSize: '26px', fontWeight: '900', marginTop: '8px', color: 'white' }}>{stats.services}</div>
+            <div className="barber-stat-value barber-stat-value-wrap" style={{ fontSize: '26px', fontWeight: '900', marginTop: '8px', color: '#111111' }}>{stats.services}</div>
           </div>
 
           <div className="glass-card animate-scale-in barber-stat-card" style={{ padding: '20px 16px', borderRadius: '24px', textAlign: 'center', border: '1px solid rgba(255, 159, 10, 0.2)', background: 'var(--bg-secondary)' }}>
@@ -2239,7 +2239,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
                           {isAssistant ? <Droplets size={20} color="#007aff" style={{ filter: 'drop-shadow(0 0 5px rgba(0,122,255,0.5))' }} /> : <ToothIcon size={20} color="#32d74b" style={{ filter: 'drop-shadow(0 0 5px rgba(50,215,75,0.5))' }} />}
                         </div>
                         <div>
-                          <div style={{ fontWeight: '900', fontSize: '16px', color: 'white', letterSpacing: '0.3px' }}>{app.clients?.name || 'Cliente'}</div>
+                          <div style={{ fontWeight: '900', fontSize: '16px', color: '#111111', letterSpacing: '0.3px' }}>{app.clients?.name || 'Cliente'}</div>
                           <div style={{ fontSize: '13px', color: 'var(--gold-primary)', fontWeight: '800' }}>
                             {isAssistant ? `${app.services?.name} (${app.staff?.name || 'Odontólogo'})` : app.services?.name}
                           </div>
@@ -2380,14 +2380,14 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
                         {isAssistant ? "PROFILAXIS COMPLETADA" : "SERVICIO COMPLETADO"}
                       </span>
                     </div>
-                    <h3 style={{ fontSize: '22px', fontWeight: '900', color: 'white', margin: 0 }}>{app.clients?.name || 'Cliente'}</h3>
+                    <h3 style={{ fontSize: '22px', fontWeight: '900', color: '#111111', margin: 0 }}>{app.clients?.name || 'Cliente'}</h3>
                     <p style={{ fontSize: '13px', color: 'var(--text-muted)', marginTop: '4px' }}>
                       {app.clients?.phone || ''}{app.clients?.id_card ? ` · C.I. ${app.clients.id_card}` : ''}
                     </p>
                   </div>
                   <button 
                     onClick={() => setSelectedCompletedApp(null)}
-                    style={{ background: 'rgba(0, 0, 0, 0.04)', border: 'none', color: 'white', width: '36px', height: '36px', borderRadius: '10px', cursor: 'pointer', fontSize: '18px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+                    style={{ background: 'rgba(0, 0, 0, 0.04)', border: 'none', color: '#111111', width: '36px', height: '36px', borderRadius: '10px', cursor: 'pointer', fontSize: '18px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
                   >
                     ✕
                   </button>
@@ -2403,7 +2403,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
                   <div style={{ background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', borderRadius: '16px', padding: '16px' }}>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                       <div>
-                        <div style={{ fontSize: '16px', fontWeight: '800', color: 'white' }}>{app.services?.name}</div>
+                        <div style={{ fontSize: '16px', fontWeight: '800', color: '#111111' }}>{app.services?.name}</div>
                         <div style={{ fontSize: '11px', color: 'var(--text-muted)', marginTop: '2px' }}>
                           Odontólogo: {app.staff?.name || 'Otro'}
                         </div>
@@ -2429,7 +2429,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
                       {app.appointment_extras.map(ex => (
                         <div key={ex.id} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'rgba(0, 0, 0, 0.04)', padding: '12px 16px', borderRadius: '12px', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
-                          <span style={{ fontSize: '13px', fontWeight: '700', color: 'white' }}>{ex.service_extras?.name}</span>
+                          <span style={{ fontSize: '13px', fontWeight: '700', color: '#111111' }}>{ex.service_extras?.name}</span>
                           <span style={{ fontSize: '13px', fontWeight: '800', color: 'var(--gold-primary)' }}>+${Number(ex.price).toFixed(2)}</span>
                         </div>
                       ))}
@@ -2445,7 +2445,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
                       {app.appointment_products.map(pr => (
                         <div key={pr.id} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'rgba(0, 0, 0, 0.04)', padding: '12px 16px', borderRadius: '12px', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
                           <div>
-                            <span style={{ fontSize: '13px', fontWeight: '700', color: 'white' }}>{pr.inventory?.name}</span>
+                            <span style={{ fontSize: '13px', fontWeight: '700', color: '#111111' }}>{pr.inventory?.name}</span>
                             <span style={{ fontSize: '11px', color: 'var(--text-muted)', marginLeft: '8px' }}>x{pr.quantity}</span>
                           </div>
                           <span style={{ fontSize: '13px', fontWeight: '800', color: 'var(--gold-primary)' }}>+${(Number(pr.price) * (pr.quantity || 1)).toFixed(2)}</span>
@@ -2463,7 +2463,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
                       {beforePhoto && (
                         <div style={{ borderRadius: '14px', overflow: 'hidden', position: 'relative', aspectRatio: '1' }}>
                            <img loading="lazy" src={beforePhoto.url} alt="Antes" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                          <div style={{ position: 'absolute', bottom: '8px', left: '8px', background: 'rgba(255, 255, 255, 0.9)', padding: '4px 10px', borderRadius: '8px', fontSize: '10px', fontWeight: '800', color: 'white' }}>ANTES</div>
+                          <div style={{ position: 'absolute', bottom: '8px', left: '8px', background: 'rgba(255, 255, 255, 0.9)', padding: '4px 10px', borderRadius: '8px', fontSize: '10px', fontWeight: '800', color: '#111111' }}>ANTES</div>
                         </div>
                       )}
                       {afterPhoto && (
@@ -2482,11 +2482,11 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
                   <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr)', gap: '10px' }}>
                     <div style={{ background: 'rgba(0, 0, 0, 0.04)', padding: '12px', borderRadius: '12px', textAlign: 'center' }}>
                       <div style={{ fontSize: '10px', color: 'var(--text-muted)', fontWeight: '700', marginBottom: '4px' }}>INICIO</div>
-                      <div style={{ fontSize: '14px', fontWeight: '800', color: 'white' }}>{startedTime}</div>
+                      <div style={{ fontSize: '14px', fontWeight: '800', color: '#111111' }}>{startedTime}</div>
                     </div>
                     <div style={{ background: 'rgba(0, 0, 0, 0.04)', padding: '12px', borderRadius: '12px', textAlign: 'center' }}>
                       <div style={{ fontSize: '10px', color: 'var(--text-muted)', fontWeight: '700', marginBottom: '4px' }}>FIN</div>
-                      <div style={{ fontSize: '14px', fontWeight: '800', color: 'white' }}>{completedTime}</div>
+                      <div style={{ fontSize: '14px', fontWeight: '800', color: '#111111' }}>{completedTime}</div>
                     </div>
                     <div style={{ background: 'rgba(0, 0, 0, 0.04)', padding: '12px', borderRadius: '12px', textAlign: 'center', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
                       <div style={{ fontSize: '10px', color: 'var(--gold-primary)', fontWeight: '700', marginBottom: '4px' }}>DURACIÓN</div>
@@ -2505,18 +2505,18 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
                 }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
                     <span style={{ fontSize: '12px', color: 'var(--text-secondary)', fontWeight: '700' }}>Servicio base</span>
-                    <span style={{ fontSize: '13px', fontWeight: '800', color: 'white' }}>${servicePrice.toFixed(2)}</span>
+                    <span style={{ fontSize: '13px', fontWeight: '800', color: '#111111' }}>${servicePrice.toFixed(2)}</span>
                   </div>
                   {extrasTotal > 0 && (
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
                       <span style={{ fontSize: '12px', color: 'var(--text-secondary)', fontWeight: '700' }}>Extras ({app.appointment_extras.length})</span>
-                      <span style={{ fontSize: '13px', fontWeight: '800', color: 'white' }}>+${extrasTotal.toFixed(2)}</span>
+                      <span style={{ fontSize: '13px', fontWeight: '800', color: '#111111' }}>+${extrasTotal.toFixed(2)}</span>
                     </div>
                   )}
                   {productsTotal > 0 && (
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
                       <span style={{ fontSize: '12px', color: 'var(--text-secondary)', fontWeight: '700' }}>Productos ({app.appointment_products.length})</span>
-                      <span style={{ fontSize: '13px', fontWeight: '800', color: 'white' }}>+${productsTotal.toFixed(2)}</span>
+                      <span style={{ fontSize: '13px', fontWeight: '800', color: '#111111' }}>+${productsTotal.toFixed(2)}</span>
                     </div>
                   )}
                   <div style={{ borderTop: isAssistant ? '1px solid rgba(0,122,255,0.15)' : '1px solid rgba(50,215,75,0.15)', paddingTop: '12px', marginTop: '4px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
@@ -2562,7 +2562,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
               onClick={(e) => e.stopPropagation()}
               style={{ 
                 padding: '20px', 
-                color: 'white', 
+                color: '#111111', 
                 width: '100%', 
                 maxWidth: '360px', 
                 borderRadius: '24px', 
@@ -2578,7 +2578,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
                 </h3>
                 <button 
                   onClick={() => setShowWashModal(false)} 
-                  style={{ background: 'none', border: 'none', color: 'white', fontSize: '20px', cursor: 'pointer', padding: '4px' }}
+                  style={{ background: 'none', border: 'none', color: '#111111', fontSize: '20px', cursor: 'pointer', padding: '4px' }}
                 >
                   &times;
                 </button>
@@ -2601,7 +2601,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
                       height: '48px',
                       borderRadius: '14px',
                       background: 'linear-gradient(135deg, #007aff, #00d2ff)',
-                      color: 'white',
+                      color: '#111111',
                       border: 'none',
                       fontSize: '13px',
                       fontWeight: '900',
@@ -2649,7 +2649,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
                         </div>
                         
                         <div style={{ flex: 1, minWidth: 0 }}>
-                          <div style={{ fontSize: '13px', fontWeight: '750', color: 'white', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{q.staff?.name}</div>
+                          <div style={{ fontSize: '13px', fontWeight: '750', color: '#111111', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{q.staff?.name}</div>
                           <div style={{ display: 'flex', alignItems: 'center', gap: '5px', marginTop: '2px' }}>
                             <span style={{ display: 'inline-block', width: '5px', height: '5px', borderRadius: '50%', backgroundColor: !isActuallyBusy ? '#32d74b' : '#ff9500' }}></span>
                             <span style={{ fontSize: '10px', color: !isActuallyBusy ? '#32d74b' : '#ff9500', fontWeight: '700' }}>

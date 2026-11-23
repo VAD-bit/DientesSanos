@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
+﻿import React, { useState, useEffect, useMemo } from 'react';
 import { 
   X, 
   RefreshCcw, 
@@ -186,7 +186,7 @@ export default function AccountConversionModal({
                   <RefreshCcw size={22} />
                 </div>
                 <div>
-                  <h2 style={{ fontSize: 'clamp(17px, 2vw, 20px)', fontWeight: '950', margin: 0, color: '#fff', letterSpacing: '-0.3px' }}>
+                  <h2 style={{ fontSize: 'clamp(17px, 2vw, 20px)', fontWeight: '950', margin: 0, color: '#111111', letterSpacing: '-0.3px' }}>
                     {sameCurrency ? 'Transferencia entre Cuentas' : 'Conversión de Divisa'}
                   </h2>
                   <p style={{ margin: '2px 0 0', fontSize: '11.5px', color: 'var(--text-secondary)' }}>
@@ -316,7 +316,7 @@ export default function AccountConversionModal({
                           border: hasInsufficientFunds 
                             ? '1.5px solid #ff453a' 
                             : '1.5px solid rgba(0, 0, 0, 0.08)',
-                          color: '#fff',
+                          color: '#111111',
                           fontSize: '18px',
                           fontWeight: '900',
                           outline: 'none'
@@ -586,7 +586,7 @@ export default function AccountConversionModal({
                       fontSize: '11px'
                     }}>
                       <span style={{ color: 'var(--text-muted)' }}>Nuevo saldo {toInfo.shortLabel}:</span>
-                      <span style={{ fontWeight: '900', color: '#fff' }}>
+                      <span style={{ fontWeight: '900', color: '#111111' }}>
                         {formatMoney(toCurrentBal + effectiveToAmount)} {toInfo.usd ? '$' : 'Bs'}
                       </span>
                     </div>

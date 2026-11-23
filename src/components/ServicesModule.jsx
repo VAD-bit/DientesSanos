@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import { 
   Plus, Search, Edit2, Trash2, Clock, Rocket,
   Droplets, Zap, Check, X,
@@ -529,11 +529,11 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
             </div>
           )}
 
-          <button onClick={() => setIsCategoriesModalOpen(true)} style={{ backgroundColor: 'rgba(0, 0, 0, 0.04)', color: 'white', border: '1px solid rgba(0, 0, 0, 0.08)', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', width: isMobile ? '100%' : 'auto', padding: '10px 16px', fontSize: '13px', fontWeight: '600', transition: 'background 0.2s', cursor: 'pointer' }}>
+          <button onClick={() => setIsCategoriesModalOpen(true)} style={{ backgroundColor: 'rgba(0, 0, 0, 0.04)', color: '#111111', border: '1px solid rgba(0, 0, 0, 0.08)', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', width: isMobile ? '100%' : 'auto', padding: '10px 16px', fontSize: '13px', fontWeight: '600', transition: 'background 0.2s', cursor: 'pointer' }}>
             <Settings size={16} style={{ marginRight: '6px', color: 'var(--text-muted)' }} />
             Categorías
           </button>
-          <button onClick={() => setIsBillableExtrasModalOpen(true)} style={{ backgroundColor: 'rgba(0, 0, 0, 0.04)', color: 'white', border: '1px solid rgba(0, 0, 0, 0.08)', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', width: isMobile ? '100%' : 'auto', padding: '10px 16px', fontSize: '13px', fontWeight: '600', transition: 'background 0.2s', cursor: 'pointer' }}>
+          <button onClick={() => setIsBillableExtrasModalOpen(true)} style={{ backgroundColor: 'rgba(0, 0, 0, 0.04)', color: '#111111', border: '1px solid rgba(0, 0, 0, 0.08)', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', width: isMobile ? '100%' : 'auto', padding: '10px 16px', fontSize: '13px', fontWeight: '600', transition: 'background 0.2s', cursor: 'pointer' }}>
             <Rocket size={16} style={{ marginRight: '6px', color: 'var(--text-muted)' }} />
             Extras
           </button>
@@ -912,7 +912,7 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
                           )}
                         </div>
                         <div style={{ textAlign: 'right' }}>
-                          <div style={{ fontSize: '24px', fontWeight: '900', color: 'white', letterSpacing: '-0.5px', lineHeight: 1 }}>
+                          <div style={{ fontSize: '24px', fontWeight: '900', color: '#111111', letterSpacing: '-0.5px', lineHeight: 1 }}>
                             {(service.category || '').toLowerCase().includes('tatuaj') && <span style={{ fontSize: '12px', fontWeight: '700', color: 'var(--gold-primary)', marginRight: '4px', verticalAlign: 'middle' }}>Desde</span>}
                             ${service.price}
                           </div>
@@ -1002,7 +1002,7 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
                 </div>
                 <button 
                   onClick={() => setIsExtrasModalOpen(false)} 
-                  style={{ background: 'rgba(0, 0, 0, 0.04)', border: 'none', color: 'white', cursor: 'pointer', width: '36px', height: '36px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+                  style={{ background: 'rgba(0, 0, 0, 0.04)', border: 'none', color: '#111111', cursor: 'pointer', width: '36px', height: '36px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
                 >
                   <X size={20} />
                 </button>
@@ -1079,7 +1079,7 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
                   </h3>
                   <p style={{ fontSize: '12px', color: 'var(--text-secondary)', marginTop: '4px' }}>Servicios con costo extra que se añaden en caja.</p>
                 </div>
-                <button onClick={() => setIsBillableExtrasModalOpen(false)} style={{ background: 'rgba(0, 0, 0, 0.04)', border: 'none', borderRadius: '50%', width: '36px', height: '36px', color: 'white', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <button onClick={() => setIsBillableExtrasModalOpen(false)} style={{ background: 'rgba(0, 0, 0, 0.04)', border: 'none', borderRadius: '50%', width: '36px', height: '36px', color: '#111111', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                   <X size={20} />
                 </button>
               </div>
@@ -1108,13 +1108,13 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
                               borderRadius: '9px',
                               border: '1px solid var(--gold-primary)',
                               background: 'var(--bg-secondary)',
-                              color: 'white',
+                              color: '#111111',
                               fontSize: '14px',
                               fontWeight: '800'
                             }}
                           />
                         ) : (
-                          <div style={{ color: 'white', fontSize: '14px', fontWeight: '800', lineHeight: '38px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{extra.name}</div>
+                          <div style={{ color: '#111111', fontSize: '14px', fontWeight: '800', lineHeight: '38px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{extra.name}</div>
                         )}
                         <div style={{ fontSize: '11px', color: 'var(--gold-primary)', marginTop: '4px', fontWeight: '800' }}>PRECIO EN CAJA</div>
                       </div>
@@ -1149,7 +1149,7 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
                           </button>
                         ) : (
                           <div style={{ display: 'flex', gap: '8px' }}>
-                            <button onClick={() => setEditingExtra({ ...extra, name: String(extra.name || ''), price: String(extra.price ?? '') })} className="action-btn" style={{ backgroundColor: 'rgba(0, 0, 0, 0.04)', color: 'white', flexShrink: 0 }}>
+                            <button onClick={() => setEditingExtra({ ...extra, name: String(extra.name || ''), price: String(extra.price ?? '') })} className="action-btn" style={{ backgroundColor: 'rgba(0, 0, 0, 0.04)', color: '#111111', flexShrink: 0 }}>
                               <Pencil size={14} />
                             </button>
                             <button onClick={(e) => handleDeleteBillableExtra(e, extra.id, extra.name)} className="action-btn" style={{ backgroundColor: 'rgba(255,69,58,0.1)', color: '#ff453a', flexShrink: 0 }}>
@@ -1204,7 +1204,7 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
               }}>
                 <button 
                   onClick={() => setSelectedServiceDetail(null)} 
-                  style={{ position: 'absolute', right: isMobile ? '32px' : '48px', top: '20px', background: 'rgba(0, 0, 0, 0.04)', border: 'none', color: 'white', cursor: 'pointer', width: '36px', height: '36px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+                  style={{ position: 'absolute', right: isMobile ? '32px' : '48px', top: '20px', background: 'rgba(0, 0, 0, 0.04)', border: 'none', color: '#111111', cursor: 'pointer', width: '36px', height: '36px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
                 >
                   <X size={20} />
                 </button>
@@ -1223,7 +1223,7 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
                   </div>
                 </div>
 
-                <h3 style={{ fontSize: '22px', fontWeight: '800', color: 'white', marginBottom: '16px', paddingRight: '40px' }}>{selectedServiceDetail.name}</h3>
+                <h3 style={{ fontSize: '22px', fontWeight: '800', color: '#111111', marginBottom: '16px', paddingRight: '40px' }}>{selectedServiceDetail.name}</h3>
 
                 <div style={{ display: 'flex', gap: '16px', marginBottom: '20px', fontSize: '13px', color: 'var(--text-secondary)' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '6px', backgroundColor: 'rgba(0, 0, 0, 0.04)', padding: '6px 12px', borderRadius: '10px' }}>
@@ -1246,7 +1246,7 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
                     <div style={{ fontSize: '11px', fontWeight: '800', color: 'var(--text-muted)', marginBottom: '8px', textTransform: 'uppercase' }}>Checklist Incluido ({selectedServiceDetail.included_items.length})</div>
                     <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
                       {selectedServiceDetail.included_items.map((item, idx) => (
-                        <span key={idx} style={{ fontSize: '11px', padding: '6px 12px', borderRadius: '8px', backgroundColor: 'rgba(0, 0, 0, 0.04)', color: 'white', border: '1px solid rgba(0, 0, 0, 0.08)', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                        <span key={idx} style={{ fontSize: '11px', padding: '6px 12px', borderRadius: '8px', backgroundColor: 'rgba(0, 0, 0, 0.04)', color: '#111111', border: '1px solid rgba(0, 0, 0, 0.08)', display: 'flex', alignItems: 'center', gap: '6px' }}>
                           <Check size={12} color="var(--gold-primary)" strokeWidth={3} /> {item}
                         </span>
                       ))}
@@ -1257,7 +1257,7 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
                 <div className="details-price-row">
                   <div>
                     <div style={{ fontSize: '10px', fontWeight: '700', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Precio Base</div>
-                    <div style={{ fontSize: '24px', fontWeight: '900', color: 'white' }}>
+                    <div style={{ fontSize: '24px', fontWeight: '900', color: '#111111' }}>
                       {(selectedServiceDetail.category || '').toLowerCase().includes('tatuaj') && <span style={{ fontSize: '13px', fontWeight: '800', color: 'var(--gold-primary)', marginRight: '4px' }}>Desde</span>}
                       ${selectedServiceDetail.price}
                     </div>
@@ -1285,7 +1285,7 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
                   </button>
                   <button
                     onClick={() => setSelectedServiceDetail(null)}
-                    style={{ flex: '1', height: '44px', borderRadius: '12px', backgroundColor: 'rgba(0, 0, 0, 0.04)', border: 'none', color: 'white', cursor: 'pointer', fontWeight: '700', fontSize: '14px', whiteSpace: 'nowrap', transition: 'background-color 0.2s' }}
+                    style={{ flex: '1', height: '44px', borderRadius: '12px', backgroundColor: 'rgba(0, 0, 0, 0.04)', border: 'none', color: '#111111', cursor: 'pointer', fontWeight: '700', fontSize: '14px', whiteSpace: 'nowrap', transition: 'background-color 0.2s' }}
                     onMouseEnter={e => e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.1)'}
                     onMouseLeave={e => e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.05)'}
                   >
@@ -1316,12 +1316,12 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
             }}>
               <button 
                 onClick={() => setIsCategoriesModalOpen(false)} 
-                style={{ position: 'absolute', right: '20px', top: '20px', background: 'rgba(0, 0, 0, 0.04)', border: 'none', color: 'white', cursor: 'pointer', width: '36px', height: '36px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+                style={{ position: 'absolute', right: '20px', top: '20px', background: 'rgba(0, 0, 0, 0.04)', border: 'none', color: '#111111', cursor: 'pointer', width: '36px', height: '36px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
               >
                 <X size={20} />
               </button>
 
-              <h3 style={{ fontSize: '20px', fontWeight: '800', color: 'white', marginBottom: '8px', display: 'flex', alignItems: 'center', gap: '8px', paddingRight: '40px' }}>
+              <h3 style={{ fontSize: '20px', fontWeight: '800', color: '#111111', marginBottom: '8px', display: 'flex', alignItems: 'center', gap: '8px', paddingRight: '40px' }}>
                 <Settings size={20} color="var(--gold-primary)" /> Categorías
               </h3>
               <p style={{ color: 'var(--text-muted)', fontSize: '12px', marginBottom: '20px' }}>Agrega o elimina las categorías disponibles para clasificar tus servicios.</p>
@@ -1343,7 +1343,7 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
                     <button 
                       onClick={handleCancelEditCategory} 
                       className="btn-gold" 
-                      style={{ height: '44px', width: '44px', borderRadius: '12px', padding: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', color: 'white' }}
+                      style={{ height: '44px', width: '44px', borderRadius: '12px', padding: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', color: '#111111' }}
                       type="button"
                     >
                       <X size={20} />
@@ -1369,7 +1369,7 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
                       <div style={{ color: 'var(--gold-primary)' }}>
                         {getIconComponent(catObj.icon || getFallbackIconName(catObj.name), 20)}
                       </div>
-                      <span style={{ fontSize: '14px', fontWeight: '700', color: 'white' }}>{catObj.name}</span>
+                      <span style={{ fontSize: '14px', fontWeight: '700', color: '#111111' }}>{catObj.name}</span>
                     </div>
                     <div style={{ display: 'flex', gap: '8px' }}>
                       <button 
@@ -1413,12 +1413,12 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
             }}>
               <button 
                 onClick={() => setIsStrategiesModalOpen(false)} 
-                style={{ position: 'absolute', right: '20px', top: '20px', background: 'rgba(0, 0, 0, 0.04)', border: 'none', color: 'white', cursor: 'pointer', width: '36px', height: '36px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+                style={{ position: 'absolute', right: '20px', top: '20px', background: 'rgba(0, 0, 0, 0.04)', border: 'none', color: '#111111', cursor: 'pointer', width: '36px', height: '36px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
               >
                 <X size={20} />
               </button>
 
-              <h3 style={{ fontSize: '20px', fontWeight: '800', color: 'white', marginBottom: '8px', display: 'flex', alignItems: 'center', gap: '8px', paddingRight: '40px' }}>
+              <h3 style={{ fontSize: '20px', fontWeight: '800', color: '#111111', marginBottom: '8px', display: 'flex', alignItems: 'center', gap: '8px', paddingRight: '40px' }}>
                 <Crown size={20} color="var(--gold-primary)" /> Estrategias de Venta
               </h3>
               <p style={{ color: 'var(--text-muted)', fontSize: '12px', marginBottom: '20px' }}>Configura los tipos de estrategias de venta cruzada y retención para tus servicios.</p>
@@ -1461,7 +1461,7 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
                 {strategies.map((strat, idx) => (
                   <div key={idx} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 16px', borderRadius: '12px', backgroundColor: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
                     <div style={{ display: 'flex', flexDirection: 'column' }}>
-                      <span style={{ fontSize: '14px', fontWeight: '700', color: 'white' }}>{strat.label}</span>
+                      <span style={{ fontSize: '14px', fontWeight: '700', color: '#111111' }}>{strat.label}</span>
                       <span style={{ fontSize: '11px', color: 'var(--gold-primary)', fontWeight: '900' }}>VALOR: {strat.value}</span>
                     </div>
                     <button 

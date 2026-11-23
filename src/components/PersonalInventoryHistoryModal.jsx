@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+﻿import React, { useEffect, useState } from 'react';
 import { History, Package, X } from 'lucide-react';
 import { dataService } from '../services/dataService';
 import { SkeletonList } from './Skeleton';
@@ -89,11 +89,11 @@ const PersonalInventoryHistoryModal = ({ isOpen, onClose, staffId }) => {
           <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
             <History size={19} color="var(--gold-primary)" />
             <div>
-              <h3 style={{ margin: 0, fontSize: '17px', color: 'white' }}>Historial del inventario</h3>
+              <h3 style={{ margin: 0, fontSize: '17px', color: '#111111' }}>Historial del inventario</h3>
               <p style={{ margin: '3px 0 0', fontSize: '11px', color: 'var(--text-muted)' }}>Asignaciones, consumos y reposiciones</p>
             </div>
           </div>
-          <button onClick={onClose} style={{ width: '34px', height: '34px', borderRadius: '50%', border: '1px solid rgba(0, 0, 0, 0.08)', background: 'rgba(0, 0, 0, 0.04)', color: 'white', cursor: 'pointer', display: 'grid', placeItems: 'center' }}>
+          <button onClick={onClose} style={{ width: '34px', height: '34px', borderRadius: '50%', border: '1px solid rgba(0, 0, 0, 0.08)', background: 'rgba(0, 0, 0, 0.04)', color: '#111111', cursor: 'pointer', display: 'grid', placeItems: 'center' }}>
             <X size={17} />
           </button>
         </div>
@@ -113,7 +113,7 @@ const PersonalInventoryHistoryModal = ({ isOpen, onClose, staffId }) => {
                   <Package size={16} color={isConsumption ? '#ff6961' : '#30d158'} />
                 </div>
                 <div style={{ flex: 1, minWidth: 0 }}>
-                  <div style={{ color: 'white', fontSize: '13px', fontWeight: '800', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{movement.itemName}</div>
+                  <div style={{ color: '#111111', fontSize: '13px', fontWeight: '800', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{movement.itemName}</div>
                   <div style={{ color: 'var(--text-muted)', fontSize: '11px', marginTop: '3px' }}>{ACTION_LABELS[movement.action] || movement.action}</div>
                 </div>
                 <div style={{ textAlign: 'right', flexShrink: 0 }}>

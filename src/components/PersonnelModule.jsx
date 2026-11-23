@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+﻿import React, { useState, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { useNotifs } from '../context/NotificationContext';
 import { defaultCommissionPct, isOdontologoRole, roleLabel } from '../utils/staffRoles';
@@ -158,7 +158,7 @@ const PhotoSourceMenu = ({ isOpen, onCamera, onGallery, onClose }) => {
           type="button"
           onClick={onCamera}
           className="tap-scale menu-row-hover"
-          style={{ width: '100%', padding: '12px 14px', display: 'flex', alignItems: 'center', gap: '10px', background: 'none', border: 'none', color: 'white', fontSize: '13px', fontWeight: '700', cursor: 'pointer', textAlign: 'left' }}
+          style={{ width: '100%', padding: '12px 14px', display: 'flex', alignItems: 'center', gap: '10px', background: 'none', border: 'none', color: '#111111', fontSize: '13px', fontWeight: '700', cursor: 'pointer', textAlign: 'left' }}
         >
           <Camera size={16} color="var(--gold-primary)" /> Tomar foto
         </button>
@@ -167,7 +167,7 @@ const PhotoSourceMenu = ({ isOpen, onCamera, onGallery, onClose }) => {
           type="button"
           onClick={onGallery}
           className="tap-scale menu-row-hover"
-          style={{ width: '100%', padding: '12px 14px', display: 'flex', alignItems: 'center', gap: '10px', background: 'none', border: 'none', color: 'white', fontSize: '13px', fontWeight: '700', cursor: 'pointer', textAlign: 'left' }}
+          style={{ width: '100%', padding: '12px 14px', display: 'flex', alignItems: 'center', gap: '10px', background: 'none', border: 'none', color: '#111111', fontSize: '13px', fontWeight: '700', cursor: 'pointer', textAlign: 'left' }}
         >
           <Upload size={16} color="var(--gold-primary)" /> Subir de galería
         </button>
@@ -305,7 +305,7 @@ const AttendanceHistoryModal = ({ member, dates, logs, streak, onClose, overlayC
             </div>
             <div style={{ minWidth: 0 }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '6px', flexWrap: 'wrap' }}>
-                <h3 style={{ fontSize: isMobile ? '16px' : '19px', fontWeight: '900', color: 'white', margin: 0, letterSpacing: '-0.3px', wordBreak: 'break-word' }}>
+                <h3 style={{ fontSize: isMobile ? '16px' : '19px', fontWeight: '900', color: '#111111', margin: 0, letterSpacing: '-0.3px', wordBreak: 'break-word' }}>
                   {member.name}
                 </h3>
                 <span style={{ 
@@ -375,7 +375,7 @@ const AttendanceHistoryModal = ({ member, dates, logs, streak, onClose, overlayC
             justifyContent: 'center'
           }}>
             <Flame size={isMobile ? 16 : 18} color="#ff9500" fill="#ff9500" style={{ marginBottom: '2px' }} />
-            <div style={{ fontSize: isMobile ? '15px' : '16px', fontWeight: '900', color: 'white' }}>{streak} {streak === 1 ? 'día' : 'días'}</div>
+            <div style={{ fontSize: isMobile ? '15px' : '16px', fontWeight: '900', color: '#111111' }}>{streak} {streak === 1 ? 'día' : 'días'}</div>
             <div style={{ fontSize: '9.5px', fontWeight: '800', color: '#ff9500', textTransform: 'uppercase', letterSpacing: '0.4px', marginTop: '2px' }}>Racha actual</div>
           </div>
 
@@ -391,7 +391,7 @@ const AttendanceHistoryModal = ({ member, dates, logs, streak, onClose, overlayC
             justifyContent: 'center'
           }}>
             <CheckCircle2 size={isMobile ? 16 : 18} color="#32d74b" style={{ marginBottom: '2px' }} />
-            <div style={{ fontSize: isMobile ? '15px' : '16px', fontWeight: '900', color: 'white' }}>{uniquePresentDays} / 35</div>
+            <div style={{ fontSize: isMobile ? '15px' : '16px', fontWeight: '900', color: '#111111' }}>{uniquePresentDays} / 35</div>
             <div style={{ fontSize: '9.5px', fontWeight: '800', color: '#32d74b', textTransform: 'uppercase', letterSpacing: '0.4px', marginTop: '2px' }}>Días asistidos</div>
           </div>
 
@@ -407,7 +407,7 @@ const AttendanceHistoryModal = ({ member, dates, logs, streak, onClose, overlayC
             justifyContent: 'center'
           }}>
             <Clock size={isMobile ? 16 : 18} color="var(--gold-primary)" style={{ marginBottom: '2px' }} />
-            <div style={{ fontSize: isMobile ? '15px' : '16px', fontWeight: '900', color: 'white' }}>{totalHours}h</div>
+            <div style={{ fontSize: isMobile ? '15px' : '16px', fontWeight: '900', color: '#111111' }}>{totalHours}h</div>
             <div style={{ fontSize: '9.5px', fontWeight: '800', color: 'var(--gold-primary)', textTransform: 'uppercase', letterSpacing: '0.4px', marginTop: '2px' }}>Total horas</div>
           </div>
 
@@ -423,7 +423,7 @@ const AttendanceHistoryModal = ({ member, dates, logs, streak, onClose, overlayC
             justifyContent: 'center'
           }}>
             <Timer size={isMobile ? 16 : 18} color="#64d2ff" style={{ marginBottom: '2px' }} />
-            <div style={{ fontSize: isMobile ? '15px' : '16px', fontWeight: '900', color: 'white' }}>{avgShiftFormatted}</div>
+            <div style={{ fontSize: isMobile ? '15px' : '16px', fontWeight: '900', color: '#111111' }}>{avgShiftFormatted}</div>
             <div style={{ fontSize: '9.5px', fontWeight: '800', color: '#64d2ff', textTransform: 'uppercase', letterSpacing: '0.4px', marginTop: '2px' }}>Promedio/Turno</div>
           </div>
         </div>
@@ -572,7 +572,7 @@ const AttendanceHistoryModal = ({ member, dates, logs, streak, onClose, overlayC
                   >
                     {/* Fecha y Día */}
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '1px', minWidth: isMobile ? '85px' : '110px' }}>
-                      <span style={{ fontSize: isMobile ? '11.5px' : '12px', color: 'white', fontWeight: '800', textTransform: 'capitalize' }}>
+                      <span style={{ fontSize: isMobile ? '11.5px' : '12px', color: '#111111', fontWeight: '800', textTransform: 'capitalize' }}>
                         {inDate.toLocaleDateString('es-VE', { weekday: 'short', day: 'numeric', month: 'short' })}
                       </span>
                       <span style={{ fontSize: '9.5px', color: 'var(--text-muted)', fontWeight: '600' }}>
@@ -742,7 +742,7 @@ const StaffSettlementPanel = ({ modal, setModal, isMobile, loading, onPay, onSki
               const usdAmount = Number(settlement.methodBreakdownUsd?.[method] || 0);
               return (
                 <span key={method} style={{ padding: '6px 8px', borderRadius: '9px', background: 'rgba(0, 0, 0, 0.04)', fontSize: '10px', color: 'var(--text-secondary)' }}>
-                  {method} <strong style={{ color: 'white' }}>{isUsdAccount ? `$${formatSettlementBs(usdAmount)}` : `${formatSettlementBs(amount)} Bs`}</strong>
+                  {method} <strong style={{ color: '#111111' }}>{isUsdAccount ? `$${formatSettlementBs(usdAmount)}` : `${formatSettlementBs(amount)} Bs`}</strong>
                 </span>
               );
             })}
@@ -757,9 +757,9 @@ const StaffSettlementPanel = ({ modal, setModal, isMobile, loading, onPay, onSki
             <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) 1.1fr auto', gap: '8px', paddingBottom: '8px', borderBottom: '1px solid rgba(0, 0, 0, 0.08)', color: 'var(--text-muted)', fontSize: '10px', fontWeight: '800', textTransform: 'uppercase' }}><span>Cliente</span><span>Servicio</span><span>Monto</span></div>
             {settlement.recentEarnings?.length ? settlement.recentEarnings.map(item => (
               <div key={item.id} style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) 1.1fr auto', gap: '8px', padding: '10px 0', borderBottom: '1px solid rgba(0, 0, 0, 0.08)', fontSize: '11px', alignItems: 'center' }}>
-                <span title={item.clientName} style={{ color: 'white', fontWeight: '600', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{item.clientName}</span>
+                <span title={item.clientName} style={{ color: '#111111', fontWeight: '600', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{item.clientName}</span>
                 <span title={item.serviceName} style={{ color: 'var(--text-secondary)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{item.serviceName}</span>
-                <strong style={{ color: 'white', whiteSpace: 'nowrap', fontWeight: '800' }}>{formatSettlementBs(item.amountBs + item.tipBs)} Bs</strong>
+                <strong style={{ color: '#111111', whiteSpace: 'nowrap', fontWeight: '800' }}>{formatSettlementBs(item.amountBs + item.tipBs)} Bs</strong>
               </div>
             )) : <span style={{ display: 'block', marginTop: '12px', fontSize: '12px', color: 'var(--text-muted)', fontWeight: '500' }}>Sin servicios registrados.</span>}
           </div>
@@ -782,7 +782,7 @@ const StaffSettlementPanel = ({ modal, setModal, isMobile, loading, onPay, onSki
       {/* Payment Action Section */}
       <section style={{ padding: '24px 24px 32px 24px', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', borderRadius: '24px', display: 'flex', flexDirection: 'column', gap: '16px' }}>
         <div>
-          <span style={{ fontSize: '12px', color: 'white', fontWeight: '900', textTransform: 'uppercase', letterSpacing: '1px' }}>Distribuir Pago</span>
+          <span style={{ fontSize: '12px', color: '#111111', fontWeight: '900', textTransform: 'uppercase', letterSpacing: '1px' }}>Distribuir Pago</span>
           <p style={{ marginTop: '4px', fontSize: '12px', color: 'var(--text-secondary)', fontWeight: '500' }}>Montos en Bs. Puedes pagar completo o registrar un abono parcial.</p>
         </div>
         
@@ -795,13 +795,13 @@ const StaffSettlementPanel = ({ modal, setModal, isMobile, loading, onPay, onSki
             return (
               <label key={account} style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) 120px', alignItems: 'center', gap: '12px', padding: '12px 16px', borderRadius: '16px', background: 'var(--bg-secondary)', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
                 <span style={{ minWidth: 0 }}>
-                  <strong style={{ display: 'block', fontSize: '13px', fontWeight: '700', color: 'white' }}>{account}</strong>
+                  <strong style={{ display: 'block', fontSize: '13px', fontWeight: '700', color: '#111111' }}>{account}</strong>
                   <small style={{ display: 'block', marginTop: '4px', color: 'var(--text-muted)', fontSize: '11px', fontWeight: '600' }}>Disponible {isUsdCash ? `$${formatSettlementBs(displayAvailable)}` : `${formatSettlementBs(displayAvailable)} Bs`}</small>
                 </span>
                 <input type="number" min="0" max={displayAvailable} step="0.01" value={displayAllocation}
                   onChange={event => setModal(previous => ({ ...previous, allocations: { ...previous.allocations, [account]: event.target.value === '' ? '' : Number(event.target.value) * (isUsdCash ? settlement.rate : 1) } }))}
                   placeholder={isUsdCash ? '$0.00' : '0.00'} aria-label={`Monto desde ${account}`}
-                  style={{ width: '100%', height: '44px', padding: '0 12px', borderRadius: '12px', border: '1px solid rgba(0, 0, 0, 0.08)', background: 'var(--bg-secondary)', color: 'white', textAlign: 'right', fontWeight: '800', fontSize: '14px', outline: 'none', transition: 'border-color 0.2s ease' }} 
+                  style={{ width: '100%', height: '44px', padding: '0 12px', borderRadius: '12px', border: '1px solid rgba(0, 0, 0, 0.08)', background: 'var(--bg-secondary)', color: '#111111', textAlign: 'right', fontWeight: '800', fontSize: '14px', outline: 'none', transition: 'border-color 0.2s ease' }} 
                   onFocus={e => e.target.style.borderColor = 'var(--gold-primary)'}
                   onBlur={e => e.target.style.borderColor = 'rgba(255,255,255,0.05)'}
                 />
@@ -813,7 +813,7 @@ const StaffSettlementPanel = ({ modal, setModal, isMobile, loading, onPay, onSki
         <div style={{ marginTop: 'auto', paddingTop: '16px', borderTop: '1px solid rgba(0, 0, 0, 0.08)' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '13px', color: 'var(--text-secondary)', fontWeight: '600' }}>
             <span>Pago a registrar</span>
-            <strong style={{ color: 'white', fontSize: '15px', fontWeight: '800' }}>{formatSettlementBs(allocatedBs)} Bs</strong>
+            <strong style={{ color: '#111111', fontSize: '15px', fontWeight: '800' }}>{formatSettlementBs(allocatedBs)} Bs</strong>
           </div>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '14px', fontWeight: '800', marginTop: '12px' }}>
             <span>Quedará pendiente</span>
@@ -833,7 +833,7 @@ const StaffSettlementPanel = ({ modal, setModal, isMobile, loading, onPay, onSki
         <div style={{ display: 'flex', gap: '8px' }}>
           <button onClick={onSkip} style={{ 
               flex: 1, minHeight: '50px', borderRadius: '16px', 
-              background: 'var(--bg-secondary)', color: 'white', border: '1px solid rgba(0, 0, 0, 0.08)', 
+              background: 'var(--bg-secondary)', color: '#111111', border: '1px solid rgba(0, 0, 0, 0.08)', 
               fontWeight: '800', fontSize: '15px',
               cursor: 'pointer', transition: 'all 0.2s ease'
             }}
@@ -2145,7 +2145,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
           </h3>
           <button 
             onClick={handleCloseForm}
-            style={{ background: 'rgba(0, 0, 0, 0.04)', border: 'none', borderRadius: '50%', color: 'white', width: '32px', height: '32px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+            style={{ background: 'rgba(0, 0, 0, 0.04)', border: 'none', borderRadius: '50%', color: '#111111', width: '32px', height: '32px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
           >
             <X size={16} />
           </button>
@@ -2189,7 +2189,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
             {formData.image_url && (
               <button
                 onClick={(e) => { e.stopPropagation(); setFormData({ ...formData, image_url: '' }); }}
-                style={{ position: 'absolute', top: '-10px', right: '-10px', backgroundColor: '#ff453a', border: 'none', borderRadius: '50%', color: 'white', width: '28px', height: '28px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 4px 12px rgba(0,0,0,0.3)', zIndex: 10 }}
+                style={{ position: 'absolute', top: '-10px', right: '-10px', backgroundColor: '#ff453a', border: 'none', borderRadius: '50%', color: '#111111', width: '28px', height: '28px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 4px 12px rgba(0,0,0,0.3)', zIndex: 10 }}
               >
                 <X size={14} />
               </button>
@@ -2212,7 +2212,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                      <button
                        type="button"
                        onClick={() => removePortfolioPhoto(photo)}
-                       style={{ position: 'absolute', top: '-6px', right: '-6px', width: '20px', height: '20px', borderRadius: '50%', background: '#ff453a', border: 'none', color: 'white', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '10px', fontWeight: '900', boxShadow: '0 2px 8px rgba(0,0,0,0.4)' }}
+                       style={{ position: 'absolute', top: '-6px', right: '-6px', width: '20px', height: '20px', borderRadius: '50%', background: '#ff453a', border: 'none', color: '#111111', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '10px', fontWeight: '900', boxShadow: '0 2px 8px rgba(0,0,0,0.4)' }}
                      >×</button>
                   </div>
                 ))}
@@ -2245,7 +2245,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
 
           {/* ═══ SECTION 1: Datos Básicos (always open) ═══ */}
           <div style={{ borderRadius: '16px', border: '1px solid rgba(0, 0, 0, 0.08)', overflow: 'hidden' }}>
-            <button onClick={() => toggleEditSection('basics')} style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '14px 16px', background: 'rgba(0, 0, 0, 0.04)', border: 'none', cursor: 'pointer', color: 'white' }}>
+            <button onClick={() => toggleEditSection('basics')} style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '14px 16px', background: 'rgba(0, 0, 0, 0.04)', border: 'none', cursor: 'pointer', color: '#111111' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                 <User size={16} color="var(--gold-primary)" />
                 <span style={{ fontSize: '12px', fontWeight: '900', letterSpacing: '1px' }}>DATOS BÁSICOS</span>
@@ -2390,7 +2390,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
 
           {/* ═══ SECTION 2: Permisos (collapsed) ═══ */}
           <div style={{ borderRadius: '16px', border: '1px solid rgba(0, 0, 0, 0.08)', overflow: 'hidden' }}>
-            <button onClick={() => toggleEditSection('permissions')} style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '14px 16px', background: 'rgba(0, 0, 0, 0.04)', border: 'none', cursor: 'pointer', color: 'white' }}>
+            <button onClick={() => toggleEditSection('permissions')} style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '14px 16px', background: 'rgba(0, 0, 0, 0.04)', border: 'none', cursor: 'pointer', color: '#111111' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                 <Key size={16} color="var(--gold-primary)" />
                 <span style={{ fontSize: '12px', fontWeight: '900', letterSpacing: '1px' }}>PERMISOS Y MÓDULOS</span>
@@ -2402,7 +2402,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                 <div style={{ padding: '20px', backgroundColor: 'rgba(0, 0, 0, 0.04)', borderRadius: '16px', border: '1px solid var(--border-color)' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '16px' }}>
                     <Key size={18} color="var(--gold-primary)" />
-                    <label style={{ fontSize: '12px', fontWeight: '900', color: 'white', letterSpacing: '1px' }}>MÓDULOS ACCESIBLES</label>
+                    <label style={{ fontSize: '12px', fontWeight: '900', color: '#111111', letterSpacing: '1px' }}>MÓDULOS ACCESIBLES</label>
                   </div>
                   <div style={{ display: 'grid', gridTemplateColumns: isMobile ? 'minmax(0, 1fr) minmax(0, 1fr)' : 'repeat(3, minmax(0, 1fr))', gap: '12px' }}>
                     {availableModules.map(mod => (
@@ -2449,7 +2449,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
 
           {/* ═══ SECTION 3: Información Personal (collapsed) ═══ */}
           <div style={{ borderRadius: '16px', border: '1px solid rgba(0, 0, 0, 0.08)', overflow: 'hidden' }}>
-            <button onClick={() => toggleEditSection('profile')} style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '14px 16px', background: 'rgba(0, 0, 0, 0.04)', border: 'none', cursor: 'pointer', color: 'white' }}>
+            <button onClick={() => toggleEditSection('profile')} style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '14px 16px', background: 'rgba(0, 0, 0, 0.04)', border: 'none', cursor: 'pointer', color: '#111111' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                 <Star size={16} color="var(--gold-primary)" />
                 <span style={{ fontSize: '12px', fontWeight: '900', letterSpacing: '1px' }}>PERFIL PÚBLICO Y CONTACTO</span>
@@ -2600,7 +2600,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
 
           {/* ═══ SECTION 4: Credenciales (collapsed) ═══ */}
           <div style={{ borderRadius: '16px', border: '1px solid rgba(0, 0, 0, 0.08)', overflow: 'hidden' }}>
-            <button onClick={() => toggleEditSection('credentials')} style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '14px 16px', background: 'rgba(0, 0, 0, 0.04)', border: 'none', cursor: 'pointer', color: 'white' }}>
+            <button onClick={() => toggleEditSection('credentials')} style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '14px 16px', background: 'rgba(0, 0, 0, 0.04)', border: 'none', cursor: 'pointer', color: '#111111' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                 <Lock size={16} color="var(--gold-primary)" />
                 <span style={{ fontSize: '12px', fontWeight: '900', letterSpacing: '1px' }}>CREDENCIALES DE ACCESO</span>
@@ -2700,7 +2700,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
               <button
                 className="btn-gold"
                 onClick={() => setIsRoleModalOpen(true)}
-                style={{ backgroundColor: 'rgba(0, 0, 0, 0.04)', color: 'white', border: '1px solid rgba(0, 0, 0, 0.08)' }}
+                style={{ backgroundColor: 'rgba(0, 0, 0, 0.04)', color: '#111111', border: '1px solid rgba(0, 0, 0, 0.08)' }}
               >
                 <Shield size={18} style={{ marginRight: '8px' }} /> Roles
               </button>
@@ -2849,7 +2849,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                   borderRadius: '12px',
                   background: 'rgba(0, 0, 0, 0.04)',
                   border: '1px solid rgba(0, 0, 0, 0.08)',
-                  color: 'white',
+                  color: '#111111',
                   fontSize: '13px',
                   outline: 'none',
                   boxSizing: 'border-box'
@@ -2911,7 +2911,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
               {formData.image_url && (
                 <button
                   onClick={(e) => { e.stopPropagation(); setFormData({ ...formData, image_url: '' }); }}
-                  style={{ position: 'absolute', top: '-10px', right: '-10px', backgroundColor: '#ff453a', border: 'none', borderRadius: '50%', color: 'white', width: '28px', height: '28px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 4px 12px rgba(0,0,0,0.3)', zIndex: 10 }}
+                  style={{ position: 'absolute', top: '-10px', right: '-10px', backgroundColor: '#ff453a', border: 'none', borderRadius: '50%', color: '#111111', width: '28px', height: '28px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 4px 12px rgba(0,0,0,0.3)', zIndex: 10 }}
                 >
                   <X size={14} />
                 </button>
@@ -2935,7 +2935,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                          <button
                            type="button"
                            onClick={() => removePortfolioPhoto(photo)}
-                           style={{ position: 'absolute', top: '-6px', right: '-6px', width: '20px', height: '20px', borderRadius: '50%', background: '#ff453a', border: 'none', color: 'white', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '10px', fontWeight: '900', boxShadow: '0 2px 8px rgba(0,0,0,0.4)' }}
+                           style={{ position: 'absolute', top: '-6px', right: '-6px', width: '20px', height: '20px', borderRadius: '50%', background: '#ff453a', border: 'none', color: '#111111', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '10px', fontWeight: '900', boxShadow: '0 2px 8px rgba(0,0,0,0.4)' }}
                          >×</button>
                       </div>
                     ))}
@@ -3105,7 +3105,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
               <div style={{ padding: '24px', backgroundColor: 'rgba(0, 0, 0, 0.04)', borderRadius: '20px', border: '1px solid var(--border-color)' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '16px' }}>
                   <Key size={18} color="var(--gold-primary)" />
-                  <label style={{ fontSize: '12px', fontWeight: '900', color: 'white', letterSpacing: '1px' }}>MÓDULOS ACCESIBLES</label>
+                  <label style={{ fontSize: '12px', fontWeight: '900', color: '#111111', letterSpacing: '1px' }}>MÓDULOS ACCESIBLES</label>
                 </div>
                 
                 <div style={{ display: 'grid', gridTemplateColumns: isMobile ? 'minmax(0, 1fr) minmax(0, 1fr)' : 'repeat(3, minmax(0, 1fr))', gap: '12px' }}>
@@ -3292,7 +3292,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
           <div style={{ width: '64px', height: '64px', borderRadius: '50%', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px' }}>
             <Search size={24} color="rgba(255,255,255,0.3)" />
           </div>
-          <h3 style={{ fontSize: '18px', fontWeight: '800', color: 'white', marginBottom: '8px' }}>Sin resultados</h3>
+          <h3 style={{ fontSize: '18px', fontWeight: '800', color: '#111111', marginBottom: '8px' }}>Sin resultados</h3>
           <p style={{ color: 'var(--text-muted)', fontSize: '14px', maxWidth: '300px', lineHeight: '1.5' }}>No encontramos a nadie con ese nombre en tu equipo.</p>
         </div>
       ) : (
@@ -3389,7 +3389,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                              )}
                           </div>
                           <div style={{ textAlign: 'center', position: 'relative', zIndex: 2, width: '100%' }}>
-                            <h4 style={{ fontSize: isMobile ? '16px' : '18px', fontWeight: '900', color: 'white', margin: 0, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                            <h4 style={{ fontSize: isMobile ? '16px' : '18px', fontWeight: '900', color: '#111111', margin: 0, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                               {person.name}
                             </h4>
                             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', color: 'var(--gold-primary)', fontSize: isMobile ? '11px' : '12px', fontWeight: '700', marginTop: '4px' }}>
@@ -3470,7 +3470,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                       
                       {/* Name and Role */}
                       <div style={{ minWidth: 0 }}>
-                        <h4 style={{ fontSize: '15px', fontWeight: '800', color: 'white', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{person.name}</h4>
+                        <h4 style={{ fontSize: '15px', fontWeight: '800', color: '#111111', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{person.name}</h4>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '4px', color: 'var(--gold-primary)', fontSize: '11px', fontWeight: '700', marginTop: '2px' }}>
                           {getRoleIcon(person.role?.split('|')[0]?.split(', ')[0])}
                           <span style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{roleLabel(person.role?.split('|')[0])}</span>
@@ -3553,7 +3553,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                   
                   {/* Name/Role Column */}
                   <div style={{ minWidth: 0, overflow: 'hidden' }}>
-                    <h4 style={{ fontSize: '16px', fontWeight: '800', color: 'white', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{person.name}</h4>
+                    <h4 style={{ fontSize: '16px', fontWeight: '800', color: '#111111', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{person.name}</h4>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: 'var(--gold-primary)', fontSize: '11px', fontWeight: '700', marginTop: '2px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                       {getRoleIcon(person.role?.split('|')[0]?.split(', ')[0])}
                       <span>{roleLabel(person.role?.split('|')[0])}</span>
@@ -3786,7 +3786,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                 {/* Top Right Badges */}
                 <div style={{ position: 'absolute', top: '12px', right: '12px', display: 'flex', gap: '6px', zIndex: 2 }}>
                   {isCheckedIn && queueIndex >= 0 ? (
-                    <div style={{ width: '28px', height: '28px', borderRadius: '50%', background: 'rgba(255, 255, 255, 0.9)', backdropFilter: 'blur(8px)', border: '1px solid rgba(0, 0, 0, 0.08)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '13px', fontWeight: '800', color: 'white' }}>
+                    <div style={{ width: '28px', height: '28px', borderRadius: '50%', background: 'rgba(255, 255, 255, 0.9)', backdropFilter: 'blur(8px)', border: '1px solid rgba(0, 0, 0, 0.08)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '13px', fontWeight: '800', color: '#111111' }}>
                       {queueIndex + 1}
                     </div>
                   ) : (
@@ -3798,7 +3798,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
 
                 {/* Bottom Left Text over gradient */}
                 <div style={{ position: 'absolute', bottom: '16px', left: '16px', right: '16px' }}>
-                  <h4 style={{ fontSize: '18px', fontWeight: '800', color: 'white', margin: '0 0 2px 0', letterSpacing: '-0.4px', wordBreak: 'break-word', lineHeight: '1.2' }}>
+                  <h4 style={{ fontSize: '18px', fontWeight: '800', color: '#111111', margin: '0 0 2px 0', letterSpacing: '-0.4px', wordBreak: 'break-word', lineHeight: '1.2' }}>
                     {member.name}
                   </h4>
                   <p style={{ fontSize: '11px', color: 'var(--gold-primary)', fontWeight: '800', margin: '0 0 8px 0', letterSpacing: '0.5px' }}>
@@ -3899,7 +3899,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                 borderRadius: '12px',
                 background: 'rgba(0, 0, 0, 0.04)',
                 border: '1px solid rgba(0, 0, 0, 0.08)',
-                color: 'white',
+                color: '#111111',
                 fontSize: '13px',
                 outline: 'none',
                 boxSizing: 'border-box'
@@ -3912,7 +3912,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
           <div className="animate-fade-in" style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', gap: '16px', flexWrap: 'wrap', borderBottom: '1px solid rgba(0, 0, 0, 0.08)', paddingBottom: '20px', paddingRight: '48px' }}>
               <div style={{ flex: 1 }}>
-                <h3 style={{ fontSize: '24px', fontWeight: '800', color: 'white', letterSpacing: '-0.8px', margin: '0 0 4px 0' }}>
+                <h3 style={{ fontSize: '24px', fontWeight: '800', color: '#111111', letterSpacing: '-0.8px', margin: '0 0 4px 0' }}>
                   Asistencia
                 </h3>
                 <p style={{ color: 'var(--text-secondary)', fontSize: '13px', margin: 0 }}>
@@ -3933,7 +3933,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                 padding: '12px 18px', borderRadius: '14px',
                 background: 'rgba(50,215,75,0.08)', border: '1px solid rgba(50,215,75,0.25)'
               }}>
-                <span style={{ fontSize: '13px', color: 'white', fontWeight: '600' }}>
+                <span style={{ fontSize: '13px', color: '#111111', fontWeight: '600' }}>
                   Registraste la llegada de <strong>{justCheckedIn.name}</strong>
                 </span>
                 <button
@@ -3950,7 +3950,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                 <div style={{ width: '64px', height: '64px', borderRadius: '50%', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px' }}>
                   <Search size={24} color="rgba(255,255,255,0.3)" />
                 </div>
-                <h3 style={{ fontSize: '18px', fontWeight: '800', color: 'white', marginBottom: '8px' }}>Sin resultados</h3>
+                <h3 style={{ fontSize: '18px', fontWeight: '800', color: '#111111', marginBottom: '8px' }}>Sin resultados</h3>
                 <p style={{ color: 'var(--text-muted)', fontSize: '14px', maxWidth: '300px', lineHeight: '1.5' }}>No encontramos a nadie con ese nombre en tu equipo.</p>
               </div>
             ) : (
@@ -3968,7 +3968,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                 <div className={overlayClass} style={{ position: 'fixed', inset: 0, zIndex: 20000, background: '#f4f5f3', overflowY: 'auto', padding: isMobile ? '24px 16px' : '48px', paddingTop: isMobile ? 'max(24px, env(safe-area-inset-top, 24px))' : 'max(48px, env(safe-area-inset-top, 48px))' }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '16px', flexWrap: 'wrap', maxWidth: '1400px', margin: '0 auto 32px' }}>
                     <div>
-                      <h2 style={{ fontSize: isMobile ? '24px' : '32px', fontWeight: '800', color: 'white' }}>Clínica Hoy</h2>
+                      <h2 style={{ fontSize: isMobile ? '24px' : '32px', fontWeight: '800', color: '#111111' }}>Clínica Hoy</h2>
                       <p style={{ color: 'var(--text-secondary)', marginTop: '4px' }}>{checkedInCount} de {totalCount} en la clínica</p>
                     </div>
                     <button
@@ -4068,7 +4068,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
               <>
                 {/* ── HEADER CARD ── */}
                 <div style={{ borderBottom: '1px solid rgba(0, 0, 0, 0.08)', paddingBottom: '20px', marginBottom: '8px' }}>
-                  <h3 style={{ fontSize: '24px', fontWeight: '800', color: 'white', letterSpacing: '-0.8px', margin: '0 0 4px 0' }}>
+                  <h3 style={{ fontSize: '24px', fontWeight: '800', color: '#111111', letterSpacing: '-0.8px', margin: '0 0 4px 0' }}>
                     Control de Calidad y Feedback
                   </h3>
                   <p style={{ color: 'var(--text-secondary)', fontSize: '13px', margin: 0 }}>
@@ -4099,28 +4099,28 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                       {/* Rating General */}
                       <div style={{ textAlign: 'center', padding: '16px', borderRadius: '16px', background: 'rgba(17, 17, 17, 0.06)', border: '1px solid rgba(17, 17, 17, 0.15)' }}>
                         <Star size={20} color="var(--gold-primary)" fill="var(--gold-primary)" style={{ margin: '0 auto 8px' }} />
-                        <div style={{ fontSize: '24px', fontWeight: '900', color: 'white' }}>{avgGeneral}</div>
+                        <div style={{ fontSize: '24px', fontWeight: '900', color: '#111111' }}>{avgGeneral}</div>
                         <div style={{ fontSize: '11px', color: 'var(--text-muted)', fontWeight: '700', marginTop: '4px' }}>GLOBAL</div>
                       </div>
 
                       {/* Rapidez */}
                       <div style={{ textAlign: 'center', padding: '16px', borderRadius: '16px', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
                         <Clock size={20} color="var(--text-muted)" style={{ margin: '0 auto 8px' }} />
-                        <div style={{ fontSize: '24px', fontWeight: '900', color: 'white' }}>{avgRapidez}</div>
+                        <div style={{ fontSize: '24px', fontWeight: '900', color: '#111111' }}>{avgRapidez}</div>
                         <div style={{ fontSize: '11px', color: 'var(--text-muted)', fontWeight: '700', marginTop: '4px' }}>RAPIDEZ</div>
                       </div>
 
                       {/* Limpieza */}
                       <div style={{ textAlign: 'center', padding: '16px', borderRadius: '16px', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
                         <Droplets size={20} color="var(--text-muted)" style={{ margin: '0 auto 8px' }} />
-                        <div style={{ fontSize: '24px', fontWeight: '900', color: 'white' }}>{avgLimpieza}</div>
+                        <div style={{ fontSize: '24px', fontWeight: '900', color: '#111111' }}>{avgLimpieza}</div>
                         <div style={{ fontSize: '11px', color: 'var(--text-muted)', fontWeight: '700', marginTop: '4px' }}>LIMPIEZA</div>
                       </div>
 
                       {/* Habilidad */}
                       <div style={{ textAlign: 'center', padding: '16px', borderRadius: '16px', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
                         <ToothIcon size={20} color="var(--text-muted)" style={{ margin: '0 auto 8px' }} />
-                        <div style={{ fontSize: '24px', fontWeight: '900', color: 'white' }}>{avgHabilidad}</div>
+                        <div style={{ fontSize: '24px', fontWeight: '900', color: '#111111' }}>{avgHabilidad}</div>
                         <div style={{ fontSize: '11px', color: 'var(--text-muted)', fontWeight: '700', marginTop: '4px' }}>HABILIDAD</div>
                       </div>
                     </div>
@@ -4228,7 +4228,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                             <h5 style={{ 
                               fontSize: '20px', 
                               fontWeight: '900', 
-                              color: 'white', 
+                              color: '#111111', 
                               margin: 0,
                               letterSpacing: '-0.3px',
                               lineHeight: '1.2'
@@ -4258,7 +4258,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                             border: '1px solid rgba(0, 0, 0, 0.08)',
                             marginTop: '2px'
                           }}>
-                            <span style={{ fontSize: '14px', fontWeight: '900', color: 'white' }}>
+                            <span style={{ fontSize: '14px', fontWeight: '900', color: '#111111' }}>
                               {starBarber.avg.toFixed(1)}
                             </span>
                             <Star size={13} fill="var(--gold-primary)" color="var(--gold-primary)" />
@@ -4412,7 +4412,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                                 </div>
                                 <div>
                                   <div style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
-                                    <span style={{ fontWeight: '800', fontSize: '13px', color: 'white' }}>{clientName}</span>
+                                    <span style={{ fontWeight: '800', fontSize: '13px', color: '#111111' }}>{clientName}</span>
                                     <span style={{ fontSize: '11px', color: 'var(--text-muted)' }}>
                                       evaluó a <span style={{ color: 'var(--gold-primary)', fontWeight: '700' }}>{barber?.name || 'Odontólogo'}</span>
                                     </span>
@@ -4454,15 +4454,15 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                             <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', background: 'rgba(0, 0, 0, 0.04)', padding: '12px', borderRadius: '12px', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
                               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                                 <span style={{ fontSize: '12px', color: 'var(--text-secondary)', fontWeight: '600' }}>Rapidez</span>
-                                <span style={{ fontSize: '12px', fontWeight: '800', color: 'white' }}>{rev.rapidez || rev.rating || 5} / 5</span>
+                                <span style={{ fontSize: '12px', fontWeight: '800', color: '#111111' }}>{rev.rapidez || rev.rating || 5} / 5</span>
                               </div>
                               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                                 <span style={{ fontSize: '12px', color: 'var(--text-secondary)', fontWeight: '600' }}>Limpieza</span>
-                                <span style={{ fontSize: '12px', fontWeight: '800', color: 'white' }}>{rev.limpieza || rev.rating || 5} / 5</span>
+                                <span style={{ fontSize: '12px', fontWeight: '800', color: '#111111' }}>{rev.limpieza || rev.rating || 5} / 5</span>
                               </div>
                               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                                 <span style={{ fontSize: '12px', color: 'var(--text-secondary)', fontWeight: '600' }}>Habilidad</span>
-                                <span style={{ fontSize: '12px', fontWeight: '800', color: 'white' }}>{rev.habilidad || rev.rating || 5} / 5</span>
+                                <span style={{ fontSize: '12px', fontWeight: '800', color: '#111111' }}>{rev.habilidad || rev.rating || 5} / 5</span>
                               </div>
                             </div>
 
@@ -4503,7 +4503,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
               <>
                 {/* ── HEADER ── */}
                 <div style={{ borderBottom: '1px solid rgba(0, 0, 0, 0.08)', paddingBottom: '20px', marginBottom: '4px' }}>
-                  <h3 style={{ fontSize: '24px', fontWeight: '800', color: 'white', letterSpacing: '-0.8px', margin: '0 0 4px 0' }}>
+                  <h3 style={{ fontSize: '24px', fontWeight: '800', color: '#111111', letterSpacing: '-0.8px', margin: '0 0 4px 0' }}>
                     Reportes de Desempeño
                   </h3>
                   <p style={{ color: 'var(--text-secondary)', fontSize: '13px', margin: 0 }}>
@@ -4522,7 +4522,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                       <span style={{ fontSize: '11px', fontWeight: '800', color: 'var(--text-muted)', letterSpacing: '0.5px', textTransform: 'uppercase' }}>Asistencia Promedio</span>
                       <InfoTooltip text="Porcentaje de días que el equipo asistió este mes sobre los días laborables totales del mes." />
                     </div>
-                    <div style={{ fontSize: '32px', fontWeight: '900', color: 'white', letterSpacing: '-1px' }}>{summary.attendance}%</div>
+                    <div style={{ fontSize: '32px', fontWeight: '900', color: '#111111', letterSpacing: '-1px' }}>{summary.attendance}%</div>
                     <div style={{ fontSize: '11px', fontWeight: '700', color: trendColor(summary.attendanceTrend), marginTop: '4px' }}>
                       {trendIcon(summary.attendanceTrend)} {Math.abs(summary.attendanceTrend)}% vs. mes anterior
                     </div>
@@ -4537,7 +4537,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                       <span style={{ fontSize: '11px', fontWeight: '800', color: 'var(--text-muted)', letterSpacing: '0.5px', textTransform: 'uppercase' }}>Puntualidad</span>
                       <InfoTooltip text="Porcentaje de registros de entrada que fueron antes o a las 10:00 AM (hora de apertura)." />
                     </div>
-                    <div style={{ fontSize: '32px', fontWeight: '900', color: 'white', letterSpacing: '-1px' }}>{summary.punctuality}%</div>
+                    <div style={{ fontSize: '32px', fontWeight: '900', color: '#111111', letterSpacing: '-1px' }}>{summary.punctuality}%</div>
                     <div style={{ fontSize: '11px', fontWeight: '700', color: trendColor(summary.punctualityTrend), marginTop: '4px' }}>
                       {trendIcon(summary.punctualityTrend)} {Math.abs(summary.punctualityTrend)}% vs. mes anterior
                     </div>
@@ -4552,7 +4552,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                        <span style={{ fontSize: '11px', fontWeight: '800', color: 'var(--text-muted)', letterSpacing: '0.5px', textTransform: 'uppercase' }}>Servicios Completados</span>
                       <InfoTooltip text="Total de citas con estado 'Completado' registradas por todo el equipo en el mes actual." />
                     </div>
-                    <div style={{ fontSize: '32px', fontWeight: '900', color: 'white', letterSpacing: '-1px' }}>{summary.totalServices}</div>
+                    <div style={{ fontSize: '32px', fontWeight: '900', color: '#111111', letterSpacing: '-1px' }}>{summary.totalServices}</div>
                     <div style={{ fontSize: '11px', fontWeight: '700', color: trendColor(summary.servicesTrend), marginTop: '4px' }}>
                       {trendIcon(summary.servicesTrend)} {Math.abs(summary.servicesTrend)}% vs. mes anterior
                     </div>
@@ -4567,7 +4567,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                        <span style={{ fontSize: '11px', fontWeight: '800', color: 'var(--text-muted)', letterSpacing: '0.5px', textTransform: 'uppercase' }}>Gasto Promedio</span>
                       <InfoTooltip text="Monto promedio en USD que deja cada cliente por visita en caja este mes." />
                     </div>
-                    <div style={{ fontSize: '32px', fontWeight: '900', color: 'white', letterSpacing: '-1px' }}>${summary.avgTicket.toFixed(2)}</div>
+                    <div style={{ fontSize: '32px', fontWeight: '900', color: '#111111', letterSpacing: '-1px' }}>${summary.avgTicket.toFixed(2)}</div>
                     <div style={{ fontSize: '11px', fontWeight: '700', color: trendColor(summary.avgTicketTrend), marginTop: '4px' }}>
                       {trendIcon(summary.avgTicketTrend)} ${Math.abs(summary.avgTicketTrend).toFixed(2)} vs. mes anterior
                     </div>
@@ -4579,7 +4579,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
 
                   {/* TOP DESEMPEÑO DEL MES */}
                   <div className="glass-card" style={{ padding: '24px', borderRadius: '24px', background: 'rgba(0, 0, 0, 0.04)', transition: 'none' }}>
-                     <h4 style={{ fontSize: '14px', fontWeight: '900', color: 'white', margin: '0 0 20px', letterSpacing: '0.3px', display: 'flex', alignItems: 'center' }}>Top desempeño del mes <InfoTooltip text="Score calculado con: servicios completados (30%), puntualidad (25%), asistencia (25%) y calificación de clientes (20%)." /></h4>
+                     <h4 style={{ fontSize: '14px', fontWeight: '900', color: '#111111', margin: '0 0 20px', letterSpacing: '0.3px', display: 'flex', alignItems: 'center' }}>Top desempeño del mes <InfoTooltip text="Score calculado con: servicios completados (30%), puntualidad (25%), asistencia (25%) y calificación de clientes (20%)." /></h4>
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
                       {topPerformers.map((p, i) => (
                         <div key={p.id} style={{ display: 'flex', alignItems: 'center', gap: '12px', padding: '10px', borderRadius: '14px', background: i === 0 ? 'rgba(17, 17, 17,0.06)' : 'rgba(255,255,255,0.02)', border: i === 0 ? '1px solid rgba(17, 17, 17,0.15)' : '1px solid rgba(0, 0, 0, 0.08)' }}>
@@ -4594,7 +4594,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                              )}
                            </div>
                            <div style={{ flex: 1, minWidth: 0 }}>
-                            <div style={{ fontSize: '12px', fontWeight: '800', color: 'white', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{p.name}</div>
+                            <div style={{ fontSize: '12px', fontWeight: '800', color: '#111111', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{p.name}</div>
                             <div style={{ fontSize: '10px', color: 'var(--text-muted)', marginTop: '1px' }}>Score: {p.perfScore}</div>
                           </div>
                           <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
@@ -4611,7 +4611,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                     {/* ASISTENCIA POR SEMANA */}
                     <div className="glass-card" style={{ padding: '24px', borderRadius: '24px', background: 'rgba(0, 0, 0, 0.04)', transition: 'none' }}>
                       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
-                         <h4 style={{ fontSize: '14px', fontWeight: '900', color: 'white', margin: 0, letterSpacing: '0.3px', display: 'flex', alignItems: 'center' }}>Asistencia por semana <InfoTooltip text="Porcentaje de entradas puntuales (antes de las 10:00 AM) de todo el equipo, agrupadas por semana." /></h4>
+                         <h4 style={{ fontSize: '14px', fontWeight: '900', color: '#111111', margin: 0, letterSpacing: '0.3px', display: 'flex', alignItems: 'center' }}>Asistencia por semana <InfoTooltip text="Porcentaje de entradas puntuales (antes de las 10:00 AM) de todo el equipo, agrupadas por semana." /></h4>
                         <span style={{ fontSize: '10px', fontWeight: '700', color: 'var(--text-muted)', background: 'rgba(0, 0, 0, 0.04)', padding: '4px 10px', borderRadius: '8px' }}>Últimas 4 semanas</span>
                       </div>
                       <div style={{ display: 'flex', alignItems: 'flex-end', gap: '16px', height: '160px', paddingBottom: '28px', position: 'relative' }}>
@@ -4628,7 +4628,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                               <span style={{ fontSize: '11px', fontWeight: '800', color: 'var(--gold-primary)' }}>{w.pct}%</span>
                               <div style={{ width: '100%', maxWidth: '50px', height: `${w.pct}%`, background: `linear-gradient(180deg, var(--gold-primary) 0%, rgba(255, 255, 255, 0.9) 100%)`, borderRadius: '8px 8px 0 0', transition: 'height 0.5s ease' }} />
                               <div style={{ textAlign: 'center' }}>
-                                <div style={{ fontSize: '10px', fontWeight: '700', color: 'white' }}>{w.label}</div>
+                                <div style={{ fontSize: '10px', fontWeight: '700', color: '#111111' }}>{w.label}</div>
                                 <div style={{ fontSize: '8px', color: 'var(--text-muted)' }}>{w.range}</div>
                               </div>
                             </div>
@@ -4639,7 +4639,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
 
                     {/* PRODUCTIVIDAD POR ODONTÓLOGO */}
                     <div className="glass-card" style={{ padding: '24px', borderRadius: '24px', background: 'rgba(0, 0, 0, 0.04)', transition: 'none' }}>
-                       <h4 style={{ fontSize: '14px', fontWeight: '900', color: 'white', margin: '0 0 16px', letterSpacing: '0.3px', display: 'flex', alignItems: 'center' }}>Productividad por odontólogo <InfoTooltip text="Servicios completados y gasto promedio (USD) de cada colaborador en el mes actual." /></h4>
+                       <h4 style={{ fontSize: '14px', fontWeight: '900', color: '#111111', margin: '0 0 16px', letterSpacing: '0.3px', display: 'flex', alignItems: 'center' }}>Productividad por odontólogo <InfoTooltip text="Servicios completados y gasto promedio (USD) de cada colaborador en el mes actual." /></h4>
                       <div style={{ overflowX: 'auto' }}>
                         <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '12px' }}>
                           <thead>
@@ -4660,15 +4660,15 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                                        <span style={{ fontSize: '10px', fontWeight: '900', color: 'var(--gold-primary)', opacity: 0.5 }}>{p.name.charAt(0)}</span>
                                      )}
                                    </div>
-                                   <span style={{ fontWeight: '700', color: 'white', fontSize: '12px' }}>{p.name}</span>
+                                   <span style={{ fontWeight: '700', color: '#111111', fontSize: '12px' }}>{p.name}</span>
                                 </td>
                                 <td style={{ padding: '10px 4px', textAlign: 'center' }}>
-                                  <span style={{ fontWeight: '800', color: 'white' }}>{p.servicesCount}</span>
+                                  <span style={{ fontWeight: '800', color: '#111111' }}>{p.servicesCount}</span>
                                   <div style={{ display: 'flex', justifyContent: 'center', marginTop: '3px' }}>
                                     <div style={{ width: `${Math.min(100, (p.servicesCount / Math.max(1, allStaff[0]?.servicesCount || 1)) * 100)}%`, height: '4px', borderRadius: '2px', background: 'var(--gold-primary)', maxWidth: '60px' }} />
                                   </div>
                                 </td>
-                                <td style={{ padding: '10px 4px', textAlign: 'center', fontWeight: '800', color: 'white' }}>
+                                <td style={{ padding: '10px 4px', textAlign: 'center', fontWeight: '800', color: '#111111' }}>
                                   ${p.ticketAvg.toFixed(2)}
                                 </td>
                               </tr>
@@ -4681,7 +4681,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
 
                   {/* PUNTUALIDAD POR COLABORADOR */}
                   <div className="glass-card" style={{ padding: '24px', borderRadius: '24px', background: 'rgba(0, 0, 0, 0.04)', transition: 'none' }}>
-                     <h4 style={{ fontSize: '14px', fontWeight: '900', color: 'white', margin: '0 0 20px', letterSpacing: '0.3px', display: 'flex', alignItems: 'center' }}>Puntualidad por colaborador <InfoTooltip text="Porcentaje de veces que cada persona marcó entrada antes de las 10:00 AM sobre el total de sus registros." /></h4>
+                     <h4 style={{ fontSize: '14px', fontWeight: '900', color: '#111111', margin: '0 0 20px', letterSpacing: '0.3px', display: 'flex', alignItems: 'center' }}>Puntualidad por colaborador <InfoTooltip text="Porcentaje de veces que cada persona marcó entrada antes de las 10:00 AM sobre el total de sus registros." /></h4>
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
                       {allStaff.map((p) => (
                         <div key={p.id}>
@@ -4694,7 +4694,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                                   <span style={{ fontSize: '9px', fontWeight: '900', color: 'var(--gold-primary)', opacity: 0.5 }}>{p.name.charAt(0)}</span>
                                 )}
                               </div>
-                              <span style={{ fontSize: '11px', fontWeight: '700', color: 'white', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{p.name}</span>
+                              <span style={{ fontSize: '11px', fontWeight: '700', color: '#111111', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{p.name}</span>
                             </div>
                             <span style={{ fontSize: '12px', fontWeight: '800', color: p.punctualityPct >= 90 ? '#32d74b' : p.punctualityPct >= 75 ? '#ff9f0a' : '#ff453a', marginLeft: '8px', flexShrink: 0 }}>{p.punctualityPct}%</span>
                           </div>
@@ -4748,7 +4748,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                             <Star size={12} color="#32d74b" fill="#32d74b" />
                             <span style={{ fontSize: '10px', fontWeight: '800', color: '#32d74b', letterSpacing: '0.5px', textTransform: 'uppercase' }}>Mejor asistencia</span>
                           </div>
-                          <div style={{ fontSize: '14px', fontWeight: '800', color: 'white', lineHeight: 1.2 }}>{insights.bestAttendance.name}</div>
+                          <div style={{ fontSize: '14px', fontWeight: '800', color: '#111111', lineHeight: 1.2 }}>{insights.bestAttendance.name}</div>
                         </div>
                         <div style={{
                           fontSize: '22px', fontWeight: '900', color: '#32d74b',
@@ -4794,7 +4794,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                             <Clock size={12} color="var(--gold-primary)" />
                             <span style={{ fontSize: '10px', fontWeight: '800', color: 'var(--gold-primary)', letterSpacing: '0.5px', textTransform: 'uppercase' }}>Más puntual</span>
                           </div>
-                          <div style={{ fontSize: '14px', fontWeight: '800', color: 'white', lineHeight: 1.2 }}>{insights.mostPunctual.name}</div>
+                          <div style={{ fontSize: '14px', fontWeight: '800', color: '#111111', lineHeight: 1.2 }}>{insights.mostPunctual.name}</div>
                         </div>
                         <div style={{
                           fontSize: '22px', fontWeight: '900', color: 'var(--gold-primary)',
@@ -4840,7 +4840,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                             <DollarSign size={12} color="#ff9f0a" />
                             <span style={{ fontSize: '10px', fontWeight: '800', color: '#ff9f0a', letterSpacing: '0.5px', textTransform: 'uppercase' }}>Mayor gasto promedio</span>
                           </div>
-                          <div style={{ fontSize: '14px', fontWeight: '800', color: 'white', lineHeight: 1.2 }}>{insights.highestTicket.name}</div>
+                          <div style={{ fontSize: '14px', fontWeight: '800', color: '#111111', lineHeight: 1.2 }}>{insights.highestTicket.name}</div>
                         </div>
                         <div style={{
                           fontSize: '22px', fontWeight: '900', color: '#ff9f0a',
@@ -4886,7 +4886,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                             <Target size={12} color="#ff453a" />
                             <span style={{ fontSize: '10px', fontWeight: '800', color: '#ff453a', letterSpacing: '0.5px', textTransform: 'uppercase' }}>Necesita seguimiento</span>
                           </div>
-                          <div style={{ fontSize: '14px', fontWeight: '800', color: 'white', lineHeight: 1.2 }}>{insights.needsFollowUp.name}</div>
+                          <div style={{ fontSize: '14px', fontWeight: '800', color: '#111111', lineHeight: 1.2 }}>{insights.needsFollowUp.name}</div>
                         </div>
                         <div style={{
                           fontSize: '22px', fontWeight: '900', color: '#ff453a',
@@ -4991,7 +4991,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
               display: 'flex',
               flexDirection: 'column',
               gap: '24px',
-              color: 'white',
+              color: '#111111',
               margin: 'auto'
             }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', borderBottom: '1px solid rgba(17, 17, 17,0.15)', paddingBottom: '20px', marginBottom: '4px' }}>
@@ -5014,7 +5014,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                   
                   {/* Title & Name */}
                   <div>
-                    <h3 style={{ fontSize: '22px', fontWeight: '900', color: 'white', marginBottom: '4px', display: 'flex', alignItems: 'center', gap: '8px', letterSpacing: '-0.5px' }}>
+                    <h3 style={{ fontSize: '22px', fontWeight: '900', color: '#111111', marginBottom: '4px', display: 'flex', alignItems: 'center', gap: '8px', letterSpacing: '-0.5px' }}>
                       Cierre de Asistencia <Banknote size={22} color="var(--gold-primary)" />
                     </h3>
                     <p style={{ color: 'var(--text-secondary)', fontSize: '14px', margin: 0 }}>
@@ -5134,7 +5134,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                       padding: '12px',
                       borderRadius: '12px',
                       backgroundColor: 'rgba(0, 0, 0, 0.04)',
-                      color: 'white',
+                      color: '#111111',
                       border: '1px solid rgba(0, 0, 0, 0.08)',
                       fontWeight: '700',
                       fontSize: '13px',
@@ -5173,7 +5173,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
             <div style={{ width: '48px', height: '48px', borderRadius: '50%', background: 'rgba(255,159,10,0.1)', border: '1px solid rgba(255,159,10,0.25)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 16px' }}>
               <Film size={22} color="#ff9f0a" />
             </div>
-            <h3 style={{ fontSize: '16px', fontWeight: '800', color: 'white', margin: '0 0 8px' }}>Reemplazar video</h3>
+            <h3 style={{ fontSize: '16px', fontWeight: '800', color: '#111111', margin: '0 0 8px' }}>Reemplazar video</h3>
             <p style={{ fontSize: '13px', color: 'var(--text-muted)', margin: '0 0 20px', lineHeight: '1.5' }}>
               {hasHardcodedVideo && !formData.video_url
                 ? 'Este odontólogo tiene un video predefinido en la landing. El video nuevo lo reemplazará completamente.'
@@ -5182,13 +5182,13 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
             <div style={{ display: 'flex', gap: '10px' }}>
               <button
                 onClick={() => { setShowVideoConfirm(false); setPendingVideoFile(null); }}
-                style={{ flex: 1, padding: '10px', borderRadius: '10px', border: '1px solid rgba(0, 0, 0, 0.08)', background: 'rgba(0, 0, 0, 0.04)', color: 'white', fontSize: '12px', fontWeight: '700', cursor: 'pointer' }}
+                style={{ flex: 1, padding: '10px', borderRadius: '10px', border: '1px solid rgba(0, 0, 0, 0.08)', background: 'rgba(0, 0, 0, 0.04)', color: '#111111', fontSize: '12px', fontWeight: '700', cursor: 'pointer' }}
               >
                 Cancelar
               </button>
               <button
                 onClick={async () => { setShowVideoConfirm(false); if (pendingVideoFile) await doVideoUpload(pendingVideoFile); setPendingVideoFile(null); }}
-                style={{ flex: 1, padding: '10px', borderRadius: '10px', border: 'none', background: 'linear-gradient(135deg, #ff9f0a, #e68a00)', color: 'white', fontSize: '12px', fontWeight: '700', cursor: 'pointer' }}
+                style={{ flex: 1, padding: '10px', borderRadius: '10px', border: 'none', background: 'linear-gradient(135deg, #ff9f0a, #e68a00)', color: '#111111', fontSize: '12px', fontWeight: '700', cursor: 'pointer' }}
               >
                 Sí, reemplazar
               </button>

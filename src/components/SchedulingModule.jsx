@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
+﻿import React, { useState, useEffect, useMemo } from 'react';
 import useDebounce from '../hooks/useDebounce';
 import FieldLabel from './FieldLabel';
 import { 
@@ -3296,7 +3296,7 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
               >
                 <CalendarIcon size={16} />
               </button>
-              <h2 style={{ fontSize: '18px', fontWeight: '900', textTransform: 'capitalize', color: 'white', fontFamily: 'Outfit, var(--font-sans), system-ui' }}>{formatDateLabel(selectedDate)}</h2>
+              <h2 style={{ fontSize: '18px', fontWeight: '900', textTransform: 'capitalize', color: '#111111', fontFamily: 'Outfit, var(--font-sans), system-ui' }}>{formatDateLabel(selectedDate)}</h2>
             </div>
             <div className="date-navigator-actions" style={{ display: 'flex', gap: '8px' }}>
               <button 
@@ -3320,9 +3320,9 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
                 <CalendarIcon size={18} />
               </button>
               
-              <button onClick={() => moveSelectedDate(-1)} style={{ background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', borderRadius: '12px', width: '38px', height: '38px', color: 'white', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'all 0.2s' }} onMouseEnter={e => e.currentTarget.style.borderColor = 'rgba(255, 255, 255,0.3)'} onMouseLeave={e => e.currentTarget.style.borderColor = 'rgba(255,255,255,0.08)'}><ChevronLeft size={18} /></button>
+              <button onClick={() => moveSelectedDate(-1)} style={{ background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', borderRadius: '12px', width: '38px', height: '38px', color: '#111111', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'all 0.2s' }} onMouseEnter={e => e.currentTarget.style.borderColor = 'rgba(255, 255, 255,0.3)'} onMouseLeave={e => e.currentTarget.style.borderColor = 'rgba(255,255,255,0.08)'}><ChevronLeft size={18} /></button>
               
-              <button onClick={() => moveSelectedDate(1)} style={{ background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', borderRadius: '12px', width: '38px', height: '38px', color: 'white', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'all 0.2s' }} onMouseEnter={e => e.currentTarget.style.borderColor = 'rgba(255, 255, 255,0.3)'} onMouseLeave={e => e.currentTarget.style.borderColor = 'rgba(255,255,255,0.08)'}><ChevronRight size={18} /></button>
+              <button onClick={() => moveSelectedDate(1)} style={{ background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', borderRadius: '12px', width: '38px', height: '38px', color: '#111111', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'all 0.2s' }} onMouseEnter={e => e.currentTarget.style.borderColor = 'rgba(255, 255, 255,0.3)'} onMouseLeave={e => e.currentTarget.style.borderColor = 'rgba(255,255,255,0.08)'}><ChevronRight size={18} /></button>
               <PandaSelect
                 className="agenda-view-select-panda"
                 value={filterType}
@@ -3560,7 +3560,7 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
                   background: 'rgba(0, 0, 0, 0.04)',
                   border: '1px solid rgba(0, 0, 0, 0.08)',
                   borderRadius: '24px',
-                  color: 'white',
+                  color: '#111111',
                   outline: 'none',
                   fontWeight: '600',
                   boxShadow: 'inset 0 2px 4px rgba(0,0,0,0.2), 0 8px 24px rgba(0,0,0,0.1)',
@@ -3615,7 +3615,7 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
                 }}>
                   {searchTerm ? <Search size={34} /> : statusFilter !== 'all' ? <Filter size={34} /> : <CalendarIcon size={34} />}
                 </div>
-                <div style={{ color: 'white', fontSize: '17px', fontWeight: '900', fontFamily: 'Outfit, sans-serif', marginBottom: '8px' }}>
+                <div style={{ color: '#111111', fontSize: '17px', fontWeight: '900', fontFamily: 'Outfit, sans-serif', marginBottom: '8px' }}>
                   {searchTerm
                     ? 'Sin resultados para tu búsqueda'
                     : statusFilter === 'completed'
@@ -3649,7 +3649,7 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
                     <button
                       type="button"
                       onClick={loadFilteredAppointments}
-                      style={{ background: 'rgba(0, 0, 0, 0.04)', color: 'white', border: '1px solid rgba(0, 0, 0, 0.08)' }}
+                      style={{ background: 'rgba(0, 0, 0, 0.04)', color: '#111111', border: '1px solid rgba(0, 0, 0, 0.08)' }}
                     >
                       Actualizar
                     </button>
@@ -4090,7 +4090,7 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
                             <div className="agenda-group-icon" style={{ color: group.color, display: 'flex', alignItems: 'center', background: 'rgba(0, 0, 0, 0.04)', padding: '8px', borderRadius: '10px' }}>
                               {group.icon}
                             </div>
-                            <span className="agenda-group-title" style={{ fontWeight: '800', fontSize: '15px', color: '#fff', fontFamily: 'Outfit, var(--font-sans), system-ui', letterSpacing: '0.5px' }}>
+                            <span className="agenda-group-title" style={{ fontWeight: '800', fontSize: '15px', color: '#111111', fontFamily: 'Outfit, var(--font-sans), system-ui', letterSpacing: '0.5px' }}>
                               {group.title}
                             </span>
                             <span className="agenda-group-count" style={{
@@ -4193,7 +4193,7 @@ return (
         customFooter={
           <div style={{ display: 'flex', gap: '12px', width: '100%', marginTop: '20px' }}>
             <button onClick={() => processAction('cancel')} style={{ flex: 1, padding: '14px', borderRadius: '14px', border: '1px solid #ff453a', background: 'rgba(255,69,58,0.1)', color: '#ff453a', fontWeight: '800', cursor: 'pointer' }}>MARCAR CANCELADA</button>
-            <button onClick={() => processAction('delete')} style={{ flex: 1, padding: '14px', borderRadius: '14px', border: '1px solid rgba(0, 0, 0, 0.08)', background: 'rgba(0, 0, 0, 0.04)', color: 'white', fontWeight: '800', cursor: 'pointer' }}>BORRAR PERMANENTE</button>
+            <button onClick={() => processAction('delete')} style={{ flex: 1, padding: '14px', borderRadius: '14px', border: '1px solid rgba(0, 0, 0, 0.08)', background: 'rgba(0, 0, 0, 0.04)', color: '#111111', fontWeight: '800', cursor: 'pointer' }}>BORRAR PERMANENTE</button>
           </div>
         }
       />
@@ -4226,7 +4226,7 @@ return (
                 {/* Header - VisionOS Style */}
                 <div style={{ padding: '20px 28px 12px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexShrink: 0 }}>
                   <div>
-                    <h3 style={{ fontSize: '24px', fontWeight: '800', margin: 0, fontFamily: 'Outfit, sans-serif', color: 'white', letterSpacing: '-0.5px' }}>
+                    <h3 style={{ fontSize: '24px', fontWeight: '800', margin: 0, fontFamily: 'Outfit, sans-serif', color: '#111111', letterSpacing: '-0.5px' }}>
                       {editingApp ? 'Editar Cita' : 'Nueva Cita'}
                     </h3>
                     <span style={{ fontSize: '13px', color: 'rgba(255,255,255,0.5)', fontWeight: '500' }}>
@@ -4253,11 +4253,11 @@ return (
                       {selectedClient ? (
                         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', padding: '14px 16px', borderRadius: '16px' }}>
                           <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                            <div style={{ width: '40px', height: '40px', borderRadius: '20px', background: 'linear-gradient(135deg, #3a3a40, #ffffff)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '16px', fontWeight: '800', color: 'white', flexShrink: 0 }}>
+                            <div style={{ width: '40px', height: '40px', borderRadius: '20px', background: 'linear-gradient(135deg, #3a3a40, #ffffff)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '16px', fontWeight: '800', color: '#111111', flexShrink: 0 }}>
                               {selectedClient.name.charAt(0)}
                             </div>
                             <div style={{ minWidth: 0 }}>
-                              <div style={{ fontWeight: '700', color: 'white', fontSize: '14px', letterSpacing: '-0.3px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{selectedClient.name}</div>
+                              <div style={{ fontWeight: '700', color: '#111111', fontSize: '14px', letterSpacing: '-0.3px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{selectedClient.name}</div>
                               <div style={{ fontSize: '12px', color: 'rgba(255,255,255,0.4)', marginTop: '1px' }}>V-{selectedClient.id_card}</div>
                             </div>
                           </div>
@@ -4269,14 +4269,14 @@ return (
                         <div style={{ position: 'relative' }}>
                           <div style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
                             <Search style={{ position: 'absolute', left: '14px', pointerEvents: 'none' }} size={18} color="rgba(255,255,255,0.35)" />
-                            <input type="text" placeholder="Cédula o nombre..." value={clientSearchTerm} onChange={(e) => handleClientSearch(e.target.value)} style={{ width: '100%', padding: '0 14px 0 42px', height: '46px', fontSize: '14px', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', borderRadius: '14px', color: 'white', outline: 'none', fontWeight: '500', transition: 'all 0.2s' }} onFocus={e => { e.target.style.borderColor = 'rgba(17, 17, 17,0.4)'; e.target.style.background = 'rgba(255,255,255,0.08)'; }} onBlur={e => { e.target.style.borderColor = 'rgba(255,255,255,0.08)'; e.target.style.background = 'rgba(255,255,255,0.05)'; }} />
+                            <input type="text" placeholder="Cédula o nombre..." value={clientSearchTerm} onChange={(e) => handleClientSearch(e.target.value)} style={{ width: '100%', padding: '0 14px 0 42px', height: '46px', fontSize: '14px', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', borderRadius: '14px', color: '#111111', outline: 'none', fontWeight: '500', transition: 'all 0.2s' }} onFocus={e => { e.target.style.borderColor = 'rgba(17, 17, 17,0.4)'; e.target.style.background = 'rgba(255,255,255,0.08)'; }} onBlur={e => { e.target.style.borderColor = 'rgba(255,255,255,0.08)'; e.target.style.background = 'rgba(255,255,255,0.05)'; }} />
                           </div>
                           {!selectedClient && clientSearchResults.length > 0 && (
                             <div className="animate-scale-in" style={{ position: 'absolute', top: 'calc(100% + 6px)', left: 0, right: 0, background: 'var(--bg-secondary)', border: '1px solid rgba(0, 0, 0, 0.08)', borderRadius: '14px', overflow: 'hidden', zIndex: 200, backdropFilter: 'blur(30px)', boxShadow: '0 16px 40px rgba(0,0,0,0.5)', maxHeight: '200px', overflowY: 'auto' }}>
                               {clientSearchResults.map(c => (
                                 <div key={c.id} onClick={() => handleSelectClient(c)} style={{ padding: '12px 16px', cursor: 'pointer', borderBottom: '1px solid rgba(0, 0, 0, 0.08)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }} onMouseOver={e => e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.06)'} onMouseOut={e => e.currentTarget.style.backgroundColor = 'transparent'}>
                                   <div>
-                                    <div style={{ fontWeight: '700', fontSize: '13px', color: 'white' }}>{c.name}</div>
+                                    <div style={{ fontWeight: '700', fontSize: '13px', color: '#111111' }}>{c.name}</div>
                                     {c.phone && <div style={{ fontSize: '11px', color: 'rgba(255,255,255,0.4)' }}>{c.phone}</div>}
                                   </div>
                                   <span style={{ fontSize: '11px', color: 'rgba(255,255,255,0.4)', fontWeight: '600' }}>V-{c.id_card}</span>
@@ -4297,7 +4297,7 @@ return (
                             <div key={s.id} onClick={() => { if (!locked) setNewApp({...newApp, staffId: s.id}); }} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '6px', cursor: locked ? 'not-allowed' : 'pointer', opacity: locked && !isSel ? 0.3 : 1 }}>
                               <div style={{ width: '52px', height: '52px', borderRadius: '26px', padding: '2px', background: isSel ? 'linear-gradient(135deg, var(--champagne-dark), var(--champagne-light))' : 'rgba(255,255,255,0.08)', transition: 'all 0.25s', transform: isSel ? 'scale(1.08)' : 'scale(1)' }}>
                                 <div style={{ width: '100%', height: '100%', borderRadius: '50%', overflow: 'hidden', background: 'var(--bg-secondary)', border: '2px solid rgba(0,0,0,0.15)' }}>
-                                  {s.image_url ? <img loading="lazy" src={s.image_url} alt={s.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} /> : <span style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%', fontSize: '18px', fontWeight: '800', color: 'white', background: 'linear-gradient(135deg, #444, #ffffff)' }}>{s.name.charAt(0)}</span>}
+                                  {s.image_url ? <img loading="lazy" src={s.image_url} alt={s.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} /> : <span style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%', fontSize: '18px', fontWeight: '800', color: '#111111', background: 'linear-gradient(135deg, #444, #ffffff)' }}>{s.name.charAt(0)}</span>}
                                 </div>
                               </div>
                               <span style={{ fontSize: '11px', color: isSel ? 'white' : 'rgba(255,255,255,0.45)', fontWeight: isSel ? '700' : '500' }}>{s.name.split(' ')[0]}</span>
@@ -4344,14 +4344,14 @@ return (
                                 <div style={{ display: 'flex', alignItems: 'center', gap: '10px', minWidth: 0 }}>
                                   <Package size={14} color="rgba(255,255,255,0.5)" />
                                   <div style={{ minWidth: 0 }}>
-                                    <div style={{ fontSize: '13px', fontWeight: '600', color: 'white', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{product.name}</div>
+                                    <div style={{ fontSize: '13px', fontWeight: '600', color: '#111111', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{product.name}</div>
                                     <div style={{ fontSize: '11px', color: 'rgba(255,255,255,0.4)' }}>${product.price} c/u</div>
                                   </div>
                                 </div>
                                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexShrink: 0 }}>
                                   <div style={{ display: 'flex', alignItems: 'center', gap: '4px', background: 'var(--bg-secondary)', borderRadius: '8px', padding: '2px' }}>
                                     <button onClick={() => { const q = p.quantity - 1; q <= 0 ? setNewApp({ ...newApp, products: newApp.products.filter(i => i.id !== p.id) }) : setNewApp({ ...newApp, products: newApp.products.map(i => i.id === p.id ? { ...i, quantity: q } : i) }); }} style={{ width: '24px', height: '24px', borderRadius: '6px', border: 'none', background: 'rgba(17, 17, 17,0.1)', color: 'var(--gold-primary)', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}><Minus size={10} /></button>
-                                    <span style={{ fontWeight: '800', fontSize: '12px', minWidth: '16px', textAlign: 'center', color: 'white' }}>{p.quantity}</span>
+                                    <span style={{ fontWeight: '800', fontSize: '12px', minWidth: '16px', textAlign: 'center', color: '#111111' }}>{p.quantity}</span>
                                     <button onClick={() => { if (p.quantity < Number(product.stock || 0)) setNewApp({ ...newApp, products: newApp.products.map(i => i.id === p.id ? { ...i, quantity: p.quantity + 1 } : i) }); }} disabled={p.quantity >= Number(product.stock || 0)} style={{ width: '24px', height: '24px', borderRadius: '6px', border: 'none', background: p.quantity >= Number(product.stock || 0) ? 'rgba(17, 17, 17,0.03)' : 'rgba(17, 17, 17,0.1)', color: p.quantity >= Number(product.stock || 0) ? 'rgba(17, 17, 17,0.2)' : 'var(--gold-primary)', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: p.quantity >= Number(product.stock || 0) ? 'not-allowed' : 'pointer' }}><Plus size={10} /></button>
                                   </div>
                                   <button onClick={() => setNewApp({ ...newApp, products: newApp.products.filter(i => i.id !== p.id) })} style={{ color: 'rgba(255,69,58,0.7)', background: 'rgba(255,69,58,0.08)', borderRadius: '6px', border: 'none', cursor: 'pointer', width: '24px', height: '24px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><Trash2 size={12} /></button>
@@ -4369,7 +4369,7 @@ return (
                 <div style={{ background: 'var(--bg-secondary)', backdropFilter: 'blur(20px)', borderTop: '1px solid rgba(0, 0, 0, 0.08)', padding: '18px 28px', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '20px' }}>
                   <div style={{ minWidth: 0 }}>
                     <div style={{ fontSize: '11px', color: 'rgba(255,255,255,0.4)', fontWeight: '700', letterSpacing: '0.5px', textTransform: 'uppercase' }}>Total Estimado</div>
-                    <div style={{ fontSize: '28px', fontWeight: '800', color: 'white', fontFamily: 'Outfit, sans-serif', lineHeight: '1.1' }}>${totalEstimated.toFixed(2)}</div>
+                    <div style={{ fontSize: '28px', fontWeight: '800', color: '#111111', fontFamily: 'Outfit, sans-serif', lineHeight: '1.1' }}>${totalEstimated.toFixed(2)}</div>
                     <div style={{ fontSize: '11px', color: 'rgba(255,255,255,0.3)', marginTop: '2px' }}>
                       {newApp.serviceId && <span>Servicio: ${servicePrice.toFixed(2)}</span>}
                       {newApp.extras.length > 0 && <span> · Extras: +${extrasPrice.toFixed(2)}</span>}
@@ -4435,7 +4435,7 @@ return (
                       {initials}
                     </div>
                     <div>
-                      <h3 style={{ fontSize: '20px', fontWeight: '950', color: 'white', margin: 0, fontFamily: 'Outfit, sans-serif', letterSpacing: '-0.3px' }}>
+                      <h3 style={{ fontSize: '20px', fontWeight: '950', color: '#111111', margin: 0, fontFamily: 'Outfit, sans-serif', letterSpacing: '-0.3px' }}>
                         {activeDetail.clients?.name}
                       </h3>
                       <span className="status-glow-badge" style={{ 
@@ -4462,7 +4462,7 @@ return (
 
                 <div style={{ marginBottom: '24px', paddingBottom: '16px', borderBottom: '1px solid rgba(0, 0, 0, 0.08)' }}>
                   <p style={{ fontSize: '11px', color: 'var(--text-muted)', margin: 0, fontWeight: '700' }}>
-                    Cédula: <span style={{ color: 'white' }}>V-{activeDetail.clients?.id_card || 'S/C'}</span> • Celular: <span style={{ color: 'white' }}>{activeDetail.clients?.phone || 'S/N'}</span>
+                    Cédula: <span style={{ color: '#111111' }}>V-{activeDetail.clients?.id_card || 'S/C'}</span> • Celular: <span style={{ color: '#111111' }}>{activeDetail.clients?.phone || 'S/N'}</span>
                   </p>
                 </div>
 
@@ -4471,14 +4471,14 @@ return (
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', background: 'rgba(0, 0, 0, 0.04)', padding: '12px', borderRadius: '14px', border: '1px solid rgba(0, 0, 0, 0.08)', alignItems: 'center' }}>
                     <Clock size={16} color="var(--gold-primary)" style={{ marginBottom: '2px' }} />
                     <span style={{ fontSize: '9px', fontWeight: '900', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.8px' }}>Hora</span>
-                    <span style={{ fontSize: '13px', fontWeight: '900', color: 'white', fontFamily: 'Outfit, sans-serif' }}>
+                    <span style={{ fontSize: '13px', fontWeight: '900', color: '#111111', fontFamily: 'Outfit, sans-serif' }}>
                       {new Date(activeDetail.scheduled_at || activeDetail.created_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: true })}
                     </span>
                   </div>
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', background: 'rgba(0, 0, 0, 0.04)', padding: '12px', borderRadius: '14px', border: '1px solid rgba(0, 0, 0, 0.08)', alignItems: 'center', textAlign: 'center' }}>
                     <CalendarIcon size={16} color="var(--gold-primary)" style={{ marginBottom: '2px' }} />
                     <span style={{ fontSize: '9px', fontWeight: '900', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.8px' }}>Fecha</span>
-                    <span style={{ fontSize: '13px', fontWeight: '900', color: 'white', whiteSpace: 'nowrap', fontFamily: 'Outfit, sans-serif' }}>
+                    <span style={{ fontSize: '13px', fontWeight: '900', color: '#111111', whiteSpace: 'nowrap', fontFamily: 'Outfit, sans-serif' }}>
                       {new Date(activeDetail.scheduled_at || activeDetail.created_at).toLocaleDateString('es-ES', { day: 'numeric', month: 'short', year: 'numeric' })}
                     </span>
                   </div>
@@ -4498,7 +4498,7 @@ return (
                           <ToothIcon size={15} />
                         </div>
                         <div style={{ minWidth: 0 }}>
-                          <div style={{ fontWeight: '850', color: 'white', fontSize: '13px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                          <div style={{ fontWeight: '850', color: '#111111', fontSize: '13px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                             {activeDetail.services?.name || 'Venta directa sin servicio'}
                           </div>
                           <p style={{ fontSize: '10px', color: 'var(--text-muted)', margin: '2px 0 0 0' }}>
@@ -4576,7 +4576,7 @@ return (
                               </div>
                               <div style={{ flex: 1, minWidth: 0 }}>
                                 <div style={{ display: 'flex', flexDirection: 'column', gap: '2px', marginBottom: '4px' }}>
-                                  <span style={{ fontWeight: '800', color: 'white', fontSize: '13px' }}>{as.staff?.name}</span>
+                                  <span style={{ fontWeight: '800', color: '#111111', fontSize: '13px' }}>{as.staff?.name}</span>
                                   <span style={{ fontSize: '9px', color: 'rgba(255,255,255,0.7)', fontWeight: '800', textTransform: 'uppercase', letterSpacing: '0.3px' }}>{cleanRole}</span>
                                 </div>
                                 <div style={{ display: 'flex', gap: '10px', fontSize: '11px', flexWrap: 'wrap' }}>
@@ -4613,7 +4613,7 @@ return (
                         </span>
                         <div>
                           <span style={{ fontSize: '9px', fontWeight: '900', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.8px', display: 'block' }}>Hidratación Solicitada</span>
-                          <span style={{ fontSize: '13px', fontWeight: '800', color: 'white' }}>{activeDetail.beverage_selection}</span>
+                          <span style={{ fontSize: '13px', fontWeight: '800', color: '#111111' }}>{activeDetail.beverage_selection}</span>
                         </div>
                       </div>
                     )}
@@ -4668,7 +4668,7 @@ const MiniCalendar = ({ selectedDate, onDateSelect, allAppointments }) => {
     <div className="glass-card" style={{ maxWidth: '340px', width: '100%', margin: '0 auto', padding: '24px', borderRadius: '24px', border: '1px solid rgba(0, 0, 0, 0.08)', boxShadow: '0 20px 40px rgba(0, 0, 0, 0.4)' }}>
       <header style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
         <button onClick={() => setCurrentMonth(new Date(currentMonth.getFullYear(), currentMonth.getMonth() - 1, 1))} style={{ background: 'none', border: 'none', color: 'rgba(255,255,255,0.6)', cursor: 'pointer', display: 'flex', alignItems: 'center', transition: 'color 0.2s' }} onMouseEnter={e => e.currentTarget.style.color = 'white'} onMouseLeave={e => e.currentTarget.style.color = 'rgba(255,255,255,0.6)'}><ChevronLeft size={16} /></button>
-        <span style={{ fontSize: '13px', fontWeight: '900', textTransform: 'uppercase', color: 'white', fontFamily: 'Outfit, var(--font-sans), system-ui', letterSpacing: '0.5px' }}>{monthNames[currentMonth.getMonth()]} {currentMonth.getFullYear()}</span>
+        <span style={{ fontSize: '13px', fontWeight: '900', textTransform: 'uppercase', color: '#111111', fontFamily: 'Outfit, var(--font-sans), system-ui', letterSpacing: '0.5px' }}>{monthNames[currentMonth.getMonth()]} {currentMonth.getFullYear()}</span>
         <button onClick={() => setCurrentMonth(new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1, 1))} style={{ background: 'none', border: 'none', color: 'rgba(255,255,255,0.6)', cursor: 'pointer', display: 'flex', alignItems: 'center', transition: 'color 0.2s' }} onMouseEnter={e => e.currentTarget.style.color = 'white'} onMouseLeave={e => e.currentTarget.style.color = 'rgba(255,255,255,0.6)'}><ChevronRight size={16} /></button>
       </header>
       

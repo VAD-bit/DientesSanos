@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import { getRoleCategory } from '../utils/staffRoles';
 import { 
   History, 
@@ -168,7 +168,7 @@ const HistoryModule = ({ isMobile, rates, onNavigate }) => {
               <div style={{ padding: '8px', borderRadius: '10px', background: 'rgba(0, 0, 0, 0.04)', color: 'var(--gold-primary)', display: 'flex' }}>
                 <User size={16} />
               </div>
-              <span style={{ fontSize: '12px', fontWeight: '900', color: 'white', letterSpacing: '1px', textTransform: 'uppercase' }}>
+              <span style={{ fontSize: '12px', fontWeight: '900', color: '#111111', letterSpacing: '1px', textTransform: 'uppercase' }}>
                 Detalles del Cliente
               </span>
             </div>
@@ -184,11 +184,11 @@ const HistoryModule = ({ isMobile, rates, onNavigate }) => {
               </div>
               <div>
                 <span style={{ fontSize: '10px', fontWeight: '800', color: 'var(--text-muted)', textTransform: 'uppercase', display: 'block', marginBottom: '2px' }}>Cédula</span>
-                <span style={{ fontSize: '14px', fontWeight: '700', color: 'white' }}>{item.clients?.id_card || 'No registrada'}</span>
+                <span style={{ fontSize: '14px', fontWeight: '700', color: '#111111' }}>{item.clients?.id_card || 'No registrada'}</span>
               </div>
               <div>
                 <span style={{ fontSize: '10px', fontWeight: '800', color: 'var(--text-muted)', textTransform: 'uppercase', display: 'block', marginBottom: '2px' }}>Teléfono</span>
-                <span style={{ fontSize: '14px', fontWeight: '700', color: 'white' }}>{item.clients?.phone || 'No registrado'}</span>
+                <span style={{ fontSize: '14px', fontWeight: '700', color: '#111111' }}>{item.clients?.phone || 'No registrado'}</span>
               </div>
             </div>
           </div>
@@ -206,7 +206,7 @@ const HistoryModule = ({ isMobile, rates, onNavigate }) => {
               <div style={{ padding: '8px', borderRadius: '10px', background: 'rgba(0, 0, 0, 0.04)', color: 'var(--gold-primary)', display: 'flex' }}>
                 <ToothIcon size={16} />
               </div>
-              <span style={{ fontSize: '12px', fontWeight: '900', color: 'white', letterSpacing: '1px', textTransform: 'uppercase' }}>
+              <span style={{ fontSize: '12px', fontWeight: '900', color: '#111111', letterSpacing: '1px', textTransform: 'uppercase' }}>
                 Servicio y Extras Realizados
               </span>
             </div>
@@ -223,7 +223,7 @@ const HistoryModule = ({ isMobile, rates, onNavigate }) => {
               }}>
                 <div>
                   <span style={{ fontSize: '10px', fontWeight: '800', color: 'var(--text-muted)', textTransform: 'uppercase', display: 'block', marginBottom: '2px' }}>Servicio Principal</span>
-                  <span style={{ fontSize: '14px', fontWeight: '800', color: 'white' }}>{item.services?.name}</span>
+                  <span style={{ fontSize: '14px', fontWeight: '800', color: '#111111' }}>{item.services?.name}</span>
                 </div>
                 {getRoleCategory(user.role || '') !== 'asistente' && (
                   <div style={{ textAlign: isMobile ? 'left' : 'right' }}>
@@ -255,7 +255,7 @@ const HistoryModule = ({ isMobile, rates, onNavigate }) => {
                     }}>
                       <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
                         <span style={{ fontSize: '8px', fontWeight: '900', color: 'var(--gold-primary)', background: 'rgba(0, 0, 0, 0.04)', borderRadius: '4px', padding: '2px 4px' }}>EXTRA</span>
-                        <span style={{ color: 'white', fontWeight: '700' }}>{ex.service_extras?.name}</span>
+                        <span style={{ color: '#111111', fontWeight: '700' }}>{ex.service_extras?.name}</span>
                       </div>
                       <span style={{ fontWeight: '800', color: 'var(--gold-primary)', whiteSpace: 'nowrap' }}>
                         +{formatCurrency(Number(ex.price) * Number(item.exchange_rate || rates?.bcv || rates?.usd || 550))} Bs. (Ref: +${ex.price})
@@ -277,7 +277,7 @@ const HistoryModule = ({ isMobile, rates, onNavigate }) => {
                     }}>
                       <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
                         <span style={{ fontSize: '8px', fontWeight: '900', color: '#60a5fa', background: 'rgba(96,165,250,0.1)', borderRadius: '4px', padding: '2px 4px' }}>PRODUCTO</span>
-                        <span style={{ color: 'white', fontWeight: '700' }}>{pr.inventory?.name} <span style={{ color: 'var(--text-muted)', fontWeight: '600' }}>({pr.quantity}u)</span></span>
+                        <span style={{ color: '#111111', fontWeight: '700' }}>{pr.inventory?.name} <span style={{ color: 'var(--text-muted)', fontWeight: '600' }}>({pr.quantity}u)</span></span>
                       </div>
                       <span style={{ fontWeight: '800', color: 'var(--gold-primary)', whiteSpace: 'nowrap' }}>
                         +{formatCurrency(Number(pr.price) * Number(item.exchange_rate || rates?.bcv || rates?.usd || 550))} Bs. (Ref: +${pr.price})
@@ -330,7 +330,7 @@ const HistoryModule = ({ isMobile, rates, onNavigate }) => {
                 <TrendingUp size={16} />
               </div>
               <div>
-                <span style={{ fontSize: '12px', fontWeight: '900', color: 'white', letterSpacing: '1px', textTransform: 'uppercase', display: 'block' }}>
+                <span style={{ fontSize: '12px', fontWeight: '900', color: '#111111', letterSpacing: '1px', textTransform: 'uppercase', display: 'block' }}>
                   Liquidación de Caja
                 </span>
                 <span style={{ fontSize: '9px', color: 'var(--text-muted)' }}>
@@ -388,7 +388,7 @@ const HistoryModule = ({ isMobile, rates, onNavigate }) => {
                         </div>
                         
                         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '16px', paddingTop: '16px', borderTop: '2px solid rgba(0, 0, 0, 0.08)' }}>
-                          <span style={{ fontSize: '12px', color: 'white', fontWeight: '900', letterSpacing: '0.5px' }}>TOTAL COBRADO</span>
+                          <span style={{ fontSize: '12px', color: '#111111', fontWeight: '900', letterSpacing: '0.5px' }}>TOTAL COBRADO</span>
                           <div style={{ textAlign: 'right' }}>
                             <div style={{ fontSize: '18px', fontWeight: '950', color: 'var(--gold-primary)', whiteSpace: 'nowrap' }}>
                               {formatCurrency(totalReceipt * rate)} Bs.
@@ -421,7 +421,7 @@ const HistoryModule = ({ isMobile, rates, onNavigate }) => {
                         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                           <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                             <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#10b981' }} />
-                            <span style={{ fontSize: '13px', fontWeight: '800', color: 'white' }}>Total {firstName}</span>
+                            <span style={{ fontSize: '13px', fontWeight: '800', color: '#111111' }}>Total {firstName}</span>
                           </div>
                           <div style={{ textAlign: 'right' }}>
                             <span style={{ fontSize: '13px', fontWeight: '900', color: 'var(--gold-primary)', whiteSpace: 'nowrap' }}>
@@ -436,13 +436,13 @@ const HistoryModule = ({ isMobile, rates, onNavigate }) => {
                         <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) minmax(0, 1fr)', gap: '8px', marginTop: '10px', borderTop: '1px solid rgba(0, 0, 0, 0.08)', paddingTop: '8px' }}>
                           <div style={{ background: 'var(--bg-secondary)', borderRadius: '8px', padding: '6px' }}>
                             <div style={{ fontSize: '8px', color: 'var(--text-muted)', fontWeight: '800', textTransform: 'uppercase' }}>Comisión</div>
-                            <div style={{ fontSize: '10.5px', color: 'white', fontWeight: '800', marginTop: '2px', whiteSpace: 'nowrap' }}>
+                            <div style={{ fontSize: '10.5px', color: '#111111', fontWeight: '800', marginTop: '2px', whiteSpace: 'nowrap' }}>
                               {formatCurrency(commission * rate)} Bs.
                             </div>
                           </div>
                           <div style={{ background: 'var(--bg-secondary)', borderRadius: '8px', padding: '6px' }}>
                             <div style={{ fontSize: '8px', color: 'var(--text-muted)', fontWeight: '800', textTransform: 'uppercase' }}>Propina</div>
-                            <div style={{ fontSize: '10.5px', color: 'white', fontWeight: '800', marginTop: '2px', whiteSpace: 'nowrap' }}>
+                            <div style={{ fontSize: '10.5px', color: '#111111', fontWeight: '800', marginTop: '2px', whiteSpace: 'nowrap' }}>
                               {formatCurrency(tip * rate)} Bs.
                             </div>
                           </div>
@@ -500,7 +500,7 @@ const HistoryModule = ({ isMobile, rates, onNavigate }) => {
                       {getRoleCategory(user.role || '') === 'asistente' ? 'Tarifa de Limpieza' : 'Tu Comisión'}
                     </span>
                     <div style={{ textAlign: 'right' }}>
-                      <span style={{ fontSize: '14px', fontWeight: '800', color: 'white', whiteSpace: 'nowrap' }}>
+                      <span style={{ fontSize: '14px', fontWeight: '800', color: '#111111', whiteSpace: 'nowrap' }}>
                         {formatCurrency((item.commission_earned || 0) * Number(item.exchange_rate || rates?.bcv || rates?.usd || 550))} Bs.
                       </span>
                       <div style={{ fontSize: '10px', color: 'var(--text-muted)', fontWeight: '700', whiteSpace: 'nowrap' }}>
@@ -512,7 +512,7 @@ const HistoryModule = ({ isMobile, rates, onNavigate }) => {
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'rgba(48,209,88,0.04)', padding: '10px 14px', borderRadius: '12px' }}>
                       <span style={{ fontSize: '13px', color: '#30d158', fontWeight: '700' }}>Comisión de productos</span>
                       <div style={{ textAlign: 'right' }}>
-                        <span style={{ fontSize: '14px', fontWeight: '800', color: 'white', whiteSpace: 'nowrap' }}>{formatCurrency(Number(item.product_commission) * Number(item.exchange_rate || rates?.bcv || rates?.usd || 550))} Bs.</span>
+                        <span style={{ fontSize: '14px', fontWeight: '800', color: '#111111', whiteSpace: 'nowrap' }}>{formatCurrency(Number(item.product_commission) * Number(item.exchange_rate || rates?.bcv || rates?.usd || 550))} Bs.</span>
                         <div style={{ fontSize: '10px', color: 'var(--text-muted)', fontWeight: '700' }}>Ref: ${formatCurrency(item.product_commission)}</div>
                       </div>
                     </div>
@@ -546,7 +546,7 @@ const HistoryModule = ({ isMobile, rates, onNavigate }) => {
                 <div style={{ padding: '8px', borderRadius: '10px', background: 'rgba(0, 0, 0, 0.04)', color: 'var(--gold-primary)', display: 'flex' }}>
                   <Camera size={16} />
                 </div>
-                <span style={{ fontSize: '12px', fontWeight: '900', color: 'white', letterSpacing: '1px', textTransform: 'uppercase' }}>
+                <span style={{ fontSize: '12px', fontWeight: '900', color: '#111111', letterSpacing: '1px', textTransform: 'uppercase' }}>
                   Registro Visual del Procedimiento
                 </span>
               </div>
@@ -687,7 +687,7 @@ const HistoryModule = ({ isMobile, rates, onNavigate }) => {
                           e.stopPropagation();
                           onNavigate('clients', { clientId: item.clients?.id });
                         }}
-                        style={{ fontSize: '14px', fontWeight: '850', color: 'white', textDecoration: 'underline', cursor: 'pointer' }}
+                        style={{ fontSize: '14px', fontWeight: '850', color: '#111111', textDecoration: 'underline', cursor: 'pointer' }}
                       >
                         {item.clients?.name || 'Cliente sin registrar'}
                       </span>
@@ -774,7 +774,7 @@ const HistoryModule = ({ isMobile, rates, onNavigate }) => {
                               onNavigate('clients', { clientId: item.clients?.id });
                             }}
                             className="client-link"
-                            style={{ fontSize: '15px', fontWeight: '700', color: 'white', cursor: 'pointer', display: 'inline-block' }}
+                            style={{ fontSize: '15px', fontWeight: '700', color: '#111111', cursor: 'pointer', display: 'inline-block' }}
                           >
                             {item.clients?.name}
                           </div>
@@ -899,7 +899,7 @@ const ReceiptLine = ({ line, rate, formatCurrency }) => (
         <span style={{ fontSize: '9px', fontWeight: '900', color: line.isTip ? 'var(--gold-primary)' : 'var(--text-muted)', textTransform: 'uppercase', background: line.isTip ? 'rgba(255, 255, 255,0.1)' : 'rgba(255,255,255,0.04)', borderRadius: '6px', padding: '3px 6px', flexShrink: 0 }}>
           {line.type}
         </span>
-        <span style={{ fontSize: '12px', fontWeight: '800', color: 'white', whiteSpace: 'normal', wordBreak: 'break-word' }}>
+        <span style={{ fontSize: '12px', fontWeight: '800', color: '#111111', whiteSpace: 'normal', wordBreak: 'break-word' }}>
           {line.label}
         </span>
       </div>
@@ -919,7 +919,7 @@ const DetailItem = ({ label, value, subValue }) => (
   <div style={{ display: 'flex', flexDirection: 'column' }}>
     <span style={{ fontSize: '10px', fontWeight: '800', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.5px' }}>{label}</span>
     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '2px' }}>
-      <span style={{ fontSize: '14px', fontWeight: '700', color: 'white' }}>{value}</span>
+      <span style={{ fontSize: '14px', fontWeight: '700', color: '#111111' }}>{value}</span>
       {subValue && <span style={{ fontSize: '12px', fontWeight: '900', color: 'var(--gold-primary)' }}>{subValue}</span>}
     </div>
   </div>
