@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useMemo } from 'react';
-import { Eraser, Trash2, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Eraser, Trash2 } from 'lucide-react';
 
 // FDI (ISO 3950) - Dentición Permanente (adultos): cuadrantes 1-4, 8 piezas cada uno = 32
 const PERMANENT_UPPER = [18, 17, 16, 15, 14, 13, 12, 11, 21, 22, 23, 24, 25, 26, 27, 28];
@@ -60,8 +60,6 @@ function toothSize(num) {
   const pos = num % 10;
   
   if (isTemp) {
-    // Dientes temporales: 51-55, 61-65, 71-75, 81-85
-    // 1-2: incisivos, 3: canino, 4-5: molares
     if (pos === 5 || pos === 4) return { w: 30, h: 30 }; // molares temporales
     if (pos === 3) return { w: 24, h: 30 }; // canino temporal
     return { w: 20, h: 28 }; // incisivos temporales
@@ -95,8 +93,7 @@ export default function Odontograma({ value, onChange }) {
   const [activeCond, setActiveCond] = useState('caries');
   const [activeMat, setActiveMat] = useState('R');
   const [eraser, setEraser] = useState(false);
-  const [viewMode, setViewMode] = useState('mixed'); // 'permanent' | 'temporary' | 'mixed'
-  const [showTemp, setShowTemp] = useState(false); // toggle para mostrar temporales en vista mixta
+  const [viewMode, setViewMode] = useState('permanent'); // 'permanent' | 'temporary'  (ya no 'mixed')
 
   const cond = CONDITIONS.find(c => c.id === activeCond);
 
@@ -152,17 +149,12 @@ export default function Odontograma({ value, onChange }) {
 
   const marksForTooth = useCallback((tooth) => marks.filter(m => m.tooth === tooth), [marks]);
 
-  // Dientes según vista actual
+  // Dientes según vista actual - SOLO permanente O temporal, nunca mixtos
   const getCurrentTeeth = () => {
     if (viewMode === 'permanent') {
       return { upper: PERMANENT_UPPER, lower: PERMANENT_LOWER };
-    } else if (viewMode === 'temporary') {
+    } else { // 'temporary'
       return { upper: TEMPORARY_UPPER, lower: TEMPORARY_LOWER };
-    } else { // mixed
-      return { 
-        upper: [...PERMANENT_UPPER, ...TEMPORARY_UPPER], 
-        lower: [...PERMANENT_LOWER, ...TEMPORARY_LOWER] 
-      };
     }
   };
 
@@ -340,7 +332,11 @@ export default function Odontograma({ value, onChange }) {
   // Renderiza una arcada (superior o inferior) agrupada por cuadrantes
   const renderArch = (teeth, isUpper, yOffset) => {
     const groups = groupByQuadrant(teeth);
-    const quadrantOrder = isUpper ? [1, 2, 5, 6] : [4, 3, 8, 7]; // orden visual: der → izq
+    
+    // Orden de cuadrantes según la vista
+    const quadrantOrder = viewMode === 'permanent' 
+      ? (isUpper ? [1, 2] : [4, 3])           // Permanente: 1,2 (sup) / 4,3 (inf)
+      : (isUpper ? [5, 6] : [8, 7]);          // Temporal: 5,6 (sup) / 8,7 (inf)
     
     return (
       <g transform={`translate(8, ${yOffset})`}>
@@ -348,24 +344,14 @@ export default function Odontograma({ value, onChange }) {
           const quadTeeth = groups[quad] || [];
           if (quadTeeth.length === 0) return null;
           
+          // En permanente: cuadrante 1 (der) y 2 (izq) | En temporal: 5 (der) y 6 (izq)
+          // En permanente inf: 4 (der) y 3 (izq) | En temporal inf: 8 (der) y 7 (izq)
           const isRightSide = (isUpper && (quad === 1 || quad === 5)) || (!isUpper && (quad === 4 || quad === 8));
           const isLeftSide = (isUpper && (quad === 2 || quad === 6)) || (!isUpper && (quad === 3 || quad === 7));
           
-          // Calcular offset X para este cuadrante
-          let quadIndex = 0;
-          if (isUpper) {
-            if (quad === 1) quadIndex = 0;
-            else if (quad === 2) quadIndex = 8;
-            else if (quad === 5) quadIndex = 0;
-            else if (quad === 6) quadIndex = 8;
-          } else {
-            if (quad === 4) quadIndex = 0;
-            else if (quad === 3) quadIndex = 8;
-            else if (quad === 8) quadIndex = 0;
-            else if (quad === 7) quadIndex = 8;
-          }
-          
-          const baseX = quadIndex * TOOTH_SLOT + (isLeftSide ? ARCH_GAP : 0);
+          // Cada lado (der/izq) empieza en su posición base
+          // Derecha: índice 0 | Izquierda: índice 8 (después del gap central)
+          const baseX = (isLeftSide ? 8 : 0) * TOOTH_SLOT + (isLeftSide ? ARCH_GAP : 0);
           
           return (
             <g key={quad} transform={`translate(${baseX}, 0)`}>
@@ -394,13 +380,9 @@ export default function Odontograma({ value, onChange }) {
     return Object.entries(byType).map(([k, n]) => `${n}× ${k}`).join(' · ');
   }, [marks]);
 
-  // Contar dientes por tipo en la vista actual
-  const tempCount = marks.filter(m => isTemporaryTooth(m.tooth)).length;
-  const permCount = marks.filter(m => isPermanentTooth(m.tooth)).length;
-
   return (
     <div style={{ ...styles.wrap, colorScheme: 'dark', backgroundColor: '#111', minHeight: '100%' }}>
-      {/* Selector de vista */}
+      {/* Selector de vista - SOLO 2 botones: Permanente / Temporal */}
       <div style={styles.viewSelector}>
         <button
           type="button"
@@ -427,19 +409,6 @@ export default function Odontograma({ value, onChange }) {
         >
           <span style={{fontSize: '11px', fontWeight: '800'}}>Temporal</span>
           <span style={{fontSize: '10px', color: '#888'}}>(20 piezas)</span>
-        </button>
-        <button
-          type="button"
-          onClick={() => setViewMode('mixed')}
-          style={{
-            ...styles.viewBtn,
-            background: viewMode === 'mixed' ? '#8b5cf6' : '#2a2a2a',
-            color: viewMode === 'mixed' ? '#fff' : '#e8d4b0',
-            borderColor: viewMode === 'mixed' ? '#8b5cf6' : '#333',
-          }}
-        >
-          <span style={{fontSize: '11px', fontWeight: '800'}}>Mixta</span>
-          <span style={{fontSize: '10px', color: '#888'}}>(52 piezas)</span>
         </button>
       </div>
 
@@ -497,7 +466,7 @@ export default function Odontograma({ value, onChange }) {
                 {m}
               </button>
             ))}
-            <span style={{ fontSize: '11px', color: 'var(--text-muted, #999999)', marginLeft: '4px' }}>
+            <span style={{ fontSize: '11px', color: '#888', marginLeft: '4px' }}>
               {MATERIAL_LABELS[activeMat] || activeMat}
             </span>
           </div>
@@ -555,16 +524,6 @@ export default function Odontograma({ value, onChange }) {
               </text>
             </>
           )}
-          {viewMode === 'mixed' && (
-            <>
-              <text x={MID_X / 2} y="272" textAnchor="middle" fontSize="8" fill="#666" fontWeight="700">
-                SUP · DER 18–11, 55–51 | IZQ 21–28, 61–65
-              </text>
-              <text x={MID_X + (VIEW_W - MID_X) / 2} y="272" textAnchor="middle" fontSize="8" fill="#666" fontWeight="700">
-                INF · DER 48–41, 85–81 | IZQ 31–38, 71–75
-              </text>
-            </>
-          )}
         </svg>
       </div>
 
@@ -609,14 +568,13 @@ export default function Odontograma({ value, onChange }) {
         </div>
         <div style={styles.legendNote}>
           Círculo en la cara = lesión/restauración en esa superficie (V, L, M, D, O). Anillo = corona. X = ausente/extraído. Línea vertical = endodoncia. Contorno punteado = en erupción.
-          {viewMode === 'mixed' && ' • Dentición mixta: permanentes (cuadrantes 1–4) + temporales (5–8). El 1er molar definitivo (16, 26, 36, 46) erupciona detrás del 2º molar temporal (55, 65, 75, 85).'}
         </div>
       </div>
 
       {/* Resumen + acciones */}
       <div style={styles.toolbar}>
         <span style={styles.summary}>
-          {marks.length === 0 ? 'Sin marcas en el odontograma' : `${marks.length} marca(s)${tempCount ? ` (${tempCount} temporales)` : ''}${permCount ? ` (${permCount} permanentes)` : ''}: ${summary}`}
+          {marks.length === 0 ? 'Sin marcas en el odontograma' : `${marks.length} marca(s): ${summary}`}
         </span>
         <div style={{ display: 'flex', gap: '8px' }}>
           <button type="button" onClick={() => setEraser(v => !v)} style={styles.toolBtn} title="Alternar borrador">
@@ -628,9 +586,9 @@ export default function Odontograma({ value, onChange }) {
         </div>
       </div>
       
-      {/* Acciones por grupo */}
+      {/* Acciones por grupo - dinámicas según vista */}
       <div style={styles.quadRow}>
-        {viewMode !== 'temporary' && (
+        {viewMode === 'permanent' && (
           <>
             <button type="button" onClick={() => emit(marks.filter(m => m.tooth < 20 || m.tooth > 29))} style={styles.quadBtn}>
               Limpiar sup. permanente (11–28)
@@ -640,7 +598,7 @@ export default function Odontograma({ value, onChange }) {
             </button>
           </>
         )}
-        {viewMode !== 'permanent' && (
+        {viewMode === 'temporary' && (
           <>
             <button type="button" onClick={() => emit(marks.filter(m => m.tooth < 50 || m.tooth > 69))} style={styles.quadBtn}>
               Limpiar sup. temporal (51–65)
