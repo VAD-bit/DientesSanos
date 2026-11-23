@@ -3,6 +3,20 @@ import { createClient } from '@supabase/supabase-js';
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
 
+// Validación de variables de entorno requeridas. Si faltan, la app no puede
+// conectar a Supabase; se lanza un error claro en lugar de dejar que
+// createClient() tire 'supabaseUrl is required' y tumbe toda la app.
+if (!supabaseUrl || !supabaseAnonKey) {
+  const missing = [];
+  if (!supabaseUrl) missing.push('VITE_SUPABASE_URL');
+  if (!supabaseAnonKey) missing.push('VITE_SUPABASE_ANON_KEY');
+  throw new Error(
+    `[Dientes Sanos] Falta(n) variable(s) de entorno: ${missing.join(', ')}. ` +
+    'Agrégalas en Vercel → Settings → Environment Variables (Production, Preview, Development) ' +
+    'o en .env.local para desarrollo local.'
+  );
+}
+
 export const supabase = createClient(supabaseUrl, supabaseAnonKey, {
   auth: {
     storageKey: 'sb-panda-crm-auth-token',

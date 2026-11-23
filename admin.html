@@ -13,7 +13,8 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <meta name="apple-mobile-web-app-title" content="Dientes Sanos" />
     <link rel="preload" as="image" type="image/webp" href="/src/assets/admin_loading_bg.webp" media="(min-width: 768px)" fetchpriority="high" />
-    <link rel="preload" as="image" type="image/webp" href="/src/assets/admin_loading_bg_mobile.webp" media="(max-width: 767px)" fetchpriority="high" />
+    <!-- admin_loading_bg_mobile.webp ya se importa en PandaLoader.jsx; Vite lo procesa automáticamente.
+         Quitado preload manual con media="(max-width: 767px)" que no se usaba en desktop y generaba warning. -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">

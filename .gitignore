@@ -59,3 +59,4 @@ supabase/migrations/*
 # WhatsApp bot local (no forma parte del deploy Vercel del CRM)
 pandabarber-whatsapp-bot/
 
+.env*
