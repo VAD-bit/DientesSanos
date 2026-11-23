@@ -407,39 +407,39 @@ export default function Odontograma({ value, onChange }) {
           onClick={() => setViewMode('permanent')}
           style={{
             ...styles.viewBtn,
-            background: viewMode === 'permanent' ? '#e8d4b0' : 'rgba(255,255,255,0.05)',
-            color: viewMode === 'permanent' ? '#111' : 'rgba(255,255,255,0.8)',
-            borderColor: viewMode === 'permanent' ? '#e8d4b0' : 'rgba(255,255,255,0.12)',
+            background: viewMode === 'permanent' ? 'var(--gold-primary, #e8d4b0)' : 'var(--bg-primary, #ffffff)',
+            color: viewMode === 'permanent' ? '#111' : 'var(--text-primary, #111111)',
+            borderColor: viewMode === 'permanent' ? 'var(--gold-primary, #e8d4b0)' : 'var(--border-color, rgba(0,0,0,0.08))',
           }}
         >
           <span style={{fontSize: '11px', fontWeight: '800'}}>Permanente</span>
-          <span style={{fontSize: '10px', opacity: 0.7}}>(32 piezas)</span>
+          <span style={{fontSize: '10px', color: 'var(--text-muted, #999999)'}}>(32 piezas)</span>
         </button>
         <button
           type="button"
           onClick={() => setViewMode('temporary')}
           style={{
             ...styles.viewBtn,
-            background: viewMode === 'temporary' ? '#3b82f6' : 'rgba(255,255,255,0.05)',
-            color: viewMode === 'temporary' ? '#fff' : 'rgba(255,255,255,0.8)',
-            borderColor: viewMode === 'temporary' ? '#3b82f6' : 'rgba(255,255,255,0.12)',
+            background: viewMode === 'temporary' ? '#3b82f6' : 'var(--bg-primary, #ffffff)',
+            color: viewMode === 'temporary' ? '#fff' : 'var(--text-primary, #111111)',
+            borderColor: viewMode === 'temporary' ? '#3b82f6' : 'var(--border-color, rgba(0,0,0,0.08))',
           }}
         >
           <span style={{fontSize: '11px', fontWeight: '800'}}>Temporal</span>
-          <span style={{fontSize: '10px', opacity: 0.7}}>(20 piezas)</span>
+          <span style={{fontSize: '10px', color: 'var(--text-muted, #999999)'}}>(20 piezas)</span>
         </button>
         <button
           type="button"
           onClick={() => setViewMode('mixed')}
           style={{
             ...styles.viewBtn,
-            background: viewMode === 'mixed' ? '#8b5cf6' : 'rgba(255,255,255,0.05)',
-            color: viewMode === 'mixed' ? '#fff' : 'rgba(255,255,255,0.8)',
-            borderColor: viewMode === 'mixed' ? '#8b5cf6' : 'rgba(255,255,255,0.12)',
+            background: viewMode === 'mixed' ? '#8b5cf6' : 'var(--bg-primary, #ffffff)',
+            color: viewMode === 'mixed' ? '#fff' : 'var(--text-primary, #111111)',
+            borderColor: viewMode === 'mixed' ? '#8b5cf6' : 'var(--border-color, rgba(0,0,0,0.08))',
           }}
         >
           <span style={{fontSize: '11px', fontWeight: '800'}}>Mixta</span>
-          <span style={{fontSize: '10px', opacity: 0.7}}>(52 piezas)</span>
+          <span style={{fontSize: '10px', color: 'var(--text-muted, #999999)'}}>(52 piezas)</span>
         </button>
       </div>
 
@@ -453,9 +453,10 @@ export default function Odontograma({ value, onChange }) {
               onClick={() => { setActiveCond(c.id); setEraser(false); if (c.materials && !c.materials.includes(activeMat)) setActiveMat(c.materials[0]); }}
               style={{
                 ...styles.condBtn,
-                borderColor: activeCond === c.id && !eraser ? c.color : 'rgba(255,255,255,0.10)',
-                background: activeCond === c.id && !eraser ? `${c.color}22` : 'rgba(255,255,255,0.03)',
-                boxShadow: activeCond === c.id && !eraser ? `0 0 0 1px ${c.color}` : 'none'
+                borderColor: activeCond === c.id && !eraser ? c.color : 'var(--border-color, rgba(0,0,0,0.08))',
+                background: activeCond === c.id && !eraser ? `${c.color}22` : 'var(--bg-primary, #ffffff)',
+                boxShadow: activeCond === c.id && !eraser ? `0 0 0 1px ${c.color}` : 'none',
+                color: activeCond === c.id && !eraser ? c.color : 'var(--text-primary, #111111)'
               }}
             >
               <span style={{ ...styles.swatch, background: c.color, borderRadius: c.fill ? '2px' : c.cross ? '0' : c.outline ? '0' : c.rootLine ? '0' : '50%' }} />
@@ -467,11 +468,12 @@ export default function Odontograma({ value, onChange }) {
             onClick={() => setEraser(true)}
             style={{
               ...styles.condBtn,
-              borderColor: eraser ? '#e8d4b0' : 'rgba(255,255,255,0.10)',
-              background: eraser ? 'rgba(232,212,176,0.15)' : 'rgba(255,255,255,0.03)'
+              borderColor: eraser ? 'var(--gold-primary, #e8d4b0)' : 'var(--border-color, rgba(0,0,0,0.08))',
+              background: eraser ? 'rgba(232,212,176,0.15)' : 'var(--bg-primary, #ffffff)',
+              color: eraser ? 'var(--gold-primary, #e8d4b0)' : 'var(--text-primary, #111111)'
             }}
           >
-            <Eraser size={13} color={eraser ? '#e8d4b0' : 'rgba(255,255,255,0.6)'} />
+            <Eraser size={13} color={eraser ? 'var(--gold-primary, #e8d4b0)' : 'var(--text-secondary, #666666)'} />
             Borrar
           </button>
         </div>
@@ -487,15 +489,15 @@ export default function Odontograma({ value, onChange }) {
                 onClick={() => setActiveMat(m)}
                 style={{
                   ...styles.matBtn,
-                  background: activeMat === m ? cond.color : 'rgba(255,255,255,0.05)',
-                  color: activeMat === m ? '#fff' : 'rgba(255,255,255,0.75)',
-                  borderColor: activeMat === m ? cond.color : 'rgba(255,255,255,0.12)'
+                  background: activeMat === m ? cond.color : 'var(--bg-secondary, #f5f5f5)',
+                  color: activeMat === m ? '#fff' : 'var(--text-primary, #111111)',
+                  borderColor: activeMat === m ? cond.color : 'var(--border-color, rgba(0,0,0,0.08))'
                 }}
               >
                 {m}
               </button>
             ))}
-            <span style={{ fontSize: '11px', color: 'rgba(255,255,255,0.45)', marginLeft: '4px' }}>
+            <span style={{ fontSize: '11px', color: 'var(--text-muted, #999999)', marginLeft: '4px' }}>
               {MATERIAL_LABELS[activeMat] || activeMat}
             </span>
           </div>
@@ -573,7 +575,7 @@ export default function Odontograma({ value, onChange }) {
           {CONDITIONS.map(c => (
             <div key={c.id} style={styles.legendItem}>
               <svg width="22" height="22" viewBox="0 0 22 22">
-                <rect x="1" y="1" width="20" height="20" rx="3" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.12)" />
+                <rect x="1" y="1" width="20" height="20" rx="3" fill="var(--bg-primary, #ffffff)" stroke="var(--border-color, rgba(0,0,0,0.08))" />
                 {c.kind === 'surface' && c.circle && (
                   <circle cx="11" cy="11" r="6" fill="none" stroke={c.color} strokeWidth="2" />
                 )}
@@ -678,8 +680,8 @@ const styles = {
   wrap: { display: 'flex', flexDirection: 'column', gap: '12px' },
   viewSelector: {
     display: 'flex', gap: '8px', padding: '8px',
-    background: 'rgba(255,255,255,0.02)', borderRadius: '12px',
-    border: '1px solid rgba(0,0,0,0.06)'
+    background: 'var(--bg-secondary, #f5f5f5)', borderRadius: '12px',
+    border: '1px solid var(--border-color, rgba(0,0,0,0.08))'
   },
   viewBtn: {
     flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '2px',
@@ -689,54 +691,54 @@ const styles = {
   palette: {
     display: 'flex', flexDirection: 'column', gap: '8px',
     padding: '12px', borderRadius: '14px',
-    background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(0, 0, 0, 0.08)'
+    background: 'var(--bg-secondary, #f5f5f5)', border: '1px solid var(--border-color, rgba(0, 0, 0, 0.08))'
   },
   paletteRow: { display: 'flex', flexWrap: 'wrap', gap: '6px', alignItems: 'center' },
   condBtn: {
     display: 'inline-flex', alignItems: 'center', gap: '6px',
-    padding: '6px 10px', borderRadius: '10px', border: '1.5px solid rgba(0, 0, 0, 0.08)',
-    background: 'rgba(255,255,255,0.03)', color: 'rgba(255,255,255,0.85)',
+    padding: '6px 10px', borderRadius: '10px', border: '1.5px solid var(--border-color, rgba(0, 0, 0, 0.08))',
+    background: 'var(--bg-primary, #ffffff)', color: 'var(--text-primary, #111111)',
     fontSize: '11.5px', fontWeight: '700', cursor: 'pointer'
   },
   swatch: { width: '10px', height: '10px', display: 'inline-block', border: '1.5px solid currentColor' },
-  matLabel: { fontSize: '11px', fontWeight: '800', color: 'rgba(255,255,255,0.45)', textTransform: 'uppercase', marginRight: '4px' },
+  matLabel: { fontSize: '11px', fontWeight: '800', color: 'var(--text-muted, #999999)', textTransform: 'uppercase', marginRight: '4px' },
   matBtn: {
-    padding: '5px 10px', borderRadius: '8px', border: '1px solid rgba(0, 0, 0, 0.08)',
+    padding: '5px 10px', borderRadius: '8px', border: '1px solid var(--border-color, rgba(0, 0, 0, 0.08))',
     fontSize: '12px', fontWeight: '800', cursor: 'pointer', letterSpacing: '0.3px'
   },
-  hint: { fontSize: '11.5px', color: 'rgba(255,255,255,0.5)', lineHeight: 1.45 },
+  hint: { fontSize: '11.5px', color: 'var(--text-muted, #999999)', lineHeight: 1.45 },
   chartBox: {
     padding: '10px 6px', borderRadius: '14px',
-    background: 'rgba(0,0,0,0.25)', border: '1px solid rgba(0, 0, 0, 0.08)',
+    background: 'var(--bg-primary, #ffffff)', border: '1px solid var(--border-color, rgba(0, 0, 0, 0.08))',
     overflowX: 'auto'
   },
   legend: {
     padding: '12px', borderRadius: '14px',
-    background: 'rgba(232,212,176,0.06)', border: '1px solid rgba(232,212,176,0.18)'
+    background: 'var(--bg-secondary, #f5f5f5)', border: '1px solid var(--border-color, rgba(0, 0, 0, 0.08))'
   },
   legendTitle: {
     fontSize: '11px', fontWeight: '900', textTransform: 'uppercase',
-    letterSpacing: '0.6px', color: '#e8d4b0', marginBottom: '10px'
+    letterSpacing: '0.6px', color: 'var(--gold-primary, #e8d4b0)', marginBottom: '10px'
   },
   legendGrid: { display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))', gap: '10px' },
   legendItem: { display: 'flex', alignItems: 'center', gap: '8px' },
-  legendLabel: { fontSize: '12px', fontWeight: '700', color: '#f5f5f5' },
-  legendMats: { fontSize: '10px', color: 'rgba(255,255,255,0.45)', fontWeight: '600' },
-  legendNote: { marginTop: '10px', fontSize: '11px', color: 'rgba(255,255,255,0.45)', lineHeight: 1.4 },
+  legendLabel: { fontSize: '12px', fontWeight: '700', color: 'var(--text-primary, #111111)' },
+  legendMats: { fontSize: '10px', color: 'var(--text-muted, #999999)', fontWeight: '600' },
+  legendNote: { marginTop: '10px', fontSize: '11px', color: 'var(--text-muted, #999999)', lineHeight: 1.4 },
   toolbar: {
     display: 'flex', justifyContent: 'space-between', alignItems: 'center',
     gap: '10px', flexWrap: 'wrap'
   },
-  summary: { fontSize: '12px', color: 'rgba(255,255,255,0.55)', fontWeight: '600' },
+  summary: { fontSize: '12px', color: 'var(--text-secondary, #666666)', fontWeight: '600' },
   toolBtn: {
     display: 'inline-flex', alignItems: 'center', gap: '6px',
     padding: '7px 12px', borderRadius: '10px',
-    border: '1px solid rgba(0, 0, 0, 0.08)', background: 'rgba(255,255,255,0.04)',
-    color: 'rgba(255,255,255,0.8)', fontSize: '12px', fontWeight: '700', cursor: 'pointer'
+    border: '1px solid var(--border-color, rgba(0, 0, 0, 0.08))', background: 'var(--bg-secondary, #f5f5f5)',
+    color: 'var(--text-primary, #111111)', fontSize: '12px', fontWeight: '700', cursor: 'pointer'
   },
   quadRow: { display: 'flex', flexWrap: 'wrap', gap: '8px', marginTop: '8px' },
   quadBtn: {
-    padding: '6px 10px', borderRadius: '8px', border: '1px dashed rgba(0, 0, 0, 0.08)',
-    background: 'transparent', color: 'rgba(255,255,255,0.5)', fontSize: '11px', fontWeight: '700', cursor: 'pointer'
+    padding: '6px 10px', borderRadius: '8px', border: '1px dashed var(--border-color, rgba(0, 0, 0, 0.08))',
+    background: 'transparent', color: 'var(--text-secondary, #666666)', fontSize: '11px', fontWeight: '700', cursor: 'pointer'
   }
 };

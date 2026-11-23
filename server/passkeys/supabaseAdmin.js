@@ -6,11 +6,16 @@ export const getAdminClient = () => {
   if (adminClient) return adminClient;
   const url = process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL;
   const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
-  if (!url || !key) throw new Error('Faltan las variables privadas de Supabase para Passkeys');
-  adminClient = createClient(url, key, {
-    auth: { persistSession: false, autoRefreshToken: false },
-    db: { schema: 'odontosonrisa' },
-  });
+  if (!url) throw new Error('Falta SUPABASE_URL / VITE_SUPABASE_URL en variables de entorno');
+  if (!key) throw new Error('Falta SUPABASE_SERVICE_ROLE_KEY en variables de entorno de Vercel (Settings → Environment Variables)');
+  try {
+    adminClient = createClient(url, key, {
+      auth: { persistSession: false, autoRefreshToken: false },
+      db: { schema: 'odontosonrisa' },
+    });
+  } catch (e) {
+    throw new Error(`Error creando cliente Supabase Admin: ${e.message}. Verifica que SUPABASE_URL y SUPABASE_SERVICE_ROLE_KEY sean correctos.`);
+  }
   return adminClient;
 };
 
