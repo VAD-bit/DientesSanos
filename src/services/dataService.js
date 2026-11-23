@@ -215,11 +215,13 @@ async function _adminAuthRequest(payload) {
     },
     body: JSON.stringify(payload)
   });
-  const result = await response.json().catch(() => ({}));
+  const bodyText = await response.text().catch(() => '');
+  let result;
+  try { result = JSON.parse(bodyText); } catch (_) { result = {}; }
   if (!response.ok) {
-    const msg = result.error || 'Error en la operación de administración';
+    const msg = result.error || result.details || `HTTP ${response.status}`;
     // Detectar si es error de configuración del servidor (falta SERVICE_ROLE_KEY)
-    if (msg.includes('variables privadas') || msg.includes('SERVICE_ROLE') || msg.includes('service role')) {
+    if (String(msg).includes('variables privadas') || String(msg).includes('SERVICE_ROLE') || String(msg).includes('service role')) {
       throw new Error('Configuración del servidor incompleta: falta SUPABASE_SERVICE_ROLE_KEY en variables de entorno de Vercel');
     }
     throw new Error(msg);
