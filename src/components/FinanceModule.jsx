@@ -417,7 +417,7 @@ const EditTransactionContent = ({ transaction: t, rates, staff = [], onSave, onC
 
       {/* PROPINA */}
       <div style={sectionBox}>
-        <div style={sectionLabel}>ðŸ’µ Propina</div>
+        <div style={sectionLabel}>👙 Propina</div>
         <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'minmax(0, 1fr) 1.4fr', gap: '10px' }}>
           <div>
             <label style={{ fontSize: '9px', color: 'var(--text-muted)', fontWeight: '800', textTransform: 'uppercase', display: 'block', marginBottom: '4px' }}>Monto ($)</label>
@@ -3477,7 +3477,7 @@ const FinanceModule = ({ isMobile, currency, rates, staff = [] }) => {
                                     </div>
 
                                     {/* Información de pago */}
-                                    {isPendingReceivable && <div style={{ backgroundColor: 'rgba(255,159,10,.08)', color: '#ffcc80', padding: '12px', borderRadius: '12px', marginBottom: '16px', border: '1px solid rgba(255,159,10,.2)', fontSize: '12px', fontWeight: 800 }}>Fiado pendiente: todavía no ha ingresado dinero a ninguna cuenta.</div>}
+                      {isPendingReceivable && <div style={{ backgroundColor: '#fff3e0', color: '#111111', padding: '12px', borderRadius: '12px', marginBottom: '16px', border: '1px solid rgba(255,159,10,.2)', fontSize: '12px', fontWeight: 800 }}>Fiado pendiente: todavía no ha ingresado dinero a ninguna cuenta.</div>}
                                     {!isPendingReceivable && <div style={{ backgroundColor: 'var(--bg-secondary)', padding: '12px', borderRadius: '12px', marginBottom: '16px' }}>
                                       <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '4px' }}>
                                         <span style={{ fontSize: '11px', color: 'var(--text-secondary)' }}>Efectivo USD:</span>
@@ -3579,7 +3579,7 @@ const FinanceModule = ({ isMobile, currency, rates, staff = [] }) => {
                 ].filter(Boolean))).join(', ') || meta.barberName || '';
                 return <article key={transaction.id} style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1.2fr 1.3fr .9fr auto', gap: '12px', alignItems: 'center', padding: '14px 16px', borderRadius: '14px', background: '#333333', border: '1px solid rgba(255,159,10,.18)' }}>
                   <div><strong style={{ display: 'block' }}>{meta.clientName || 'Cliente'}</strong><small style={{ color: 'var(--text-muted)' }}>{new Date(transaction.created_at).toLocaleDateString('es-VE')}</small></div>
-                  <div style={{ color: 'var(--text-secondary)', fontSize: '12px' }}>{meta.serviceName || 'Servicio'}{barber && <span style={{ display: 'block', color: 'var(--gold-primary)', fontSize: '11px', fontWeight: 700, marginTop: '2px' }}>ðŸ¦· {barber}</span>}</div>
+                  <div style={{ color: 'var(--text-secondary)', fontSize: '12px' }}>{meta.serviceName || 'Servicio'}{barber && <span style={{ display: 'block', color: 'var(--gold-primary)', fontSize: '11px', fontWeight: 700, marginTop: '2px' }}>👰 {barber}</span>}</div>
                   <div><strong style={{ color: '#ff9f0a' }}>{formatCurrency(bs, '')} Bs</strong><small style={{ display: 'block', color: 'var(--text-muted)' }}>${formatCurrency(usd, '')}</small></div>
                   <div style={{ justifySelf: isMobile ? 'stretch' : 'end', display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}><span style={{ padding: '6px 9px', borderRadius: '999px', background: 'rgba(255,159,10,.12)', color: '#ffb340', fontSize: '9px', fontWeight: 900 }}>PENDIENTE</span><button type="button" onClick={() => setReceivablePayment({ isOpen: true, transaction })} className="btn-gold" style={{ borderRadius: 10, padding: '9px 13px', fontSize: 11, fontWeight: 900, cursor: 'pointer' }}>Registrar pago</button></div>
                 </article>;

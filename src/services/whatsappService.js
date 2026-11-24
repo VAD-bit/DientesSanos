@@ -33,7 +33,7 @@ export const whatsappService = {
       for (const client of birthdayClients) {
         if (!client.phone) continue;
         
-        const message = `ðŸŽ‰ ¡Hola ${client.name}! ¡Feliz Cumpleaños de parte del equipo de Dientes Sanos! ðŸŽ‚ðŸ¼\n\nQueremos consentirte en tu día especial, por lo que tienes un *10% DE DESCUENTO* en cualquiera de nuestros servicios hoy. Presenta este mensaje al pagar.\n\nReserva tu turno aquí: ${window.location.origin}/#/agendar`;
+        const message = `🏉 ¡Hola ${client.name}! ¡Feliz Cumpleaños de parte del equipo de Dientes Sanos! ðŸŽ‚ðŸ¼\n\nQueremos consentirte en tu día especial, por lo que tienes un *10% DE DESCUENTO* en cualquiera de nuestros servicios hoy. Presenta este mensaje al pagar.\n\nReserva tu turno aquí: ${window.location.origin}/#/agendar`;
         await this.sendMessage(client.phone, message);
       }
       
@@ -54,7 +54,7 @@ export const whatsappService = {
       const scheduledDate = new Date();
       scheduledDate.setDate(scheduledDate.getDate() + days);
 
-      const message = `ðŸ‘‹ ¡Hola ${client.name}! Ya han pasado ${days} días desde su última visita en Dientes Sanos. ðŸ¦·ðŸ’™\n\nTe sugerimos agendar tu próxima visita con tu odontólogo habitual para mantener tu sonrisa saludable. ¡Te esperamos!\n\nReserva en segundos aquí: ${window.location.origin}/#/agendar`;
+      const message = `ðŸ‘‹ ¡Hola ${client.name}! Ya han pasado ${days} días desde su última visita en Dientes Sanos. 👰ðŸ’™\n\nTe sugerimos agendar tu próxima visita con tu odontólogo habitual para mantener tu sonrisa saludable. ¡Te esperamos!\n\nReserva en segundos aquí: ${window.location.origin}/#/agendar`;
 
       console.log(`[WhatsApp Scheduler] Recordatorio de recurrencia programado para ${client.name} en ${days} días (${scheduledDate.toLocaleDateString()}).`);
       

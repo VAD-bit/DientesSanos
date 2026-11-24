@@ -178,7 +178,7 @@ export default function ProviderPaymentModal({
                   borderRadius: '10px', 
                   background: 'rgba(0, 0, 0, 0.04)', 
                   border: '1px solid rgba(0, 0, 0, 0.08)', 
-                  color: '#ccc', 
+                  color: '#111111', 
                   display: 'grid', 
                   placeItems: 'center', 
                   cursor: 'pointer',

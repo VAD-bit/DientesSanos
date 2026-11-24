@@ -130,7 +130,7 @@ export default function ProductHistoryModal({
                   borderRadius: '10px', 
                   background: 'rgba(0, 0, 0, 0.04)', 
                   border: '1px solid rgba(0, 0, 0, 0.08)', 
-                  color: '#ccc', 
+                  color: '#111111', 
                   display: 'grid', 
                   placeItems: 'center', 
                   cursor: 'pointer',
@@ -171,7 +171,7 @@ export default function ProductHistoryModal({
                 <div style={{ fontSize: '18px', fontWeight: '950', color: '#32d74b', letterSpacing: '-0.3px' }}>
                   {formatMoney(totals.sale)} Bs
                 </div>
-                <div style={{ fontSize: '11.5px', color: 'rgba(255, 255, 255, 0.6)', fontWeight: '750' }}>
+                <div style={{ fontSize: '11.5px', color: '#111111', fontWeight: '750' }}>
                   ${totals.saleUsd.toFixed(2)} USD
                 </div>
               </div>
@@ -195,7 +195,7 @@ export default function ProductHistoryModal({
                 <div style={{ fontSize: '18px', fontWeight: '950', color: 'var(--gold-primary)', letterSpacing: '-0.3px' }}>
                   {formatMoney(totals.margin)} Bs
                 </div>
-                <div style={{ fontSize: '11.5px', color: 'rgba(255, 255, 255, 0.6)', fontWeight: '750' }}>
+                <div style={{ fontSize: '11.5px', color: '#111111', fontWeight: '750' }}>
                   ${totals.marginUsd.toFixed(2)} USD
                 </div>
               </div>
@@ -219,7 +219,7 @@ export default function ProductHistoryModal({
                 <div style={{ fontSize: '18px', fontWeight: '950', color: '#ff9f0a', letterSpacing: '-0.3px' }}>
                   {formatMoney(totals.cost)} Bs
                 </div>
-                <div style={{ fontSize: '11.5px', color: 'rgba(255, 255, 255, 0.6)', fontWeight: '750' }}>
+                <div style={{ fontSize: '11.5px', color: '#111111', fontWeight: '750' }}>
                   ${totals.costUsd.toFixed(2)} USD
                 </div>
               </div>
@@ -363,7 +363,7 @@ export default function ProductHistoryModal({
 
                           {/* Cliente / Servicio */}
                           <td style={{ padding: '12px 14px' }}>
-                            <div style={{ fontWeight: '800', color: 'rgba(255, 255, 255, 0.9)', fontSize: '12.5px' }}>
+                            <div style={{ fontWeight: '800', color: '#111111', fontSize: '12.5px' }}>
                               {clientName}
                             </div>
                             {serviceName && (

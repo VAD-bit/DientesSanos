@@ -102,7 +102,7 @@ export const isTattooRole = (member = {}) => {
 };
 
 // Reservable en el portal público: cualquier odontólogo activo (antes exigía
-// además isAdminStaff, con lo que NINGÃšN miembro del equipo pasaba el filtro
+// además isAdminStaff, con lo que NINGÚN miembro del equipo pasaba el filtro
 // y el portal no listaba a nadie).
 export const isBookableStaff = (member = {}) => (
   isActiveStaff(member) &&

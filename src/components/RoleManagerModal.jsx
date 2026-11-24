@@ -320,7 +320,7 @@ const RoleManagerModal = ({ isOpen, onClose, roles, onSaveRole, onDeleteRole, av
               display: 'flex', alignItems: 'center', gap: '10px'
             }}>
               <Info size={15} color="var(--gold-primary)" style={{ flexShrink: 0 }} />
-              <p style={{ fontSize: '11px', color: 'rgba(255, 255, 255,0.8)', margin: 0, fontWeight: '600' }}>
+              <p style={{ fontSize: '11px', color: '#111111', margin: 0, fontWeight: '600' }}>
                 Los cambios en los permisos se aplicar¡n a los nuevos miembros que se unan con este rol.
               </p>
             </div>

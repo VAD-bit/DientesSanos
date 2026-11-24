@@ -27,7 +27,7 @@ const ReceiptTicket = ({ transaction }) => {
 
   return (
     <div className="receipt-ticket" style={preview ? { display: 'block', margin: '0 auto', borderRadius: '4px' } : undefined}>
-      {preview && <p style={{ textAlign: 'center', fontWeight: 'bold', fontSize: '11px', letterSpacing: '2px', margin: '0 0 8px', color: '#b00' }}>â€” VISTA PREVIA â€”</p>}
+      {preview && <p style={{ textAlign: 'center', fontWeight: 'bold', fontSize: '11px', letterSpacing: '2px', margin: '0 0 8px', color: '#b00' }}>— VISTA PREVIA —</p>}
       {/* HEADER */}
       <div className="receipt-header">
         <img src={pandaLogo} alt="Dientes Sanos" className="receipt-logo" />
@@ -83,7 +83,7 @@ const ReceiptTicket = ({ transaction }) => {
       {/* FOOTER */}
       <div className="receipt-footer">
         <div className="receipt-divider">================================</div>
-        <p className="receipt-thanks">Gracias por tu visita te espero pronto que Dios te lleve con bien ðŸ™ðŸ»</p>
+        <p className="receipt-thanks">Gracias por tu visita te espero pronto que Dios te lleve con bien 🤟🏻</p>
         {/* TODO(contacto): pendiente datos del cliente */}
         <p className="receipt-contact"><a href="#">Por confirmar</a></p>
       </div>

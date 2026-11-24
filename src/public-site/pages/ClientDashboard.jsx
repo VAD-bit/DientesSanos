@@ -293,7 +293,7 @@ export default function ClientDashboard() {
   const totalSpent = historyAppointments.reduce((s, a) => s + getVisitPrice(a), 0);
   const lastAppt = historyAppointments[0];
 
-  // Walk-in visits ("En Silla") never had a scheduled_at set â€” fall back to
+  // Walk-in visits ("En Silla") never had a scheduled_at set — fall back to
   // when the visit was actually completed/created instead of showing epoch.
   const getApptDate = (a) => {
     const raw = a?.scheduled_at || a?.completed_at || a?.created_at;
@@ -431,7 +431,7 @@ export default function ClientDashboard() {
               </div>
             );
           })() : (
-            /* EMPTY STATE â€” branded & premium */
+            /* EMPTY STATE — branded & premium */
             <div 
               className="appt-card empty-appt" 
               onClick={() => {
@@ -547,16 +547,16 @@ export default function ClientDashboard() {
             <div className="stat-card">
               <div className="stat-icon-wrap"><Calendar size={15} color="var(--champagne)" /></div>
               <span className="stat-val" style={{ fontSize: lastAppt ? 14 : 20 }}>
-                {lastAppt && getApptDate(lastAppt) ? getApptDate(lastAppt).toLocaleDateString('es-ES', { day: '2-digit', month: 'short' }) : 'â€”'}
+                {lastAppt && getApptDate(lastAppt) ? getApptDate(lastAppt).toLocaleDateString('es-ES', { day: '2-digit', month: 'short' }) : '—'}
               </span>
-              <span className="stat-lbl">Ãšltima cita</span>
+              <span className="stat-lbl">Última cita</span>
             </div>
           </div>
 
           {/* VISIT HISTORY */}
           <div className="history-card">
             <div className="hc-header">
-              <span className="hc-title">Ãšltimas visitas</span>
+              <span className="hc-title">Últimas visitas</span>
               <span className="hc-link" onClick={() => navigate('/perfil/citas')}>Ver todo â†’</span>
             </div>
 
@@ -752,7 +752,7 @@ export default function ClientDashboard() {
                       <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                         <div style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 11, fontWeight: 800, color: 'var(--champagne)', letterSpacing: 2 }}>
                           <Star size={14} fill="var(--champagne)" />
-                          <span>VALORACIÃ“N</span>
+                          <span>VALORACIÓN</span>
                         </div>
                       </div>
 
@@ -1133,14 +1133,14 @@ export default function ClientDashboard() {
           cursor: default;
           transition: transform 0.4s cubic-bezier(0.2,0.8,0.2,1), box-shadow 0.4s ease;
           /* Without this, iOS has to decide whether a touch here means "scroll the
-             page" or "hover/tap this card" before committing to either â€” with the
+             page" or "hover/tap this card" before committing to either — with the
              hover transform + transition below, that ambiguity can eat the first
              swipe, so the card appears to shift in place while the page underneath
              doesn't move until you swipe again. Still relevant for .empty-appt,
              which is clickable. */
           touch-action: pan-y;
         }
-        /* Only the empty-state card (no upcoming appointment) is clickable â€” it
+        /* Only the empty-state card (no upcoming appointment) is clickable — it
            opens the booking flow. The has-appt card below is informational only. */
         .appt-card:hover:not(.has-appt) {
           transform: translateY(-6px) scale(1.01);

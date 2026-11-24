@@ -190,25 +190,38 @@ const CartSellerSelect = ({ value, onChange, options }) => {
   );
 };
 
-const PortaledDropdown = ({ isOpen, onClose, triggerRef, children, menuStyle }) => {
+const PortaledDropdown = ({ isOpen, onClose, triggerRef, children, menuStyle, centerOnScreen = false }) => {
   const [pos, setPos] = React.useState({ top: 0, left: 0, width: 0 });
 
   React.useEffect(() => {
-    if (isOpen && triggerRef.current) {
-      const rect = triggerRef.current.getBoundingClientRect();
-      setPos({ top: rect.bottom + 6, left: rect.left, width: rect.width });
+    if (isOpen) {
+      if (centerOnScreen && triggerRef.current) {
+        // Center the menu on screen
+        setPos({
+          top: '50%',
+          left: '50%',
+          width: Math.max(triggerRef.current?.clientWidth || 200, 300),
+        });
+      } else if (isOpen && triggerRef.current) {
+        const rect = triggerRef.current.getBoundingClientRect();
+        setPos({ top: rect.bottom + 6, left: rect.left, width: rect.width });
+      }
     }
-  }, [isOpen, triggerRef]);
+  }, [isOpen, centerOnScreen, triggerRef]);
 
   if (!isOpen) return null;
 
+  // Compute final positions based on centering
+  const finalTop = centerOnScreen ? 'calc(50% - ' + (pos.width / 2 + 16) + 'px)' : pos.top;
+  const finalLeft = centerOnScreen ? 'calc(50% - ' + (pos.width / 2 + 16) + 'px)' : pos.left;
+
   return createPortal(
     <>
-      <div onClick={onClose} style={{ position: 'fixed', inset: 0, zIndex: 99998 }} />
+      <div onClick={onClose} style={{ position: 'fixed', inset: 0, zIndex: 99998, overscrollBehavior: 'contain' }} />
       <div className="animate-scale-in" style={{
         position: 'fixed',
-        top: pos.top,
-        left: pos.left,
+        top: finalTop,
+        left: finalLeft,
         width: Math.max(pos.width, 200),
         background: 'var(--bg-secondary)',
         backdropFilter: 'blur(30px)',
@@ -2156,7 +2169,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                 onPointerCancel={e => { e.currentTarget.style.transform = 'scale(1)'; }}
               >
                 <ShoppingBag size={isMobile ? 22 : 28} color="var(--gold-primary)" strokeWidth={1.5} />
-                <span style={{ fontWeight: '700', fontSize: isMobile ? '9px' : '11px', letterSpacing: '0.5px', color: 'rgba(255,255,255,0.7)' }}>PRODUCTOS</span>
+                <span style={{ fontWeight: '700', fontSize: isMobile ? '9px' : '11px', letterSpacing: '0.5px', color: '#111111' }}>PRODUCTOS</span>
               </button>
 
               <button 
@@ -2693,11 +2706,11 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                               padding: '12px 16px',
                               cursor: 'pointer',
                               fontSize: isMobile ? '12px' : '14px',
-                              color: 'rgba(255, 255, 255, 0.5)',
+                              color: '#333333',
                               borderBottom: '1px solid rgba(0, 0, 0, 0.08)',
                               transition: 'background-color 0.2s'
                             }}
-                            onMouseEnter={e => e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.03)'}
+                            onMouseEnter={e => e.currentTarget.style.backgroundColor = 'rgba(0, 0, 0, 0.03)'}
                             onMouseLeave={e => e.currentTarget.style.backgroundColor = 'transparent'}
                           >
                             Seleccionar Asistente dental
@@ -2814,11 +2827,11 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                                 padding: '10px 12px',
                                 cursor: 'pointer',
                                 fontSize: '12px',
-                                color: 'rgba(255, 255, 255, 0.5)',
+                                color: '#333333',
                                 borderBottom: '1px solid rgba(0, 0, 0, 0.08)',
                                 transition: 'background-color 0.2s'
                               }}
-                              onMouseEnter={e => e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.03)'}
+                              onMouseEnter={e => e.currentTarget.style.backgroundColor = 'rgba(0, 0, 0, 0.03)'}
                               onMouseLeave={e => e.currentTarget.style.backgroundColor = 'transparent'}
                             >
                               Seleccionar Integrante
@@ -3104,12 +3117,12 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                         return role.includes('barber') || role.includes('odontolog') || role.includes('tatu') || role.includes('estilista');
                       }).map(member => ({ value: member.id, label: member.name, imageUrl: member.image_url || member.avatar_url || '', avatarFallback: (member.name || '?').trim().charAt(0).toUpperCase(), subtitle: (member.role || 'Profesional').split('|')[0] }))}
                     />
-                    <p style={{ margin: '8px 0 0', color: '#ffcc80', fontSize: '10px', lineHeight: 1.4 }}>El cliente paga $0. No se genera comisión del odontólogo; se le carga la parte de la clínica y la profilaxis completa.</p>
+                    <p style={{ margin: '8px 0 0', color: '#111111', fontSize: '10px', lineHeight: 1.4 }}>El cliente paga $0. No se genera comisión del odontólogo; se le carga la parte de la clínica y la profilaxis completa.</p>
                   </div>
                 )}
 
                 {settlementType !== 'paid' && settlementType !== 'exchange' && (
-                  <div style={{ padding: '11px 13px', borderRadius: '10px', marginBottom: '14px', background: settlementType === 'receivable' ? 'rgba(255,159,10,.08)' : 'rgba(100,210,255,.08)', border: `1px solid ${settlementType === 'receivable' ? 'rgba(255,159,10,.3)' : 'rgba(100,210,255,.25)'}`, color: settlementType === 'receivable' ? '#ffcc80' : '#8bdcff', fontSize: '10px', lineHeight: 1.45 }}>
+                  <div style={{ padding: '11px 13px', borderRadius: '10px', marginBottom: '14px', background: settlementType === 'receivable' ? '#fff3e0' : '#e3f2fd', border: `1px solid ${settlementType === 'receivable' ? 'rgba(255,159,10,.3)' : 'rgba(100,210,255,.25)'}`, color: settlementType === 'receivable' ? '#111111' : '#111111', fontSize: '10px', lineHeight: 1.45 }}>
                     {settlementType === 'receivable' ? 'El cliente no paga ahora. La deuda quedar¡ registrada en Cuentas por cobrar y no generar¡ comisión hasta ser cobrada.' : 'Cortesía asumida por la clínica: cuenta como servicio realizado, pero no generar¡ ingreso, deuda ni comisiones.'}
                   </div>
                 )}

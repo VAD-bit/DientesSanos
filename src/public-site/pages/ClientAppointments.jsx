@@ -461,13 +461,13 @@ export default function ClientAppointments() {
 
               <div className="ca-modal-body">
                 <div className="ca-modal-legal-header">
-                  <p className="ca-ml-brand">CENTRO ODONTOLÃ“GICO DIENTES SANOS</p>
+                  <p className="ca-ml-brand">CENTRO ODONTOLÓGICO DIENTES SANOS</p>
                   <p className="ca-ml-title">Consentimiento Informado de Tratamiento Dental</p>
                   <p className="ca-ml-subtitle">Para procedimientos odontológicos</p>
                 </div>
 
                 {[
-                  { title: '1. DECLARACIÃ“N', text: 'Declaro que soy mayor de edad y acepto de forma voluntaria el procedimiento odontológico propuesto por Centro Odontológico Dientes Sanos. Comprendo que el tratamiento implica la intervención sobre tejidos dentales y tejidos blandos de la cavidad oral mediante instrumentales esterilizados y materiales biocompatibles, y que conlleva riesgos inherentemente asociados.' },
+                  { title: '1. DECLARACIÓN', text: 'Declaro que soy mayor de edad y acepto de forma voluntaria el procedimiento odontológico propuesto por Centro Odontológico Dientes Sanos. Comprendo que el tratamiento implica la intervención sobre tejidos dentales y tejidos blandos de la cavidad oral mediante instrumentales esterilizados y materiales biocompatibles, y que conlleva riesgos inherentemente asociados.' },
                   { title: '2. RIESGOS ACEPTADOS', text: 'Acepto que los riesgos del procedimiento incluyen: dolor y molestias postoperatorias, sangrado en la zona tratada, hinchazón e inflamación temporal, reacciones alérgicas o adversas a anestésicos, medicamentos o materiales de restauración utilizados, infección, sensibilidad dental prolongada y posibles complicaciones relacionadas con mi condición de salud individual.' },
                   { title: '3. CUIDADOS POSTERIORES', text: 'Me comprometo a seguir rigurosamente las indicaciones de cuidado posterior proporcionadas por el especialista, incluyendo la higiene oral, la alimentación, la toma de medicamentos indicados y la asistencia a los controles y citas de seguimiento durante todo el proceso de recuperación.' },
                   { title: '4. USO DE IMAGEN', text: 'Autorizo de forma voluntaria a Centro Odontológico Dientes Sanos a tomar fotografías y/o videos del procedimiento y del resultado final del tratamiento, para su uso exclusivo con fines promocionales en redes sociales, página web y plataformas digitales de la clínica.' },

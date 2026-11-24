@@ -23,7 +23,7 @@ const ACCENT_DICT = {
   "julian": "Julián",
   "ruben": "Rubén",
   "cesar": "César",
-  "oscar": "Ã“scar",
+  "oscar": "Óscar",
   "ivan": "Iván",
   "simon": "Simón",
   "matias": "Matías",

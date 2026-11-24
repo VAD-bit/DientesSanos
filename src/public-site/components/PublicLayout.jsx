@@ -29,7 +29,7 @@ export default function PublicLayout() {
   const [showOnboarding, setShowOnboarding] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
-  // Show onboarding the first time a new user actually lands on /perfil â€” not the
+  // Show onboarding the first time a new user actually lands on /perfil — not the
   // moment registration finishes. Registration can complete mid-booking (e.g. Google
   // sign-in from step 5), and that flow redirects back to /agendar to let the visitor
   // finish the reservation they were already in the middle of; showing the profile
@@ -92,7 +92,7 @@ export default function PublicLayout() {
 
   // Navbar links target sections that only exist on the landing ('/'). From any other route
   // (e.g. /perfil) document.getElementById(id) finds nothing and used to
-  // silently do nothing â€” clicking "Inicio"/"Servicios"/etc. looked completely dead and left
+  // silently do nothing — clicking "Inicio"/"Servicios"/etc. looked completely dead and left
   // the user stranded with no way out of that page. Now: navigate home first, then scroll
   // once the landing has actually rendered.
   const goToSection = (id) => {
@@ -116,11 +116,11 @@ export default function PublicLayout() {
   // Kept for the mobile menu call sites below; same landing-aware behavior as goToSection.
   const handleScrollTo = (id) => goToSection(id);
 
-  // Focused onboarding step, not a browsable page â€” the full site nav here would just be
+  // Focused onboarding step, not a browsable page — the full site nav here would just be
   // distracting chrome competing with the one thing the user needs to do. The page itself
   // provides its own way out ("Volver al inicio" / cerrar sesión).
-  // Also hide on /perfil (and sub-routes) â€” the profile is an authenticated view that
-  // should not show the landing nav. Hide on /reservar and /agendar too â€” BookAppointment
+  // Also hide on /perfil (and sub-routes) — the profile is an authenticated view that
+  // should not show the landing nav. Hide on /reservar and /agendar too — BookAppointment
   // has its own navigation and showing the landing nav causes a flash.
   const hideNav = ['/login', '/registro', '/olvidar-contraseña', '/restablecer-contraseña', '/reset-password', '/perfil', '/reservar', '/agendar'].some(p => decodeURIComponent(location.pathname).startsWith(p));
 
@@ -173,7 +173,7 @@ export default function PublicLayout() {
           {/* Link (client-side nav), not a plain <a href="/">: a full page reload here
               re-runs the Google-session auth guard below, which sees the session is still
               active and the profile is still incomplete, and immediately bounces back to
-              /completar-registro â€” so the logo looked like it did nothing. */}
+              /completar-registro — so the logo looked like it did nothing. */}
           <Link to="/" className="flex items-center no-underline">
             <img src={logo} alt="Dientes Sanos" className="h-[48px] object-contain" style={{ filter: 'brightness(1.15)' }} />
           </Link>
@@ -348,7 +348,7 @@ export default function PublicLayout() {
         </AnimatePresence>
       </nav>}
 
-      {/* Main Content â€” hidden while onboarding is active */}
+      {/* Main Content — hidden while onboarding is active */}
       {!showOnboarding && (
         <main style={{ flex: 1 }}>
           <Suspense fallback={<RouteFallback />}>

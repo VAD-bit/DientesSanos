@@ -20,7 +20,7 @@ export const getGoogleAuthIntent = () => (
 // Solo se vuelve a /agendar cuando hay una reserva REAL esperando ser retomada:
 // BookAppointment guarda `panda_draft_booking` con `resumeAfterAuth: true` (y los
 // datos de la reserva) justo antes del redirect a Google, y /agendar lo lee para
-// restaurar el wizard. Ese draft es la verdad de fondo â€” se pone solo cuando hay
+// restaurar el wizard. Ese draft es la verdad de fondo — se pone solo cuando hay
 // una reserva en curso y se limpia al terminarla.
 //
 // Antes esto miraba primero `panda_google_auth_intent === 'booking'`, pero ese flag

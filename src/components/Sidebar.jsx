@@ -179,15 +179,15 @@ const Sidebar = ({ activeTab, setActiveTab, isMobile, rates, isCollapsed, setIsC
               top: '0',
               background: 'transparent',
               border: 'none',
-              color: 'rgba(255,255,255,0.25)',
+              color: '#111111',
               cursor: 'pointer',
               marginBottom: isCollapsed ? '10px' : '0',
               transition: 'color 0.2s ease',
               padding: '4px',
               borderRadius: '6px',
             }}
-            onMouseEnter={e => { e.currentTarget.style.color = 'var(--champagne)'; setIsToggleHovered(true); }}
-            onMouseLeave={e => { e.currentTarget.style.color = 'rgba(255,255,255,0.25)'; setIsToggleHovered(false); }}
+            onMouseEnter={e => { e.currentTarget.style.color = '#111111'; setIsToggleHovered(true); }}
+            onMouseLeave={e => { e.currentTarget.style.color = '#111111'; setIsToggleHovered(false); }}
           >
             {isCollapsed ? <PanelLeftOpen size={17} /> : <PanelLeftClose size={17} />}
           </button>
@@ -202,7 +202,7 @@ const Sidebar = ({ activeTab, setActiveTab, isMobile, rates, isCollapsed, setIsC
               className="sidebar-logo-img"
               style={{
                 width: '85%', height: 'auto', maxWidth: '185px', marginTop: '8px',
-                filter: 'brightness(0) invert(1) drop-shadow(0 0 8px rgba(255,255,255,0.25))'
+                filter: 'brightness(0) saturate(100%) drop-shadow(0 0 8px rgba(0,0,0,0.3))'
               }}
             />
           )}
@@ -304,10 +304,10 @@ const Sidebar = ({ activeTab, setActiveTab, isMobile, rates, isCollapsed, setIsC
               justifyContent: isCollapsed ? 'center' : 'flex-start',
               gap: '8px',
               padding: isCollapsed ? '8px 0' : '8px 10px',
-              background: notifPermission === 'granted' ? 'rgba(48, 209, 88, 0.08)' : 'rgba(255, 255, 255, 0.04)',
-              border: notifPermission === 'granted' ? '1px solid rgba(48, 209, 88, 0.25)' : '1px solid rgba(0, 0, 0, 0.08)',
+              background: notifPermission === 'granted' ? 'rgba(48, 209, 88, 0.08)' : '#ffffff',
+              border: notifPermission === 'granted' ? '1px solid rgba(48, 209, 88, 0.25)' : '1px solid #e8d4b0',
               borderRadius: '9px',
-              color: notifPermission === 'granted' ? '#30d158' : 'rgba(245, 245, 245, 0.55)',
+              color: notifPermission === 'granted' ? '#30d158' : '#111111',
               cursor: notifPermission === 'granted' ? 'default' : 'pointer',
               fontSize: '12px',
               fontWeight: '600',

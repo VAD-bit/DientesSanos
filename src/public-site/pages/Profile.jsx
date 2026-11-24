@@ -140,7 +140,7 @@ export default function Profile() {
       });
       setAllBarbers(activeBarbers);
       
-      // null means the key was never written (true first-time visitor) â€” only then do
+      // null means the key was never written (true first-time visitor) — only then do
       // we seed defaults. An empty array means the user deliberately cleared their
       // favorites, and that choice must stick across reloads instead of being reseeded.
       const rawFavs = localStorage.getItem('favorite_barbers');
@@ -190,7 +190,7 @@ export default function Profile() {
   
 
 
-  // Sort completed appointments descending â€” used by the history modal
+  // Sort completed appointments descending — used by the history modal
   const historyAppointments = [...completedAppointments].sort((a,b) => new Date(b.scheduled_at) - new Date(a.scheduled_at));
 
   const RANKS = [
@@ -282,7 +282,7 @@ export default function Profile() {
     <div className="new-dashboard-container px-4 md:px-8 lg:px-10">
       {createPortal(
         <AnimatePresence>
-          {/* Birthday Roulette â€” only shows on client's birthday and only once per year */}
+          {/* Birthday Roulette — only shows on client's birthday and only once per year */}
           {(() => {
             if (!client?.birth_date) return null;
             const today = new Date();
@@ -294,7 +294,7 @@ export default function Profile() {
             const hasCouponThisYear = coupons.some(c => c.generated_at && new Date(c.generated_at).getFullYear() === currentYear);
             if (!isBirthday || hasSpun || hasCouponThisYear) return null;
             const bdayKey = `panda_bday_spun_${client.id}_${currentYear}`;
-            // Winning must NOT hide the wheel immediately â€” PrizeWheel shows a victory
+            // Winning must NOT hide the wheel immediately — PrizeWheel shows a victory
             // ticket with the coupon code after a win, and this component re-renders
             // the moment `hasSpun` flips true, which would unmount that ticket before
             // the client ever sees it. So a win only persists to localStorage; only the
@@ -425,13 +425,13 @@ export default function Profile() {
                     </div>
                     <div style={{ minWidth: 0 }}>
                       <div style={{
-                        fontSize: 16, fontWeight: 800, color: displayName ? '#0f172a' : '#94a3b8',
+                        fontSize: 16, fontWeight: 800, color: displayName ? '#0f172a' : '#111111',
                         whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', maxWidth: 200,
                         transition: 'color 0.3s ease',
                       }}>
                         {displayName.toUpperCase()}
                       </div>
-                      <div style={{ fontSize: 11, color: '#94a3b8', fontWeight: 600 }}>Miembro desde {memberSince}</div>
+                      <div style={{ fontSize: 11, color: '#111111', fontWeight: 600 }}>Miembro desde {memberSince}</div>
                     </div>
                   </div>
 
@@ -445,7 +445,7 @@ export default function Profile() {
                     </span>
                     <span style={{ display: 'flex', alignItems: 'baseline', gap: 4 }}>
                       <span style={{ fontSize: 28, fontWeight: 900, color: '#111111' }}>{points}</span>
-                      <span style={{ fontSize: 11, fontWeight: 700, color: '#94a3b8' }}>PTS</span>
+                      <span style={{ fontSize: 11, fontWeight: 700, color: '#111111' }}>PTS</span>
                     </span>
                   </div>
                 </div>
@@ -527,7 +527,7 @@ export default function Profile() {
             </div>
           </div>
 
-          {/* â”€â”€ BÃ“VEDA VIP (Cupones) â”€â”€ */}
+          {/* â”€â”€ BÓVEDA VIP (Cupones) â”€â”€ */}
           {/* touchAction: 'pan-y' works around an iOS Safari quirk where a
               backdrop-filter element (this card) containing nested rounded/
               overflow-hidden children (the coupon items below) can swallow
@@ -653,7 +653,7 @@ export default function Profile() {
           grid-template-columns: 1fr;
           gap: 20px;
         }
-        /* Tablet (portrait & landscape both land here â€” even iPad Pro landscape
+        /* Tablet (portrait & landscape both land here — even iPad Pro landscape
            is under 1200px, so without this step every tablet fell through to the
            single-column layout below and looked stretched/empty). Narrower left
            column than desktop since the content area itself is narrower here. */
@@ -916,7 +916,7 @@ export default function Profile() {
           height: 32px;
           background: #e2e8f0;
         }
-        /* Stacks through tablet too â€” side-by-side only once there's genuinely
+        /* Stacks through tablet too — side-by-side only once there's genuinely
            enough room, otherwise the title/eyebrow column gets squeezed and
            wraps awkwardly (was only stacking below 640px, leaving every tablet
            width fighting for space). */
@@ -989,7 +989,7 @@ export default function Profile() {
           flex-direction: column;
           box-shadow: 0 8px 24px rgba(0,0,0,0.10);
           /* Every dash-card combines backdrop-filter with nested rounded/
-             overflow-hidden children â€” the same iOS combination fixed on the
+             overflow-hidden children — the same iOS combination fixed on the
              VIP vault card specifically. Setting it here once covers every
              card built on this shared class instead of patching each one. */
           touch-action: pan-y;

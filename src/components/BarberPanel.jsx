@@ -301,15 +301,15 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
           
           if (isForMe || !payload.new?.staff_id) {
             if (payload.eventType === 'INSERT') {
-              showToast("ðŸš€ ¡Nueva cita asignada!");
+              showToast("🚨 ¡Nueva cita asignada!");
               triggerRocket();
             } else if (payload.eventType === 'UPDATE' && payload.new.status === 'En Silla') {
-              showToast("ðŸš€ ¡Cliente listo en sillón!", "success");
+              showToast("🚨 ¡Cliente listo en sillón!", "success");
               triggerRocket();
             } else if (payload.eventType === 'UPDATE' && payload.new.status === 'En Lavado') {
-              showToast("ðŸ’§ Cliente en odontograma", "info");
+              showToast("👮 Cliente en odontograma", "info");
             } else if (payload.eventType === 'UPDATE' && payload.new.status === 'Completado') {
-              showToast("ðŸ’° ¡Cobro finalizado por Caja!", "success");
+              showToast("👠 ¡Cobro finalizado por Caja!", "success");
             } else {
               showToast("Actualizando sillón...", "info");
             }
@@ -474,7 +474,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
       
       notificationService.broadcastNotification(
         supabase,
-        'ðŸ’§ Nuevo Cliente para Odontograma',
+        '👮 Nuevo Cliente para Odontograma',
         `Hey, toca una odontograma con ${clientName}. (Enviado por: ${selectedBarber.name})`,
         assistantId ? { recipientId: assistantId } : { recipientRole: 'Asistente' }
       );
@@ -516,7 +516,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
       // Notify barbers that client is ready
       notificationService.broadcastNotification(
         supabase,
-        'ðŸ¦· Cliente listo',
+        '👰 Cliente listo',
         `El cliente ${clientName} terminó su odontograma y est¡ listo para pasar a sillón.`,
         { recipientRole: 'Barbero' }
       );
@@ -547,7 +547,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
       // Broadcast to Admin / Caja
       notificationService.broadcastNotification(
         supabase,
-        'ðŸ’³ Cliente enviado a Caja',
+        '👳 Cliente enviado a Caja',
         `El cliente ${clientName} terminó su odontograma y fue enviado a caja.`,
         { recipientRole: 'Admin' }
       );
@@ -1300,7 +1300,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
                           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', marginTop: '8px' }}>
                             {app.services.included_items.map((item, idx) => (
                               <span key={idx} style={{ fontSize: '10px', fontWeight: '800', color: item.toLowerCase().includes('lavado') ? '#007aff' : 'var(--text-secondary)', background: item.toLowerCase().includes('lavado') ? '#e8d4b020' : '#ffffff20', padding: '3px 8px', borderRadius: '20px', border: item.toLowerCase().includes('lavado') ? '1px solid rgba(0,122,255,0.2)' : '1px solid rgba(0, 0, 0, 0.08)' }}>
-                                {item.toLowerCase().includes('lavado') ? 'ðŸ’§' : 'âœ¦'} {item}
+                                {item.toLowerCase().includes('lavado') ? '👮' : '✅'} {item}
                               </span>
                             ))}
                           </div>
@@ -1560,7 +1560,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
                             gap: '6px'
                           }}>
                             {app.status === 'En Silla' ? 'En sillón' : app.status === 'En Lavado' ? 'En Odontograma' : app.status} 
-                            {app.status === 'En Lavado' ? 'ðŸ’§' : (
+                            {app.status === 'En Lavado' ? '👮' : (
                                <img 
                                  loading="lazy"
                                  src="/barber-chair.png" 
@@ -1628,7 +1628,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
                                     }}
                                   >
                                     <span style={{ color: isWashing ? '#007aff' : 'var(--gold-primary)', fontSize: '8px' }}>
-                                      {isWashing ? 'ðŸ’§' : 'âœ¦'}
+                                      {isWashing ? '👮' : '✅'}
                                     </span>
                                     {item}
                                   </span>
@@ -2419,7 +2419,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
                           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '4px', marginTop: '6px' }}>
                             {app.services.included_items.map((item, idx) => (
                               <span key={idx} style={{ fontSize: '9px', fontWeight: '800', color: item.toLowerCase().includes('lavado') ? '#007aff' : 'var(--text-muted)', background: item.toLowerCase().includes('lavado') ? 'rgba(0,122,255,0.1)' : 'rgba(255,255,255,0.04)', padding: '2px 6px', borderRadius: '12px', border: item.toLowerCase().includes('lavado') ? '1px solid rgba(0,122,255,0.15)' : '1px solid rgba(0, 0, 0, 0.08)' }}>
-                                {item.toLowerCase().includes('lavado') ? 'ðŸ’§' : 'âœ¦'} {item}
+                                {item.toLowerCase().includes('lavado') ? '👮' : '✅'} {item}
                               </span>
                             ))}
                           </div>

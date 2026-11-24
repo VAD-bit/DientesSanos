@@ -96,9 +96,22 @@ const PandaDatePicker = ({ value, onChange, placeholder = "Seleccionar fecha", c
     };
     window.addEventListener('scroll', close, true);
     window.addEventListener('resize', close);
+    // Prevent page body from scrolling when dropdown is open
+    const preventScroll = () => {
+      document.body.style.overflowY = 'hidden';
+      document.documentElement.style.overflowY = 'hidden';
+    };
+    const restoreScroll = () => {
+      document.body.style.overflowY = 'auto';
+      document.documentElement.style.overflowY = 'auto';
+    };
+    // Prevent body scroll to keep menu visible
+    preventScroll();
+    // Restore when closed
     return () => {
       window.removeEventListener('scroll', close, true);
       window.removeEventListener('resize', close);
+      restoreScroll();
     };
   }, [isOpen]);
 
@@ -194,10 +207,10 @@ const PandaDatePicker = ({ value, onChange, placeholder = "Seleccionar fecha", c
           cursor: 'pointer',
           padding: '0 16px',
           height: '48px',
-          backgroundColor: 'rgba(0, 0, 0, 0.04)',
-          border: '1px solid rgba(0, 0, 0, 0.08)',
+          backgroundColor: '#f5f5f5',
+          border: '1px solid #d4d4d4',
           borderRadius: '12px',
-          color: value ? 'white' : 'rgba(255,255,255,0.4)',
+          color: value ? '#111111' : '#999999',
           fontSize: '15px',
           transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
           ...inputStyle,
@@ -208,7 +221,7 @@ const PandaDatePicker = ({ value, onChange, placeholder = "Seleccionar fecha", c
         <span style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
           {value ? formatDateDisplay(value) : placeholder}
         </span>
-        <CalendarIcon size={18} color={value ? "var(--gold-primary)" : "rgba(255,255,255,0.4)"} style={{ flexShrink: 0, marginLeft: '8px' }} />
+        <CalendarIcon size={18} color={value ? "#111111" : "#999999"} style={{ flexShrink: 0, marginLeft: '8px' }} />
       </div>
 
       {mounted && createPortal(
@@ -217,11 +230,10 @@ const PandaDatePicker = ({ value, onChange, placeholder = "Seleccionar fecha", c
           style={{
             ...dropdownStyle,
             padding: '16px',
-            backgroundColor: 'var(--bg-secondary)',
-            backdropFilter: 'blur(20px)',
-            border: '1px solid rgba(0, 0, 0, 0.08)',
+            backgroundColor: '#ffffff',
+            border: '1px solid #333333',
             borderRadius: '16px',
-            boxShadow: '0 10px 40px rgba(0,0,0,0.8), 0 0 15px rgba(255, 255, 255, 0.15)',
+            boxShadow: '0 16px 40px -12px #333333',
             pointerEvents: closing ? 'none' : 'auto'
           }}
         >
@@ -232,27 +244,27 @@ const PandaDatePicker = ({ value, onChange, placeholder = "Seleccionar fecha", c
             <div style={{ display: 'flex', gap: '8px', fontWeight: '700', fontSize: '14px', color: '#111111', position: 'relative' }}>
               <div 
                 onClick={(e) => { e.stopPropagation(); setShowMonthSelect(!showMonthSelect); setShowYearSelect(false); }}
-                style={{ cursor: 'pointer', padding: '4px 8px', borderRadius: '8px', background: showMonthSelect ? 'rgba(255,255,255,0.1)' : 'transparent', transition: 'all 0.2s' }}
-                className="hover:bg-white/5"
+                style={{ cursor: 'pointer', padding: '4px 8px', borderRadius: '8px', background: showMonthSelect ? '#e8e8e8' : 'none', transition: 'all 0.2s' }}
+                className="hover:bg-[#f0f0f0]"
               >
                 {monthNames[currentMonth.getMonth()]}
               </div>
               <div 
                 onClick={(e) => { e.stopPropagation(); setShowYearSelect(!showYearSelect); setShowMonthSelect(false); }}
-                style={{ cursor: 'pointer', padding: '4px 8px', borderRadius: '8px', background: showYearSelect ? 'rgba(255,255,255,0.1)' : 'transparent', color: 'var(--gold-primary)', transition: 'all 0.2s' }}
-                className="hover:bg-white/5"
+                style={{ cursor: 'pointer', padding: '4px 8px', borderRadius: '8px', background: showYearSelect ? '#e8e8e8' : 'none', color: '#111111', transition: 'all 0.2s' }}
+                className="hover:bg-[#f0f0f0]"
               >
                 {currentMonth.getFullYear()}
               </div>
 
               {showMonthSelect && (
-                <div style={{ position: 'absolute', top: '100%', left: '-20px', marginTop: '8px', background: 'var(--bg-secondary)', border: '1px solid rgba(0, 0, 0, 0.08)', borderRadius: '12px', padding: '8px', display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) minmax(0, 1fr)', gap: '4px', zIndex: 20, boxShadow: '0 10px 25px rgba(0,0,0,0.5)', width: '180px' }}>
+                <div style={{ position: 'absolute', top: '100%', left: '-20px', marginTop: '8px', background: '#ffffff', border: '1px solid #333333', borderRadius: '12px', padding: '8px', display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) minmax(0, 1fr)', gap: '4px', zIndex: 20, boxShadow: '0 10px 25px -8px #333333', width: '180px' }}>
                   {monthNames.map((m, idx) => (
                     <button
                       key={m}
                       onClick={(e) => { e.stopPropagation(); handleMonthChange({ target: { value: idx }}); setShowMonthSelect(false); }}
-                      style={{ padding: '8px', borderRadius: '8px', background: currentMonth.getMonth() === idx ? 'var(--gold-primary)' : 'transparent', color: currentMonth.getMonth() === idx ? '#000' : 'white', border: 'none', cursor: 'pointer', fontSize: '13px', textAlign: 'center', transition: 'all 0.2s' }}
-                      className="hover:bg-white/10"
+                      style={{ padding: '8px', borderRadius: '8px', background: 'none', color: currentMonth.getMonth() === idx ? '#111111' : '#666666', border: currentMonth.getMonth() === idx ? '1px solid #111111' : '1px solid #d4d4d4', fontWeight: currentMonth.getMonth() === idx ? '800' : '500', cursor: 'pointer', fontSize: '13px', textAlign: 'center', transition: 'all 0.2s' }}
+                      className="hover:bg-[#f0f0f0]"
                     >
                       {m.slice(0,3)}
                     </button>
@@ -262,12 +274,12 @@ const PandaDatePicker = ({ value, onChange, placeholder = "Seleccionar fecha", c
 
               {showYearSelect && (
                 <div 
-                  style={{ position: 'absolute', top: '100%', right: '-20px', marginTop: '8px', background: 'var(--bg-secondary)', border: '1px solid rgba(0, 0, 0, 0.08)', borderRadius: '12px', padding: '8px', zIndex: 20, boxShadow: '0 10px 25px rgba(0,0,0,0.5)', width: '220px', display: 'flex', flexDirection: 'column' }} 
+                  style={{ position: 'absolute', top: '100%', right: '-20px', marginTop: '8px', background: '#ffffff', border: '1px solid #333333', borderRadius: '12px', padding: '8px', zIndex: 20, boxShadow: '0 10px 25px -8px #333333', width: '220px', display: 'flex', flexDirection: 'column' }} 
                 >
                   <div 
                     onClick={(e) => { e.stopPropagation(); if (yearScrollRef.current) yearScrollRef.current.scrollBy({ top: -120, behavior: 'smooth' }); }}
-                    style={{ display: 'flex', justifyContent: 'center', color: 'rgba(255,255,255,0.4)', paddingBottom: '4px', cursor: 'pointer' }}
-                    className="hover:text-white"
+                    style={{ display: 'flex', justifyContent: 'center', color: '#999999', paddingBottom: '4px', cursor: 'pointer' }}
+                    className="hover:text-[#111111]"
                   >
                     <ChevronUp size={16} />
                   </div>
@@ -276,8 +288,8 @@ const PandaDatePicker = ({ value, onChange, placeholder = "Seleccionar fecha", c
                       <button
                         key={y}
                         onClick={(e) => { e.stopPropagation(); handleYearChange({ target: { value: y }}); setShowYearSelect(false); }}
-                        style={{ padding: '8px', borderRadius: '8px', background: currentMonth.getFullYear() === y ? 'var(--gold-primary)' : 'transparent', color: currentMonth.getFullYear() === y ? '#000' : 'white', border: 'none', cursor: 'pointer', fontSize: '13px', textAlign: 'center', transition: 'all 0.2s' }}
-                        className="hover:bg-white/10"
+                        style={{ padding: '8px', borderRadius: '8px', background: 'none', color: currentMonth.getFullYear() === y ? '#111111' : '#666666', border: currentMonth.getFullYear() === y ? '1px solid #111111' : '1px solid #d4d4d4', fontWeight: currentMonth.getFullYear() === y ? '800' : '500', cursor: 'pointer', fontSize: '13px', textAlign: 'center', transition: 'all 0.2s' }}
+                        className="hover:bg-[#f0f0f0]"
                       >
                         {y}
                       </button>
@@ -285,8 +297,8 @@ const PandaDatePicker = ({ value, onChange, placeholder = "Seleccionar fecha", c
                   </div>
                   <div 
                     onClick={(e) => { e.stopPropagation(); if (yearScrollRef.current) yearScrollRef.current.scrollBy({ top: 120, behavior: 'smooth' }); }}
-                    style={{ display: 'flex', justifyContent: 'center', color: 'rgba(255,255,255,0.4)', paddingTop: '4px', cursor: 'pointer' }}
-                    className="hover:text-white"
+                    style={{ display: 'flex', justifyContent: 'center', color: '#999999', paddingTop: '4px', cursor: 'pointer' }}
+                    className="hover:text-[#111111]"
                   >
                     <ChevronDown size={16} />
                   </div>
@@ -300,7 +312,7 @@ const PandaDatePicker = ({ value, onChange, placeholder = "Seleccionar fecha", c
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(7, minmax(0, 1fr))', gap: '4px', marginBottom: '8px' }}>
             {daysOfWeek.map(d => (
-              <div key={d} style={{ textAlign: 'center', fontSize: '12px', fontWeight: '600', color: 'var(--gold-primary)', padding: '4px 0' }}>
+              <div key={d} style={{ textAlign: 'center', fontSize: '12px', fontWeight: '600', color: '#666666', padding: '4px 0' }}>
                 {d}
               </div>
             ))}
@@ -336,9 +348,9 @@ const PandaDatePicker = ({ value, onChange, placeholder = "Seleccionar fecha", c
                     alignItems: 'center',
                     justifyContent: 'center',
                     borderRadius: '50%',
-                    border: isSelected ? 'none' : (isToday ? '1px solid var(--gold-primary)' : 'none'),
-                    background: isSelected ? 'var(--gold-gradient)' : 'transparent',
-                    color: isSelected ? '#000' : (isDisabled ? 'rgba(255,255,255,0.2)' : 'white'),
+                    border: isSelected ? '2px solid #111111' : (isToday ? '1px solid #999999' : 'none'),
+                    background: 'none',
+                    color: isSelected ? '#111111' : (isDisabled ? '#c4c4c4' : '#333333'),
                     fontWeight: isSelected ? '800' : '500',
                     fontSize: '13px',
                     cursor: isDisabled ? 'not-allowed' : 'pointer',
@@ -347,12 +359,12 @@ const PandaDatePicker = ({ value, onChange, placeholder = "Seleccionar fecha", c
                   }}
                   onMouseEnter={(e) => {
                     if (!isSelected && !isDisabled) {
-                      e.currentTarget.style.background = 'rgba(255,255,255,0.1)';
+                      e.currentTarget.style.background = '#e8e8e8';
                     }
                   }}
                   onMouseLeave={(e) => {
                     if (!isSelected && !isDisabled) {
-                      e.currentTarget.style.background = 'transparent';
+                      e.currentTarget.style.background = 'none';
                     }
                   }}
                 >

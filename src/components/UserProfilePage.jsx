@@ -1166,7 +1166,7 @@ const UserProfilePage = ({ staffMember, inventory = [], onUpdate, isMobile }) =>
                   {staffMember.id_card && (
                     <span style={{ 
                       fontSize: '11px', 
-                      color: 'rgba(255, 255, 255, 0.5)', 
+                      color: '#111111', 
                       fontWeight: '700', 
                       backgroundColor: 'rgba(0, 0, 0, 0.04)',
                       padding: '4px 10px',
@@ -1183,7 +1183,7 @@ const UserProfilePage = ({ staffMember, inventory = [], onUpdate, isMobile }) =>
                   {staffMember.phone && (
                     <span style={{ 
                       fontSize: '11px', 
-                      color: 'rgba(255, 255, 255, 0.5)', 
+                      color: '#111111', 
                       fontWeight: '700', 
                       backgroundColor: 'rgba(0, 0, 0, 0.04)',
                       padding: '4px 10px',

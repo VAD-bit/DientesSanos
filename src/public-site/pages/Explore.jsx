@@ -46,7 +46,7 @@ export default function Explore() {
 
 
   // A self-contained profile peek instead of sending the visitor into the
-  // booking wizard's own "expanded barber" step â€” that view lives deep inside
+  // booking wizard's own "expanded barber" step — that view lives deep inside
   // BookAppointment's step machinery and pulled them into the reservation flow
   // just to look at a photo. This stays on Explorar; only the explicit
   // "Reservar" button below hands off to booking.
@@ -198,7 +198,7 @@ export default function Explore() {
         </div>
       </div>
 
-      {/* ODONTOPEDÍA â€” CINEMATIC IMMERSIVE EXPERIENCE */}
+      {/* ODONTOPEDÍA — CINEMATIC IMMERSIVE EXPERIENCE */}
       <div className="explore-section animate-fade-in-up" style={{ animationDelay: '300ms' }}>
         <div className="kids-cinema">
           {/* Cinematic Media Layer (barbería neutralizada: fondo arena) */}
@@ -212,10 +212,10 @@ export default function Explore() {
             <div className="kids-cinema-gradient" />
           </div>
           
-          {/* Content Layer â€” Centered, Breathing */}
+          {/* Content Layer — Centered, Breathing */}
           <div className="kids-cinema-content">
 
-            {/* Hero Title â€” The Star */}
+            {/* Hero Title — The Star */}
             <h2 className="kids-cinema-title">
               Odonto<br />pediatría<span className="kids-title-dot">.</span>
             </h2>
@@ -226,7 +226,7 @@ export default function Explore() {
               <span className="kids-subtitle-secondary">Paciencia, cuidado y sonrisas para los más pequeños.</span>
             </p>
             
-            {/* Feature Trio â€” Apple-style horizontal chips */}
+            {/* Feature Trio — Apple-style horizontal chips */}
             <div className="kids-cinema-features">
               <div className="kids-feature-chip" style={{ animationDelay: '0.6s' }}>
                 <Gamepad2 size={15} />
@@ -242,7 +242,7 @@ export default function Explore() {
               </div>
             </div>
 
-            {/* CTA â€” Shimmer Button */}
+            {/* CTA — Shimmer Button */}
             <button className="kids-cinema-cta" onClick={() => navigate('/perfil/reservar', { state: { startBooking: true, openCategory: 'Kids' } })}>
               <span className="kids-cta-text">Reservar para mi pequeño</span>
               <ArrowUpRight size={16} strokeWidth={2.5} />
@@ -368,7 +368,7 @@ export default function Explore() {
           font-size: 13px; font-weight: 500;
         }
 
-        /* TEAM ROW â€” story-style portrait cards */
+        /* TEAM ROW — story-style portrait cards */
         .explore-team-row {
           display: flex;
           gap: 12px;
@@ -442,7 +442,7 @@ export default function Explore() {
           0%,100% { opacity: 0.5; } 50% { opacity: 1; }
         }
 
-        /* BENEFITS â€” asymmetric bento (first item featured) */
+        /* BENEFITS — asymmetric bento (first item featured) */
         /* SNAP CARDS (Apple-style horizontal scroll) */
         .explore-benefits-snap {
           display: flex;
@@ -679,7 +679,7 @@ export default function Explore() {
           .ep-widget { flex: 1; }
         }
 
-        /* BARBER PROFILE â€” full-screen takeover, same layout as the landing's
+        /* BARBER PROFILE — full-screen takeover, same layout as the landing's
            expanded barber view (photo hero, manifesto panel, stats, portfolio). */
         .explore-profile-overlay {
           position: fixed; inset: 0;
@@ -746,7 +746,7 @@ export default function Explore() {
         .explore-profile-reserve-btn:active { transform: scale(0.98); }
 
         /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-           ODONTOPEDÍA â€” CINEMATIC IMMERSIVE CARD
+           ODONTOPEDÍA — CINEMATIC IMMERSIVE CARD
            â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
         .kids-cinema {
           position: relative;

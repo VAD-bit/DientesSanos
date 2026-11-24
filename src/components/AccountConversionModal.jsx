@@ -348,7 +348,7 @@ export default function AccountConversionModal({
                             borderRadius: '8px',
                             background: 'rgba(0, 0, 0, 0.04)',
                             border: '1px solid rgba(0, 0, 0, 0.08)',
-                            color: 'rgba(255, 255, 255, 0.8)',
+                            color: '#111111',
                             fontSize: '11px',
                             fontWeight: '850',
                             cursor: fromAvail > 0 ? 'pointer' : 'not-allowed',
@@ -503,7 +503,7 @@ export default function AccountConversionModal({
                       gap: '8px'
                     }}>
                       <CheckCircle2 size={16} color="#32d74b" />
-                      <span style={{ fontSize: '11.5px', color: 'rgba(255, 255, 255, 0.85)', fontWeight: '800' }}>
+                      <span style={{ fontSize: '11.5px', color: '#111111', fontWeight: '800' }}>
                         Transferencia 1:1 directa (misma divisa).
                       </span>
                     </div>

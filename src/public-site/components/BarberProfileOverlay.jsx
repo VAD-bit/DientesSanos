@@ -247,12 +247,12 @@ export default function BarberProfileOverlay({ isOpen, barber, onClose, onBook }
                   <div className="flex flex-col items-center text-center flex-1 border-l border-[#d9c08f]/15">
                     <CalendarIcon size={20} className="text-[#111111] mb-1.5" />
                     <span className="text-xl font-black text-[#0f172a] leading-none mb-1">{stats.experience.split(' ')[0]}</span>
-                    <span className="text-[8px] text-[#64748b] font-black uppercase tracking-widest leading-tight">AÃ‘OS<br/>DE EXPERIENCIA</span>
+                    <span className="text-[8px] text-[#64748b] font-black uppercase tracking-widest leading-tight">AÑOS<br/>DE EXPERIENCIA</span>
                   </div>
                   <div className="flex flex-col items-center text-center flex-1 border-l border-[#d9c08f]/15">
                     <Star size={20} className="text-[#111111] mb-1.5" />
                     <span className="text-xl font-black text-[#0f172a] leading-none mb-1">{details.rating}</span>
-                    <span className="text-[8px] text-[#64748b] font-black uppercase tracking-widest leading-tight">VALORACIÃ“N<br/>PROMEDIO</span>
+                    <span className="text-[8px] text-[#64748b] font-black uppercase tracking-widest leading-tight">VALORACIÓN<br/>PROMEDIO</span>
                   </div>
                 </div>
               </div>
@@ -358,7 +358,7 @@ export default function BarberProfileOverlay({ isOpen, barber, onClose, onBook }
               <div className="bg-white border border-[#d9c08f]/15 rounded-xl p-3 flex flex-row items-center gap-3 h-[68px]">
                 <div className="text-xs font-black text-[#0f172a] leading-none uppercase tracking-tight">{stats.location && stats.location.toLowerCase().includes('sede') ? 'Consultorio' : stats.location}</div>
                 <div className="flex flex-col min-w-0">
-                  <span className="text-[8px] text-[#64748b] font-black uppercase tracking-widest leading-none mb-0.5">// UBICACIÃ“N</span>
+                  <span className="text-[8px] text-[#64748b] font-black uppercase tracking-widest leading-none mb-0.5">// UBICACIÓN</span>
                   <span className="text-[10px] text-[#334155] font-bold uppercase tracking-wider leading-tight">Principal</span>
                 </div>
               </div>

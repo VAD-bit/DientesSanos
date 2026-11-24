@@ -325,7 +325,7 @@ export default function CompleteRegistration() {
           <p style={{ color: 'var(--text-secondary)', fontSize: 13.5, marginBottom: 20 }}>
             Completa estos últimos datos y activa tu perfil.
           </p>
-          <p style={{ color: '#94a3b8', fontSize: 11.5, margin: '-10px 0 20px' }}>
+          <p style={{ color: '#111111', fontSize: 11.5, margin: '-10px 0 20px' }}>
             La biometría no es obligatoria. Podr¡s activarla después si deseas usarla.
           </p>
 
@@ -339,7 +339,7 @@ export default function CompleteRegistration() {
               }}>
                 <Check size={16} strokeWidth={3} />
               </div>
-              <span style={{ fontSize: 9, fontWeight: 800, letterSpacing: '0.09em', color: '#94a3b8' }}>CUENTA DE GOOGLE</span>
+              <span style={{ fontSize: 9, fontWeight: 800, letterSpacing: '0.09em', color: '#111111' }}>CUENTA DE GOOGLE</span>
             </div>
             <div style={{ flex: 1, height: 1.5, background: 'var(--champagne)', margin: '0 4px 20px' }} />
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 7 }}>
@@ -356,11 +356,11 @@ export default function CompleteRegistration() {
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 7 }}>
               <div style={{
                 width: 36, height: 36, borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center',
-                border: '1.5px solid rgba(217, 192, 143,0.3)', color: '#94a3b8', fontWeight: 800, fontSize: 14,
+                border: '1.5px solid rgba(217, 192, 143,0.3)', color: '#666666', fontWeight: 800, fontSize: 14,
               }}>
                 3
               </div>
-              <span style={{ fontSize: 9, fontWeight: 800, letterSpacing: '0.09em', color: '#94a3b8' }}>CLUB SONRISA</span>
+              <span style={{ fontSize: 9, fontWeight: 800, letterSpacing: '0.09em', color: '#666666' }}>CLUB SONRISA</span>
             </div>
           </div>
         </motion.div>

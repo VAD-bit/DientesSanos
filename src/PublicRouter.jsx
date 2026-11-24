@@ -6,7 +6,7 @@ import BookAppointment from './public-site/pages/BookAppointment';
 import PublicErrorBoundary from './public-site/components/PublicErrorBoundary';
 
 // BookAppointment se importa de forma eager (no lazy) porque es la pagina de "/" y
-// "/agendar" â€” la mas visitada y la que de verdad importa que abra rapido para que la
+// "/agendar" — la mas visitada y la que de verdad importa que abra rapido para que la
 // gente agende. Cargarla lazy solo agregaba una espera de red extra (bundle principal ->
 // React monta -> router resuelve ruta -> RECIEN ahi empieza a pedir el chunk) antes de
 // poder mostrar nada. El resto de paginas (login, perfil, etc.) se mantienen lazy: no

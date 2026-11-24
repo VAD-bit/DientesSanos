@@ -59,7 +59,7 @@ export default function Login() {
   const [registerForm, setRegisterForm] = useState({ name: '', birth_date: '', birth_date_iso: '', phone: '', id_card: '', email: '', password: '' });
 
   // birth_date stays "dd/mm/aaaa" for display in the input; birth_date_iso ("yyyy-mm-dd")
-  // is what actually gets stored â€” the DB and every birthday check (roulette, admin
+  // is what actually gets stored — the DB and every birthday check (roulette, admin
   // toast) compare against ISO, so saving the raw display string silently broke them.
   const handleBirthDateChange = (e) => {
     const { display, iso } = formatBirthDateInput(e.target.value);
@@ -327,7 +327,7 @@ export default function Login() {
                 transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
                 style={{ fontSize: `clamp(1.4rem, 3vw, ${isXL ? '2.4rem' : '2rem'})`, fontWeight: 900, lineHeight: 1.15, marginBottom: 20, textAlign: 'center' }}
               >
-                {mode === 'login' ? <>¡Qué bueno <span className="text-gold">verte!</span></> : <>Ãšnete a la<br /><span className="text-gold">familia Dientes Sanos.</span></>}
+                {mode === 'login' ? <>¡Qué bueno <span className="text-gold">verte!</span></> : <>Únete a la<br /><span className="text-gold">familia Dientes Sanos.</span></>}
               </motion.h1>
 
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10, marginBottom: 20 }}>
@@ -432,7 +432,7 @@ export default function Login() {
                 transition={{ duration: 3.5, repeat: Infinity, ease: 'easeInOut' }}
                 style={{ fontSize: isPortraitTablet ? '2.6rem' : '1.8rem', fontWeight: 900, lineHeight: 1.1, letterSpacing: '-0.02em' }}
               >
-                {mode === 'login' ? <>¡Qué bueno <span className="text-gold">verte!</span></> : <>Ãšnete a la<br /><span className="text-gold">familia Dientes Sanos.</span></>}
+                {mode === 'login' ? <>¡Qué bueno <span className="text-gold">verte!</span></> : <>Únete a la<br /><span className="text-gold">familia Dientes Sanos.</span></>}
               </motion.h1>
             </motion.div>
           )}
@@ -533,7 +533,7 @@ export default function Login() {
                         value={loginForm.password}
                         onChange={(e) => setLoginForm({ ...loginForm, password: e.target.value })}
                         className="input-field auth-input"
-                        placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢"
+                        placeholder="••••••••"
                         autoComplete="new-password"
                         required
                         style={{ width: '100%', boxSizing: 'border-box', paddingRight: 44, height: inputH, fontSize: isBigTablet ? 18 : (isSmall ? 16 : undefined) }}
@@ -776,7 +776,7 @@ export default function Login() {
                               value={registerForm.password}
                               onChange={(e) => setRegisterForm({ ...registerForm, password: e.target.value })}
                               className="input-field auth-input"
-                              placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢"
+                              placeholder="••••••••"
                               autoComplete="new-password"
                               required
                               minLength={6}
@@ -847,7 +847,7 @@ export default function Login() {
 
               {/* Desktop/tablet already gets this exact toggle as a pill button in the
                   left panel above (the `{!isSmall && (...)}` block containing the
-                  "¿Ya tienes cuenta? Iniciar sesión" button) â€” rendering it again here
+                  "¿Ya tienes cuenta? Iniciar sesión" button) — rendering it again here
                   unconditionally meant desktop showed the same action twice while
                   phones (where the left panel is hidden) only ever saw this one. */}
               {isSmall && (

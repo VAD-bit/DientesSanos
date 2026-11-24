@@ -1094,7 +1094,7 @@ const RouletteModal = ({ isOpen, onClose, onFinish, prizes }) => {
 
         {result ? (
           <div className="animate-fade-in" style={{ fontSize: '18px', fontWeight: '800', color: '#32d74b' }}>
-            ¡Ganaste: {result.prize_name}! ðŸŽ
+            ¡Ganaste: {result.prize_name}! 🏑
           </div>
         ) : (
           <button 

@@ -181,7 +181,7 @@ const SaleServiceModal = ({ isOpen, onClose, clients, services, staff, extras, i
       
       triggerRocket();
       showToast(`¡Operación registrada! ${selectedClient.name} enviado a caja.`);
-      sendPushNotification('ðŸš€ Operación Dientes Sanos', `${selectedClient.name} — ${selectedService?.name || 'Venta'}`);
+      sendPushNotification('🚨 Operación Dientes Sanos', `${selectedClient.name} — ${selectedService?.name || 'Venta'}`);
       
       onClose();
     } catch (error) {

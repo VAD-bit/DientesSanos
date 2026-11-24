@@ -459,7 +459,7 @@ function App() {
         const lastNotifiedDaily = localStorage.getItem('panda_goal_notified_daily');
         if (lastNotifiedDaily !== todayStr) {
           notificationService.sendNotification(
-            'ðŸŽ¯ ¡Meta Diaria Alcanzada! 🏆',
+            '🏏 ¡Meta Diaria Alcanzada! 🏆',
             `¡Espectacular! Se ha alcanzado la meta diaria de $${dailyGoal} USD (Total hoy: $${computedStats.income.toFixed(2)} USD).`
           );
           localStorage.setItem('panda_goal_notified_daily', todayStr);
@@ -471,7 +471,7 @@ function App() {
         const lastNotifiedWeekly = localStorage.getItem('panda_goal_notified_weekly');
         if (lastNotifiedWeekly !== lastSundayStr) {
           notificationService.sendNotification(
-            'ðŸ† ¡Meta Semanal Alcanzada! ðŸŒŸ',
+            '🏟 ¡Meta Semanal Alcanzada! 🌍',
             `¡Increíble trabajo equipo! Se alcanzó la meta semanal de $${weeklyGoal} USD (Total semanal: $${computedStats.weeklyIncome.toFixed(2)} USD).`
           );
           localStorage.setItem('panda_goal_notified_weekly', lastSundayStr);
@@ -483,7 +483,7 @@ function App() {
         const lastNotifiedMonthly = localStorage.getItem('panda_goal_notified_monthly');
         if (lastNotifiedMonthly !== currentMonthStr) {
           notificationService.sendNotification(
-            'ðŸ‘‘ ¡Objetivo Mensual Completado! ðŸš€',
+            '👀 ¡Objetivo Mensual Completado! 🚨',
             `¡Histórico! Se ha completado el objetivo mensual de $${monthlyGoal} USD (Total mensual: $${computedStats.monthlyIncome.toFixed(2)} USD).`
           );
           localStorage.setItem('panda_goal_notified_monthly', currentMonthStr);

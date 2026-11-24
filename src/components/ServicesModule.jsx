@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect, useRef } from 'react';
 import { 
   Plus, Search, Edit2, Trash2, Clock, Rocket,
   Droplets, Zap, Check, X,
@@ -127,13 +127,27 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
     fetchStrategies();
   }, []);
 
+  const formRef = useRef(null);
+  const closeTimerRef = useRef(null);
+
   const handleCloseAddForm = () => {
     setIsFormExiting(true);
-    setTimeout(() => {
+    clearTimeout(closeTimerRef.current);
+    closeTimerRef.current = setTimeout(() => {
       setShowAddForm(false);
       setIsEditing(false);
       setIsFormExiting(false);
+      closeTimerRef.current = null;
     }, 250);
+  };
+
+  // El formulario se renderiza arriba del listado: sin esto, si el usuario está
+  // scrolleado en las tarjetas, el formulario abre fuera de pantalla y parece
+  // que el botón Editar no hace nada (requería refrescar la página para verlo).
+  const scrollToForm = () => {
+    setTimeout(() => {
+      formRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }, 80);
   };
 
   const fetchServices = async () => {
@@ -377,6 +391,8 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
   });
 
   const handleEditClick = (service) => {
+    clearTimeout(closeTimerRef.current); // Evitar que un cierre pendiente cierre el formulario recién abierto
+    closeTimerRef.current = null;
     setIsFormExiting(false);
     setShowAddForm(false); // Forzar cierre para que React re-renderice
     setIsEditing(true);
@@ -393,14 +409,19 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
       is_tattoo: service.is_tattoo || false
     });
     setShowAddForm(true); // Reabrir con los datos del nuevo servicio
+    scrollToForm();
   };
 
   const handleCreateService = async () => {
     const isTattoo = (newService.category || '').toLowerCase().includes('tatuaj');
-    if (!newService.name || !newService.price) return;
+    const priceEmpty = newService.price === '' || newService.price === null || newService.price === undefined;
+    if (!newService.name || priceEmpty) {
+      showToast('Ingresa el nombre y el precio del servicio.', 'error');
+      return;
+    }
     try {
       setLoading(true);
-      const serviceToSave = { ...newService, price: newService.price || 0 };
+      const serviceToSave = { ...newService, price: Number(newService.price) || 0 };
       if (isEditing && serviceToSave.id) {
         await dataService.updateService(serviceToSave.id, serviceToSave);
         showToast(`¡Servicio ${serviceToSave.name} actualizado!`);
@@ -410,7 +431,8 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
       }
       setNewService({ 
         name: '', 
-        price: '', 
+        price: '',
+        icon: 'Stethoscope',
         category: 'Prevención',
         strategy_type: 'MVP',
         duration: 30,
@@ -425,6 +447,7 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
       await fetchServices();
     } catch (e) {
       showToast('Error al guardar el servicio.', 'error');
+      console.error('Error al guardar servicio:', e);
     } finally {
       setLoading(false);
     }
@@ -561,6 +584,7 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
                   is_tattoo: false
                 });
                 setShowAddForm(true);
+                scrollToForm();
               }
             }} 
             style={showAddForm ? { 
@@ -578,7 +602,7 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
       </div>
 
       {(showAddForm || isFormExiting) && (
-        <div className={isFormExiting ? 'animate-slide-down-fade' : 'animate-slide-up'} style={{ 
+        <div ref={formRef} className={isFormExiting ? 'animate-slide-down-fade' : 'animate-slide-up'} style={{ 
           marginBottom: '32px', 
           padding: '32px', 
           borderRadius: '28px', 
@@ -862,10 +886,10 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
                           {service.icon ? getIconComponent(service.icon, 26) : getCategoryIcon(service.category, service.name)}
                         </div>
                         <div style={{ display: 'flex', gap: '6px', opacity: 0.8 }} className="hover-actions-group">
-                          <button className="action-btn" onClick={() => handleEditClick(service)} style={{ width: '32px', height: '32px', borderRadius: '10px' }}>
+                          <button className="action-btn" onClick={(e) => { e.stopPropagation(); handleEditClick(service); }} style={{ width: '32px', height: '32px', borderRadius: '10px' }}>
                             <Edit2 size={14} />
                           </button>
-                          <button onClick={() => handleDeleteService(service.id, service.name)} className="action-btn" style={{ width: '32px', height: '32px', color: '#ff453a', backgroundColor: 'rgba(255,69,58,0.1)', borderRadius: '10px' }}>
+                          <button onClick={(e) => { e.stopPropagation(); handleDeleteService(service.id, service.name); }} className="action-btn" style={{ width: '32px', height: '32px', color: '#ff453a', backgroundColor: 'rgba(255,69,58,0.1)', borderRadius: '10px' }}>
                             <Trash2 size={14} />
                           </button>
                         </div>
@@ -966,10 +990,10 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
                       </td>
                       <td style={{ padding: '16px 24px', textAlign: 'right' }}>
                         <div style={{ display: 'flex', gap: '8px', justifyContent: 'flex-end' }}>
-                          <button className="action-btn" onClick={() => handleEditClick(service)} style={{ width: '32px', height: '32px' }}>
+                          <button className="action-btn" onClick={(e) => { e.stopPropagation(); handleEditClick(service); }} style={{ width: '32px', height: '32px' }}>
                             <Edit2 size={14} />
                           </button>
-                          <button onClick={() => handleDeleteService(service.id, service.name)} className="action-btn" style={{ width: '32px', height: '32px', color: '#ff453a', backgroundColor: 'rgba(255,69,58,0.1)' }}>
+                          <button onClick={(e) => { e.stopPropagation(); handleDeleteService(service.id, service.name); }} className="action-btn" style={{ width: '32px', height: '32px', color: '#ff453a', backgroundColor: 'rgba(255,69,58,0.1)' }}>
                             <Trash2 size={14} />
                           </button>
                         </div>

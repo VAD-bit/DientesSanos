@@ -156,7 +156,7 @@ export default function PrizeWheel({ clientId, onWin, externalPrizes, onGenerate
 
       <div className="vw-header">
         <PartyPopper size={18} color="#111111" />
-        <h2 className="vw-shimmer-text">REGALO DE CUMPLEAÃ‘OS</h2>
+        <h2 className="vw-shimmer-text">REGALO DE CUMPLEAÑOS</h2>
         <Cake size={18} color="#111111" />
       </div>
       <p className="vw-subtitle">¡Gira la ruleta y descubre tu premio especial!</p>
@@ -232,7 +232,7 @@ export default function PrizeWheel({ clientId, onWin, externalPrizes, onGenerate
 
             <div className="vw-ticket-header">
               <Sparkles size={28} className="vw-star-pulse" color="#111111" style={{ margin: '0 auto 8px', display: 'block' }} />
-              <h3>¡FELIZ CUMPLEAÃ‘OS!</h3>
+              <h3>¡FELIZ CUMPLEAÑOS!</h3>
               <p>Tu regalo de hoy te espera</p>
             </div>
 
@@ -242,7 +242,7 @@ export default function PrizeWheel({ clientId, onWin, externalPrizes, onGenerate
 
             {coupon && (
               <div className="vw-ticket-coupon">
-                <div className="vw-tc-label">TU CUPÃ“N</div>
+                <div className="vw-tc-label">TU CUPÓN</div>
                 <div className="vw-tc-code">{coupon.id?.substring(0, 8).toUpperCase()}</div>
                 <div className="vw-tc-desc">Muéstrale este código a tu odontólogo al llegar.</div>
               </div>

@@ -16,7 +16,7 @@ export const NotificationProvider = ({ children }) => {
         {notifs.toasts.map((t) => (
           <div key={t.id} className={`toast${t.exiting ? ' toast-exit' : ''}`}>
             {t.type === 'success' ? <AlertCircle size={20} color="#ff453a" /> : <CheckCircle size={20} color="var(--gold-primary)" />}
-            <span style={{ fontSize: '14px', fontWeight: '600' }}>{t.message}</span>
+            <span className="text-gold-gradient" style={{ fontSize: '14px', fontWeight: '600' }}>{t.message}</span>
           </div>
         ))}
       </div>

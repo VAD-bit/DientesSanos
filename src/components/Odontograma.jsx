@@ -195,9 +195,9 @@ export default function Odontograma({ value, onChange }) {
 
       return (
         <g key={key} style={{ cursor: 'pointer' }} onClick={(e) => { e.stopPropagation(); handleSurfaceClick(num, key); }}>
-          <rect x={x} y={y} width={sw} height={sh} fill="#2a2a2a" stroke="#333" strokeWidth="0.7" />
+          <rect x={x} y={y} width={sw} height={sh} fill="none" stroke="#111111" strokeWidth="1" />
           {isFill && (
-            <rect x={x + 1.5} y={y + 1.5} width={sw - 3} height={sh - 3} rx="2" fill={color} opacity="0.85" />
+            <rect x={x + 1.5} y={y + 1.5} width={sw - 3} height={sh - 3} rx="2" fill={color} />
           )}
           {isCircle && (
             <circle cx={x + sw / 2} cy={y + sh / 2} r={Math.min(sw, sh) * 0.32} fill="none" stroke={color} strokeWidth="1.6" />
@@ -216,7 +216,7 @@ export default function Odontograma({ value, onChange }) {
             </text>
           )}
           {list.length > 1 && (
-            <circle cx={x + sw - 2.5} cy={y + 2.5} r="1.6" fill="#e8d4b0" style={{ pointerEvents: 'none' }} />
+            <circle cx={x + sw - 2.5} cy={y + 2.5} r="1.6" fill="#111111" style={{ pointerEvents: 'none' }} />
           )}
         </g>
       );
@@ -244,7 +244,7 @@ export default function Odontograma({ value, onChange }) {
           textAnchor="middle"
           fontSize={isTemp ? "8" : "9"}
           fontWeight="800"
-          fill={isTemp ? "#666" : "#888"}
+          fill={isTemp ? "#666666" : "#333333"}
           style={{ userSelect: 'none' }}
         >
           {num}
@@ -261,7 +261,6 @@ export default function Odontograma({ value, onChange }) {
             fill="none"
             stroke={ringColor}
             strokeWidth="2.2"
-            opacity="0.95"
           />
         )}
         {ringMat && (
@@ -311,7 +310,6 @@ export default function Odontograma({ value, onChange }) {
             stroke="#22c55e"
             strokeWidth="1.5"
             strokeDasharray="4 3"
-            opacity="0.8"
           />
         )}
 
@@ -377,11 +375,11 @@ export default function Odontograma({ value, onChange }) {
       const k = m.type + (m.mat ? ` ${m.mat}` : '');
       byType[k] = (byType[k] || 0) + 1;
     }
-    return Object.entries(byType).map(([k, n]) => `${n}Ã— ${k}`).join(' · ');
+    return Object.entries(byType).map(([k, n]) => `${n}× ${k}`).join(' · ');
   }, [marks]);
 
   return (
-    <div style={{ ...styles.wrap, colorScheme: 'dark' }}>
+    <div style={{ ...styles.wrap, colorScheme: 'light' }}>
       {/* Selector de vista - SOLO 2 botones: Permanente / Temporal */}
       <div style={styles.viewSelector}>
         <button
@@ -389,26 +387,26 @@ export default function Odontograma({ value, onChange }) {
           onClick={() => setViewMode('permanent')}
           style={{
             ...styles.viewBtn,
-            background: viewMode === 'permanent' ? '#e8d4b0' : '#2a2a2a',
-            color: viewMode === 'permanent' ? '#111' : '#e8d4b0',
-            borderColor: viewMode === 'permanent' ? '#e8d4b0' : '#333',
+            background: viewMode === 'permanent' ? '#e8d4b0' : '#ffffff',
+            color: '#111111',
+            borderColor: viewMode === 'permanent' ? '#e8d4b0' : '#111111',
           }}
         >
           <span style={{fontSize: '11px', fontWeight: '800'}}>Permanente</span>
-          <span style={{fontSize: '10px', color: '#888'}}>(32 piezas)</span>
+          <span style={{fontSize: '10px', color: '#666666'}}>(32 piezas)</span>
         </button>
         <button
           type="button"
           onClick={() => setViewMode('temporary')}
           style={{
             ...styles.viewBtn,
-            background: viewMode === 'temporary' ? '#3b82f6' : '#2a2a2a',
-            color: viewMode === 'temporary' ? '#fff' : '#e8d4b0',
-            borderColor: viewMode === 'temporary' ? '#3b82f6' : '#333',
+            background: viewMode === 'temporary' ? '#111111' : '#ffffff',
+            color: viewMode === 'temporary' ? '#ffffff' : '#111111',
+            borderColor: '#111111',
           }}
         >
           <span style={{fontSize: '11px', fontWeight: '800'}}>Temporal</span>
-          <span style={{fontSize: '10px', color: '#888'}}>(20 piezas)</span>
+          <span style={{fontSize: '10px', color: '#666666'}}>(20 piezas)</span>
         </button>
       </div>
 
@@ -422,10 +420,10 @@ export default function Odontograma({ value, onChange }) {
               onClick={() => { setActiveCond(c.id); setEraser(false); if (c.materials && !c.materials.includes(activeMat)) setActiveMat(c.materials[0]); }}
               style={{
                 ...styles.condBtn,
-                borderColor: activeCond === c.id && !eraser ? c.color : '#333',
-                background: activeCond === c.id && !eraser ? `${c.color}22` : '#2a2a2a',
+                borderColor: activeCond === c.id && !eraser ? c.color : '#111111',
+                background: activeCond === c.id && !eraser ? '#ffffff' : '#f5f5f5',
                 boxShadow: activeCond === c.id && !eraser ? `0 0 0 1px ${c.color}` : 'none',
-                color: activeCond === c.id && !eraser ? c.color : '#e8d4b0'
+                color: '#111111'
               }}
             >
               <span style={{ ...styles.swatch, background: c.color, borderRadius: c.fill ? '2px' : c.cross ? '0' : c.outline ? '0' : c.rootLine ? '0' : '50%' }} />
@@ -437,12 +435,12 @@ export default function Odontograma({ value, onChange }) {
             onClick={() => setEraser(true)}
             style={{
               ...styles.condBtn,
-              borderColor: eraser ? '#e8d4b0' : '#333',
-              background: eraser ? '#e8d4b015' : '#2a2a2a',
-              color: eraser ? '#e8d4b0' : '#e8d4b0'
+              borderColor: eraser ? '#e8d4b0' : '#111111',
+              background: eraser ? '#e8d4b0' : '#f5f5f5',
+              color: '#111111'
             }}
           >
-            <Eraser size={13} color={eraser ? '#e8d4b0' : '#888'} />
+            <Eraser size={13} color={eraser ? '#111111' : '#666666'} />
             Borrar
           </button>
         </div>
@@ -458,15 +456,15 @@ export default function Odontograma({ value, onChange }) {
                 onClick={() => setActiveMat(m)}
                 style={{
                   ...styles.matBtn,
-                  background: activeMat === m ? cond.color : '#2a2a2a',
-                  color: activeMat === m ? '#fff' : '#e8d4b0',
-                  borderColor: activeMat === m ? cond.color : '#333'
+                  background: activeMat === m ? cond.color : '#f5f5f5',
+                  color: activeMat === m ? '#ffffff' : '#111111',
+                  borderColor: activeMat === m ? cond.color : '#111111'
                 }}
               >
                 {m}
               </button>
             ))}
-            <span style={{ fontSize: '11px', color: '#888', marginLeft: '4px' }}>
+            <span style={{ fontSize: '11px', color: '#666666', marginLeft: '4px' }}>
               {MATERIAL_LABELS[activeMat] || activeMat}
             </span>
           </div>
@@ -475,11 +473,11 @@ export default function Odontograma({ value, onChange }) {
         <div style={styles.hint}>
           {eraser
             ? 'Borrador activo: toca una superficie o diente para quitar marcas.'
-            : `Selecciona ${cond?.label?.toLowerCase() || 'una condición'}${cond?.materials ? ` (${activeMat} â€” ${MATERIAL_LABELS[activeMat] || activeMat})` : ''} y toca las caras del diente${cond?.kind === 'tooth' ? ' o el diente completo' : ''}. Tocar de nuevo = alternar/quitar.`}
+            : `Selecciona ${cond?.label?.toLowerCase() || 'una condición'}${cond?.materials ? ` (${activeMat} — ${MATERIAL_LABELS[activeMat] || activeMat})` : ''} y toca las caras del diente${cond?.kind === 'tooth' ? ' o el diente completo' : ''}. Tocar de nuevo = alternar/quitar.`}
         </div>
       </div>
 
-      {/* Odontograma */}
+      {/* Odontodiagrama */}
       <div style={styles.chartBox} className="panda-scrollbar">
         <svg
           viewBox={`0 0 ${VIEW_W} 280`}
@@ -492,7 +490,7 @@ export default function Odontograma({ value, onChange }) {
             y1="6"
             x2={MID_X}
             y2="270"
-            stroke="#e8d4b0"
+            stroke="#999999"
             strokeDasharray="4 3"
             strokeWidth="1"
           />
@@ -506,20 +504,20 @@ export default function Odontograma({ value, onChange }) {
           {/* etiquetas de cuadrante - dinámicas según vista */}
           {viewMode === 'permanent' && (
             <>
-              <text x={MID_X / 2} y="272" textAnchor="middle" fontSize="9" fill="#666" fontWeight="700">
+              <text x={MID_X / 2} y="272" textAnchor="middle" fontSize="9" fill="#666666" fontWeight="700">
                 SUP · DER 18â€“11 | IZQ 21â€“28
               </text>
-              <text x={MID_X + (VIEW_W - MID_X) / 2} y="272" textAnchor="middle" fontSize="9" fill="#666" fontWeight="700">
+              <text x={MID_X + (VIEW_W - MID_X) / 2} y="272" textAnchor="middle" fontSize="9" fill="#666666" fontWeight="700">
                 INF · DER 48â€“41 | IZQ 31â€“38
               </text>
             </>
           )}
           {viewMode === 'temporary' && (
             <>
-              <text x={MID_X / 2} y="272" textAnchor="middle" fontSize="9" fill="#666" fontWeight="700">
+              <text x={MID_X / 2} y="272" textAnchor="middle" fontSize="9" fill="#666666" fontWeight="700">
                 SUP · DER 55â€“51 | IZQ 61â€“65
               </text>
-              <text x={MID_X + (VIEW_W - MID_X) / 2} y="272" textAnchor="middle" fontSize="9" fill="#666" fontWeight="700">
+              <text x={MID_X + (VIEW_W - MID_X) / 2} y="272" textAnchor="middle" fontSize="9" fill="#666666" fontWeight="700">
                 INF · DER 85â€“81 | IZQ 71â€“75
               </text>
             </>
@@ -529,17 +527,17 @@ export default function Odontograma({ value, onChange }) {
 
       {/* Leyenda (simbología clínica) */}
       <div style={styles.legend}>
-        <div style={styles.legendTitle}>Simbología del odontograma (FDI)</div>
+        <div style={styles.legendTitle}>Simbología del odontodiagrama (FDI)</div>
         <div style={styles.legendGrid}>
           {CONDITIONS.map(c => (
             <div key={c.id} style={styles.legendItem}>
               <svg width="22" height="22" viewBox="0 0 22 22">
-                <rect x="1" y="1" width="20" height="20" rx="3" fill="#1e1e1e" stroke="#333" />
+                <rect x="1" y="1" width="20" height="20" rx="3" fill="#ffffff" stroke="#111111" />
                 {c.kind === 'surface' && c.circle && (
                   <circle cx="11" cy="11" r="6" fill="none" stroke={c.color} strokeWidth="2" />
                 )}
                 {c.fill && (
-                  <rect x="5" y="5" width="12" height="12" rx="2" fill={c.color} opacity="0.9" />
+                  <rect x="5" y="5" width="12" height="12" rx="2" fill={c.color} />
                 )}
                 {c.ring && (
                   <rect x="3" y="3" width="16" height="16" rx="3" fill="none" stroke={c.color} strokeWidth="2.2" />
@@ -574,13 +572,13 @@ export default function Odontograma({ value, onChange }) {
       {/* Resumen + acciones */}
       <div style={styles.toolbar}>
         <span style={styles.summary}>
-          {marks.length === 0 ? 'Sin marcas en el odontograma' : `${marks.length} marca(s): ${summary}`}
+          {marks.length === 0 ? 'Sin marcas en el odontodiagrama' : `${marks.length} marca(s): ${summary}`}
         </span>
         <div style={{ display: 'flex', gap: '8px' }}>
           <button type="button" onClick={() => setEraser(v => !v)} style={styles.toolBtn} title="Alternar borrador">
             <Eraser size={13} /> {eraser ? 'Salir borrador' : 'Borrador'}
           </button>
-          <button type="button" onClick={clearAll} style={styles.toolBtn} title="Limpiar todo el odontograma">
+          <button type="button" onClick={clearAll} style={styles.toolBtn} title="Limpiar todo el odontodiagrama">
             <Trash2 size={13} /> Limpiar todo
           </button>
         </div>
@@ -638,8 +636,8 @@ const styles = {
   wrap: { display: 'flex', flexDirection: 'column', gap: '12px' },
   viewSelector: {
     display: 'flex', gap: '8px', padding: '8px',
-    background: '#1e1e1e', borderRadius: '12px',
-    border: '1px solid #333'
+    background: '#ffffff', borderRadius: '12px',
+    border: '1px solid #111111'
   },
   viewBtn: {
     flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '2px',
@@ -649,55 +647,55 @@ const styles = {
   palette: {
     display: 'flex', flexDirection: 'column', gap: '8px',
     padding: '12px', borderRadius: '14px',
-    background: '#1e1e1e', border: '1px solid #333'
+    background: '#ffffff', border: '1px solid #111111'
   },
   paletteRow: { display: 'flex', flexWrap: 'wrap', gap: '6px', alignItems: 'center' },
   condBtn: {
     display: 'inline-flex', alignItems: 'center', gap: '6px',
-    padding: '6px 10px', borderRadius: '10px', border: '1.5px solid #333',
-    background: '#2a2a2a', color: '#e8d4b0',
+    padding: '6px 10px', borderRadius: '10px', border: '1.5px solid #111111',
+    background: '#f5f5f5', color: '#111111',
     fontSize: '11.5px', fontWeight: '700', cursor: 'pointer'
   },
   swatch: { width: '10px', height: '10px', display: 'inline-block', border: '1.5px solid currentColor' },
-  matLabel: { fontSize: '11px', fontWeight: '800', color: '#888', textTransform: 'uppercase', marginRight: '4px' },
+  matLabel: { fontSize: '11px', fontWeight: '800', color: '#666666', textTransform: 'uppercase', marginRight: '4px' },
   matBtn: {
-    padding: '5px 10px', borderRadius: '8px', border: '1px solid #333',
+    padding: '5px 10px', borderRadius: '8px', border: '1px solid #111111',
     fontSize: '12px', fontWeight: '800', cursor: 'pointer', letterSpacing: '0.3px',
-    background: '#2a2a2a', color: '#e8d4b0'
+    background: '#f5f5f5', color: '#111111'
   },
-  hint: { fontSize: '11.5px', color: '#888', lineHeight: 1.45 },
+  hint: { fontSize: '11.5px', color: '#666666', lineHeight: 1.45 },
   chartBox: {
     padding: '10px 6px', borderRadius: '14px',
-    background: '#111', border: '1px solid #333',
+    background: '#ffffff', border: '1px solid #111111',
     overflowX: 'auto'
   },
   legend: {
     padding: '12px', borderRadius: '14px',
-    background: '#1e1e1e', border: '1px solid #333'
+    background: '#ffffff', border: '1px solid #111111'
   },
   legendTitle: {
     fontSize: '11px', fontWeight: '900', textTransform: 'uppercase',
-    letterSpacing: '0.6px', color: '#e8d4b0', marginBottom: '10px'
+    letterSpacing: '0.6px', color: '#111111', marginBottom: '10px'
   },
   legendGrid: { display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))', gap: '10px' },
   legendItem: { display: 'flex', alignItems: 'center', gap: '8px' },
-  legendLabel: { fontSize: '12px', fontWeight: '700', color: '#e8d4b0' },
-  legendMats: { fontSize: '10px', color: '#888', fontWeight: '600' },
-  legendNote: { marginTop: '10px', fontSize: '11px', color: '#888', lineHeight: 1.4 },
+  legendLabel: { fontSize: '12px', fontWeight: '700', color: '#111111' },
+  legendMats: { fontSize: '10px', color: '#666666', fontWeight: '600' },
+  legendNote: { marginTop: '10px', fontSize: '11px', color: '#666666', lineHeight: 1.4 },
   toolbar: {
     display: 'flex', justifyContent: 'space-between', alignItems: 'center',
     gap: '10px', flexWrap: 'wrap'
   },
-  summary: { fontSize: '12px', color: '#aaa', fontWeight: '600' },
+  summary: { fontSize: '12px', color: '#666666', fontWeight: '600' },
   toolBtn: {
     display: 'inline-flex', alignItems: 'center', gap: '6px',
     padding: '7px 12px', borderRadius: '10px',
-    border: '1px solid #333', background: '#2a2a2a',
-    color: '#e8d4b0', fontSize: '12px', fontWeight: '700', cursor: 'pointer'
+    border: '1px solid #111111', background: '#f5f5f5',
+    color: '#111111', fontSize: '12px', fontWeight: '700', cursor: 'pointer'
   },
   quadRow: { display: 'flex', flexWrap: 'wrap', gap: '8px', marginTop: '8px' },
   quadBtn: {
-    padding: '6px 10px', borderRadius: '8px', border: '1px dashed #333',
-    background: '#333333', color: '#888', fontSize: '11px', fontWeight: '700', cursor: 'pointer'
+    padding: '6px 10px', borderRadius: '8px', border: '1px dashed #111111',
+    background: '#f5f5f5', color: '#333333', fontSize: '11px', fontWeight: '700', cursor: 'pointer'
   }
 };

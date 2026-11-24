@@ -1,4 +1,4 @@
-﻿// Datos reales de la clínica â€” única fuente de verdad para todo el portal público.
+﻿// Datos reales de la clínica — única fuente de verdad para todo el portal público.
 // Editar solo aquí cuando cambien datos de contacto.
 export const CLINIC = {
   name: 'Dientes Sanos',
@@ -9,7 +9,7 @@ export const CLINIC = {
   phoneDisplay: '0424-3679576',
   phoneTel: '+584243679576',
   get whatsappUrl() {
-    return `https://wa.me/584243679576?text=${encodeURIComponent('Hola! Quiero agendar una cita en Dientes Sanos ðŸ¦·')}`;
+    return `https://wa.me/584243679576?text=${encodeURIComponent('Hola! Quiero agendar una cita en Dientes Sanos 👰')}`;
   },
   address: 'Maracay / San Jacinto, Aragua, Venezuela',
   addressShort: 'Maracay, San Jacinto',

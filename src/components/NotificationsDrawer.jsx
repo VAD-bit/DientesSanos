@@ -10,7 +10,7 @@ const categorizeNotification = (n) => {
   if (/bienvenido|activad|sistema|permiso/.test(text)) {
     return { icon: ShieldCheck, color: 'var(--gold-primary)' };
   }
-  if (/ðŸŽ‰|ðŸ†|ðŸ‘‘|ðŸŽ¯|meta|objetivo|cumplea|logro/.test(text)) {
+  if (/🏉|🏟|👀|🏏|meta|objetivo|cumplea|logro/.test(text)) {
     return { icon: Trophy, color: '#ffd166' };
   }
   if (/cobro|pago|factura|venta|ingreso|\$/.test(text)) {
@@ -56,12 +56,12 @@ const NotificationsDrawer = ({ isOpen, onClose }) => {
 
   const handleRequestPermission = async () => {
     if (!isSecure) {
-      await alert("âš ϸ Conexión no segura (HTTP):\n\nLos navegadores bloquean las notificaciones push por seguridad en conexiones HTTP (cuando usas una IP local como 192.168.x.x).\n\nPara probar en tu teléfono:\n1. Si es Android: puedes conectar el teléfono por USB y usar Chrome Port Forwarding (localhost).\n2. Si es iPhone o Android: se requiere un túnel seguro HTTPS (como ngrok o Cloudflare).");
+      await alert("⚠️ Conexión no segura (HTTP):\n\nLos navegadores bloquean las notificaciones push por seguridad en conexiones HTTP (cuando usas una IP local como 192.168.x.x).\n\nPara probar en tu teléfono:\n1. Si es Android: puedes conectar el teléfono por USB y usar Chrome Port Forwarding (localhost).\n2. Si es iPhone o Android: se requiere un túnel seguro HTTPS (como ngrok o Cloudflare).");
       return;
     }
 
     if (isIOS && !isStandalone) {
-      await alert("ðŸ“± Requisito de iPhone:\n\nApple no permite activar notificaciones desde el navegador Safari.\n\nPara activarlas:\n1. Pulsa el botón 'Compartir' en Safari (icono de cuadrado con flecha arriba).\n2. Selecciona 'Agregar a la pantalla de inicio'.\n3. Abre la app desde tu pantalla de inicio e inténtalo de nuevo.");
+      await alert("📱 Requisito de iPhone:\n\nApple no permite activar notificaciones desde el navegador Safari.\n\nPara activarlas:\n1. Pulsa el botón 'Compartir' en Safari (icono de cuadrado con flecha arriba).\n2. Selecciona 'Agregar a la pantalla de inicio'.\n3. Abre la app desde tu pantalla de inicio e inténtalo de nuevo.");
       return;
     }
 
@@ -69,7 +69,7 @@ const NotificationsDrawer = ({ isOpen, onClose }) => {
     setPermission(res);
     if (res === 'granted') {
       notificationService.sendNotification(
-        '¡Permiso Activado! ðŸŽ‰',
+        '¡Permiso Activado! 🏉',
         'Las notificaciones push del CRM Dientes Sanos ya están activadas en este dispositivo.'
       );
     }
@@ -77,7 +77,7 @@ const NotificationsDrawer = ({ isOpen, onClose }) => {
 
   const handleSendTestNotification = () => {
     notificationService.sendNotification(
-      'Dientes Sanos CRM ðŸš€',
+      'Dientes Sanos CRM 🚨',
       '¡Funciona genial! Esta notificación llegará a tu teléfono o computadora de forma instantánea.'
     );
   };
@@ -152,7 +152,7 @@ const NotificationsDrawer = ({ isOpen, onClose }) => {
           </button>
         </div>
 
-        {/* Permission Banner (PWA Config) â€” collapsed to a slim row, expands on tap */}
+        {/* Permission Banner (PWA Config) — collapsed to a slim row, expands on tap */}
         {permission !== 'granted' && (
           <div style={{
             margin: '16px 24px 0 24px',

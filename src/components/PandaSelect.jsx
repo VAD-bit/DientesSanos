@@ -17,7 +17,8 @@ const PandaSelect = ({
   triggerStyle = {},
   dropdownClassName = "",
   menuStyle = {},
-  disabled = false
+  disabled = false,
+  centerOnScreen = false
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [dropdownStyle, setDropdownStyle] = useState({});
@@ -48,34 +49,48 @@ const PandaSelect = ({
 
   // Calculate fixed position whenever dropdown opens
   useEffect(() => {
-    if (isOpen && triggerRef.current) {
-      const rect = triggerRef.current.getBoundingClientRect();
-      const spaceBelow = window.innerHeight - rect.bottom;
-      const dropdownMaxH = 250;
-
-      if (spaceBelow < dropdownMaxH + 16) {
-        // Open upward
+    if (isOpen) {
+      if (centerOnScreen && triggerRef.current) {
+        // Center the dropdown on screen
         setDropdownStyle({
           position: 'fixed',
-          bottom: window.innerHeight - rect.top + 8,
-          left: rect.left,
-          width: rect.width,
+          top: '50%',
+          left: '50%',
+          width: Math.max(triggerRef.current.clientWidth || 200, 300),
           zIndex: 999999999,
-          top: 'auto'
-        });
-      } else {
-        // Open downward
-        setDropdownStyle({
-          position: 'fixed',
-          top: rect.bottom + 8,
-          left: rect.left,
-          width: rect.width,
-          zIndex: 999999999,
+          transform: 'translate(-50%, -50%)',
+          top: 'auto',
           bottom: 'auto'
         });
+      } else if (isOpen && triggerRef.current) {
+        const rect = triggerRef.current.getBoundingClientRect();
+        const spaceBelow = window.innerHeight - rect.bottom;
+        const dropdownMaxH = 250;
+
+        if (spaceBelow < dropdownMaxH + 16) {
+          // Open upward
+          setDropdownStyle({
+            position: 'fixed',
+            bottom: window.innerHeight - rect.top + 8,
+            left: rect.left,
+            width: rect.width,
+            zIndex: 999999999,
+            top: 'auto'
+          });
+        } else {
+          // Open downward
+          setDropdownStyle({
+            position: 'fixed',
+            top: rect.bottom + 8,
+            left: rect.left,
+            width: rect.width,
+            zIndex: 999999999,
+            bottom: 'auto'
+          });
+        }
       }
     }
-  }, [isOpen]);
+  }, [isOpen, centerOnScreen]);
 
   // Close on outside click
   useEffect(() => {
@@ -102,11 +117,31 @@ const PandaSelect = ({
     };
     window.addEventListener('scroll', close, true);
     window.addEventListener('resize', close);
+    // Prevent page body from scrolling when dropdown is open
+    const preventScroll = () => {
+      document.body.style.overflowY = 'hidden';
+      document.documentElement.style.overflowY = 'hidden';
+    };
+    const restoreScroll = () => {
+      document.body.style.overflowY = 'auto';
+      document.documentElement.style.overflowY = 'auto';
+    };
+    if (centerOnScreen) {
+      // When centered, also prevent body scroll
+      preventScroll();
+      // Restore when closed
+      return () => {
+        window.removeEventListener('scroll', close, true);
+        window.removeEventListener('resize', close);
+        restoreScroll();
+      };
+    }
     return () => {
       window.removeEventListener('scroll', close, true);
       window.removeEventListener('resize', close);
+      restoreScroll();
     };
-  }, [isOpen]);
+  }, [isOpen, centerOnScreen]);
 
   const handleSelect = (val) => {
     onChange(val);

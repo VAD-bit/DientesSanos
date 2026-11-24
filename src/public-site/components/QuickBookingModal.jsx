@@ -27,7 +27,7 @@ export default function QuickBookingModal({ onClose, client, initialBarber = nul
   const [searchQuery, setSearchQuery] = useState('');
   const [isClosing, setIsClosing] = useState(false);
 
-  // Plays the closing animation before actually unmounting â€” calling onClose()
+  // Plays the closing animation before actually unmounting — calling onClose()
   // directly would remove the component instantly since the parent renders it
   // via a plain `{show && <QuickBookingModal />}` (no AnimatePresence).
   const handleClose = () => {
@@ -125,7 +125,7 @@ export default function QuickBookingModal({ onClose, client, initialBarber = nul
   const handleConfirm = async () => {
     if (!selectedService || !selectedBarber || !selectedDate || !selectedTime) return;
     if (!storeIsOpen) {
-      alert('La clínica está cerrada por ahora â€” no se pueden agendar citas.');
+      alert('La clínica está cerrada por ahora — no se pueden agendar citas.');
       return;
     }
     setIsSubmitting(true);

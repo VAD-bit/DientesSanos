@@ -162,11 +162,11 @@ export default function ClinicalHistoryModal({ isOpen, client, onClose, mandator
         // En modo odontograma, guardar aunque solo haya marcas en el odontograma
         const hasOdonto = Array.isArray(odontograma?.marks) && odontograma.marks.length > 0;
         if (!hasOdonto) {
-          setError('Marca al menos un diente en el odontograma.');
+          setError('Marca al menos un diente en el odontodiagrama.');
           return;
         }
       } else {
-        setError('Completa al menos el motivo de consulta, el diagnóstico, el odontograma o adjunta una foto.');
+        setError('Completa al menos el motivo de consulta, el diagnóstico, el odontodiagrama o adjunta una foto.');
         return;
       }
     }
@@ -228,7 +228,7 @@ export default function ClinicalHistoryModal({ isOpen, client, onClose, mandator
             onClick={() => setTab('odontograma')}
             type="button"
           >
-            Odontograma
+            Odontodiagrama
           </button>
           <button
             style={{ ...styles.tab, ...(tab === 'fotos' ? styles.tabActive : {}) }}
@@ -243,26 +243,26 @@ export default function ClinicalHistoryModal({ isOpen, client, onClose, mandator
           {loading ? (
             <div style={{ padding: '40px', textAlign: 'center', color: 'var(--text-muted)' }}>
               <Loader2 size={22} className="animate-spin" style={{ margin: '0 auto 10px' }} />
-              Cargando historialâ€¦
+              Cargando historial…
             </div>
           ) : tab === 'manual' ? (
             <div style={{ display: 'grid', gap: '14px' }}>
-              <Field label="Motivo de consulta *" value={form.motivo_consulta} onChange={v => set('motivo_consulta', v)} placeholder="Dolor molar inferior derechoâ€¦" rows={2} />
-              <Field label="Antecedentes" value={form.antecedentes} onChange={v => set('antecedentes', v)} placeholder="Cirugías, enfermedades previasâ€¦" rows={2} />
-              <Field label="Alergias" value={form.alergias} onChange={v => set('alergias', v)} placeholder="Anestesia, látex, medicamentosâ€¦" rows={2} />
-              <Field label="Medicación actual" value={form.medicacion_actual} onChange={v => set('medicacion_actual', v)} placeholder="Anticoagulantes, antibióticosâ€¦" rows={2} />
-              <Field label="Antecedentes familiares" value={form.antecedentes_fam} onChange={v => set('antecedentes_fam', v)} placeholder="Diabetes, hemofiliaâ€¦" rows={2} />
-              <Field label="Hábitos" value={form.habitos} onChange={v => set('habitos', v)} placeholder="Bruxismo, tabaquismo, higieneâ€¦" rows={2} />
-              <Field label="Exploración clínica" value={form.exploracion} onChange={v => set('exploracion', v)} placeholder="Hallazgos generales, encías, radiografíasâ€¦" rows={3} />
-              <Field label="Diagnóstico *" value={form.diagnostico} onChange={v => set('diagnostico', v)} placeholder="Caries oclusal pieza 26 (marcar en odontograma)â€¦" rows={3} />
-              <Field label="Plan de tratamiento" value={form.plan_tratamiento} onChange={v => set('plan_tratamiento', v)} placeholder="Obturación + control en 15 díasâ€¦" rows={3} />
-              <Field label="Notas adicionales" value={form.notas} onChange={v => set('notas', v)} placeholder="Indicaciones post-operatoriasâ€¦" rows={2} />
+              <Field label="Motivo de consulta *" value={form.motivo_consulta} onChange={v => set('motivo_consulta', v)} placeholder="Dolor molar inferior derecho…" rows={2} />
+              <Field label="Antecedentes" value={form.antecedentes} onChange={v => set('antecedentes', v)} placeholder="Cirugías, enfermedades previas…" rows={2} />
+              <Field label="Alergias" value={form.alergias} onChange={v => set('alergias', v)} placeholder="Anestesia, látex, medicamentos…" rows={2} />
+              <Field label="Medicación actual" value={form.medicacion_actual} onChange={v => set('medicacion_actual', v)} placeholder="Anticoagulantes, antibióticos…" rows={2} />
+              <Field label="Antecedentes familiares" value={form.antecedentes_fam} onChange={v => set('antecedentes_fam', v)} placeholder="Diabetes, hemofilia…" rows={2} />
+              <Field label="Hábitos" value={form.habitos} onChange={v => set('habitos', v)} placeholder="Bruxismo, tabaquismo, higiene…" rows={2} />
+              <Field label="Exploración clínica" value={form.exploracion} onChange={v => set('exploracion', v)} placeholder="Hallazgos generales, encías, radiografías…" rows={3} />
+              <Field label="Diagnóstico *" value={form.diagnostico} onChange={v => set('diagnostico', v)} placeholder="Caries oclusal pieza 26 (marcar en odontodiagrama)…" rows={3} />
+              <Field label="Plan de tratamiento" value={form.plan_tratamiento} onChange={v => set('plan_tratamiento', v)} placeholder="Obturación + control en 15 días…" rows={3} />
+              <Field label="Notas adicionales" value={form.notas} onChange={v => set('notas', v)} placeholder="Indicaciones post-operatorias…" rows={2} />
               <p style={{ fontSize: '11.5px', color: '#666666', margin: 0, lineHeight: 1.4 }}>
-                Para marcar dientes usa la pestaña <strong>Odontograma</strong> en vez de escribirlo a mano.
+                Para marcar dientes usa la pestaña <strong>Odontodiagrama</strong> en vez de escribirlo a mano.
               </p>
             </div>
           ) : tab === 'odontograma' ? (
-            <div style={{ background: '#111111', borderRadius: '14px', minHeight: '300px' }}>
+            <div style={{ background: '#ffffff', borderRadius: '14px', minHeight: '300px' }}>
               <Odontograma value={odontograma} onChange={setOdontograma} />
             </div>
           ) : (
@@ -327,78 +327,78 @@ const styles = {
   },
   card: {
     width: '100%', maxWidth: '560px', maxHeight: '92vh',
-    background: '#111111', borderRadius: '22px',
-    border: '1px solid #333333',
+    background: '#ffffff', borderRadius: '22px',
+    border: '1px solid #111111',
     boxShadow: '0 30px 60px #333333',
     display: 'flex', flexDirection: 'column', overflow: 'hidden'
   },
   header: {
     display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between',
-    padding: '18px 20px 12px', borderBottom: '1px solid rgba(0,0,0,0.06)'
+    padding: '18px 20px 12px', borderBottom: '1px solid #e8e8e8'
   },
   iconBox: {
     width: '40px', height: '40px', borderRadius: '12px',
     background: 'linear-gradient(135deg, #e8d4b0, #d9c08f)',
     display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0
   },
-  title: { fontSize: '18px', fontWeight: '800', color: '#111827', margin: 0 },
-  subtitle: { fontSize: '12px', color: '#6b7280', fontWeight: '600' },
+  title: { fontSize: '18px', fontWeight: '800', color: '#111111', margin: 0 },
+  subtitle: { fontSize: '12px', color: '#666666', fontWeight: '600' },
   closeBtn: {
     width: '36px', height: '36px', borderRadius: '50%', border: 'none',
-    background: '#f5f7fa', color: '#374151',
+    background: '#f5f5f5', color: '#111111',
     cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center'
   },
   mandatoryBanner: {
     margin: '12px 20px 0', padding: '10px 14px', borderRadius: '12px',
     background: '#f0e2c8', border: '1px solid #e8d4b0',
-    color: '#92400e', fontSize: '12.5px', fontWeight: '700',
+    color: '#111111', fontSize: '12.5px', fontWeight: '700',
     display: 'flex', alignItems: 'center', gap: '8px'
   },
   tabs: { display: 'flex', gap: '6px', padding: '12px 20px 0' },
   tab: {
     flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px',
-    padding: '9px 12px', borderRadius: '10px', border: '1px solid #333333',
-    background: '#f5f7fa', color: '#374151',
+    padding: '9px 12px', borderRadius: '10px', border: '1px solid #e5e7eb',
+    background: '#ffffff', color: '#666666',
     fontSize: '12.5px', fontWeight: '700', cursor: 'pointer'
   },
   tabActive: {
-    background: '#f0e2c8', borderColor: '#e8d4b0', color: '#92400e'
+    background: '#111111', borderColor: '#111111', color: '#ffffff'
   },
   body: { padding: '16px 20px', overflowY: 'auto', flex: 1 },
   label: {
     display: 'block', fontSize: '11px', fontWeight: '800', textTransform: 'uppercase',
-    letterSpacing: '0.4px', color: '#6b7280', marginBottom: '6px'
+    letterSpacing: '0.4px', color: '#666666', marginBottom: '6px'
   },
   input: {
     width: '100%', padding: '10px 12px', borderRadius: '10px',
-    border: '1px solid #333333', background: '#111111',
-    color: '#111827', fontSize: '13.5px', outline: 'none', boxSizing: 'border-box', fontFamily: 'inherit'
+    border: '1px solid #d4d4d4', background: '#ffffff',
+    color: '#111111', fontSize: '13.5px', outline: 'none', boxSizing: 'border-box', fontFamily: 'inherit'
   },
   uploadBtn: {
     width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px',
     padding: '14px', borderRadius: '14px', border: '1.5px dashed #e8d4b0',
-    background: '#f5f7fa', color: '#92400e', fontSize: '13.5px', fontWeight: '700', cursor: 'pointer'
+    background: '#ffffff', color: '#111111', fontSize: '13.5px', fontWeight: '700', cursor: 'pointer'
   },
   grid: { display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(120px, 1fr))', gap: '10px', marginTop: '14px' },
   thumbWrap: { position: 'relative', borderRadius: '10px', overflow: 'hidden', border: '1px solid #333333', aspectRatio: '1' },
   thumb: { width: '100%', height: '100%', objectFit: 'cover', display: 'block' },
   thumbDel: {
     position: 'absolute', top: '6px', right: '6px', width: '26px', height: '26px',
-    borderRadius: '50%', border: 'none', background: '#374151',
+    borderRadius: '50%', border: 'none', background: '#111111',
     display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer'
   },
   error: {
     marginTop: '12px', padding: '10px 12px', borderRadius: '10px',
-    background: '#fef2f2', border: '1px solid #fecaca',
+    background: '#fef2f2', border: '1px solid #dc2626',
     color: '#dc2626', fontSize: '12.5px', fontWeight: '600'
   },
   footer: {
     display: 'flex', gap: '10px', padding: '14px 20px 18px',
-    borderTop: '1px solid #333333'
+    borderTop: '1px solid #e8e8e8'
   },
   cancelBtn: {
-    flex: 1, padding: '12px', borderRadius: '12px', border: '1px solid #333333',
-    background: '#f5f7fa', color: '#374151', fontSize: '13px', fontWeight: '700', cursor: 'pointer'
+    flex: 1, padding: '12px', borderRadius: '12px', border: '1px solid #111111',
+    background: '#ffffff', color: '#111111', fontSize: '13px', fontWeight: '700', cursor: 'pointer'
   },
   saveBtn: {
     flex: 2, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px',

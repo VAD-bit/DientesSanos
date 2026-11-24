@@ -792,21 +792,21 @@ const ReceptionModule = ({ isMobile, rates }) => {
                 className="action-add-btn btn-service reception-animate-item"
                 style={{ animationDelay: '0ms' }}
               >
-                <ToothIcon size={18} /> <span style={{ textAlign: 'center' }}>+ SERVICIO</span>
+                <ToothIcon size={18} color="#111111" /> <span style={{ textAlign: 'center', color: '#111111' }}>+ SERVICIO</span>
               </button>
               <button
                 onClick={() => setIsExtraModalOpen(true)}
                 className="action-add-btn btn-extra reception-animate-item"
                 style={{ animationDelay: '40ms' }}
               >
-                <Rocket size={18} /> <span style={{ textAlign: 'center' }}>+ EXTRA</span>
+                <Rocket size={18} color="#111111" /> <span style={{ textAlign: 'center', color: '#111111' }}>+ EXTRA</span>
               </button>
               <button
                 onClick={() => setIsProductModalOpen(true)}
                 className="action-add-btn btn-product reception-animate-item"
                 style={{ animationDelay: '80ms' }}
               >
-                <ShoppingBag size={18} /> <span style={{ textAlign: 'center' }}>+ PRODUCTO</span>
+                <ShoppingBag size={18} color="#111111" /> <span style={{ textAlign: 'center', color: '#111111' }}>+ PRODUCTO</span>
               </button>
             </div>
 
@@ -817,7 +817,7 @@ const ReceptionModule = ({ isMobile, rates }) => {
                     <span style={{ display: 'block', color: 'var(--gold-primary)', fontSize: '9px', fontWeight: 950, letterSpacing: '1px', textTransform: 'uppercase' }}>Orden en preparación</span>
                     <strong style={{ display: 'block', marginTop: '2px', color: '#111111', fontSize: '14px' }}>{orderItemCount} {orderItemCount === 1 ? 'artículo' : 'artículos'}</strong>
                   </div>
-                  <span style={{ padding: '5px 9px', borderRadius: '999px', color: '#cfcfd2', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', fontSize: '9px', fontWeight: 850 }}>LISTA PARA ASIGNAR</span>
+                  <span style={{ padding: '5px 9px', borderRadius: '999px', color: '#111111', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid #333333', fontSize: '9px', fontWeight: 850 }}>LISTA PARA ASIGNAR</span>
                 </div>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '7px' }}>
                   {selectedServices.map(s => (
