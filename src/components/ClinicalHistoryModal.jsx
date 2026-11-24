@@ -257,7 +257,7 @@ export default function ClinicalHistoryModal({ isOpen, client, onClose, mandator
               <Field label="Diagnóstico *" value={form.diagnostico} onChange={v => set('diagnostico', v)} placeholder="Caries oclusal pieza 26 (marcar en odontograma)â€¦" rows={3} />
               <Field label="Plan de tratamiento" value={form.plan_tratamiento} onChange={v => set('plan_tratamiento', v)} placeholder="Obturación + control en 15 díasâ€¦" rows={3} />
               <Field label="Notas adicionales" value={form.notas} onChange={v => set('notas', v)} placeholder="Indicaciones post-operatoriasâ€¦" rows={2} />
-              <p style={{ fontSize: '11.5px', color: 'rgba(255,255,255,0.4)', margin: 0, lineHeight: 1.4 }}>
+              <p style={{ fontSize: '11.5px', color: '#666666', margin: 0, lineHeight: 1.4 }}>
                 Para marcar dientes usa la pestaña <strong>Odontograma</strong> en vez de escribirlo a mano.
               </p>
             </div>
@@ -322,14 +322,14 @@ export default function ClinicalHistoryModal({ isOpen, client, onClose, mandator
 const styles = {
   overlay: {
     position: 'fixed', inset: 0, zIndex: 25000,
-    background: 'rgba(0, 0, 0, 0.45)', backdropFilter: 'blur(8px)',
+    background: '#333333',
     display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '16px'
   },
   card: {
     width: '100%', maxWidth: '560px', maxHeight: '92vh',
     background: '#111111', borderRadius: '22px',
-    border: '1px solid rgba(0,0,0,0.08)',
-    boxShadow: '0 30px 60px rgba(0,0,0,0.10)',
+    border: '1px solid #333333',
+    boxShadow: '0 30px 60px #333333',
     display: 'flex', flexDirection: 'column', overflow: 'hidden'
   },
   header: {
@@ -357,7 +357,7 @@ const styles = {
   tabs: { display: 'flex', gap: '6px', padding: '12px 20px 0' },
   tab: {
     flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px',
-    padding: '9px 12px', borderRadius: '10px', border: '1px solid rgba(0,0,0,0.08)',
+    padding: '9px 12px', borderRadius: '10px', border: '1px solid #333333',
     background: '#f5f7fa', color: '#374151',
     fontSize: '12.5px', fontWeight: '700', cursor: 'pointer'
   },
@@ -371,7 +371,7 @@ const styles = {
   },
   input: {
     width: '100%', padding: '10px 12px', borderRadius: '10px',
-    border: '1px solid rgba(0,0,0,0.10)', background: '#111111',
+    border: '1px solid #333333', background: '#111111',
     color: '#111827', fontSize: '13.5px', outline: 'none', boxSizing: 'border-box', fontFamily: 'inherit'
   },
   uploadBtn: {
@@ -380,7 +380,7 @@ const styles = {
     background: '#f5f7fa', color: '#92400e', fontSize: '13.5px', fontWeight: '700', cursor: 'pointer'
   },
   grid: { display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(120px, 1fr))', gap: '10px', marginTop: '14px' },
-  thumbWrap: { position: 'relative', borderRadius: '10px', overflow: 'hidden', border: '1px solid rgba(0,0,0,0.08)', aspectRatio: '1' },
+  thumbWrap: { position: 'relative', borderRadius: '10px', overflow: 'hidden', border: '1px solid #333333', aspectRatio: '1' },
   thumb: { width: '100%', height: '100%', objectFit: 'cover', display: 'block' },
   thumbDel: {
     position: 'absolute', top: '6px', right: '6px', width: '26px', height: '26px',
@@ -394,10 +394,10 @@ const styles = {
   },
   footer: {
     display: 'flex', gap: '10px', padding: '14px 20px 18px',
-    borderTop: '1px solid rgba(0,0,0,0.06)'
+    borderTop: '1px solid #333333'
   },
   cancelBtn: {
-    flex: 1, padding: '12px', borderRadius: '12px', border: '1px solid rgba(0,0,0,0.10)',
+    flex: 1, padding: '12px', borderRadius: '12px', border: '1px solid #333333',
     background: '#f5f7fa', color: '#374151', fontSize: '13px', fontWeight: '700', cursor: 'pointer'
   },
   saveBtn: {

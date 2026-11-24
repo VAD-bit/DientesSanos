@@ -1041,16 +1041,16 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
   const groupedMyServices = groupAppointmentsByClient(myServices);
   const firstUpcomingIndex = groupedMyServices.findIndex(group => !['En Silla', 'En Lavado'].includes(group.apps[0]?.status));
   const chairState = activeChairCount > 0
-    ? { label: isAssistant ? 'Estación activa' : 'Servicio en curso', color: isAssistant ? '#4aa3ff' : '#32d74b', glow: isAssistant ? 'rgba(74,163,255,.22)' : 'rgba(50,215,75,.22)' }
+    ? { label: isAssistant ? 'Estación activa' : 'Servicio en curso', color: isAssistant ? '#4aa3ff' : '#32d74b', glow: isAssistant ? '#4aa3ff22' : '#32d74b22' }
     : waitingChairCount > 0
-      ? { label: `${waitingChairCount} ${waitingChairCount === 1 ? 'cliente esperando' : 'clientes esperando'}`, color: 'var(--gold-primary)', glow: 'rgba(17, 17, 17,.22)' }
+      ? { label: `${waitingChairCount} ${waitingChairCount === 1 ? 'cliente esperando' : 'clientes esperando'}`, color: 'var(--gold-primary)', glow: '#11111122' }
       : { label: isAssistant ? 'Estación disponible' : 'Sillón disponible', color: '#a9a9ad', glow: 'rgba(255,255,255,.08)' };
 
   return (
     <div className="animate-fade-in barber-live-console" style={{ maxWidth: isMobile ? '550px' : '1380px', margin: '0 auto', paddingBottom: '100px' }}>
       <style>{`
         .barber-live-console { width: 100%; }
-        .barber-command-header { padding: 18px 20px; border: 1px solid rgba(0, 0, 0, 0.08); border-radius: 22px; background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)); box-shadow: 0 18px 50px rgba(0,0,0,.24); }
+        .barber-command-header { padding: 18px 20px; border: 1px solid #333333; border-radius: 22px; background: #ffffff; box-shadow: 0 18px 50px #333333; }
         .barber-command-header > div:first-child { min-width: 0; flex: 1; }
         .barber-chair-status { display: inline-flex; align-items: center; gap: 8px; min-height: 30px; padding: 0 11px; margin-top: 10px; border-radius: 999px; border: 1px solid color-mix(in srgb, var(--chair-state-color) 35%, transparent); background: color-mix(in srgb, var(--chair-state-color) 10%, transparent); color: var(--chair-state-color); font-size: 10px; font-weight: 900; text-transform: uppercase; letter-spacing: .65px; }
         .barber-chair-status::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: currentColor; box-shadow: 0 0 12px currentColor; }
@@ -1187,7 +1187,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
           <button className="barber-sync-button"
             onClick={() => { loadMyWork(); showToast("Sincronizado"); }}
             disabled={loading}
-            style={{ background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', color: 'var(--gold-primary)', width: '40px', height: '40px', borderRadius: '12px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+            style={{ background: '#333333', border: '1px solid #333333', color: 'var(--gold-primary)', width: '40px', height: '40px', borderRadius: '12px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
             title="Sincronizar sillón"
           >
             <RefreshCw size={18} className={loading ? 'animate-spin' : ''} />
@@ -1198,7 +1198,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
                 setSelectedBarber(null);
                 window.dispatchEvent(new CustomEvent('panda_active_barber_changed', { detail: null }));
               }}
-              style={{ background: 'transparent', border: '1px solid rgba(0, 0, 0, 0.08)', color: 'var(--text-secondary)', padding: '10px 16px', borderRadius: '12px', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '8px', fontWeight: '700', transition: 'all 0.2s' }}
+              style={{ background: 'transparent', border: '1px solid #333333', color: 'var(--text-secondary)', padding: '10px 16px', borderRadius: '12px', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '8px', fontWeight: '700', transition: 'all 0.2s' }}
               onMouseEnter={(e) => { e.currentTarget.style.color = '#ff4d4d'; e.currentTarget.style.borderColor = 'rgba(255,77,77,0.3)'; e.currentTarget.style.background = 'rgba(255,77,77,0.05)'; }}
               onMouseLeave={(e) => { e.currentTarget.style.color = 'var(--text-secondary)'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)'; e.currentTarget.style.background = 'transparent'; }}
             >
@@ -1208,7 +1208,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
         </div>
       </header>
 
-      <nav className="barber-view-tabs" style={{ display: 'flex', gap: '7px', padding: '4px', marginBottom: '18px', width: 'fit-content', maxWidth: '100%', borderRadius: '13px', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
+      <nav className="barber-view-tabs" style={{ display: 'flex', gap: '7px', padding: '4px', marginBottom: '18px', width: 'fit-content', maxWidth: '100%', borderRadius: '13px', background: '#333333', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
         {[
           { id: 'work', label: isAssistant ? 'Panel de limpiezas' : 'Mi sillón', icon: <LayoutDashboard size={15} /> },
           { id: 'history', label: 'Mi historial', icon: <ReceiptText size={15} /> }
@@ -1257,7 +1257,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
                 background: 'rgba(0,122,255,0.15)', 
                 padding: '4px 12px', 
                 borderRadius: '20px',
-                border: '1px solid rgba(0,122,255,0.3)'
+                border: '1px solid #007aff'
               }}>{myServices.filter(app => app.status === 'En Lavado').length}</span>
             </div>
 
@@ -1279,7 +1279,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
                   <div style={{ display: 'inline-flex', animation: 'pulseBlue 2s infinite' }}>
                     <Droplets size={44} color="#007aff" style={{ marginBottom: '16px' }} />
                   </div>
-                  <p style={{ fontSize: '15px', color: '#007aff', fontWeight: '800', letterSpacing: '0.3px', textShadow: '0 0 10px rgba(0,122,255,0.3)' }}>
+                  <p style={{ fontSize: '15px', color: '#007aff', fontWeight: '800', letterSpacing: '0.3px', textShadow: '0 0 10px #007aff' }}>
                     Estación impecable y lista...
                   </p>
                   <p style={{ fontSize: '13px', color: 'var(--text-secondary)', marginTop: '6px', fontWeight: '600' }}>
@@ -1288,7 +1288,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
                 </div>
               ) : (
                 myServices.filter(app => app.status === 'En Lavado').map(app => (
-                  <div key={app.id} className="glass-card animate-slide-up" style={{ borderRadius: '28px', padding: '24px', border: '1px solid rgba(0, 122, 255, 0.25)', background: 'var(--bg-secondary)' }}>
+                  <div key={app.id} className="glass-card animate-slide-up" style={{ borderRadius: '28px', padding: '24px', border: '1px solid #333333', background: '#f5f5f5' }}>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '16px' }}>
                       <div>
                         <span style={{ fontSize: '10px', fontWeight: '900', color: '#007aff', textTransform: 'uppercase', letterSpacing: '1px' }}>Listo en Odontograma</span>
@@ -1299,7 +1299,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
                         {app.services?.included_items && app.services.included_items.length > 0 && (
                           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', marginTop: '8px' }}>
                             {app.services.included_items.map((item, idx) => (
-                              <span key={idx} style={{ fontSize: '10px', fontWeight: '800', color: item.toLowerCase().includes('lavado') ? '#007aff' : 'var(--text-secondary)', background: item.toLowerCase().includes('lavado') ? 'rgba(0,122,255,0.1)' : 'rgba(255,255,255,0.05)', padding: '3px 8px', borderRadius: '20px', border: item.toLowerCase().includes('lavado') ? '1px solid rgba(0,122,255,0.2)' : '1px solid rgba(0, 0, 0, 0.08)' }}>
+                              <span key={idx} style={{ fontSize: '10px', fontWeight: '800', color: item.toLowerCase().includes('lavado') ? '#007aff' : 'var(--text-secondary)', background: item.toLowerCase().includes('lavado') ? '#e8d4b020' : '#ffffff20', padding: '3px 8px', borderRadius: '20px', border: item.toLowerCase().includes('lavado') ? '1px solid rgba(0,122,255,0.2)' : '1px solid rgba(0, 0, 0, 0.08)' }}>
                                 {item.toLowerCase().includes('lavado') ? 'ðŸ’§' : 'âœ¦'} {item}
                               </span>
                             ))}
@@ -1369,13 +1369,13 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
                     <div style={{ display: 'flex', gap: '10px', marginBottom: '24px' }}>
                       <button 
                         onClick={() => { setActiveAppId(app.id); setAddMode('extra'); setShowAddModal(true); }}
-                        style={{ flex: 1, padding: '12px', borderRadius: '12px', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', color: '#111111', fontSize: '11px', fontWeight: '700', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px' }}
+                        style={{ flex: 1, padding: '12px', borderRadius: '12px', background: '#333333', border: '1px solid #333333', color: '#111111', fontSize: '11px', fontWeight: '700', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px' }}
                       >
                         <Plus size={14} color="var(--gold-primary)" /> Extra
                       </button>
                       <button 
                         onClick={() => { setActiveAppId(app.id); setAddMode('product'); setShowAddModal(true); }}
-                        style={{ flex: 1, padding: '12px', borderRadius: '12px', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', color: '#111111', fontSize: '11px', fontWeight: '700', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px' }}
+                        style={{ flex: 1, padding: '12px', borderRadius: '12px', background: '#333333', border: '1px solid #333333', color: '#111111', fontSize: '11px', fontWeight: '700', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px' }}
                       >
                         <ShoppingBag size={14} color="var(--gold-primary)" /> Producto
                       </button>
@@ -1397,8 +1397,8 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
                           justifyContent: 'center',
                           gap: '8px',
                           cursor: 'pointer',
-                          background: 'rgba(0, 0, 0, 0.04)',
-                          border: '1px solid rgba(0, 0, 0, 0.08)',
+                          background: '#333333',
+                          border: '1px solid #333333',
                           color: 'var(--text-secondary)'
                         }}
                       >
@@ -1422,7 +1422,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
                           background: 'linear-gradient(135deg, #007aff, #00d2ff)',
                           border: 'none',
                           color: '#111111',
-                          boxShadow: '0 4px 15px rgba(0,122,255,0.3)'
+                          boxShadow: '0 4px 15px #007aff'
                         }}
                       >
                         <CheckCircle size={16} /> COMPLETAR Y ENVIAR A CAJA
@@ -1583,7 +1583,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
                                 gap: '8px',
                                 width: 'fit-content',
                                 maxWidth: '100%',
-                                background: 'rgba(0, 0, 0, 0.04)',
+                                background: '#333333',
                                 padding: '4px 8px 4px 12px',
                                 borderRadius: '10px',
                                 border: '1px solid rgba(0, 0, 0, 0.08)'
@@ -1678,7 +1678,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
                           {app.clients?.work_gallery?.find(p => p.type === 'Antes' && p.service_id === app.id) ? (
                             <>
                                <img loading="lazy" src={app.clients.work_gallery.find(p => p.type === 'Antes' && p.service_id === app.id).url} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                              <div style={{ position: 'absolute', top: '8px', left: '8px', background: 'rgba(255, 255, 255, 0.9)', backdropFilter: 'blur(8px)', padding: '4px 10px', borderRadius: '8px', fontSize: '9px', fontWeight: '900', color: 'var(--gold-primary)', border: '1px solid rgba(0, 0, 0, 0.08)', letterSpacing: '0.5px' }}>ANTES</div>
+                              <div style={{ position: 'absolute', top: '8px', left: '8px', background: '#ffffff', backdropFilter: 'none', padding: '4px 10px', borderRadius: '8px', fontSize: '9px', fontWeight: '900', color: 'var(--gold-primary)', border: '1px solid #333333', letterSpacing: '0.5px' }}>ANTES</div>
                               <button 
                                 onClick={(e) => { e.stopPropagation(); handleDeletePhoto(app.id, 'Antes'); }}
                                 style={{ 
@@ -1686,7 +1686,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
                                   top: '8px', 
                                   right: '8px', 
                                   background: 'rgba(255, 69, 58, 0.25)', 
-                                  backdropFilter: 'blur(8px)', 
+                                  backdropFilter: 'none', 
                                   border: '1px solid rgba(255, 69, 58, 0.4)', 
                                   color: '#ff453a', 
                                   borderRadius: '50%', 
@@ -1704,7 +1704,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
                             </>
                           ) : (
                             <>
-                              <div style={{ background: 'rgba(0, 0, 0, 0.04)', padding: '10px', borderRadius: '50%', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
+                              <div style={{ background: '#333333', padding: '10px', borderRadius: '50%', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
                                 <Camera size={20} color="var(--gold-primary)" />
                               </div>
                               <span style={{ fontSize: '9px', fontWeight: '900', color: 'var(--text-muted)', letterSpacing: '1px' }}>FOTO ANTES</span>
@@ -1735,7 +1735,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
                           {app.clients?.work_gallery?.find(p => p.type === 'Después' && p.service_id === app.id) ? (
                             <>
                                <img loading="lazy" src={app.clients.work_gallery.find(p => p.type === 'Después' && p.service_id === app.id).url} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                              <div style={{ position: 'absolute', top: '8px', left: '8px', background: 'rgba(255, 255, 255, 0.9)', backdropFilter: 'blur(8px)', padding: '4px 10px', borderRadius: '8px', fontSize: '9px', fontWeight: '900', color: '#32d74b', border: '1px solid rgba(50,215,75,0.3)', letterSpacing: '0.5px' }}>DESPUÉS</div>
+                              <div style={{ position: 'absolute', top: '8px', left: '8px', background: '#ffffff', backdropFilter: 'none', padding: '4px 10px', borderRadius: '8px', fontSize: '9px', fontWeight: '900', color: '#32d74b', border: '1px solid rgba(50,215,75,0.3)', letterSpacing: '0.5px' }}>DESPUÉS</div>
                               <button 
                                 onClick={(e) => { e.stopPropagation(); handleDeletePhoto(app.id, 'Después'); }}
                                 style={{ 
@@ -1743,7 +1743,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
                                   top: '8px', 
                                   right: '8px', 
                                   background: 'rgba(255, 69, 58, 0.25)', 
-                                  backdropFilter: 'blur(8px)', 
+                                  backdropFilter: 'none', 
                                   border: '1px solid rgba(255, 69, 58, 0.4)', 
                                   color: '#ff453a', 
                                   borderRadius: '50%', 
@@ -1761,7 +1761,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
                             </>
                           ) : (
                             <>
-                              <div style={{ background: 'rgba(0, 0, 0, 0.04)', padding: '10px', borderRadius: '50%', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
+                              <div style={{ background: '#333333', padding: '10px', borderRadius: '50%', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
                                 <Camera size={20} color="var(--gold-primary)" />
                               </div>
                               <span style={{ fontSize: '9px', fontWeight: '900', color: 'var(--text-muted)', letterSpacing: '1px' }}>FOTO DESPUÉS</span>
@@ -1772,7 +1772,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
                       {/* Beverage selection & Notes */}
                       {(app.beverage_selection || app.notes) && (
                         <div className="barber-client-context" style={{ 
-                          background: 'rgba(0, 0, 0, 0.04)', 
+                          background: '#333333', 
                           borderRadius: '16px', 
                           padding: '12px 16px', 
                           marginBottom: '16px', 
@@ -1867,8 +1867,8 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
                             flex: 1,
                             padding: '14px',
                             borderRadius: '16px',
-                            background: 'rgba(0, 0, 0, 0.04)',
-                            border: '1px solid rgba(0, 0, 0, 0.08)',
+                            background: '#333333',
+                            border: '1px solid #333333',
                             color: '#111111',
                             fontSize: '12px',
                             fontWeight: '800',
@@ -1889,8 +1889,8 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
                             flex: 1,
                             padding: '14px',
                             borderRadius: '16px',
-                            background: 'rgba(0, 0, 0, 0.04)',
-                            border: '1px solid rgba(0, 0, 0, 0.08)',
+                            background: '#333333',
+                            border: '1px solid #333333',
                             color: '#111111',
                             fontSize: '12px',
                             fontWeight: '800',
@@ -1911,8 +1911,8 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
                             flex: 1, 
                             padding: '14px', 
                             borderRadius: '16px', 
-                            background: 'rgba(0, 0, 0, 0.04)', 
-                            border: '1px solid rgba(0, 0, 0, 0.08)', 
+                            background: '#333333', 
+                            border: '1px solid #333333', 
                             color: '#111111', 
                             fontSize: '12px', 
                             fontWeight: '800', 
@@ -1967,9 +1967,9 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
                               padding: '0 10px',
                               cursor: 'pointer',
                               background: includesWashing ? 'linear-gradient(135deg, #007aff, #00d2ff)' : 'rgba(0,122,255,0.15)',
-                              border: includesWashing ? 'none' : '1px solid rgba(0,122,255,0.3)',
+                              border: includesWashing ? 'none' : '1px solid #007aff',
                               color: includesWashing ? 'white' : '#007aff',
-                              boxShadow: includesWashing ? '0 4px 15px rgba(0,122,255,0.3)' : 'none',
+                              boxShadow: includesWashing ? '0 4px 15px #007aff' : 'none',
                               transition: 'background 0.2s, color 0.2s, box-shadow 0.2s',
                               animation: includesWashing ? 'pulse-blue 2s infinite' : 'none'
                             }}
@@ -2009,7 +2009,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
                             onClick={() => handlePullFromWashGroup(group)}
                             disabled={loading}
                             className="hover-item"
-                            style={{ flex: 1, height: '56px', borderRadius: '16px', backgroundColor: 'rgba(0, 0, 0, 0.04)', color: 'var(--text-secondary)', border: '1px solid rgba(0, 0, 0, 0.08)', fontWeight: '800', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', cursor: 'pointer' }}
+                            style={{ flex: 1, height: '56px', borderRadius: '16px', backgroundColor: 'rgba(0, 0, 0, 0.04)', color: 'var(--text-secondary)', border: '1px solid #333333', fontWeight: '800', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', cursor: 'pointer' }}
                           >
                             <RefreshCw size={16} /> VOLVER A SILLA
                           </button>
@@ -2234,7 +2234,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
                         <div style={{ 
                           width: '40px', height: '40px', borderRadius: '12px', 
                           background: isAssistant ? 'linear-gradient(135deg, rgba(0,122,255,0.2), rgba(0,122,255,0.05))' : 'linear-gradient(135deg, rgba(50,215,75,0.2), rgba(50,215,75,0.05))', 
-                          border: isAssistant ? '1px solid rgba(0,122,255,0.3)' : '1px solid rgba(50,215,75,0.3)',
+                          border: isAssistant ? '1px solid #007aff' : '1px solid #32d74b',
                           display: 'flex', alignItems: 'center', justifyContent: 'center',
                           boxShadow: isAssistant ? 'inset 0 0 10px rgba(0,122,255,0.2)' : 'inset 0 0 10px rgba(50,215,75,0.2)'
                         }}>
@@ -2389,7 +2389,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
                   </div>
                   <button 
                     onClick={() => setSelectedCompletedApp(null)}
-                    style={{ background: 'rgba(0, 0, 0, 0.04)', border: 'none', color: '#111111', width: '36px', height: '36px', borderRadius: '10px', cursor: 'pointer', fontSize: '18px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+                    style={{ background: '#333333', border: 'none', color: '#111111', width: '36px', height: '36px', borderRadius: '10px', cursor: 'pointer', fontSize: '18px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
                   >
                     âœ•
                   </button>
@@ -2408,7 +2408,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
                 {/* Service Info */}
                 <div style={{ marginBottom: '20px' }}>
                   <div style={{ fontSize: '10px', fontWeight: '900', color: 'var(--gold-primary)', letterSpacing: '1.5px', textTransform: 'uppercase', marginBottom: '12px' }}>SERVICIO REALIZADO</div>
-                  <div style={{ background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', borderRadius: '16px', padding: '16px' }}>
+                  <div style={{ background: '#333333', border: '1px solid #333333', borderRadius: '16px', padding: '16px' }}>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                       <div>
                         <div style={{ fontSize: '16px', fontWeight: '800', color: '#111111' }}>{app.services?.name}</div>
@@ -2436,7 +2436,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
                     <div style={{ fontSize: '10px', fontWeight: '900', color: 'var(--text-secondary)', letterSpacing: '1.5px', textTransform: 'uppercase', marginBottom: '10px' }}>EXTRAS AGREGADOS</div>
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
                       {app.appointment_extras.map(ex => (
-                        <div key={ex.id} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'rgba(0, 0, 0, 0.04)', padding: '12px 16px', borderRadius: '12px', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
+                        <div key={ex.id} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: '#333333', padding: '12px 16px', borderRadius: '12px', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
                           <span style={{ fontSize: '13px', fontWeight: '700', color: '#111111' }}>{ex.service_extras?.name}</span>
                           <span style={{ fontSize: '13px', fontWeight: '800', color: 'var(--gold-primary)' }}>+${Number(ex.price).toFixed(2)}</span>
                         </div>
@@ -2451,7 +2451,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
                     <div style={{ fontSize: '10px', fontWeight: '900', color: 'var(--text-secondary)', letterSpacing: '1.5px', textTransform: 'uppercase', marginBottom: '10px' }}>PRODUCTOS VENDIDOS</div>
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
                       {app.appointment_products.map(pr => (
-                        <div key={pr.id} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'rgba(0, 0, 0, 0.04)', padding: '12px 16px', borderRadius: '12px', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
+                        <div key={pr.id} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: '#333333', padding: '12px 16px', borderRadius: '12px', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
                           <div>
                             <span style={{ fontSize: '13px', fontWeight: '700', color: '#111111' }}>{pr.inventory?.name}</span>
                             <span style={{ fontSize: '11px', color: 'var(--text-muted)', marginLeft: '8px' }}>x{pr.quantity}</span>
@@ -2471,13 +2471,13 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
                       {beforePhoto && (
                         <div style={{ borderRadius: '14px', overflow: 'hidden', position: 'relative', aspectRatio: '1' }}>
                            <img loading="lazy" src={beforePhoto.url} alt="Antes" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                          <div style={{ position: 'absolute', bottom: '8px', left: '8px', background: 'rgba(255, 255, 255, 0.9)', padding: '4px 10px', borderRadius: '8px', fontSize: '10px', fontWeight: '800', color: '#111111' }}>ANTES</div>
+                          <div style={{ position: 'absolute', bottom: '8px', left: '8px', background: '#ffffff', padding: '4px 10px', borderRadius: '8px', fontSize: '10px', fontWeight: '800', color: '#111111' }}>ANTES</div>
                         </div>
                       )}
                       {afterPhoto && (
                         <div style={{ borderRadius: '14px', overflow: 'hidden', position: 'relative', aspectRatio: '1' }}>
                            <img loading="lazy" src={afterPhoto.url} alt="Después" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                          <div style={{ position: 'absolute', bottom: '8px', left: '8px', background: 'rgba(255, 255, 255, 0.9)', padding: '4px 10px', borderRadius: '8px', fontSize: '10px', fontWeight: '800', color: '#32d74b' }}>DESPUÉS</div>
+                          <div style={{ position: 'absolute', bottom: '8px', left: '8px', background: '#ffffff', padding: '4px 10px', borderRadius: '8px', fontSize: '10px', fontWeight: '800', color: '#32d74b' }}>DESPUÉS</div>
                         </div>
                       )}
                     </div>
@@ -2488,15 +2488,15 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
                 <div style={{ marginBottom: '20px' }}>
                   <div style={{ fontSize: '10px', fontWeight: '900', color: 'var(--text-secondary)', letterSpacing: '1.5px', textTransform: 'uppercase', marginBottom: '10px' }}>TIEMPOS</div>
                   <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr)', gap: '10px' }}>
-                    <div style={{ background: 'rgba(0, 0, 0, 0.04)', padding: '12px', borderRadius: '12px', textAlign: 'center' }}>
+                    <div style={{ background: '#333333', padding: '12px', borderRadius: '12px', textAlign: 'center' }}>
                       <div style={{ fontSize: '10px', color: 'var(--text-muted)', fontWeight: '700', marginBottom: '4px' }}>INICIO</div>
                       <div style={{ fontSize: '14px', fontWeight: '800', color: '#111111' }}>{startedTime}</div>
                     </div>
-                    <div style={{ background: 'rgba(0, 0, 0, 0.04)', padding: '12px', borderRadius: '12px', textAlign: 'center' }}>
+                    <div style={{ background: '#333333', padding: '12px', borderRadius: '12px', textAlign: 'center' }}>
                       <div style={{ fontSize: '10px', color: 'var(--text-muted)', fontWeight: '700', marginBottom: '4px' }}>FIN</div>
                       <div style={{ fontSize: '14px', fontWeight: '800', color: '#111111' }}>{completedTime}</div>
                     </div>
-                    <div style={{ background: 'rgba(0, 0, 0, 0.04)', padding: '12px', borderRadius: '12px', textAlign: 'center', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
+                    <div style={{ background: '#333333', padding: '12px', borderRadius: '12px', textAlign: 'center', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
                       <div style={{ fontSize: '10px', color: 'var(--gold-primary)', fontWeight: '700', marginBottom: '4px' }}>DURACIÓN</div>
                       <div style={{ fontSize: '14px', fontWeight: '900', color: 'var(--gold-primary)' }}>{durationMin > 0 ? `${durationMin} min` : '—'}</div>
                     </div>

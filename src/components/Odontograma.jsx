@@ -438,7 +438,7 @@ export default function Odontograma({ value, onChange }) {
             style={{
               ...styles.condBtn,
               borderColor: eraser ? '#e8d4b0' : '#333',
-              background: eraser ? 'rgba(232,212,176,0.15)' : '#2a2a2a',
+              background: eraser ? '#e8d4b015' : '#2a2a2a',
               color: eraser ? '#e8d4b0' : '#e8d4b0'
             }}
           >
@@ -492,7 +492,7 @@ export default function Odontograma({ value, onChange }) {
             y1="6"
             x2={MID_X}
             y2="270"
-            stroke="rgba(232,212,176,0.84)"
+            stroke="#e8d4b0"
             strokeDasharray="4 3"
             strokeWidth="1"
           />
@@ -698,6 +698,6 @@ const styles = {
   quadRow: { display: 'flex', flexWrap: 'wrap', gap: '8px', marginTop: '8px' },
   quadBtn: {
     padding: '6px 10px', borderRadius: '8px', border: '1px dashed #333',
-    background: 'transparent', color: '#888', fontSize: '11px', fontWeight: '700', cursor: 'pointer'
+    background: '#333333', color: '#888', fontSize: '11px', fontWeight: '700', cursor: 'pointer'
   }
 };
