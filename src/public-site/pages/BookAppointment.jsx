@@ -87,8 +87,7 @@ const openCategoryForService = (service) => {
 const staffMatchesArtistFilter = (member, filter) => {
   if (!isBookableStaff(member)) return false;
   if (filter === 'Odontologos') return isDentistaBookableStaff(member);
-  if (filter === '') return isTattooBookableStaff(member);
-  return true;
+  return isDentistaBookableStaff(member);
 };
 
 // Import Mural Media Assets
@@ -713,7 +712,7 @@ const videoRef = useRef(null);
   const [showBackToTop, setShowBackToTop] = useState(false);
   const progressRingRef = useRef(null);
   const [showExperienceModal, setShowExperienceModal] = useState(false);
-  const [artistFilter, setArtistFilter] = useState('todos');
+  const [artistFilter, setArtistFilter] = useState('Odontologos');
 
   const [muralVideoRef] = useLazyMount('600px 0px');
   const [cafeVideoRef] = useLazyMount('600px 0px');
@@ -2802,42 +2801,12 @@ const videoRef = useRef(null);
                 
               {/* Categorías de Equipo con estilo de Barbería Premium */}
               <FadeInUp delay={0.1} className="relative flex items-center p-1.5 bg-white border border-[#d9c08f]/20 rounded-full w-[310px] sm:w-[380px] md:w-[460px] mx-auto shadow-[0_10px_30px_rgba(0,0,0,0.06)] md:backdrop-blur-md backdrop-blur-sm">
-                {/* Fondo deslizante con efecto de Barber Pole animado en dorado */}
-                <div 
-                  className="absolute top-[8%] h-[84%] w-[31%] rounded-full transition-all duration-300 ease-[cubic-bezier(0.25,1,0.5,1)] barber-pole-glow" 
-                  style={{ 
-                    left: artistFilter === 'todos' ? '1.5%' : artistFilter === 'Odontologos' ? '34.5%' : '67.5%' 
-                  }} 
-                />
-                
-                <button 
-                  onClick={() => { setArtistFilter('todos'); setBarberStartIndex(0); }}
-                  className={`relative w-1/3 py-3 rounded-full text-[11px] sm:text-sm uppercase tracking-widest font-black transition-all duration-300 z-10 flex items-center justify-center gap-1.5 cursor-pointer active:scale-95 ${
-                    artistFilter === 'todos' ? 'text-black font-extrabold' : 'text-[#64748b] hover:text-[#0f172a]'
-                  }`}
-                >
-                  <Users size={15} className={artistFilter === 'todos' ? 'animate-pulse' : ''} />
-                  <span>Todos</span>
-                </button>
-                
-                <button 
+                  <button 
                   onClick={() => { setArtistFilter('Odontologos'); setBarberStartIndex(0); }}
-                  className={`relative w-1/3 py-3 rounded-full text-[11px] sm:text-sm uppercase tracking-widest font-black transition-all duration-300 z-10 flex items-center justify-center gap-1.5 cursor-pointer active:scale-95 ${
-                    artistFilter === 'Odontologos' ? 'text-black font-extrabold' : 'text-[#64748b] hover:text-[#0f172a]'
-                  }`}
+                  className={`relative w-full py-3 rounded-full text-[11px] sm:text-sm uppercase tracking-widest font-black transition-all duration-300 z-10 flex items-center justify-center gap-1.5 cursor-pointer active:scale-95 text-black font-extrabold`}
                 >
-                  <HeartPulse size={15} className={artistFilter === 'Odontologos' ? 'animate-spin-slow' : ''} />
+                  <HeartPulse size={15} className="animate-spin-slow" />
                   <span>Odontólogos</span>
-                </button>
-                
-                <button 
-                  onClick={() => { setArtistFilter(''); setBarberStartIndex(0); }}
-                  className={`relative w-1/3 py-3 rounded-full text-[11px] sm:text-sm uppercase tracking-widest font-black transition-all duration-300 z-10 flex items-center justify-center gap-1.5 cursor-pointer active:scale-95 ${
-                    artistFilter === '' ? 'text-black font-extrabold' : 'text-[#64748b] hover:text-[#0f172a]'
-                  }`}
-                >
-                  <PenTool size={13} className={artistFilter === '' ? 'animate-bounce' : ''} />
-                  <span></span>
                 </button>
               </FadeInUp>
 
