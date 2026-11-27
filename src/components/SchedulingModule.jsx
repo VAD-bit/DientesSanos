@@ -777,7 +777,7 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
           text-align: left;
         }
         .premium-filter-btn:hover {
-          color: white;
+          color: #111111;
           background: rgba(0, 0, 0, 0.04);
         }
         .premium-filter-btn.active {
@@ -806,13 +806,13 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
           flex: 1;
           background: none;
           border: none;
-          color: white;
+          color: #111111;
           font-size: 14px;
           font-weight: 700;
           outline: none;
         }
         .premium-search-input::placeholder {
-          color: rgba(255, 255, 255, 0.35);
+          color: rgba(17, 17, 17, 0.5);
         }
         .appointment-list-wrapper {
           background: rgba(18, 18, 18, 0.2);
@@ -1007,7 +1007,7 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
           border-radius: 15px;
           outline: none;
           background: rgba(0, 0, 0, 0.04);
-          color: white;
+          color: #111111;
           font-size: 12px;
           font-weight: 650;
           transition: border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
@@ -1061,7 +1061,7 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
           gap: 9px;
           min-width: 210px;
           padding: 0 8px;
-          color: white;
+          color: #111111;
           font-size: 14px;
           font-weight: 900;
           text-transform: capitalize;
@@ -1086,7 +1086,7 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
           border: 1px solid rgba(0, 0, 0, 0.08);
           border-radius: 11px;
           background: rgba(0, 0, 0, 0.04);
-          color: white;
+          color: #111111;
           cursor: pointer;
         }
         .agenda-view-select-panda {
@@ -1116,7 +1116,7 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
           box-sizing: border-box;
           padding: 8px 11px !important;
           border-radius: 8px !important;
-          color: rgba(255,255,255,0.72) !important;
+          color: rgba(17,17,17,0.65) !important;
           font-size: 12px !important;
           font-weight: 720 !important;
           line-height: 18px;
@@ -1129,7 +1129,7 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
         }
         .agenda-status-premium-dropdown .panda-option:hover {
           background: rgba(0, 0, 0, 0.04) !important;
-          color: white !important;
+          color: #111111 !important;
           transform: translateX(2px) !important;
         }
         .agenda-view-premium-dropdown {
@@ -1145,7 +1145,7 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
           box-sizing: border-box;
           padding: 8px 11px !important;
           border-radius: 8px !important;
-          color: rgba(255,255,255,0.72) !important;
+          color: rgba(17,17,17,0.65) !important;
           font-size: 12px !important;
           font-weight: 720 !important;
           line-height: 18px;
@@ -1157,7 +1157,7 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
         }
         .agenda-view-premium-dropdown .panda-option:hover {
           background: rgba(0, 0, 0, 0.04) !important;
-          color: white !important;
+          color: #111111 !important;
           transform: translateX(2px) !important;
         }
         @media (min-width: 601px) {
@@ -1461,13 +1461,13 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
           border-radius: 12px;
           border: none;
           background: transparent;
-          color: rgba(255, 255, 255, 0.6);
+          color: rgba(17, 17, 17, 0.7);
           cursor: pointer;
           transition: all 0.2s ease;
           min-width: 36px;
         }
         .ribbon-day-btn:hover {
-          color: white;
+          color: #111111;
           background: rgba(0, 0, 0, 0.04);
         }
         .ribbon-day-btn.active {
@@ -1517,14 +1517,14 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
           justify-content: flex-start;
           gap: 14px;
           margin: 0 0 16px;
-          color: rgba(255,255,255,0.52);
+          color: rgba(17,17,17,0.6);
           font-size: 11px;
           font-weight: 800;
           text-transform: uppercase;
           letter-spacing: 0.4px;
         }
         .mobile-day-summary strong {
-          color: white;
+          color: #111111;
           font-size: 14px;
         }
         .mobile-day-summary-divider {
@@ -1545,14 +1545,14 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
           border-radius: 12px;
           border: 1px solid rgba(0, 0, 0, 0.08);
           background: rgba(0, 0, 0, 0.04);
-          color: rgba(255,255,255,0.56);
+          color: rgba(17,17,17,0.6);
           font-size: 11px;
           font-weight: 800;
           cursor: pointer;
         }
         .mobile-status-filter strong {
           margin-left: 4px;
-          color: rgba(255,255,255,0.85);
+          color: rgba(17,17,17,0.8);
         }
         .mobile-status-filter.active {
           color: #121212;
@@ -1708,14 +1708,14 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
             justify-content: space-between;
             gap: 8px;
             margin: 0 2px 14px;
-            color: rgba(255,255,255,0.52);
+            color: rgba(17,17,17,0.6);
             font-size: 10px;
             font-weight: 800;
             text-transform: uppercase;
             letter-spacing: 0.35px;
           }
           .mobile-day-summary strong {
-            color: white;
+            color: #111111;
             font-size: 12px;
           }
           .mobile-day-summary-divider {
@@ -1735,14 +1735,14 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
             border-radius: 11px;
             border: 1px solid rgba(0, 0, 0, 0.08);
             background: rgba(0, 0, 0, 0.04);
-            color: rgba(255,255,255,0.52);
+            color: rgba(17,17,17,0.6);
             font-size: 10px;
             font-weight: 800;
             cursor: pointer;
           }
           .mobile-status-filter strong {
             margin-left: 3px;
-            color: rgba(255,255,255,0.82);
+            color: rgba(17,17,17,0.8);
           }
           .mobile-status-filter.active {
             color: #121212;
@@ -1826,7 +1826,7 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
             font-size: 11px !important;
             letter-spacing: 0.7px !important;
             text-transform: uppercase;
-            color: rgba(255,255,255,0.72) !important;
+            color: rgba(17,17,17,0.65) !important;
           }
           .agenda-group-count {
             padding: 2px 6px !important;
@@ -2000,7 +2000,7 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
         }
         .agenda-summary-copy small {
           overflow: hidden;
-          color: rgba(255,255,255,0.43);
+          color: rgba(17,17,17,0.5);
           font-size: 9px;
           font-weight: 800;
           letter-spacing: 0.55px;
@@ -2010,7 +2010,7 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
           white-space: nowrap;
         }
         .mobile-day-summary .agenda-summary-copy strong {
-          color: white;
+          color: #111111;
           font-family: 'Outfit', var(--font-sans), system-ui;
           font-size: 18px;
           font-weight: 950;
@@ -2143,7 +2143,7 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
             border: 1px solid rgba(0, 0, 0, 0.08);
             border-radius: 12px;
             background: rgba(0, 0, 0, 0.04);
-            color: rgba(255,255,255,0.62);
+            color: rgba(17,17,17,0.6);
           }
           .mobile-agenda-search-toggle.is-active {
             border-color: rgba(17, 17, 17,0.3);
@@ -2194,7 +2194,7 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
             border: 0;
             border-radius: 8px;
             background: rgba(0, 0, 0, 0.04);
-            color: rgba(255,255,255,0.6);
+            color: rgba(17,17,17,0.6);
             transform: translateY(-50%);
           }
         }
@@ -2287,7 +2287,7 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
         }
         .period-calendar-weekdays span {
           padding: 12px 8px;
-          color: rgba(255,255,255,0.4);
+          color: rgba(17,17,17,0.5);
           font-size: 9px;
           font-weight: 850;
           letter-spacing: 0.7px;
@@ -2329,7 +2329,7 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
           padding: 0;
           border: 0;
           background: transparent;
-          color: rgba(255,255,255,0.72);
+          color: rgba(17,17,17,0.65);
           text-align: left;
           cursor: pointer;
         }
@@ -2348,7 +2348,7 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
           height: 27px;
           flex-shrink: 0;
           border-radius: 9px;
-          color: white;
+          color: #111111;
           font-size: 11px;
           font-weight: 900;
         }
@@ -2358,7 +2358,7 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
           box-shadow: 0 5px 14px rgba(17, 17, 17,0.2);
         }
         .period-day-count {
-          color: rgba(255,255,255,0.32);
+          color: rgba(17,17,17,0.5);
           font-size: 8px;
           font-weight: 800;
           white-space: nowrap;
@@ -2378,7 +2378,7 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
           border-left: 2px solid var(--event-color, var(--gold-primary));
           border-radius: 9px;
           background: rgba(0, 0, 0, 0.04);
-          color: white;
+          color: #111111;
           cursor: pointer;
           text-align: left;
           box-sizing: border-box;
@@ -2482,7 +2482,7 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
           display: block;
           margin-top: 5px;
           overflow: hidden;
-          color: rgba(255,255,255,0.48);
+          color: rgba(17,17,17,0.6);
           font-size: 9px;
           font-weight: 650;
           text-overflow: ellipsis;
@@ -2494,7 +2494,7 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
           justify-content: space-between;
           gap: 8px;
           margin-top: 7px;
-          color: rgba(255,255,255,0.34);
+          color: rgba(17,17,17,0.5);
           font-size: 8px;
           font-weight: 750;
         }
@@ -2515,7 +2515,7 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
         }
         .period-day-empty {
           padding: 10px 2px;
-          color: rgba(255,255,255,0.18);
+          color: rgba(17,17,17,0.5);
           font-size: 9px;
           font-weight: 700;
         }
@@ -2603,14 +2603,14 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
           min-height: 48px;
           padding: 0 18px 0 88px;
           border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-          color: rgba(255,255,255,0.46);
+          color: rgba(17,17,17,0.5);
           font-size: 10px;
           font-weight: 800;
           letter-spacing: 0.7px;
           text-transform: uppercase;
         }
         .desktop-day-calendar-header strong {
-          color: rgba(255,255,255,0.78);
+          color: rgba(17,17,17,0.8);
           font-size: 11px;
         }
         .desktop-day-time-grid {
@@ -2629,7 +2629,7 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
           top: -7px;
           left: 10px;
           width: 66px;
-          color: rgba(255,255,255,0.38);
+          color: rgba(17,17,17,0.5);
           font-size: 10px;
           font-weight: 750;
           text-align: right;
@@ -2662,7 +2662,7 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
           border-radius: 12px;
           background: linear-gradient(145deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9));
           box-shadow: 0 8px 22px rgba(0,0,0,0.24);
-          color: white;
+          color: #111111;
           cursor: pointer;
           pointer-events: auto;
           box-sizing: border-box;
@@ -2698,7 +2698,7 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
         .desktop-calendar-event-service {
           margin-top: 5px;
           overflow: hidden;
-          color: rgba(255,255,255,0.54);
+          color: rgba(17,17,17,0.6);
           font-size: 10px;
           font-weight: 650;
           text-overflow: ellipsis;
@@ -2710,7 +2710,7 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
           justify-content: space-between;
           gap: 8px;
           margin-top: 7px;
-          color: rgba(255,255,255,0.4);
+          color: rgba(17,17,17,0.5);
           font-size: 9px;
           font-weight: 750;
         }
@@ -2771,7 +2771,7 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
           z-index: 10;
           display: grid;
           place-items: center;
-          color: rgba(255,255,255,0.48);
+          color: rgba(17,17,17,0.5);
           background: #ffffff;
           box-shadow: 8px 0 18px rgba(0,0,0,0.34);
           font-size: 9px;
@@ -2815,7 +2815,7 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
         }
         .admin-resource-person-copy strong {
           overflow: hidden;
-          color: white;
+          color: #111111;
           font-size: 12px;
           font-weight: 900;
           text-overflow: ellipsis;
@@ -2823,7 +2823,7 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
         }
         .admin-resource-person-copy span {
           overflow: hidden;
-          color: rgba(255,255,255,0.38);
+          color: rgba(17,17,17,0.5);
           font-size: 9px;
           font-weight: 750;
           text-overflow: ellipsis;
@@ -2869,7 +2869,7 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
           position: absolute;
           top: -7px;
           right: 10px;
-          color: rgba(255,255,255,0.36);
+          color: rgba(17,17,17,0.5);
           font-size: 9px;
           font-weight: 750;
           white-space: nowrap;
@@ -2891,7 +2891,7 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
           border-radius: 11px;
           background: linear-gradient(145deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9));
           box-shadow: 0 7px 18px rgba(0,0,0,0.25);
-          color: white;
+          color: #111111;
           cursor: pointer;
           box-sizing: border-box;
         }
@@ -2925,7 +2925,7 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
           display: block;
           margin-top: 4px;
           overflow: hidden;
-          color: rgba(255,255,255,0.52);
+          color: rgba(17,17,17,0.6);
           font-size: 9px;
           font-weight: 650;
           text-overflow: ellipsis;
@@ -2936,7 +2936,7 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
           justify-content: space-between;
           gap: 8px;
           margin-top: 5px;
-          color: rgba(255,255,255,0.37);
+          color: rgba(17,17,17,0.5);
           font-size: 8px;
           font-weight: 750;
         }
@@ -2960,7 +2960,7 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
           padding: 9px;
           border: 1px dashed rgba(0, 0, 0, 0.08);
           border-radius: 10px;
-          color: rgba(255,255,255,0.25);
+          color: rgba(17,17,17,0.5);
           font-size: 9px;
           font-weight: 700;
           text-align: center;
@@ -2993,7 +2993,7 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
           border: 1px solid rgba(0, 0, 0, 0.08);
           border-radius: 15px;
           background: rgba(0, 0, 0, 0.04);
-          color: white;
+          color: #111111;
           scroll-snap-align: start;
           text-align: left;
           transition: border-color 160ms ease, background 160ms ease, transform 160ms ease;
@@ -3029,7 +3029,7 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
           font-weight: 900;
         }
         .mobile-resource-staff-button-copy span {
-          color: rgba(255,255,255,0.42);
+          color: rgba(17,17,17,0.5);
           font-size: 8px;
           font-weight: 750;
         }
@@ -3042,12 +3042,12 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
           padding: 0 2px;
         }
         .mobile-resource-summary strong {
-          color: rgba(255,255,255,0.82);
+          color: rgba(17,17,17,0.8);
           font-size: 11px;
           font-weight: 900;
         }
         .mobile-resource-summary span {
-          color: rgba(255,255,255,0.42);
+          color: rgba(17,17,17,0.5);
           font-size: 8px;
           font-weight: 750;
           white-space: nowrap;
@@ -3074,14 +3074,14 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
           background: rgba(255, 255, 255, 0.9);
         }
         .mobile-resource-calendar-header strong {
-          color: rgba(255,255,255,0.78);
+          color: rgba(17,17,17,0.8);
           font-size: 10px;
           font-weight: 900;
           letter-spacing: 0.35px;
           text-transform: uppercase;
         }
         .mobile-resource-calendar-header span {
-          color: rgba(255,255,255,0.38);
+          color: rgba(17,17,17,0.5);
           font-size: 8px;
           font-weight: 800;
           white-space: nowrap;
@@ -3208,7 +3208,7 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
                   subtitle: (member.role || 'Profesional').split('|')[0]
                 }))
               ]}
-              triggerStyle={{ height: '46px', boxSizing: 'border-box', padding: '0 10px 0 11px', border: '1px solid rgba(0, 0, 0, 0.08)', borderRadius: '15px', background: 'rgba(0, 0, 0, 0.04)', boxShadow: 'none', fontSize: '11px', fontWeight: 800, color: 'rgba(255,255,255,0.78)' }}
+              triggerStyle={{ height: '46px', boxSizing: 'border-box', padding: '0 10px 0 11px', border: '1px solid rgba(0, 0, 0, 0.08)', borderRadius: '15px', background: 'rgba(0, 0, 0, 0.04)', boxShadow: 'none', fontSize: '11px', fontWeight: 800, color: '#111111' }}
               dropdownClassName="agenda-view-premium-dropdown"
               menuStyle={{ background: 'var(--bg-secondary)', border: '1px solid rgba(17, 17, 17,0.22)', borderRadius: '14px', padding: '6px', boxShadow: '0 18px 48px rgba(0,0,0,0.7)' }}
             />
@@ -3222,7 +3222,7 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
               { value: 'pending', label: `Pendientes · ${pendingAppointmentsCount}` },
               { value: 'completed', label: `Listas · ${completedAppointmentsCount}` }
             ]}
-            triggerStyle={{ height: '46px', boxSizing: 'border-box', padding: '0 10px 0 12px', border: '1px solid rgba(0, 0, 0, 0.08)', borderRadius: '15px', background: 'rgba(0, 0, 0, 0.04)', boxShadow: 'none', fontSize: '11px', fontWeight: 800, color: 'rgba(255,255,255,0.78)' }}
+            triggerStyle={{ height: '46px', boxSizing: 'border-box', padding: '0 10px 0 12px', border: '1px solid rgba(0, 0, 0, 0.08)', borderRadius: '15px', background: 'rgba(0, 0, 0, 0.04)', boxShadow: 'none', fontSize: '11px', fontWeight: 800, color: '#111111' }}
             dropdownClassName="agenda-status-premium-dropdown"
             menuStyle={{ background: 'var(--bg-secondary)', border: '1px solid rgba(17, 17, 17,0.18)', borderRadius: '13px', padding: '5px', boxShadow: '0 14px 34px rgba(0,0,0,0.62)' }}
           />
@@ -3250,7 +3250,7 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
               value={filterType}
               onChange={setFilterType}
               options={AGENDA_VIEW_OPTIONS}
-              triggerStyle={{ height: '34px', boxSizing: 'border-box', padding: '0 9px 0 11px', border: '1px solid rgba(17, 17, 17,0.2)', borderRadius: '10px', background: 'rgba(0, 0, 0, 0.04)', boxShadow: 'none', fontSize: '11px', fontWeight: 820, color: 'rgba(255,255,255,0.82)' }}
+              triggerStyle={{ height: '34px', boxSizing: 'border-box', padding: '0 9px 0 11px', border: '1px solid rgba(17, 17, 17,0.2)', borderRadius: '10px', background: 'rgba(0, 0, 0, 0.04)', boxShadow: 'none', fontSize: '11px', fontWeight: 820, color: '#111111' }}
               dropdownClassName="agenda-view-premium-dropdown"
               menuStyle={{ background: 'var(--bg-secondary)', border: '1px solid rgba(17, 17, 17,0.22)', borderRadius: '14px', padding: '6px', boxShadow: '0 18px 48px rgba(0,0,0,0.7), 0 0 0 1px rgba(255,255,255,0.025)' }}
             />
@@ -3308,7 +3308,7 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
                   borderRadius: '12px', 
                   width: '38px', 
                   height: '38px', 
-                  color: showFullCalendar ? 'black' : 'white', 
+                  color: showFullCalendar ? 'black' : '#111111', 
                   cursor: 'pointer', 
                   display: 'flex', 
                   alignItems: 'center', 
@@ -3328,7 +3328,7 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
                 value={filterType}
                 onChange={setFilterType}
                 options={AGENDA_VIEW_OPTIONS}
-                triggerStyle={{ height: '34px', boxSizing: 'border-box', padding: '0 9px 0 11px', border: '1px solid rgba(17, 17, 17,0.2)', borderRadius: '10px', background: 'rgba(0, 0, 0, 0.04)', boxShadow: 'none', fontSize: '11px', fontWeight: 820, color: 'rgba(255,255,255,0.82)' }}
+                triggerStyle={{ height: '34px', boxSizing: 'border-box', padding: '0 9px 0 11px', border: '1px solid rgba(17, 17, 17,0.2)', borderRadius: '10px', background: 'rgba(0, 0, 0, 0.04)', boxShadow: 'none', fontSize: '11px', fontWeight: 820, color: '#111111' }}
                 dropdownClassName="agenda-view-premium-dropdown"
                 menuStyle={{ background: 'var(--bg-secondary)', border: '1px solid rgba(17, 17, 17,0.22)', borderRadius: '14px', padding: '6px', boxShadow: '0 18px 48px rgba(0,0,0,0.7), 0 0 0 1px rgba(255,255,255,0.025)' }}
               />
@@ -3442,7 +3442,7 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
                     subtitle: (member.role || 'Profesional').split('|')[0]
                   }))
                 ]}
-                triggerStyle={{ height: '42px', boxSizing: 'border-box', padding: '0 10px 0 13px', border: '1px solid rgba(17, 17, 17,0.16)', borderRadius: '12px', background: 'rgba(0, 0, 0, 0.04)', boxShadow: 'none', fontSize: '11px', fontWeight: 820, color: 'rgba(255,255,255,0.82)' }}
+                triggerStyle={{ height: '42px', boxSizing: 'border-box', padding: '0 10px 0 13px', border: '1px solid rgba(17, 17, 17,0.16)', borderRadius: '12px', background: 'rgba(0, 0, 0, 0.04)', boxShadow: 'none', fontSize: '11px', fontWeight: 820, color: '#111111' }}
                 dropdownClassName="agenda-view-premium-dropdown"
                 menuStyle={{ background: 'var(--bg-secondary)', border: '1px solid rgba(17, 17, 17,0.22)', borderRadius: '14px', padding: '6px', boxShadow: '0 18px 48px rgba(0,0,0,0.7)' }}
               />
@@ -3471,7 +3471,7 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
                     subtitle: (member.role || 'Profesional').split('|')[0]
                   }))
                 ]}
-                triggerStyle={{ height: '42px', boxSizing: 'border-box', padding: '0 8px 0 10px', border: '1px solid rgba(17, 17, 17,0.14)', borderRadius: '12px', background: 'rgba(0, 0, 0, 0.04)', boxShadow: 'none', fontSize: '10px', fontWeight: 820, color: 'rgba(255,255,255,0.8)' }}
+                triggerStyle={{ height: '42px', boxSizing: 'border-box', padding: '0 8px 0 10px', border: '1px solid rgba(17, 17, 17,0.14)', borderRadius: '12px', background: 'rgba(0, 0, 0, 0.04)', boxShadow: 'none', fontSize: '10px', fontWeight: 820, color: '#111111' }}
                 dropdownClassName="agenda-view-premium-dropdown"
                 menuStyle={{ background: 'var(--bg-secondary)', border: '1px solid rgba(17, 17, 17,0.22)', borderRadius: '14px', padding: '6px', boxShadow: '0 18px 48px rgba(0,0,0,0.7)' }}
               />
@@ -3485,7 +3485,7 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
                 { value: 'pending', label: `Pendientes · ${pendingAppointmentsCount}` },
                 { value: 'completed', label: `Listas · ${completedAppointmentsCount}` }
               ]}
-              triggerStyle={{ height: '42px', boxSizing: 'border-box', padding: '0 8px 0 10px', border: '1px solid rgba(0, 0, 0, 0.08)', borderRadius: '12px', background: 'rgba(0, 0, 0, 0.04)', boxShadow: 'none', fontSize: '10px', fontWeight: 800, color: 'rgba(255,255,255,0.76)' }}
+              triggerStyle={{ height: '42px', boxSizing: 'border-box', padding: '0 8px 0 10px', border: '1px solid rgba(0, 0, 0, 0.08)', borderRadius: '12px', background: 'rgba(0, 0, 0, 0.04)', boxShadow: 'none', fontSize: '10px', fontWeight: 800, color: '#111111' }}
               dropdownClassName="agenda-status-premium-dropdown"
               menuStyle={{ background: 'var(--bg-secondary)', border: '1px solid rgba(17, 17, 17,0.18)', borderRadius: '13px', padding: '5px', boxShadow: '0 14px 34px rgba(0,0,0,0.62)' }}
             />
@@ -3546,7 +3546,7 @@ const SchedulingModule = ({ isMobile, rates, openAddModal, onCloseAddModal }) =>
           {/* Spotlight Style Search Box */}
           <div className="agenda-search-shell" style={{ position: 'relative', marginBottom: '32px' }}>
             <div style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
-              <Search style={{ position: 'absolute', left: '20px', pointerEvents: 'none' }} size={22} color="rgba(255,255,255,0.4)" />
+              <Search style={{ position: 'absolute', left: '20px', pointerEvents: 'none' }} size={22} color="#111111" />
               <input 
                 type="text" 
                 placeholder="Buscar por nombre, cédula o teléfono..." 
@@ -4229,13 +4229,13 @@ return (
                     <h3 style={{ fontSize: '24px', fontWeight: '800', margin: 0, fontFamily: 'Outfit, sans-serif', color: '#111111', letterSpacing: '-0.5px' }}>
                       {editingApp ? 'Editar Cita' : 'Nueva Cita'}
                     </h3>
-                    <span style={{ fontSize: '13px', color: 'rgba(255,255,255,0.5)', fontWeight: '500' }}>
+                    <span style={{ fontSize: '13px', color: '#111111', fontWeight: '500' }}>
                       {editingApp ? 'Actualiza los detalles' : 'Agenda un nuevo servicio'}
                     </span>
                   </div>
                   <button 
                     onClick={() => { setShowAddModal(false); if (onCloseAddModal) onCloseAddModal(); }} 
-                    style={{ background: 'rgba(0, 0, 0, 0.04)', border: 'none', color: 'rgba(255,255,255,0.8)', cursor: 'pointer', width: '36px', height: '36px', borderRadius: '18px', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'all 0.2s', backdropFilter: 'blur(10px)' }}
+                    style={{ background: 'rgba(0, 0, 0, 0.04)', border: 'none', color: '#111111', cursor: 'pointer', width: '36px', height: '36px', borderRadius: '18px', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'all 0.2s', backdropFilter: 'blur(10px)' }}
                     onMouseEnter={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.2)'; e.currentTarget.style.transform = 'scale(1.05)'; }}
                     onMouseLeave={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.1)'; e.currentTarget.style.transform = 'scale(1)'; }}
                   >
@@ -4258,7 +4258,7 @@ return (
                             </div>
                             <div style={{ minWidth: 0 }}>
                               <div style={{ fontWeight: '700', color: '#111111', fontSize: '14px', letterSpacing: '-0.3px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{selectedClient.name}</div>
-                              <div style={{ fontSize: '12px', color: 'rgba(255,255,255,0.4)', marginTop: '1px' }}>V-{selectedClient.id_card}</div>
+                              <div style={{ fontSize: '12px', color: '#111111', marginTop: '1px' }}>V-{selectedClient.id_card}</div>
                             </div>
                           </div>
                           <button onClick={() => { setClientSearchTerm(''); setClientSearchResults([]); setNewApp(prev => ({ ...prev, clientId: '' })); }} style={{ background: 'rgba(255,69,58,0.12)', color: '#ff453a', border: 'none', borderRadius: '10px', width: '28px', height: '28px', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', flexShrink: 0 }}>
@@ -4268,7 +4268,7 @@ return (
                       ) : (
                         <div style={{ position: 'relative' }}>
                           <div style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
-                            <Search style={{ position: 'absolute', left: '14px', pointerEvents: 'none' }} size={18} color="rgba(255,255,255,0.35)" />
+                            <Search style={{ position: 'absolute', left: '14px', pointerEvents: 'none' }} size={18} color="#111111" />
                             <input type="text" placeholder="Cédula o nombre..." value={clientSearchTerm} onChange={(e) => handleClientSearch(e.target.value)} style={{ width: '100%', padding: '0 14px 0 42px', height: '46px', fontSize: '14px', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', borderRadius: '14px', color: '#111111', outline: 'none', fontWeight: '500', transition: 'all 0.2s' }} onFocus={e => { e.target.style.borderColor = 'rgba(17, 17, 17,0.4)'; e.target.style.background = 'rgba(255,255,255,0.08)'; }} onBlur={e => { e.target.style.borderColor = 'rgba(255,255,255,0.08)'; e.target.style.background = 'rgba(255,255,255,0.05)'; }} />
                           </div>
                           {!selectedClient && clientSearchResults.length > 0 && (
@@ -4277,9 +4277,9 @@ return (
                                 <div key={c.id} onClick={() => handleSelectClient(c)} style={{ padding: '12px 16px', cursor: 'pointer', borderBottom: '1px solid rgba(0, 0, 0, 0.08)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }} onMouseOver={e => e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.06)'} onMouseOut={e => e.currentTarget.style.backgroundColor = 'transparent'}>
                                   <div>
                                     <div style={{ fontWeight: '700', fontSize: '13px', color: '#111111' }}>{c.name}</div>
-                                    {c.phone && <div style={{ fontSize: '11px', color: 'rgba(255,255,255,0.4)' }}>{c.phone}</div>}
+                                    {c.phone && <div style={{ fontSize: '11px', color: '#111111' }}>{c.phone}</div>}
                                   </div>
-                                  <span style={{ fontSize: '11px', color: 'rgba(255,255,255,0.4)', fontWeight: '600' }}>V-{c.id_card}</span>
+                                  <span style={{ fontSize: '11px', color: '#111111', fontWeight: '600' }}>V-{c.id_card}</span>
                                 </div>
                               ))}
                             </div>
@@ -4342,10 +4342,10 @@ return (
                             return (
                               <div key={p.id} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'rgba(0, 0, 0, 0.04)', padding: '10px 12px', borderRadius: '12px', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
                                 <div style={{ display: 'flex', alignItems: 'center', gap: '10px', minWidth: 0 }}>
-                                  <Package size={14} color="rgba(255,255,255,0.5)" />
+                                  <Package size={14} color="#111111" />
                                   <div style={{ minWidth: 0 }}>
                                     <div style={{ fontSize: '13px', fontWeight: '600', color: '#111111', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{product.name}</div>
-                                    <div style={{ fontSize: '11px', color: 'rgba(255,255,255,0.4)' }}>${product.price} c/u</div>
+                                    <div style={{ fontSize: '11px', color: '#111111' }}>${product.price} c/u</div>
                                   </div>
                                 </div>
                                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexShrink: 0 }}>
@@ -4368,9 +4368,9 @@ return (
                 {/* Sticky Footer */}
                 <div style={{ background: 'var(--bg-secondary)', backdropFilter: 'blur(20px)', borderTop: '1px solid rgba(0, 0, 0, 0.08)', padding: '18px 28px', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '20px' }}>
                   <div style={{ minWidth: 0 }}>
-                    <div style={{ fontSize: '11px', color: 'rgba(255,255,255,0.4)', fontWeight: '700', letterSpacing: '0.5px', textTransform: 'uppercase' }}>Total Estimado</div>
+                    <div style={{ fontSize: '11px', color: '#111111', fontWeight: '700', letterSpacing: '0.5px', textTransform: 'uppercase' }}>Total Estimado</div>
                     <div style={{ fontSize: '28px', fontWeight: '800', color: '#111111', fontFamily: 'Outfit, sans-serif', lineHeight: '1.1' }}>${totalEstimated.toFixed(2)}</div>
-                    <div style={{ fontSize: '11px', color: 'rgba(255,255,255,0.3)', marginTop: '2px' }}>
+                    <div style={{ fontSize: '11px', color: '#111111', marginTop: '2px' }}>
                       {newApp.serviceId && <span>Servicio: ${servicePrice.toFixed(2)}</span>}
                       {newApp.extras.length > 0 && <span> · Extras: +${extrasPrice.toFixed(2)}</span>}
                       {newApp.products.length > 0 && <span> · Prod: +${productsPrice.toFixed(2)}</span>}
@@ -4452,9 +4452,9 @@ return (
                   </div>
                   <button 
                     onClick={() => setSelectedAppDetail(null)} 
-                    style={{ background: 'rgba(0, 0, 0, 0.04)', border: 'none', color: 'rgba(255,255,255,0.6)', fontSize: '20px', cursor: 'pointer', width: '32px', height: '32px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'all 0.2s' }}
+                    style={{ background: 'rgba(0, 0, 0, 0.04)', border: 'none', color: '#111111', fontSize: '20px', cursor: 'pointer', width: '32px', height: '32px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'all 0.2s' }}
                     onMouseEnter={e => { e.currentTarget.style.background = 'rgba(255,69,58,0.15)'; e.currentTarget.style.color = '#ff453a'; }}
-                    onMouseLeave={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.05)'; e.currentTarget.style.color = 'rgba(255,255,255,0.6)'; }}
+                    onMouseLeave={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.05)'; e.currentTarget.style.color = 'rgba(17,17,17,0.6)'; }}
                   >
                     &times;
                   </button>
@@ -4502,7 +4502,7 @@ return (
                             {activeDetail.services?.name || 'Venta directa sin servicio'}
                           </div>
                           <p style={{ fontSize: '10px', color: 'var(--text-muted)', margin: '2px 0 0 0' }}>
-                            Atendido por: <strong style={{ color: 'rgba(255,255,255,0.85)' }}>{activeDetail.staff?.name || 'Caja'}</strong>
+                            Atendido por: <strong style={{ color: '#111111' }}>{activeDetail.staff?.name || 'Caja'}</strong>
                           </p>
                         </div>
                       </div>
@@ -4522,7 +4522,7 @@ return (
                       <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
                         {activeDetail.appointment_extras.map(e => (
                           <div key={e.id} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'rgba(0, 0, 0, 0.04)', padding: '10px 16px', borderRadius: '12px', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
-                            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '12px', color: 'rgba(255,255,255,0.85)', fontWeight: '600' }}>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '12px', color: '#111111', fontWeight: '600' }}>
                               <Sparkles size={12} color="var(--gold-primary)" style={{ opacity: 0.7 }} />
                               <span>{e.service_extras?.name}</span>
                             </div>
@@ -4543,7 +4543,7 @@ return (
                       <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
                         {activeDetail.appointment_products.map(p => (
                           <div key={p.id} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'rgba(0, 0, 0, 0.04)', padding: '10px 16px', borderRadius: '12px', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
-                            <span style={{ fontSize: '12px', color: 'rgba(255,255,255,0.85)', fontWeight: '600' }}>• {p.quantity}x {p.inventory?.name}</span>
+                            <span style={{ fontSize: '12px', color: '#111111', fontWeight: '600' }}>• {p.quantity}x {p.inventory?.name}</span>
                             <span style={{ fontSize: '12px', fontWeight: '800', color: 'var(--gold-primary)', fontFamily: 'Outfit, sans-serif' }}>+${(p.price * p.quantity).toFixed(2)}</span>
                           </div>
                         ))}
@@ -4556,7 +4556,7 @@ return (
                     <div>
                       <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '8px' }}>
                         <span style={{ width: '4px', height: '4px', borderRadius: '50%', backgroundColor: 'var(--gold-primary)' }} />
-                        <label style={{ fontSize: '10px', fontWeight: '900', color: 'rgba(255,255,255,0.7)', textTransform: 'uppercase', letterSpacing: '0.8px' }}>Comisiones & Propinas</label>
+                        <label style={{ fontSize: '10px', fontWeight: '900', color: '#111111', textTransform: 'uppercase', letterSpacing: '0.8px' }}>Comisiones & Propinas</label>
                       </div>
                       <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
                         {activeDetail.appointment_staff.map(as => {
@@ -4577,12 +4577,12 @@ return (
                               <div style={{ flex: 1, minWidth: 0 }}>
                                 <div style={{ display: 'flex', flexDirection: 'column', gap: '2px', marginBottom: '4px' }}>
                                   <span style={{ fontWeight: '800', color: '#111111', fontSize: '13px' }}>{as.staff?.name}</span>
-                                  <span style={{ fontSize: '9px', color: 'rgba(255,255,255,0.7)', fontWeight: '800', textTransform: 'uppercase', letterSpacing: '0.3px' }}>{cleanRole}</span>
+                                  <span style={{ fontSize: '9px', color: '#111111', fontWeight: '800', textTransform: 'uppercase', letterSpacing: '0.3px' }}>{cleanRole}</span>
                                 </div>
                                 <div style={{ display: 'flex', gap: '10px', fontSize: '11px', flexWrap: 'wrap' }}>
-                                  {hasServComm && <span style={{ color: 'rgba(255,255,255,0.85)', fontWeight: '600' }}>Serv: <strong style={{ color: 'var(--gold-primary)' }}>${Number(as.commission_earned).toFixed(2)}</strong></span>}
-                                  {hasProdComm && <span style={{ color: 'rgba(255,255,255,0.85)', fontWeight: '600' }}>Prod: <strong style={{ color: 'var(--gold-primary)' }}>${Number(as.product_commission).toFixed(2)}</strong></span>}
-                                  {hasTip && <span style={{ color: 'rgba(255,255,255,0.85)', fontWeight: '600' }}>Propina: <strong style={{ color: '#30d158' }}>${Number(as.tip_amount).toFixed(2)}</strong></span>}
+                                  {hasServComm && <span style={{ color: '#111111', fontWeight: '600' }}>Serv: <strong style={{ color: 'var(--gold-primary)' }}>${Number(as.commission_earned).toFixed(2)}</strong></span>}
+                                  {hasProdComm && <span style={{ color: '#111111', fontWeight: '600' }}>Prod: <strong style={{ color: 'var(--gold-primary)' }}>${Number(as.product_commission).toFixed(2)}</strong></span>}
+                                  {hasTip && <span style={{ color: '#111111', fontWeight: '600' }}>Propina: <strong style={{ color: '#30d158' }}>${Number(as.tip_amount).toFixed(2)}</strong></span>}
                                 </div>
                               </div>
                             </div>
@@ -4667,9 +4667,9 @@ const MiniCalendar = ({ selectedDate, onDateSelect, allAppointments }) => {
   return (
     <div className="glass-card" style={{ maxWidth: '340px', width: '100%', margin: '0 auto', padding: '24px', borderRadius: '24px', border: '1px solid rgba(0, 0, 0, 0.08)', boxShadow: '0 20px 40px rgba(0, 0, 0, 0.4)' }}>
       <header style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
-        <button onClick={() => setCurrentMonth(new Date(currentMonth.getFullYear(), currentMonth.getMonth() - 1, 1))} style={{ background: 'none', border: 'none', color: 'rgba(255,255,255,0.6)', cursor: 'pointer', display: 'flex', alignItems: 'center', transition: 'color 0.2s' }} onMouseEnter={e => e.currentTarget.style.color = 'white'} onMouseLeave={e => e.currentTarget.style.color = 'rgba(255,255,255,0.6)'}><ChevronLeft size={16} /></button>
+        <button onClick={() => setCurrentMonth(new Date(currentMonth.getFullYear(), currentMonth.getMonth() - 1, 1))} style={{ background: 'none', border: 'none', color: '#111111', cursor: 'pointer', display: 'flex', alignItems: 'center', transition: 'color 0.2s' }} onMouseEnter={e => e.currentTarget.style.color = 'white'} onMouseLeave={e => e.currentTarget.style.color = 'rgba(255,255,255,0.6)'}><ChevronLeft size={16} /></button>
         <span style={{ fontSize: '13px', fontWeight: '900', textTransform: 'uppercase', color: '#111111', fontFamily: 'Outfit, var(--font-sans), system-ui', letterSpacing: '0.5px' }}>{monthNames[currentMonth.getMonth()]} {currentMonth.getFullYear()}</span>
-        <button onClick={() => setCurrentMonth(new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1, 1))} style={{ background: 'none', border: 'none', color: 'rgba(255,255,255,0.6)', cursor: 'pointer', display: 'flex', alignItems: 'center', transition: 'color 0.2s' }} onMouseEnter={e => e.currentTarget.style.color = 'white'} onMouseLeave={e => e.currentTarget.style.color = 'rgba(255,255,255,0.6)'}><ChevronRight size={16} /></button>
+        <button onClick={() => setCurrentMonth(new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1, 1))} style={{ background: 'none', border: 'none', color: '#111111', cursor: 'pointer', display: 'flex', alignItems: 'center', transition: 'color 0.2s' }} onMouseEnter={e => e.currentTarget.style.color = 'white'} onMouseLeave={e => e.currentTarget.style.color = 'rgba(255,255,255,0.6)'}><ChevronRight size={16} /></button>
       </header>
       
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(7, minmax(0, 1fr))', gap: '4px', textAlign: 'center' }}>

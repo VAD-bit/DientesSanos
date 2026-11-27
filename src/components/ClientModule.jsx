@@ -36,6 +36,7 @@ import PandaCamera from './PandaCamera';
 import PandaDatePicker from './PandaDatePicker';
 import PandaDialog from './PandaDialog';
 import AnimatedModal from './AnimatedModal';
+import NewClientFlowModal from './NewClientFlowModal';
 import ClinicalHistoryModal from './ClinicalHistoryModal';
 
 import { formatName, normalizeForSearch } from '../utils/stringUtils';
@@ -190,6 +191,7 @@ const ClientModule = ({ isMobile, clients, onRefresh, initialClientId }) => {
 
   const [loading, setLoading] = useState(false);
   const [showAddForm, setShowAddForm] = useState(false);
+  const [isNewClientFlowOpen, setIsNewClientFlowOpen] = useState(false);
   const [isFormExiting, setIsFormExiting] = useState(false);
   const [newClient, setNewClient] = useState({ 
     name: '', 
@@ -393,88 +395,34 @@ const ClientModule = ({ isMobile, clients, onRefresh, initialClientId }) => {
                 {isMobile && "Cumpleaños"}
               </button>}
 
-              {canManageClientAdminActions && <button 
-                className={showAddForm ? "hover-brightness" : "btn-gold"} 
-                onClick={() => showAddForm ? handleCloseAddForm() : setShowAddForm(true)} 
-                style={showAddForm ? { 
-                  height: '40px', padding: isMobile ? '10px 8px' : '0 20px', 
-                  display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', flex: isMobile ? '1 1 45%' : 'none', whiteSpace: 'nowrap', fontSize: '13px',
-                  background: 'rgba(255, 69, 58, 0.1)', border: '1px solid rgba(255, 69, 58, 0.3)', color: '#ff453a', borderRadius: '12px', cursor: 'pointer', transition: 'background 0.2s, color 0.2s', fontWeight: '850'
-                } : {
-                  height: '40px', padding: isMobile ? '10px 8px' : '0 20px', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', flex: isMobile ? '1 1 45%' : 'none', whiteSpace: 'nowrap', fontSize: '13px', fontWeight: '800'
-                }}
-              >
-                {showAddForm ? <X size={16} /> : <Plus size={16} />}
-                {showAddForm ? 'Cancelar' : 'Nuevo Cliente'}
-              </button>}
-            </div>
+              {canManageClientAdminActions && (
+                <button 
+                  onClick={() => { setIsNewClientFlowOpen(true); }}
+                  style={{ 
+                    height: '40px', padding: '0 20px', borderRadius: '12px', 
+                    display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px',
+                    flex: isMobile ? '1 1 45%' : 'none', whiteSpace: 'nowrap', fontSize: '13px',
+                    fontWeight: '800', background: 'var(--gold-gradient)', color: '#111111',
+                    border: 'none', cursor: 'pointer' 
+                  }}
+                >
+                  <Plus size={16} /> Nuevo Cliente
+                </button>
+              )}
           </div>
 
-          {canManageClientAdminActions && (showAddForm || isFormExiting) && (
-            <div className={`glass-card ${isFormExiting ? 'animate-slide-down-fade' : 'animate-fade-in'}`} style={{ marginBottom: '40px', padding: '32px', borderRadius: '24px' }}>
-              <h3 style={{ marginBottom: '24px', fontSize: '20px' }}>Alta de Cliente</h3>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '24px' }}>
-                <div className="form-group">
-                  <label style={{ display: 'block', marginBottom: '8px', fontSize: '13px', color: 'var(--text-secondary)' }}>Nombre Completo</label>
-                  <input className="form-input" placeholder="Ej. Juan Pérez" value={newClient.name} onChange={(e) => setNewClient({...newClient, name: formatName(e.target.value)})} style={{ width: '100%' }} />
-                </div>
-                <div className="form-group">
-                  <label style={{ display: 'block', marginBottom: '8px', fontSize: '13px', color: 'var(--text-secondary)' }}>Cédula / ID</label>
-                  <input className="form-input" placeholder="Ej. 28.123.456" value={newClient.id_card} onChange={(e) => setNewClient({...newClient, id_card: e.target.value})} style={{ width: '100%' }} />
-                </div>
-                <div className="form-group">
-                  <label style={{ display: 'block', marginBottom: '8px', fontSize: '13px', color: 'var(--text-secondary)' }}>Teléfono</label>
-                  <input className="form-input" placeholder="WhatsApp" value={newClient.phone} onChange={(e) => setNewClient({...newClient, phone: e.target.value})} style={{ width: '100%' }} />
-                </div>
-                <div className="form-group">
-                  <label style={{ display: 'block', marginBottom: '8px', fontSize: '13px', color: 'var(--text-secondary)' }}>Cumpleaños</label>
-                  <BirthdayInput value={newClient.birth_date} onChange={(v) => setNewClient({...newClient, birth_date: v})} style={{ width: '100%' }} />
-                </div>
-                <PandaSelect
-                  label="Origen del Cliente"
-                  value={newClient.origin}
-                  onChange={(val) => setNewClient({ ...newClient, origin: val })}
-                  placeholder="Seleccionar origen"
-                  options={[
-                    { label: 'Instagram', value: 'Instagram' },
-                    { label: 'Referido por otra persona', value: 'Referido' },
-                    { label: 'Google / Google Maps', value: 'Google' },
-                    { label: 'TikTok', value: 'TikTok' },
-                    { label: 'Facebook', value: 'Facebook' },
-                    { label: 'Pasó por el local', value: 'Presencial' },
-                    { label: 'Otro', value: 'Otro' }
-                  ]}
-                />
-                <PandaSelect
-                  label="Tipo de sonrisa"
-                  value={newClient.smile_type}
-                  onChange={(val) => setNewClient({...newClient, smile_type: val})}
-                  options={[
-                    { label: 'Alta', value: 'Alta' },
-                    { label: 'Media', value: 'Media' },
-                    { label: 'Baja', value: 'Baja' },
-                    { label: 'Invertida', value: 'Invertida' }
-                  ]}
-                />
-                <PandaSelect
-                  label="Tipo de encía"
-                  value={newClient.gum_type}
-                  onChange={(val) => setNewClient({...newClient, gum_type: val})}
-                  options={[
-                    { label: 'Sana', value: 'Sana' },
-                    { label: 'Inflamada', value: 'Inflamada' },
-                    { label: 'Sangrante', value: 'Sangrante' },
-                    { label: 'Retracción', value: 'Retracción' }
-                  ]}
-                />
-                <div style={{ display: 'flex', alignItems: 'flex-end' }}>
-                  <button className="btn-gold" onClick={handleAddClient} disabled={creating} style={{ width: '100%', minHeight: '48px', padding: '8px 12px', borderRadius: '12px', fontSize: '13px', lineHeight: '1.2' }}>
-                    {creating ? <Loader2 className="animate-spin" /> : 'Registrar Ficha Técnica'}
-                  </button>
-                </div>
-              </div>
-            </div>
+          {canManageClientAdminActions && (
+            <NewClientFlowModal
+              isOpen={isNewClientFlowOpen}
+              onClose={() => setIsNewClientFlowOpen(false)}
+              onSuccess={(newClient) => {
+                setIsNewClientFlowOpen(false);
+                onRefresh();
+                showToast(`¡${newClient.name} se ha registrado con éxito!`);
+              }}
+            />
           )}
+          </div>
 
           <div className="focus-ring" style={{ 
             backgroundColor: 'var(--bg-tertiary)', 
@@ -579,7 +527,7 @@ const ClientModule = ({ isMobile, clients, onRefresh, initialClientId }) => {
 
               {!searchTerm && viewMode !== 'coupons' && visibleClients.length === 0 && !isServiceProfessional && (
                 <button 
-                  onClick={() => setShowAddForm(true)}
+                  onClick={() => { setIsNewClientFlowOpen(true); }}
                   className="btn-gold"
                   style={{ marginTop: '32px', padding: '12px 24px', borderRadius: '14px', fontWeight: '800' }}
                 >
@@ -680,7 +628,7 @@ const ClientModule = ({ isMobile, clients, onRefresh, initialClientId }) => {
                             fontWeight: '800', fontSize: '16px', color: '#111111',
                             lineHeight: '1.2', marginBottom: '4px'
                           }}>{client.name}</div>
-                          <div style={{ fontSize: '11px', color: 'rgba(255,255,255,0.35)', fontWeight: '600' }}>
+                          <div style={{ fontSize: '11px', color: '#111111', fontWeight: '600' }}>
                             {client.id_card ? `V-${client.id_card}` : 'Sin cédula'}
                           </div>
                         </div>
@@ -697,14 +645,14 @@ const ClientModule = ({ isMobile, clients, onRefresh, initialClientId }) => {
                       {/* Stats row */}
                       <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '14px' }}>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                          <Phone size={11} color="rgba(255,255,255,0.3)" />
-                          <span style={{ fontSize: '12px', color: 'rgba(255,255,255,0.55)', fontWeight: '600' }}>
+                          <Phone size={11} color="#111111" />
+                          <span style={{ fontSize: '12px', color: '#111111', fontWeight: '600' }}>
                             {client.phone || '—'}
                           </span>
                         </div>
                         <div style={{ marginLeft: 'auto', display: 'flex', alignItems: 'baseline', gap: '3px' }}>
                           <span style={{ fontSize: '20px', fontWeight: '800', color: tc.accent, lineHeight: 1 }}>{visits}</span>
-                          <span style={{ fontSize: '10px', color: 'rgba(255,255,255,0.3)', fontWeight: '600' }}>visitas</span>
+                          <span style={{ fontSize: '10px', color: '#111111', fontWeight: '600' }}>visitas</span>
                         </div>
                       </div>
 
@@ -1624,7 +1572,7 @@ const ClientDetail = ({ isMobile, client, onBack, onDelete, onUpdate }) => {
                       <img loading="lazy" src={photoA} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                     ) : (
                       <div style={{ height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
-                        <ImageIcon size={32} color="rgba(255,255,255,0.05)" />
+                        <ImageIcon size={32} color="#111111" />
                         <span style={{ fontSize: '10px', fontWeight: '800', color: 'var(--text-muted)' }}>FOTO ANTES</span>
                       </div>
                     )}
@@ -1647,7 +1595,7 @@ const ClientDetail = ({ isMobile, client, onBack, onDelete, onUpdate }) => {
                       <img loading="lazy" src={photoB} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                     ) : (
                       <div style={{ height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
-                        <ImageIcon size={32} color="rgba(255,255,255,0.05)" />
+                        <ImageIcon size={32} color="#111111" />
                         <span style={{ fontSize: '10px', fontWeight: '800', color: 'var(--text-muted)' }}>FOTO DESPUÉS</span>
                       </div>
                     )}
@@ -2025,7 +1973,7 @@ const ClientDetail = ({ isMobile, client, onBack, onDelete, onUpdate }) => {
                       <img loading="lazy" src={photoA} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                     ) : (
                       <div style={{ height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
-                        <ImageIcon size={32} color="rgba(255,255,255,0.05)" />
+                        <ImageIcon size={32} color="#111111" />
                         <span style={{ fontSize: '10px', fontWeight: '800', color: 'var(--text-muted)' }}>FOTO ANTES</span>
                       </div>
                     )}
@@ -2048,7 +1996,7 @@ const ClientDetail = ({ isMobile, client, onBack, onDelete, onUpdate }) => {
                       <img loading="lazy" src={photoB} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                     ) : (
                       <div style={{ height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
-                        <ImageIcon size={32} color="rgba(255,255,255,0.05)" />
+                        <ImageIcon size={32} color="#111111" />
                         <span style={{ fontSize: '10px', fontWeight: '800', color: 'var(--text-muted)' }}>FOTO DESPUÉS</span>
                       </div>
                     )}
@@ -2193,7 +2141,7 @@ const ClientDetail = ({ isMobile, client, onBack, onDelete, onUpdate }) => {
                           height: '40px', 
                           borderRadius: '10px', 
                           background: isRedeemed ? 'rgba(255,255,255,0.05)' : 'var(--gold-primary)', 
-                          color: isRedeemed ? 'white' : 'black', 
+                          color: isRedeemed ? '#111111' : 'black', 
                           display: 'flex', 
                           alignItems: 'center', 
                           justifyContent: 'center' 
@@ -2201,7 +2149,7 @@ const ClientDetail = ({ isMobile, client, onBack, onDelete, onUpdate }) => {
                           <Ticket size={20} />
                         </div>
                         <div>
-                          <p style={{ fontWeight: '700', fontSize: '15px', color: isRedeemed ? 'var(--text-secondary)' : 'white' }}>
+                          <p style={{ fontWeight: '700', fontSize: '15px', color: isRedeemed ? 'var(--text-secondary)' : '#111111' }}>
                             {coupon.prize_name}
                           </p>
                           <p style={{ fontSize: '12px', color: 'var(--text-muted)' }}>
@@ -2455,7 +2403,7 @@ const VisitDetailModal = ({ isOpen, visit, onClose, gallery = [] }) => {
                 {visit.payment_metadata?.extras && visit.payment_metadata.extras.length > 0 && (
                   visit.payment_metadata.extras.map((ex, i) => (
                     <div key={i} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                      <div style={{ fontSize: '13px', color: 'rgba(255,255,255,0.8)' }}>+ {ex.name}</div>
+                      <div style={{ fontSize: '13px', color: '#111111' }}>+ {ex.name}</div>
                       <div style={{ fontWeight: '600', fontSize: '13px' }}>${ex.price}</div>
                     </div>
                   ))
@@ -2465,7 +2413,7 @@ const VisitDetailModal = ({ isOpen, visit, onClose, gallery = [] }) => {
                 {visit.payment_metadata?.products_sold && visit.payment_metadata.products_sold.length > 0 && (
                   visit.payment_metadata.products_sold.map((p, i) => (
                     <div key={i} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                      <div style={{ fontSize: '13px', color: 'rgba(255,255,255,0.8)' }}>{p.name} (x{p.quantity})</div>
+                      <div style={{ fontSize: '13px', color: '#111111' }}>{p.name} (x{p.quantity})</div>
                       <div style={{ fontWeight: '600', fontSize: '13px' }}>${(p.price * p.quantity).toFixed(2)}</div>
                     </div>
                   ))
@@ -2538,7 +2486,7 @@ const VisitDetailModal = ({ isOpen, visit, onClose, gallery = [] }) => {
                   {visit.tattoo_data.idea && (
                     <div style={{ marginTop: '12px' }}>
                       <span style={{ fontSize: '9px', fontWeight: '800', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Idea del cliente</span>
-                      <p style={{ fontSize: '12px', color: 'rgba(255,255,255,0.8)', marginTop: '4px', lineHeight: '1.5', fontStyle: 'italic' }}>"{visit.tattoo_data.idea}"</p>
+                      <p style={{ fontSize: '12px', color: '#111111', marginTop: '4px', lineHeight: '1.5', fontStyle: 'italic' }}>"{visit.tattoo_data.idea}"</p>
                     </div>
                   )}
 

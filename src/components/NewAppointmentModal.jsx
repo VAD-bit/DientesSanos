@@ -300,13 +300,13 @@ const NewAppointmentModal = ({ isOpen, onClose, onSuccess, rates }) => {
                       <h2 style={{ fontSize: '22px', fontWeight: '800', margin: 0, color: '#111111', letterSpacing: '-0.5px' }}>
                         Nueva <span style={{ color: 'var(--champagne)' }}>Cita</span>
                       </h2>
-                      <span style={{ fontSize: '13px', color: 'rgba(255,255,255,0.5)', fontWeight: '500' }}>
+                      <span style={{ fontSize: '13px', color: '#111111', fontWeight: '500' }}>
                         Agenda un nuevo servicio
                       </span>
                     </div>
                     <button 
                       onClick={onClose}
-                      style={{ background: 'rgba(0, 0, 0, 0.04)', border: 'none', color: 'rgba(255,255,255,0.8)', cursor: 'pointer', width: '36px', height: '36px', borderRadius: '18px', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'all 0.2s', backdropFilter: 'blur(10px)' }}
+                      style={{ background: 'rgba(0, 0, 0, 0.04)', border: 'none', color: '#111111', cursor: 'pointer', width: '36px', height: '36px', borderRadius: '18px', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'all 0.2s', backdropFilter: 'blur(10px)' }}
                       onMouseEnter={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.2)'; e.currentTarget.style.transform = 'scale(1.05)'; }}
                       onMouseLeave={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.1)'; e.currentTarget.style.transform = 'scale(1)'; }}
                     >
@@ -330,7 +330,7 @@ const NewAppointmentModal = ({ isOpen, onClose, onSuccess, rates }) => {
                               </div>
                               <div style={{ minWidth: 0 }}>
                                 <div style={{ fontWeight: '700', color: '#111111', fontSize: '14px', letterSpacing: '-0.3px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{selectedClient.name}</div>
-                                <div style={{ fontSize: '12px', color: 'rgba(255,255,255,0.4)', marginTop: '1px' }}>V-{selectedClient.id_card}</div>
+                                <div style={{ fontSize: '12px', color: '#111111', marginTop: '1px' }}>V-{selectedClient.id_card}</div>
                               </div>
                             </div>
                             <button onClick={() => { setClientSearchTerm(''); setClientSearchResults([]); setNewApp(prev => ({ ...prev, clientId: '' })); setSelectedClient(null); }} style={{ background: 'rgba(255,69,58,0.12)', color: '#ff453a', border: 'none', borderRadius: '10px', width: '28px', height: '28px', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', flexShrink: 0 }}>
@@ -340,7 +340,7 @@ const NewAppointmentModal = ({ isOpen, onClose, onSuccess, rates }) => {
                         ) : (
                           <div style={{ position: 'relative' }}>
                             <div style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
-                              <Search style={{ position: 'absolute', left: '14px', pointerEvents: 'none' }} size={18} color="rgba(255,255,255,0.35)" />
+                              <Search style={{ position: 'absolute', left: '14px', pointerEvents: 'none' }} size={18} color="#111111" />
                               <input type="text" placeholder="Cédula o nombre..." value={clientSearchTerm} onChange={(e) => handleClientSearch(e.target.value)} style={{ width: '100%', padding: '0 14px 0 42px', height: '46px', fontSize: '14px', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', borderRadius: '14px', color: '#111111', outline: 'none', fontWeight: '500', transition: 'all 0.2s' }} onFocus={e => { e.target.style.borderColor = 'rgba(17, 17, 17,0.4)'; e.target.style.background = 'rgba(255,255,255,0.08)'; }} onBlur={e => { e.target.style.borderColor = 'rgba(255,255,255,0.08)'; e.target.style.background = 'rgba(255,255,255,0.05)'; }} />
                             </div>
                             {!selectedClient && clientSearchResults.length > 0 && (
@@ -349,9 +349,9 @@ const NewAppointmentModal = ({ isOpen, onClose, onSuccess, rates }) => {
                                   <div key={c.id} onClick={() => handleSelectClient(c)} style={{ padding: '12px 16px', cursor: 'pointer', borderBottom: '1px solid rgba(0, 0, 0, 0.08)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }} onMouseOver={e => e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.06)'} onMouseOut={e => e.currentTarget.style.backgroundColor = 'transparent'}>
                                     <div>
                                       <div style={{ fontWeight: '700', fontSize: '13px', color: '#111111' }}>{c.name}</div>
-                                      {c.phone && <div style={{ fontSize: '11px', color: 'rgba(255,255,255,0.4)' }}>{c.phone}</div>}
+                                      {c.phone && <div style={{ fontSize: '11px', color: '#111111' }}>{c.phone}</div>}
                                     </div>
-                                    <span style={{ fontSize: '11px', color: 'rgba(255,255,255,0.4)', fontWeight: '600' }}>V-{c.id_card}</span>
+                                    <span style={{ fontSize: '11px', color: '#111111', fontWeight: '600' }}>V-{c.id_card}</span>
                                   </div>
                                 ))}
                               </div>
@@ -413,9 +413,9 @@ const NewAppointmentModal = ({ isOpen, onClose, onSuccess, rates }) => {
                   {/* Sticky Footer */}
                   <div style={{ background: 'var(--bg-secondary)', backdropFilter: 'blur(20px)', borderTop: '1px solid rgba(0, 0, 0, 0.08)', padding: '18px 28px', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '20px' }}>
                     <div style={{ minWidth: 0 }}>
-                      <div style={{ fontSize: '11px', color: 'rgba(255,255,255,0.4)', fontWeight: '700', letterSpacing: '0.5px', textTransform: 'uppercase' }}>Total Estimado</div>
+                      <div style={{ fontSize: '11px', color: '#111111', fontWeight: '700', letterSpacing: '0.5px', textTransform: 'uppercase' }}>Total Estimado</div>
                       <div style={{ fontSize: '28px', fontWeight: '800', color: '#111111', lineHeight: '1.1' }}>${totalEstimated.toFixed(2)}</div>
-                      <div style={{ fontSize: '11px', color: 'rgba(255,255,255,0.3)', marginTop: '2px' }}>
+                      <div style={{ fontSize: '11px', color: '#111111', marginTop: '2px' }}>
                         {newApp.serviceId && <span>Servicio: ${servicePrice.toFixed(2)}</span>}
                         {newApp.extras.length > 0 && <span> · Extras: +${extrasPrice.toFixed(2)}</span>}
                       </div>
@@ -531,7 +531,7 @@ const NewAppointmentModal = ({ isOpen, onClose, onSuccess, rates }) => {
                         flex: 0.8, 
                         background: 'none', 
                         border: '1px solid rgba(0, 0, 0, 0.08)', 
-                        color: 'rgba(255,255,255,0.8)', 
+                        color: '#111111', 
                         height: '44px',
                         borderRadius: '12px', 
                         fontSize: '13px',

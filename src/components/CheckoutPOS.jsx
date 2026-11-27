@@ -161,7 +161,7 @@ const CartSellerSelect = ({ value, onChange, options }) => {
         }}>
           <div 
             onClick={() => { onChange(''); setIsOpen(false); }}
-            style={{ padding: '10px 14px', fontSize: '11px', color: !value ? 'var(--gold-primary)' : 'white', cursor: 'pointer', background: !value ? 'rgba(255, 255, 255,0.1)' : 'transparent', fontWeight: !value ? '800' : '500', transition: '0.2s' }}
+            style={{ padding: '10px 14px', fontSize: '11px', color: !value ? 'var(--gold-primary)' : '#111111', cursor: 'pointer', background: !value ? 'rgba(255, 255, 255,0.1)' : 'transparent', fontWeight: !value ? '800' : '500', transition: '0.2s' }}
             onMouseEnter={e => { if(value) e.currentTarget.style.background = 'rgba(255,255,255,0.05)' }}
             onMouseLeave={e => { if(value) e.currentTarget.style.background = 'transparent' }}
           >
@@ -171,7 +171,7 @@ const CartSellerSelect = ({ value, onChange, options }) => {
             <div 
               key={opt.value}
               onClick={() => { onChange(opt.value); setIsOpen(false); }}
-              style={{ padding: '9px 12px', display: 'flex', alignItems: 'center', gap: '8px', fontSize: '11px', color: value === opt.value ? 'var(--gold-primary)' : 'white', cursor: 'pointer', background: value === opt.value ? 'rgba(255, 255, 255,0.1)' : 'transparent', fontWeight: value === opt.value ? '800' : '500', transition: '0.2s' }}
+              style={{ padding: '9px 12px', display: 'flex', alignItems: 'center', gap: '8px', fontSize: '11px', color: value === opt.value ? 'var(--gold-primary)' : '#111111', cursor: 'pointer', background: value === opt.value ? 'rgba(255, 255, 255,0.1)' : 'transparent', fontWeight: value === opt.value ? '800' : '500', transition: '0.2s' }}
               onMouseEnter={e => { if(value !== opt.value) e.currentTarget.style.background = 'rgba(255,255,255,0.05)' }}
               onMouseLeave={e => { if(value !== opt.value) e.currentTarget.style.background = 'transparent' }}
             >
@@ -180,7 +180,7 @@ const CartSellerSelect = ({ value, onChange, options }) => {
               </span>
               <span style={{ display: 'flex', minWidth: 0, flexDirection: 'column' }}>
                 <strong style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{opt.label}</strong>
-                {opt.subtitle && <small style={{ color: 'rgba(255,255,255,.4)', fontSize: '8px' }}>{opt.subtitle}</small>}
+                {opt.subtitle && <small style={{ color: '#111111', fontSize: '8px' }}>{opt.subtitle}</small>}
               </span>
             </div>
           ))}
@@ -2099,7 +2099,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
               <label style={{ display: 'block', fontSize: '11px', fontWeight: '900', color: 'var(--gold-primary)', marginBottom: '16px', letterSpacing: '1px' }}>PRÓXIMAS CITAS (AGENDA HOY)</label>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
                 {groupedScheduledServices.length === 0 ? (
-                  <div style={{ padding: '20px', textAlign: 'center', color: 'rgba(255,255,255,0.1)', fontSize: '12px', border: '1px dashed rgba(0, 0, 0, 0.08)', borderRadius: '16px' }}>No hay m¡s citas para hoy</div>
+                  <div style={{ padding: '20px', textAlign: 'center', color: '#111111', fontSize: '12px', border: '1px dashed rgba(0, 0, 0, 0.08)', borderRadius: '16px' }}>No hay m¡s citas para hoy</div>
                 ) : (
                   groupedScheduledServices.map(group => {
                     const firstApp = group.apps[0];
@@ -2182,7 +2182,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                 onPointerCancel={e => { e.currentTarget.style.transform = 'scale(1)'; }}
               >
                 <Zap size={isMobile ? 22 : 28} color="var(--gold-primary)" strokeWidth={1.5} />
-                <span style={{ fontWeight: '700', fontSize: isMobile ? '9px' : '11px', letterSpacing: '0.5px', color: 'rgba(255,255,255,0.7)' }}>EXTRAS</span>
+                <span style={{ fontWeight: '700', fontSize: isMobile ? '9px' : '11px', letterSpacing: '0.5px', color: '#111111' }}>EXTRAS</span>
               </button>
 
               <button 
@@ -2195,7 +2195,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                 onPointerCancel={e => { e.currentTarget.style.transform = 'scale(1)'; }}
               >
                 <ToothIcon size={isMobile ? 22 : 28} color="var(--gold-primary)" strokeWidth={1.5} style={{ transform: 'rotate(-45deg)' }} />
-                <span style={{ fontWeight: '700', fontSize: isMobile ? '9px' : '11px', letterSpacing: '0.5px', color: 'rgba(255,255,255,0.7)' }}>SERVICIOS</span>
+                <span style={{ fontWeight: '700', fontSize: isMobile ? '9px' : '11px', letterSpacing: '0.5px', color: '#111111' }}>SERVICIOS</span>
               </button>
 
             </div>
@@ -2358,7 +2358,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                           </button>
                         )}
                         {isLinked && <span style={{ color: 'var(--gold-primary)', fontWeight: '800', fontSize: '10px', flexShrink: 0 }}>({app.clients?.name?.split(' ')[0]}):</span>}
-                        <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', color: 'rgba(255,255,255,0.9)' }}>
+                        <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', color: '#111111' }}>
                           {app.services ? `Servicio: ${app.services.name}` : ((app.appointment_extras?.length || 0) > 0 ? 'Extras' : ((app.appointment_products?.length || 0) > 0 ? 'Productos' : 'Sin servicio asignado'))}
                         </span>
                         {' • '}
@@ -2505,7 +2505,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                       <button onClick={() => handleRemoveProduct(p)} style={{ background: 'rgba(255,69,58,0.15)', border: 'none', color: '#ff453a', cursor: 'pointer', padding: isMobile ? '8px' : '4px', display: 'inline-flex', alignItems: 'center', flexShrink: 0, borderRadius: '50%', margin: isMobile ? '-4px' : '0' }}>
                         <XCircle size={14} style={{ opacity: 0.9 }} />
                       </button>
-                      <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', color: 'rgba(255,255,255,0.9)' }}>{p.name}</span>
+                      <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', color: '#111111' }}>{p.name}</span>
                       <div style={{ display: 'flex', alignItems: 'center', gap: '2px', background: 'rgba(0, 0, 0, 0.04)', padding: '1px 4px', borderRadius: '4px', flexShrink: 0 }}>
                         <button 
                           onClick={() => handleDecrementProduct(p)}
@@ -2877,7 +2877,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                             background: t.currency === 'BS' ? 'rgba(255,255,255,0.05)' : 'rgba(255, 255, 255,0.15)', 
                             border: '1px solid rgba(0, 0, 0, 0.08)', 
                             borderRadius: '10px', 
-                            color: t.currency === 'BS' ? '#ffffff' : 'var(--gold-primary)', 
+                            color: t.currency === 'BS' ? '#111111' : 'var(--gold-primary)', 
                             fontWeight: '900', 
                             fontSize: '11px',
                             cursor: 'pointer',
@@ -3406,7 +3406,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                       {inventory.filter(i => matchesInventorySalesGroup(i, productGroup) && i.name.toLowerCase().includes(debouncedProductSearch.toLowerCase())).length} opciones disponibles
                     </p>
                   </div>
-                   <button onClick={() => {setShowProductModal(false); setSearchTerm(''); setProductGroup('all');}} style={{ width: '44px', height: '44px', borderRadius: '50%', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', color: 'rgba(255,255,255,0.6)', fontSize: '20px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'all 0.2s', flexShrink: 0 }}>Ø</button>
+                   <button onClick={() => {setShowProductModal(false); setSearchTerm(''); setProductGroup('all');}} style={{ width: '44px', height: '44px', borderRadius: '50%', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', color: '#111111', fontSize: '20px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'all 0.2s', flexShrink: 0 }}>Ø</button>
                 </div>
 
                 {/* Search */}
@@ -3431,7 +3431,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                         padding: '9px 16px', borderRadius: '12px', 
                         border: productGroup === value ? '1px solid var(--gold-primary)' : '1px solid rgba(0, 0, 0, 0.08)', 
                         background: productGroup === value ? 'rgba(17, 17, 17,0.08)' : 'rgba(255,255,255,0.02)', 
-                        color: productGroup === value ? 'var(--gold-primary)' : 'rgba(255,255,255,0.7)', 
+                        color: productGroup === value ? 'var(--gold-primary)' : 'rgba(17,17,17,0.65)', 
                         fontSize: '12px', fontWeight: '800', whiteSpace: 'nowrap', cursor: 'pointer', transition: 'all 0.2s',
                         boxShadow: productGroup === value ? '0 0 12px rgba(17, 17, 17,0.1)' : 'none'
                       }}
@@ -3475,7 +3475,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                             {item.image_url
                               ? <img loading="lazy" src={item.image_url} style={{ width: '100%', height: '100%', objectFit: 'contain', padding: '12px', boxSizing: 'border-box', filter: isOutOfStock ? 'grayscale(80%)' : 'none', transition: 'transform 0.3s' }} alt="" />
                               : <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                                  <ShoppingBag size={32} color="rgba(255,255,255,0.12)" />
+                                  <ShoppingBag size={32} color="#111111" />
                                 </div>
                             }
                             {/* Stock badge */}
@@ -3491,7 +3491,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                             <div style={{ display: 'flex', alignItems: 'baseline', gap: '4px' }}>
                               <span style={{ color: 'var(--gold-primary)', fontWeight: '900', fontSize: '18px' }}>${item.price}</span>
                             </div>
-                            {rates?.usd > 0 && <div style={{ fontSize: '10px', color: 'var(--text-muted)', marginTop: '2px' }}>â‰ˆ {Math.round(item.price * rates.usd).toLocaleString()} Bs.</div>}
+                            {rates?.usd > 0 && <div style={{ fontSize: '10px', color: 'var(--text-muted)', marginTop: '2px' }}>≈ {Math.round(item.price * rates.usd).toLocaleString()} Bs.</div>}
                           </div>
                         </button>
                       );
@@ -3529,7 +3529,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                       <p style={{ fontSize: '12px', color: 'var(--text-muted)' }}>{allExtras.length} extras disponibles</p>
                     </div>
 </div>
-                   <button onClick={() => setShowExtraModal(false)} style={{ width: '44px', height: '44px', borderRadius: '50%', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', color: 'rgba(255,255,255,0.5)', fontSize: '18px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>Ø</button>
+                   <button onClick={() => setShowExtraModal(false)} style={{ width: '44px', height: '44px', borderRadius: '50%', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', color: '#111111', fontSize: '18px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>Ø</button>
                 </div>
               </div>
               {/* Items in a grid */}
@@ -3604,7 +3604,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                           <span style={{ color: 'var(--gold-primary)', fontSize: '9px', fontWeight: 950, textTransform: 'uppercase', letterSpacing: '.55px' }}>Servicio Extra</span>
                           <h3 style={{ margin: '4px 0 6px', color: '#111111', fontSize: '13px', lineHeight: 1.2, fontWeight: 900, textTransform: 'capitalize', display: 'block' }}>{extra.name || 'Extra'}</h3>
                           <strong style={{ color: 'var(--gold-primary)', fontSize: '18px', lineHeight: 1, display: 'block' }}>${extra.price || 0}</strong>
-                          {rates?.usd > 0 && <span style={{ marginTop: '4px', display: 'block', color: 'rgba(255,255,255,0.5)', fontSize: '11.5px', fontWeight: 500 }}>â‰ˆ {Math.round((extra.price || 0) * rates.usd).toLocaleString('es-VE')} Bs</span>}
+                          {rates?.usd > 0 && <span style={{ marginTop: '4px', display: 'block', color: '#111111', fontSize: '11.5px', fontWeight: 500 }}>≈ {Math.round((extra.price || 0) * rates.usd).toLocaleString('es-VE')} Bs</span>}
                         </div>
                       </div>
                     </article>
@@ -3633,7 +3633,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                       <p style={{ fontSize: '12px', color: 'var(--text-muted)' }}>{allServices.length} servicios disponibles</p>
                     </div>
                   </div>
-                   <button onClick={() => setShowServiceModal(false)} style={{ width: '44px', height: '44px', borderRadius: '50%', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', color: 'rgba(255,255,255,0.5)', fontSize: '18px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>Ø</button>
+                   <button onClick={() => setShowServiceModal(false)} style={{ width: '44px', height: '44px', borderRadius: '50%', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', color: '#111111', fontSize: '18px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>Ø</button>
                 </div>
               </div>
               {/* Items grid */}
@@ -3678,7 +3678,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                         <span style={{ color: 'var(--gold-primary)', fontSize: '9px', fontWeight: 950, textTransform: 'uppercase', letterSpacing: '.55px' }}>Servicio Base</span>
                         <h3 style={{ margin: '4px 0 6px', color: '#111111', fontSize: '13px', lineHeight: 1.2, fontWeight: 900, textTransform: 'capitalize', display: 'block' }}>{service.name || 'Servicio'}</h3>
                         <strong style={{ color: 'var(--gold-primary)', fontSize: '18px', lineHeight: 1, display: 'block' }}>${formatUsdAmount(service.price || 0)}</strong>
-                        {rates?.usd > 0 && <span style={{ marginTop: '4px', display: 'block', color: 'rgba(255,255,255,0.5)', fontSize: '11.5px', fontWeight: 500 }}>â‰ˆ {Math.round(Number(service.price || 0) * rates.usd).toLocaleString('es-VE')} Bs</span>}
+                        {rates?.usd > 0 && <span style={{ marginTop: '4px', display: 'block', color: '#111111', fontSize: '11.5px', fontWeight: 500 }}>≈ {Math.round(Number(service.price || 0) * rates.usd).toLocaleString('es-VE')} Bs</span>}
                       </div>
                     </div>
                   </article>
@@ -3709,7 +3709,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                       <span style={{ fontSize: '11px', color: 'var(--text-muted)', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Seleccionar Odontólogo o Asistente</span>
                     </div>
                   </div>
-                   <button onClick={() => { setShowBarberModal(false); setIsChangingBarber(false); }} style={{ width: '44px', height: '44px', borderRadius: '50%', background: 'rgba(0, 0, 0, 0.04)', border: 'none', color: 'rgba(255,255,255,0.6)', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'all 0.2s' }} onMouseEnter={e => e.currentTarget.style.color = '#ff453a'} onMouseLeave={e => e.currentTarget.style.color = 'rgba(255,255,255,0.6)'}>&times;</button>
+                   <button onClick={() => { setShowBarberModal(false); setIsChangingBarber(false); }} style={{ width: '44px', height: '44px', borderRadius: '50%', background: 'rgba(0, 0, 0, 0.04)', border: 'none', color: '#111111', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'all 0.2s' }} onMouseEnter={e => e.currentTarget.style.color = '#ff453a'} onMouseLeave={e => e.currentTarget.style.color = '#111111'}>&times;</button>
                 </div>
 
                 <p style={{ color: 'var(--text-secondary)', marginBottom: '24px', fontSize: '13px', lineHeight: '1.4' }}>
@@ -3893,7 +3893,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
                     <span style={{ fontSize: '11px', color: 'var(--text-muted)', fontWeight: '700' }}>{offlineItems.length} en cola</span>
                   </div>
                 </div>
-                <button onClick={() => setShowOfflineModal(false)} style={{ background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', color: 'rgba(255,255,255,0.7)', width: '44px', height: '44px', borderRadius: '12px', fontSize: '20px', lineHeight: 1, cursor: 'pointer', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>&times;</button>
+                <button onClick={() => setShowOfflineModal(false)} style={{ background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', color: '#111111', width: '44px', height: '44px', borderRadius: '12px', fontSize: '20px', lineHeight: 1, cursor: 'pointer', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>&times;</button>
               </div>
               <p style={{ color: 'var(--text-secondary)', margin: '10px 0 18px', fontSize: '12.5px', lineHeight: 1.5 }}>
                 Cobros que aún no se sincronizaron con el servidor. Cuando vuelva la conexión se reintentan solos; también puedes forzar el reintento o descartar los que hayan quedado atascados.
@@ -3996,7 +3996,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
               <div style={{ background: 'rgba(0, 0, 0, 0.04)', width: '32px', height: '32px', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 <ShoppingBag size={18} color="white" strokeWidth={1.5} />
               </div>
-              <span style={{ color: 'rgba(255,255,255,0.9)', fontWeight: '600', fontSize: '15px' }}>Ver Carrito</span>
+              <span style={{ color: '#111111', fontWeight: '600', fontSize: '15px' }}>Ver Carrito</span>
             </div>
             <div style={{ display: 'flex', alignItems: 'center', background: '#111111', padding: '6px 12px', borderRadius: '10px' }}>
               <span style={{ color: 'black', fontWeight: '800', fontSize: '14px' }}>
@@ -4028,7 +4028,7 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
           >
             Cerrar
           </button>
-          <p style={{ marginTop: '10px', color: 'rgba(255,255,255,0.7)', fontSize: '12px', textAlign: 'center' }}>Vista previa — la factura final se genera al completar el cobro.</p>
+          <p style={{ marginTop: '10px', color: '#111111', fontSize: '12px', textAlign: 'center' }}>Vista previa — la factura final se genera al completar el cobro.</p>
         </div>,
         document.body
       )}

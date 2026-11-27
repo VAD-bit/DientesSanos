@@ -93,7 +93,7 @@ const OrderCatalogModal = ({
                     <p style={{ fontSize: '12px', color: 'var(--text-muted)' }}>{subtitle}</p>
                   </div>
                 </div>
-                <button onClick={onClose} style={{ width: '44px', height: '44px', borderRadius: '50%', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', color: 'rgba(255,255,255,0.5)', fontSize: '18px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><X size={18} /></button>
+                <button onClick={onClose} style={{ width: '44px', height: '44px', borderRadius: '50%', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', color: '#111111', fontSize: '18px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><X size={18} /></button>
               </div>
             </div>
             <div className="panda-scrollbar order-catalog-grid" style={{ padding: '16px 20px 24px', display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(180px, 100%), 1fr))', gap: '10px', overflowY: 'auto', flex: 1, minHeight: 0, alignContent: 'start' }}>
@@ -117,7 +117,7 @@ const OrderCatalogModal = ({
                         <span style={{ color: 'var(--gold-primary)', fontSize: '9px', fontWeight: 950, textTransform: 'uppercase', letterSpacing: '.55px' }}>{isService ? 'Servicio Base' : 'Servicio Extra'}</span>
                         <h3 style={{ margin: '4px 0 6px', color: '#111111', fontSize: '13px', lineHeight: 1.2, fontWeight: 900, textTransform: 'capitalize', display: 'block' }}>{item.name || (isService ? 'Servicio' : 'Extra')}</h3>
                         <strong style={{ color: 'var(--gold-primary)', fontSize: '18px', lineHeight: 1, display: 'block' }}>${item.price || 0}</strong>
-                        {Number(rate) > 0 && <span style={{ marginTop: '4px', display: 'block', color: 'rgba(255,255,255,0.5)', fontSize: '11.5px', fontWeight: 500 }}>â‰ˆ {Math.round((Number(item.price || 0) * Number(rate))).toLocaleString('es-VE')} Bs</span>}
+                        {Number(rate) > 0 && <span style={{ marginTop: '4px', display: 'block', color: '#111111', fontSize: '11.5px', fontWeight: 500 }}>≈ {Math.round((Number(item.price || 0) * Number(rate))).toLocaleString('es-VE')} Bs</span>}
                       </div>
                     </button>
                   </article>

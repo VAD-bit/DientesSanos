@@ -190,7 +190,7 @@ const ClientLoader = ({ visible, onFinish }) => {
         <div style={{
           fontSize: isMobile ? '15px' : '16px',
           fontWeight: '400',
-          color: 'rgba(255,255,255,0.5)',
+          color: '#111111',
           lineHeight: '1.4',
           textAlign: isMobile ? 'center' : 'left',
           marginTop: isMobile ? '-12px' : '-16px'
@@ -224,7 +224,7 @@ const ClientLoader = ({ visible, onFinish }) => {
             {/* Percentage Text */}
             <div style={{ 
               fontSize: isMobile ? '16px' : '18px', 
-              color: 'rgba(255,255,255,0.9)', 
+              color: '#111111', 
               fontWeight: '500',
               fontVariantNumeric: 'tabular-nums',
               width: '45px'

@@ -25,7 +25,7 @@ import { useNotifs } from '../context/NotificationContext';
 import PandaSelect from './PandaSelect';
 import PandaDatePicker from './PandaDatePicker';
 import { normalizeForSearch } from '../utils/stringUtils';
-import NewClientModal from './NewClientModal';
+import NewClientFlowModal from './NewClientFlowModal';
 import ScheduleModal from './ScheduleModal';
 import PandaDialog from './PandaDialog';
 import { useAuth } from '../context/AuthContext';
@@ -940,7 +940,7 @@ const ReceptionModule = ({ isMobile, rates }) => {
                   <div key={group.id}>
                     <label style={{ display: 'block', fontSize: '11px', fontWeight: '800', color: 'var(--text-muted)', marginBottom: '12px' }}>{group.label}</label>
                     {group.members.length === 0 ? (
-                      <div style={{ padding: '14px 16px', borderRadius: '14px', border: '1px dashed rgba(0, 0, 0, 0.08)', color: 'rgba(255,255,255,0.3)', fontSize: '11px' }}>
+                      <div style={{ padding: '14px 16px', borderRadius: '14px', border: '1px dashed rgba(0, 0, 0, 0.08)', color: '#111111', fontSize: '11px' }}>
                         No hay personal disponible en este grupo
                       </div>
                     ) : (
@@ -982,7 +982,7 @@ const ReceptionModule = ({ isMobile, rates }) => {
                           borderRadius: '20px',
                           border: formData.staffId === s.id ? '2px solid var(--gold-primary)' : isBusy ? '1px solid rgba(255,69,58,0.3)' : '1px solid var(--border-color)',
                           backgroundColor: formData.staffId === s.id ? 'rgba(255, 255, 255,0.1)' : isBusy ? 'rgba(255,69,58,0.05)' : 'rgba(255,255,255,0.02)',
-                          color: formData.staffId === s.id ? 'var(--gold-primary)' : 'white',
+                          color: formData.staffId === s.id ? 'var(--gold-primary)' : '#111111',
                           cursor: 'pointer',
                           display: 'flex',
                           flexDirection: 'column',
@@ -1110,7 +1110,7 @@ const ReceptionModule = ({ isMobile, rates }) => {
               </div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
                 {upcomingAppointments.length === 0 ? (
-                  <div style={{ padding: '20px', textAlign: 'center', color: 'rgba(255,255,255,0.4)', fontSize: '12px', border: '1px dashed rgba(0, 0, 0, 0.08)', borderRadius: '16px' }}>No hay m¡s citas para hoy</div>
+                  <div style={{ padding: '20px', textAlign: 'center', color: '#111111', fontSize: '12px', border: '1px dashed rgba(0, 0, 0, 0.08)', borderRadius: '16px' }}>No hay m¡s citas para hoy</div>
                 ) : (
                   upcomingAppointments.map((app, idx) => (
                     <div 
@@ -1353,7 +1353,7 @@ const ReceptionModule = ({ isMobile, rates }) => {
         </section>
       </div>
 
-      <NewClientModal 
+      <NewClientFlowModal 
         isOpen={isNewClientModalOpen} 
         onClose={() => setIsNewClientModalOpen(false)}
         onSuccess={handleNewClientSuccess}
@@ -1714,7 +1714,7 @@ const SelectionModal = ({ isOpen, onClose, title, icon, items, selectedItems, on
         {type === 'product' && (
           <div style={{ display: 'flex', gap: '8px', overflowX: 'auto', paddingBottom: '16px' }}>
             {Object.entries(INVENTORY_SALES_GROUPS).map(([value, label]) => (
-              <button key={value} type="button" onClick={() => setProductGroup(value)} style={{ padding: '9px 13px', borderRadius: '12px', border: productGroup === value ? '1px solid var(--gold-primary)' : '1px solid rgba(0, 0, 0, 0.08)', background: productGroup === value ? 'rgba(17, 17, 17,0.16)' : 'rgba(255,255,255,0.03)', color: productGroup === value ? 'var(--gold-primary)' : 'rgba(255,255,255,0.7)', fontSize: '12px', fontWeight: '800', whiteSpace: 'nowrap', cursor: 'pointer' }}>{label}</button>
+              <button key={value} type="button" onClick={() => setProductGroup(value)} style={{ padding: '9px 13px', borderRadius: '12px', border: productGroup === value ? '1px solid var(--gold-primary)' : '1px solid rgba(0, 0, 0, 0.08)', background: productGroup === value ? 'rgba(17, 17, 17,0.16)' : 'rgba(255,255,255,0.03)', color: productGroup === value ? 'var(--gold-primary)' : 'rgba(17,17,17,0.65)', fontSize: '12px', fontWeight: '800', whiteSpace: 'nowrap', cursor: 'pointer' }}>{label}</button>
             ))}
           </div>
         )}
@@ -1772,10 +1772,10 @@ const SelectionModal = ({ isOpen, onClose, title, icon, items, selectedItems, on
                   <div style={{ flex: 1, minWidth: 0 }}>
                     {type === 'product' && <div style={{ color: String(item.inventory_type).toLowerCase() === 'cafe' ? '#ff9f0a' : '#30d158', fontWeight: '850', fontSize: '9px', textTransform: 'uppercase', letterSpacing: '0.6px', marginBottom: '4px' }}>{getInventorySalesLabel(item)} · {isOutOfStock ? 'Agotado' : `Stock: ${item.stock}`}</div>}
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                      <div style={{ fontSize: '14px', fontWeight: '750', color: isSelected ? 'var(--gold-primary)' : 'white', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{item.name}</div>
+                      <div style={{ fontSize: '14px', fontWeight: '750', color: isSelected ? 'var(--gold-primary)' : '#111111', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{item.name}</div>
                       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', marginLeft: '10px' }}>
                         <div style={{ fontSize: '15px', fontWeight: '900', color: 'var(--gold-primary)' }}>{(item.price * exchangeRate).toLocaleString('es-VE', {minimumFractionDigits: 2, maximumFractionDigits: 2})} Bs.</div>
-                        <div style={{ fontSize: '11px', color: isSelected ? 'rgba(255,255,255,0.8)' : 'rgba(255,255,255,0.55)', fontWeight: '700' }}>Ref: ${item.price}</div>
+                        <div style={{ fontSize: '11px', color: isSelected ? 'rgba(17,17,17,0.8)' : 'rgba(17,17,17,0.55)', fontWeight: '700' }}>Ref: ${item.price}</div>
                       </div>
                     </div>
                     {item.included_items && item.included_items.length > 0 && (
@@ -1789,7 +1789,7 @@ const SelectionModal = ({ isOpen, onClose, title, icon, items, selectedItems, on
                           <span key={i} style={{ 
                             fontSize: '9.5px', 
                             fontWeight: '700',
-                            color: isSelected ? 'var(--gold-primary)' : 'rgba(255,255,255,0.5)',
+                            color: isSelected ? 'var(--gold-primary)' : 'rgba(17,17,17,0.6)',
                             backgroundColor: isSelected ? 'rgba(255, 255, 255,0.1)' : 'rgba(255,255,255,0.04)',
                             padding: '4px 10px',
                             borderRadius: '8px',

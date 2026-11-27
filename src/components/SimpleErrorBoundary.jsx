@@ -68,7 +68,7 @@ export class SimpleErrorBoundary extends React.Component {
             {/* Description */}
             <p style={{
               fontSize: '14px',
-              color: 'rgba(255,255,255,0.45)',
+              color: '#111111',
               margin: '0 0 28px',
               lineHeight: '1.6',
               maxWidth: '320px',
@@ -110,7 +110,7 @@ export class SimpleErrorBoundary extends React.Component {
             <details style={{ marginTop: '32px', textAlign: 'left' }}>
               <summary style={{
                 fontSize: '12px',
-                color: 'rgba(255,255,255,0.3)',
+                color: '#111111',
                 cursor: 'pointer',
                 fontWeight: '600',
                 letterSpacing: '0.3px',
@@ -126,7 +126,7 @@ export class SimpleErrorBoundary extends React.Component {
                 border: '1px solid rgba(0, 0, 0, 0.08)',
                 borderRadius: '12px',
                 fontSize: '11px',
-                color: 'rgba(255,255,255,0.4)',
+                color: '#111111',
                 whiteSpace: 'pre-wrap',
                 overflow: 'auto',
                 maxHeight: '180px',

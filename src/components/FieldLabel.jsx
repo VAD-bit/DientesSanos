@@ -11,7 +11,7 @@
 const FieldLabel = ({ children, required = false, hint, style = {}, ...props }) => {
   return (
     <label style={{ display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '8px', ...style }} {...props}>
-      <span style={{ fontSize: '11px', fontWeight: '800', color: 'rgba(255,255,255,0.4)', textTransform: 'uppercase', letterSpacing: '1px' }}>
+      <span style={{ fontSize: '11px', fontWeight: '800', color: '#111111', textTransform: 'uppercase', letterSpacing: '1px' }}>
         {children}
       </span>
 
@@ -22,7 +22,7 @@ const FieldLabel = ({ children, required = false, hint, style = {}, ...props }) 
       )}
 
       {hint && (
-        <span style={{ fontSize: '10px', color: 'rgba(255,255,255,0.25)', fontWeight: '500', marginLeft: '2px' }}>
+        <span style={{ fontSize: '10px', color: '#111111', fontWeight: '500', marginLeft: '2px' }}>
           {hint}
         </span>
       )}

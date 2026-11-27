@@ -466,16 +466,16 @@ const mobFeaturesSecureGap = ${mobFeaturesSecureGap};`;
         .l-card-title {
           font-size: clamp(20px, 2.8vh, 26px);
           font-weight: 800;
-          color: #fff;
+          color: #111111;
           text-align: center;
           margin-top: clamp(2px, 0.8vh, 6px);
           margin-bottom: clamp(2px, 0.8vh, 6px);
           letter-spacing: 0.5px;
         }
-        .l-card-title span { color: var(--champagne); text-shadow: 0 0 10px rgba(17, 17, 17, 0.35); }
+        .l-card-title span { color: var(--champagne-dark); }
         .l-card-sub {
           font-size: clamp(13px, 1.8vh, 15px);
-          color: rgba(255,255,255,0.45);
+          color: rgba(17, 17, 17, 0.65);
           text-align: center;
           margin-bottom: clamp(14px, 3.2vh, 28px);
         }
@@ -563,24 +563,24 @@ const mobFeaturesSecureGap = ${mobFeaturesSecureGap};`;
           display: flex;
           align-items: center;
           gap: 8px;
-          color: rgba(255, 255, 255, 0.6);
+          color: rgba(17, 17, 17, 0.7);
           cursor: pointer;
           font-weight: 500;
         }
         .l-remember input {
-          accent-color: #ffffff;
+          accent-color: #111111;
           width: 16px;
           height: 16px;
           cursor: pointer;
         }
         .l-forgot {
-          color: #ffffff;
+          color: #333333;
           text-decoration: none;
           font-weight: 600;
           transition: color 0.2s;
         }
         .l-forgot:hover {
-          color: #b5b5b5;
+          color: #111111;
           text-decoration: underline;
         }
 
@@ -629,9 +629,9 @@ const mobFeaturesSecureGap = ${mobFeaturesSecureGap};`;
           gap: 6px;
           margin-top: 24px;
           font-size: 12px;
-          color: rgba(255,255,255,0.40);
+          color: rgba(17, 17, 17, 0.65);
         }
-        .l-secure span { color: #ffffff; font-weight: 600; }
+        .l-secure span { color: #111111; font-weight: 600; }
 
         /* â”€â”€ SPIN â”€â”€ */
         @keyframes l-spin { to { transform: rotate(360deg); } }
@@ -881,7 +881,7 @@ const mobFeaturesSecureGap = ${mobFeaturesSecureGap};`;
           }
           .l-mob-sub {
             font-size: 11.5px !important;
-            color: rgba(255,255,255,0.60);
+            color: rgba(255, 255, 255, 0.85);
             text-align: center;
           }
           .l-card-title, .l-card-sub {
@@ -968,7 +968,7 @@ const mobFeaturesSecureGap = ${mobFeaturesSecureGap};`;
             justify-content: center;
             gap: 6px;
             font-size: 11px !important;
-            color: rgba(255,255,255,0.50);
+            color: rgba(255, 255, 255, 0.85);
             width: 100%;
             max-width: 360px !important;
             margin-top: 8px !important;
@@ -1352,7 +1352,7 @@ const mobFeaturesSecureGap = ${mobFeaturesSecureGap};`;
               <div className="l-card-mobile-header">
                  <img loading="lazy" src={logo} alt="Centro Odontológico Dientes Sanos" style={{ width: '130px', marginBottom: '24px', objectFit: 'contain', display: 'block', marginLeft: 'auto', marginRight: 'auto', filter: 'drop-shadow(0 8px 16px rgba(0,0,0,0.95)) drop-shadow(0 0 25px rgba(17, 17, 17, 0.3))' }} />
                 <h2 style={{ fontSize: '24px', fontWeight: '600', color: '#111111', marginBottom: '6px' }}>¡Bienvenido de nuevo!</h2>
-                <p style={{ fontSize: '13.5px', color: 'rgba(255,255,255,0.4)', marginBottom: '8px' }}>Inicia sesión para acceder al CRM de tu clínica</p>
+                <p style={{ fontSize: '13.5px', color: 'rgba(17, 17, 17, 0.6)', marginBottom: '8px' }}>Inicia sesión para acceder al CRM de tu clínica</p>
               </div>
 
               <p className="l-card-title">¡BIENVENIDO A <span>DIENTES SANOS!</span></p>
@@ -1369,7 +1369,7 @@ const mobFeaturesSecureGap = ${mobFeaturesSecureGap};`;
                 }
                 .panda-field-group label {
                   font-size: 13px;
-                  color: #9a9a9f;
+                  color: #e5e5e5;
                   font-weight: 550;
                   text-align: left;
                   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
@@ -1394,6 +1394,9 @@ const mobFeaturesSecureGap = ${mobFeaturesSecureGap};`;
                   outline: none;
                   box-sizing: border-box;
                   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+                }
+                .panda-input-field::placeholder {
+                  color: rgba(255, 255, 255, 0.45);
                 }
                 .panda-input-field:hover {
                   border-color: rgba(255, 255, 255, 0.12);
@@ -1442,7 +1445,7 @@ const mobFeaturesSecureGap = ${mobFeaturesSecureGap};`;
                   -webkit-appearance: none !important;
                   width: 18px !important;
                   height: 18px !important;
-                  border: 1px solid rgba(255,255,255,0.25) !important;
+                  border: 1px solid #949494 !important;
                   border-radius: 4px !important;
                   background: transparent !important;
                   padding: 0 !important;
@@ -1453,7 +1456,7 @@ const mobFeaturesSecureGap = ${mobFeaturesSecureGap};`;
                   flex-shrink: 0;
                 }
                 .panda-custom-checkbox:hover {
-                  border-color: rgba(255,255,255,0.45) !important;
+                  border-color: #c9c9c9 !important;
                   background: rgba(255,255,255,0.02) !important;
                 }
                 .panda-custom-checkbox:checked {
@@ -1474,7 +1477,7 @@ const mobFeaturesSecureGap = ${mobFeaturesSecureGap};`;
                 .panda-link-text {
                   background: none;
                   border: none;
-                  color: #8a8a8a;
+                  color: #333333;
                   font-size: 13px;
                   cursor: pointer;
                   padding: 0;
@@ -1484,7 +1487,7 @@ const mobFeaturesSecureGap = ${mobFeaturesSecureGap};`;
                   gap: 8px;
                 }
                 .panda-link-text:hover {
-                  color: #ffffff;
+                  color: #111111;
                 }
                 .panda-submit-btn {
                   width: 100%;
@@ -1560,7 +1563,7 @@ const mobFeaturesSecureGap = ${mobFeaturesSecureGap};`;
                       right: '16px',
                       top: '50%',
                       transform: 'translateY(-50%)',
-                      color: 'rgba(255,255,255,0.25)',
+                      color: '#ffffff',
                       pointerEvents: 'none'
                     }} />
                   </div>
@@ -1598,8 +1601,8 @@ const mobFeaturesSecureGap = ${mobFeaturesSecureGap};`;
                       tabIndex={-1}
                     >
                       {showPassword
-                        ? <EyeOff size={16} color="rgba(255,255,255,0.25)" />
-                        : <Eye    size={16} color="rgba(255,255,255,0.25)" />
+                        ? <EyeOff size={16} color="#ffffff" />
+                        : <Eye    size={16} color="#ffffff" />
                       }
                     </button>
                   </div>
@@ -1635,7 +1638,7 @@ const mobFeaturesSecureGap = ${mobFeaturesSecureGap};`;
                   <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '12px', fontSize: '11px', color: 'rgba(255, 255, 255, 0.35)', marginTop: '16px', width: '100%' }}>
                     <div style={{ flex: 1, height: '1px', background: 'rgba(255, 255, 255, 0.08)' }}></div>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '6px', whiteSpace: 'nowrap' }}>
-                      <ShieldCheck size={14} color="rgba(255, 255, 255, 0.35)" />
+                      <ShieldCheck size={14} color="#ffffff" />
                       <span>Acceso seguro a tu negocio</span>
                     </div>
                     <div style={{ flex: 1, height: '1px', background: 'rgba(255, 255, 255, 0.08)' }}></div>

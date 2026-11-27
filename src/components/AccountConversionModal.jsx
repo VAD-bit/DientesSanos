@@ -282,11 +282,11 @@ export default function AccountConversionModal({
                         >
                           <div style={{ display: 'flex', alignItems: 'center', gap: '6px', width: '100%' }}>
                             <Icon size={14} color={isSelected ? '#ff453a' : acc.color} />
-                            <span style={{ fontSize: '11.5px', fontWeight: '900', color: isSelected ? '#fff' : 'rgba(255,255,255,0.85)', flex: 1, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                            <span style={{ fontSize: '11.5px', fontWeight: '900', color: isSelected ? '#111111' : 'rgba(17,17,17,0.7)', flex: 1, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                               {acc.shortLabel}
                             </span>
                           </div>
-                          <span style={{ fontSize: '10.5px', color: bal > 0 ? 'rgba(255,255,255,0.6)' : 'var(--text-muted)', fontWeight: '750' }}>
+                          <span style={{ fontSize: '10.5px', color: bal > 0 ? 'rgba(17,17,17,0.6)' : 'var(--text-muted)', fontWeight: '750' }}>
                             {formatMoney(bal)} {acc.usd ? '$' : 'Bs'}
                           </span>
                         </button>
@@ -434,11 +434,11 @@ export default function AccountConversionModal({
                         >
                           <div style={{ display: 'flex', alignItems: 'center', gap: '6px', width: '100%' }}>
                             <Icon size={14} color={isSelected ? '#32d74b' : acc.color} />
-                            <span style={{ fontSize: '11.5px', fontWeight: '900', color: isSelected ? '#fff' : 'rgba(255,255,255,0.85)', flex: 1, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                            <span style={{ fontSize: '11.5px', fontWeight: '900', color: isSelected ? '#111111' : 'rgba(17,17,17,0.7)', flex: 1, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                               {acc.shortLabel}
                             </span>
                           </div>
-                          <span style={{ fontSize: '10.5px', color: bal > 0 ? 'rgba(255,255,255,0.6)' : 'var(--text-muted)', fontWeight: '750' }}>
+                          <span style={{ fontSize: '10.5px', color: bal > 0 ? 'rgba(17,17,17,0.6)' : 'var(--text-muted)', fontWeight: '750' }}>
                             {formatMoney(bal)} {acc.usd ? '$' : 'Bs'}
                           </span>
                         </button>

@@ -374,7 +374,7 @@ const MobileDashboard = ({ onOpenSale, stats, chartData, dbData, onNavigate, onO
               <span style={{ width: '5px', height: '5px', borderRadius: '50%', background: '#22c55e' }} /> En tiempo real
             </span>
           </div>
-          <span style={{ fontSize: '10px', color: 'rgba(255,255,255,0.35)', fontWeight: '700' }}>Desliza â†’</span>
+          <span style={{ fontSize: '10px', color: '#111111', fontWeight: '700' }}>Desliza â†’</span>
         </div>
 
         <div className="panda-scrollbar" style={{ display: 'flex', gap: '16px', overflowX: 'auto', scrollSnapType: 'x mandatory', WebkitOverflowScrolling: 'touch', padding: '10px 20px 20px', margin: '0 -20px' }}>
@@ -418,7 +418,7 @@ const MobileDashboard = ({ onOpenSale, stats, chartData, dbData, onNavigate, onO
                       </div>
                     )
                   ) : (
-                    <span style={{ fontSize: '24px', fontWeight: '900', color: 'rgba(255,255,255,0.15)' }}>{chair.id}</span>
+                    <span style={{ fontSize: '24px', fontWeight: '900', color: '#111111' }}>{chair.id}</span>
                   )}
                 </div>
                 <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '6px', textAlign: 'right' }}>
@@ -450,15 +450,15 @@ const MobileDashboard = ({ onOpenSale, stats, chartData, dbData, onNavigate, onO
                   <div style={{ background: 'var(--bg-secondary)', borderRadius: '14px', padding: '12px 16px', border: '1px solid rgba(0, 0, 0, 0.08)', display: 'flex', alignItems: 'center', gap: '12px', backdropFilter: 'blur(12px)', boxShadow: '0 8px 20px rgba(0,0,0,0.5)' }}>
                     <div style={{ flex: 1, minWidth: 0 }}>
                       <div style={{ fontSize: '14px', fontWeight: '900', color: '#111111', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', marginBottom: '4px' }}>{chair.client}</div>
-                      <div style={{ fontSize: '11px', color: 'rgba(255,255,255,0.7)', fontWeight: '600', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{chair.service}</div>
+                      <div style={{ fontSize: '11px', color: '#111111', fontWeight: '600', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{chair.service}</div>
                     </div>
                     <div style={{ textAlign: 'right' }}>
                       <div style={{ fontSize: '14px', fontWeight: '900', color: 'var(--champagne)', marginBottom: '4px' }}>{chair.price}</div>
-                      <div style={{ fontSize: '11px', color: 'rgba(255,255,255,0.7)', fontWeight: '800' }}>{chair.elapsed}</div>
+                      <div style={{ fontSize: '11px', color: '#111111', fontWeight: '800' }}>{chair.elapsed}</div>
                     </div>
                   </div>
                 ) : (
-                  <div style={{ textAlign: 'center', fontSize: '12px', fontWeight: '800', color: 'rgba(255,255,255,0.3)', letterSpacing: '1px', textTransform: 'uppercase', padding: '16px 0', background: 'var(--bg-secondary)', borderRadius: '14px', backdropFilter: 'blur(4px)' }}>Sillón libre</div>
+                  <div style={{ textAlign: 'center', fontSize: '12px', fontWeight: '800', color: '#111111', letterSpacing: '1px', textTransform: 'uppercase', padding: '16px 0', background: 'var(--bg-secondary)', borderRadius: '14px', backdropFilter: 'blur(4px)' }}>Sillón libre</div>
                 )}
               </div>
             </div>
@@ -488,7 +488,7 @@ const MobileDashboard = ({ onOpenSale, stats, chartData, dbData, onNavigate, onO
             <div style={{ width: '28px', height: '28px', borderRadius: '8px', background: 'rgba(17, 17, 17, 0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <DollarSign size={16} color="var(--gold-primary)" strokeWidth={2.5} />
             </div>
-            <span style={{ fontSize: '12px', color: 'rgba(255,255,255,0.6)', fontWeight: '800', letterSpacing: '0.5px' }}>PRODUCCIÓN TOTAL</span>
+            <span style={{ fontSize: '12px', color: '#111111', fontWeight: '800', letterSpacing: '0.5px' }}>PRODUCCIÓN TOTAL</span>
           </div>
           <div style={{ fontSize: '38px', fontWeight: '900', color: '#111111', letterSpacing: '-1px', display: 'flex', alignItems: 'baseline', gap: '4px' }}>
             <span style={{ fontSize: '24px', color: 'var(--gold-primary)', opacity: 0.8 }}>$</span>
@@ -508,8 +508,8 @@ const MobileDashboard = ({ onOpenSale, stats, chartData, dbData, onNavigate, onO
           gap: '8px'
         }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-            <Calendar size={14} color="rgba(255,255,255,0.5)" />
-            <span style={{ fontSize: '11px', color: 'rgba(255,255,255,0.5)', fontWeight: '700', letterSpacing: '0.3px' }}>{isAssistant ? 'LIMPIEZAS' : 'CITAS'}</span>
+            <Calendar size={14} color="#111111" />
+            <span style={{ fontSize: '11px', color: '#111111', fontWeight: '700', letterSpacing: '0.3px' }}>{isAssistant ? 'LIMPIEZAS' : 'CITAS'}</span>
           </div>
           <div style={{ fontSize: '22px', fontWeight: '800', color: '#111111' }}>
             {myStats.appointments}
@@ -528,8 +528,8 @@ const MobileDashboard = ({ onOpenSale, stats, chartData, dbData, onNavigate, onO
           gap: '8px'
         }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-            <Users size={14} color="rgba(255,255,255,0.5)" />
-            <span style={{ fontSize: '11px', color: 'rgba(255,255,255,0.5)', fontWeight: '700', letterSpacing: '0.3px' }}>CLIENTES</span>
+            <Users size={14} color="#111111" />
+            <span style={{ fontSize: '11px', color: '#111111', fontWeight: '700', letterSpacing: '0.3px' }}>CLIENTES</span>
           </div>
           <div style={{ fontSize: '22px', fontWeight: '800', color: '#111111' }}>
             {stats.clients}
@@ -677,7 +677,7 @@ const MobileDashboard = ({ onOpenSale, stats, chartData, dbData, onNavigate, onO
                         >
                           {c.name.split(' ')[0]}
                         </div>
-                        <div style={{ fontSize: '11px', color: 'rgba(255,255,255,0.6)', fontWeight: '600' }}>¡Felicítalo hoy!</div>
+                        <div style={{ fontSize: '11px', color: '#111111', fontWeight: '600' }}>¡Felicítalo hoy!</div>
                       </div>
                     </div>
                     
@@ -751,7 +751,7 @@ const MobileDashboard = ({ onOpenSale, stats, chartData, dbData, onNavigate, onO
             
             {todaysBirthdays.length === 0 && upcomingBirthdays.length === 0 && (
               <div className="glass-card" style={{ padding: '30px 20px', borderRadius: '24px', border: '1px solid rgba(0, 0, 0, 0.08)', textAlign: 'center' }}>
-                <Cake size={32} color="rgba(255,255,255,0.1)" style={{ marginBottom: '12px' }} />
+                <Cake size={32} color="#111111" style={{ marginBottom: '12px' }} />
                 <div style={{ fontSize: '13px', color: 'var(--text-muted)', fontWeight: '600' }}>
                   No hay cumpleaños cercanos
                 </div>
@@ -929,7 +929,7 @@ const MobileDashboard = ({ onOpenSale, stats, chartData, dbData, onNavigate, onO
 
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', marginBottom: '28px' }}>
                   <div>
-                    <label style={{ display: 'block', fontSize: '10px', fontWeight: '800', color: 'rgba(255,255,255,0.5)', marginBottom: '8px', letterSpacing: '1px' }}>META DIARIA ($)</label>
+                    <label style={{ display: 'block', fontSize: '10px', fontWeight: '800', color: '#111111', marginBottom: '8px', letterSpacing: '1px' }}>META DIARIA ($)</label>
                     <input 
                       type="number" 
                       value={goals.daily} 
@@ -940,7 +940,7 @@ const MobileDashboard = ({ onOpenSale, stats, chartData, dbData, onNavigate, onO
                     />
                   </div>
                   <div>
-                    <label style={{ display: 'block', fontSize: '10px', fontWeight: '800', color: 'rgba(255,255,255,0.5)', marginBottom: '8px', letterSpacing: '1px' }}>META SEMANAL ($)</label>
+                    <label style={{ display: 'block', fontSize: '10px', fontWeight: '800', color: '#111111', marginBottom: '8px', letterSpacing: '1px' }}>META SEMANAL ($)</label>
                     <input 
                       type="number" 
                       value={goals.weekly} 
@@ -951,7 +951,7 @@ const MobileDashboard = ({ onOpenSale, stats, chartData, dbData, onNavigate, onO
                     />
                   </div>
                   <div>
-                    <label style={{ display: 'block', fontSize: '10px', fontWeight: '800', color: 'rgba(255,255,255,0.5)', marginBottom: '8px', letterSpacing: '1px' }}>META MENSUAL ($)</label>
+                    <label style={{ display: 'block', fontSize: '10px', fontWeight: '800', color: '#111111', marginBottom: '8px', letterSpacing: '1px' }}>META MENSUAL ($)</label>
                     <input 
                       type="number" 
                       value={goals.monthly} 
@@ -1416,12 +1416,12 @@ const PodiumWidget = ({ title, icon, data, labelKey, scoreKey, scoreLabel, isCli
                 {others.map((item, idx) => (
                   <div key={item.id || idx} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '12px 16px', background: 'rgba(0, 0, 0, 0.04)', borderRadius: '16px', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                      <span style={{ fontSize: '12px', fontWeight: '900', color: 'rgba(255,255,255,0.3)', width: '16px' }}>{idx + 4}</span>
+                      <span style={{ fontSize: '12px', fontWeight: '900', color: '#111111', width: '16px' }}>{idx + 4}</span>
                       {item.image_url ? (
                         <img src={item.image_url} alt={item[labelKey]} style={{ width: '32px', height: '32px', borderRadius: '10px', objectFit: 'cover' }} />
                       ) : (
                         <div style={{ width: '32px', height: '32px', borderRadius: '10px', background: 'rgba(0, 0, 0, 0.04)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                          <User size={16} color="rgba(255,255,255,0.5)" />
+                          <User size={16} color="#111111" />
                         </div>
                       )}
                       <span style={{ fontSize: '14px', fontWeight: '800', color: '#111111' }}>{item[labelKey].split(' ')[0]}</span>

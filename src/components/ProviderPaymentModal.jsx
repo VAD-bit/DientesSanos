@@ -219,7 +219,7 @@ export default function ProviderPaymentModal({
                     <span style={{ fontSize: '10.5px', fontWeight: '900', color: '#ff9f0a', textTransform: 'uppercase', letterSpacing: '0.6px', display: 'flex', alignItems: 'center', gap: '5px' }}>
                       <AlertCircle size={13} color="#ff9f0a" /> Deuda Actual por Reposición
                     </span>
-                    <span style={{ fontSize: '11px', color: 'rgba(255,255,255,0.5)', fontWeight: '700' }}>
+                    <span style={{ fontSize: '11px', color: '#111111', fontWeight: '700' }}>
                       Tasa: {Number(rate || 1).toLocaleString('es-VE', { maximumFractionDigits: 2 })} Bs/$
                     </span>
                   </div>
@@ -227,8 +227,8 @@ export default function ProviderPaymentModal({
                     <strong style={{ fontSize: '24px', fontWeight: '950', color: '#ff9f0a', letterSpacing: '-0.5px' }}>
                       {Number(providerDebtBs || 0).toLocaleString('es-VE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} Bs
                     </strong>
-                    <span style={{ fontSize: '14px', color: 'rgba(255,255,255,0.7)', fontWeight: '800' }}>
-                      â‰ˆ ${Number(providerDebtUsd || 0).toFixed(2)} USD
+                    <span style={{ fontSize: '14px', color: '#111111', fontWeight: '800' }}>
+                      ≈ ${Number(providerDebtUsd || 0).toFixed(2)} USD
                     </span>
                   </div>
                 </div>
@@ -289,12 +289,12 @@ export default function ProviderPaymentModal({
 
                   {/* Equivalent Preview */}
                   {numericAmount > 0 && (
-                    <div style={{ marginTop: '7px', fontSize: '11.5px', color: 'rgba(255,255,255,0.6)', fontWeight: '600', display: 'flex', justifyContent: 'space-between' }}>
+                    <div style={{ marginTop: '7px', fontSize: '11.5px', color: '#111111', fontWeight: '600', display: 'flex', justifyContent: 'space-between' }}>
                       <span>Equivalente:</span>
                       <strong style={{ color: selectedAccount.usd ? '#64d2ff' : 'var(--gold-primary)' }}>
                         {selectedAccount.usd 
-                          ? `â‰ˆ ${Number(amountBs).toLocaleString('es-VE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} Bs` 
-                          : `â‰ˆ $${Number(amountUsd).toFixed(2)} USD`}
+                          ? `≈ ${Number(amountBs).toLocaleString('es-VE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} Bs` 
+                          : `≈ $${Number(amountUsd).toFixed(2)} USD`}
                       </strong>
                     </div>
                   )}
@@ -356,7 +356,7 @@ export default function ProviderPaymentModal({
                         ${Number(providerDebtUsd || 0).toFixed(2)}
                       </strong>
                     </div>
-                    <ArrowRight size={14} color="rgba(255,255,255,0.4)" />
+                    <ArrowRight size={14} color="#111111" />
                     <div style={{ background: isFullyPaid ? 'rgba(50, 215, 75, 0.12)' : 'rgba(255,255,255,0.03)', border: isFullyPaid ? '1px solid rgba(50, 215, 75, 0.3)' : 'none', padding: '6px 8px', borderRadius: '8px' }}>
                       <span style={{ display: 'block', fontSize: '9.5px', color: isFullyPaid ? '#32d74b' : 'var(--text-muted)' }}>
                         {isFullyPaid ? '¡Deuda saldada!' : 'Nueva deuda'}
@@ -458,7 +458,7 @@ export default function ProviderPaymentModal({
                   color: 'var(--text-secondary)',
                   lineHeight: '1.4'
                 }}>
-                  <strong style={{ color: 'rgba(255,255,255,0.85)' }}>Nota operativa:</strong> Este pago no se contabiliza como gasto operativo nuevo, ya que solo salda la deuda de reposición de inventario previamente vendido.
+                  <strong style={{ color: '#111111' }}>Nota operativa:</strong> Este pago no se contabiliza como gasto operativo nuevo, ya que solo salda la deuda de reposición de inventario previamente vendido.
                 </div>
 
               </div>

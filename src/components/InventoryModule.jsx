@@ -603,7 +603,7 @@ const InventoryModule = ({ isMobile, currency, rates }) => {
               border: 'none', 
               borderRadius: '8px', 
               backgroundColor: viewMode === 'grid' ? 'var(--gold-primary)' : 'transparent',
-              color: viewMode === 'grid' ? 'black' : 'white',
+              color: viewMode === 'grid' ? 'black' : '#111111',
               cursor: 'pointer',
               display: 'flex',
               alignItems: 'center',
@@ -623,7 +623,7 @@ const InventoryModule = ({ isMobile, currency, rates }) => {
               border: 'none', 
               borderRadius: '8px', 
               backgroundColor: viewMode === 'list' ? 'var(--gold-primary)' : 'transparent',
-              color: viewMode === 'list' ? 'black' : 'white',
+              color: viewMode === 'list' ? 'black' : '#111111',
               cursor: 'pointer',
               display: 'flex',
               alignItems: 'center',
@@ -651,7 +651,7 @@ const InventoryModule = ({ isMobile, currency, rates }) => {
           border: '1px solid rgba(0, 0, 0, 0.08)',
           boxShadow: '0 16px 40px -12px rgba(0, 0, 0, 0.7)'
         }}>
-          <Package size={64} color="rgba(255,255,255,0.05)" style={{ marginBottom: '24px' }} />
+          <Package size={64} color="#111111" style={{ marginBottom: '24px' }} />
           <p style={{ color: 'var(--text-muted)', fontSize: '18px' }}>No hay productos que coincidan.</p>
         </div>
       ) : viewMode === 'list' && !isMobile ? (
@@ -686,7 +686,7 @@ const InventoryModule = ({ isMobile, currency, rates }) => {
                           <span style={{ 
                             fontWeight: '950', 
                             fontSize: isMobile ? '13px' : '15px',
-                            color: (item.stock <= 5 && item.category !== 'Accesorios') ? '#ff4d4d' : 'white'
+                            color: (item.stock <= 5 && item.category !== 'Accesorios') ? '#ff4d4d' : '#111111'
                           }}>
                             {item.stock}
                           </span>
@@ -836,7 +836,7 @@ const InventoryModule = ({ isMobile, currency, rates }) => {
                             </div>
                             {rates?.usd > 0 && (
                               <div style={{ fontSize: '10px', color: 'var(--text-muted)', fontWeight: '700', marginTop: '2px' }}>
-                                â‰ˆ {Math.round(item.price * rates.usd).toLocaleString()} Bs.
+                                ≈ {Math.round(item.price * rates.usd).toLocaleString()} Bs.
                               </div>
                             )}
                           </div>
@@ -885,14 +885,14 @@ const InventoryModule = ({ isMobile, currency, rates }) => {
                         width: isMobile ? '40px' : '32px', height: isMobile ? '40px' : '32px', borderRadius: '50%', border: 'none', background: 'transparent', 
                         color: 'var(--text-secondary)', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: '0.2s' 
                       }}
-                      onMouseOver={e => { e.currentTarget.style.background='rgba(255,255,255,0.1)'; e.currentTarget.style.color='white'; }}
+                      onMouseOver={e => { e.currentTarget.style.background='rgba(255,255,255,0.1)'; e.currentTarget.style.color='#111111'; }}
                       onMouseOut={e => { e.currentTarget.style.background='transparent'; e.currentTarget.style.color='var(--text-secondary)'; }}
                     >
                       <Minus size={14} />
                     </button>
                     <span style={{ 
                       fontSize: isMobile ? '20px' : '18px', fontWeight: '950', minWidth: '40px', textAlign: 'center', 
-                      color: isLowStock ? 'var(--gold-primary)' : 'white',
+                      color: isLowStock ? 'var(--gold-primary)' : '#111111',
                       textShadow: isLowStock ? '0 0 10px rgba(255, 255, 255,0.5)' : 'none'
                     }}>
                       {item.stock}
@@ -903,7 +903,7 @@ const InventoryModule = ({ isMobile, currency, rates }) => {
                         width: isMobile ? '40px' : '32px', height: isMobile ? '40px' : '32px', borderRadius: '50%', border: 'none', background: 'transparent', 
                         color: 'var(--text-secondary)', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: '0.2s' 
                       }}
-                      onMouseOver={e => { e.currentTarget.style.background='rgba(255,255,255,0.1)'; e.currentTarget.style.color='white'; }}
+                      onMouseOver={e => { e.currentTarget.style.background='rgba(255,255,255,0.1)'; e.currentTarget.style.color='#111111'; }}
                       onMouseOut={e => { e.currentTarget.style.background='transparent'; e.currentTarget.style.color='var(--text-secondary)'; }}
                     >
                       <Plus size={14} />
@@ -1000,7 +1000,7 @@ const InventoryModule = ({ isMobile, currency, rates }) => {
                     </h2>
                     <p style={{ color: 'var(--text-muted)', fontSize: '13px', marginTop: '6px', paddingLeft: '52px' }}>Registro completo de entradas y salidas de almacén.</p>
                   </div>
-                  <button onClick={() => setShowHistoryModal(false)} style={{ background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', color: 'rgba(255,255,255,0.5)', cursor: 'pointer', width: '36px', height: '36px', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, transition: 'all 0.2s' }} onMouseEnter={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.1)'; e.currentTarget.style.color = 'white'; }} onMouseLeave={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.06)'; e.currentTarget.style.color = 'rgba(255,255,255,0.5)'; }}>
+                  <button onClick={() => setShowHistoryModal(false)} style={{ background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', color: '#111111', cursor: 'pointer', width: '36px', height: '36px', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, transition: 'all 0.2s' }} onMouseEnter={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.1)'; e.currentTarget.style.color = '#111111'; }} onMouseLeave={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.06)'; e.currentTarget.style.color = 'rgba(17,17,17,0.6)'; }}>
                     <X size={18} />
                   </button>
                 </div>
@@ -1037,7 +1037,7 @@ const InventoryModule = ({ isMobile, currency, rates }) => {
                       style={{ width: '100%', padding: '10px 14px 10px 36px', borderRadius: '12px', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', color: '#111111', fontSize: '13px', outline: 'none', boxSizing: 'border-box' }}
                     />
                     {historySearch && (
-                      <button onClick={() => setHistorySearch('')} style={{ position: 'absolute', right: '8px', top: '50%', transform: 'translateY(-50%)', background: 'rgba(0, 0, 0, 0.04)', border: 'none', color: 'rgba(255,255,255,0.4)', cursor: 'pointer', width: '20px', height: '20px', borderRadius: '6px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                      <button onClick={() => setHistorySearch('')} style={{ position: 'absolute', right: '8px', top: '50%', transform: 'translateY(-50%)', background: 'rgba(0, 0, 0, 0.04)', border: 'none', color: '#111111', cursor: 'pointer', width: '20px', height: '20px', borderRadius: '6px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                         <X size={12} />
                       </button>
                     )}
@@ -1053,7 +1053,7 @@ const InventoryModule = ({ isMobile, currency, rates }) => {
                           fontSize: '12px',
                           fontWeight: '700',
                           backgroundColor: historyFilter === tab.value ? 'var(--gold-primary)' : 'rgba(255,255,255,0.04)',
-                          color: historyFilter === tab.value ? 'black' : 'rgba(255,255,255,0.5)',
+                          color: historyFilter === tab.value ? 'black' : 'rgba(17,17,17,0.6)',
                           border: `1px solid ${historyFilter === tab.value ? 'var(--gold-primary)' : 'rgba(0, 0, 0, 0.08)'}`,
                           cursor: 'pointer',
                           transition: 'all 0.2s cubic-bezier(0.4,0,0.2,1)',
@@ -1073,7 +1073,7 @@ const InventoryModule = ({ isMobile, currency, rates }) => {
                   ) : filteredHistory.length === 0 ? (
                     <div style={{ textAlign: 'center', padding: '48px 20px' }}>
                       <div style={{ width: '64px', height: '64px', borderRadius: '20px', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 16px' }}>
-                        <Package size={28} color="rgba(255,255,255,0.12)" />
+                        <Package size={28} color="#111111" />
                       </div>
                       <p style={{ color: 'var(--text-muted)', fontSize: '14px', fontWeight: '600' }}>{historySearch ? `Sin resultados para "${historySearch}"` : 'No hay movimientos en este período.'}</p>
                     </div>
@@ -1181,7 +1181,7 @@ const EditInventoryModal = ({ isOpen, item, staff = [], onClose, onSave }) => {
                   display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer',
                   transition: 'all 0.2s'
                 }}
-                onMouseOver={(e) => { e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.1)'; e.currentTarget.style.color = 'white'; }}
+                onMouseOver={(e) => { e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.1)'; e.currentTarget.style.color = '#111111'; }}
                 onMouseOut={(e) => { e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.05)'; e.currentTarget.style.color = 'var(--text-secondary)'; }}
               >
                 <X size={16} />
@@ -1274,7 +1274,7 @@ const EditInventoryModal = ({ isOpen, item, staff = [], onClose, onSave }) => {
                     </>
                   ) : (
                     <>
-                      <Camera size={18} color="rgba(255,255,255,0.3)" />
+                      <Camera size={18} color="#111111" />
                       <span style={{ fontSize: '13px', color: 'var(--text-secondary)' }}>Tomar o subir foto...</span>
                     </>
                   )}

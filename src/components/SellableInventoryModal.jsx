@@ -157,7 +157,7 @@ const SellableInventoryModal = ({
                             <span style={{ color: isCafe ? 'var(--gold-primary)' : '#54d37b', fontSize: '9px', fontWeight: 950, textTransform: 'uppercase', letterSpacing: '.55px' }}>{getInventorySalesLabel(item)}</span>
                             <h3 style={{ margin: '4px 0 6px', color: '#111111', fontSize: '13px', lineHeight: 1.2, fontWeight: 900, textTransform: 'capitalize' }}>{item.name}</h3>
                             <strong style={{ color: 'var(--gold-primary)', fontSize: '18px', lineHeight: 1 }}>${money(item.price)}</strong>
-                            {rate > 0 && <span style={{ marginTop: '4px', display: 'block', color: 'rgba(255,255,255,0.5)', fontSize: '11.5px', fontWeight: 500 }}>â‰ˆ {money(Number(item.price || 0) * rate)} Bs</span>}
+                            {rate > 0 && <span style={{ marginTop: '4px', display: 'block', color: '#111111', fontSize: '11.5px', fontWeight: 500 }}>≈ {money(Number(item.price || 0) * rate)} Bs</span>}
                           </div>
                         </button>
                         {mode === 'multiple' && (

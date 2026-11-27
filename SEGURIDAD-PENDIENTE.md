@@ -1,6 +1,6 @@
-﻿# Seguridad â€” dos problemas pendientes en odontosonrisa
+﻿# Seguridad — dos problemas pendientes en odontosonrisa
 
-Hallazgos verificados el 2026-08-05. **Ninguno rompe la app** â€” funciona correctamente hoy.
+Hallazgos verificados el 2026-08-05. **Ninguno rompe la app** — funciona correctamente hoy.
 Son riesgos de seguridad, no fallas.
 
 Este documento existe para que se pueda retomar el trabajo sin volver a investigar.
@@ -21,7 +21,7 @@ Ambos corregidos y verificados con login real â†’ HTTP 200. Ver `C:\Users\W
 
 ---
 
-## Problema 2 (FÁCIL) â€” el sitio público expone la tabla de clientes  âœ… RESUELTO 2026-08-05
+## Problema 2 (FÁCIL) — el sitio público expone la tabla de clientes  âœ… RESUELTO 2026-08-05
 
 > Se numera "2" porque es el segundo en gravedad conceptual, pero es el que conviene atacar
 > primero: es acotado, de bajo riesgo, y la fuga está activa hoy.
@@ -43,12 +43,12 @@ en SQL, del lado del servidor. El navegador ya no recibe la tabla de clientes.
   `normalizeIdCard`/`normalizePhone` (su lógica está en SQL).
 
 **Verificado:** los datos tenían 1 cédula con `V-` y 2 teléfonos con `+`, justo los casos que un
-`.eq()` ingenuo habría duplicado â€” por eso se descartó la Opción A. Pruebas SQL y en navegador
+`.eq()` ingenuo habría duplicado — por eso se descartó la Opción A. Pruebas SQL y en navegador
 (pestaña Red): `find_existing_client` devuelve 0/1 fila, `find_related_clients` devuelve solo el
 grupo de la persona (2), nunca 86. Reconoce al cliente existente sin duplicar. Sin datos escritos
 en la verificación (86 filas antes y después).
 
-**Nota aparte (no bloqueante):** el `.env` **local** tiene una `anon key` desincronizada â€” las
+**Nota aparte (no bloqueante):** el `.env` **local** tiene una `anon key` desincronizada — las
 peticiones con `publicSupabase` dan 401 en desarrollo (la `service_role` sí es válida). No afecta
 producción ni este fix, pero conviene refrescar la anon key local. Relacionado con el "Detalle
 suelto" de más abajo (`.env` vs `.env.vercel`).
@@ -98,7 +98,7 @@ Mover el filtrado al servidor. Dos caminos:
   Replica exactamente la lógica de desempate actual (prioriza `auth_user_id` no nulo, luego
   cantidad de citas) y no expone nada más.
 
-**Ojo:** la lógica actual normaliza antes de comparar â€” `normalizeIdCard` quita todo lo que no sea
+**Ojo:** la lógica actual normaliza antes de comparar — `normalizeIdCard` quita todo lo que no sea
 dígito, `normalizePhone` igual. Un filtro ingenuo con `.eq('id_card', valor)` **no** replica ese
 comportamiento y provocaría clientes duplicados. Hay que preservar la normalización.
 
@@ -113,7 +113,7 @@ comportamiento y provocaría clientes duplicados. Hay que preservar la normaliza
 
 ---
 
-## Problema 1 (DIFÍCIL) â€” la service_role key viaja en el navegador
+## Problema 1 (DIFÍCIL) — la service_role key viaja en el navegador
 
 ### Qué pasa
 
@@ -125,7 +125,7 @@ Verificado: se decodificaron los JWT presentes en `dist/assets/*.js` y hay dos, 
 
 La `service_role` **ignora RLS por completo**. Como los seis proyectos comparten el mismo motor
 PostgreSQL en el VPS, esa llave da acceso total a `odontosonrisa`, `odontosonrisa`, `janastudio`,
-`lavuelta`, `flexpro` y `fullchinavzla` â€” más `auth.users`. Es la llave más privilegiada de la
+`lavuelta`, `flexpro` y `fullchinavzla` — más `auth.users`. Es la llave más privilegiada de la
 instancia, publicada en una web.
 
 ### Por qué no es un cambio de una línea
@@ -144,7 +144,7 @@ Toda la capa de datos del CRM corre como `service_role`, no solo el login. Alcan
 | `src/public-site/services/publicService.js` | **23** |
 
 Además hay **5 llamadas `auth.admin.*`** que *no pueden* funcionar desde el navegador sin la
-service_role â€” requieren sí o sí código de servidor:
+service_role — requieren sí o sí código de servidor:
 
 | Línea | Llamada |
 |---|---|
@@ -160,16 +160,16 @@ Es decir: las políticas actuales **no cubren todo**, porque hasta ahora no hac�
 
 ### Orden sugerido
 
-1. **Edge Function para `auth.admin`** â€” mover las 5 llamadas a una función de servidor.
+1. **Edge Function para `auth.admin`** — mover las 5 llamadas a una función de servidor.
    Probar el módulo de Personal (alta, edición y baja de empleados).
-2. **Auditar RLS** â€” tabla por tabla, definir qué debe poder ver/hacer cada rol
+2. **Auditar RLS** — tabla por tabla, definir qué debe poder ver/hacer cada rol
    (`Admin`, `Barbero`, recepción). Completar las políticas que falten y activar RLS donde esté apagado.
 3. **Cambiar la línea 2** a `anonClient` y probar los 11 módulos del CRM uno por uno.
 4. **Rotar la llave.** Cambiar `JWT_SECRET` en el VPS invalida **todas** las llaves de la instancia
    â†’ hay que actualizar las 6 apps y reiniciar los servicios de forma coordinada. Hacerlo fuera de
    horario de atención.
 
-No intentar los pasos 2 y 3 sin poder probar la app en funcionamiento â€” es un CRM en producción
+No intentar los pasos 2 y 3 sin poder probar la app en funcionamiento — es un CRM en producción
 que usan 17 personas.
 
 ---

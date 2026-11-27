@@ -344,7 +344,7 @@ const AttendanceHistoryModal = ({ member, dates, logs, streak, onClose, overlayC
               background: 'rgba(0, 0, 0, 0.04)', 
               border: '1px solid rgba(0, 0, 0, 0.08)', 
               borderRadius: '10px', 
-              color: 'rgba(255,255,255,0.7)', 
+              color: 'rgba(17,17,17,0.65)', 
               width: isMobile ? '32px' : '34px', 
               height: isMobile ? '32px' : '34px', 
               cursor: 'pointer', 
@@ -354,8 +354,8 @@ const AttendanceHistoryModal = ({ member, dates, logs, streak, onClose, overlayC
               flexShrink: 0,
               transition: 'all 0.2s ease'
             }}
-            onMouseEnter={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.12)'; e.currentTarget.style.color = 'white'; }}
-            onMouseLeave={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.06)'; e.currentTarget.style.color = 'rgba(255,255,255,0.7)'; }}
+            onMouseEnter={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.12)'; e.currentTarget.style.color = '#111111'; }}
+            onMouseLeave={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.06)'; e.currentTarget.style.color = 'rgba(17,17,17,0.6)'; }}
           >
             <X size={16} />
           </button>
@@ -458,7 +458,7 @@ const AttendanceHistoryModal = ({ member, dates, logs, streak, onClose, overlayC
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(7, minmax(0, 1fr))', gap: isMobile ? '4px' : '6px' }}>
             {['Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'S¡b', 'Dom'].map(name => (
-              <div key={name} style={{ fontSize: isMobile ? '9px' : '10px', fontWeight: '800', color: 'rgba(255,255,255,0.4)', textAlign: 'center', paddingBottom: '2px' }}>
+              <div key={name} style={{ fontSize: isMobile ? '9px' : '10px', fontWeight: '800', color: 'rgba(17,17,17,0.5)', textAlign: 'center', paddingBottom: '2px' }}>
                 {name}
               </div>
             ))}
@@ -480,7 +480,7 @@ const AttendanceHistoryModal = ({ member, dates, logs, streak, onClose, overlayC
                 ? 'var(--gold-primary)'
                 : d.present
                   ? '#32d74b'
-                  : 'rgba(255,255,255,0.3)';
+                  : 'rgba(17,17,17,0.5)';
 
               return (
                 <div
@@ -584,16 +584,16 @@ const AttendanceHistoryModal = ({ member, dates, logs, streak, onClose, overlayC
                     <div style={{ display: 'flex', alignItems: 'center', gap: '6px', flex: isMobile ? 'none' : 1, justifyContent: isMobile ? 'flex-start' : 'center' }}>
                       <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
                         <span style={{ width: '5px', height: '5px', borderRadius: '50%', background: '#32d74b', flexShrink: 0 }} />
-                        <span style={{ fontSize: isMobile ? '11px' : '12px', fontWeight: '800', color: 'rgba(255,255,255,0.9)' }}>
+                        <span style={{ fontSize: isMobile ? '11px' : '12px', fontWeight: '800', color: '#111111' }}>
                           {formatTime(log.check_in)}
                         </span>
                       </div>
 
-                      <span style={{ color: 'rgba(255,255,255,0.2)', fontSize: '11px' }}>â†’</span>
+                      <span style={{ color: 'rgba(17,17,17,0.4)', fontSize: '11px' }}>â†’</span>
 
                       <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
                         <span style={{ width: '5px', height: '5px', borderRadius: '50%', background: isOngoing ? '#ff9f0a' : '#ff453a', flexShrink: 0 }} />
-                        <span style={{ fontSize: isMobile ? '11px' : '12px', fontWeight: '800', color: isOngoing ? '#ff9f0a' : 'rgba(255,255,255,0.7)' }}>
+                        <span style={{ fontSize: isMobile ? '11px' : '12px', fontWeight: '800', color: isOngoing ? '#ff9f0a' : 'rgba(17,17,17,0.65)' }}>
                           {isOngoing ? 'En curso' : formatTime(log.check_out)}
                         </span>
                       </div>
@@ -2366,7 +2366,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                         <label style={{ fontSize: '11px', fontWeight: '900', color: 'var(--gold-primary)', letterSpacing: '1px' }}>TARIFA POR LIMPIEZA ($)</label>
                         {formData.washing_rate > 0 && (
                           <span style={{ fontSize: '11px', color: 'var(--text-muted)', fontWeight: '700' }}>
-                            â‰ˆ {(formData.washing_rate * exchangeRate).toLocaleString('es-VE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} Bs.
+                            ≈ {(formData.washing_rate * exchangeRate).toLocaleString('es-VE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} Bs.
                           </span>
                         )}
                       </div>
@@ -2502,7 +2502,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                           <>
                             <Upload size={18} color="var(--gold-primary)" />
                             <span style={{ fontSize: '11px', color: 'var(--text-muted)', marginTop: '6px' }}>Subir video (se comprimir¡ a 720p)</span>
-                            <span style={{ fontSize: '10px', color: 'rgba(255,255,255,0.2)', marginTop: '2px' }}>MP4, MOV, WebM — m¡x 100MB</span>
+                            <span style={{ fontSize: '10px', color: 'rgba(17,17,17,0.5)', marginTop: '2px' }}>MP4, MOV, WebM — m¡x 100MB</span>
                           </>
                         )}
                         <input
@@ -2760,7 +2760,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
               border: 'none',
               flexShrink: 0,
               background: activeTab === 'management' ? 'var(--gold-primary)' : 'transparent',
-              color: activeTab === 'management' ? 'black' : 'white',
+              color: activeTab === 'management' ? 'black' : 'rgba(17,17,17,0.65)',
               fontWeight: '800',
               fontSize: isMobile ? '11.5px' : '13px',
               cursor: 'pointer',
@@ -2781,7 +2781,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
               border: 'none',
               flexShrink: 0,
               background: activeTab === 'attendance' ? 'var(--gold-primary)' : 'transparent',
-              color: activeTab === 'attendance' ? 'black' : 'white',
+              color: activeTab === 'attendance' ? 'black' : 'rgba(17,17,17,0.65)',
               fontWeight: '800',
               fontSize: isMobile ? '11.5px' : '13px',
               cursor: 'pointer',
@@ -2802,7 +2802,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
               border: 'none',
               flexShrink: 0,
               background: activeTab === 'reports' ? 'var(--gold-primary)' : 'transparent',
-              color: activeTab === 'reports' ? 'black' : 'white',
+              color: activeTab === 'reports' ? 'black' : 'rgba(17,17,17,0.65)',
               fontWeight: '800',
               fontSize: isMobile ? '11.5px' : '13px',
               cursor: 'pointer',
@@ -2823,7 +2823,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
               border: 'none',
               flexShrink: 0,
               background: activeTab === 'performance' ? 'var(--gold-primary)' : 'transparent',
-              color: activeTab === 'performance' ? 'black' : 'white',
+              color: activeTab === 'performance' ? 'black' : 'rgba(17,17,17,0.65)',
               fontWeight: '800',
               fontSize: isMobile ? '11.5px' : '13px',
               cursor: 'pointer',
@@ -3083,7 +3083,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                       <label style={{ fontSize: '11px', fontWeight: '900', color: 'var(--gold-primary)', letterSpacing: '1px' }}>TARIFA POR LIMPIEZA ($)</label>
                       {formData.washing_rate > 0 && (
                         <span style={{ fontSize: '11px', color: 'var(--text-muted)', fontWeight: '700' }}>
-                          â‰ˆ {(formData.washing_rate * exchangeRate).toLocaleString('es-VE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} Bs.
+                          ≈ {(formData.washing_rate * exchangeRate).toLocaleString('es-VE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} Bs.
                         </span>
                       )}
                     </div>
@@ -3292,7 +3292,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
       ) : filteredStaff.length === 0 ? (
         <div style={{ textAlign: 'center', padding: '60px 20px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
           <div style={{ width: '64px', height: '64px', borderRadius: '50%', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px' }}>
-            <Search size={24} color="rgba(255,255,255,0.3)" />
+            <Search size={24} color="#111111" />
           </div>
           <h3 style={{ fontSize: '18px', fontWeight: '800', color: '#111111', marginBottom: '8px' }}>Sin resultados</h3>
           <p style={{ color: 'var(--text-muted)', fontSize: '14px', maxWidth: '300px', lineHeight: '1.5' }}>No encontramos a nadie con ese nombre en tu equipo.</p>
@@ -3401,7 +3401,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                           </div>
                           <div style={{ width: '100%', display: 'flex', flexDirection: 'column', gap: '8px', marginTop: '20px', position: 'relative', zIndex: 2 }}>
                             <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '12px', color: person.phone ? 'var(--text-secondary)' : 'var(--text-muted)', background: 'rgba(0, 0, 0, 0.04)', padding: '10px 12px', borderRadius: '12px' }}>
-                              <Phone size={14} color={person.phone ? 'var(--gold-primary)' : 'rgba(255,255,255,0.2)'} style={{ flexShrink: 0 }} />
+                              <Phone size={14} color={person.phone ? 'var(--gold-primary)' : 'var(--text-muted)'} style={{ flexShrink: 0 }} />
                               <span style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{person.phone || 'Sin teléfono'}</span>
                             </div>
                             <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '12px', color: person.email ? 'var(--text-secondary)' : 'var(--text-muted)', background: 'rgba(0, 0, 0, 0.04)', padding: '10px 12px', borderRadius: '12px' }}>
@@ -3498,13 +3498,13 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', fontSize: '13px' }}>
                     {/* Phone */}
                     <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: person.phone ? 'var(--text-secondary)' : 'var(--text-muted)' }}>
-                      <Phone size={13} color={person.phone ? "var(--gold-primary)" : "rgba(255,255,255,0.2)"} style={{ flexShrink: 0 }} />
+                      <Phone size={13} color={person.phone ? "var(--gold-primary)" : "var(--text-muted)"} style={{ flexShrink: 0 }} />
                       <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{person.phone || 'Sin teléfono'}</span>
                     </div>
 
                     {/* Address */}
                     <div style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', color: person.address ? 'var(--text-secondary)' : 'var(--text-muted)' }}>
-                      <MapPin size={13} color={person.address ? "var(--gold-primary)" : "rgba(255,255,255,0.2)"} style={{ marginTop: '2px', flexShrink: 0 }} />
+                      <MapPin size={13} color={person.address ? "var(--gold-primary)" : "var(--text-muted)"} style={{ marginTop: '2px', flexShrink: 0 }} />
                       <span style={{ display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                         {person.address || 'Sin dirección'}
                       </span>
@@ -3578,7 +3578,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                   {/* Phone Column */}
                   <div style={{ color: person.phone ? 'var(--text-secondary)' : 'var(--text-muted)', fontSize: '14px', minWidth: 0, overflow: 'hidden' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                      <Phone size={14} color={person.phone ? "var(--gold-primary)" : "rgba(255,255,255,0.2)"} style={{ flexShrink: 0 }} />
+                      <Phone size={14} color={person.phone ? "var(--gold-primary)" : "var(--text-muted)"} style={{ flexShrink: 0 }} />
                       <span style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{person.phone || 'Sin teléfono'}</span>
                     </div>
                     {person.birth_date && (
@@ -3592,7 +3592,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                   {/* Address Column */}
                   <div style={{ color: person.address ? 'var(--text-secondary)' : 'var(--text-muted)', fontSize: '13px', minWidth: 0, overflow: 'hidden' }}>
                     <div style={{ display: 'flex', alignItems: 'flex-start', gap: '8px' }}>
-                      <MapPin size={14} color={person.address ? "var(--gold-primary)" : "rgba(255,255,255,0.2)"} style={{ marginTop: '2px', flexShrink: 0 }} />
+                      <MapPin size={14} color={person.address ? "var(--gold-primary)" : "var(--text-muted)"} style={{ marginTop: '2px', flexShrink: 0 }} />
                       <span style={{ display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                         {person.address || 'Sin dirección'}
                       </span>
@@ -3808,7 +3808,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                   </p>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
                     <span style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: isCheckedIn ? '#32d74b' : 'rgba(255,255,255,0.4)', boxShadow: isCheckedIn ? '0 0 8px rgba(50,215,75,0.6)' : 'none', flexShrink: 0 }} />
-                    <span style={{ fontSize: '11px', fontWeight: '600', color: 'rgba(255,255,255,0.6)', lineHeight: '1.2' }}>
+                    <span style={{ fontSize: '11px', fontWeight: '600', color: 'rgba(17,17,17,0.65)', lineHeight: '1.2' }}>
                       {isCheckedIn ? (
                         `En turno desde ${queueEntry?.updated_at ? new Date(queueEntry.updated_at).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true }) : ''}`
                       ) : (
@@ -3950,7 +3950,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
             {sorted.length === 0 ? (
               <div style={{ textAlign: 'center', padding: '80px 20px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                 <div style={{ width: '64px', height: '64px', borderRadius: '50%', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px' }}>
-                  <Search size={24} color="rgba(255,255,255,0.3)" />
+                  <Search size={24} color="#111111" />
                 </div>
                 <h3 style={{ fontSize: '18px', fontWeight: '800', color: '#111111', marginBottom: '8px' }}>Sin resultados</h3>
                 <p style={{ color: 'var(--text-muted)', fontSize: '14px', maxWidth: '300px', lineHeight: '1.5' }}>No encontramos a nadie con ese nombre en tu equipo.</p>
@@ -4470,7 +4470,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
 
                             {rev.comment && (
                               <div style={{ borderLeft: '2.5px solid var(--gold-primary)', paddingLeft: '12px', margin: '4px 0 0' }}>
-                                <p style={{ margin: 0, fontSize: '13px', color: 'rgba(255,255,255,0.85)', lineHeight: '1.4', fontStyle: 'italic' }}>
+                                <p style={{ margin: 0, fontSize: '13px', color: 'rgba(17,17,17,0.7)', lineHeight: '1.4', fontStyle: 'italic' }}>
                                   "{rev.comment}"
                                 </p>
                               </div>
@@ -5025,7 +5025,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                   </div>
                 </div>
                 
-                <button onClick={() => setDailyPaymentModal(emptySettlementModal())} style={{ width: '34px', height: '34px', borderRadius: '50%', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', color: 'rgba(255,255,255,0.5)', fontSize: '16px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'all 0.2s ease', flexShrink: 0 }} onMouseEnter={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.1)'; e.currentTarget.style.color = 'white'; }} onMouseLeave={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.06)'; e.currentTarget.style.color = 'rgba(255,255,255,0.5)'; }}>Ø</button>
+                <button onClick={() => setDailyPaymentModal(emptySettlementModal())} style={{ width: '34px', height: '34px', borderRadius: '50%', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', color: 'rgba(17,17,17,0.6)', fontSize: '16px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'all 0.2s ease', flexShrink: 0 }} onMouseEnter={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.1)'; e.currentTarget.style.color = '#111111'; }} onMouseLeave={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.06)'; e.currentTarget.style.color = 'rgba(17,17,17,0.5)'; }}>Ø</button>
               </div>
 
               <StaffSettlementPanel
@@ -5075,7 +5075,7 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                         {dailyPaymentModal.earnings.balanceBs.toLocaleString('es-VE')} Bs
                       </span>
                       <span style={{ display: 'block', fontSize: '11px', color: 'var(--text-secondary)', marginTop: '2px' }}>
-                        â‰ˆ ${(dailyPaymentModal.earnings.balanceBs / dailyPaymentModal.earnings.rate).toFixed(2)} USD (Tasa: {dailyPaymentModal.earnings.rate})
+                        ≈ ${(dailyPaymentModal.earnings.balanceBs / dailyPaymentModal.earnings.rate).toFixed(2)} USD (Tasa: {dailyPaymentModal.earnings.rate})
                       </span>
                     </div>
                   </div>

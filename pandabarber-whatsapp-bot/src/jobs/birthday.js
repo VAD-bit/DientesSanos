@@ -2,7 +2,7 @@
 import { sendMessage, isWhatsAppReady } from '../bot.js';
 import { renderTemplate } from '../utils/messageTemplates.js';
 
-const DEFAULT_TEMPLATE = 'Hola {{nombre}}! ðŸŽ‰ Es tu cumpleaños y te regalamos 10% de descuento en tu próxima visita a Panda Barber Studio.';
+const DEFAULT_TEMPLATE = 'Hola {{nombre}}! 🏉 Es tu cumpleaños y te regalamos 10% de descuento en tu próxima visita a Panda Barber Studio.';
 
 const joinNames = (names) => {
   if (names.length === 1) return names[0];
@@ -57,7 +57,7 @@ async function runBirthdayPushDigest(now) {
         if (todays.length === 1) {
           await sendAdminPush('ðŸŽ‚ ¡Hoy hay vela que soplar!', `${names} está de cumpleaños. Recíbela con toda la actitud Panda ðŸ¼âœ¨`);
         } else {
-          await sendAdminPush('ðŸŽ‚ Cumpleaños en la casa', `${names} cumplen años hoy â€” que no se les pase por alto cuando lleguen.`);
+          await sendAdminPush('ðŸŽ‚ Cumpleaños en la casa', `${names} cumplen años hoy — que no se les pase por alto cuando lleguen.`);
         }
       }
       await markPushSentToday(key, dateStr);
@@ -75,9 +75,9 @@ async function runBirthdayPushDigest(now) {
       if (todays.length) {
         const names = joinNames(todays.map(s => s.name));
         if (todays.length === 1) {
-          await sendAdminPush('ðŸŽ‰ ¡Uno de los nuestros está de cumpleaños!', `${names} cumple años hoy. Un abrazo, un corte gratis, lo que decidan â€” pero que no falte el cariño ðŸ¼ðŸŽ‚`);
+          await sendAdminPush('🏉 ¡Uno de los nuestros está de cumpleaños!', `${names} cumple años hoy. Un abrazo, un corte gratis, lo que decidan — pero que no falte el cariño ðŸ¼ðŸŽ‚`);
         } else {
-          await sendAdminPush('ðŸŽ‰ Doble celebración en el equipo', `${names} cumplen años hoy. Panda Barber Studio les desea un año cargado de buena energía.`);
+          await sendAdminPush('🏉 Doble celebración en el equipo', `${names} cumplen años hoy. Panda Barber Studio les desea un año cargado de buena energía.`);
         }
       }
       await markPushSentToday(key, dateStr);

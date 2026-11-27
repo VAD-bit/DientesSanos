@@ -460,7 +460,7 @@ const PandaCamera = ({ onCapture, onClose, overlayClass, cardClass, initialActio
               </div>
               <div style={{ textAlign: 'left' }}>
                 <div style={{ fontSize: '14px', fontWeight: '800', color: '#111111' }}>Tomar foto</div>
-                <div style={{ fontSize: '11px', color: 'rgba(255,255,255,0.45)', marginTop: '2px' }}>Usar la c¡mara ahora</div>
+                <div style={{ fontSize: '11px', color: '#111111', marginTop: '2px' }}>Usar la c¡mara ahora</div>
               </div>
             </button>
 
@@ -473,7 +473,7 @@ const PandaCamera = ({ onCapture, onClose, overlayClass, cardClass, initialActio
               </div>
               <div style={{ textAlign: 'left' }}>
                 <div style={{ fontSize: '14px', fontWeight: '800', color: '#111111' }}>Subir de galería</div>
-                <div style={{ fontSize: '11px', color: 'rgba(255,255,255,0.45)', marginTop: '2px' }}>Elegir una foto existente</div>
+                <div style={{ fontSize: '11px', color: '#111111', marginTop: '2px' }}>Elegir una foto existente</div>
               </div>
             </button>
           </div>
@@ -503,7 +503,7 @@ const PandaCamera = ({ onCapture, onClose, overlayClass, cardClass, initialActio
             {error && (
               <div style={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '32px', textAlign: 'center' }}>
                 <ImageIcon size={48} color="rgba(255, 255, 255,0.3)" style={{ marginBottom: '20px' }} />
-                <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '13px', fontWeight: '500', lineHeight: 1.5 }}>{error}</p>
+                <p style={{ color: '#111111', fontSize: '13px', fontWeight: '500', lineHeight: 1.5 }}>{error}</p>
               </div>
             )}
 
@@ -632,7 +632,7 @@ const PandaCamera = ({ onCapture, onClose, overlayClass, cardClass, initialActio
           position: 'relative',
           zIndex: 12
         }}>
-          <ZoomOut size={14} color="rgba(255,255,255,0.6)" style={{ flexShrink: 0 }} />
+          <ZoomOut size={14} color="#111111" style={{ flexShrink: 0 }} />
           <input
             type="range"
             min={1}
@@ -643,7 +643,7 @@ const PandaCamera = ({ onCapture, onClose, overlayClass, cardClass, initialActio
             className="panda-cam-zoom-slider"
             style={{ flex: 1 }}
           />
-          <ZoomIn size={14} color="rgba(255,255,255,0.6)" style={{ flexShrink: 0 }} />
+          <ZoomIn size={14} color="#111111" style={{ flexShrink: 0 }} />
         </div>
       )}
 
@@ -662,7 +662,7 @@ const PandaCamera = ({ onCapture, onClose, overlayClass, cardClass, initialActio
         }}>
           <p style={{
             fontSize: '11.5px',
-            color: 'rgba(255,255,255,0.55)',
+            color: '#111111',
             fontWeight: '600',
             letterSpacing: '0.3px',
             textAlign: 'center',
@@ -681,7 +681,7 @@ const PandaCamera = ({ onCapture, onClose, overlayClass, cardClass, initialActio
             backgroundColor: 'rgba(255,255,255,0.05)',
             border: '1px solid rgba(17, 17, 17, 0.2)'
           }}>
-            <ZoomOut size={14} color="rgba(255,255,255,0.6)" style={{ flexShrink: 0 }} />
+            <ZoomOut size={14} color="#111111" style={{ flexShrink: 0 }} />
             <input
               type="range"
               min={MIN_ZOOM}
@@ -692,7 +692,7 @@ const PandaCamera = ({ onCapture, onClose, overlayClass, cardClass, initialActio
               className="panda-cam-zoom-slider"
               style={{ flex: 1 }}
             />
-            <ZoomIn size={14} color="rgba(255,255,255,0.6)" style={{ flexShrink: 0 }} />
+            <ZoomIn size={14} color="#111111" style={{ flexShrink: 0 }} />
           </div>
 
           <div style={{ display: 'flex', justifyContent: 'center', gap: '24px' }}>

@@ -374,7 +374,7 @@ const Sidebar = ({ activeTab, setActiveTab, isMobile, rates, isCollapsed, setIsC
                   {userRoleName}
                 </div>
               </div>
-              <span style={{ fontSize: '9px', color: 'rgba(255,255,255,0.18)', fontWeight: '700' }}>â–¼</span>
+              <span style={{ fontSize: '9px', color: '#111111', fontWeight: '700' }}>â–¼</span>
             </div>
           )}
 

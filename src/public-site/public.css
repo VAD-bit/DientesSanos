@@ -477,7 +477,7 @@
   50% { transform: translate(45px, -35px) scale(1.1); }
 }
 
-/* Step transitions anim â€” opacity/transform only (no filter) so it stays on the
+/* Step transitions anim — opacity/transform only (no filter) so it stays on the
    compositor and doesn't drop frames on mobile, especially on real devices where
    animating `filter: blur()` forces a repaint every frame. */
 /* The enter/exit animation is driven by framer-motion (stepVariants in BookAppointment).
@@ -547,11 +547,11 @@
   height: 100%;
   background: #e9eae8;
   pointer-events: auto;
-  /* No CSS transition here â€” movement is handled by @keyframe animations */
+  /* No CSS transition here — movement is handled by @keyframe animations */
   z-index: 30;
 }
 
-/* Diagonal split â€” clip-paths only active during transition via welcome-exit parent */
+/* Diagonal split — clip-paths only active during transition via welcome-exit parent */
 .welcome-exit .slice-top-left {
   clip-path: polygon(0 0, 101% 0, 0 101%);
   animation: sliceExitTopLeft 0.85s cubic-bezier(0.76, 0, 0.24, 1) forwards;

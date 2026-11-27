@@ -3244,7 +3244,7 @@ const videoRef = useRef(null);
 
                     {/* Biography Quote */}
                     <p className="text-[#334155] text-[15px] leading-relaxed italic border-l-2 border-[#111111]/30 pl-4">
-                      "{topBarber.biography || 'Especializado en tratamientos estéticos y preventivos, con precisión y cuidado en cada detalle.'}"
+                      "{getBarberBiography(topBarber) || 'Especializado en tratamientos estéticos y preventivos, con precisión y cuidado en cada detalle.'}"
                     </p>
 
                     {/* Bottom Stats Grid */}

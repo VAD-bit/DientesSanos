@@ -792,11 +792,11 @@ export const dataService = {
     const { data, error } = await supabase.from('service_extras').select('*').order('name');
     if (error) throw error;
     const result = _asArray(data).filter(e =>
-      e.name?.startsWith('ARCHIVED|') ||
-      e.name?.startsWith('SYSTEM_CATEGORY:') ||
-      e.name?.startsWith('SYSTEM_STRATEGY:') ||
-      e.name?.startsWith('ROULETTE_PRIZE:') ||
-      e.name === 'SYSTEM_CONFIG_RATES'
+      !e.name?.startsWith('ARCHIVED|') &&
+      !e.name?.startsWith('SYSTEM_CATEGORY:') &&
+      !e.name?.startsWith('SYSTEM_STRATEGY:') &&
+      !e.name?.startsWith('ROULETTE_PRIZE:') &&
+      e.name !== 'SYSTEM_CONFIG_RATES'
     );
     _cacheSet('extras', result, 45000);
     return result;

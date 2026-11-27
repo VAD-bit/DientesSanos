@@ -239,8 +239,8 @@ const MoneyRow = ({ label, usd, transactionRate, accent = false, strong = false 
       <span style={{ color: accent ? '#32d74b' : 'var(--text-secondary)', fontSize: '12px', fontWeight: accent || strong ? '850' : '650' }}>{label}</span>
       <span style={{ textAlign: 'right', color: accent ? '#32d74b' : strong ? 'var(--gold-primary)' : '#fff', fontSize: strong ? '14px' : '12px', fontWeight: '900', whiteSpace: 'nowrap' }}>
         {numBs.toLocaleString('es-VE')} Bs.
-        <small style={{ display: 'block', color: 'rgba(255,255,255,0.7)', fontSize: '10.5px', marginTop: '1px', fontWeight: '800' }}>
-          â‰ˆ ${numUsd.toFixed(2)} USD
+        <small style={{ display: 'block', color: '#111111', fontSize: '10.5px', marginTop: '1px', fontWeight: '800' }}>
+          ≈ ${numUsd.toFixed(2)} USD
         </small>
       </span>
     </div>
@@ -504,8 +504,8 @@ const StaffTransactionHistory = ({ staffMember, rates, isMobile }) => {
               {card.count !== undefined ? card.count : `${formatBs(card.valueBs)} Bs.`}
             </div>
             {card.count === undefined && (
-              <div className="staff-history-metric-ref" style={{ marginTop: '3px', color: 'rgba(255,255,255,0.7)', fontSize: '11px', fontWeight: '800' }}>
-                â‰ˆ ${formatUsd(card.value)} USD
+              <div className="staff-history-metric-ref" style={{ marginTop: '3px', color: '#111111', fontSize: '11px', fontWeight: '800' }}>
+                ≈ ${formatUsd(card.value)} USD
               </div>
             )}
           </div>
@@ -601,7 +601,7 @@ const StaffTransactionHistory = ({ staffMember, rates, isMobile }) => {
                     <div style={{ display: 'flex', alignItems: 'center', justifyContent: isMobile ? 'space-between' : 'flex-end', gap: '10px' }}>
                       <div>
                         <div className="amount" style={{ color: '#32d74b', fontSize: '16px', fontWeight: '950' }}>+{Math.round(personalBs).toLocaleString('es-VE')} Bs.</div>
-                        <div className="reference" style={{ color: 'rgba(255,255,255,0.7)', fontSize: '10.5px', marginTop: '2px', fontWeight: '800' }}>â‰ˆ +${formatUsd(transaction.staffAmounts.earnings)} USD</div>
+                        <div className="reference" style={{ color: '#111111', fontSize: '10.5px', marginTop: '2px', fontWeight: '800' }}>≈ +${formatUsd(transaction.staffAmounts.earnings)} USD</div>
                       </div>
                       <ChevronDown size={16} color={'var(--text-muted)'} style={{ transform: selected ? 'rotate(180deg)' : 'none', transition: 'transform 0.2s' }} />
                     </div>
@@ -641,7 +641,7 @@ const StaffTransactionHistory = ({ staffMember, rates, isMobile }) => {
                             </span>
                             <div style={{ display: 'flex', gap: '8px', marginTop: '3px', flexWrap: 'wrap', alignItems: 'center' }}>
                               {transaction.staffAmounts.commission > 0 && (
-                                <span style={{ fontSize: '11px', color: 'rgba(255,255,255,0.85)', fontWeight: '750' }}>
+                                <span style={{ fontSize: '11px', color: '#111111', fontWeight: '750' }}>
                                   Servicio: ${formatUsd(transaction.staffAmounts.commission)}
                                 </span>
                               )}
@@ -662,8 +662,8 @@ const StaffTransactionHistory = ({ staffMember, rates, isMobile }) => {
                           <div style={{ color: '#32d74b', fontSize: '18px', fontWeight: '950', letterSpacing: '-0.3px' }}>
                             +{Math.round(personalBs).toLocaleString('es-VE')} Bs.
                           </div>
-                          <div style={{ color: 'rgba(255,255,255,0.7)', fontSize: '11.5px', fontWeight: '800', marginTop: '1px' }}>
-                            â‰ˆ +${formatUsd(transaction.staffAmounts.earnings)} USD
+                          <div style={{ color: '#111111', fontSize: '11.5px', fontWeight: '800', marginTop: '1px' }}>
+                            ≈ +${formatUsd(transaction.staffAmounts.earnings)} USD
                           </div>
                         </div>
                       </div>
@@ -707,7 +707,7 @@ const StaffTransactionHistory = ({ staffMember, rates, isMobile }) => {
 
                           {appointment?.staff?.name && (
                             <div style={{ fontSize: '11px', color: 'var(--text-muted)', display: 'flex', alignItems: 'center', gap: '6px', marginTop: 'auto' }}>
-                              <ToothIcon size={12} color="var(--gold-primary)" /> Atendido por: <strong style={{ color: 'rgba(255,255,255,0.85)' }}>{appointment.staff.name}</strong>
+                              <ToothIcon size={12} color="var(--gold-primary)" /> Atendido por: <strong style={{ color: '#111111' }}>{appointment.staff.name}</strong>
                             </div>
                           )}
                         </div>
@@ -740,7 +740,7 @@ const StaffTransactionHistory = ({ staffMember, rates, isMobile }) => {
 
                           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '11.5px', marginTop: 'auto', paddingTop: '8px', borderTop: '1px solid rgba(0, 0, 0, 0.08)' }}>
                             <span style={{ color: 'var(--text-muted)' }}>Tasa de la operación:</span>
-                            <span style={{ color: 'rgba(255,255,255,0.85)', fontWeight: '850' }}>{transactionRate.toLocaleString('es-VE')} Bs./USD</span>
+                            <span style={{ color: '#111111', fontWeight: '850' }}>{transactionRate.toLocaleString('es-VE')} Bs./USD</span>
                           </div>
                         </div>
                       </div>
@@ -780,8 +780,8 @@ const StaffTransactionHistory = ({ staffMember, rates, isMobile }) => {
                                     <div style={{ fontSize: '12px', fontWeight: '900', color: 'var(--gold-primary)' }}>
                                       {memberBs.toLocaleString('es-VE')} Bs.
                                     </div>
-                                    <div style={{ fontSize: '10px', color: 'rgba(255,255,255,0.65)', fontWeight: '800' }}>
-                                      â‰ˆ ${memberUsd.toFixed(2)} USD
+                                    <div style={{ fontSize: '10px', color: '#111111', fontWeight: '800' }}>
+                                      ≈ ${memberUsd.toFixed(2)} USD
                                     </div>
                                   </div>
                                 </div>

@@ -1,10 +1,10 @@
-﻿# Google Auth para clientes â€” estado: FUNCIONANDO (con un bug de datos encontrado)
+﻿# Google Auth para clientes — estado: FUNCIONANDO (con un bug de datos encontrado)
 
-Verificado el 2026-08-05. Bug real encontrado y parcheado a mano el 2026-08-06 â€” **hace falta un
+Verificado el 2026-08-05. Bug real encontrado y parcheado a mano el 2026-08-06 — **hace falta un
 arreglo estructural**, ver sección al final.
 
 Google auth es para los **clientes** del sitio público de reservas. El staff sigue entrando con
-email y contraseña (sus correos son `@odontosonrisa.com`, dominio que no existe â€” nunca podrían usar
+email y contraseña (sus correos son `@odontosonrisa.com`, dominio que no existe — nunca podrían usar
 Google).
 
 ---
@@ -27,7 +27,7 @@ hecho el 2026-08-05.
 | `/auth/v1/authorize?provider=google` â†’ 302 a Google | âœ… con client_id y callback correctos |
 
 Detalle: las variables de Google venían **comentadas** en `docker-compose.yml`. Ponerlas solo en el
-`.env` no hacía nada â€” hay que tocar los dos archivos y recrear el contenedor con
+`.env` no hacía nada — hay que tocar los dos archivos y recrear el contenedor con
 `docker compose up -d auth`. Ver `RUNBOOK-VPS.md` sección 4-ter.
 
 ### Código (ya existía)
@@ -43,7 +43,7 @@ PublicLayout.jsx  (onAuthStateChange: SIGNED_IN / INITIAL_SESSION)
 
 CompleteRegistration.jsx
    â””â”€ nombre y email prellenados desde Google
-      pide TELÃ‰FONO y CÃ‰DULA (ambos obligatorios)
+      pide TELÉFONO y CÉDULA (ambos obligatorios)
         â””â”€ publicService.completeGoogleRegistration()
              â””â”€ findExistingClientRecord(id_card, email, phone)
                   â”œâ”€ encontró â†’ linkClientRecord()  â†’ enlaza, conserva puntos e historial âœ…
@@ -53,7 +53,7 @@ CompleteRegistration.jsx
 La ruta `/completar-registro` está registrada en `PublicRouter.jsx:34`.
 
 `findExistingClientRecord` usa la RPC `odontosonrisa.find_existing_client(id_card, email, phone)`
-â€”`SECURITY DEFINER`, normaliza cédula y teléfono en SQL y desempataâ€” creada en el arreglo del
+—`SECURITY DEFINER`, normaliza cédula y teléfono en SQL y desempata— creada en el arreglo del
 Problema 2 de `SEGURIDAD-PENDIENTE.md`.
 
 ### La protección contra robo de ficha ya está
@@ -85,7 +85,7 @@ esa guarda, enlazar una ficha ajena le rompería la cuenta al otro cliente.
 | Sin email | **79** |
 
 Google solo entrega el correo, pero 79 de 87 clientes están identificados por cédula y teléfono
-â€”los cargó el staff desde el adminâ€”. Sin la pantalla de completar registro, esas personas
+—los cargó el staff desde el admin—. Sin la pantalla de completar registro, esas personas
 recibirían una ficha nueva y **perderían puntos e historial**. Por eso el flujo pide la cédula.
 
 ---
@@ -116,15 +116,15 @@ con una cuenta de Google**, que solo puede hacer una persona:
 
 ---
 
-## ðŸ”´ Bug real encontrado (2026-08-06) â€” referencias `auth_user_id` huérfanas
+## ðŸ”´ Bug real encontrado (2026-08-06) — referencias `auth_user_id` huérfanas
 
 Probando el flujo con una cuenta real (`waikoloahb@gmail.com`, cédula `30102609`), el enlace
-falló con *"Esta cédula ya está vinculada a otra cuenta"* â€” pero la cuenta a la que apuntaba
+falló con *"Esta cédula ya está vinculada a otra cuenta"* — pero la cuenta a la que apuntaba
 **ya no existía** en `auth.users` (usuario borrado en alguna prueba anterior).
 
 Causa raíz: `odontosonrisa.clients.auth_user_id` **no tiene foreign key** hacia `auth.users`. Nada
 impide que quede una referencia a un usuario borrado, y `linkClientRecord()` no distingue entre
-"pertenece a otra persona" y "pertenece a un fantasma" â€” trata ambos casos igual y rechaza.
+"pertenece a otra persona" y "pertenece a un fantasma" — trata ambos casos igual y rechaza.
 
 Se destrabó el caso puntual con:
 ```sql
@@ -133,7 +133,7 @@ UPDATE odontosonrisa.clients SET auth_user_id = NULL WHERE id = '...' AND auth_u
 Pero eso fue un parche manual de un caso, no una corrección del sistema.
 
 De paso apareció otra cosa: **existen dos fichas de cliente con la misma cédula** (`30102609`),
-de pruebas anteriores â€” una con 21 citas asociadas, otra con 5, ambas con 0 puntos. El
+de pruebas anteriores — una con 21 citas asociadas, otra con 5, ambas con 0 puntos. El
 `find_existing_client` desempata por citas cuando ninguna está enlazada, así que en este caso no
 generó daño. Pero si algún día pasa con un cliente real que sí tiene puntos repartidos entre las
 dos fichas, el enlace se queda con una y la otra queda huérfana con puntos inaccesibles.
@@ -149,12 +149,12 @@ dos fichas, el enlace se queda con una y la otra queda huérfana con puntos inac
    Revisar antes que no haya más referencias huérfanas que bloqueen el `ALTER` (la de este caso ya
    se limpió). Si las hay, limpiarlas primero con la misma consulta usada arriba, adaptada.
 
-2. **Detectar cédulas duplicadas** â€” una consulta de auditoría, y decidir si conviene fusionar
+2. **Detectar cédulas duplicadas** — una consulta de auditoría, y decidir si conviene fusionar
    fichas repetidas (`find_related_clients` ya sirve para encontrar el grupo) antes de que el
    negocio tenga más volumen de clientes reales.
 
 3. Opcional: que `linkClientRecord()` distinga el mensaje de error entre "vinculada a otra persona
-   real" y "referencia inválida, contactar soporte" â€” hoy ambos casos muestran el mismo texto y
+   real" y "referencia inválida, contactar soporte" — hoy ambos casos muestran el mismo texto y
    confunden al usuario.
 
 ---

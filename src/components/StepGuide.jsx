@@ -60,7 +60,7 @@ const StepGuide = ({ steps, currentStep = 0, completedSteps = new Set(), compact
             display: 'flex', alignItems: 'center', justifyContent: 'center',
             fontSize: '16px',
           }}>
-            {allDone ? <PartyPopper size={16} color="#32d74b" /> : (step?.icon ? <step.icon size={16} color="var(--champagne)" /> : <Circle size={16} color="rgba(255,255,255,0.3)" />)}
+            {allDone ? <PartyPopper size={16} color="#32d74b" /> : (step?.icon ? <step.icon size={16} color="var(--champagne)" /> : <Circle size={16} color="#111111" />)}
           </div>
 
           {/* Text */}
@@ -75,7 +75,7 @@ const StepGuide = ({ steps, currentStep = 0, completedSteps = new Set(), compact
               }
             </div>
             <div style={{
-              fontSize: '12px', color: 'rgba(255,255,255,0.65)', fontWeight: '500', lineHeight: '1.3', marginTop: '1px',
+              fontSize: '12px', color: '#111111', fontWeight: '500', lineHeight: '1.3', marginTop: '1px',
             }}>
               {allDone
                 ? 'Todos los campos requeridos están completos.'
@@ -86,7 +86,7 @@ const StepGuide = ({ steps, currentStep = 0, completedSteps = new Set(), compact
 
           {/* Progress counter */}
           <div style={{
-            fontSize: '11px', color: 'rgba(255,255,255,0.35)', fontWeight: '700',
+            fontSize: '11px', color: '#111111', fontWeight: '700',
             flexShrink: 0, textAlign: 'right',
           }}>
             {doneRequired}/{totalRequired}

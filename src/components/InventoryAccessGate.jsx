@@ -133,7 +133,7 @@ const InventoryAccessGate = ({ children }) => {
             border-radius: 50%;
             background: rgba(0, 0, 0, 0.04);
             border: 1px solid rgba(0, 0, 0, 0.08);
-            color: #fff;
+            color: #111111;
             font-size: 28px;
             font-weight: 300;
             display: flex;

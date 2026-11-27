@@ -455,7 +455,7 @@ const SaleServiceModal = ({ isOpen, onClose, clients, services, staff, extras, i
                 <div style={{ fontSize: '24px', fontWeight: '950', color: '#111111' }}>${totalPrice}</div>
                 {rates?.usd > 0 && (
                   <div style={{ fontSize: '12px', fontWeight: '700', color: 'var(--text-secondary)' }}>
-                    â‰ˆ {Math.round(totalPrice * rates.usd).toLocaleString()} BS
+                    ≈ {Math.round(totalPrice * rates.usd).toLocaleString()} BS
                   </div>
                 )}
               </div>

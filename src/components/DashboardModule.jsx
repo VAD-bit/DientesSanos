@@ -659,7 +659,7 @@ const DashboardModule = ({
   const renderComparison = (current, previous, label) => {
     const change = percentChange(current, previous);
     if (change === null) {
-      return <><span style={{ fontSize: '7px' }}>â—</span> Sin base <span style={{ color: 'rgba(255,255,255,0.3)', fontWeight: '500' }}>{label}</span></>;
+      return <><span style={{ fontSize: '7px' }}>â—</span> Sin base <span style={{ color: '#111111', fontWeight: '500' }}>{label}</span></>;
     }
     const isUp = change > 0;
     const isDown = change < 0;
@@ -667,7 +667,7 @@ const DashboardModule = ({
       <>
         <span style={{ fontSize: '7px' }}>{isUp ? 'â–²' : isDown ? 'â–¼' : 'â—'}</span>
         {Math.abs(change)}%
-        <span style={{ color: 'rgba(255,255,255,0.3)', fontWeight: '500' }}>{label}</span>
+        <span style={{ color: '#111111', fontWeight: '500' }}>{label}</span>
       </>
     );
   };
@@ -785,7 +785,7 @@ const DashboardModule = ({
       legend: { display: false },
       tooltip: {
         backgroundColor: 'var(--bg-secondary)',
-        titleColor: '#f8f8f8',
+        titleColor: '#111111',
         bodyColor: '#e8d4b0',
         borderColor: 'rgba(232, 212, 176, 0.25)',
         borderWidth: 1,
@@ -803,12 +803,12 @@ const DashboardModule = ({
     scales: {
       x: {
         grid: { display: false },
-        ticks: { color: 'rgba(255,255,255,0.4)', font: { size: 9, weight: '600', family: 'Outfit' }, maxTicksLimit: 7, autoSkip: true }
+        ticks: { color: '#111111', font: { size: 9, weight: '600', family: 'Outfit' }, maxTicksLimit: 7, autoSkip: true }
       },
       y: {
-        grid: { color: 'rgba(255,255,255,0.025)', drawBorder: false },
+        grid: { color: '#111111', drawBorder: false },
         ticks: {
-          color: 'rgba(255,255,255,0.35)',
+          color: '#111111',
           font: { size: 8, weight: '500', family: 'Outfit' },
           callback: (value) => `$${Number(value).toFixed(2)}`
         }
@@ -894,7 +894,7 @@ const DashboardModule = ({
                 </svg>
               </span>
             </h1>
-            <span style={{ fontSize: '12.5px', color: 'rgba(255,255,255,0.4)', fontWeight: '500', marginTop: '3px' }}>
+            <span style={{ fontSize: '12.5px', color: '#111111', fontWeight: '500', marginTop: '3px' }}>
               {formattedTime} &middot; {formattedDate}
             </span>
           </div>
@@ -914,11 +914,11 @@ const DashboardModule = ({
                 transition: 'all 0.2s ease',
                 border: '1px solid rgba(0, 0, 0, 0.08)',
                 background: 'rgba(0, 0, 0, 0.04)',
-                color: 'rgba(255,255,255,0.85)',
+                color: '#111111',
                 opacity: storeToggling ? 0.6 : 1,
               }}
-              onMouseEnter={(e) => { e.currentTarget.style.background = 'rgba(255,255,255,0.06)'; e.currentTarget.style.color = '#fff'; }}
-              onMouseLeave={(e) => { e.currentTarget.style.background = 'rgba(255,255,255,0.03)'; e.currentTarget.style.color = 'rgba(255,255,255,0.85)'; }}
+              onMouseEnter={(e) => { e.currentTarget.style.background = 'rgba(255,255,255,0.06)'; e.currentTarget.style.color = '#111111'; }}
+              onMouseLeave={(e) => { e.currentTarget.style.background = 'rgba(255,255,255,0.03)'; e.currentTarget.style.color = 'rgba(17,17,17,0.65)'; }}
             >
               <span style={{ display: 'inline-flex', width: '6px', height: '6px', borderRadius: '999px', background: storeOpen ? '#34C759' : '#FF3B30' }} />
               {storeOpen ? 'Abierta' : 'Cerrada'}
@@ -930,9 +930,9 @@ const DashboardModule = ({
                 type="button"
                 onClick={() => setSearchExpanded(true)}
                 title="Buscar citas, clientes, Odontólogos…"
-                style={{ width: '40px', height: '40px', flexShrink: 0, borderRadius: '12px', display: 'grid', placeItems: 'center', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', color: 'rgba(255,255,255,0.6)', cursor: 'pointer', transition: 'all 0.2s ease' }}
+                style={{ width: '40px', height: '40px', flexShrink: 0, borderRadius: '12px', display: 'grid', placeItems: 'center', background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', color: '#111111', cursor: 'pointer', transition: 'all 0.2s ease' }}
                 onMouseEnter={(e) => { e.currentTarget.style.background = 'rgba(255,255,255,0.07)'; e.currentTarget.style.color = 'var(--champagne)'; }}
-                onMouseLeave={(e) => { e.currentTarget.style.background = 'rgba(255,255,255,0.04)'; e.currentTarget.style.color = 'rgba(255,255,255,0.6)'; }}
+                onMouseLeave={(e) => { e.currentTarget.style.background = 'rgba(255,255,255,0.04)'; e.currentTarget.style.color = 'rgba(17,17,17,0.7)'; }}
               >
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
               </button>
@@ -1080,7 +1080,7 @@ const DashboardModule = ({
                             display: 'block',
                             marginTop: '2px',
                             fontSize: '10px',
-                            color: 'rgba(255,255,255,0.46)',
+                            color: '#111111',
                             whiteSpace: 'nowrap',
                             overflow: 'hidden',
                             textOverflow: 'ellipsis'
@@ -1105,7 +1105,7 @@ const DashboardModule = ({
                       padding: '18px 12px',
                       textAlign: 'center',
                       fontSize: '11px',
-                      color: 'rgba(255,255,255,0.45)'
+                      color: '#111111'
                     }}>
                       No se encontraron coincidencias
                     </div>
@@ -1151,7 +1151,7 @@ const DashboardModule = ({
                   <span style={{
                     fontSize: '8px',
                     fontWeight: '800',
-                    color: activeRateType === 'bcv' ? '#22c55e' : 'rgba(255,255,255,0.5)',
+                    color: activeRateType === 'bcv' ? '#22c55e' : 'rgba(17,17,17,0.6)',
                     letterSpacing: '0.5px'
                   }}>
                     BCV
@@ -1159,7 +1159,7 @@ const DashboardModule = ({
                   <span style={{
                     fontSize: '12px',
                     fontWeight: '800',
-                    color: activeRateType === 'bcv' ? '#22c55e' : 'white'
+                    color: activeRateType === 'bcv' ? '#22c55e' : '#333333'
                   }}>
                     {rates.bcv > 0 ? rates.bcv.toFixed(2) : '—'}
                   </span>
@@ -1189,7 +1189,7 @@ const DashboardModule = ({
                   <span style={{
                     fontSize: '8px',
                     fontWeight: '800',
-                    color: activeRateType === 'euro' ? '#22c55e' : 'rgba(255,255,255,0.5)',
+                    color: activeRateType === 'euro' ? '#22c55e' : 'rgba(17,17,17,0.6)',
                     letterSpacing: '0.5px'
                   }}>
                     EURO
@@ -1197,7 +1197,7 @@ const DashboardModule = ({
                   <span style={{
                     fontSize: '12px',
                     fontWeight: '800',
-                    color: activeRateType === 'euro' ? '#22c55e' : 'white'
+                    color: activeRateType === 'euro' ? '#22c55e' : '#333333'
                   }}>
                     {rates.euro > 0 ? rates.euro.toFixed(2) : '—'}
                   </span>
@@ -1215,7 +1215,7 @@ const DashboardModule = ({
                   justifyContent: 'center',
                   gap: '1px'
                 }}>
-                  <span style={{ fontSize: '7px', fontWeight: '800', color: 'rgba(255,255,255,0.5)' }}>BRECHA</span>
+                  <span style={{ fontSize: '7px', fontWeight: '800', color: '#111111' }}>BRECHA</span>
                   <span style={{
                     fontSize: '10px',
                     fontWeight: '950',
@@ -1241,12 +1241,12 @@ const DashboardModule = ({
                 justifyContent: 'center',
                 cursor: 'pointer',
                 position: 'relative',
-                color: 'rgba(255,255,255,0.75)',
+                color: '#111111',
                 flexShrink: 0,
                 transition: 'all 0.2s',
               }}
               onMouseEnter={e => { e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.07)'; e.currentTarget.style.color = 'var(--champagne)'; }}
-              onMouseLeave={e => { e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.04)'; e.currentTarget.style.color = 'rgba(255,255,255,0.75)'; }}
+              onMouseLeave={e => { e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.04)'; e.currentTarget.style.color = 'rgba(17,17,17,0.65)'; }}
             >
               <Bell size={17} />
               {unreadCount > 0 && (
@@ -1332,8 +1332,8 @@ const DashboardModule = ({
             {/* KPI Card 1: Citas Hoy */}
             <div className="glass-card" style={{ padding: '8px 10px', borderRadius: '12px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', height: '76px', backgroundColor: 'var(--bg-secondary)', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', opacity: 0.7 }}>
-                <span style={{ fontSize: '9px', fontWeight: '800', color: 'rgba(255,255,255,0.7)', letterSpacing: '0.5px' }}>CITAS HOY</span>
-                <Calendar size={13} color="rgba(255,255,255,0.6)" />
+                <span style={{ fontSize: '9px', fontWeight: '800', color: '#111111', letterSpacing: '0.5px' }}>CITAS HOY</span>
+                <Calendar size={13} color="#111111" />
               </div>
               <div style={{ fontSize: '18px', fontWeight: '900', color: '#111111', margin: '1px 0' }}>
                 {citasHoyCount}
@@ -1346,8 +1346,8 @@ const DashboardModule = ({
             {/* KPI Card 2: Facturado Hoy */}
             <div className="glass-card" style={{ padding: '8px 10px', borderRadius: '12px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', height: '76px', backgroundColor: 'var(--bg-secondary)', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', opacity: 0.7 }}>
-                <span style={{ fontSize: '9px', fontWeight: '800', color: 'rgba(255,255,255,0.7)', letterSpacing: '0.5px' }}>FACTURADO HOY</span>
-                <span style={{ fontSize: '11px', color: 'rgba(255,255,255,0.6)', fontWeight: '800' }}>$</span>
+                <span style={{ fontSize: '9px', fontWeight: '800', color: '#111111', letterSpacing: '0.5px' }}>FACTURADO HOY</span>
+                <span style={{ fontSize: '11px', color: '#111111', fontWeight: '800' }}>$</span>
               </div>
               <div style={{ fontSize: '18px', fontWeight: '900', color: '#111111', margin: '1px 0' }}>
                 ${formatCurrency(facturadoHoyAmount)}
@@ -1360,8 +1360,8 @@ const DashboardModule = ({
             {/* KPI Card 3: Clientes Nuevos */}
             <div className="glass-card" style={{ padding: '8px 10px', borderRadius: '12px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', height: '76px', backgroundColor: 'var(--bg-secondary)', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', opacity: 0.7 }}>
-                <span style={{ fontSize: '9px', fontWeight: '800', color: 'rgba(255,255,255,0.7)', letterSpacing: '0.5px' }}>CLIENTES NUEVOS</span>
-                <Users size={13} color="rgba(255,255,255,0.6)" />
+                <span style={{ fontSize: '9px', fontWeight: '800', color: '#111111', letterSpacing: '0.5px' }}>CLIENTES NUEVOS</span>
+                <Users size={13} color="#111111" />
               </div>
               <div style={{ fontSize: '18px', fontWeight: '900', color: '#111111', margin: '1px 0' }}>
                 {clientesNuevosCount}
@@ -1374,8 +1374,8 @@ const DashboardModule = ({
             {/* KPI Card 4: Staff pending arrival */}
             <div className="glass-card" style={{ padding: '8px 10px', borderRadius: '12px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', height: '76px', backgroundColor: 'var(--bg-secondary)', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', opacity: 0.7 }}>
-                <span style={{ fontSize: '9px', fontWeight: '800', color: 'rgba(255,255,255,0.7)', letterSpacing: '0.5px' }}>POR LLEGAR</span>
-                <UserX size={13} color="rgba(255,255,255,0.6)" />
+                <span style={{ fontSize: '9px', fontWeight: '800', color: '#111111', letterSpacing: '0.5px' }}>POR LLEGAR</span>
+                <UserX size={13} color="#111111" />
               </div>
               <div
                 style={{ fontSize: '18px', fontWeight: '900', color: '#111111', margin: '1px 0' }}
@@ -1409,11 +1409,11 @@ const DashboardModule = ({
                 <h3 style={{ fontSize: '13px', fontWeight: '800', color: '#111111', margin: 0, textTransform: 'uppercase', letterSpacing: '0.5px' }}>Estado de los sillones</h3>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '4px', backgroundColor: 'rgba(0, 0, 0, 0.04)', padding: '2px 8px', borderRadius: '4px', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
                   <div style={{ width: '4px', height: '4px', borderRadius: '50%', backgroundColor: 'var(--champagne)' }} />
-                  <span style={{ fontSize: '10px', color: 'rgba(255,255,255,0.5)', fontWeight: '600' }}>En tiempo real</span>
+                  <span style={{ fontSize: '10px', color: '#111111', fontWeight: '600' }}>En tiempo real</span>
                 </div>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                <span style={{ fontSize: '10px', color: 'rgba(255,255,255,0.4)', fontWeight: '600' }}>Desliza âž”</span>
+                <span style={{ fontSize: '10px', color: '#111111', fontWeight: '600' }}>Desliza âž”</span>
               </div>
             </div>
 
@@ -1526,7 +1526,7 @@ const DashboardModule = ({
                             </div>
                           )
                         ) : (
-                          <span style={{ fontSize: '16px', fontWeight: '900', color: 'rgba(255,255,255,0.2)' }}>{chair.id}</span>
+                          <span style={{ fontSize: '16px', fontWeight: '900', color: '#111111' }}>{chair.id}</span>
                         )}
                       </div>
 
@@ -1572,11 +1572,11 @@ const DashboardModule = ({
                         }}>
                           <div style={{ flex: 1, minWidth: 0 }}>
                             <div style={{ fontSize: '10px', fontWeight: '800', color: '#111111', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{chair.name}</div>
-                            <div style={{ fontSize: '8.5px', color: 'rgba(255,255,255,0.75)', fontWeight: '600', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{chair.service}</div>
+                            <div style={{ fontSize: '8.5px', color: '#111111', fontWeight: '600', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{chair.service}</div>
                           </div>
                           <div style={{ textAlign: 'right' }}>
                             <div style={{ fontSize: '10px', fontWeight: '900', color: 'var(--champagne)' }}>{chair.price}</div>
-                            <div style={{ fontSize: '8px', color: 'rgba(255,255,255,0.75)', fontWeight: '600' }}>{chair.elapsed}</div>
+                            <div style={{ fontSize: '8px', color: '#111111', fontWeight: '600' }}>{chair.elapsed}</div>
                           </div>
                         </div>
                       )}
@@ -1595,7 +1595,7 @@ const DashboardModule = ({
                           boxSizing: 'border-box'
                         }}>
                           <Clock size={11} color="var(--champagne)" />
-                          <span style={{ fontSize: '9px', color: 'rgba(255,255,255,0.6)', fontWeight: '600' }}>Disponible en 10 min</span>
+                          <span style={{ fontSize: '9px', color: '#111111', fontWeight: '600' }}>Disponible en 10 min</span>
                         </div>
                       )}
 
@@ -1612,7 +1612,7 @@ const DashboardModule = ({
                           height: '100%',
                           boxSizing: 'border-box'
                         }}>
-                          <span style={{ fontSize: '9px', color: 'rgba(255,255,255,0.5)', fontWeight: '600' }}>{chair.info}</span>
+                          <span style={{ fontSize: '9px', color: '#111111', fontWeight: '600' }}>{chair.info}</span>
                           <button 
                             onClick={(event) => {
                               event.stopPropagation();
@@ -1679,7 +1679,7 @@ const DashboardModule = ({
                 gap: '10px'
               }} className="panda-scrollbar">
                 {sortedStaff.length === 0 ? (
-                  <div style={{ width: '100%', textAlign: 'center', color: 'rgba(255,255,255,0.4)', fontSize: '11px', padding: '20px' }}>
+                  <div style={{ width: '100%', textAlign: 'center', color: '#111111', fontSize: '11px', padding: '20px' }}>
                     No hay Odontólogos registrados
                   </div>
                 ) : (
@@ -1773,7 +1773,7 @@ const DashboardModule = ({
                         <span style={{ fontSize: isTop1 ? '11.5px' : '10.5px', fontWeight: '900', color: '#111111', marginTop: '4px', textAlign: 'center', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', width: '100%' }}>
                           {getShortName(barber.name)}
                         </span>
-                        <span style={{ fontSize: isTop1 ? '11px' : '9.5px', fontWeight: '900', color: isTop1 ? 'var(--champagne)' : 'rgba(255,255,255,0.85)', marginTop: '1px' }}>
+                        <span style={{ fontSize: isTop1 ? '11px' : '9.5px', fontWeight: '900', color: isTop1 ? 'var(--champagne)' : 'rgba(17,17,17,0.65)', marginTop: '1px' }}>
                           ${formatCurrency(barber.stats?.monthlyIncome || 0)}
                         </span>
 
@@ -1810,7 +1810,7 @@ const DashboardModule = ({
                       <span style={{ fontSize: '10px', fontWeight: '900', color: 'var(--champagne)' }}>{idx + 1}</span>
                       <span style={{ fontSize: '11px', fontWeight: '700', color: '#111111' }}>{service.name}</span>
                     </div>
-                    <span style={{ fontSize: '11px', fontWeight: '800', color: 'rgba(255,255,255,0.9)' }}>{service.val}</span>
+                    <span style={{ fontSize: '11px', fontWeight: '800', color: '#111111' }}>{service.val}</span>
                   </div>
                 ))}
               </div>
@@ -1866,11 +1866,11 @@ const DashboardModule = ({
           }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px', flexShrink: 0 }}>
               <h3 style={{ fontSize: '11.5px', fontWeight: '800', color: '#111111', margin: 0, textTransform: 'uppercase', letterSpacing: '0.5px' }}>Próximas citas</h3>
-              <span style={{ fontSize: '9px', color: 'rgba(255,255,255,0.75)', fontWeight: '700', cursor: 'pointer', textDecoration: 'underline' }} onClick={() => onNavigate && onNavigate('scheduling')}>Ver calendario</span>
+              <span style={{ fontSize: '9px', color: '#111111', fontWeight: '700', cursor: 'pointer', textDecoration: 'underline' }} onClick={() => onNavigate && onNavigate('scheduling')}>Ver calendario</span>
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', overflowY: 'auto', flex: 1 }} className="panda-scrollbar">
               {realUpcomingAppointments.length === 0 ? (
-                <div style={{ padding: '16px', textAlign: 'center', color: 'rgba(255,255,255,0.4)', fontSize: '11px' }}>
+                <div style={{ padding: '16px', textAlign: 'center', color: '#111111', fontSize: '11px' }}>
                   No hay citas próximas agendadas para hoy
                 </div>
               ) : (
@@ -1885,7 +1885,7 @@ const DashboardModule = ({
                   >
                     {/* Time */}
                     <span style={{
-                      fontSize: '9px', fontWeight: '800', color: 'rgba(255,255,255,0.45)',
+                      fontSize: '9px', fontWeight: '800', color: '#111111',
                       background: 'rgba(0, 0, 0, 0.04)', borderRadius: '6px',
                       padding: '3px 6px', flexShrink: 0, whiteSpace: 'nowrap', minWidth: '56px', textAlign: 'center'
                     }}>{item.time}</span>
@@ -1913,7 +1913,7 @@ const DashboardModule = ({
                       {/* Line 2: service · barber + beverage chip */}
                       <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginTop: '2px', flexWrap: 'wrap' }}>
                         <span style={{
-                          fontSize: '9px', color: 'rgba(255,255,255,0.38)', lineHeight: '1.3',
+                          fontSize: '9px', color: '#111111', lineHeight: '1.3',
                           whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', maxWidth: '180px'
                         }}>{item.service} · {item.barber}</span>
                         {item.beverage && (
@@ -1971,7 +1971,7 @@ const DashboardModule = ({
                       borderRadius: '8px',
                       backgroundColor: 'rgba(0, 0, 0, 0.04)',
                       border: '1px solid rgba(0, 0, 0, 0.08)',
-                      color: 'rgba(255,255,255,0.8)',
+                      color: '#111111',
                       cursor: 'pointer',
                       transition: 'all 0.25s cubic-bezier(0.4, 0, 0.2, 1)',
                     }}
@@ -1987,14 +1987,14 @@ const DashboardModule = ({
                     onMouseLeave={e => {
                       e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.02)';
                       e.currentTarget.style.borderColor = 'rgba(255,255,255,0.04)';
-                      e.currentTarget.style.color = 'rgba(255,255,255,0.8)';
+                      e.currentTarget.style.color = '#111111';
                       e.currentTarget.style.transform = 'none';
                       e.currentTarget.style.boxShadow = 'none';
                       const icon = e.currentTarget.querySelector('svg');
-                      if (icon) icon.style.color = 'rgba(255,255,255,0.6)';
+                      if (icon) icon.style.color = '#111111';
                     }}
                   >
-                    <ActIcon size={13} color="rgba(255,255,255,0.6)" style={{ transition: 'color 0.25s' }} />
+                    <ActIcon size={13} color="#111111" style={{ transition: 'color 0.25s' }} />
                     <span style={{ fontSize: '9px', fontWeight: '700' }}>{act.label}</span>
                   </button>
                 );
@@ -2023,7 +2023,7 @@ const DashboardModule = ({
                   style={{
                     fontSize: '8.5px',
                     fontWeight: '700',
-                    color: 'rgba(255,255,255,0.75)',
+                    color: '#111111',
                     cursor: 'pointer',
                     background: 'transparent',
                     border: 'none',
@@ -2061,7 +2061,7 @@ const DashboardModule = ({
                           padding: '7px 10px',
                           fontSize: '10px',
                           fontWeight: '700',
-                          color: opt.id === incomePeriod ? 'var(--champagne)' : 'rgba(255,255,255,0.8)',
+                          color: opt.id === incomePeriod ? 'var(--champagne)' : 'rgba(17,17,17,0.65)',
                           backgroundColor: opt.id === incomePeriod ? 'rgba(232, 212, 176, 0.1)' : 'transparent',
                           border: 'none',
                           cursor: 'pointer'
@@ -2107,7 +2107,7 @@ const DashboardModule = ({
               cursor: 'pointer'
             }}
           >
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '9.5px', color: 'rgba(255,255,255,0.75)', fontWeight: '700', marginBottom: '4px' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '9.5px', color: '#111111', fontWeight: '700', marginBottom: '4px' }}>
               <span>META MENSUAL</span>
               <div style={{ display: 'flex', alignItems: 'center', gap: '3px', color: 'var(--champagne)' }}>
                 <span style={{ fontSize: '9px', fontWeight: '700' }}>Editar meta</span>
@@ -2116,7 +2116,7 @@ const DashboardModule = ({
             </div>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: '6px' }}>
               <span style={{ fontSize: '13px', fontWeight: '900', color: '#111111' }}>
-                ${formatCurrency(currentMonthAmountReal)} <span style={{ fontSize: '10px', color: 'rgba(255,255,255,0.3)', fontWeight: '600' }}>/ ${formatCurrency(monthlyGoal)}</span>
+                ${formatCurrency(currentMonthAmountReal)} <span style={{ fontSize: '10px', color: '#111111', fontWeight: '600' }}>/ ${formatCurrency(monthlyGoal)}</span>
               </span>
               <span style={{ fontSize: '10.5px', fontWeight: '900', color: 'var(--champagne)' }}>
                 {monthlyProgressReal}%
@@ -2166,16 +2166,16 @@ const DashboardModule = ({
                 <h3 style={{ fontSize: '15px', fontWeight: '800', color: '#111111', margin: 0 }}>EDITAR SILLA {selectedChair.id}</h3>
                 <button 
                   onClick={(e) => { e.stopPropagation(); setSelectedChair(null); }} 
-                  style={{ background: 'transparent', border: 'none', color: 'rgba(255,255,255,0.75)', cursor: 'pointer' }}
+                  style={{ background: 'transparent', border: 'none', color: '#111111', cursor: 'pointer' }}
                 >
                   <X size={18} />
                 </button>
               </div>
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                <label style={{ fontSize: '10px', fontWeight: '800', color: 'rgba(255,255,255,0.75)' }}>ODONTÓLOGO</label>
+                <label style={{ fontSize: '10px', fontWeight: '800', color: '#111111' }}>ODONTÓLOGO</label>
                 <div style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
-                  <div style={{ position: 'absolute', left: '12px', color: 'rgba(255,255,255,0.5)', display: 'flex', alignItems: 'center' }}>
+                  <div style={{ position: 'absolute', left: '12px', color: '#111111', display: 'flex', alignItems: 'center' }}>
                     <Crown size={15} color="var(--champagne)" />
                   </div>
                   <input 
@@ -2201,7 +2201,7 @@ const DashboardModule = ({
               </div>
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                <label style={{ fontSize: '10px', fontWeight: '800', color: 'rgba(255,255,255,0.75)' }}>ESTADO</label>
+                <label style={{ fontSize: '10px', fontWeight: '800', color: '#111111' }}>ESTADO</label>
                 <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) minmax(0, 1fr)', gap: '10px' }}>
                   {[
                     { val: 'Disponible', label: 'Disponible', color: '#22c55e', bg: 'rgba(34, 197, 94, 0.15)', glow: 'rgba(34, 197, 94, 0.4)' },
@@ -2239,7 +2239,7 @@ const DashboardModule = ({
                           borderRadius: '12px',
                           border: isSelected ? `2px solid ${opt.color}` : '1px solid rgba(0, 0, 0, 0.08)',
                           background: isSelected ? opt.bg : 'rgba(255,255,255,0.03)',
-                          color: isSelected ? 'white' : 'rgba(255,255,255,0.6)',
+                          color: isSelected ? '#111111' : 'rgba(17,17,17,0.6)',
                           fontWeight: '800',
                           fontSize: '11px',
                           cursor: 'pointer',
@@ -2263,9 +2263,9 @@ const DashboardModule = ({
               {(selectedChair.status === 'En servicio' || selectedChair.status === 'Reservada') && (
                 <>
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                    <label style={{ fontSize: '10px', fontWeight: '800', color: 'rgba(255,255,255,0.75)' }}>CLIENTE</label>
+                    <label style={{ fontSize: '10px', fontWeight: '800', color: '#111111' }}>CLIENTE</label>
                     <div style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
-                      <div style={{ position: 'absolute', left: '12px', color: 'rgba(255,255,255,0.5)', display: 'flex', alignItems: 'center' }}>
+                      <div style={{ position: 'absolute', left: '12px', color: '#111111', display: 'flex', alignItems: 'center' }}>
                         <User size={15} color="var(--champagne)" />
                       </div>
                       <input 
@@ -2291,9 +2291,9 @@ const DashboardModule = ({
                   </div>
 
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                    <label style={{ fontSize: '10px', fontWeight: '800', color: 'rgba(255,255,255,0.75)' }}>SERVICIO</label>
+                    <label style={{ fontSize: '10px', fontWeight: '800', color: '#111111' }}>SERVICIO</label>
                     <div style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
-                      <div style={{ position: 'absolute', left: '12px', color: 'rgba(255,255,255,0.5)', display: 'flex', alignItems: 'center' }}>
+                      <div style={{ position: 'absolute', left: '12px', color: '#111111', display: 'flex', alignItems: 'center' }}>
                         <ToothIcon size={15} color="var(--champagne)" />
                       </div>
                       <input 
@@ -2320,9 +2320,9 @@ const DashboardModule = ({
 
                 <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'minmax(0, 1fr) minmax(0, 1fr)', gap: '10px' }}>
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                      <label style={{ fontSize: '10px', fontWeight: '800', color: 'rgba(255,255,255,0.75)' }}>HORA INICIO</label>
+                      <label style={{ fontSize: '10px', fontWeight: '800', color: '#111111' }}>HORA INICIO</label>
                       <div style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
-                        <div style={{ position: 'absolute', left: '12px', color: 'rgba(255,255,255,0.5)', display: 'flex', alignItems: 'center' }}>
+                        <div style={{ position: 'absolute', left: '12px', color: '#111111', display: 'flex', alignItems: 'center' }}>
                           <Clock size={15} color="var(--champagne)" />
                         </div>
                         <input 
@@ -2347,9 +2347,9 @@ const DashboardModule = ({
                       </div>
                     </div>
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                      <label style={{ fontSize: '10px', fontWeight: '800', color: 'rgba(255,255,255,0.75)' }}>DURACIÓN</label>
+                      <label style={{ fontSize: '10px', fontWeight: '800', color: '#111111' }}>DURACIÓN</label>
                       <div style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
-                        <div style={{ position: 'absolute', left: '12px', color: 'rgba(255,255,255,0.5)', display: 'flex', alignItems: 'center' }}>
+                        <div style={{ position: 'absolute', left: '12px', color: '#111111', display: 'flex', alignItems: 'center' }}>
                           <Clock size={15} color="var(--champagne)" />
                         </div>
                         <input 
@@ -2379,9 +2379,9 @@ const DashboardModule = ({
 
               {(selectedChair.status === 'Limpieza' || selectedChair.status === 'Disponible') && (
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                  <label style={{ fontSize: '10px', fontWeight: '800', color: 'rgba(255,255,255,0.75)' }}>INFORMACIÓN DE ESTADO</label>
+                  <label style={{ fontSize: '10px', fontWeight: '800', color: '#111111' }}>INFORMACIÓN DE ESTADO</label>
                   <div style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
-                    <div style={{ position: 'absolute', left: '12px', color: 'rgba(255,255,255,0.5)', display: 'flex', alignItems: 'center' }}>
+                    <div style={{ position: 'absolute', left: '12px', color: '#111111', display: 'flex', alignItems: 'center' }}>
                       <Sparkles size={15} color="var(--champagne)" />
                     </div>
                     <input 
@@ -2479,16 +2479,16 @@ const DashboardModule = ({
                 <h3 style={{ fontSize: '15px', fontWeight: '800', color: '#111111', margin: 0 }}>EDITAR META MENSUAL</h3>
                 <button 
                   onClick={(e) => { e.stopPropagation(); setIsEditingGoals(false); }} 
-                  style={{ background: 'transparent', border: 'none', color: 'rgba(255,255,255,0.75)', cursor: 'pointer' }}
+                  style={{ background: 'transparent', border: 'none', color: '#111111', cursor: 'pointer' }}
                 >
                   <X size={18} />
                 </button>
               </div>
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                <label style={{ fontSize: '10px', fontWeight: '800', color: 'rgba(255,255,255,0.75)' }}>FACTURACIÓN ACTUAL (USD)</label>
+                <label style={{ fontSize: '10px', fontWeight: '800', color: '#111111' }}>FACTURACIÓN ACTUAL (USD)</label>
                 <div style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
-                  <div style={{ position: 'absolute', left: '12px', color: 'rgba(255,255,255,0.5)', display: 'flex', alignItems: 'center' }}>
+                  <div style={{ position: 'absolute', left: '12px', color: '#111111', display: 'flex', alignItems: 'center' }}>
                     <DollarSign size={15} color="var(--champagne)" />
                   </div>
                   <input 
@@ -2514,9 +2514,9 @@ const DashboardModule = ({
               </div>
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                <label style={{ fontSize: '10px', fontWeight: '800', color: 'rgba(255,255,255,0.75)' }}>META DEL MES (USD)</label>
+                <label style={{ fontSize: '10px', fontWeight: '800', color: '#111111' }}>META DEL MES (USD)</label>
                 <div style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
-                  <div style={{ position: 'absolute', left: '12px', color: 'rgba(255,255,255,0.5)', display: 'flex', alignItems: 'center' }}>
+                  <div style={{ position: 'absolute', left: '12px', color: '#111111', display: 'flex', alignItems: 'center' }}>
                     <Target size={15} color="var(--champagne)" />
                   </div>
                   <input 

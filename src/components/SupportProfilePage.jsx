@@ -109,12 +109,12 @@ const SupportProfilePage = ({ staffMember, isMobile }) => {
                 <Shield size={12} /> {roleName}
               </span>
               {staffMember?.id_card && (
-                <span style={{ fontSize: 11, color: 'rgba(255,255,255,0.5)', fontWeight: 700, background: 'rgba(0, 0, 0, 0.04)', padding: '4px 10px', borderRadius: 8, display: 'inline-flex', alignItems: 'center', gap: 4 }}>
+                <span style={{ fontSize: 11, color: '#111111', fontWeight: 700, background: 'rgba(0, 0, 0, 0.04)', padding: '4px 10px', borderRadius: 8, display: 'inline-flex', alignItems: 'center', gap: 4 }}>
                   <Tag size={10} /> ID: {staffMember.id_card}
                 </span>
               )}
               {staffMember?.phone && (
-                <span style={{ fontSize: 11, color: 'rgba(255,255,255,0.5)', fontWeight: 700, background: 'rgba(0, 0, 0, 0.04)', padding: '4px 10px', borderRadius: 8, display: 'inline-flex', alignItems: 'center', gap: 4 }}>
+                <span style={{ fontSize: 11, color: '#111111', fontWeight: 700, background: 'rgba(0, 0, 0, 0.04)', padding: '4px 10px', borderRadius: 8, display: 'inline-flex', alignItems: 'center', gap: 4 }}>
                   <Smartphone size={10} /> {staffMember.phone}
                 </span>
               )}

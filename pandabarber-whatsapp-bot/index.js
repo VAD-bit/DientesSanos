@@ -59,7 +59,7 @@ function renderPinForm(errorMsg = '') {
         <h2>Acceso Restringido</h2>
         <p>Ingresa el PIN de seguridad para acceder al QR de WhatsApp.</p>
         <form method="POST" action="/qr">
-          <input type="password" name="pin" maxlength="10" placeholder="â€¢â€¢â€¢â€¢" autofocus required />
+          <input type="password" name="pin" maxlength="10" placeholder="••••" autofocus required />
           <button type="submit">Ingresar</button>
         </form>
         ${errorMsg ? `<div class="error">${errorMsg}</div>` : ''}

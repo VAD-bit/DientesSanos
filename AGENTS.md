@@ -1,4 +1,4 @@
-﻿# AGENTS.md â€” Dientes Sanos (CrmPandaBarberStudio)
+﻿# AGENTS.md — Dientes Sanos (CrmPandaBarberStudio)
 
 Guía de agentes de OpenCode para este proyecto. Misma configuración que el proyecto
 "SEGURO LOS ANDES". Todos los agentes listados son **gratuitos e incorporados** en OpenCode
@@ -32,9 +32,9 @@ Guía de agentes de OpenCode para este proyecto. Misma configuración que el pro
 
 ### Agentes de sistema (ocultos, automáticos)
 
-- **compaction** â€” compacta contextos largos
-- **title** â€” genera títulos de sesión
-- **summary** â€” genera resúmenes de sesión
+- **compaction** — compacta contextos largos
+- **title** — genera títulos de sesión
+- **summary** — genera resúmenes de sesión
 
 ## Flujo estándar por fase
 
@@ -54,13 +54,13 @@ Guía de agentes de OpenCode para este proyecto. Misma configuración que el pro
 - **No renombrar** claves `panda_*` de localStorage, eventos de ventana (`panda_hide_chrome`,
   `panda_navigate`, `panda_new_notification`), nombres de canal Supabase ni clases CSS
   (rompen datos persistidos y son internos). Solo cambia strings visibles al usuario.
-- En botones con fondo arena `#E8D4B0`/`#D9C08F`, el texto debe ser oscuro (`#111111`) â€” contraste WCAG.
+- En botones con fondo arena `#E8D4B0`/`#D9C08F`, el texto debe ser oscuro (`#111111`) — contraste WCAG.
 
 ## Agentes personalizados (opcionales, añadir luego en `.opencode/agents/`)
 
 Se crean con `opencode agent create` o como archivos `.md`:
 
-- `code-reviewer.md` â€” revisión de calidad (`edit: deny`)
-- `security-auditor.md` â€” seguridad: auth, roles, passkeys (`edit: deny`)
-- `docs-writer.md` â€” documentación (`bash: deny`)
+- `code-reviewer.md` — revisión de calidad (`edit: deny`)
+- `security-auditor.md` — seguridad: auth, roles, passkeys (`edit: deny`)
+- `docs-writer.md` — documentación (`bash: deny`)
 

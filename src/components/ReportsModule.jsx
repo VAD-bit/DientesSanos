@@ -1192,7 +1192,7 @@ const ReportsModule = ({ isMobile, rates, staff = [] }) => {
             style={{ 
               backgroundColor: generatingPdf ? 'rgba(255, 255, 255,0.15)' : 'var(--bg-tertiary)', 
               border: `1px solid ${generatingPdf ? 'var(--gold-primary)' : 'var(--border-color)'}`, 
-              color: generatingPdf ? 'var(--gold-primary)' : 'white', 
+              color: generatingPdf ? 'var(--gold-primary)' : '#111111', 
               padding: '10px 16px', 
               borderRadius: '12px', 
               display: 'flex', 
@@ -1407,7 +1407,7 @@ const ReportsModule = ({ isMobile, rates, staff = [] }) => {
               <span style={{ 
                 fontSize: m.value.length > 8 ? '16px' : '22px', 
                 fontWeight: '900', 
-                color: m.isGold ? 'var(--gold-primary)' : 'white' 
+                color: m.isGold ? 'var(--gold-primary)' : '#111111' 
               }}>
                 {m.value}
               </span>
@@ -1439,7 +1439,7 @@ const ReportsModule = ({ isMobile, rates, staff = [] }) => {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                color: 'rgba(255,255,255,0.4)',
+                color: '#111111',
                 fontSize: '13px',
                 fontWeight: '600'
               }}>
@@ -1567,7 +1567,7 @@ const ReportsModule = ({ isMobile, rates, staff = [] }) => {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                color: 'rgba(255,255,255,0.4)',
+                color: '#111111',
                 fontSize: '13px',
                 fontWeight: '600',
                 height: '100%'
@@ -1909,7 +1909,7 @@ const ReportsModule = ({ isMobile, rates, staff = [] }) => {
               <span style={{ fontSize: '10px', color: '#b3b3b3', fontWeight: '900', textTransform: 'uppercase', letterSpacing: '0.6px', marginBottom: '8px' }}>
                 {m.label}
               </span>
-              <span style={{ fontSize: m.value.length > 8 ? '16px' : '22px', color: idx === 3 ? 'var(--gold-primary)' : '#ffffff', fontWeight: '950' }}>
+              <span style={{ fontSize: m.value.length > 8 ? '16px' : '22px', color: idx === 3 ? 'var(--gold-primary)' : '#111111', fontWeight: '950' }}>
                 {m.value}
               </span>
             </div>

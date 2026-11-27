@@ -621,7 +621,7 @@ const HistoryModule = ({ isMobile, rates, onNavigate }) => {
                 borderRadius: '10px', 
                 border: '1px solid var(--border-color)', 
                 backgroundColor: dateRange === range ? 'var(--gold-primary)' : 'transparent', 
-                color: dateRange === range ? 'black' : 'white', 
+                color: dateRange === range ? 'black' : '#111111', 
                 fontWeight: '700', 
                 fontSize: '13px', 
                 cursor: 'pointer'
@@ -905,7 +905,7 @@ const ReceiptLine = ({ line, rate, formatCurrency }) => (
       </div>
     </div>
     <div style={{ textAlign: 'right', flexShrink: 0 }}>
-      <div style={{ fontSize: '13px', fontWeight: '900', color: line.isTip ? 'var(--gold-primary)' : 'white', whiteSpace: 'nowrap' }}>
+      <div style={{ fontSize: '13px', fontWeight: '900', color: line.isTip ? 'var(--gold-primary)' : '#111111', whiteSpace: 'nowrap' }}>
         {line.isTip ? '+' : ''}{formatCurrency(Number(line.amount || 0) * rate)} Bs.
       </div>
       <div style={{ fontSize: '10px', color: 'var(--text-muted)', fontWeight: '750', marginTop: '2px', whiteSpace: 'nowrap' }}>

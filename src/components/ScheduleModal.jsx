@@ -114,12 +114,12 @@ const ScheduleModal = ({ isOpen, onClose, client, service, staff, onSchedule, de
                   <h2 style={{ fontSize: '22px', fontWeight: '950', letterSpacing: '-0.5px', margin: 0, color: '#111111', fontFamily: 'Outfit, sans-serif' }}>
                     Agendar <span style={{ color: 'var(--gold-primary)' }}>Turno</span>
                   </h2>
-                  <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '13px', margin: '4px 0 0 0', fontWeight: '500' }}>
+                  <p style={{ color: '#111111', fontSize: '13px', margin: '4px 0 0 0', fontWeight: '500' }}>
                     {service?.name || 'Servicio'} con <span style={{ color: '#111111', fontWeight: '700' }}>{staff?.name || 'Odontólogo'}</span>
                   </p>
                 </div>
               </div>
-              <button onClick={onClose} style={{ background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', color: 'rgba(255,255,255,0.6)', width: '36px', height: '36px', borderRadius: '12px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'all 0.2s' }} onMouseEnter={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.1)'; e.currentTarget.style.color = 'white'; }} onMouseLeave={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.04)'; e.currentTarget.style.color = 'rgba(255,255,255,0.6)'; }}><X size={18} /></button>
+              <button onClick={onClose} style={{ background: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)', color: '#111111', width: '36px', height: '36px', borderRadius: '12px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'all 0.2s' }} onMouseEnter={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.1)'; e.currentTarget.style.color = 'white'; }} onMouseLeave={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.04)'; e.currentTarget.style.color = 'rgba(255,255,255,0.6)'; }}><X size={18} /></button>
             </div>
 
             {/* Scrollable Content */}
@@ -150,10 +150,10 @@ const ScheduleModal = ({ isOpen, onClose, client, service, staff, onSchedule, de
               {/* Slots Section */}
               <div>
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '14px' }}>
-                  <label style={{ fontSize: '11px', fontWeight: '800', color: 'rgba(255,255,255,0.4)', letterSpacing: '1px', textTransform: 'uppercase' }}>Horarios Disponibles</label>
+                  <label style={{ fontSize: '11px', fontWeight: '800', color: '#111111', letterSpacing: '1px', textTransform: 'uppercase' }}>Horarios Disponibles</label>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                    <Clock size={13} color="rgba(255,255,255,0.3)" />
-                    <span style={{ fontSize: '11px', color: 'rgba(255,255,255,0.35)', fontWeight: '600' }}>Selecciona tu hora</span>
+                    <Clock size={13} color="#111111" />
+                    <span style={{ fontSize: '11px', color: '#111111', fontWeight: '600' }}>Selecciona tu hora</span>
                   </div>
                 </div>
                 
@@ -161,9 +161,9 @@ const ScheduleModal = ({ isOpen, onClose, client, service, staff, onSchedule, de
                   <SkeletonGrid items={12} itemHeight={40} minWidth={80} />
                 ) : availableSlots.length === 0 ? (
                   <div style={{ textAlign: 'center', padding: '40px 20px', background: 'rgba(0, 0, 0, 0.04)', borderRadius: '20px', border: '1px dashed rgba(0, 0, 0, 0.08)' }}>
-                    <CalendarIcon size={32} color="rgba(255,255,255,0.2)" style={{ marginBottom: '12px' }} />
+                    <CalendarIcon size={32} color="#111111" style={{ marginBottom: '12px' }} />
                     <div style={{ color: '#111111', fontWeight: '800', fontSize: '15px', marginBottom: '6px' }}>No hay horarios disponibles</div>
-                    <div style={{ color: 'rgba(255,255,255,0.5)', fontSize: '13px' }}>Selecciona otra fecha.</div>
+                    <div style={{ color: '#111111', fontSize: '13px' }}>Selecciona otra fecha.</div>
                   </div>
                 ) : (
                   <div className="schedule-slot-btn custom-scrollbar" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(90px, 1fr))', gap: '10px', maxHeight: '320px', overflowY: 'auto', paddingRight: '8px' }}>

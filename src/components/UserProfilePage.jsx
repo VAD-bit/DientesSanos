@@ -802,9 +802,9 @@ const UserProfilePage = ({ staffMember, inventory = [], onUpdate, isMobile }) =>
         .kpi-tile-bar { position: absolute; left: 0; top: 0; bottom: 0; width: 3px; opacity: .9; }
         .kpi-tile:hover { transform: translateY(-4px); border-color: rgba(0, 0, 0, 0.08); box-shadow: 0 14px 30px rgba(0,0,0,.42); }
         .kpi-tile-icon { width: 34px; height: 34px; border-radius: 11px; display: flex; align-items: center; justify-content: center; border: 1px solid transparent; margin-bottom: 14px; }
-        .kpi-tile-value { font-family: Outfit, var(--font-sans), system-ui; font-size: 26px; font-weight: 950; color: #fff; letter-spacing: -.5px; line-height: 1; font-variant-numeric: tabular-nums; }
-        .kpi-unit { font-size: 13px; font-weight: 800; color: rgba(255,255,255,.4); margin-left: 4px; }
-        .kpi-tile-label { margin-top: 8px; font-size: 10px; font-weight: 800; letter-spacing: .6px; text-transform: uppercase; color: rgba(255,255,255,.42); }
+        .kpi-tile-value { font-family: Outfit, var(--font-sans), system-ui; font-size: 26px; font-weight: 950; color: #111111; letter-spacing: -.5px; line-height: 1; font-variant-numeric: tabular-nums; }
+        .kpi-unit { font-size: 13px; font-weight: 800; color: rgba(17,17,17,.6); margin-left: 4px; }
+        .kpi-tile-label { margin-top: 8px; font-size: 10px; font-weight: 800; letter-spacing: .6px; text-transform: uppercase; color: rgba(17,17,17,.55); }
         /* ===== Ganancias (finanzas) Apple-style, dorado de marca ===== */
         .fin-card {
           position: relative; overflow: hidden; border-radius: 20px; padding: 20px 18px;
@@ -817,9 +817,9 @@ const UserProfilePage = ({ staffMember, inventory = [], onUpdate, isMobile }) =>
         .fin-card-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 16px; }
         .fin-card-icon { width: 38px; height: 38px; border-radius: 12px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; color: var(--gold-primary); background: rgba(17, 17, 17,.13); border: 1px solid rgba(17, 17, 17,.26); }
         .fin-card-pill { font-size: 9px; font-weight: 850; letter-spacing: .5px; text-transform: uppercase; color: #e7d3ad; background: rgba(17, 17, 17,.10); border: 1px solid rgba(17, 17, 17,.25); padding: 4px 8px; border-radius: 999px; white-space: nowrap; }
-        .fin-card-label { font-size: 10.5px; font-weight: 850; letter-spacing: .6px; text-transform: uppercase; color: rgba(255,255,255,.45); }
-        .fin-card-value { margin-top: 8px; font-family: Outfit, var(--font-sans), system-ui; font-size: 30px; font-weight: 950; color: #fff; letter-spacing: -.8px; line-height: 1; font-variant-numeric: tabular-nums; }
-        .fin-card-sub { margin-top: 7px; font-size: 10.5px; font-weight: 700; color: rgba(255,255,255,.32); }
+        .fin-card-label { font-size: 10.5px; font-weight: 850; letter-spacing: .6px; text-transform: uppercase; color: rgba(17,17,17,.55); }
+        .fin-card-value { margin-top: 8px; font-family: Outfit, var(--font-sans), system-ui; font-size: 30px; font-weight: 950; color: #111111; letter-spacing: -.8px; line-height: 1; font-variant-numeric: tabular-nums; }
+        .fin-card-sub { margin-top: 7px; font-size: 10.5px; font-weight: 700; color: rgba(17,17,17,.5); }
         @media (max-width: 720px) {
           .fin-card { padding: 16px 14px; }
           .fin-card-value { font-size: 26px; }
@@ -1373,11 +1373,11 @@ const UserProfilePage = ({ staffMember, inventory = [], onUpdate, isMobile }) =>
                     {isAssistant ? 'Servicios asignados hoy' : 'Agenda de hoy'}
                   </h4>
                 </div>
-                <span style={{ fontSize: '11px', color: 'rgba(255,255,255,0.35)' }}>{completedToday}/{todayAppointments.length} completados</span>
+                <span style={{ fontSize: '11px', color: '#111111' }}>{completedToday}/{todayAppointments.length} completados</span>
               </div>
 
               {todayAppointments.length === 0 ? (
-                <div style={{ padding: '30px 18px', textAlign: 'center', color: 'rgba(255,255,255,0.28)', fontSize: '12px', border: '1px dashed rgba(0, 0, 0, 0.08)', borderRadius: '14px' }}>
+                <div style={{ padding: '30px 18px', textAlign: 'center', color: '#111111', fontSize: '12px', border: '1px dashed rgba(0, 0, 0, 0.08)', borderRadius: '14px' }}>
                   {isAssistant ? 'No tienes servicios asignados para hoy' : 'No tienes citas agendadas para hoy'}
                 </div>
               ) : (
@@ -1391,7 +1391,7 @@ const UserProfilePage = ({ staffMember, inventory = [], onUpdate, isMobile }) =>
                         <span style={{ width: 7, height: 7, flexShrink: 0, borderRadius: '50%', background: completed ? '#30d158' : active ? 'var(--gold-primary)' : '#555' }} />
                         <div style={{ flex: 1, minWidth: 0 }}>
                           <div style={{ color: '#111111', fontSize: '13px', fontWeight: '750', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{appointment.clients?.name || 'Cliente'}</div>
-                          <div style={{ color: 'rgba(255,255,255,0.35)', fontSize: '11px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{appointment.services?.name || 'Servicio'}</div>
+                          <div style={{ color: '#111111', fontSize: '11px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{appointment.services?.name || 'Servicio'}</div>
                         </div>
                         <span style={{ flexShrink: 0, padding: '4px 9px', borderRadius: '20px', color: completed ? '#30d158' : active ? 'var(--gold-primary)' : '#888', background: completed ? 'rgba(48,209,88,0.1)' : active ? 'rgba(17, 17, 17,0.1)' : 'rgba(255,255,255,0.05)', fontSize: '10px', fontWeight: '800' }}>{appointment.status}</span>
                       </div>
@@ -1453,27 +1453,27 @@ const UserProfilePage = ({ staffMember, inventory = [], onUpdate, isMobile }) =>
               {/* Service & Time Stats */}
               <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) minmax(0, 1fr)', gap: '16px' }}>
                 <div style={{ padding: '20px', backgroundColor: 'var(--bg-secondary)', borderRadius: '20px', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: 'rgba(255,255,255,0.4)', fontSize: '11px', fontWeight: '800', letterSpacing: '0.5px' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: '#111111', fontSize: '11px', fontWeight: '800', letterSpacing: '0.5px' }}>
                     <Star size={12} color="var(--gold-primary)" /> {isAssistant ? 'LIMPIEZAS' : 'SERVICIOS'}
                   </div>
                   <div style={{ fontSize: '32px', fontWeight: '950', color: '#111111', marginTop: '8px', fontFamily: 'Outfit, var(--font-sans), system-ui' }}>{stats.totalAppointments}</div>
                 </div>
                 <div style={{ padding: '20px', backgroundColor: 'var(--bg-secondary)', borderRadius: '20px', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: 'rgba(255,255,255,0.4)', fontSize: '11px', fontWeight: '800', letterSpacing: '0.5px' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: '#111111', fontSize: '11px', fontWeight: '800', letterSpacing: '0.5px' }}>
                     <Clock size={12} color="var(--gold-primary)" /> TIEMPO PROMEDIO
                   </div>
                   <div style={{ fontSize: '32px', fontWeight: '950', color: '#111111', marginTop: '8px', fontFamily: 'Outfit, var(--font-sans), system-ui' }}>
-                    {stats.avgDurationMin} <span style={{ fontSize: '14px', color: 'rgba(255,255,255,0.4)', fontWeight: '800' }}>min</span>
+                    {stats.avgDurationMin} <span style={{ fontSize: '14px', color: '#111111', fontWeight: '800' }}>min</span>
                   </div>
                 </div>
               </div>
 
               {/* Top Services ranking list */}
               <div>
-                <label style={{ display: 'block', fontSize: '11px', fontWeight: '850', color: 'rgba(255,255,255,0.4)', marginBottom: '16px', textTransform: 'uppercase', letterSpacing: '0.8px' }}>{isAssistant ? 'Limpiezas m¡s realizadas' : 'Servicios m¡s realizados'}</label>
+                <label style={{ display: 'block', fontSize: '11px', fontWeight: '850', color: '#111111', marginBottom: '16px', textTransform: 'uppercase', letterSpacing: '0.8px' }}>{isAssistant ? 'Limpiezas m¡s realizadas' : 'Servicios m¡s realizados'}</label>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
                   {stats.topServices.length === 0 ? (
-                    <div style={{ padding: '30px 20px', textAlign: 'center', color: 'rgba(255,255,255,0.3)', fontSize: '12px', border: '1px dashed rgba(0, 0, 0, 0.08)', borderRadius: '16px' }}>No hay registros de servicios aún</div>
+                    <div style={{ padding: '30px 20px', textAlign: 'center', color: '#111111', fontSize: '12px', border: '1px dashed rgba(0, 0, 0, 0.08)', borderRadius: '16px' }}>No hay registros de servicios aún</div>
                   ) : (
                     stats.topServices.map((srv, idx) => (
                       <div key={idx} className="rank-row" style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
@@ -1720,7 +1720,7 @@ const UserProfilePage = ({ staffMember, inventory = [], onUpdate, isMobile }) =>
                     )}
 
                     <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                      <label style={{ color: 'rgba(255,255,255,0.55)', fontSize: '11px', fontWeight: '800', minWidth: '70px' }}>
+                      <label style={{ color: '#111111', fontSize: '11px', fontWeight: '800', minWidth: '70px' }}>
                         CANTIDAD
                       </label>
                       <input
@@ -1757,7 +1757,7 @@ const UserProfilePage = ({ staffMember, inventory = [], onUpdate, isMobile }) =>
               {/* Tools List */}
               <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', maxHeight: '350px', overflowY: 'auto', paddingRight: '4px' }}>
                 {tools.length === 0 ? (
-                  <div style={{ padding: '30px 20px', textAlign: 'center', color: 'rgba(255,255,255,0.3)', fontSize: '12px', border: '1px dashed rgba(0, 0, 0, 0.08)', borderRadius: '16px' }}>
+                  <div style={{ padding: '30px 20px', textAlign: 'center', color: '#111111', fontSize: '12px', border: '1px dashed rgba(0, 0, 0, 0.08)', borderRadius: '16px' }}>
                     Ningún artículo registrado en este perfil.
                   </div>
                 ) : (
@@ -1778,7 +1778,7 @@ const UserProfilePage = ({ staffMember, inventory = [], onUpdate, isMobile }) =>
                         <div style={{ fontWeight: '800', fontSize: '13px', color: '#111111' }}>
                           {tool.name} <span style={{ color: 'var(--gold-primary)', fontSize: '11px' }}>Ø {tool.quantity || 1}</span>
                         </div>
-                        <div style={{ fontSize: '11px', color: 'rgba(255,255,255,0.4)', marginTop: '4px' }}>
+                        <div style={{ fontSize: '11px', color: '#111111', marginTop: '4px' }}>
                           {itemType}{tool.brand ? ` · ${tool.brand}` : ''} · <span style={{ color: tool.ownership === 'Propia' ? 'var(--gold-primary)' : '#30d158', fontWeight: '800' }}>{tool.ownership}</span>
                         </div>
                         </div>

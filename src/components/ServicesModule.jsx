@@ -852,7 +852,7 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
                               <span>${service.price}</span>
                               {rates?.usd > 0 && (
                                 <span style={{ fontSize: '12px', color: 'var(--gold-primary)', fontWeight: '700' }}>
-                                  â‰ˆ {Math.round(service.price * rates.usd).toLocaleString()} Bs.
+                                  ≈ {Math.round(service.price * rates.usd).toLocaleString()} Bs.
                                 </span>
                               )}
                             </div>
@@ -932,7 +932,7 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
                       }}>
                         <div>
                           {service.strategy_type && (
-                            <div style={{ padding: '4px 10px', borderRadius: '8px', fontSize: '10px', fontWeight: '800', color: 'rgba(255,255,255,0.8)', backgroundColor: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
+                            <div style={{ padding: '4px 10px', borderRadius: '8px', fontSize: '10px', fontWeight: '800', color: '#111111', backgroundColor: 'rgba(0, 0, 0, 0.04)', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
                               {service.strategy_type}
                             </div>
                           )}
@@ -944,7 +944,7 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
                           </div>
                           {rates?.usd > 0 && (
                             <div style={{ fontSize: '11px', color: 'var(--text-muted)', fontWeight: '600', marginTop: '4px' }}>
-                              â‰ˆ {Math.round(service.price * rates.usd).toLocaleString()} Bs.
+                              ≈ {Math.round(service.price * rates.usd).toLocaleString()} Bs.
                             </div>
                           )}
                         </div>
@@ -1261,7 +1261,7 @@ const ServicesModule = ({ isMobile, currency, rates }) => {
                 {selectedServiceDetail.description && (
                   <div style={{ marginBottom: '20px' }}>
                     <div style={{ fontSize: '11px', fontWeight: '800', color: 'var(--text-muted)', marginBottom: '6px', textTransform: 'uppercase' }}>Guión de Venta / Descripción</div>
-                    <p style={{ fontSize: '13px', color: 'rgba(255,255,255,0.7)', lineHeight: '1.5', margin: 0, padding: '12px', borderRadius: '12px', backgroundColor: 'var(--bg-secondary)', fontStyle: 'italic', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
+                    <p style={{ fontSize: '13px', color: '#111111', lineHeight: '1.5', margin: 0, padding: '12px', borderRadius: '12px', backgroundColor: 'var(--bg-secondary)', fontStyle: 'italic', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
                       "{selectedServiceDetail.description}"
                     </p>
                   </div>

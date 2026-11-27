@@ -1058,8 +1058,8 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
         .barber-work-grid { display: grid !important; grid-template-columns: minmax(0, 1.55fr) minmax(360px, .85fr) !important; gap: 18px !important; align-items: start !important; }
         .barber-chair-column { grid-column: 1; grid-row: 1; min-width: 0; }
         .barber-side-column { grid-column: 2; grid-row: 1; min-width: 0; margin-top: 50px; display: flex; flex-direction: column; gap: 14px; align-self: start; }
-        .barber-side-heading { display: flex; align-items: center; justify-content: space-between; color: rgba(255,255,255,.76); font-size: 11px; font-weight: 900; letter-spacing: .9px; text-transform: uppercase; }
-        .barber-side-heading span { color: rgba(255,255,255,.35); font-size: 9px; letter-spacing: .35px; }
+        .barber-side-heading { display: flex; align-items: center; justify-content: space-between; color: rgba(17,17,17,.76); font-size: 11px; font-weight: 900; letter-spacing: .9px; text-transform: uppercase; }
+        .barber-side-heading span { color: rgba(17,17,17,.5); font-size: 9px; letter-spacing: .35px; }
         .barber-stats-grid { display: grid !important; grid-template-columns: repeat(2, minmax(0, 1fr)) !important; grid-auto-rows: auto; gap: 10px !important; margin-top: 0; align-self: auto; }
         .barber-stat-card { min-height: 118px; padding: 16px 12px !important; border-radius: 18px !important; display: flex; flex-direction: column; justify-content: center; transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease; }
         .barber-stat-card:hover { transform: translateY(-2px); border-color: rgba(17, 17, 17,.2); box-shadow: 0 14px 28px rgba(0,0,0,.25); }
@@ -1068,7 +1068,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
         .barber-appointment-summary { padding-bottom: 18px; margin-bottom: 18px !important; border-bottom: 1px solid rgba(0, 0, 0, 0.08); }
         .barber-appointments-stack { display: flex; flex-direction: column; gap: 20px; }
         .barber-appointment-details { animation: barber-details-in 180ms ease-out both; }
-        .barber-appointment-time { display: inline-flex; align-items: center; gap: 4px; color: rgba(255,255,255,.52); font-size: 10px; font-weight: 850; white-space: nowrap; }
+        .barber-appointment-time { display: inline-flex; align-items: center; gap: 4px; color: rgba(17,17,17,.65); font-size: 10px; font-weight: 850; white-space: nowrap; }
         .barber-appointment-chevron { display: inline-flex; width: 28px; height: 28px; align-items: center; justify-content: center; border-radius: 50%; color: var(--gold-primary); background: rgba(17, 17, 17,.08); transition: transform 180ms ease; }
         .barber-appointment-chevron.is-open { transform: rotate(180deg); }
         .barber-appointment-card.is-collapsed { padding: 0 !important; border-radius: 18px !important; overflow: hidden; }
@@ -1079,15 +1079,15 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
         .barber-appointment-card.is-collapsed .barber-service-list > div { padding: 3px 9px !important; }
         .barber-appointment-card.is-collapsed .barber-included-items { display: none !important; }
         .barber-appointment-card.is-collapsed .barber-appointment-total { flex: 0 0 auto; align-self: stretch; display: flex; flex-direction: column; align-items: flex-end; justify-content: space-between; }
-        .barber-appointment-card.is-collapsed .barber-appointment-time { display: inline-flex; align-items: center; gap: 4px; color: rgba(255,255,255,.52); font-size: 10px; font-weight: 850; white-space: nowrap; }
+        .barber-appointment-card.is-collapsed .barber-appointment-time { display: inline-flex; align-items: center; gap: 4px; color: rgba(17,17,17,.65); font-size: 10px; font-weight: 850; white-space: nowrap; }
         .barber-appointment-card.is-collapsed .barber-appointment-chevron { display: inline-flex; width: 28px; height: 28px; align-items: center; justify-content: center; border-radius: 50%; color: var(--gold-primary); background: rgba(17, 17, 17,.08); transition: transform 180ms ease; }
         .barber-appointment-card.is-collapsed .barber-appointment-chevron.is-open { transform: rotate(180deg); }
         .barber-queue-divider { display: none; }
         .barber-mobile-add-control { display: none; }
         @keyframes barber-details-in { from { opacity: 0; transform: translateY(-5px); } to { opacity: 1; transform: translateY(0); } }
-        .barber-work-section-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: 0 0 10px; color: rgba(255,255,255,.82); font-size: 11px; font-weight: 900; letter-spacing: .55px; text-transform: uppercase; }
+        .barber-work-section-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: 0 0 10px; color: rgba(17,17,17,.85); font-size: 11px; font-weight: 900; letter-spacing: .55px; text-transform: uppercase; }
         .barber-work-section-heading > span { display: inline-flex; align-items: center; gap: 7px; }
-        .barber-work-section-heading small { color: rgba(255,255,255,.34); font-size: 9px; font-weight: 750; letter-spacing: .2px; text-transform: none; }
+        .barber-work-section-heading small { color: rgba(17,17,17,.5); font-size: 9px; font-weight: 750; letter-spacing: .2px; text-transform: none; }
         .barber-photo-grid { margin-bottom: 14px !important; }
         .barber-client-context { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; padding: 10px !important; }
         .barber-client-context-row { min-width: 0; min-height: 54px; padding: 9px 10px; border-radius: 12px; background: rgba(0, 0, 0, 0.04); }
@@ -1099,7 +1099,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
         .barber-waiting-state span { display: block; margin-top: 2px; color: rgba(255,255,255,.42); font-size: 10px; }
         .barber-empty-chair { min-height: 310px; padding: 34px !important; display: flex; flex-direction: column; align-items: center; justify-content: center; background: radial-gradient(circle at 50% 45%, var(--chair-state-glow), transparent 38%), rgba(0, 0, 0, 0.04) !important; border-color: color-mix(in srgb, var(--chair-state-color) 28%, transparent) !important; }
         .barber-empty-actions { display: flex; gap: 9px; margin-top: 18px; }
-        .barber-empty-action { min-height: 38px; padding: 0 14px; border-radius: 11px; border: 1px solid rgba(0, 0, 0, 0.08); background: rgba(0, 0, 0, 0.04); color: rgba(255,255,255,.78); font-size: 11px; font-weight: 850; cursor: pointer; display: inline-flex; align-items: center; gap: 7px; }
+        .barber-empty-action { min-height: 38px; padding: 0 14px; border-radius: 11px; border: 1px solid rgba(0, 0, 0, 0.08); background: rgba(0, 0, 0, 0.04); color: rgba(17,17,17,.8); font-size: 11px; font-weight: 850; cursor: pointer; display: inline-flex; align-items: center; gap: 7px; }
         .barber-empty-action.primary { color: #101010; border-color: var(--gold-primary); background: var(--gold-primary); }
         @media (max-width: 1120px) {
           .barber-live-console { max-width: 100% !important; }
@@ -1148,17 +1148,17 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
           .barber-appointment-card.is-collapsed .barber-service-list span { max-width: none; overflow: visible; text-overflow: clip; white-space: normal; overflow-wrap: anywhere; font-size: 10px !important; }
           .barber-appointment-card.is-collapsed .barber-included-items { display: none !important; }
           .barber-appointment-card.is-collapsed .barber-appointment-total { flex: 0 0 auto; align-self: stretch; display: flex; flex-direction: column; align-items: flex-end; justify-content: space-between; }
-          .barber-appointment-time { display: inline-flex; align-items: center; gap: 4px; color: rgba(255,255,255,.52); font-size: 9px; font-weight: 850; white-space: nowrap; }
+          .barber-appointment-time { display: inline-flex; align-items: center; gap: 4px; color: rgba(17,17,17,.65); font-size: 9px; font-weight: 850; white-space: nowrap; }
           .barber-appointment-chevron { display: inline-flex; width: 26px; height: 26px; align-items: center; justify-content: center; border-radius: 50%; color: var(--gold-primary); background: rgba(17, 17, 17,.08); transition: transform 180ms ease; }
           .barber-appointment-chevron.is-open { transform: rotate(180deg); }
-          .barber-queue-divider { display: flex; align-items: center; gap: 8px; margin: 8px 2px 1px; color: rgba(255,255,255,.72); font-size: 10px; font-weight: 900; letter-spacing: .75px; text-transform: uppercase; }
+          .barber-queue-divider { display: flex; align-items: center; gap: 8px; margin: 8px 2px 1px; color: rgba(17,17,17,.75); font-size: 10px; font-weight: 900; letter-spacing: .75px; text-transform: uppercase; }
           .barber-queue-divider::after { content: ''; height: 1px; flex: 1; background: linear-gradient(90deg, rgba(17, 17, 17,.22), transparent); }
           .barber-queue-divider small { margin-left: auto; color: var(--gold-primary); font-size: 8px; letter-spacing: 0; }
           .barber-add-actions, .barber-work-section-heading.add-heading { display: none !important; }
           .barber-mobile-add-control { display: block; margin-bottom: 13px; }
           .barber-mobile-add-trigger { width: 100%; min-height: 42px; display: flex; align-items: center; justify-content: center; gap: 7px; border: 1px solid rgba(17, 17, 17,.22); border-radius: 12px; background: rgba(17, 17, 17,.07); color: var(--gold-primary); font-size: 11px; font-weight: 900; cursor: pointer; }
           .barber-mobile-add-menu { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 7px; margin-top: 7px; animation: barber-details-in 160ms ease-out both; }
-          .barber-mobile-add-menu button { min-height: 40px; display: flex; align-items: center; justify-content: center; gap: 5px; border: 1px solid rgba(0, 0, 0, 0.08); border-radius: 11px; background: rgba(0, 0, 0, 0.04); color: rgba(255,255,255,.78); font-size: 9px; font-weight: 850; cursor: pointer; }
+          .barber-mobile-add-menu button { min-height: 40px; display: flex; align-items: center; justify-content: center; gap: 5px; border: 1px solid rgba(0, 0, 0, 0.08); border-radius: 11px; background: rgba(0, 0, 0, 0.04); color: rgba(17,17,17,.8); font-size: 9px; font-weight: 850; cursor: pointer; }
           .barber-service-state-actions { position: relative; padding-top: 10px; border-top: 1px solid rgba(0, 0, 0, 0.08); }
           .barber-waiting-state { min-height: 44px; padding: 9px 12px; justify-content: flex-start; }
           .barber-waiting-state span { display: none; }
@@ -1592,7 +1592,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
                                   {svc.services?.name || 'Sin servicio — usa "+ Servicio"'}
                                 </span>
                                 {svc.services?.price ? (
-                                  <span style={{ color: 'rgba(255,255,255,0.5)', fontSize: '12px', fontWeight: '700' }}>${svc.services.price}</span>
+                                  <span style={{ color: '#111111', fontSize: '12px', fontWeight: '700' }}>${svc.services.price}</span>
                                 ) : null}
                                 {group.apps.length > 1 && (
                                   <button
@@ -1617,7 +1617,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
                                     style={{ 
                                       fontSize: '10px', 
                                       fontWeight: '800', 
-                                      color: isWashing ? '#007aff' : 'rgba(255,255,255,0.6)', 
+                                      color: isWashing ? '#007aff' : 'rgba(17,17,17,0.6)', 
                                       background: isWashing ? 'rgba(0,122,255,0.08)' : 'rgba(255,255,255,0.03)', 
                                       padding: '4px 10px', 
                                       borderRadius: '12px', 
@@ -1784,7 +1784,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
                                 {renderBeverageIcon(app.beverage_selection, 15, '')}
                               </span>
                               <div>
-                                <span style={{ fontSize: '9px', color: 'rgba(255,255,255,0.4)', textTransform: 'uppercase', fontWeight: '800', display: 'block', lineHeight: '1.2' }}>Hidratación Solicitada</span>
+                                <span style={{ fontSize: '9px', color: '#111111', textTransform: 'uppercase', fontWeight: '800', display: 'block', lineHeight: '1.2' }}>Hidratación Solicitada</span>
                                 <span style={{ fontSize: '12px', color: '#111111', fontWeight: '700' }}>{app.beverage_selection}</span>
                               </div>
                             </div>
@@ -1793,7 +1793,7 @@ const BarberPanel = ({ isMobile, rates, initialStaff = null }) => {
                             <div className="barber-client-context-row" style={{ display: 'flex', alignItems: 'flex-start', gap: '9px' }}>
                               <span style={{ display: 'grid', placeItems: 'center', width: '28px', height: '28px', borderRadius: '9px', color: 'var(--gold-primary)', background: 'rgba(17, 17, 17,.09)', flexShrink: 0 }}><FileText size={15} /></span>
                               <div>
-                                <span style={{ fontSize: '9px', color: 'rgba(255,255,255,0.4)', textTransform: 'uppercase', fontWeight: '800', display: 'block', lineHeight: '1.2' }}>Notas del Cliente</span>
+                                <span style={{ fontSize: '9px', color: '#111111', textTransform: 'uppercase', fontWeight: '800', display: 'block', lineHeight: '1.2' }}>Notas del Cliente</span>
                                 <span style={{ fontSize: '12px', color: 'var(--gold-primary)', fontWeight: '700', wordBreak: 'break-word' }}>"{app.notes}"</span>
                               </div>
                             </div>

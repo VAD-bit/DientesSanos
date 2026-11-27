@@ -47,7 +47,7 @@ const PrizeRow = ({ prize, idx, onRemove, onUpdate }) => {
             <span style={{ fontSize: '15px', fontWeight: '600', color: '#111111' }}>
               {prize.name?.replace('ROULETTE_PRIZE:', '')}
             </span>
-            <span style={{ fontSize: '11px', fontWeight: '500', color: 'rgba(255,255,255,0.3)' }}>
+            <span style={{ fontSize: '11px', fontWeight: '500', color: '#111111' }}>
               (Toca para editar)
             </span>
           </div>

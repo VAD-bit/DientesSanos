@@ -1,6 +1,6 @@
-﻿# Panda Barber CRM â€” Project Handoff & Context Document
+﻿# Panda Barber CRM — Project Handoff & Context Document
 
-> **Ãšltima actualización: 08 de Julio 2026**
+> **Última actualización: 08 de Julio 2026**
 
 Este documento es la **"Biblia"** del proyecto Panda Barber CRM. Cualquier IA o desarrollador debe leerlo COMPLETAMENTE antes de proponer cambios.
 
@@ -17,7 +17,7 @@ Este documento es la **"Biblia"** del proyecto Panda Barber CRM. Cualquier IA o 
 
 - **Estética:** Dark Mode por defecto, acentos dorados (`#D4AF37`) y blancos
 - **Componentes:** Glassmorphism (fondos semitransparentes + blur), bordes redondeados, micro-animaciones
-- **UX:** Todo fluido como app móvil â€” **PROHIBIDO** hacer diseños planos o aburridos
+- **UX:** Todo fluido como app móvil — **PROHIBIDO** hacer diseños planos o aburridos
 
 ---
 
@@ -47,8 +47,8 @@ createClient(url, key, { db: { schema: 'odontosonrisa' } })
 
 ### Archivo `src/lib/supabase.js`
 Exporta DOS clientes:
-- `supabase` â€” clave anon, esquema `odontosonrisa`. Para operaciones de usuario normal
-- `publicSupabase` â€” clave anon, esquema `odontosonrisa`. Para el portal público con su propia sesión
+- `supabase` — clave anon, esquema `odontosonrisa`. Para operaciones de usuario normal
+- `publicSupabase` — clave anon, esquema `odontosonrisa`. Para el portal público con su propia sesión
 
 > [!NOTE]
 > **Resolución de RLS (Ago 2026):** Las tablas del esquema `odontosonrisa` ahora tienen políticas RLS correctas para el rol `authenticated`. Ya no se necesita `authClient` (service role) en el browser. Todos los queries usan la clave anon con la sesión del empleado autenticado.
@@ -65,7 +65,7 @@ VITE_SUPABASE_SERVICE_ROLE_KEY=eyJ...
 
 ---
 
-## ðŸ—ϸ Arquitectura â€” 3 Bloques Principales
+## ðŸ—ϸ Arquitectura — 3 Bloques Principales
 
 ```
 odontosonrisa/
@@ -99,7 +99,7 @@ odontosonrisa/
 | `DashboardModule.jsx` | Resumen del negocio, métricas |
 | `SchedulingModule.jsx` | Calendario y agenda de citas |
 | `ReceptionModule.jsx` | Vista de recepción, check-in de clientes |
-| `CheckoutPOS.jsx` | **Punto de venta** â€” pagos, comisiones, ticket |
+| `CheckoutPOS.jsx` | **Punto de venta** — pagos, comisiones, ticket |
 | `ClientModule.jsx` | CRUD clientes, historial, galería |
 | `PersonnelModule.jsx` | CRUD staff, roles, comisiones |
 | `ServicesModule.jsx` | CRUD servicios, tatuajes, precios |
@@ -156,11 +156,11 @@ El campo `role` en la tabla `staff` tiene el formato: `Posición|módulo1,módul
 | Marko Cardozo | marko@odontosonrisa.com | Tatuador | 70% | 28/03/2004 |
 | José Cordero | jose@odontosonrisa.com | Tatuador | 70% | 05/09/1997 |
 | Cesia Zuleta | cesia@odontosonrisa.com | Asistente de Lavado | 60% | 16/01/2002 |
-| Yarlin Herrera | yarlin@odontosonrisa.com | Barista | â€” | 07/07/1983 |
+| Yarlin Herrera | yarlin@odontosonrisa.com | Barista | — | 07/07/1983 |
 
 ---
 
-## ðŸ’° Sistema de Comisiones
+## 👠 Sistema de Comisiones
 
 - **Barbero:** `commission_pct` % sobre el precio del servicio (ej. 60% de $20 = $12)
 - **Asistente Dental:** Tarifa plana (`profilaxis_rate`) por cada cliente que pasa por profilaxis dental. El costo de la profilaxis se descuenta del pago del odontólogo antes de calcular su comisión
@@ -219,14 +219,14 @@ El campo `role` en la tabla `staff` tiene el formato: `Posición|módulo1,módul
 |-------|-----|---------|
 | Jul 8 2026 | Login mostraba "usuario no vinculado" aunque las credenciales eran correctas | Había un registro duplicado con `role: ARCHIVED\|...` y mismo `auth_user_id`. Se eliminó el duplicado. |
 | Jul 8 2026 | `getStaffByAuthUserId()` devolvía `null` con clave anon aunque el auth pasaba | RLS activo sin políticas para `authenticated`. Fix: aplicar políticas RLS en Supabase VPS para que `authenticated` pueda leer `staff` |
-| Jul 8 2026 | Página en blanco al abrir â€” error: `supabase.js does not provide export 'authClient'` | Cache de Vite corrupta. Fix: reiniciar Vite con `--force` (`npm run dev -- --force`). NOTA: `authClient` fue eliminado del código; ya no se necesita. |
+| Jul 8 2026 | Página en blanco al abrir — error: `supabase.js does not provide export 'authClient'` | Cache de Vite corrupta. Fix: reiniciar Vite con `--force` (`npm run dev -- --force`). NOTA: `authClient` fue eliminado del código; ya no se necesita. |
 
 ---
 
 ## ðŸš§ Pendientes / Próximos Pasos
 
 ### Alta Prioridad
-- [x] **Aplicar políticas RLS correctas** en el panel de Supabase VPS para el esquema `odontosonrisa` â€” RESUELTO (Ago 2026)
+- [x] **Aplicar políticas RLS correctas** en el panel de Supabase VPS para el esquema `odontosonrisa` — RESUELTO (Ago 2026)
 - [ ] **Verificar que todos los nuevos Odontologos pueden iniciar sesión** correctamente (email: `nombre@odontosonrisa.com`, pass: `123456`)
 - [ ] **Probar el flujo completo de caja** con los nuevos Odontologos asignados a citas
 
@@ -237,7 +237,7 @@ El campo `role` en la tabla `staff` tiene el formato: `Posición|módulo1,módul
 
 ### Baja Prioridad
 - [ ] **Pulido UX del portal público:** Mejorar animaciones en `/agendar`
-- [ ] **`washing_rate`** para Cesia Zuleta â€” definir cuánto cobra por servicio de lavado y actualizarlo en su perfil de staff
+- [ ] **`washing_rate`** para Cesia Zuleta — definir cuánto cobra por servicio de lavado y actualizarlo en su perfil de staff
 
 ---
 
