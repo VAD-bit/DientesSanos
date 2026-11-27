@@ -1,4 +1,14 @@
 ﻿import React, { useState, useEffect, useMemo, useRef } from 'react';
+import clienteFoto1 from '../assets/clientes/WhatsApp Image 2026-11-27 at 2.25.08 PM (1).jpeg';
+import clienteFoto2 from '../assets/clientes/WhatsApp Image 2026-11-27 at 2.25.08 PM (2).jpeg';
+import clienteFoto3 from '../assets/clientes/WhatsApp Image 2026-11-27 at 2.25.08 PM (3).jpeg';
+import clienteFoto4 from '../assets/clientes/WhatsApp Image 2026-11-27 at 2.25.08 PM (4).jpeg';
+import clienteFoto5 from '../assets/clientes/WhatsApp Image 2026-11-27 at 2.25.08 PM (5).jpeg';
+import clienteFoto6 from '../assets/clientes/WhatsApp Image 2026-11-27 at 2.25.08 PM.jpeg';
+import clienteVideo1 from '../assets/clientes/WhatsApp Video 2026-11-27 at 2.25.08 PM (1).mp4';
+import clienteVideo2 from '../assets/clientes/WhatsApp Video 2026-11-27 at 2.25.08 PM.mp4';
+
+const CLIENTE_MEDIA = [clienteFoto1, clienteFoto2, clienteFoto3, clienteFoto4, clienteFoto5, clienteFoto6, clienteVideo1, clienteVideo2];
 import useDebounce from '../hooks/useDebounce';
 import { createPortal } from 'react-dom';
 import { useNotifs } from '../context/NotificationContext';
@@ -611,16 +621,15 @@ const ClientModule = ({ isMobile, clients, onRefresh, initialClientId }) => {
                             }}
                           />
                         ) : (
-                          <div style={{
-                            width: '52px', height: '52px', borderRadius: '16px',
-                            background: avatarGrad,
-                            border: `2px solid ${tc.accent}30`,
-                            display: 'flex', alignItems: 'center', justifyContent: 'center',
-                            fontSize: '22px', fontWeight: '800', color: '#111827', flexShrink: 0,
-                            boxShadow: `0 4px 16px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.08)`
-                          }}>
-                            {client.name?.charAt(0).toUpperCase()}
-                          </div>
+                          <img
+                            src={CLIENTE_MEDIA[Math.abs(client.name?.charCodeAt(0) || 0) % CLIENTE_MEDIA.length]}
+                            alt={client.name}
+                            style={{
+                              width: '52px', height: '52px', borderRadius: '16px',
+                              objectFit: 'cover', flexShrink: 0,
+                              border: `2px solid ${tc.accent}40`
+                            }}
+                          />
                         )}
 
                         <div style={{ flex: 1, minWidth: 0 }}>

@@ -4300,7 +4300,6 @@ const PersonnelModule = ({ isMobile, inventory = [], initialTab = 'management', 
                       <span style={{ fontSize: '11px', color: 'var(--text-secondary)', fontWeight: '700', textTransform: 'uppercase' }}>Odontólogo:</span>
                       <PandaSelect
                         options={[
-                          { value: 'all', label: 'Todos', imageUrl: '/panda-team-avatar.png', avatarFallback: 'EQ', subtitle: 'Todos los Odontólogos' },
                           ...staff.filter(member => {
                             const roleName = (member.role?.split('|')[0] || '').toLowerCase();
                             return roleName.includes('barbero') || roleName.includes('odontolog');
