@@ -37,7 +37,7 @@ import {
 import { FaChild } from 'react-icons/fa';
 import { MdWorkspacePremium, MdFace3 } from 'react-icons/md';
 import { TbEar } from 'react-icons/tb';
-import ClinicalHistoryModal from './ClinicalHistoryModal';
+
 
 import { dataService } from '../services/dataService';
 import { SkeletonList } from './Skeleton';
@@ -439,7 +439,6 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
   const [showBarberModal, setShowBarberModal] = useState(false);
   const [selectedServiceForBarber, setSelectedServiceForBarber] = useState(null);
   const [customServicePrice, setCustomServicePrice] = useState('');
-  const [clinicalAfterPay, setClinicalAfterPay] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
   const debouncedProductSearch = useDebounce(searchTerm, 300);
   const [productGroup, setProductGroup] = useState('all');
@@ -1522,15 +1521,6 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
       }
 
       await enqueuePayment(paymentData);
-
-      // Historial clínico OBLIGATORIO tras cobro exitoso (solo servicios/pagos reales)
-      if (settlementType === 'paid') {
-        const payClientId = selectedClient?.id || selectedApp?.client_id || paymentData.clientId;
-        const payClientName = selectedClient?.name || selectedApp?.clients?.name || paymentData.clientName;
-        if (payClientId) {
-          setClinicalAfterPay({ id: payClientId, name: payClientName || 'Paciente' });
-        }
-      }
 
       // Enviar notificación Push y agregar a historial local
       let paymentDetail = '';
@@ -4090,18 +4080,6 @@ const CheckoutPOS = ({ isMobile, rates, onNavigate, preselectAppId, isModalView,
           </div>
         </div>
       )}
-
-      <ClinicalHistoryModal
-        key={clinicalAfterPay?.id || 'none'}
-        isOpen={!!clinicalAfterPay}
-        client={clinicalAfterPay}
-        mandatory
-        onClose={() => setClinicalAfterPay(null)}
-        onSaved={() => {
-          showToast('Historial clínico registrado. Servicio concluido.', 'success');
-          setClinicalAfterPay(null);
-        }}
-      />
     </div>
   );
 };
